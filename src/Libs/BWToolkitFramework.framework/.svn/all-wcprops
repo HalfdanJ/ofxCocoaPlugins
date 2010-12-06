@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/145/trunk/src/Libs/BWToolkitFramework.framework
+END
+Resources
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/!svn/ver/145/trunk/src/Libs/BWToolkitFramework.framework/Resources
+END
+Headers
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/!svn/ver/145/trunk/src/Libs/BWToolkitFramework.framework/Headers
+END
+BWToolkitFramework
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/!svn/ver/145/trunk/src/Libs/BWToolkitFramework.framework/BWToolkitFramework
+END

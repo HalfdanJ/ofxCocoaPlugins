@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/!svn/ver/181/trunk/src/PluginManager/Properties
+END
+NumberProperty.h
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/!svn/ver/164/trunk/src/PluginManager/Properties/NumberProperty.h
+END
+NumberProperty.mm
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/!svn/ver/187/trunk/src/PluginManager/Properties/NumberProperty.mm
+END
+BoolProperty.h
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/!svn/ver/165/trunk/src/PluginManager/Properties/BoolProperty.h
+END
+BoolProperty.mm
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/!svn/ver/187/trunk/src/PluginManager/Properties/BoolProperty.mm
+END

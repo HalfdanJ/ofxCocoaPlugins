@@ -1,0 +1,77 @@
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/!svn/ver/160/trunk/src/CorePlugins/Cameras/ofxVideoGrabber/osx/include/dc1394
+END
+iso.h
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/!svn/ver/160/trunk/src/CorePlugins/Cameras/ofxVideoGrabber/osx/include/dc1394/iso.h
+END
+format7.h
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/!svn/ver/160/trunk/src/CorePlugins/Cameras/ofxVideoGrabber/osx/include/dc1394/format7.h
+END
+utils.h
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/!svn/ver/160/trunk/src/CorePlugins/Cameras/ofxVideoGrabber/osx/include/dc1394/utils.h
+END
+control.h
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/!svn/ver/160/trunk/src/CorePlugins/Cameras/ofxVideoGrabber/osx/include/dc1394/control.h
+END
+log.h
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/!svn/ver/160/trunk/src/CorePlugins/Cameras/ofxVideoGrabber/osx/include/dc1394/log.h
+END
+capture.h
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/!svn/ver/160/trunk/src/CorePlugins/Cameras/ofxVideoGrabber/osx/include/dc1394/capture.h
+END
+types.h
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/!svn/ver/160/trunk/src/CorePlugins/Cameras/ofxVideoGrabber/osx/include/dc1394/types.h
+END
+register.h
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/!svn/ver/160/trunk/src/CorePlugins/Cameras/ofxVideoGrabber/osx/include/dc1394/register.h
+END
+video.h
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/!svn/ver/160/trunk/src/CorePlugins/Cameras/ofxVideoGrabber/osx/include/dc1394/video.h
+END
+dc1394.h
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/!svn/ver/160/trunk/src/CorePlugins/Cameras/ofxVideoGrabber/osx/include/dc1394/dc1394.h
+END
+conversions.h
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/!svn/ver/160/trunk/src/CorePlugins/Cameras/ofxVideoGrabber/osx/include/dc1394/conversions.h
+END
+camera.h
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/!svn/ver/160/trunk/src/CorePlugins/Cameras/ofxVideoGrabber/osx/include/dc1394/camera.h
+END

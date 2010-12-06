@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/!svn/ver/160/trunk/src/CorePlugins/Cameras/ofxVideoGrabber/osx/include/dc1394/vendor
+END
+avt.h
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/!svn/ver/160/trunk/src/CorePlugins/Cameras/ofxVideoGrabber/osx/include/dc1394/vendor/avt.h
+END
+pixelink.h
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/!svn/ver/160/trunk/src/CorePlugins/Cameras/ofxVideoGrabber/osx/include/dc1394/vendor/pixelink.h
+END
+basler_sff.h
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/!svn/ver/160/trunk/src/CorePlugins/Cameras/ofxVideoGrabber/osx/include/dc1394/vendor/basler_sff.h
+END
+basler.h
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/!svn/ver/160/trunk/src/CorePlugins/Cameras/ofxVideoGrabber/osx/include/dc1394/vendor/basler.h
+END

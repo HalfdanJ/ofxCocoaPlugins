@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/182/trunk/src/PluginManager
+END
+PluginManagerController.h
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/!svn/ver/187/trunk/src/PluginManager/PluginManagerController.h
+END
+Plugin.h
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/186/trunk/src/PluginManager/Plugin.h
+END
+PluginManagerController.mm
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/!svn/ver/187/trunk/src/PluginManager/PluginManagerController.mm
+END
+Plugin.mm
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/186/trunk/src/PluginManager/Plugin.mm
+END
+PluginProperty.h
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/187/trunk/src/PluginManager/PluginProperty.h
+END
+PluginProperty.mm
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/!svn/ver/187/trunk/src/PluginManager/PluginProperty.mm
+END

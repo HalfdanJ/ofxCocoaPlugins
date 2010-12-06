@@ -1,0 +1,11 @@
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/!svn/ver/163/trunk/src/CorePlugins/Cameras/ofxVideoGrabber/osx/lib
+END
+libdc1394.a
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/!svn/ver/163/trunk/src/CorePlugins/Cameras/ofxVideoGrabber/osx/lib/libdc1394.a
+END
