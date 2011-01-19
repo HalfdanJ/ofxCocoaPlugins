@@ -71,6 +71,8 @@
 	
 	BOOL noQuestionsAsked;
 	BOOL isQuittingFromWindowClose;
+	
+	BOOL isQuitting;
 
 }	
 

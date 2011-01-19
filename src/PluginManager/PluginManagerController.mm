@@ -28,9 +28,9 @@ extern ofAppBaseWindow * window;
     {
 		globalController = self;
 		plugins = [[[NSMutableArray alloc] init] retain];	
-
+		
 		noQuestionsAsked = YES;
-
+		
 		setupAppCalled = NO;
 		previews = YES;
 		
@@ -42,6 +42,8 @@ extern ofAppBaseWindow * window;
 		
 		oscReceiver = new ofxOscReceiver();
 		oscReceiver->setup(1111);
+		
+		isQuitting = NO;
 		
     }
 	
@@ -67,13 +69,13 @@ extern ofAppBaseWindow * window;
 	
 	NSImage * hazardImage = [NSImage imageNamed:@"hazard stripes small.psd"];
 	
-//	[pluginTitleView setFillColor:[NSColor colorWithPatternImage:hazardImage]];
+	//	[pluginTitleView setFillColor:[NSColor colorWithPatternImage:hazardImage]];
 	[pluginTitleView setFillColor:[NSColor colorWithDeviceWhite:0.0 alpha:0.3]];
 	
 	[self willChangeValueForKey:@"plugins"];
 	[testApp setupPlugins];
 	[self didChangeValueForKey:@"plugins"];
-			
+	
 	//Call's all the initial init code (multithreaded). It's not the same as setup, that comes later when OpenGL is up and running
 	[self initPlugins];
 	
@@ -150,9 +152,9 @@ extern ofAppBaseWindow * window;
 							if([viewManager numberOutputViews] == 0){
 								setupCalled = YES;
 								
-									[mainWindow setFinishedLoading];	
-									
-									[viewManager showViews];
+								[mainWindow setFinishedLoading];	
+								
+								[viewManager showViews];
 								
 							}
 						}
@@ -280,15 +282,15 @@ extern ofAppBaseWindow * window;
 		[pluginControllerView setFrameSize:NSMakeSize(bounf.size.width, bounf.size.height)];
 		
 		if([[self selectedPlugin] autoresizeControlview]){	
-			 
+			
 			[pluginControllerView setFrameSize:NSMakeSize(frame.size.width, frame.size.height)];
-//			[pluginControllerView setBoundsSize:NSMakeSize(bounf.size.width, bounf.size.height)];
+			//			[pluginControllerView setBoundsSize:NSMakeSize(bounf.size.width, bounf.size.height)];
 			
 			[pluginControllerView setAutoresizesSubviews:YES];	
 			[pluginControllerView setAutoresizingMask: NSViewWidthSizable |  NSViewMaxXMargin | NSViewMinXMargin  | NSViewHeightSizable |  NSViewMaxYMargin | NSViewMinYMargin  ];
 			
 			[pluginControllerView setFrameSize:NSMakeSize(frame.size.width, frame.size.height)];
-//			[pluginControllerView setBoundsSize:NSMakeSize(bounf.size.width, bounf.size.height)];
+			//			[pluginControllerView setBoundsSize:NSMakeSize(bounf.size.width, bounf.size.height)];
 			
 			[pluginControllerView needsDisplay];
 			
@@ -301,7 +303,7 @@ extern ofAppBaseWindow * window;
 		[pluginControllerView setAutoresizesSubviews:YES];	
 		[pluginControllerView setAutoresizingMask: NSViewWidthSizable |  NSViewMaxXMargin | NSViewMinXMargin  | NSViewHeightSizable |  NSViewMaxYMargin | NSViewMinYMargin  ];
 	}
-		
+	
 	if([[[self selectedPlugin] properties] count] == 0){
 		[[pluginSplitView animator] setPosition:0.0 ofDividerAtIndex:0];
 	} else if([[self selectedPlugin] view] == nil){
@@ -311,8 +313,8 @@ extern ofAppBaseWindow * window;
 		
 		//BWSplitView 
 	} else {
-	//	[[pluginSplitView animator] setPosition:20+[[[self selectedPlugin] properties] count]*20 ofDividerAtIndex:0];
-			[[pluginSplitView animator] setPosition:0 ofDividerAtIndex:0];
+		//	[[pluginSplitView animator] setPosition:20+[[[self selectedPlugin] properties] count]*20 ofDividerAtIndex:0];
+		[[pluginSplitView animator] setPosition:0 ofDividerAtIndex:0];
 	}
 }
 
@@ -347,13 +349,13 @@ extern ofAppBaseWindow * window;
 	
 	if( sharedOpenglContext == nil )
 	{
-	//	printf( "getSharedContext: Selecting main context\n" );
+		//	printf( "getSharedContext: Selecting main context\n" );
 		NSOpenGLContext * newContext = [[NSOpenGLContext alloc] initWithFormat:nsPixelFormat shareContext:nil];
 		[newContext retain];
 		sharedOpenglContext = newContext;
 		return newContext;
 	} else {
-	//	printf( "getSharedContext: Creating secondary context\n" );
+		//	printf( "getSharedContext: Creating secondary context\n" );
 		NSOpenGLContext * newContext = [[NSOpenGLContext alloc] initWithFormat:nsPixelFormat shareContext:sharedOpenglContext];
 		return [newContext retain];
 	}
@@ -365,32 +367,34 @@ extern ofAppBaseWindow * window;
 //
 
 - (void) callSetup{
-	NSLog(@"------ Call setup: ------");
-	int n=0;
-	NSDictionary * group;
-	for(group in plugins){
-		ofPlugin * plugin;
-		for(plugin in [group objectForKey:@"children"]){		
-			[plugin setup];
-			[plugin setSetupCalled:YES];
-			dispatch_async(dispatch_get_main_queue(), ^{				
-				[mainWindow setLoadPercentage:0.5+0.5*(float)n/[self countOfPlugins]];
-				[mainWindow setLoadStatusText:[NSString stringWithFormat:@"Calling setup on %@", [plugin name]]];
-			});
-			
-			
-			n++;
+	if(!isQuitting){
+		NSLog(@"------ Call setup: ------");
+		int n=0;
+		NSDictionary * group;
+		for(group in plugins){
+			ofPlugin * plugin;
+			for(plugin in [group objectForKey:@"children"]){		
+				[plugin setup];
+				[plugin setSetupCalled:YES];
+				dispatch_async(dispatch_get_main_queue(), ^{				
+					[mainWindow setLoadPercentage:0.5+0.5*(float)n/[self countOfPlugins]];
+					[mainWindow setLoadStatusText:[NSString stringWithFormat:@"Calling setup on %@", [plugin name]]];
+				});
+				
+				
+				n++;
+			}
 		}
-	}
-	setupCalled = YES;
-	NSLog(@"\n");
-	NSLog(@"------ Running: ------");
-
-	dispatch_async(dispatch_get_main_queue(), ^{		
-		[mainWindow setFinishedLoading];	
+		setupCalled = YES;
+		NSLog(@"\n");
+		NSLog(@"------ Running: ------");
 		
-		[viewManager showViews];
-	});
+		dispatch_async(dispatch_get_main_queue(), ^{		
+			[mainWindow setFinishedLoading];	
+			
+			[viewManager showViews];
+		});
+	}
 }
 
 //
@@ -453,7 +457,7 @@ extern ofAppBaseWindow * window;
 	for(group in plugins){
 		ofPlugin * plugin;
 		for(plugin in [group objectForKey:@"children"]){			
-			if([[plugin enabled]boolValue] ){				
+			if(!isQuitting && [[plugin enabled]boolValue] ){				
 				if([[plugin enabled] boolValue] && [plugin willDraw:drawingInformation]){
 					draw = YES;
 				}
@@ -498,11 +502,11 @@ extern ofAppBaseWindow * window;
 		for(plugin in [group objectForKey:@"children"]){
 			
 			glPushMatrix();
-	//		ofPushStyle();
+			//		ofPushStyle();
 			
 			int time = ofGetElapsedTimeMillis();
 			
-			if([[plugin enabled]boolValue] ){
+			if(!isQuitting && [[plugin enabled]boolValue] ){
 				//	ofEnableAlphaBlending();
 				//	glBlendColor([[plugin alpha] floatValue], [[plugin alpha] floatValue], [[plugin alpha] floatValue], [[plugin alpha] floatValue]);
 				//	glBlendFuncSeparate(GL_CONSTANT_COLOR, GL_ONE_MINUS_CONSTANT_COLOR, GL_SRC_ALPHA, GL_ONE_MINUS_DST_ALPHA);
@@ -512,8 +516,8 @@ extern ofAppBaseWindow * window;
 				[plugin draw:drawingInformation];
 				
 			}
-		//	[plugin setDrawCpuTime:ofGetElapsedTimeMillis()-time];
-//			ofPopStyle();
+			//	[plugin setDrawCpuTime:ofGetElapsedTimeMillis()-time];
+			//			ofPopStyle();
 			glPopMatrix();			
 		}
 	}
@@ -613,13 +617,13 @@ extern ofAppBaseWindow * window;
 	[toolbarGraphItem setLabel:@"Show graph"];
 }
 /*
--(IBAction) pressGraphViewButton:(id)sender{
-	if([[globalGraphDebugger properties]count] >  0){
-		[self showGraphView:self];		
-	} else {
-		[self hideGraphView:self];		
-	}
-}*/
+ -(IBAction) pressGraphViewButton:(id)sender{
+ if([[globalGraphDebugger properties]count] >  0){
+ [self showGraphView:self];		
+ } else {
+ [self hideGraphView:self];		
+ }
+ }*/
 
 //
 //-----
@@ -654,8 +658,10 @@ extern ofAppBaseWindow * window;
 
 - (void) applicationWillTerminate: (NSNotification *)note
 {
-	[saveManager saveDataToDisk:self];
+	[openglLock lock];
 
+	isQuitting = YES;
+	[saveManager saveDataToDisk:self];
 	NSDictionary * group;
 	for(group in plugins){
 		ofPlugin * plugin;

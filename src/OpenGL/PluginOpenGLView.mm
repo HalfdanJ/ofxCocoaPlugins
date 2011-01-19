@@ -42,6 +42,8 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 
 - (void)awakeFromNib
 {
+	[self setOpenGLContext:[controller getSharedContext:(CGLPixelFormatObj)[[self pixelFormat] CGLPixelFormatObj]]];
+	
 	statsView = [[[OutputViewStats alloc]initWithFrame:NSMakeRect(10, [[controller statsAreaView] frame].size.height - 40- 30*[self viewNumber],  [[controller statsAreaView] frame].size.width-20, 30) outputView:self] retain];
 	[statsView setAutoresizingMask:NSViewMinYMargin | NSViewWidthSizable];
 	[[controller statsAreaView] addSubview:statsView];
@@ -96,6 +98,9 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
     // the buffers are swapped only during the vertical retrace of the monitor
 	[[self openGLContext] setValues:&swapInterval forParameter:NSOpenGLCPSwapInterval];
 	*/
+	//[self setOpenGLContext:[controller getSharedContext:(CGLPixelFormatObj)[[self pixelFormat] CGLPixelFormatObj]]];
+
+	
     // create display link for the main display
     CVDisplayLinkCreateWithCGDisplay(kCGDirectMainDisplay, &displayLink);
     if (NULL != displayLink) {
@@ -110,6 +115,9 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
     } else {
 		NSLog(@"ERROR could not create displayLink");
 	}
+	
+//	[[self openGLContext] makeCurrentContext];
+
 }
 
 //
