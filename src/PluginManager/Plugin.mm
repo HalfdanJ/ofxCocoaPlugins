@@ -141,10 +141,12 @@
 	return [[powerMeterDictionary valueForKey:@"gpu"] floatValue];
 }
 
--(void) addProperty:(PluginProperty*)p named:(NSString*)name{
-	[p setName:name];
+-(void) addProperty:(PluginProperty*)p named:(NSString*)_name{
+	[p setName:_name];
 	[properties setValue:p
-				  forKey:name];
+				  forKey:_name];
+	[p addObserver:self forKeyPath:@"value" options:nil context:@"property"];
+	
 	
 }
 

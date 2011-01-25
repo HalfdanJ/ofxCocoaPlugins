@@ -123,9 +123,12 @@
 					for(key in [tempDict allKeys]){
 						//Go through all the properties in the temporary dictionary, and replace the ones in the real plugin
 						PluginProperty *  prop = [[plugin properties] objectForKey:key];
+						PluginProperty *  loadedProp = [tempDict objectForKey:key];
 						if(prop != nil){
-							[(PluginProperty*)[tempDict objectForKey:key] setName:key];
-							[[plugin properties] setObject:[tempDict objectForKey:key] forKey:key];
+							[prop setValue:[loadedProp value]];
+							[prop setMidiNumber:[loadedProp midiNumber]];
+							[prop setMidiChannel:[loadedProp midiChannel]];
+						//	[[plugin properties] setObject:[tempDict objectForKey:key] forKey:key];
 						}
 					}
 					[plugin didChangeValueForKey:@"properties"];
