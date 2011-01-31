@@ -374,8 +374,10 @@ extern ofAppBaseWindow * window;
 		for(group in plugins){
 			ofPlugin * plugin;
 			for(plugin in [group objectForKey:@"children"]){		
-				[plugin setup];
-				[plugin setSetupCalled:YES];
+				if(![plugin setupCalled]){
+					[plugin setup];
+					[plugin setSetupCalled:YES];
+				}
 				dispatch_async(dispatch_get_main_queue(), ^{				
 					[mainWindow setLoadPercentage:0.5+0.5*(float)n/[self countOfPlugins]];
 					[mainWindow setLoadStatusText:[NSString stringWithFormat:@"Calling setup on %@", [plugin name]]];
@@ -659,7 +661,7 @@ extern ofAppBaseWindow * window;
 - (void) applicationWillTerminate: (NSNotification *)note
 {
 	[openglLock lock];
-
+	
 	isQuitting = YES;
 	[saveManager saveDataToDisk:self];
 	NSDictionary * group;
