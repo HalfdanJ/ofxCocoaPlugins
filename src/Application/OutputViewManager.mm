@@ -8,6 +8,7 @@
 
 #import "OutputViewManager.h"
 #include "PluginOpenGLView.h"
+#include "PluginManagerController.h"
 
 #include <IOKit/IOKitLib.h>
 #include <IOKit/graphics/IOFramebufferShared.h>
@@ -83,7 +84,7 @@ CFStringRef CopyLocalDisplayName(CGDirectDisplayID display)
 
 -(void) setupScreen{
 	NSUserDefaults * userDefaults = [NSUserDefaults standardUserDefaults];
-
+	
 	int i;
 	for(i=0;i<numberOutputViews;i++){
 		
@@ -105,7 +106,7 @@ CFStringRef CopyLocalDisplayName(CGDirectDisplayID display)
 		theDelegate = [[[PluginOutputWindowDelegate alloc]initWithPluginOutputView:[newPanel glView]]retain];
 		[[newPanel panel] setDelegate:theDelegate];
 		
-	
+		
 		
 		
 		[glViews addObject:[newPanel glView]];
@@ -121,8 +122,13 @@ CFStringRef CopyLocalDisplayName(CGDirectDisplayID display)
 			goFullscreen = NO;
 		}		
 	}	
-	if(goFullscreen)
-		[self goFullscreen];
+	
+	if(goFullscreen){
+		dispatch_async(dispatch_get_main_queue(), ^{
+			[self goFullscreen];
+		});
+	}
+	
 	
 	[self showViews];
 }
@@ -161,7 +167,7 @@ CFStringRef CopyLocalDisplayName(CGDirectDisplayID display)
 			if([[userDefaults valueForKey:[NSString stringWithFormat:@"DisplayIdForView%i",[view viewNumber]]] intValue] ==  displays[i]){
 				[popup selectItem:[popup lastItem]];
 				[view setDisplayNumber:popup];
-//				[view setScreenSize:NSMakeSize(CGDisplayPixelsWide(displays[i]), CGDisplayPixelsHigh(displays[i]))];
+				//				[view setScreenSize:NSMakeSize(CGDisplayPixelsWide(displays[i]), CGDisplayPixelsHigh(displays[i]))];
 			}
 			CFRelease(name);
 		}		
@@ -192,71 +198,73 @@ CFStringRef CopyLocalDisplayName(CGDirectDisplayID display)
 
 -(IBAction) goFullscreen{
 	if(!fullscreen){
+		[[controller openglLock] lock]; // prevent drawing from another thread if we're drawing already
+		
 		[toolbarFullscreenItem setLabel:@"Window"];
 		[toolbarFullscreenItem setImage:[NSImage imageNamed:@"NSExitFullScreenTemplate"]];
 		
 		fullscreen = YES;
 		
-		dispatch_async(dispatch_get_main_queue(), ^{
-			
-			int i=0;
-			for(OutputPanelController * panelController in outputViewsPanels){
-				PluginOpenGLView * view = [panelController glView];
-				if([view displayId] != 0){					
-					NSPanel * panel = [panelController panel];
-					NSScreen * screen;
-					NSScreen * tmpScreen;
-					//Find the screen to fullscreen on
-					for(tmpScreen in [NSScreen screens]){
-						if([view displayId] == [[[tmpScreen deviceDescription] valueForKey:@"NSScreenNumber"] intValue]){
-							screen = tmpScreen;
-						}
-					}
-					
-					if(screen != nil){	
-						if([view displayId] == CGMainDisplayID()){
-							CGDisplayHideCursor (kCGNullDirectDisplay);	
-						}
-#ifdef VARIANT2
-						NSRect fullDisplayRect = [screen frame];	
-						NSWindow *fullScreenWindow = [[NSWindow alloc] initWithContentRect: fullDisplayRect styleMask:NSBorderlessWindowMask backing:NSBackingStoreBuffered defer:YES];
-						[fullScreenWindow setLevel:NSMainMenuWindowLevel+1];
-						
-						[fullScreenWindow setOpaque:YES];
-						[fullScreenWindow setHidesOnDeactivate:YES];
-						[fullScreenWindow setContentView: view];
-						[fullScreenWindow makeKeyAndOrderFront:self];
-
-#else 
-						
-						NSRect fullDisplayRect = [screen frame];	
-						[panel setFrameAutosaveName:@""];
-						[panel setStyleMask:NSBorderlessWindowMask];
-						[panel setBackingType:NSBackingStoreBuffered];
-						[panel setLevel:NSMainMenuWindowLevel+1];
-						[panel setOpaque:YES];
-						[panel setHidesOnDeactivate:NO];
-						
-						[panel setFrame:fullDisplayRect display:YES];
-						[panel makeKeyAndOrderFront:self];						
-						[view setInFullscreen:YES];						
-						[panel setTitle:[NSString stringWithFormat:@"OutputView %i",i]];
-						
-						[view setFrame:NSMakeRect(0, 0, fullDisplayRect.size.width, fullDisplayRect.size.height) ];
-						
-						[[view openGLContext]setFullScreen];
-						
-						[view updateDisplayIDWithWindow:panel];
-						
-						[[panelController displayPopup] setEnabled:NO];		
-#endif
-						
-						
+		
+		int i=0;
+		for(OutputPanelController * panelController in outputViewsPanels){
+			PluginOpenGLView * view = [panelController glView];
+			if([view displayId] != 0){					
+				NSPanel * panel = [panelController panel];
+				NSScreen * screen;
+				NSScreen * tmpScreen;
+				//Find the screen to fullscreen on
+				for(tmpScreen in [NSScreen screens]){
+					if([view displayId] == [[[tmpScreen deviceDescription] valueForKey:@"NSScreenNumber"] intValue]){
+						screen = tmpScreen;
 					}
 				}
-				i++;				
-			}			
-		});
+				
+				if(screen != nil){	
+					if([view displayId] == CGMainDisplayID()){
+						CGDisplayHideCursor (kCGNullDirectDisplay);	
+					}
+#ifdef VARIANT2
+					NSRect fullDisplayRect = [screen frame];	
+					NSWindow *fullScreenWindow = [[NSWindow alloc] initWithContentRect: fullDisplayRect styleMask:NSBorderlessWindowMask backing:NSBackingStoreBuffered defer:YES];
+					[fullScreenWindow setLevel:NSMainMenuWindowLevel+1];
+					
+					[fullScreenWindow setOpaque:YES];
+					[fullScreenWindow setHidesOnDeactivate:YES];
+					[fullScreenWindow setContentView: view];
+					[fullScreenWindow makeKeyAndOrderFront:self];
+					
+#else 
+					
+					NSRect fullDisplayRect = [screen frame];	
+					[panel setFrameAutosaveName:@""];
+					[panel setStyleMask:NSBorderlessWindowMask];
+					[panel setBackingType:NSBackingStoreBuffered];
+					[panel setLevel:NSMainMenuWindowLevel+1];
+					[panel setOpaque:YES];
+					[panel setHidesOnDeactivate:NO];
+					
+					[panel setFrame:fullDisplayRect display:YES];
+					[panel makeKeyAndOrderFront:self];						
+					[view setInFullscreen:YES];						
+					[panel setTitle:[NSString stringWithFormat:@"OutputView %i",i]];
+					
+					[view setFrame:NSMakeRect(0, 0, fullDisplayRect.size.width, fullDisplayRect.size.height) ];
+					
+					//[[view openGLContext]setFullScreen];
+					
+					[view updateDisplayIDWithWindow:panel];
+					
+					[[panelController displayPopup] setEnabled:NO];		
+#endif
+					
+					
+				}
+			}
+			i++;				
+		}		
+		[[controller openglLock] unlock]; // prevent drawing from another thread if we're drawing already
+		
 		
 	}
 }
@@ -268,45 +276,52 @@ CFStringRef CopyLocalDisplayName(CGDirectDisplayID display)
 -(IBAction) goWindow{
 	CGDisplayShowCursor(kCGNullDirectDisplay);	
 	
-	if(fullscreen){		
+	if(fullscreen){	
+		
 		fullscreen = NO;
 		
-		dispatch_async(dispatch_get_main_queue(), ^{
+		//dispatch_async(dispatch_get_main_queue(), ^{
+		
+		[toolbarFullscreenItem setLabel:@"Fullscreen"];	
+		[toolbarFullscreenItem setImage:[NSImage imageNamed:@"NSEnterFullScreenTemplate"]];
+		
+		int i=0;
+		for(OutputPanelController * panelController in outputViewsPanels){
+			[[controller openglLock] lock]; // prevent drawing from another thread if we're drawing already
+
+			PluginOpenGLView * view = [panelController glView];
 			
-			[toolbarFullscreenItem setLabel:@"Fullscreen"];	
-			[toolbarFullscreenItem setImage:[NSImage imageNamed:@"NSEnterFullScreenTemplate"]];
+			/*if([view inFullscreen])
+			 [[view openGLContext] clearDrawable];*/
 			
-			int i=0;
-			for(OutputPanelController * panelController in outputViewsPanels){
-				PluginOpenGLView * view = [panelController glView];
-				
-				if([view inFullscreen])
-					[[view openGLContext] clearDrawable];
-				
-				NSPanel * panel = (NSPanel * )[view window];
-				
-				[panel setStyleMask:NSResizableWindowMask | NSHUDWindowMask | NSTitledWindowMask | NSUtilityWindowMask | NSClosableWindowMask];
-				[panel setLevel:NSFloatingWindowLevel];
-				[panel setOpaque:NO];
-				[panel setHidesOnDeactivate:YES];
-				
-				[panel setTitle:[NSString stringWithFormat:@"OutputView %i",i]];
-				[panel setFrameAutosaveName:[NSString stringWithFormat:@"OutputView %i",i]];
-				
-				NSRect viewRect = [panel frame];
-				viewRect.origin.x = 0;
-				viewRect.origin.y = 52;
-				viewRect.size.height -= 72;	
-				[view setFrame:viewRect];
-				
-				[view updateDisplayIDWithWindow:panel];
-				
-				[[panelController displayPopup] setEnabled:YES];
-				
-				i++;	
-			}
-		});
+			NSPanel * panel = (NSPanel * )[view window];
+			
+			[panel setStyleMask:NSResizableWindowMask | NSHUDWindowMask | NSTitledWindowMask | NSUtilityWindowMask | NSClosableWindowMask];
+			[panel setLevel:NSFloatingWindowLevel];
+			[panel setOpaque:NO];
+			[panel setHidesOnDeactivate:YES];
+			
+			[panel setTitle:[NSString stringWithFormat:@"OutputView %i",i]];
+			[panel setFrameAutosaveName:[NSString stringWithFormat:@"OutputView %i",i]];
+			
+			NSRect viewRect = [panel frame];
+			viewRect.origin.x = 0;
+			viewRect.origin.y = 52;
+			viewRect.size.height -= 72;	
+			[view setFrame:viewRect];
+			
+			
+			[[panelController displayPopup] setEnabled:YES];
+			[[controller openglLock] unlock]; // prevent drawing from another thread if we're drawing already
+
+			[view updateDisplayIDWithWindow:panel];
+
+			i++;	
+		}
+		//	});
+		
 	}
+	
 }
 -(IBAction) pressFullscreenButton:(id)sender{
 	if(!fullscreen){
@@ -332,9 +347,9 @@ CFStringRef CopyLocalDisplayName(CGDirectDisplayID display)
 	
 	*displays = (CGDirectDisplayID*) calloc((size_t)dspCount, sizeof(CGDirectDisplayID));	
 	CGGetActiveDisplayList(dspCount, *displays, &dspCount);
-
 	
-//	free(displays);
+	
+	//	free(displays);
 	return dspCount;
 }
 

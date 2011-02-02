@@ -47,11 +47,11 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 	statsView = [[[OutputViewStats alloc]initWithFrame:NSMakeRect(10, [[controller statsAreaView] frame].size.height - 40- 30*[self viewNumber],  [[controller statsAreaView] frame].size.width-20, 30) outputView:self] retain];
 	[statsView setAutoresizingMask:NSViewMinYMargin | NSViewWidthSizable];
 	[[controller statsAreaView] addSubview:statsView];
-
+	
 	NSTimer * timer = [NSTimer timerWithTimeInterval:(120.0f/60.0f) target:self selector:@selector(updateStats) userInfo:nil repeats:YES];
 	[[NSRunLoop currentRunLoop] addTimer:timer forMode:NSDefaultRunLoopMode];
 	[[NSRunLoop currentRunLoop] addTimer:timer forMode:NSEventTrackingRunLoopMode]; // ensure timer fires during resize
-
+	
 	[self setDrawingInformation:[NSMutableDictionary dictionaryWithCapacity:6]];
 	
 	backingWidth = 0;
@@ -85,39 +85,41 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 - (void)prepareOpenGL
 {
 	/*GLint swapInterval = 1;
-    
-      // really nice perspective calculations
-    glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
-	
-	// turn on sphere map automatic texture coordinate generation
-	// http://www.opengl.org/sdk/docs/man/xhtml/glTexGen.xml
-	glTexGeni(GL_S, GL_TEXTURE_GEN_MODE, GL_SPHERE_MAP);
-	glTexGeni(GL_T, GL_TEXTURE_GEN_MODE, GL_SPHERE_MAP);
-	
-   	// set up the GL contexts swap interval -- passing 1 means that
-    // the buffers are swapped only during the vertical retrace of the monitor
-	[[self openGLContext] setValues:&swapInterval forParameter:NSOpenGLCPSwapInterval];
-	*/
+	 
+	 // really nice perspective calculations
+	 glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
+	 
+	 // turn on sphere map automatic texture coordinate generation
+	 // http://www.opengl.org/sdk/docs/man/xhtml/glTexGen.xml
+	 glTexGeni(GL_S, GL_TEXTURE_GEN_MODE, GL_SPHERE_MAP);
+	 glTexGeni(GL_T, GL_TEXTURE_GEN_MODE, GL_SPHERE_MAP);
+	 
+	 // set up the GL contexts swap interval -- passing 1 means that
+	 // the buffers are swapped only during the vertical retrace of the monitor
+	 [[self openGLContext] setValues:&swapInterval forParameter:NSOpenGLCPSwapInterval];
+	 */
 	//[self setOpenGLContext:[controller getSharedContext:(CGLPixelFormatObj)[[self pixelFormat] CGLPixelFormatObj]]];
-
+	
 	
     // create display link for the main display
-    CVDisplayLinkCreateWithCGDisplay(kCGDirectMainDisplay, &displayLink);
-    if (NULL != displayLink) {
-    	// set the current display of a display link.
-    	CVDisplayLinkSetCurrentCGDisplay(displayLink, kCGDirectMainDisplay);
-        
-        // set the renderer output callback function
-    	CVDisplayLinkSetOutputCallback(displayLink, &MyDisplayLinkCallback, self);
-        
-        // activates a display link.
-    	CVDisplayLinkStart(displayLink);
-    } else {
-		NSLog(@"ERROR could not create displayLink");
+	if (NULL == displayLink) {
+		
+		CVDisplayLinkCreateWithCGDisplay(kCGDirectMainDisplay, &displayLink);
+		if (NULL != displayLink) {
+			// set the current display of a display link.
+			CVDisplayLinkSetCurrentCGDisplay(displayLink, kCGDirectMainDisplay);
+			
+			// set the renderer output callback function
+			CVDisplayLinkSetOutputCallback(displayLink, &MyDisplayLinkCallback, self);
+			
+			// activates a display link.
+			CVDisplayLinkStart(displayLink);
+		} else {
+			NSLog(@"ERROR could not create displayLink");
+		}
 	}
+	//	[[self openGLContext] makeCurrentContext];
 	
-//	[[self openGLContext] makeCurrentContext];
-
 }
 
 //
@@ -127,7 +129,7 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 - (void)reshape
 {
 	[[controller openglLock] lock];
-
+	
 	[[self openGLContext] makeCurrentContext];
 	
 	// remember to lock the context before we touch it since display link is threaded
@@ -152,7 +154,7 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 
 -(void) drawRect:(NSRect)dirtyRect{
 	[[controller openglLock] lock]; // prevent drawing from another thread if we're drawing already
-
+	
 	
 	// make the GL context the current context
 	[[self openGLContext] makeCurrentContext];
@@ -170,22 +172,22 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 			glMatrixMode(GL_MODELVIEW);
 			glLoadIdentity();
 			
-
-
+			
+			
 			glTranslated(-1, 1, 0.0);
-
+			
 			glScaled(2, -2, 1.0);
-
-
+			
+			
 			if(backingWidth != 0 && backingHeight != 0){				
 				glTranslated(0, 1, 0);
 				glScaled((float) backingWidth / [self frame].size.width,(float) backingHeight / [self frame].size.height, 1.0);	
 				glTranslated(0, -1, 0);
 			}			
-
-//			
+			
+			//			
 			glPushMatrix();
-		
+			
 			((ofAppCocoaWindow*)window)->windowW = [self frame].size.width;
 			((ofAppCocoaWindow*)window)->windowH = [self frame].size.height;
 			
@@ -194,9 +196,9 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 			}	
 			
 			[controller callDraw:drawingInformation];
-
+			
 			glPopMatrix();
-//#define VARIANT3
+			//#define VARIANT3
 #ifdef VARIANT3
 			[[self openGLContext] flushBuffer];
 #else
@@ -205,11 +207,11 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 #endif
 		}
 	}
-
+	
 	
 	[[controller openglLock] unlock];
 	
-		
+	
 }
 
 
@@ -226,17 +228,18 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 	// there is no autorelease pool when this method is called because it will be called from another thread
     // it's important to create one or you will leak objects
 	NSAutoreleasePool *pool = [NSAutoreleasePool new];
-
+	
 	[drawingInformation setValue:[NSNumber numberWithDouble:timeInterval] forKey:@"timeInterval"];
 	[drawingInformation setValue:[NSNumber numberWithDouble:outputTime->videoTime] forKey:@"outputTime.videoTime"];
 	[drawingInformation setValue:[NSNumber numberWithInt:viewNumber] forKey:@"outputViewNumber"];
-	[drawingInformation setValue:[[self window] title] forKey:@"outputViewTitle"];
-	
+	dispatch_async(dispatch_get_main_queue(), ^{
+		[drawingInformation setValue:[[self window] title] forKey:@"outputViewTitle"];
+	});	
 	NSValue *v = [NSValue value:&outputTime withObjCType:@encode(CVTimeStamp*)];
 	[drawingInformation setValue:v forKey:@"outputTime"];	
 	
 	[self drawRect:NSZeroRect];
-
+	
     [pool release];
 	
 	return kCVReturnSuccess;
@@ -318,7 +321,7 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 	windowRect.size.width = (windowRect.size.height-40)*(screenSize.width/screenSize.height);
 	
 	[[self window] setFrame:windowRect display:YES animate:YES];
-
+	
 	free(displays);
 	NSLog(@"		Select display %i for outputView %i",[sender indexOfSelectedItem]-1, viewNumber);
 }

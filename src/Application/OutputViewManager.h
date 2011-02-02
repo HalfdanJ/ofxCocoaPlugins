@@ -23,7 +23,7 @@
 	
 	//Ensures the aspect of the window
 	PluginOutputWindowDelegate * theDelegate;
-	
+		
 }
 @property (readwrite) int numberOutputViews;
 @property (readonly) NSMutableArray * glViews;
