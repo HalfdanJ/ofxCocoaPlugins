@@ -117,14 +117,18 @@
 					//Make a temporary dictionary of the propterties
 					NSMutableDictionary * tempDict = [[_unarchiver decodeObjectForKey:[NSString stringWithFormat:@"%@Properties", [plugin name]]] retain];
 				
-					
+					cout<<[[plugin name] cString]<<endl;
 					[plugin willChangeValueForKey:@"properties"];
 					NSString * key;
 					for(key in [tempDict allKeys]){
+
 						//Go through all the properties in the temporary dictionary, and replace the ones in the real plugin
 						PluginProperty *  prop = [[plugin properties] objectForKey:key];
 						PluginProperty *  loadedProp = [tempDict objectForKey:key];
 						if(prop != nil){
+//							if([[prop name] isEqualToString:@"textScale"]){
+								cout<<"  --- Load "<<[key cString]<<" to "<<[[plugin name] cString]<<" value "<<[[loadedProp value] floatValue]<<endl;
+//							}*
 							[prop setValue:[loadedProp value]];
 							[prop setMidiNumber:[loadedProp midiNumber]];
 							[prop setMidiChannel:[loadedProp midiChannel]];

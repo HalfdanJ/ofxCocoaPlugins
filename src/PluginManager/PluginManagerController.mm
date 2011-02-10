@@ -120,10 +120,11 @@ extern ofAppBaseWindow * window;
 		ofPlugin * plugin;
 		for(plugin in [group objectForKey:@"children"]){
 			dispatch_async(dispatch_get_global_queue(0, 0), ^{
-				[plugin initPlugin];
-				[plugin loadPluginNibFile];
-				[plugin setInitPluginCalled:YES];
 				dispatch_async(dispatch_get_main_queue(), ^{
+					[plugin initPlugin];
+					[plugin loadPluginNibFile];
+					[plugin setInitPluginCalled:YES];
+					
 					//Find out how many plugins are inited
 					int numPluginsLoaded = 0;
 					NSDictionary * group;

@@ -56,6 +56,7 @@ extern PluginManagerController * globalController;
 	//float lastTime;
 	float controlMouseX;
 	float controlMouseY;
+	int controlMouseFlags;
 	
 	NSImage * icon;
 	
@@ -77,6 +78,7 @@ extern PluginManagerController * globalController;
 //@property (readwrite) float lastTime;
 @property (readwrite) float controlMouseX;
 @property (readwrite) float controlMouseY;
+@property (readwrite) int controlMouseFlags;
 
 
 - (void) initPlugin; //The function wich the different plugin can put their init code in

@@ -9,24 +9,31 @@ extern ofAppBaseWindow * window;
 -(BOOL) acceptsFirstResponder{
 	return YES;
 }
+
 - (void)mouseDown:(NSEvent *)theEvent {
 	NSPoint curPoint = [self convertPoint:[theEvent locationInWindow] fromView:nil];
 	curPoint.y = [self frame].size.height - curPoint.y;
-	[[((PluginOpenGLControl*)[self layer]) plugin] controlMousePressed:curPoint.x y:curPoint.y button:0];
+	
+	[[((PluginOpenGLControl*)[self layer]) plugin] setControlMouseFlags:[theEvent modifierFlags]]; 
 	[[((PluginOpenGLControl*)[self layer]) plugin] setControlMouseX:curPoint.x]; 
 	[[((PluginOpenGLControl*)[self layer]) plugin] setControlMouseY:curPoint.y];
+	[[((PluginOpenGLControl*)[self layer]) plugin] controlMousePressed:curPoint.x y:curPoint.y button:0];
 }
+
 - (void)mouseUp:(NSEvent *)theEvent {
 	NSPoint curPoint = [self convertPoint:[theEvent locationInWindow] fromView:nil];
 	curPoint.y = [self frame].size.height - curPoint.y;
 	[[((PluginOpenGLControl*)[self layer]) plugin] controlMouseReleased:curPoint.x y:curPoint.y];
 }
+
 - (void)mouseDragged:(NSEvent *)theEvent {
 	NSPoint curPoint = [self convertPoint:[theEvent locationInWindow] fromView:nil];
 	curPoint.y = [self frame].size.height - curPoint.y;
-	[[((PluginOpenGLControl*)[self layer]) plugin] controlMouseDragged:curPoint.x y:curPoint.y button:0];
+	[[((PluginOpenGLControl*)[self layer]) plugin] setControlMouseFlags:[theEvent modifierFlags]]; 
 	[[((PluginOpenGLControl*)[self layer]) plugin] setControlMouseX: curPoint.x]; 
 	[[((PluginOpenGLControl*)[self layer]) plugin] setControlMouseY: curPoint.y];	
+	[[((PluginOpenGLControl*)[self layer]) plugin] controlMouseDragged:curPoint.x y:curPoint.y button:0];
+
 }
 
 -(void) scrollWheel:(NSEvent *)theEvent{
