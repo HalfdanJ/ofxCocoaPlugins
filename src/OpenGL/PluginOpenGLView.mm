@@ -36,6 +36,7 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 	return result;
 }
 
+
 //
 //----------------
 //
@@ -101,6 +102,22 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 	//[self setOpenGLContext:[controller getSharedContext:(CGLPixelFormatObj)[[self pixelFormat] CGLPixelFormatObj]]];
 	
 	
+	NSOpenGLPixelFormatAttribute attrs[] =
+	{
+//		NSOpenGLPFAWindow,
+//		NSOpenGLPFAAccelerated,
+//		NSOpenGLPFADoubleBuffer,
+		NSOpenGLPFAMultisample,
+		NSOpenGLPFASampleBuffers, (NSOpenGLPixelFormatAttribute)4,
+		NSOpenGLPFASamples, (NSOpenGLPixelFormatAttribute)4,
+		(NSOpenGLPixelFormatAttribute)nil
+	};
+	
+	NSOpenGLPixelFormat * pixelFormat = [[NSOpenGLPixelFormat alloc] initWithAttributes:attrs];
+	
+	[self setPixelFormat:pixelFormat];
+	
+	glEnable(GL_MULTISAMPLE);
     // create display link for the main display
 	if (NULL == displayLink) {
 		
