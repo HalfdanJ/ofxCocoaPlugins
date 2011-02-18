@@ -9,6 +9,8 @@
 #define COLOR_PROPERTY 3
 #define BOOL_PROPERTY 4
 
+#include "Qlab.h"
+
 //@class GraphDebugger;
 //extern GraphDebugger * globalGraphDebugger;
 
@@ -47,6 +49,8 @@
 -(void) reset;
 -(NSNumber*)midiValue;
 -(void) sendQlab;
+
+-(void) sendQlabScriptName:(NSString*)name channel:(int)channel control:(int)control value:(int)value fade:(bool)fade;
 //+(PluginProperty*)boolProperty:(BOOL)defValue;
 //+(PluginProperty*)stringProperty:(NSString*)defValue;
 

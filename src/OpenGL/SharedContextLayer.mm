@@ -50,7 +50,7 @@ void bits_uint(unsigned int value)
 			NSOpenGLPFADoubleBuffer,
 			NSOpenGLPFAMultisample,
 			NSOpenGLPFASampleBuffers, (NSOpenGLPixelFormatAttribute)4,
-			NSOpenGLPFASamples, (NSOpenGLPixelFormatAttribute)4,
+			NSOpenGLPFASamples, (NSOpenGLPixelFormatAttribute)8,
 			(NSOpenGLPixelFormatAttribute)nil
 		};
 				

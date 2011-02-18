@@ -60,6 +60,8 @@ extern PluginManagerController * globalController;
 	
 	NSImage * icon;
 	
+	NSNumber * midiChannel;
+	
 }
 @property (retain, readwrite) NSString *name;
 @property (assign, readwrite) NSNumber *enabled;
@@ -79,6 +81,7 @@ extern PluginManagerController * globalController;
 @property (readwrite) float controlMouseX;
 @property (readwrite) float controlMouseY;
 @property (readwrite) int controlMouseFlags;
+@property (retain, readwrite) NSNumber * midiChannel;
 
 
 - (void) initPlugin; //The function wich the different plugin can put their init code in
@@ -103,6 +106,8 @@ extern PluginManagerController * globalController;
 -(BOOL) willDraw:(NSMutableDictionary*)drawingInformation;
 
 -(void) addProperty:(PluginProperty*)p named:(NSString*)name;
+-(void) assignMidiChannel:(int) channel;
+-(IBAction) qlabAll:(id)sender;
 
 - (void) applicationWillTerminate: (NSNotification *)note;
 

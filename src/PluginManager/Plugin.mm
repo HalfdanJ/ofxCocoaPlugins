@@ -4,12 +4,13 @@
 
 
 @implementation ofPlugin
-@synthesize  name, enabled, view,  updateCpuTime,  drawCpuTime, initPluginCalled, setupCalled, properties, customProperties, powerMeterDictionary,  controlMouseX, controlMouseY, controlMouseFlags, icon;
+@synthesize  name, enabled, view,  updateCpuTime,  drawCpuTime, initPluginCalled, setupCalled, properties, customProperties, powerMeterDictionary,  controlMouseX, controlMouseY, controlMouseFlags, icon, midiChannel;
 
 -(id) init{
 	if([super init]){
 		setupCalled = NO;
 		initPluginCalled = NO;
+		midiChannel = nil;
 		canDisable = [NSNumber numberWithBool:YES];
 		[self setProperties: [NSMutableDictionary dictionary]];
 		[self setCustomProperties:[NSMutableDictionary dictionary]];
@@ -147,7 +148,42 @@
 				  forKey:_name];
 	[p addObserver:self forKeyPath:@"value" options:nil context:@"property"];
 	
+	if(midiChannel != nil){
+		[p setMidiChannel:midiChannel];
+	}
 	
+}
+
+-(void) assignMidiChannel:(int) channel{
+	[self setMidiChannel:[NSNumber numberWithInt:channel]];
+
+	for(NSString * aKey in properties){
+		NSLog(@"%@",aKey);
+		[[properties valueForKey:aKey] setMidiChannel:[NSNumber numberWithInt:channel]];
+	}
+	
+}
+
+- (void)alertDidEnd:(NSAlert *)alert returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo {
+    if (returnCode == NSAlertFirstButtonReturn) {
+		NSLog(@"Go qlab");
+		NSMutableArray * objects = [NSMutableArray arrayWithArray:[properties allValues]];
+		[objects sortUsingDescriptors:[NSArray arrayWithObject:[[NSSortDescriptor alloc] initWithKey:@"midiNumber" ascending:YES]]]; 
+		for(PluginProperty * p in objects){
+			[p sendQlab];
+		}
+		
+    }
+}
+
+-(IBAction) qlabAll:(id)sender{
+	NSAlert *alert = [[[NSAlert alloc] init] autorelease];
+	[alert addButtonWithTitle:@"OK"];
+	[alert addButtonWithTitle:@"Cancel"];
+	[alert setMessageText:@"Qlab alle properties?"];
+	[alert setInformativeText:@"Dette kan have stor effekt på qlab!"];
+	[alert setAlertStyle:NSWarningAlertStyle];
+	[alert beginSheetModalForWindow:[NSApp mainWindow] modalDelegate:self didEndSelector:@selector(alertDidEnd:returnCode:contextInfo:) contextInfo:nil];
 }
 
 @end
