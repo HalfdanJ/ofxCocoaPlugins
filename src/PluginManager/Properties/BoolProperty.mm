@@ -149,38 +149,10 @@
 		str = [NSString stringWithFormat:@"%@ Off", name];
 	}
 	
+	[self sendQlabScriptName:str channel:channel control:number value:val fade:NO];
+
 	
-	NSDictionary* errorDict;
-	NSAppleEventDescriptor* returnDescriptor = NULL;
-	
-	NSAppleScript* scriptObject; 
-	
-	if ([NSEvent modifierFlags] & NSAlternateKeyMask) {
-		//make fading que
-		scriptObject = [[NSAppleScript alloc] initWithSource:
-						[NSString stringWithFormat:
-//						 @"tell application \"QLab\" of machine \"eppc://jonas:Uimx88@halfdanj.local\" \n activate\n tell application \"QLab\" of machine \"eppc://jonas:Uimx88@halfdanj.local\" \n try\n get selected of front workspace\n on error\n  display dialog \"There is no workspace open in QLab.\" with title \"Error\" with icon 0 ¬\n buttons {\"OK\"} default button \"OK\" giving up after 5\n return\n  end try\n end tell\n tell front workspace\n  make type \"MIDI\"\n  set newCue to last item of (selected as list)\n  set channel of newCue to %d\n  set byte one of newCue to %d\n  set command of newCue to control_change\n  set end value of newCue to %d\n set fade of newCue to enabled\n set q name of newCue to \"%@ (fading)\"\n end tell\n end tell\n " , 
-						 						 @"tell application \"QLab\" \n activate\n tell application \"QLab\"  \n try\n get selected of front workspace\n on error\n  display dialog \"There is no workspace open in QLab.\" with title \"Error\" with icon 0 ¬\n buttons {\"OK\"} default button \"OK\" giving up after 5\n return\n  end try\n end tell\n tell front workspace\n  make type \"MIDI\"\n  set newCue to last item of (selected as list)\n  set channel of newCue to %d\n  set byte one of newCue to %d\n  set command of newCue to control_change\n  set end value of newCue to %d\n set fade of newCue to enabled\n set q name of newCue to \"%@ (fading)\"\n end tell\n end tell\n \ntell application \"Hats, Trains & Planes Debug\" \n activate\n end tell \n " , 
-						 [midiChannel intValue], [midiNumber intValue], val, name] 
-						];
 		
-	} else {
-		NSString * str = [NSString stringWithFormat:
-						  @"tell application \"QLab\" \n  activate\n tell application \"QLab\" \n try\n get selected of front workspace\n on error\n display dialog \"There is no workspace open in QLab.\" with title \"Error\" with icon 0 ¬\n  buttons {\"OK\"} default button \"OK\" giving up after 5\n return\n end try\n end tell\n  tell front workspace\n make type \"MIDI\"\n set newCue to last item of (selected as list)\n set channel of newCue to %d\n  set byte one of newCue to %d\n set command of newCue to control_change\n set byte two of newCue to %d\n set q name of newCue to  \"%@\"\n end tell\n end tell\n  \ntell application \"Hats, Trains & Planes Debug\" \n activate\n end tell \n" , 
-//						  @"tell application \"QLab\" of machine \"eppc://jonas:Uimx88@halfdanj.local\" \n  activate\n tell application \"QLab\" of machine \"eppc://jonas:Uimx88@halfdanj.local\" \n try\n get selected of front workspace\n on error\n display dialog \"There is no workspace open in QLab.\" with title \"Error\" with icon 0 ¬\n  buttons {\"OK\"} default button \"OK\" giving up after 5\n return\n end try\n end tell\n  tell front workspace\n make type \"MIDI\"\n set newCue to last item of (selected as list)\n set channel of newCue to %d\n  set byte one of newCue to %d\n set command of newCue to control_change\n set byte two of newCue to %d\n set q name of newCue to  \"%@\"\n end tell\n end tell\n " , 
-						  //  @"%d %d %f %@",
-						  channel, number, val, name] ;
-		
-		scriptObject = [[NSAppleScript alloc] initWithSource:
-						str
-						];
-		
-	}
-	
-	returnDescriptor = [scriptObject executeAndReturnError: &errorDict];
-	//	NSLog(@"Error: %@",errorDict);
-	//[scriptObject release];
-	
 }
 
 

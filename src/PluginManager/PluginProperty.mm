@@ -103,7 +103,6 @@
 -(void) bindMidi{
 	if(midiChannel != nil && midiNumber != nil){		
 		binded = YES;
-		NSLog(@"Bind");
 		[GetPlugin(Midi) addObserver:self forKeyPath:@"midiData" options:nil context:nil];
 		//	[[GetPlugin(Midi) midiBindings] addObject:midiProperties];
 	}
@@ -171,4 +170,72 @@
 }
 
 
+-(void) sendQlabScriptName:(NSString*)name channel:(int)channel control:(int)control value:(int)value fade:(bool)fade{
+	NSString* path = [[NSBundle mainBundle] pathForResource:@"SendToQlab" ofType:@"scpt"];
+    if (path != nil)
+    {
+        NSURL* url = [NSURL fileURLWithPath:path];
+        if (url != nil)
+        {
+            NSDictionary* errors = [NSDictionary dictionary];
+            NSAppleScript* appleScript =
+			[[NSAppleScript alloc] initWithContentsOfURL:url error:&errors];
+            if (appleScript != nil)
+            {
+                // create the first parameter
+                NSAppleEventDescriptor* firstParameter = [NSAppleEventDescriptor descriptorWithString:name];
+                NSAppleEventDescriptor* secondParameter = [NSAppleEventDescriptor descriptorWithInt32:channel];
+                NSAppleEventDescriptor* thirdParameter = [NSAppleEventDescriptor descriptorWithInt32:control];
+				NSAppleEventDescriptor* fourthParameter = [NSAppleEventDescriptor descriptorWithInt32:value];
+				NSAppleEventDescriptor* fifthParameter = [NSAppleEventDescriptor descriptorWithInt32:fade];
+				
+                // create and populate the list of parameters (in our case just one)
+                NSAppleEventDescriptor* parameters = [NSAppleEventDescriptor listDescriptor];
+                [parameters insertDescriptor:firstParameter atIndex:1];
+                [parameters insertDescriptor:secondParameter atIndex:2];
+				[parameters insertDescriptor:thirdParameter atIndex:3];
+				[parameters insertDescriptor:fourthParameter atIndex:4];
+				[parameters insertDescriptor:fifthParameter atIndex:5];
+
+                // create the AppleEvent target
+                ProcessSerialNumber psn = {0, kCurrentProcess};
+                NSAppleEventDescriptor* target =
+                [NSAppleEventDescriptor
+				 descriptorWithDescriptorType:typeProcessSerialNumber
+				 bytes:&psn
+				 length:sizeof(ProcessSerialNumber)];
+				
+                // create an NSAppleEventDescriptor with the script's method name to call,
+                // this is used for the script statement: "on show_message(user_message)"
+                // Note that the routine name must be in lower case.
+                NSAppleEventDescriptor* handler =
+				[NSAppleEventDescriptor descriptorWithString:
+				 [@"send_qlab" lowercaseString]];
+				
+                // create the event for an AppleScript subroutine,
+                // set the method name and the list of parameters
+                NSAppleEventDescriptor* event =
+				[NSAppleEventDescriptor appleEventWithEventClass:kASAppleScriptSuite
+														 eventID:kASSubroutineEvent
+												targetDescriptor:target
+														returnID:kAutoGenerateReturnID
+												   transactionID:kAnyTransactionID];
+                [event setParamDescriptor:handler forKeyword:keyASSubroutineName];
+                [event setParamDescriptor:parameters forKeyword:keyDirectObject];
+				
+                // call the event in AppleScript
+                if (![appleScript executeAppleEvent:event error:&errors]);
+                {
+                    // report any errors from 'errors'
+                }
+				
+                [appleScript release];
+            }
+            else
+            {
+                // report any errors from 'errors'
+            }
+        }
+    }
+}
 @end

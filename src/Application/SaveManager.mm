@@ -130,8 +130,10 @@
 								cout<<"  --- Load "<<[key cString]<<" to "<<[[plugin name] cString]<<" value "<<[[loadedProp value] floatValue]<<endl;
 //							}*
 							[prop setValue:[loadedProp value]];
-							[prop setMidiNumber:[loadedProp midiNumber]];
-							[prop setMidiChannel:[loadedProp midiChannel]];
+							if([prop midiNumber] == nil)
+								[prop setMidiNumber:[loadedProp midiNumber]];
+							if([prop midiChannel] == nil)
+								[prop setMidiChannel:[loadedProp midiChannel]];
 						//	[[plugin properties] setObject:[tempDict objectForKey:key] forKey:key];
 						}
 					}
