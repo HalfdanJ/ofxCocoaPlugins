@@ -47,6 +47,7 @@ void bits_uint(unsigned int value)
 			NSOpenGLPFAScreenMask, openGLDisplayMask,
 			NSOpenGLPFAWindow,
 			NSOpenGLPFAAccelerated,
+			NSOpenGLPFAPixelBuffer,
 			NSOpenGLPFADoubleBuffer,
 			NSOpenGLPFAMultisample,
 			NSOpenGLPFASampleBuffers, (NSOpenGLPixelFormatAttribute)4,
@@ -54,6 +55,8 @@ void bits_uint(unsigned int value)
 			(NSOpenGLPixelFormatAttribute)nil
 		};
 				
+		NSLog(@"Shared Context Pixelformat Success");
+
 		NSOpenGLPixelFormat * pixelFormat = [[NSOpenGLPixelFormat alloc] initWithAttributes:attrs];
 		
 		if(pixelFormat == nil) {

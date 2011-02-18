@@ -108,6 +108,7 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 //		NSOpenGLPFAAccelerated,
 //		NSOpenGLPFADoubleBuffer,
 		NSOpenGLPFAMultisample,
+		NSOpenGLPFAPixelBuffer,
 		NSOpenGLPFASampleBuffers, (NSOpenGLPixelFormatAttribute)4,
 		NSOpenGLPFASamples, (NSOpenGLPixelFormatAttribute)4,
 		(NSOpenGLPixelFormatAttribute)nil
