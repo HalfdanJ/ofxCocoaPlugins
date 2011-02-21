@@ -216,7 +216,6 @@
 					int surfi=0;
 					for(KeystoneSurface * surface in [newProj surfaces]){
 						NSMutableDictionary * infoDict  = [surfArray objectAtIndex:surfi];
-						
 						[surface setAspect:[infoDict objectForKey:@"aspect"]];
 						[surface setCornerPositions:[infoDict objectForKey:@"cornerPositions"]];
 						[surface setVisible:[[infoDict objectForKey:@"visible"] boolValue]];
@@ -246,6 +245,15 @@
 		}
 		
 		[self updateProjectorButtons];
+		
+/*		[surfaceArrayController unbind:@"contentArray"];
+		[projectorArrayController unbind:@"contentArray"];
+		[projectorArrayController bind:@"contentArray" toObject:outputViewController withKeyPath:@"selection.projectors" options:nil];
+		[surfaceArrayController bind:@"contentArray" toObject:projectorArrayController withKeyPath:@"selection.surfaces" options:nil];*/
+		
+//		[trackingArea.layer setHandlePositionHolder:[[[surfaceArrayController selectedObjects] lastObject] cornerPositions]];
+//		[trackingArea.layer bind:@"handlePositionHolder" toObject:surfaceArrayController withKeyPath:@"selection.cornerPositions" options:nil];
+
 	}
 	
 	if([(NSString*)context isEqualToString:@"outputView"]){
@@ -273,15 +281,7 @@
 	
 }
 
--(void) setup{
-	
-	/*font = new ofTrueTypeFont();
-	font->loadFont("Bryant-Medium.ttf", 40, true, true, true);
-	
-	recoilLogo = new ofImage();
-	recoilLogo->loadImage("recoilLogoForCalibration.png");
-	*/
-	
+-(void) setup{	
 	gammaFade = new ofImage();
 	gammaFade->loadImage("gammaFade.png");
 }
@@ -365,10 +365,11 @@
 	int theSurfaceSelection = selectedSurface;
 	[self willChangeValueForKey:@"selectedProjectorIndexSet"];
 	selectedProjector = v;
-	[self didChangeValueForKey:@"selectedProjectorIndexSet"];
 	if (theSurfaceSelection >= 0 && theSurfaceSelection < [surfacePicker segmentCount]) {
 		[self setSelectedSurface:theSurfaceSelection];
 	}
+	[self didChangeValueForKey:@"selectedProjectorIndexSet"];
+
 }
 
 -(NSIndexSet * ) selectedProjectorIndexSet{
@@ -465,6 +466,4 @@
 		}
 	}
 }
-
-
 @end

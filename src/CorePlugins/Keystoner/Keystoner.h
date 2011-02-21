@@ -57,6 +57,7 @@
 -(IBAction) removeProjector:(id)sender;
 -(IBAction) setViewMode:(id)sender;
 
+
 -(void) updateProjectorButtons;
 -(id) initWithSurfaces:(NSArray*)surfaces;
 -(void) setCornerArray:(NSMutableArray*)array;

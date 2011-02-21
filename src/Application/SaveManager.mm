@@ -107,7 +107,7 @@
 			NSKeyedUnarchiver * _unarchiver = [[NSKeyedUnarchiver alloc] initForReadingWithData:data];
 			
 			[pluginsTreeController setSelectionIndexPath:[_unarchiver decodeObjectForKey:@"SelectionPath"]];
-
+			
 			NSDictionary * group;
 			for(group in [controller plugins]){
 				ofPlugin * plugin;

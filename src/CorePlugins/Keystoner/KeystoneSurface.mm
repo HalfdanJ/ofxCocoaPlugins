@@ -71,6 +71,16 @@
 	
 }
 
+-(IBAction) flipX{
+	NSArray * cornerPos = [self cornerPositions];
+	[self setCornerPositions:[NSMutableArray arrayWithObjects:[cornerPos objectAtIndex:1],[cornerPos objectAtIndex:0], [cornerPos objectAtIndex:3], [cornerPos objectAtIndex:2],nil]]; 
+}
+
+-(IBAction) flipY{
+	NSArray * cornerPos = [self cornerPositions];
+	[self setCornerPositions:[NSMutableArray arrayWithObjects:[cornerPos objectAtIndex:3],[cornerPos objectAtIndex:2], [cornerPos objectAtIndex:1], [cornerPos objectAtIndex:0],nil]]; 
+}
+
 -(void) drawGrid{
 	[self drawGridSimple:NO];
 }

@@ -42,4 +42,7 @@
 -(ofxPoint2f) convertToProjection:(ofxPoint2f)p;
 -(ofxPoint2f) convertFromProjection:(ofxPoint2f)p;
 
+-(IBAction) flipX;
+-(IBAction) flipY;
+
 @end
