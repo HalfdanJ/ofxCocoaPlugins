@@ -10,6 +10,10 @@
 #import <QuartzCore/QuartzCore.h>
 #import "LoadProgressIndicator.h"
 
+const float w = 300;
+const float h = 65;	
+
+
 @implementation MainWindow
 
 -(id) initWithContentRect:(NSRect)contentRect styleMask:(NSUInteger)aStyle backing:(NSBackingStoreType)bufferingType defer:(BOOL)flag{
@@ -17,8 +21,6 @@
 	loadingState = YES;
 	
 }
-
-
 
 -(void)fadeOverlayIn {
 	[NSAnimationContext beginGrouping];
@@ -34,7 +36,6 @@
 	[NSAnimationContext endGrouping];
 	[NSTimer scheduledTimerWithTimeInterval:0.5f target:self selector:@selector(finishedFadeLoading) userInfo:nil repeats:NO];
 }
-
 
 -(void) awakeFromNib{
 	[super awakeFromNib];
@@ -59,8 +60,6 @@
 		
 		//Loading window
 		{
-			float w = 300;
-			float h = 65;	
 			NSRect rect = NSMakeRect([[self contentView] frame].size.width / 2.0 - w/2.0, 
 									 [[self contentView] frame].size.height / 2.0 - h/2.0,
 									 w,
@@ -69,10 +68,17 @@
 			statusView = [[NSView alloc] initWithFrame:rect];
 			
 			
+			/*NSRect iconRect = NSMakeRect(10, 10, 50, 50);		
+			iconView = [[NSImageView alloc] initWithFrame:iconRect];
+			[iconView setImage:[NSImage imageNamed:@"icon"]];
+			[statusView addSubview:iconView];*/
+			
 			NSRect indicatorRect = NSMakeRect(w/2.0-130, 10, 260, 20);		
 			loadIndicator = [[LoadProgressIndicator alloc] initWithFrame:indicatorRect];
 			[loadIndicator setDoubleValue:0.0];
+			[loadIndicator setAutoresizingMask:NSViewMinYMargin ];
 			[statusView addSubview:loadIndicator];
+			
 			
 			NSRect textRect = NSMakeRect(w/2.0-130, 33, 260, 20);		
 			loadText = [[NSTextField alloc] initWithFrame:textRect];
@@ -80,7 +86,8 @@
 			[loadText setBordered:NO];
 			[loadText setDrawsBackground:NO];
 			[loadText setTextColor:[NSColor whiteColor]];
-			[loadText setStringValue:@"Loading..."];
+			[loadText setStringValue:@"Starting..."];
+			[loadText setAutoresizingMask:NSViewMinYMargin ];
 			[statusView addSubview:loadText];
 			
 			
@@ -122,6 +129,45 @@
 
 -(void)	setLoadPercentage:(float)percentage{
 	[loadIndicator setDoubleValue:percentage];		
+}
+
+-(void) addPluginDetail:(NSString*)name text:(NSString*)text  {
+	int _h = 14;
+	NSRect frame = [statusView frame];
+	frame.size.height += _h;
+	frame.origin.y -= _h/2;
+	[statusView setFrame:frame];
+	
+	NSRect textRect = NSMakeRect(w/2.0-130, 0, 100, 20);		
+	NSTextField * detailText = [[NSTextField alloc] initWithFrame:textRect];
+	[detailText setAutoresizingMask:NSViewMinYMargin ];
+	[detailText setEditable:NO];
+	[detailText setFont:[NSFont systemFontOfSize:10]]; 
+	[detailText setBordered:NO];
+	[detailText setDrawsBackground:NO];
+	[detailText setTextColor:[NSColor whiteColor]];
+	[detailText setStringValue:[NSString stringWithFormat:@"%@:",name]];
+	[detailText setAlignment:NSRightTextAlignment];
+	[detailText setAutoresizingMask:NSViewMinYMargin ];
+	[statusView addSubview:detailText];
+	
+	NSRect textRect2 = NSMakeRect(w/2.0-30, 0, 160, 20);		
+	NSTextField * detailText2 = [[NSTextField alloc] initWithFrame:textRect2];
+	[detailText2 setAutoresizingMask:NSViewMinYMargin ];
+	[detailText2 setEditable:NO];
+	[detailText2 setFont:[NSFont userFontOfSize:10]]; 
+	[detailText2 setBordered:NO];
+	[detailText2 setDrawsBackground:NO];
+	[detailText2 setTextColor:[NSColor whiteColor]];
+	[detailText2 setStringValue:text];
+	[detailText2 setAutoresizingMask:NSViewMinYMargin ];
+	[statusView addSubview:detailText2];
+	
+}
+
+-(void) setPluginDetailNumber:(int)n to:(NSString*)s{
+	[[[statusView subviews] objectAtIndex:n*2+3] setStringValue:s];
+	[[[statusView subviews] objectAtIndex:n*2+3] setNeedsDisplay:YES];
 }
 
 -(void) sendEvent:(NSEvent *)theEvent{

@@ -15,21 +15,15 @@
 @synthesize dataPath;
 
 -(id) init{
-	if([super init]){
-		
+	if([super init]){		
 		NSUserDefaults * userDefaults = [NSUserDefaults standardUserDefaults];
 		[self setDataPath:[userDefaults valueForKey:@"SavePath"]];
 		
-		
-		saveDictionary = [[NSMutableDictionary dictionary] retain];
-		
+		saveDictionary = [[NSMutableDictionary dictionary] retain];		
 	}
 	return self;
 }
 
-- (void) awakeFromNib
-{
-}
 
 - (IBAction) saveAsDataToDisk:(id)sender{
 	NSSavePanel *sp;
@@ -52,8 +46,7 @@
 		
 		archiver = [[NSKeyedArchiver alloc] initForWritingWithMutableData:data];
 		[archiver setOutputFormat: NSPropertyListXMLFormat_v1_0];
-		
-		
+				
 		[archiver encodeObject:[pluginsTreeController selectionIndexPath] forKey:@"SelectionPath"];
 		
 		NSDictionary * group;
@@ -68,15 +61,13 @@
 			}
 		}
 		
-		
-		
-		
-		
 		[archiver finishEncoding];
 		
 		[data writeToFile:[self dataPath] atomically:YES];	
 		
 		[archiver release];
+		
+		[[NSWorkspace sharedWorkspace] setIcon:[NSImage imageNamed:@"icon"] forFile:[self dataPath] options:0];
 	} else {
 		[self saveAsDataToDisk:sender];
 	}
@@ -117,7 +108,7 @@
 					//Make a temporary dictionary of the propterties
 					NSMutableDictionary * tempDict = [[_unarchiver decodeObjectForKey:[NSString stringWithFormat:@"%@Properties", [plugin name]]] retain];
 				
-					cout<<[[plugin name] cString]<<endl;
+					//cout<<[[plugin name] cString]<<endl;
 					[plugin willChangeValueForKey:@"properties"];
 					NSString * key;
 					for(key in [tempDict allKeys]){
@@ -127,7 +118,7 @@
 						PluginProperty *  loadedProp = [tempDict objectForKey:key];
 						if(prop != nil){
 //							if([[prop name] isEqualToString:@"textScale"]){
-								cout<<"  --- Load "<<[key cString]<<" to "<<[[plugin name] cString]<<" value "<<[[loadedProp value] floatValue]<<endl;
+							//	cout<<"  --- Load "<<[key cString]<<" to "<<[[plugin name] cString]<<" value "<<[[loadedProp value] floatValue]<<endl;
 //							}*
 							[prop setValue:[loadedProp value]];
 							if([prop midiNumber] == nil)
@@ -147,10 +138,8 @@
 						//Go through all the properties in the temporary dictionary, and replace the ones in the real plugin
 						id  prop = [[plugin customProperties] objectForKey:key];
 
-						if(prop != nil){							
-							
+						if(prop != nil){						
 							[[plugin customProperties] setObject:[tempDict2 objectForKey:key] forKey:key];
-									//				NSLog(@"Load props %@",[plugin customProperties]);					
 						}
 					}
 					[plugin didChangeValueForKey:@"customProperties"];

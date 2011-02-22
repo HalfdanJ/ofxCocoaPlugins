@@ -5,11 +5,17 @@
 #import <OpenGL/glu.h>
 #import <GLUT/glut.h>
 
-extern ofAppBaseWindow * window;
-
 #import "ofAppCocoaWindow.h"
 #import "PluginManagerController.h"
 #import "OutputViewStats.h"
+
+
+extern ofAppBaseWindow * window;
+
+
+//
+//----------------
+//
 
 
 @interface PluginOpenGLView (InternalMethods)
@@ -136,8 +142,6 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 			NSLog(@"ERROR could not create displayLink");
 		}
 	}
-	//	[[self openGLContext] makeCurrentContext];
-	
 }
 
 //
@@ -176,13 +180,13 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 	
 	// make the GL context the current context
 	[[self openGLContext] makeCurrentContext];
-	
+
 	
 	// draw here	
 	if([controller isPluginsInited]){	
 		if([controller willDraw:drawingInformation] || 	![controller isSetupCalled]){
-			
 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
 			
 			glMatrixMode(GL_TEXTURE);
 			glLoadIdentity();
@@ -224,12 +228,12 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 			[statsView addHistory:[drawingInformation valueForKey:@"fps"]];
 #endif
 		}
-	}
+	} else {
+		ofBackground(0, 0, 0);
+		glFlush();
+	}	
 	
-	
-	[[controller openglLock] unlock];
-	
-	
+	[[controller openglLock] unlock];	
 }
 
 
@@ -243,8 +247,6 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 // if we have a frame available to render -- if we do, draw -- if not, just task the Visual Context and split
 - (CVReturn)getFrameForTime:(CFTimeInterval)timeInterval displayTime:(const CVTimeStamp *)outputTime
 {
-	// there is no autorelease pool when this method is called because it will be called from another thread
-    // it's important to create one or you will leak objects
 	NSAutoreleasePool *pool = [NSAutoreleasePool new];
 	
 	[drawingInformation setValue:[NSNumber numberWithDouble:timeInterval] forKey:@"timeInterval"];
@@ -387,6 +389,9 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 }
 
 
+//
+//----------------
+//
 
 
 -(void) setBackingWidth:(int) width height:(int)height{

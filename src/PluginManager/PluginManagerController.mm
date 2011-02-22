@@ -23,6 +23,8 @@ extern ofAppBaseWindow * window;
 @synthesize saveManager, statsAreaView, sharedOpenglContext, openglLock, fps, plugins, viewManager;
 @synthesize noQuestionsAsked;
 
+#pragma mark Startup
+
 -(id) init{
 	if (self = [super init])
     {
@@ -43,8 +45,7 @@ extern ofAppBaseWindow * window;
 		oscReceiver = new ofxOscReceiver();
 		oscReceiver->setup(1111);
 		
-		isQuitting = NO;
-		
+		isQuitting = NO;		
     }
 	
     return self;
@@ -56,19 +57,15 @@ extern ofAppBaseWindow * window;
 //
 
 -(void) awakeFromNib{
-	//NSLog(@"--- awake from nib ---\n");	
-	
 	[NSApp setDelegate: self];
     [mainWindow setDelegate:self];
 	[testApp setupApp];
 	setupAppCalled = YES;
-	int i;
 	
 	//Setup outputviews
 	[viewManager setupScreen];
 	
-	NSImage * hazardImage = [NSImage imageNamed:@"hazard stripes small.psd"];
-	
+	NSImage * hazardImage = [NSImage imageNamed:@"hazard stripes small.psd"];	
 	//	[pluginTitleView setFillColor:[NSColor colorWithPatternImage:hazardImage]];
 	[pluginTitleView setFillColor:[NSColor colorWithDeviceWhite:0.0 alpha:0.3]];
 	
@@ -76,20 +73,13 @@ extern ofAppBaseWindow * window;
 	[testApp setupPlugins];
 	[self didChangeValueForKey:@"plugins"];
 	
-	//Call's all the initial init code (multithreaded). It's not the same as setup, that comes later when OpenGL is up and running
+	//Call's all the initial init code. It's not the same as setup, that comes later when OpenGL is up and running
 	[self initPlugins];
+
 	
-	//[self setCurrentProperties: ( (NSMutableDictionary*) [[[pluginsTreeController selectedObjects] objectAtIndex:0] properties] )];
-	//[pluginPropertiesController bind:NSContentDictionaryBinding toObject:self withKeyPath:@"currentProperties" options:nil];
-	
-	
-	
-	//	[pluginsTreeController addObserver:self forKeyPath:@"selectedObjects" options:NSKeyValueObservingOptionNew context:@"PluginSelectionContext"];
-	//	[pluginPropertiesController addObserver:self forKeyPath:@"content" options:NSKeyValueObservingOptionNew context:@"PropertiesContentContext"];
-	//[sliderCell bind:@"value" toObject:pluginPropertiesController withKeyPath:@"arrangedObjects.value" options:nil];
+	//Properties cells setup
 	PluginListMeterCell *infoCell = [[PluginListMeterCell alloc] init];
 	[pluginMeterColumn setDataCell:infoCell];
-	
 	
 	sliderCell = [[[NSSliderCell alloc] init] retain];
 	[sliderCell setContinuous:YES];
@@ -108,74 +98,64 @@ extern ofAppBaseWindow * window;
 
 //
 //------
-//Calls initPlugin on all plugins multithreded using grand central, and updates the loadingscreen
+//Calls initPlugin on all plugins, and updates the loadingscreen
 //
 
 -(void) initPlugins{
 	NSLog(@"------ Init plugins: ------");	
-	[mainWindow setLoadStatusText:[NSString stringWithFormat:@"Initing plugins 0/%d",[self countOfPlugins]]];
-	
-	NSDictionary * group;
-	for(group in plugins){
-		ofPlugin * plugin;
-		for(plugin in [group objectForKey:@"children"]){
-			dispatch_async(dispatch_get_global_queue(0, 0), ^{
+	[mainWindow setLoadStatusText:[NSString stringWithFormat:@"Initing plugins 1/%d",[self countOfPlugins]]];
+
+	dispatch_async(dispatch_get_global_queue(0, 0), ^{
+		//	dispatch_async(dispatch_get_main_queue(), ^{
+		int i=0;
+		for(NSDictionary * group in plugins){
+			for(ofPlugin * plugin in [group objectForKey:@"children"]){
 				dispatch_async(dispatch_get_main_queue(), ^{
+					[mainWindow addPluginDetail:[plugin name] text:@"Initing...."];
+				});
+				dispatch_sync(dispatch_get_main_queue(), ^{
 					[plugin initPlugin];
 					[plugin loadPluginNibFile];
 					[plugin setInitPluginCalled:YES];
+				});
+				dispatch_async(dispatch_get_main_queue(), ^{
+					[mainWindow setPluginDetailNumber:i to:@"Inited"];
+				
+					[mainWindow setLoadPercentage:0.5*(float)(i+1)/[self countOfPlugins]];
+					[mainWindow setLoadStatusText:[NSString stringWithFormat:@"Initing plugins %d/%d",i+1,[self countOfPlugins]]];
 					
-					//Find out how many plugins are inited
-					int numPluginsLoaded = 0;
-					NSDictionary * group;
-					for(group in plugins){
-						ofPlugin * plugin;
-						for(plugin in [group objectForKey:@"children"]){						
-							if([plugin initPluginCalled])
-								numPluginsLoaded ++;
-						}
-					}
-					
-					[mainWindow setLoadPercentage:0.5*(float)numPluginsLoaded/[self countOfPlugins]];
-					[mainWindow setLoadStatusText:[NSString stringWithFormat:@"Initing plugins %d/%d",numPluginsLoaded,[self countOfPlugins]]];
-					
-					if(numPluginsLoaded ==  [self countOfPlugins]){
+				});
+				
+				
+				if(i ==  [self countOfPlugins]-1 && !pluginsInited){
+					dispatch_sync(dispatch_get_main_queue(), ^{			
+						[mainWindow setLoadStatusText:[NSString stringWithFormat:@"Loading file from disk"]];
+					});
+					dispatch_async(dispatch_get_main_queue(), ^{					
 						//All plugins are done initing
-						if(!pluginsInited){
-							NSLog(@"\n");
-							
-							[saveManager loadLastDataFromDisk:self];
-							[pluginsOutlineView expandItem:nil expandChildren:YES];
-							//	[pluginsOutlineView selectRowIndexes:[NSIndexSet indexSetWithIndex:1] byExtendingSelection:YES];
-							[pluginsOutlineView deselectRow:0];
-							[self changePlugin:self];
-							
-							if([viewManager numberOutputViews] == 0){
-								setupCalled = YES;
-								
-								[mainWindow setFinishedLoading];	
-								
-								[viewManager showViews];
-								
-							}
+						[saveManager loadLastDataFromDisk:self];
+						[pluginsOutlineView expandItem:nil expandChildren:YES];
+						//	[pluginsOutlineView selectRowIndexes:[NSIndexSet indexSetWithIndex:1] byExtendingSelection:YES];
+						[pluginsOutlineView deselectRow:0];
+						[self changePlugin:self];
+						[viewManager showViews];
+
+						if([viewManager numberOutputViews] == 0){
+							setupCalled = YES;						
+							[mainWindow setFinishedLoading];						
 						}
 						
 						pluginsInited = YES;
-					}
-				});
+					});
+				}
 				
-			});		
+				i++;
+			}			
 		}
-	}
-	
+	});		   
 	
 }
 
--(void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context{
-	if([(NSString*) context isEqualToString:@"changePlugin"]){
-		[self changePlugin:self];
-	}
-}
 
 
 //
@@ -187,18 +167,13 @@ extern ofAppBaseWindow * window;
 	[obj setName:NSStringFromClass([obj class])];
 	[obj retain];
 	
-	
-	
 	NSMutableArray * array = [[[self plugins] lastObject] objectForKey:@"children"];
-	[array addObject:obj];
-	
+	[array addObject:obj];	
 }
 
 //
 //------
 //
-
-
 
 - (void)addHeader:(NSString *)header {
 	[[self plugins] addObject:[NSDictionary dictionaryWithObjectsAndKeys:
@@ -210,130 +185,6 @@ extern ofAppBaseWindow * window;
 							   nil]];
 }
 
-//
-//------
-//
-
-
-- (int) countOfPlugins{
-	int n = 0;
-	NSDictionary * group;
-	for(group in plugins){
-		ofPlugin * plugin;
-		for(plugin in [group objectForKey:@"children"]){	
-			n++;
-		}
-	}
-	return n;
-}
-
-//
-//------
-//
-
-
--(BOOL)outlineView:(NSOutlineView*)outlineView isGroupItem:(id)item
-{
-	id node =  [item representedObject];
-	if ([[node valueForKey:@"children"]count] > 0){
-		return YES;
-	}
-	else{
-		return NO;
-	}
-}
-
-
-//
-//------
-//Outlineview delegates
-
-- (BOOL)outlineView:(NSOutlineView *)outlineView shouldShowOutlineCellForItem:(id)item{
-	id node =  [item representedObject];
-	if ([[node valueForKey:@"children"]count] > 0){
-		return YES;
-	}
-	else{
-		return YES;
-	}
-	
-}
-
-- (BOOL)outlineView:(NSOutlineView *)outlineView shouldSelectItem:(id)item;
-{
-	id node = [item representedObject];
-	if ([[node valueForKey:@"children"]count] > 0){
-		return NO;
-	}
-	return YES;
-}
-
-
--(IBAction)changePlugin:(id)sender{
-	
-	if([[self selectedPlugin] view] != nil){
-		
-		NSRect frame = [[pluginControllerView superview] frame];
-		NSRect bounf = [[[self selectedPlugin] view] bounds];
-		[pluginControllerView setBoundsSize:NSMakeSize(bounf.size.width, bounf.size.height)];
-		[pluginControllerView setFrameSize:NSMakeSize(bounf.size.width, bounf.size.height)];	
-		[pluginControllerView replaceSubview:[[pluginControllerView subviews] objectAtIndex:0] with:[[self selectedPlugin] view]];
-		bounf = [[[self selectedPlugin] view] bounds];	
-		[pluginControllerView setBoundsSize:NSMakeSize(bounf.size.width, bounf.size.height)];
-		[pluginControllerView setFrameSize:NSMakeSize(bounf.size.width, bounf.size.height)];
-		
-		if([[self selectedPlugin] autoresizeControlview]){	
-			
-			[pluginControllerView setFrameSize:NSMakeSize(frame.size.width, frame.size.height)];
-			//			[pluginControllerView setBoundsSize:NSMakeSize(bounf.size.width, bounf.size.height)];
-			
-			[pluginControllerView setAutoresizesSubviews:YES];	
-			[pluginControllerView setAutoresizingMask: NSViewWidthSizable |  NSViewMaxXMargin | NSViewMinXMargin  | NSViewHeightSizable |  NSViewMaxYMargin | NSViewMinYMargin  ];
-			
-			[pluginControllerView setFrameSize:NSMakeSize(frame.size.width, frame.size.height)];
-			//			[pluginControllerView setBoundsSize:NSMakeSize(bounf.size.width, bounf.size.height)];
-			
-			[pluginControllerView needsDisplay];
-			
-		} else {
-			[pluginControllerView setAutoresizingMask:NSViewMinXMargin | NSViewMinYMargin  ];	
-		}
-		
-	} else {
-		[pluginControllerView replaceSubview:[[pluginControllerView subviews] objectAtIndex:0] with:[[[NSView alloc]initWithFrame:[[pluginControllerView superview] frame]]autorelease]];
-		[pluginControllerView setAutoresizesSubviews:YES];	
-		[pluginControllerView setAutoresizingMask: NSViewWidthSizable |  NSViewMaxXMargin | NSViewMinXMargin  | NSViewHeightSizable |  NSViewMaxYMargin | NSViewMinYMargin  ];
-	}
-	
-	if([[[self selectedPlugin] properties] count] == 0){
-		[[pluginSplitView animator] setPosition:0.0 ofDividerAtIndex:0];
-	} else if([[self selectedPlugin] view] == nil){
-		//		[pluginSplitView setPosition:1.0 ofDividerAtIndex:0];
-		//		[pluginSplitView toggleCollapse:self];
-		[[pluginSplitView animator] setPosition:600 ofDividerAtIndex:0];
-		
-		//BWSplitView 
-	} else {
-		//	[[pluginSplitView animator] setPosition:20+[[[self selectedPlugin] properties] count]*20 ofDividerAtIndex:0];
-		[[pluginSplitView animator] setPosition:0 ofDividerAtIndex:0];
-	}
-}
-
-//
-//------
-//Tableview delegates
-
-
--(NSCell *) tableView:(NSTableView *)tableView dataCellForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row{
-	if([[tableColumn identifier] isEqualToString:@"control"]){
-		PluginProperty * p = (PluginProperty *)[[[pluginPropertiesController arrangedObjects] objectAtIndex:row] value];
-		NSCell * cell = [p controlCell];
-		return cell;
-		
-	} else {
-		return [tableColumn dataCellForRow:row];
-	}
-}
 
 
 
@@ -341,7 +192,7 @@ extern ofAppBaseWindow * window;
 //------
 //
 
-
+#pragma mark OpenGL
 
 
 - (NSOpenGLContext*) getSharedContext:(CGLPixelFormatObj)pixelFormat{	
@@ -371,17 +222,22 @@ extern ofAppBaseWindow * window;
 	if(!isQuitting){
 		NSLog(@"------ Call setup: ------");
 		int n=0;
-		NSDictionary * group;
-		for(group in plugins){
+		for(NSDictionary * group in plugins){
 			ofPlugin * plugin;
 			for(plugin in [group objectForKey:@"children"]){		
+				dispatch_async(dispatch_get_main_queue(), ^{
+					[mainWindow setPluginDetailNumber:n to:@"Calling OpenGL setup..."];
+					[mainWindow setLoadStatusText:[NSString stringWithFormat:@"OpenGL setup %d/%d",n+1,[self countOfPlugins]]];
+				});
+
+					
 				if(![plugin setupCalled]){
 					[plugin setup];
 					[plugin setSetupCalled:YES];
 				}
 				dispatch_async(dispatch_get_main_queue(), ^{				
-					[mainWindow setLoadPercentage:0.5+0.5*(float)n/[self countOfPlugins]];
-					[mainWindow setLoadStatusText:[NSString stringWithFormat:@"Calling setup on %@", [plugin name]]];
+					[mainWindow setLoadPercentage:0.5+0.5*(float)(n+1)/[self countOfPlugins]];
+					[mainWindow setPluginDetailNumber:n to:@"Done loading"];
 				});
 				
 				
@@ -394,8 +250,6 @@ extern ofAppBaseWindow * window;
 		
 		dispatch_async(dispatch_get_main_queue(), ^{		
 			[mainWindow setFinishedLoading];	
-			
-			[viewManager showViews];
 		});
 	}
 }
@@ -409,12 +263,11 @@ extern ofAppBaseWindow * window;
 		ofxOscMessage m;
 		oscReceiver->getNextMessage( &m );
 		
-		cout<<m.getAddress() <<endl;
 		if ( m.getAddress() == "/outputviews/fullscreen" ){
-			[viewManager goFullscreen:self]; 
+			[viewManager goFullscreen]; 
 		}
 		if ( m.getAddress() == "/outputviews/window" ){
-			[viewManager goWindow:self]; 
+			[viewManager goWindow]; 
 		}
 		
 		if ( m.getAddress() == "/pluginProperty/set" ){
@@ -471,6 +324,12 @@ extern ofAppBaseWindow * window;
 	return draw;
 }
 
+
+//
+//-----
+//
+
+
 - (void) callDraw:(NSMutableDictionary*)drawingInformation {
 	[self willChangeValueForKey:@"fps"];
 	if([drawingInformation valueForKey:@"lastTime"] == nil){ 
@@ -497,16 +356,12 @@ extern ofAppBaseWindow * window;
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);     // Clear Screen data of the texture to write on
 	
 	
-	
-	NSDictionary * group;
-	
-	for(group in plugins){
-		ofPlugin * plugin;
-		for(plugin in [group objectForKey:@"children"]){
+		
+	for(NSDictionary * group in plugins){
+		for(ofPlugin * plugin in [group objectForKey:@"children"]){
 			
 			glPushMatrix();
-			//		ofPushStyle();
-			
+	
 			int time = ofGetElapsedTimeMillis();
 			
 			if(!isQuitting && [[plugin enabled]boolValue] ){
@@ -519,8 +374,6 @@ extern ofAppBaseWindow * window;
 				[plugin draw:drawingInformation];
 				
 			}
-			//	[plugin setDrawCpuTime:ofGetElapsedTimeMillis()-time];
-			//			ofPopStyle();
 			glPopMatrix();			
 		}
 	}
@@ -531,9 +384,8 @@ extern ofAppBaseWindow * window;
 	int totalTime = ofGetElapsedTimeMillis()- startFrameTime;
 	
 	if(ofGetElapsedTimeMillis() - lastPowerMeterUpdate > 100){	
-		for(group in plugins){
-			ofPlugin * plugin;
-			for(plugin in [group objectForKey:@"children"]){		
+		for(NSDictionary * group in plugins){
+			for(ofPlugin * plugin in [group objectForKey:@"children"]){		
 				[plugin setUpdateCpuUsage:([plugin updateCpuTime]==0)?0:(float)[plugin updateCpuTime]/(1000.0/ofGetFrameRate())];
 				[plugin setDrawCpuUsage:([plugin drawCpuTime]==0)?0:(float)[plugin drawCpuTime]/(1000.0/ofGetFrameRate())];
 			}
@@ -552,6 +404,103 @@ extern ofAppBaseWindow * window;
 
 - (BOOL) isSetupCalled{
 	return setupCalled;
+}
+
+
+//
+//-----
+//
+
+
+-(void)setNumberOutputViews:(int)n{
+	[viewManager setNumberOutputViews:n];
+}
+
+
+//
+//------
+//
+
+#pragma mark Plugins Management
+
+- (int) countOfPlugins{
+	int n = 0;
+	NSDictionary * group;
+	for(group in plugins){
+		ofPlugin * plugin;
+		for(plugin in [group objectForKey:@"children"]){	
+			n++;
+		}
+	}
+	return n;
+}
+
+
+//
+//-------
+//
+
+-(void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context{
+	if([(NSString*) context isEqualToString:@"changePlugin"]){
+		[self changePlugin:self];
+	}
+}
+
+
+//
+//-------
+//
+
+
+-(IBAction)changePlugin:(id)sender{
+	[openglLock lock];
+	if([[self selectedPlugin] view] != nil){		
+		NSRect frame = [[pluginControllerView superview] frame];
+		NSRect bounf = [[[self selectedPlugin] view] bounds];
+		[pluginControllerView setBoundsSize:NSMakeSize(bounf.size.width, bounf.size.height)];
+		[pluginControllerView setFrameSize:NSMakeSize(bounf.size.width, bounf.size.height)];	
+		[pluginControllerView replaceSubview:[[pluginControllerView subviews] objectAtIndex:0] with:[[self selectedPlugin] view]];
+		bounf = [[[self selectedPlugin] view] bounds];	
+		[pluginControllerView setBoundsSize:NSMakeSize(bounf.size.width, bounf.size.height)];
+		[pluginControllerView setFrameSize:NSMakeSize(bounf.size.width, bounf.size.height)];
+		
+		if([[self selectedPlugin] autoresizeControlview]){	
+			
+			[pluginControllerView setFrameSize:NSMakeSize(frame.size.width, frame.size.height)];
+			//			[pluginControllerView setBoundsSize:NSMakeSize(bounf.size.width, bounf.size.height)];
+			
+			[pluginControllerView setAutoresizesSubviews:YES];	
+			[pluginControllerView setAutoresizingMask: NSViewWidthSizable |  NSViewMaxXMargin | NSViewMinXMargin  | NSViewHeightSizable |  NSViewMaxYMargin | NSViewMinYMargin  ];
+			
+			[pluginControllerView setFrameSize:NSMakeSize(frame.size.width, frame.size.height)];
+			//			[pluginControllerView setBoundsSize:NSMakeSize(bounf.size.width, bounf.size.height)];
+			
+			[pluginControllerView needsDisplay];
+			
+		} else {
+			[pluginControllerView setAutoresizingMask:NSViewMinXMargin | NSViewMinYMargin  ];	
+		}
+		
+	} else {
+		[pluginControllerView replaceSubview:[[pluginControllerView subviews] objectAtIndex:0] with:[[[NSView alloc]initWithFrame:[[pluginControllerView superview] frame]]autorelease]];
+		[pluginControllerView setAutoresizesSubviews:YES];	
+		[pluginControllerView setAutoresizingMask: NSViewWidthSizable |  NSViewMaxXMargin | NSViewMinXMargin  | NSViewHeightSizable |  NSViewMaxYMargin | NSViewMinYMargin  ];
+	}
+	
+	if([[[self selectedPlugin] properties] count] == 0){
+		[[pluginSplitView animator] setPosition:0.0 ofDividerAtIndex:0];
+	} else if([[self selectedPlugin] view] == nil){
+		//		[pluginSplitView setPosition:1.0 ofDividerAtIndex:0];
+		//		[pluginSplitView toggleCollapse:self];
+		[[pluginSplitView animator] setPosition:600 ofDividerAtIndex:0];
+		
+		//BWSplitView 
+	} else {
+		//	[[pluginSplitView animator] setPosition:20+[[[self selectedPlugin] properties] count]*20 ofDividerAtIndex:0];
+		[[pluginSplitView animator] setPosition:0 ofDividerAtIndex:0];
+	}
+	[openglLock unlock];
+
 }
 
 
@@ -595,6 +544,7 @@ extern ofAppBaseWindow * window;
 }
 
 
+
 //
 //-----
 //
@@ -609,6 +559,10 @@ extern ofAppBaseWindow * window;
 		[self showGraphView:sender];
 	}	
 }
+
+
+#pragma mark GUI
+
 
 -(IBAction) showGraphView:(id)sender{
 	[toolbarGraphItem setLabel:@"Hide graph"];	
@@ -628,16 +582,6 @@ extern ofAppBaseWindow * window;
  }
  }*/
 
-//
-//-----
-//
-
-
-
-
--(void)setNumberOutputViews:(int)n{
-	[viewManager setNumberOutputViews:n];
-}
 
 
 
@@ -658,6 +602,75 @@ extern ofAppBaseWindow * window;
 -(void) mouseDraggedPoint:(NSPoint)theEvent{
 	//[[self getPlugin:[Tracking class]] mouseDraggedPoint:theEvent];
 }
+
+
+
+
+//
+//------
+//Outlineview delegates
+
+#pragma mark Delegates
+
+-(BOOL)outlineView:(NSOutlineView*)outlineView isGroupItem:(id)item
+{
+	id node =  [item representedObject];
+	if ([[node valueForKey:@"children"]count] > 0){
+		return YES;
+	}
+	else{
+		return NO;
+	}
+}
+
+
+- (BOOL)outlineView:(NSOutlineView *)outlineView shouldShowOutlineCellForItem:(id)item{
+	id node =  [item representedObject];
+	if ([[node valueForKey:@"children"]count] > 0){
+		return YES;
+	}
+	else{
+		return YES;
+	}
+	
+}
+
+- (BOOL)outlineView:(NSOutlineView *)outlineView shouldSelectItem:(id)item;
+{
+	id node = [item representedObject];
+	if ([[node valueForKey:@"children"]count] > 0){
+		return NO;
+	}
+	return YES;
+}
+
+
+
+
+//
+//------
+//Tableview delegates
+
+
+-(NSCell *) tableView:(NSTableView *)tableView dataCellForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row{
+	if([[tableColumn identifier] isEqualToString:@"control"]){
+		PluginProperty * p = (PluginProperty *)[[[pluginPropertiesController arrangedObjects] objectAtIndex:row] value];
+		NSCell * cell = [p controlCell];
+		return cell;
+		
+	} else {
+		return [tableColumn dataCellForRow:row];
+	}
+}
+
+
+
+
+//---------
+//-- Termination stuff
+//---------
+
+#pragma mark  Termination
 
 - (void) applicationWillTerminate: (NSNotification *)note
 {
@@ -709,8 +722,8 @@ extern ofAppBaseWindow * window;
 }
 
 - (void)askToQuit:(NSWindow *) theWindow {
-    [theWindow makeKeyAndOrderFront:nil];
-    NSBeginAlertSheet(NSLocalizedString(@"Do you want to Quit?", @"Title of alert panel which comes up when user chooses Quit"),
+	[theWindow makeKeyAndOrderFront:nil];
+	NSBeginAlertSheet(NSLocalizedString(@"Do you want to Quit?", @"Title of alert panel which comes up when user chooses Quit"),
 					  NSLocalizedString(@"Quit", @"Choice (on a button) given to user which allows him/her to quit the application even though there are unsaved documents."),
 					  NSLocalizedString(@"Cancel", @"Choice (on a button) given to user which allows him/her to review all unsaved documents if he/she quits the application without saving them all first."),
 					  nil,
@@ -726,25 +739,21 @@ extern ofAppBaseWindow * window;
 - (void)willEndCloseSheet:(NSWindow *)sheet returnCode:(int)returnCode contextInfo:(void *)contextInfo {
 	if (returnCode == NSAlertAlternateReturn) {     /* "Don't quit" */
 		[NSApp replyToApplicationShouldTerminate:NO];
-    }
-    if (returnCode == NSAlertDefaultReturn) {       /* "Quit" */
+	}
+	if (returnCode == NSAlertDefaultReturn) {       /* "Quit" */
 		// we need to quit here explicitly as other windows would otherwise keep the updates runing causing a illegal reference to this closed window.
 		[NSApp replyToApplicationShouldTerminate:YES];
-    } 
+	} 
 }
 
 - (void)didEndCloseSheet:(NSWindow *)sheet returnCode:(int)returnCode contextInfo:(void *)contextInfo {
 	if (returnCode == NSAlertAlternateReturn) {     /* "Don't quit" */
 		[NSApp replyToApplicationShouldTerminate:NO];
-    }
-    if (returnCode == NSAlertDefaultReturn) {       /* "Quit" */
+	}
+	if (returnCode == NSAlertDefaultReturn) {       /* "Quit" */
 		// we need to quit here explicitly as other windows would otherwise keep the updates runing causing a illegal reference to this closed window.
 		[NSApp replyToApplicationShouldTerminate:YES];
-    } 	
-}
-
-- (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
-	
+	} 	
 }
 
 @end

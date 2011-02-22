@@ -16,7 +16,6 @@
 #include <IOKit/graphics/IOGraphicsLib.h>
 #include <IOKit/graphics/IOGraphicsTypes.h>
 
-//#define VARIANT2
 
 static void KeyArrayCallback(const void *key, const void *value, void
 							 *context) { CFArrayAppendValue((CFMutableArrayRef)context, key);  }
@@ -106,9 +105,6 @@ CFStringRef CopyLocalDisplayName(CGDirectDisplayID display)
 		theDelegate = [[[PluginOutputWindowDelegate alloc]initWithPluginOutputView:[newPanel glView]]retain];
 		[[newPanel panel] setDelegate:theDelegate];
 		
-		
-		
-		
 		[glViews addObject:[newPanel glView]];
 	}
 	
@@ -130,7 +126,7 @@ CFStringRef CopyLocalDisplayName(CGDirectDisplayID display)
 	}
 	
 	
-	[self showViews];
+	//[self showViews];
 }
 
 
@@ -167,7 +163,6 @@ CFStringRef CopyLocalDisplayName(CGDirectDisplayID display)
 			if([[userDefaults valueForKey:[NSString stringWithFormat:@"DisplayIdForView%i",[view viewNumber]]] intValue] ==  displays[i]){
 				[popup selectItem:[popup lastItem]];
 				[view setDisplayNumber:popup];
-				//				[view setScreenSize:NSMakeSize(CGDisplayPixelsWide(displays[i]), CGDisplayPixelsHigh(displays[i]))];
 			}
 			CFRelease(name);
 		}		
@@ -198,7 +193,7 @@ CFStringRef CopyLocalDisplayName(CGDirectDisplayID display)
 
 -(IBAction) goFullscreen{
 	if(!fullscreen){
-		[[controller openglLock] lock]; // prevent drawing from another thread if we're drawing already
+		[[controller openglLock] lock]; 
 		
 		[toolbarFullscreenItem setLabel:@"Window"];
 		[toolbarFullscreenItem setImage:[NSImage imageNamed:@"NSExitFullScreenTemplate"]];
@@ -224,17 +219,6 @@ CFStringRef CopyLocalDisplayName(CGDirectDisplayID display)
 					if([view displayId] == CGMainDisplayID()){
 						CGDisplayHideCursor (kCGNullDirectDisplay);	
 					}
-#ifdef VARIANT2
-					NSRect fullDisplayRect = [screen frame];	
-					NSWindow *fullScreenWindow = [[NSWindow alloc] initWithContentRect: fullDisplayRect styleMask:NSBorderlessWindowMask backing:NSBackingStoreBuffered defer:YES];
-					[fullScreenWindow setLevel:NSMainMenuWindowLevel+1];
-					
-					[fullScreenWindow setOpaque:YES];
-					[fullScreenWindow setHidesOnDeactivate:YES];
-					[fullScreenWindow setContentView: view];
-					[fullScreenWindow makeKeyAndOrderFront:self];
-					
-#else 
 					
 					NSRect fullDisplayRect = [screen frame];	
 					[panel setFrameAutosaveName:@""];
@@ -251,20 +235,14 @@ CFStringRef CopyLocalDisplayName(CGDirectDisplayID display)
 					
 					[view setFrame:NSMakeRect(0, 0, fullDisplayRect.size.width, fullDisplayRect.size.height) ];
 					
-					//[[view openGLContext]setFullScreen];
-					
 					[view updateDisplayIDWithWindow:panel];
 					
-					[[panelController displayPopup] setEnabled:NO];		
-#endif
-					
-					
+					[[panelController displayPopup] setEnabled:NO];							
 				}
 			}
 			i++;				
 		}		
-		[[controller openglLock] unlock]; // prevent drawing from another thread if we're drawing already
-		
+		[[controller openglLock] unlock]; 
 		
 	}
 }
@@ -280,7 +258,6 @@ CFStringRef CopyLocalDisplayName(CGDirectDisplayID display)
 		
 		fullscreen = NO;
 		
-		//dispatch_async(dispatch_get_main_queue(), ^{
 		
 		[toolbarFullscreenItem setLabel:@"Fullscreen"];	
 		[toolbarFullscreenItem setImage:[NSImage imageNamed:@"NSEnterFullScreenTemplate"]];
@@ -288,11 +265,9 @@ CFStringRef CopyLocalDisplayName(CGDirectDisplayID display)
 		int i=0;
 		for(OutputPanelController * panelController in outputViewsPanels){
 			[[controller openglLock] lock]; // prevent drawing from another thread if we're drawing already
-
+			
 			PluginOpenGLView * view = [panelController glView];
 			
-			/*if([view inFullscreen])
-			 [[view openGLContext] clearDrawable];*/
 			
 			NSPanel * panel = (NSPanel * )[view window];
 			
@@ -313,12 +288,11 @@ CFStringRef CopyLocalDisplayName(CGDirectDisplayID display)
 			
 			[[panelController displayPopup] setEnabled:YES];
 			[[controller openglLock] unlock]; // prevent drawing from another thread if we're drawing already
-
+			
 			[view updateDisplayIDWithWindow:panel];
-
+			
 			i++;	
 		}
-		//	});
 		
 	}
 	
@@ -335,21 +309,18 @@ CFStringRef CopyLocalDisplayName(CGDirectDisplayID display)
 //-----
 //
 
-
 -(CGDisplayCount) getDisplayList:(CGDirectDisplayID **)displays{
 	CGDisplayCount		dspCount = 0;
 	CGError				err = CGDisplayNoErr;
 	
 	err = CGGetActiveDisplayList(0, NULL, &dspCount);	
-	// Maybe this isn't the first time though this function
+
 	if(*displays != nil)
 		free(*displays);
 	
 	*displays = (CGDirectDisplayID*) calloc((size_t)dspCount, sizeof(CGDirectDisplayID));	
 	CGGetActiveDisplayList(dspCount, *displays, &dspCount);
 	
-	
-	//	free(displays);
 	return dspCount;
 }
 
@@ -359,8 +330,7 @@ CFStringRef CopyLocalDisplayName(CGDirectDisplayID display)
 
 
 -(void) showViews{
-	PluginOpenGLView * view;
-	for(view in glViews){
+	for(PluginOpenGLView * view in glViews){
 		[[view window] display];
 		[[view window] orderFront:self];
 	}	

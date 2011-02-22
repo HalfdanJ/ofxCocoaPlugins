@@ -17,17 +17,13 @@
 		
 		powerMeterDictionary = [[NSMutableDictionary dictionary] retain];
 		[powerMeterDictionary setValue:[NSNumber numberWithBool:YES] forKey:@"show"];
-//		icon = [[NSImage imageNamed:@"NSFollowLinkFreestandingTemplate"] retain];
-				icon = [[NSImage imageNamed:@""] retain];
-		//	plugin = self;
+		icon = [[NSImage imageNamed:@""] retain];
 		
 		[self addProperty:[BoolProperty boolPropertyWithDefaultvalue:0] named:@"Enabled"];
 		[self bind:@"boolEnabled" toObject:properties withKeyPath:@"Enabled.value" options:nil];
 		[self addObserver:self forKeyPath:@"boolEnabled" options:nil context:@"boolEnabled"];
-
 	}	
-	return self;
-	
+	return self;	
 }
 
 
@@ -37,10 +33,7 @@
 	}
 }
 
-
-
--(void) awakeFromNib{
-	
+-(void) awakeFromNib{	
 	if(controlGlView != nil){
 		//Setup the opengl view
 		controlLayer = [PluginOpenGLControl layer];
@@ -48,17 +41,11 @@
 		controlLayer.asynchronous = YES;
 		controlLayer.needsDisplayOnBoundsChange = YES;
 		[controlGlView setWantsLayer:YES];
-		[controlGlView setLayer:controlLayer];	
-		
+		[controlGlView setLayer:controlLayer];			
 	}
 }
 
 - (void) applicationWillTerminate: (NSNotification *)note{}
-
--(BOOL) willDraw:(NSMutableDictionary*)drawingInformation{
-	return YES;
-}
-- (void) initPlugin {}
 
 - (BOOL) loadPluginNibFile {
 	if (![NSBundle loadNibNamed:[self name]  owner:self]){
@@ -66,11 +53,12 @@
 		return NO;
 	}
 	
-	return YES;
-	
+	return YES;	
 }
 
+- (void) initPlugin {}
 - (void) setup{}
+- (BOOL) willDraw:(NSMutableDictionary*)drawingInformation{ return YES; }
 - (void) draw:(NSDictionary*)drawingInformation{}
 - (void) update:(NSDictionary*)drawingInformation{}
 
@@ -144,37 +132,24 @@
 
 -(void) addProperty:(PluginProperty*)p named:(NSString*)_name{
 	[p setName:_name];
-	[properties setValue:p
-				  forKey:_name];
+	[properties setValue:p forKey:_name];
 	[p addObserver:self forKeyPath:@"value" options:nil context:@"property"];
 	
+	//Set global midiChannel if assigned
 	if(midiChannel != nil){
 		[p setMidiChannel:midiChannel];
-	}
-	
+	}	
 }
 
 -(void) assignMidiChannel:(int) channel{
 	[self setMidiChannel:[NSNumber numberWithInt:channel]];
 
 	for(NSString * aKey in properties){
-		NSLog(@"%@",aKey);
 		[[properties valueForKey:aKey] setMidiChannel:[NSNumber numberWithInt:channel]];
-	}
-	
+	}	
 }
 
-- (void)alertDidEnd:(NSAlert *)alert returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo {
-    if (returnCode == NSAlertFirstButtonReturn) {
-		NSLog(@"Go qlab");
-		NSMutableArray * objects = [NSMutableArray arrayWithArray:[properties allValues]];
-		[objects sortUsingDescriptors:[NSArray arrayWithObject:[[NSSortDescriptor alloc] initWithKey:@"midiNumber" ascending:YES]]]; 
-		for(PluginProperty * p in objects){
-			[p sendQlab];
-		}
-		
-    }
-}
+
 
 -(IBAction) qlabAll:(id)sender{
 	NSAlert *alert = [[[NSAlert alloc] init] autorelease];
@@ -183,7 +158,17 @@
 	[alert setMessageText:@"Qlab alle properties?"];
 	[alert setInformativeText:@"Dette kan have stor effekt på qlab!"];
 	[alert setAlertStyle:NSWarningAlertStyle];
-	[alert beginSheetModalForWindow:[NSApp mainWindow] modalDelegate:self didEndSelector:@selector(alertDidEnd:returnCode:contextInfo:) contextInfo:nil];
+//	[alert beginSheetModalForWindow:[NSApp mainWindow] modalDelegate:self didEndSelector:@selector(alertDidEnd:returnCode:contextInfo:) contextInfo:nil];
+	
+	if ([alert runModal] == NSAlertFirstButtonReturn) {
+		NSLog(@"Go qlab");
+		NSMutableArray * objects = [NSMutableArray arrayWithArray:[properties allValues]];
+		[objects sortUsingDescriptors:[NSArray arrayWithObject:[[NSSortDescriptor alloc] initWithKey:@"midiNumber" ascending:YES]]]; 
+		for(PluginProperty * p in objects){
+			[p sendQlab];
+		}
+    }
+	
 }
 
 @end

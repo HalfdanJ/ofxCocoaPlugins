@@ -16,12 +16,18 @@
 	NSView * statusView;
 	NSProgressIndicator * loadIndicator;
 	NSTextField * loadText;
+	NSImageView * iconView;
+	
+	NSMutableArray * details;
 
 }
 
 -(void) setFinishedLoading;
 -(void) setLoadStatusText:(NSString*)text;
 -(void)	setLoadPercentage:(float)percentage;
+
+-(void) addPluginDetail:(NSString*)name text:(NSString*)text;
+-(void) setPluginDetailNumber:(int)n to:(NSString*)s;
 
 
 @end

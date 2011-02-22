@@ -4,6 +4,8 @@
 #import "PluginOpenGLControl.h"
 extern ofAppBaseWindow * window;
 #import "ofAppCocoaWindow.h"
+
+
 @implementation PluginOpenGLControlView
 
 -(BOOL) acceptsFirstResponder{
@@ -42,10 +44,7 @@ extern ofAppBaseWindow * window;
 
 -(void) keyDown:(NSEvent *)theEvent{
 	unsigned short keyCode = [theEvent keyCode];
-	[[((PluginOpenGLControl*)[self layer]) plugin] controlKeyPressed:keyCode];	
-	
-	
-	
+	[[((PluginOpenGLControl*)[self layer]) plugin] controlKeyPressed:keyCode];
 }
 
 @end
@@ -59,8 +58,7 @@ extern ofAppBaseWindow * window;
 	if([super init]){
 		drawingInformation = [[NSMutableDictionary dictionaryWithCapacity:6] retain];
 	}
-	return self;
-	
+	return self;	
 }
 
 
@@ -101,10 +99,7 @@ extern ofAppBaseWindow * window;
 		
 		ofSetupScreen();
 		
-//		[plugin controlDraw:timeInterval displayTime:timeStamp];
-		
 		[drawingInformation setValue:[NSNumber numberWithDouble:timeInterval] forKey:@"timeInterval"];
-//		[drawingInformation setValue:[NSNumber numberWithDouble:timeStamp->videoTime] forKey:@"outputTime.videoTime"];
 		
 		[plugin controlDraw:drawingInformation];
 		
@@ -112,19 +107,16 @@ extern ofAppBaseWindow * window;
 		((ofAppCocoaWindow*)window)->windowW = tmpW;
 		((ofAppCocoaWindow*)window)->windowH = tmpH;
 		
-		glPopMatrix();
-		
-		
+		glPopMatrix();		
 	}
+	
 	// Call super to finalize the drawing. By default all it does is call glFlush().
 	[super drawInCGLContext:glContext pixelFormat:pixelFormat forLayerTime:timeInterval displayTime:timeStamp];
 	
-	CGLUnlockContext(glContext);
-	
+	CGLUnlockContext(glContext);	
 	[[globalController openglLock] unlock];
 	
-	[perFramePool release];
-	
+	[perFramePool release];	
 }
 
 

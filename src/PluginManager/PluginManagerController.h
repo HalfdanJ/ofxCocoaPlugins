@@ -70,8 +70,6 @@
 	//Application delegation
 	
 	BOOL noQuestionsAsked;
-	BOOL isQuittingFromWindowClose;
-	
 	BOOL isQuitting;
 
 }	
