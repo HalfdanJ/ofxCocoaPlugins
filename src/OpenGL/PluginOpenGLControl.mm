@@ -84,8 +84,7 @@ extern ofAppBaseWindow * window;
 	if(![plugin setupCalled]){
 		[plugin setup];
 		[plugin setSetupCalled:YES];
-	} else {
-		
+	} else {		
 		glClear(GL_COLOR_BUFFER_BIT);
 		glMatrixMode(GL_MODELVIEW);
 		glPushMatrix();

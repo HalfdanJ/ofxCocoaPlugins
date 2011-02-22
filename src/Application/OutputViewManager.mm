@@ -113,7 +113,7 @@ CFStringRef CopyLocalDisplayName(CGDirectDisplayID display)
 	
 	BOOL goFullscreen = YES;
 	for(PluginOpenGLView * view in glViews){
-		if([view displayId] == 0 ){//|| [view displayId] == CGMainDisplayID()){
+		if([view displayId] == 0 || [view displayId] == CGMainDisplayID()){
 			//Go not to fullscreen if a primary monitor is selected, or no monitor
 			goFullscreen = NO;
 		}		
