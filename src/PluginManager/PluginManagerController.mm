@@ -12,7 +12,6 @@
 
 PluginManagerController * globalController;
 
-extern testApp * OFSAptr;
 extern ofAppBaseWindow * window;
 //extern GraphDebugger * globalGraphDebugger;
 

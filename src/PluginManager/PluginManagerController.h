@@ -4,7 +4,6 @@
 #import <Cocoa/Cocoa.h>
 #import <QuartzCore/QuartzCore.h>
 
-#include "testApp.h"
 #include "PluginOpenGLView.h"
 #include "MainWindow.h"
 #include "SaveManager.h"
