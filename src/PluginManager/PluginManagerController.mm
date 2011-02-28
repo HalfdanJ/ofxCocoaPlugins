@@ -19,7 +19,7 @@ extern ofAppBaseWindow * window;
 
 @implementation PluginManagerController 
 
-@synthesize saveManager, statsAreaView, sharedOpenglContext, openglLock, fps, plugins, viewManager;
+@synthesize saveManager, statsAreaView, sharedOpenglContext, openglLock, fps, plugins, viewManager, qlabController;
 @synthesize noQuestionsAsked;
 
 #pragma mark Startup
@@ -163,7 +163,6 @@ extern ofAppBaseWindow * window;
 
 
 - (void)addPlugin:(ofPlugin*)obj {
-	[obj setName:NSStringFromClass([obj class])];
 	[obj retain];
 	
 	NSMutableArray * array = [[[self plugins] lastObject] objectForKey:@"children"];

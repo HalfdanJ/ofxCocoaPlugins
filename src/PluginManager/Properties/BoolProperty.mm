@@ -144,9 +144,9 @@
 	int val = [[self midiValue] intValue];
 	NSString * str;
 	if(val){
-		str = [NSString stringWithFormat:@"%@ On", name];
+		str = [NSString stringWithFormat:@"On"];
 	} else {
-		str = [NSString stringWithFormat:@"%@ Off", name];
+		str = [NSString stringWithFormat:@"Off"];
 	}
 	
 	[self sendQlabScriptName:str channel:channel control:number value:val fade:NO];
