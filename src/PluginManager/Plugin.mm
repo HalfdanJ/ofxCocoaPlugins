@@ -190,9 +190,15 @@
 		[objects sortUsingDescriptors:[NSArray arrayWithObject:[[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES]]]; 
 		int i=1;
 		for(PluginProperty * p in objects){
-			[p setMidiNumber:[NSNumber numberWithInt:i]];
-			i++;
+			if([p midiNumberManuallyBinded]){
+				i = [[p midiNumber] intValue] + 1;
+			} else {
+				[p setMidiNumber:[NSNumber numberWithInt:i]];
+				i++;
+			}
 		}
+		
+		[[globalController qlabController] assignMidiSettingsForPlugin:self];
 		
 	}
 	

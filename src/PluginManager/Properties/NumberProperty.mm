@@ -137,6 +137,8 @@
 	
 	
 }
+
+
 -(void) sendQlab{	
 	NSLog(@"Send to qlab %d %d %f %@", [midiChannel intValue], [midiNumber intValue], [value floatValue], name);
 	[[globalController qlabController] startQlabTransaction:self];
@@ -148,7 +150,7 @@
 	[[workspace cues] addObject:cue];
 */	
 	
-	
+	/*
 	int channel = [midiChannel intValue];
 	int number = [midiNumber intValue];
 	int val = [[self midiValue] intValue];
@@ -159,7 +161,7 @@
 		NSString * str = [NSString stringWithFormat:@"to %i",val];		
 		[self sendQlabScriptName:str channel:channel control:number value:val fade:false];
 		
-	}	
+	}	*/
 }
 
 

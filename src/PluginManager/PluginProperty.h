@@ -28,6 +28,7 @@
 	NSNumber * midiChannel;
 	NSNumber * midiNumber;
 	BOOL binded;
+	BOOL midiNumberManuallyBinded;
 }
 @property (retain) NSString * name;
 @property (retain) NSString * pluginName;
@@ -42,6 +43,10 @@
 @property (retain)	NSNumber * midiChannel;
 @property (retain)	NSNumber * midiNumber;
 
+@property (readwrite) BOOL midiNumberManuallyBinded;
+
+-(void) setManualMidiNumber:(NSNumber*)midiNumber;
+
 -(void) midiEvent:(int) value;
 -(void) bindMidi;
 -(void) unbindMidi;
@@ -50,7 +55,7 @@
 -(NSNumber*)midiValue;
 -(void) sendQlab;
 
--(void) sendQlabScriptName:(NSString*)description channel:(int)channel control:(int)control value:(int)value fade:(bool)fade;
+//-(void) sendQlabScriptName:(NSString*)description channel:(int)channel control:(int)control value:(int)value fade:(bool)fade;
 //+(PluginProperty*)boolProperty:(BOOL)defValue;
 //+(PluginProperty*)stringProperty:(NSString*)defValue;
 
