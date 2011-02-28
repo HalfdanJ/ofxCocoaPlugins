@@ -37,7 +37,7 @@
 		}
 		//	[cue setQName:@"asdasd¡¡"];
 	}
-	
+
 	//	QlabCue *cue = [[[qLab classForScriptingClass:@"cue"] alloc] init];
 	//	[[workspace cues] addObject:cue];
 	//	cue.qName = @"HEHE";
