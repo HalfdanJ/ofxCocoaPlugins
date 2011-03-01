@@ -9,7 +9,7 @@
 #define COLOR_PROPERTY 3
 #define BOOL_PROPERTY 4
 
-#include "Qlab.h"
+//#include "Qlab.h"
 
 //@class GraphDebugger;
 //extern GraphDebugger * globalGraphDebugger;

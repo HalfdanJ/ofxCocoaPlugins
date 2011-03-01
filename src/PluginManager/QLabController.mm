@@ -12,7 +12,7 @@
 
 @implementation QLabController
 @synthesize cues, linkedProperty;
-
+/*
 -(void) assignMidiSettingsForPlugin:(ofPlugin*)plugin{
 	QLabApplication *qLab = [SBApplication applicationWithBundleIdentifier:@"com.figure53.Qlab.2"]; 
 	NSArray *workspaces = [qLab workspaces];
@@ -76,7 +76,7 @@
 	
 	[addButton becomeFirstResponder];
 	[panel orderFront:self];
-}
+}*/
 
 -(void) addCue:(id)sender{
 	
