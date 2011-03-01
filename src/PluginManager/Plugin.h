@@ -83,6 +83,7 @@ extern PluginManagerController * globalController;
 @property (readwrite) int controlMouseFlags;
 @property (retain, readwrite) NSNumber * midiChannel;
 
+
 - (void) initPlugin; //The function wich the different plugin can put their init code in
 - (BOOL) loadPluginNibFile;
 - (void) setup;
@@ -106,9 +107,7 @@ extern PluginManagerController * globalController;
 
 -(void) addProperty:(PluginProperty*)p named:(NSString*)name;
 -(void) assignMidiChannel:(int) channel;
-
 -(IBAction) qlabAll:(id)sender;
--(IBAction) generateMidiNumbers:(id)sender;
 
 - (void) applicationWillTerminate: (NSNotification *)note;
 

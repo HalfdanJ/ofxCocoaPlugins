@@ -8,9 +8,6 @@
 
 -(id) init{
 	if([super init]){
-		[self setName:NSStringFromClass([self class])];
-
-		
 		setupCalled = NO;
 		initPluginCalled = NO;
 		midiChannel = nil;
@@ -135,7 +132,6 @@
 
 -(void) addProperty:(PluginProperty*)p named:(NSString*)_name{
 	[p setName:_name];
-	[p setPluginName:[self name]];
 	[properties setValue:p forKey:_name];
 	[p addObserver:self forKeyPath:@"value" options:nil context:@"property"];
 	
@@ -147,7 +143,7 @@
 
 -(void) assignMidiChannel:(int) channel{
 	[self setMidiChannel:[NSNumber numberWithInt:channel]];
-	
+
 	for(NSString * aKey in properties){
 		[[properties valueForKey:aKey] setMidiChannel:[NSNumber numberWithInt:channel]];
 	}	
@@ -162,7 +158,7 @@
 	[alert setMessageText:@"Qlab alle properties?"];
 	[alert setInformativeText:@"Dette kan have stor effekt på qlab!"];
 	[alert setAlertStyle:NSWarningAlertStyle];
-	//	[alert beginSheetModalForWindow:[NSApp mainWindow] modalDelegate:self didEndSelector:@selector(alertDidEnd:returnCode:contextInfo:) contextInfo:nil];
+//	[alert beginSheetModalForWindow:[NSApp mainWindow] modalDelegate:self didEndSelector:@selector(alertDidEnd:returnCode:contextInfo:) contextInfo:nil];
 	
 	if ([alert runModal] == NSAlertFirstButtonReturn) {
 		NSLog(@"Go qlab");
@@ -172,35 +168,6 @@
 			[p sendQlab];
 		}
     }
-	
-}
-
--(IBAction) generateMidiNumbers:(id)sender{
-	NSAlert *alert = [[[NSAlert alloc] init] autorelease];
-	[alert addButtonWithTitle:@"OK"];
-	[alert addButtonWithTitle:@"Cancel"];
-	[alert setMessageText:@"Assign new control numbers?"];
-	[alert setInformativeText:@"This will (perhaps) change all the control numbers!"];
-	[alert setAlertStyle:NSWarningAlertStyle];
-	//	[alert beginSheetModalForWindow:[NSApp mainWindow] modalDelegate:self didEndSelector:@selector(alertDidEnd:returnCode:contextInfo:) contextInfo:nil];
-	
-	if ([alert runModal] == NSAlertFirstButtonReturn) {
-		
-		NSMutableArray * objects = [NSMutableArray arrayWithArray:[properties allValues]];
-		[objects sortUsingDescriptors:[NSArray arrayWithObject:[[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES]]]; 
-		int i=1;
-		for(PluginProperty * p in objects){
-			if([p midiNumberManuallyBinded]){
-				i = [[p midiNumber] intValue] + 1;
-			} else {
-				[p setMidiNumber:[NSNumber numberWithInt:i]];
-				i++;
-			}
-		}
-		
-		[[globalController qlabController] assignMidiSettingsForPlugin:self];
-		
-	}
 	
 }
 
