@@ -78,7 +78,7 @@ static void midiReadProc (const MIDIPacketList* packetList, void* createRefCon, 
     while (receiver = [[enumerator nextObject] nonretainedObjectValue])
         [receiver processMIDIPacketList:packetList sender:self];
         
-    [pool release];
+    [pool drain];
 }
 
 

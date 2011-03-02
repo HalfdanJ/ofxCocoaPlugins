@@ -392,7 +392,7 @@ extern ofAppBaseWindow * window;
 		lastPowerMeterUpdate = ofGetElapsedTimeMillis();
 	}
 	
-	[perFramePool release];
+	[perFramePool drain];
 	
 }
 
