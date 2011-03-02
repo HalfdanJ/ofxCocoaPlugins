@@ -21,7 +21,7 @@ void bits_uint(unsigned int value)
 -(CGLPixelFormatObj)copyCGLPixelFormatForDisplayMask:(uint32_t)mask
 {
 	
-	NSLog(@"Setting up the Shared Context Pixelformat");
+	//NSLog(@"Setting up the Shared Context Pixelformat");
 
 	CGDisplayCount maxDisplays = 32;
 	CGDirectDisplayID activeDspys[32];
@@ -55,13 +55,13 @@ void bits_uint(unsigned int value)
 			(NSOpenGLPixelFormatAttribute)nil
 		};
 				
-		NSLog(@"Shared Context Pixelformat Success");
+		//NSLog(@"Shared Context Pixelformat Success");
 
 		NSOpenGLPixelFormat * pixelFormat = [[NSOpenGLPixelFormat alloc] initWithAttributes:attrs];
 		
 		if(pixelFormat == nil) {
 			
-			NSLog(@"Shared Context Pixelformat Fallback");
+			//NSLog(@"Shared Context Pixelformat Fallback");
 
 			NSOpenGLPixelFormatAttribute attrs[] =
 			{
@@ -75,7 +75,7 @@ void bits_uint(unsigned int value)
 			
 			if(pixelFormat == nil) {
 
-			NSLog(@"Shared Context Pixelformat not supported");
+			//NSLog(@"Shared Context Pixelformat not supported");
 			return [super copyCGLPixelFormatForDisplayMask:mask];
 
 			}
@@ -86,7 +86,7 @@ void bits_uint(unsigned int value)
 		
 	}
 	
-	NSLog(@"Shared Context Pixelformat Defaulting");
+	//NSLog(@"Shared Context Pixelformat Defaulting");
 
 	return [super copyCGLPixelFormatForDisplayMask:mask];
 	
@@ -99,7 +99,7 @@ void bits_uint(unsigned int value)
 -(CGLContextObj)copyCGLContextForPixelFormat:(CGLPixelFormatObj)pixelFormat
 {
 
-	NSLog(@"copyCGLContextForPixelFormat:");
+//	NSLog(@"copyCGLContextForPixelFormat:");
 	
 	NSOpenGLContext * cnt = [globalController getSharedContext:pixelFormat];
 
@@ -117,7 +117,7 @@ void bits_uint(unsigned int value)
 
 -(void)releaseCGLContext:(CGLContextObj)glContext
 {
-	NSLog(@"RELEASING Context");
+	//NSLog(@"RELEASING Context");
     [super releaseCGLContext:glContext];
 }
 
