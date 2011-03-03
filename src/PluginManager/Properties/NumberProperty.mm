@@ -141,14 +141,7 @@
 	NSLog(@"Send to qlab %d %d %f %@", [midiChannel intValue], [midiNumber intValue], [value floatValue], name);
 	[[globalController qlabController] startQlabTransaction:self];
 
-	//	
-/*	NSLog(@"Selected : %i", [[workspace selected] count]);
-	NSDictionary *props = [NSDictionary dictionaryWithObjectsAndKeys:@"MIDI",@"type", nil];
-	QLabMidiCue *cue = [[[qLab classForScriptingClass:@"cue"] alloc] initWithProperties:props];
-	[[workspace cues] addObject:cue];
-*/	
-	
-	
+	/*
 	int channel = [midiChannel intValue];
 	int number = [midiNumber intValue];
 	int val = [[self midiValue] intValue];
@@ -159,7 +152,7 @@
 		NSString * str = [NSString stringWithFormat:@"to %i",val];		
 		[self sendQlabScriptName:str channel:channel control:number value:val fade:false];
 		
-	}	
+	}	*/
 }
 
 

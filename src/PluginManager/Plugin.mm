@@ -9,7 +9,7 @@
 -(id) init{
 	if([super init]){
 		[self setName:NSStringFromClass([self class])];
-
+		
 		
 		setupCalled = NO;
 		initPluginCalled = NO;
@@ -176,26 +176,34 @@
 }
 
 -(IBAction) generateMidiNumbers:(id)sender{
-	NSAlert *alert = [[[NSAlert alloc] init] autorelease];
-	[alert addButtonWithTitle:@"OK"];
-	[alert addButtonWithTitle:@"Cancel"];
-	[alert setMessageText:@"Assign new control numbers?"];
-	[alert setInformativeText:@"This will (perhaps) change all the control numbers!"];
-	[alert setAlertStyle:NSWarningAlertStyle];
-	//	[alert beginSheetModalForWindow:[NSApp mainWindow] modalDelegate:self didEndSelector:@selector(alertDidEnd:returnCode:contextInfo:) contextInfo:nil];
-	
-	if ([alert runModal] == NSAlertFirstButtonReturn) {
+	if([self midiChannel] == nil){		
+		NSAlert *alert = [[[NSAlert alloc] init] autorelease];
+		[alert addButtonWithTitle:@"OK"];
+		[alert setMessageText:@"Midi channel not assigned!"];
+		[alert setInformativeText:@"Assign this before you can generate midi numbers."];
+		[alert setAlertStyle:NSInformationalAlertStyle];
+		[alert runModal];
+	} else {
 		
-		NSMutableArray * objects = [NSMutableArray arrayWithArray:[properties allValues]];
-		[objects sortUsingDescriptors:[NSArray arrayWithObject:[[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES]]]; 
-		int i=1;
-		for(PluginProperty * p in objects){
-			[p setMidiNumber:[NSNumber numberWithInt:i]];
-			i++;
+		NSAlert *alert = [[[NSAlert alloc] init] autorelease];
+		[alert addButtonWithTitle:@"OK"];
+		[alert addButtonWithTitle:@"Cancel"];
+		[alert setMessageText:@"Assign new control numbers?"];
+		[alert setInformativeText:@"This will (perhaps) change all the control numbers!"];
+		[alert setAlertStyle:NSWarningAlertStyle];
+		//	[alert beginSheetModalForWindow:[NSApp mainWindow] modalDelegate:self didEndSelector:@selector(alertDidEnd:returnCode:contextInfo:) contextInfo:nil];
+		
+		if ([alert runModal] == NSAlertFirstButtonReturn) {		
+			NSMutableArray * objects = [NSMutableArray arrayWithArray:[properties allValues]];
+			[objects sortUsingDescriptors:[NSArray arrayWithObject:[[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES]]]; 
+			int i=1;
+			for(PluginProperty * p in objects){
+				[p setMidiNumber:[NSNumber numberWithInt:i]];
+				i++;
+			}
+			[[globalController qlabController] updateQlabForPlugin:self];
 		}
-		
 	}
-	
 }
 
 @end
