@@ -8,6 +8,35 @@
 
 #import "QLabController.h"
 
+@implementation CueObject
+@synthesize channel, startvalue, endvalue, fade, updateStartvalue, cue, name, duration, property, number, originalDict;
+
+
++ (NSSet*) keyPathsForValuesAffectingActualEndvalue{
+	return [NSSet setWithObjects:@"startvalue", @"endvalue", @"fade", nil];
+}
+
+-(int) actualEndvalue{
+	if([self fade]){
+		return [self endvalue];
+	} else {
+		return [self startvalue];
+	}
+}
+
+-(void) setActualEndvalue:(int)v{
+	[self willChangeValueForKey:@"actualEndvalue"];
+	if([self fade]){
+		[self setEndvalue:v];
+	} else {
+		[self setStartvalue:v];	
+	}
+	[self didChangeValueForKey:@"actualEndvalue"];
+}
+
+
+@end
+
 
 @implementation QLabController
 @synthesize linkedProperty, shownPrevCueDict, shownNextCueDict, shownThisCueDict;
@@ -157,18 +186,30 @@
 		}		
 	}
 	
-	prevCueDict = [NSMutableDictionary dictionaryWithObjectsAndKeys:prevCue,@"cue",nil];		
-	thisCueDict = [NSMutableDictionary dictionaryWithObjectsAndKeys:thisCue,@"cue",nil];		
-	nextCueDict = [NSMutableDictionary dictionaryWithObjectsAndKeys:nextCue,@"cue",nil];		
+	prevCueDict = [[CueObject alloc] init];
+	[prevCueDict setCue:prevCue];
+
+	thisCueDict = [[CueObject alloc] init];
+	[thisCueDict setCue:thisCue];
+
+	nextCueDict = [[CueObject alloc] init];
+	[nextCueDict setCue:nextCue];
+
 	
 	[self populateCueDict:prevCueDict];
-	[self populateCueDict:nextCueDict];
-	[self populateCueDict:thisCueDict];
-	
 	[self setShownPrevCueDict:prevCueDict];
+
+
+	[self populateCueDict:thisCueDict];
 	[self setShownThisCueDict:thisCueDict];
+
+	[self populateCueDict:nextCueDict];	
 	[self setShownNextCueDict:nextCueDict];
+
+	[self addObserver:self forKeyPath:@"shownThisCueDict.actualEndvalue" options:nil context:@"endvalue"];
+	[self addObserver:self forKeyPath:@"shownNextCueDict.updateStartvalue" options:nil context:@"endvalue"];
 	
+	[[self shownThisCueDict] setActualEndvalue:[[linkedProperty midiValue] intValue]];
 	
 	if(!makeNewCue){
 		[updateCheck setHidden:NO];
@@ -180,19 +221,56 @@
 	[panel orderFront:self];
 }
 
--(void) populateCueDict:(NSMutableDictionary*)dict{
-	QLabCue * cue = [dict valueForKey:@"cue"];
+-(void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context{
+	if([context isEqualToString:@"endvalue"]){
+		if([[self shownNextCueDict] cue] && [[self shownNextCueDict] fade] && [[self shownNextCueDict] updateStartvalue]){
+			[[self shownNextCueDict] setStartvalue:[[self shownThisCueDict] actualEndvalue]];
+		} else if([[self shownNextCueDict] cue]){
+			[[self shownNextCueDict] setStartvalue:[[[[self shownNextCueDict] originalDict] valueForKey:@"startvalue"] intValue]];
+		}
+	}
+}
+
+
+-(void) populateCueDict:(CueObject*)obj{
+	QLabCue * cue = [obj cue];
 	
 	if(cue){
-		[dict setObject:[cue qName] forKey:@"name"];
+		[obj setName:[cue qName]];
+		
+		NSDictionary * info = [self getCueInfo:cue];
+		[obj setChannel:[[info valueForKey:@"channel"] intValue]];
+		[obj setDuration:[info valueForKey:@"duration"]];
+		[obj setEndvalue:[[info valueForKey:@"endvalue"]intValue] ];
+		[obj setFade:[[info valueForKey:@"fade"] boolValue]];
+		[obj setNumber:[[info valueForKey:@"number"] intValue]];
+		[obj setStartvalue:[[info valueForKey:@"startvalue"] intValue]];
+		[obj setOriginalDict:info];
+		/*
+		if([[info valueForKey:@"fade"] intValue] == 1 && dict == nextCueDict){
+			[dict setObject:[NSNumber numberWithInt:1] forKey:@"updateStartvalue"];
+			[dict setObject:[shownThisCueDict valueForKey:@"endvalue"] forKey:@"startvalue"];
+		}
+		else {
+			[dict setObject:[NSNumber numberWithInt:0] forKey:@"updateStartvalue"];
+		}*/
 	} else {
-		[dict setObject:@"-" forKey:@"name"];
+		[obj setName:@"-" ];
 	}
+		
 }
 
 -(NSMutableDictionary*) newCue{
 	NSMutableDictionary * dict = [NSMutableDictionary dictionary];
 	[dict setObject:@"New cue" forKey:@"name"];
+	[dict setObject:[linkedProperty midiChannel] forKey:@"channel"];
+	[dict setObject:[NSNumber numberWithInt:5] forKey:@"duration"];
+	[dict setObject:[linkedProperty midiValue] forKey:@"endvalue"];
+	[dict setObject:[NSNumber numberWithInt:1] forKey:@"fade"];
+	[dict setObject:[linkedProperty midiNumber] forKey:@"number"];
+	
+	[dict setObject:[NSNumber numberWithInt:0] forKey:@"startvalue"];
+	
 	
 	return dict;
 }
@@ -205,7 +283,13 @@
 	} else {
 		[self setShownPrevCueDict:thisCueDict];
 		[self setShownThisCueDict:[self newCue]];
-		[self setShownNextCueDict:nextCueDict];				
+		[self setShownNextCueDict:nextCueDict];		
+		
+		if([shownPrevCueDict valueForKey:@"cue"] && [[shownPrevCueDict valueForKey:@"fade"] intValue] == 1){
+			[[self shownThisCueDict] setValue:[shownPrevCueDict valueForKey:@"endvalue"] forKey:@"startvalue"];
+		} else if([shownPrevCueDict valueForKey:@"cue"] && [[shownPrevCueDict valueForKey:@"fade"] intValue] == 0){
+			[[self shownThisCueDict] setValue:[shownPrevCueDict valueForKey:@"startvalue"] forKey:@"startvalue"];			
+		}
 	}
 }
 
@@ -253,6 +337,78 @@
 }
 -(NSDictionary*) getPrevCueDict{
 	
+}
+
+
+
+-(NSDictionary*) getCueInfo:(QLabCue*)cue{
+	NSMutableDictionary * dict = [NSMutableDictionary dictionary];
+	
+	NSString* path = [[NSBundle mainBundle] pathForResource:@"SendToQlab" ofType:@"scpt"];
+    if (path != nil)
+    {
+        NSURL* url = [NSURL fileURLWithPath:path];
+        if (url != nil)
+        {
+            NSDictionary* errors = [NSDictionary dictionary];
+            NSAppleScript* appleScript =
+			[[NSAppleScript alloc] initWithContentsOfURL:url error:&errors];
+            if (appleScript != nil)
+            {
+                NSAppleEventDescriptor* firstParameter = [NSAppleEventDescriptor descriptorWithString:[cue uniqueID]];
+                NSAppleEventDescriptor* parameters = [NSAppleEventDescriptor listDescriptor];
+                [parameters insertDescriptor:firstParameter atIndex:1];
+				
+                // create the AppleEvent target
+                ProcessSerialNumber psn = {0, kCurrentProcess};
+                NSAppleEventDescriptor* target =
+                [NSAppleEventDescriptor
+				 descriptorWithDescriptorType:typeProcessSerialNumber
+				 bytes:&psn
+				 length:sizeof(ProcessSerialNumber)];
+				
+                NSAppleEventDescriptor* handler =
+				[NSAppleEventDescriptor descriptorWithString:
+				 [@"get_cue_info" lowercaseString]];
+				
+                // create the event for an AppleScript subroutine,
+                // set the method name and the list of parameters
+                NSAppleEventDescriptor* event =
+				[NSAppleEventDescriptor appleEventWithEventClass:kASAppleScriptSuite
+														 eventID:kASSubroutineEvent
+												targetDescriptor:target
+														returnID:kAutoGenerateReturnID
+												   transactionID:kAnyTransactionID];
+                [event setParamDescriptor:handler forKeyword:keyASSubroutineName];
+                [event setParamDescriptor:parameters forKeyword:keyDirectObject];
+				
+                // call the event in AppleScript
+				NSAppleEventDescriptor* retDesc = [appleScript executeAppleEvent:event error:&errors];
+                if (retDesc);
+                {
+					[dict setValue:[NSNumber numberWithInt:[[retDesc descriptorAtIndex:1] int32Value]] forKey:@"channel"];
+					[dict setValue:[NSNumber numberWithInt:[[retDesc descriptorAtIndex:2] int32Value]] forKey:@"number"];
+					[dict setValue:[NSNumber numberWithInt:[[retDesc descriptorAtIndex:3] int32Value]] forKey:@"startvalue"];
+					[dict setValue:[NSNumber numberWithInt:[[retDesc descriptorAtIndex:4] int32Value]] forKey:@"endvalue"];
+					[dict setValue:[NSNumber numberWithInt:[[retDesc descriptorAtIndex:5] int32Value]] forKey:@"fade"];
+					[dict setValue:[[retDesc descriptorAtIndex:6] stringValue] forKey:@"duration"];
+
+					NSLog(@"%@",dict);
+				}
+				
+				
+
+
+                [appleScript release];
+            }
+            else
+            {
+                // report any errors from 'errors'
+            }
+        }
+    }
+	
+	return dict;	
 }
 
 
