@@ -8,6 +8,9 @@
 
 -(id) init{
 	if([super init]){
+		[self setName:NSStringFromClass([self class])];
+		
+		
 		setupCalled = NO;
 		initPluginCalled = NO;
 		midiChannel = nil;
@@ -132,6 +135,7 @@
 
 -(void) addProperty:(PluginProperty*)p named:(NSString*)_name{
 	[p setName:_name];
+	[p setPluginName:[self name]];
 	[properties setValue:p forKey:_name];
 	[p addObserver:self forKeyPath:@"value" options:nil context:@"property"];
 	
@@ -169,6 +173,37 @@
 		}
     }
 	
+}
+
+-(IBAction) generateMidiNumbers:(id)sender{
+	if([self midiChannel] == nil){		
+		NSAlert *alert = [[[NSAlert alloc] init] autorelease];
+		[alert addButtonWithTitle:@"OK"];
+		[alert setMessageText:@"Midi channel not assigned!"];
+		[alert setInformativeText:@"Assign this before you can generate midi numbers."];
+		[alert setAlertStyle:NSInformationalAlertStyle];
+		[alert runModal];
+	} else {
+		
+		NSAlert *alert = [[[NSAlert alloc] init] autorelease];
+		[alert addButtonWithTitle:@"OK"];
+		[alert addButtonWithTitle:@"Cancel"];
+		[alert setMessageText:@"Assign new control numbers?"];
+		[alert setInformativeText:@"This will (perhaps) change all the control numbers!"];
+		[alert setAlertStyle:NSWarningAlertStyle];
+		//	[alert beginSheetModalForWindow:[NSApp mainWindow] modalDelegate:self didEndSelector:@selector(alertDidEnd:returnCode:contextInfo:) contextInfo:nil];
+		
+		if ([alert runModal] == NSAlertFirstButtonReturn) {		
+			NSMutableArray * objects = [NSMutableArray arrayWithArray:[properties allValues]];
+			[objects sortUsingDescriptors:[NSArray arrayWithObject:[[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES]]]; 
+			int i=1;
+			for(PluginProperty * p in objects){
+				[p setMidiNumber:[NSNumber numberWithInt:i]];
+				i++;
+			}
+			[[globalController qlabController] updateQlabForPlugin:self];
+		}
+	}
 }
 
 @end

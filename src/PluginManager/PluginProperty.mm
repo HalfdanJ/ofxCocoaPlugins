@@ -4,7 +4,7 @@
 
 
 @implementation PluginProperty
-@synthesize value, defaultValue, controlCell ,controlType, midiChannel, midiNumber, name;
+@synthesize value, defaultValue, controlCell ,controlType, midiChannel, midiNumber, name, pluginName;
 
 -(id) init{
 	if([super init]){
@@ -170,7 +170,7 @@
 }
 
 
--(void) sendQlabScriptName:(NSString*)name channel:(int)channel control:(int)control value:(int)value fade:(bool)fade{
+-(void) sendQlabScriptName:(NSString*)description channel:(int)channel control:(int)control value:(int)value fade:(bool)fade{
 	NSString* path = [[NSBundle mainBundle] pathForResource:@"SendToQlab" ofType:@"scpt"];
     if (path != nil)
     {
@@ -183,7 +183,7 @@
             if (appleScript != nil)
             {
                 // create the first parameter
-                NSAppleEventDescriptor* firstParameter = [NSAppleEventDescriptor descriptorWithString:name];
+                NSAppleEventDescriptor* firstParameter = [NSAppleEventDescriptor descriptorWithString:[NSString stringWithFormat:@"%@: %@ %@",pluginName, name, description]];
                 NSAppleEventDescriptor* secondParameter = [NSAppleEventDescriptor descriptorWithInt32:channel];
                 NSAppleEventDescriptor* thirdParameter = [NSAppleEventDescriptor descriptorWithInt32:control];
 				NSAppleEventDescriptor* fourthParameter = [NSAppleEventDescriptor descriptorWithInt32:value];

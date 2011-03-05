@@ -19,7 +19,7 @@ extern ofAppBaseWindow * window;
 
 @implementation PluginManagerController 
 
-@synthesize saveManager, statsAreaView, sharedOpenglContext, openglLock, fps, plugins, viewManager;
+@synthesize saveManager, statsAreaView, sharedOpenglContext, openglLock, fps, plugins, viewManager, qlabController;
 @synthesize noQuestionsAsked;
 
 #pragma mark Startup

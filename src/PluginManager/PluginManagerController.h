@@ -13,6 +13,7 @@
 
 @class ofPlugin;
 @class TestAppController;
+@class QLabController;
 
 @interface PluginManagerController : NSObject <NSCoding, NSWindowDelegate>{
 	IBOutlet TestAppController * testApp;
@@ -39,6 +40,7 @@
 	
 	IBOutlet SaveManager * saveManager;
 	IBOutlet OutputViewManager * viewManager;
+	IBOutlet QLabController * qlabController;
 	
 	//Properties variables
 	NSSliderCell * sliderCell;
@@ -81,6 +83,7 @@
 @property (assign) NSMutableArray * plugins;
 @property (retain, readonly) OutputViewManager * viewManager;
 @property (readwrite) BOOL noQuestionsAsked;
+@property (readonly) QLabController * qlabController;
 
 // @property (retain ) NSMutableArray *currentProperties;
 
