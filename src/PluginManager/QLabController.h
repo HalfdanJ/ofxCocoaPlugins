@@ -33,6 +33,12 @@
 @property (readwrite) int actualEndvalue;
 
 @property (readwrite, retain)NSDictionary * originalDict; 
+@property (readonly) BOOL undefinedCue;
+
+-(void) restoreStartvalue;
+-(void) restoreEndvalue;
+-(int) originalActualEndvalue;
+-(void) updateName;
 
 @end
 
@@ -58,6 +64,8 @@
 	IBOutlet NSButton * zeroButton;
 	IBOutlet NSButton * nextUpdateButton;
 	
+	IBOutlet NSButton * okButton;
+	IBOutlet NSButton * cancelButton;	
 	
 	PluginProperty * linkedProperty;
 	
@@ -91,9 +99,11 @@
 
 
 -(QLabApplication*) getQLab;
--(NSMutableDictionary*) newCue;
+-(CueObject*) newCue;
 
 -(IBAction) setUpdateChecked:(id)sender;
+-(IBAction) go:(id)sender;
+-(IBAction) cancel:(id)sender;
 
 -(NSDictionary*) getThisCueDict;
 -(NSDictionary*) getNextCueDict;

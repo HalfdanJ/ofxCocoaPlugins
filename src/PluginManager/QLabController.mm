@@ -16,6 +16,19 @@
 	return [NSSet setWithObjects:@"startvalue", @"endvalue", @"fade", nil];
 }
 
++(NSSet*) keyPathsForValuesAffectingUndefinedCue{
+	return [NSSet setWithObjects:@"cue",nil];
+}
+
+-(BOOL) undefinedCue{
+	if(cue)
+		return NO;
+	else {
+		return YES;
+	}
+	
+}
+
 -(int) actualEndvalue{
 	if([self fade]){
 		return [self endvalue];
@@ -34,6 +47,35 @@
 	[self didChangeValueForKey:@"actualEndvalue"];
 }
 
+-(int) originalActualEndvalue{
+	if([[[self originalDict] objectForKey:@"fade"] boolValue]){
+		return [[[self originalDict] valueForKey:@"endvalue"] intValue];
+	} else {
+		return [[[self originalDict] valueForKey:@"startvalue"] intValue];
+	}
+}
+
+-(void) restoreStartvalue{
+	if([self originalDict]){
+		[self setStartvalue:[[[self originalDict] valueForKey:@"startvalue"] intValue]];	
+	}
+}
+-(void) restoreEndvalue{
+	if([self originalDict]){
+		[self setEndvalue:[[[self originalDict] valueForKey:@"endvalue"] intValue]];
+	}
+}
+
+-(void) updateName{
+	NSMutableString * str = [NSMutableString stringWithFormat:@"[%@: %@] ", [property pluginName], [property name]];
+	if([self fade]){
+		[self setName:[NSString stringWithFormat:@"%@ %i to %i (fading)", str, [self startvalue], [self endvalue]]];
+	} else {
+		[self setName:[NSString stringWithFormat:@"%@ to %i", str, [self startvalue]]];		
+	}
+	
+}
+
 
 @end
 
@@ -44,10 +86,14 @@
 
 -(id) init{
 	if([super init]){
-
-		
+		[self addObserver:self forKeyPath:@"shownThisCueDict.actualEndvalue" options:nil context:@"endvalue"];
+		[self addObserver:self forKeyPath:@"shownThisCueDict.fade" options:nil context:@"fade"];
+		[self addObserver:self forKeyPath:@"shownNextCueDict.updateStartvalue" options:nil context:@"endvalue"];
 	}
 	return self;
+}
+
+-(void) awakeFromNib{
 }
 
 -(QLabApplication*) getQLab{
@@ -66,11 +112,11 @@
 			NSString *searchString = [NSString stringWithFormat:@"%@: %@", [proptery pluginName], [proptery name]];
 			
 			NSString *beginsTest = [cue qName];
-			NSRange prefixRange = [beginsTest rangeOfString:searchString options:(NSAnchoredSearch)];
+			NSRange prefixRange = [beginsTest rangeOfString:searchString options:(0)];
 			
 			if(prefixRange.length > 0){
 				NSLog(@"Cue %@ %i",[cue qName], prefixRange.length);
-
+				
 				[self setMidiChannel:[[proptery midiChannel] intValue] number:[[proptery midiNumber] intValue] forCue:cue];
 				//[cue set
 				
@@ -103,7 +149,7 @@
 	
 	
 	NSMutableArray * propertyCues = [NSMutableArray array];	
-
+	
 	
 	//Først finder vi ud af hvad vi har markeret
 	NSMutableArray * selectedCues = [NSMutableArray arrayWithArray:[workspace selected]];
@@ -119,13 +165,13 @@
 	//Er der en eller flere af dem der er denne property?
 	for(QLabCue * cue in selectedCues){
 		NSString *beginsTest = [cue qName];
-		NSRange prefixRange = [beginsTest rangeOfString:searchString options:(NSAnchoredSearch)];
+		NSRange prefixRange = [beginsTest rangeOfString:searchString options:(0)];
 		
 		if(prefixRange.length > 0){
 			[selectedPropertyCues addObject:cue];
 		}		
 	}
-		
+	
 	//Hvis der bare er en property cue, så er det selectedPropertyCue
 	if([selectedPropertyCues count] == 1){
 		multipleSelection = NO;
@@ -149,12 +195,14 @@
 		NSLog(@"%@:",[cue qName]);
 		
 		NSString *beginsTest = [cue qName];
-		NSRange prefixRange = [beginsTest rangeOfString:searchString options:(NSAnchoredSearch)];		
+		NSRange prefixRange = [beginsTest rangeOfString:searchString options:(0)];		
+		NSLog(@"Search length: %i for cue %@", prefixRange.length, [cue qName]);
+		
 		if(prefixRange.length > 0){
 			//Det er en property cue
 			[propertyCues addObject:[NSDictionary dictionaryWithObjectsAndKeys:[cue qName],@"name",nil]];
 			
-
+			
 			if(!makeNewCue && [[[selectedPropertyCues objectAtIndex:0] uniqueID] isEqualToString:[cue uniqueID]]){
 				indexFound = YES;
 			}	
@@ -181,52 +229,81 @@
 					indexFound = YES;
 				}
 			} else {
-					
+				
 			}
 		}		
 	}
 	
 	prevCueDict = [[CueObject alloc] init];
 	[prevCueDict setCue:prevCue];
-
-	thisCueDict = [[CueObject alloc] init];
-	[thisCueDict setCue:thisCue];
-
+	
+	if(thisCue){
+		thisCueDict = [[CueObject alloc] init];
+		[thisCueDict setCue:thisCue];
+	} else {
+		thisCueDict = [self newCue];
+	}
+	
 	nextCueDict = [[CueObject alloc] init];
 	[nextCueDict setCue:nextCue];
-
+	
 	
 	[self populateCueDict:prevCueDict];
 	[self setShownPrevCueDict:prevCueDict];
-
-
-	[self populateCueDict:thisCueDict];
+	
+	if(thisCue){
+		[self populateCueDict:thisCueDict];
+	}
 	[self setShownThisCueDict:thisCueDict];
-
+	
 	[self populateCueDict:nextCueDict];	
 	[self setShownNextCueDict:nextCueDict];
-
-	[self addObserver:self forKeyPath:@"shownThisCueDict.actualEndvalue" options:nil context:@"endvalue"];
-	[self addObserver:self forKeyPath:@"shownNextCueDict.updateStartvalue" options:nil context:@"endvalue"];
 	
-	[[self shownThisCueDict] setActualEndvalue:[[linkedProperty midiValue] intValue]];
 	
+	
+	[okButton setTitle:@"Update"];
 	if(!makeNewCue){
 		[updateCheck setHidden:NO];
 	} else {
 		[updateCheck setHidden:YES];
+		[updateCheck setState:0];
+		[okButton setTitle:@"Add"];
 	}
-	//[self updateGui];
 	
-	[panel orderFront:self];
+	
+	if([[self shownThisCueDict] cue]){
+		//Vi er i update mode	
+		NSLog(@"Actual end value: %i == %i",[[self shownThisCueDict] originalActualEndvalue],[[self shownNextCueDict] startvalue]);
+		if([[self shownNextCueDict] fade] && [[self shownThisCueDict] originalActualEndvalue] == [[self shownNextCueDict] startvalue]){
+			[[self shownNextCueDict] setUpdateStartvalue:YES];
+		}
+	} else {
+		//Vi er i ny cue mode
+		if([[self shownNextCueDict] fade] && [[self shownPrevCueDict] actualEndvalue] == [[self shownNextCueDict] startvalue]){
+			[[self shownNextCueDict] setUpdateStartvalue:YES];
+		}
+	}
+	
+	[[self shownThisCueDict] setActualEndvalue:[[linkedProperty midiValue] intValue]];
+	
+	
+	[panel makeKeyAndOrderFront:self];
 }
 
 -(void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context{
-	if([context isEqualToString:@"endvalue"]){
+	if([((NSString*)context) isEqualToString:@"endvalue"]){
 		if([[self shownNextCueDict] cue] && [[self shownNextCueDict] fade] && [[self shownNextCueDict] updateStartvalue]){
 			[[self shownNextCueDict] setStartvalue:[[self shownThisCueDict] actualEndvalue]];
 		} else if([[self shownNextCueDict] cue]){
 			[[self shownNextCueDict] setStartvalue:[[[[self shownNextCueDict] originalDict] valueForKey:@"startvalue"] intValue]];
+		}
+	}
+	if([((NSString*)context) isEqualToString:@"fade"]){
+		if([[self shownThisCueDict] fade]){
+			[[self shownThisCueDict] setStartvalue:[[self shownPrevCueDict] actualEndvalue]];	
+			[[self shownThisCueDict] setEndvalue:[[linkedProperty midiValue] intValue]];			
+		} else {
+			[[self shownThisCueDict] setStartvalue:[[linkedProperty midiValue] intValue]];	
 		}
 	}
 }
@@ -234,6 +311,7 @@
 
 -(void) populateCueDict:(CueObject*)obj{
 	QLabCue * cue = [obj cue];
+	[obj setProperty:linkedProperty];
 	
 	if(cue){
 		[obj setName:[cue qName]];
@@ -246,42 +324,43 @@
 		[obj setNumber:[[info valueForKey:@"number"] intValue]];
 		[obj setStartvalue:[[info valueForKey:@"startvalue"] intValue]];
 		[obj setOriginalDict:info];
-		/*
-		if([[info valueForKey:@"fade"] intValue] == 1 && dict == nextCueDict){
-			[dict setObject:[NSNumber numberWithInt:1] forKey:@"updateStartvalue"];
-			[dict setObject:[shownThisCueDict valueForKey:@"endvalue"] forKey:@"startvalue"];
-		}
-		else {
-			[dict setObject:[NSNumber numberWithInt:0] forKey:@"updateStartvalue"];
-		}*/
 	} else {
 		[obj setName:@"-" ];
 	}
-		
+	
 }
 
--(NSMutableDictionary*) newCue{
-	NSMutableDictionary * dict = [NSMutableDictionary dictionary];
-	[dict setObject:@"New cue" forKey:@"name"];
-	[dict setObject:[linkedProperty midiChannel] forKey:@"channel"];
-	[dict setObject:[NSNumber numberWithInt:5] forKey:@"duration"];
-	[dict setObject:[linkedProperty midiValue] forKey:@"endvalue"];
-	[dict setObject:[NSNumber numberWithInt:1] forKey:@"fade"];
-	[dict setObject:[linkedProperty midiNumber] forKey:@"number"];
+-(CueObject*) newCue{
+	CueObject * obj = [[CueObject alloc] init];
 	
-	[dict setObject:[NSNumber numberWithInt:0] forKey:@"startvalue"];
+	[obj setName:@"New cue"];
+	[obj setChannel:[[linkedProperty midiChannel] intValue]];
+	[obj setDuration:[NSNumber numberWithInt:5]];
+	[obj setEndvalue:[[linkedProperty midiValue] intValue] ];
+	[obj setFade:[[NSNumber numberWithInt:1] boolValue]];
+	[obj setNumber:[[linkedProperty midiNumber] intValue]];
+	[obj setStartvalue:[[self shownPrevCueDict] actualEndvalue]];
+	[obj setProperty:linkedProperty];
 	
-	
-	return dict;
+	return obj;
 }
 
 -(IBAction) setUpdateChecked:(id)sender{
 	if([sender state]){
+		//Update current cue
 		[self setShownPrevCueDict:prevCueDict];
 		[self setShownThisCueDict:thisCueDict];
-		[self setShownNextCueDict:nextCueDict];		
+		[self setShownNextCueDict:nextCueDict];	
+		
+		[[self shownThisCueDict] setActualEndvalue:[[linkedProperty midiValue] intValue]];
+		
+		[okButton setTitle:@"Update"];
 	} else {
+		//Make new cue
 		[self setShownPrevCueDict:thisCueDict];
+		[[self shownPrevCueDict] restoreEndvalue];
+		[[self shownPrevCueDict] restoreStartvalue];
+		
 		[self setShownThisCueDict:[self newCue]];
 		[self setShownNextCueDict:nextCueDict];		
 		
@@ -290,192 +369,263 @@
 		} else if([shownPrevCueDict valueForKey:@"cue"] && [[shownPrevCueDict valueForKey:@"fade"] intValue] == 0){
 			[[self shownThisCueDict] setValue:[shownPrevCueDict valueForKey:@"startvalue"] forKey:@"startvalue"];			
 		}
+		
+		[okButton setTitle:@"Add"];
 	}
 }
 
-
-/*
--(void) updateGui{
-
-	if(!makeNewCue){
-		[updateCheck setHidden:NO];
-	} else {
-		[updateCheck setHidden:YES];
-	}
-
+-(IBAction) go:(id)sender{
+	[[self shownThisCueDict] updateName];
+	[self updateCue:[self shownThisCueDict]];
 	
-	if(makeNewCue){
-		[thisName setStringValue:@"New Cue"];	
-	}
-	else if(multipleSelection){
-		[thisName setStringValue:@"Multiple"];	
-	} else if(thisCue != nil){
-		[thisName setStringValue:[thisCue qName]];
-	} else {
-		[thisName setStringValue:@"-"];	
+	if([[self shownNextCueDict] cue]){
+		if([[self shownNextCueDict] updateStartvalue]){	
+			[[self shownNextCueDict] updateName];
+			[self updateCue:[self shownNextCueDict]];
+		}
+		//	[self updateCue:[self shownThisCueDict]];
 	}
 	
-	if(nextCue != nil){
-		[nextName setStringValue:[nextCue qName]];
-	} else {
-		[nextName setStringValue:@"-"];	
-	}
-	
-	if(prevCue != nil){
-		[prevName setStringValue:[prevCue qName]];
-	} else {
-		[prevName setStringValue:@"-"];	
-	}
-	
-	
-}*/
--(NSDictionary*) getThisCueDict{
-	
-}
--(NSDictionary*) getNextCueDict{
-	
-}
--(NSDictionary*) getPrevCueDict{
-	
+	[panel orderOut:self];
 }
 
 
+-(IBAction) cancel:(id)sender{
+	
+	[panel orderOut:self];
+}
 
 -(NSDictionary*) getCueInfo:(QLabCue*)cue{
 	NSMutableDictionary * dict = [NSMutableDictionary dictionary];
 	
 	NSString* path = [[NSBundle mainBundle] pathForResource:@"SendToQlab" ofType:@"scpt"];
-    if (path != nil)
-    {
-        NSURL* url = [NSURL fileURLWithPath:path];
-        if (url != nil)
-        {
-            NSDictionary* errors = [NSDictionary dictionary];
-            NSAppleScript* appleScript =
+	if (path != nil)
+	{
+		NSURL* url = [NSURL fileURLWithPath:path];
+		if (url != nil)
+		{
+			NSDictionary* errors = [NSDictionary dictionary];
+			NSAppleScript* appleScript =
 			[[NSAppleScript alloc] initWithContentsOfURL:url error:&errors];
-            if (appleScript != nil)
-            {
-                NSAppleEventDescriptor* firstParameter = [NSAppleEventDescriptor descriptorWithString:[cue uniqueID]];
-                NSAppleEventDescriptor* parameters = [NSAppleEventDescriptor listDescriptor];
-                [parameters insertDescriptor:firstParameter atIndex:1];
+			if (appleScript != nil)
+			{
+				NSAppleEventDescriptor* firstParameter = [NSAppleEventDescriptor descriptorWithString:[cue uniqueID]];
+				NSAppleEventDescriptor* parameters = [NSAppleEventDescriptor listDescriptor];
+				[parameters insertDescriptor:firstParameter atIndex:1];
 				
-                // create the AppleEvent target
-                ProcessSerialNumber psn = {0, kCurrentProcess};
-                NSAppleEventDescriptor* target =
-                [NSAppleEventDescriptor
+				// create the AppleEvent target
+				ProcessSerialNumber psn = {0, kCurrentProcess};
+				NSAppleEventDescriptor* target =
+				[NSAppleEventDescriptor
 				 descriptorWithDescriptorType:typeProcessSerialNumber
 				 bytes:&psn
 				 length:sizeof(ProcessSerialNumber)];
 				
-                NSAppleEventDescriptor* handler =
-				[NSAppleEventDescriptor descriptorWithString:
-				 [@"get_cue_info" lowercaseString]];
+				NSAppleEventDescriptor* handler =
+				[NSAppleEventDescriptor descriptorWithString:[@"get_cue_info" lowercaseString]];
 				
-                // create the event for an AppleScript subroutine,
-                // set the method name and the list of parameters
-                NSAppleEventDescriptor* event =
-				[NSAppleEventDescriptor appleEventWithEventClass:kASAppleScriptSuite
-														 eventID:kASSubroutineEvent
-												targetDescriptor:target
-														returnID:kAutoGenerateReturnID
-												   transactionID:kAnyTransactionID];
-                [event setParamDescriptor:handler forKeyword:keyASSubroutineName];
-                [event setParamDescriptor:parameters forKeyword:keyDirectObject];
+				NSAppleEventDescriptor* event =	[NSAppleEventDescriptor appleEventWithEventClass:kASAppleScriptSuite
+																						 eventID:kASSubroutineEvent
+																				targetDescriptor:target
+																						returnID:kAutoGenerateReturnID
+																				   transactionID:kAnyTransactionID];
+				[event setParamDescriptor:handler forKeyword:keyASSubroutineName];
+				[event setParamDescriptor:parameters forKeyword:keyDirectObject];
 				
-                // call the event in AppleScript
+				// call the event in AppleScript
 				NSAppleEventDescriptor* retDesc = [appleScript executeAppleEvent:event error:&errors];
-                if (retDesc);
-                {
+				if (retDesc);
+				{
 					[dict setValue:[NSNumber numberWithInt:[[retDesc descriptorAtIndex:1] int32Value]] forKey:@"channel"];
 					[dict setValue:[NSNumber numberWithInt:[[retDesc descriptorAtIndex:2] int32Value]] forKey:@"number"];
 					[dict setValue:[NSNumber numberWithInt:[[retDesc descriptorAtIndex:3] int32Value]] forKey:@"startvalue"];
 					[dict setValue:[NSNumber numberWithInt:[[retDesc descriptorAtIndex:4] int32Value]] forKey:@"endvalue"];
 					[dict setValue:[NSNumber numberWithInt:[[retDesc descriptorAtIndex:5] int32Value]] forKey:@"fade"];
 					[dict setValue:[[retDesc descriptorAtIndex:6] stringValue] forKey:@"duration"];
-
-					NSLog(@"%@",dict);
 				}
 				
-				
-
-
-                [appleScript release];
-            }
-            else
-            {
-                // report any errors from 'errors'
-            }
-        }
-    }
+				[appleScript release];
+			}
+		}
+	}
 	
 	return dict;	
 }
 
 
 -(void) setMidiChannel:(int)channel number:(int)number forCue:(QLabCue*)cue{
-	NSLog(@"Set midi channel %i number %i for %@ %@",channel,number, [cue qName], [cue uniqueID]);
-	
 	NSString* path = [[NSBundle mainBundle] pathForResource:@"SendToQlab" ofType:@"scpt"];
-    if (path != nil)
-    {
-        NSURL* url = [NSURL fileURLWithPath:path];
-        if (url != nil)
-        {
-            NSDictionary* errors = [NSDictionary dictionary];
-            NSAppleScript* appleScript =
+	if (path != nil)
+	{
+		NSURL* url = [NSURL fileURLWithPath:path];
+		if (url != nil)
+		{
+			NSDictionary* errors = [NSDictionary dictionary];
+			NSAppleScript* appleScript =
 			[[NSAppleScript alloc] initWithContentsOfURL:url error:&errors];
-            if (appleScript != nil)
-            {
-                // create the first parameter
-                NSAppleEventDescriptor* firstParameter = [NSAppleEventDescriptor descriptorWithString:[cue uniqueID]];
-                NSAppleEventDescriptor* secondParameter = [NSAppleEventDescriptor descriptorWithInt32:channel];
-                NSAppleEventDescriptor* thirdParameter = [NSAppleEventDescriptor descriptorWithInt32:number];
+			if (appleScript != nil)
+			{
+				// create the first parameter
+				NSAppleEventDescriptor* firstParameter = [NSAppleEventDescriptor descriptorWithString:[cue uniqueID]];
+				NSAppleEventDescriptor* secondParameter = [NSAppleEventDescriptor descriptorWithInt32:channel];
+				NSAppleEventDescriptor* thirdParameter = [NSAppleEventDescriptor descriptorWithInt32:number];
 				
-                // create and populate the list of parameters (in our case just one)
-                NSAppleEventDescriptor* parameters = [NSAppleEventDescriptor listDescriptor];
-                [parameters insertDescriptor:firstParameter atIndex:1];
-                [parameters insertDescriptor:secondParameter atIndex:2];
+				// create and populate the list of parameters (in our case just one)
+				NSAppleEventDescriptor* parameters = [NSAppleEventDescriptor listDescriptor];
+				[parameters insertDescriptor:firstParameter atIndex:1];
+				[parameters insertDescriptor:secondParameter atIndex:2];
 				[parameters insertDescriptor:thirdParameter atIndex:3];
 				
-                // create the AppleEvent target
-                ProcessSerialNumber psn = {0, kCurrentProcess};
-                NSAppleEventDescriptor* target =
-                [NSAppleEventDescriptor
+				// create the AppleEvent target
+				ProcessSerialNumber psn = {0, kCurrentProcess};
+				NSAppleEventDescriptor* target =
+				[NSAppleEventDescriptor
 				 descriptorWithDescriptorType:typeProcessSerialNumber
 				 bytes:&psn
 				 length:sizeof(ProcessSerialNumber)];
 				
-                NSAppleEventDescriptor* handler =
+				NSAppleEventDescriptor* handler =
 				[NSAppleEventDescriptor descriptorWithString:
 				 [@"set_midi" lowercaseString]];
 				
-                // create the event for an AppleScript subroutine,
-                // set the method name and the list of parameters
-                NSAppleEventDescriptor* event =
+				// create the event for an AppleScript subroutine,
+				// set the method name and the list of parameters
+				NSAppleEventDescriptor* event =
 				[NSAppleEventDescriptor appleEventWithEventClass:kASAppleScriptSuite
 														 eventID:kASSubroutineEvent
 												targetDescriptor:target
 														returnID:kAutoGenerateReturnID
 												   transactionID:kAnyTransactionID];
-                [event setParamDescriptor:handler forKeyword:keyASSubroutineName];
-                [event setParamDescriptor:parameters forKeyword:keyDirectObject];
+				[event setParamDescriptor:handler forKeyword:keyASSubroutineName];
+				[event setParamDescriptor:parameters forKeyword:keyDirectObject];
 				
-                // call the event in AppleScript
-                if (![appleScript executeAppleEvent:event error:&errors]);
-                {
-                    // report any errors from 'errors'
-                }
+				// call the event in AppleScript
+				if (![appleScript executeAppleEvent:event error:&errors]);
+				{
+					// report any errors from 'errors'
+				}
 				
-                [appleScript release];
-            }
-            else
-            {
-                // report any errors from 'errors'
-            }
-        }
-    }
+				[appleScript release];
+			}
+			else
+			{
+				// report any errors from 'errors'
+			}
+		}
+	}
 	
 	
 }
+
+
+-(void) updateCue:(CueObject*)cue{	
+	NSString* path = [[NSBundle mainBundle] pathForResource:@"SendToQlab" ofType:@"scpt"];
+	if (path != nil)
+	{
+		NSURL* url = [NSURL fileURLWithPath:path];
+		if (url != nil)
+		{
+			NSDictionary* errors = [NSDictionary dictionary];
+			NSAppleScript* appleScript =
+			[[NSAppleScript alloc] initWithContentsOfURL:url error:&errors];
+			if (appleScript != nil){
+				
+				if([cue cue]){								
+					// create and populate the list of parameters
+					NSAppleEventDescriptor* parameters = [NSAppleEventDescriptor listDescriptor];
+					[parameters insertDescriptor:[NSAppleEventDescriptor descriptorWithString:[[cue cue] uniqueID]] atIndex:1];
+					[parameters insertDescriptor:[NSAppleEventDescriptor descriptorWithInt32:[cue channel]] atIndex:2];
+					[parameters insertDescriptor:[NSAppleEventDescriptor descriptorWithInt32:[cue number]] atIndex:3];
+					[parameters insertDescriptor:[NSAppleEventDescriptor descriptorWithString:[cue  name]] atIndex:4];
+					[parameters insertDescriptor:[NSAppleEventDescriptor descriptorWithInt32:[cue startvalue]] atIndex:5];
+					[parameters insertDescriptor:[NSAppleEventDescriptor descriptorWithInt32:[cue endvalue]] atIndex:6];
+					[parameters insertDescriptor:[NSAppleEventDescriptor descriptorWithInt32:[cue fade]] atIndex:7];
+					
+					[[cue cue] setDuration:[[cue duration] doubleValue]];
+					
+					// create the AppleEvent target
+					ProcessSerialNumber psn = {0, kCurrentProcess};
+					NSAppleEventDescriptor* target =
+					[NSAppleEventDescriptor
+					 descriptorWithDescriptorType:typeProcessSerialNumber
+					 bytes:&psn
+					 length:sizeof(ProcessSerialNumber)];
+					
+					NSAppleEventDescriptor* handler =
+					[NSAppleEventDescriptor descriptorWithString:
+					 [@"update_cue" lowercaseString]];
+					
+					// create the event for an AppleScript subroutine,
+					// set the method name and the list of parameters
+					NSAppleEventDescriptor* event =
+					[NSAppleEventDescriptor appleEventWithEventClass:kASAppleScriptSuite
+															 eventID:kASSubroutineEvent
+													targetDescriptor:target
+															returnID:kAutoGenerateReturnID
+													   transactionID:kAnyTransactionID];
+					[event setParamDescriptor:handler forKeyword:keyASSubroutineName];
+					[event setParamDescriptor:parameters forKeyword:keyDirectObject];
+					
+					// call the event in AppleScript
+					if (![appleScript executeAppleEvent:event error:&errors]);
+					{
+						NSLog(@"Error updating cue.. Damn! %@",errors);
+					}
+					
+					[appleScript release];
+					
+					
+				} else {
+					// create and populate the list of parameters
+					NSAppleEventDescriptor* parameters = [NSAppleEventDescriptor listDescriptor];
+					[parameters insertDescriptor:[NSAppleEventDescriptor descriptorWithInt32:[cue channel]] atIndex:1];
+					[parameters insertDescriptor:[NSAppleEventDescriptor descriptorWithInt32:[cue number]] atIndex:2];
+					[parameters insertDescriptor:[NSAppleEventDescriptor descriptorWithString:[cue  name]] atIndex:3];
+					[parameters insertDescriptor:[NSAppleEventDescriptor descriptorWithInt32:[cue startvalue]] atIndex:4];
+					[parameters insertDescriptor:[NSAppleEventDescriptor descriptorWithInt32:[cue endvalue]] atIndex:5];
+					[parameters insertDescriptor:[NSAppleEventDescriptor descriptorWithInt32:[cue fade]] atIndex:6];
+					
+					//				[[cue cue] setDuration:[[cue duration] doubleValue]];
+					
+					// create the AppleEvent target
+					ProcessSerialNumber psn = {0, kCurrentProcess};
+					NSAppleEventDescriptor* target =
+					[NSAppleEventDescriptor
+					 descriptorWithDescriptorType:typeProcessSerialNumber
+					 bytes:&psn
+					 length:sizeof(ProcessSerialNumber)];
+					
+					NSAppleEventDescriptor* handler =
+					[NSAppleEventDescriptor descriptorWithString:
+					 [@"add_cue" lowercaseString]];
+					
+					// create the event for an AppleScript subroutine,
+					// set the method name and the list of parameters
+					NSAppleEventDescriptor* event =
+					[NSAppleEventDescriptor appleEventWithEventClass:kASAppleScriptSuite
+															 eventID:kASSubroutineEvent
+													targetDescriptor:target
+															returnID:kAutoGenerateReturnID
+													   transactionID:kAnyTransactionID];
+					[event setParamDescriptor:handler forKeyword:keyASSubroutineName];
+					[event setParamDescriptor:parameters forKeyword:keyDirectObject];
+					
+					// call the event in AppleScript
+					if (![appleScript executeAppleEvent:event error:&errors]);
+					{
+						NSLog(@"Error updating cue.. Damn! %@",errors);
+					}
+					
+					[appleScript release];
+					
+					
+				}
+			}
+		}
+	}
+	
+	
+}
+
 
 @end
