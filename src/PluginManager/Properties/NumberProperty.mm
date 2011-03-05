@@ -8,7 +8,6 @@
 
 #import "NumberProperty.h"
 
-
 @implementation NumberProperty
 @synthesize minValue, maxValue;
 
@@ -131,7 +130,7 @@
 	v -= [[self minValue] floatValue];
 	v /= ( [[self maxValue] floatValue] -  [[self minValue] floatValue]);
 	v *= 127.0;
-	
+	v = ceil(v);
 	return [NSNumber numberWithInt:v];
 	
 	

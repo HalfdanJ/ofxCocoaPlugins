@@ -147,7 +147,7 @@
 
 -(void) assignMidiChannel:(int) channel{
 	[self setMidiChannel:[NSNumber numberWithInt:channel]];
-	
+
 	for(NSString * aKey in properties){
 		[[properties valueForKey:aKey] setMidiChannel:[NSNumber numberWithInt:channel]];
 	}	
@@ -162,7 +162,7 @@
 	[alert setMessageText:@"Qlab alle properties?"];
 	[alert setInformativeText:@"Dette kan have stor effekt på qlab!"];
 	[alert setAlertStyle:NSWarningAlertStyle];
-	//	[alert beginSheetModalForWindow:[NSApp mainWindow] modalDelegate:self didEndSelector:@selector(alertDidEnd:returnCode:contextInfo:) contextInfo:nil];
+//	[alert beginSheetModalForWindow:[NSApp mainWindow] modalDelegate:self didEndSelector:@selector(alertDidEnd:returnCode:contextInfo:) contextInfo:nil];
 	
 	if ([alert runModal] == NSAlertFirstButtonReturn) {
 		NSLog(@"Go qlab");

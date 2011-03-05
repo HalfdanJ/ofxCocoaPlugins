@@ -585,6 +585,7 @@
 										<string>allowsFloats</string>
 										<string>formatterBehavior</string>
 										<string>lenient</string>
+										<string>maximumFractionDigits</string>
 										<string>negativeInfinitySymbol</string>
 										<string>nilSymbol</string>
 										<string>numberStyle</string>
@@ -595,14 +596,15 @@
 										<boolean value="YES"/>
 										<integer value="1040"/>
 										<boolean value="NO"/>
+										<integer value="9"/>
 										<string>-∞</string>
 										<string/>
 										<integer value="1"/>
 										<string>+∞</string>
 									</object>
 								</object>
-								<string key="NS.positiveformat">#,##0.###</string>
-								<string key="NS.negativeformat">#,##0.###</string>
+								<string key="NS.positiveformat">#,##0.#########</string>
+								<string key="NS.negativeformat">#,##0.#########</string>
 								<nil key="NS.positiveattrs"/>
 								<nil key="NS.negativeattrs"/>
 								<nil key="NS.zero"/>
@@ -2160,7 +2162,7 @@
 				</object>
 				<object class="NSMutableArray" key="dict.values">
 					<bool key="EncodedWithXMLCoder">YES</bool>
-					<string>{{369, 143}, {907, 553}}</string>
+					<string>{{541, 275}, {907, 553}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>{628, 654}</string>
 					<string>{{217, 442}, {480, 272}}</string>
@@ -2241,7 +2243,7 @@
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<integer value="1041"/>
+					<integer value="1040"/>
 					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -2402,21 +2404,7 @@
 					</object>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">../../../../of_preRelease_v0062_osxSL_FAT/addons/ofxCocoaPlugins/src/CorePlugins/Keystoner/Keystoner.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">NSObject</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">Plugins/SamplePlugin/AsyncSocket.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">NSObject</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">Plugins/SamplePlugin/MTMessageBroker.h</string>
+						<string key="minorKey">../../../addons/ofxCocoaPlugins/src/CorePlugins/Keystoner/Keystoner.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
@@ -2424,7 +2412,7 @@
 					<string key="superclassName">NSView</string>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">../../../../of_preRelease_v0062_osxSL_FAT/addons/ofxCocoaPlugins/src/OpenGL/PluginOpenGLControl.h</string>
+						<string key="minorKey">../../../addons/ofxCocoaPlugins/src/OpenGL/PluginOpenGLControl.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
@@ -2432,7 +2420,7 @@
 					<string key="superclassName">NSView</string>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">../../../../of_preRelease_v0062_osxSL_FAT/addons/ofxCocoaPlugins/src/CorePlugins/Keystoner/TrackingView.h</string>
+						<string key="minorKey">../../../addons/ofxCocoaPlugins/src/CorePlugins/Keystoner/TrackingView.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
@@ -2483,7 +2471,7 @@
 					</object>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">../../../../of_preRelease_v0062_osxSL_FAT/addons/ofxCocoaPlugins/src/PluginManager/Plugin.h</string>
+						<string key="minorKey">../../../addons/ofxCocoaPlugins/src/PluginManager/Plugin.h</string>
 					</object>
 				</object>
 			</object>

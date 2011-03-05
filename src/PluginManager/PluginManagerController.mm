@@ -163,6 +163,7 @@ extern ofAppBaseWindow * window;
 
 
 - (void)addPlugin:(ofPlugin*)obj {
+	[obj setName:NSStringFromClass([obj class])];
 	[obj retain];
 	
 	NSMutableArray * array = [[[self plugins] lastObject] objectForKey:@"children"];
@@ -391,7 +392,7 @@ extern ofAppBaseWindow * window;
 		lastPowerMeterUpdate = ofGetElapsedTimeMillis();
 	}
 	
-	[perFramePool release];
+	[perFramePool drain];
 	
 }
 
