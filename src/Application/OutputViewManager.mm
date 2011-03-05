@@ -89,11 +89,15 @@ CFStringRef CopyLocalDisplayName(CGDirectDisplayID display)
 		
 		OutputPanelController * newPanel = [[[OutputPanelController alloc] init] autorelease];
 		[newPanel loadFromNib];
-		
+
+		[[controller openglLock] lock]; // prevent drawing from another thread if we're drawing already
+				
+		[[newPanel panel] setStyleMask:NSResizableWindowMask | NSHUDWindowMask | NSTitledWindowMask | NSUtilityWindowMask];
 		[[newPanel panel] setFrameAutosaveName:[NSString stringWithFormat:@"OutputView %i",i]];
 		[[newPanel panel] setTitle:[NSString stringWithFormat:@"OutputView %i",i]];
 		[[newPanel panel] setMinSize:NSMakeSize(800/4, (600/4)+40)];
 		[[newPanel panel] setHidesOnDeactivate:NO];
+		[[newPanel panel] setLevel:NSFloatingWindowLevel];
 		
 		[outputViewsPanels addObject:newPanel];
 		
@@ -105,10 +109,24 @@ CFStringRef CopyLocalDisplayName(CGDirectDisplayID display)
 		theDelegate = [[[PluginOutputWindowDelegate alloc]initWithPluginOutputView:[newPanel glView]]retain];
 		[[newPanel panel] setDelegate:theDelegate];
 		
+		[[controller openglLock] unlock]; // prevent drawing from another thread if we're drawing already
+		
 		[glViews addObject:[newPanel glView]];
+				
 	}
 	
 	[self refreshScreens];
+	
+	
+	for(OutputPanelController * panelController in outputViewsPanels){
+		[[controller openglLock] lock]; // prevent drawing from another thread if we're drawing already
+		
+		PluginOpenGLView * view = [panelController glView];
+		NSPanel * panel = (NSPanel * )[view window];
+		[view updateDisplayIDWithWindow:panel];
+		[[controller openglLock] unlock]; // prevent drawing from another thread if we're drawing already
+	}
+	
 	setupScreensCalled = YES;
 	
 	BOOL goFullscreen = YES;
@@ -138,8 +156,6 @@ CFStringRef CopyLocalDisplayName(CGDirectDisplayID display)
 -(void) refreshScreens{
 	CGDisplayCount		dspCount = 0;
 	CGDirectDisplayID *displays = nil;
-	
-	
 	
 	dspCount = [self getDisplayList:&displays];
 	NSUserDefaults * userDefaults = [NSUserDefaults standardUserDefaults];
@@ -199,7 +215,6 @@ CFStringRef CopyLocalDisplayName(CGDirectDisplayID display)
 		[toolbarFullscreenItem setImage:[NSImage imageNamed:@"NSExitFullScreenTemplate"]];
 		
 		fullscreen = YES;
-		
 		
 		int i=0;
 		for(OutputPanelController * panelController in outputViewsPanels){
@@ -268,10 +283,9 @@ CFStringRef CopyLocalDisplayName(CGDirectDisplayID display)
 			
 			PluginOpenGLView * view = [panelController glView];
 			
-			
 			NSPanel * panel = (NSPanel * )[view window];
 			
-			[panel setStyleMask:NSResizableWindowMask | NSHUDWindowMask | NSTitledWindowMask | NSUtilityWindowMask | NSClosableWindowMask];
+			[panel setStyleMask:NSResizableWindowMask | NSHUDWindowMask | NSTitledWindowMask | NSUtilityWindowMask];
 			[panel setLevel:NSFloatingWindowLevel];
 			[panel setOpaque:NO];
 			[panel setHidesOnDeactivate:YES];
