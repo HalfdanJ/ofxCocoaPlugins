@@ -2318,7 +2318,7 @@
 						<object class="NSTextField" id="663227319">
 							<reference key="NSNextResponder" ref="295674585"/>
 							<int key="NSvFlags">268</int>
-							<string key="NSFrame">{{110, 305}, {155, 17}}</string>
+							<string key="NSFrame">{{110, 305}, {223, 17}}</string>
 							<reference key="NSSuperview" ref="295674585"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSTextFieldCell" key="NSCell" id="397553789">
@@ -2615,7 +2615,7 @@
 										<object class="NSTextField" id="968160576">
 											<reference key="NSNextResponder" ref="377023104"/>
 											<int key="NSvFlags">268</int>
-											<string key="NSFrame">{{109, 29}, {94, 19}}</string>
+											<string key="NSFrame">{{114, 9}, {94, 19}}</string>
 											<reference key="NSSuperview" ref="377023104"/>
 											<bool key="NSEnabled">YES</bool>
 											<object class="NSTextFieldCell" key="NSCell" id="672330679">
@@ -2671,13 +2671,13 @@
 										<object class="BWTransparentCheckbox" id="172613902">
 											<reference key="NSNextResponder" ref="377023104"/>
 											<int key="NSvFlags">268</int>
-											<string key="NSFrame">{{128, 48}, {54, 18}}</string>
+											<string key="NSFrame">{{110, 37}, {84, 18}}</string>
 											<reference key="NSSuperview" ref="377023104"/>
 											<bool key="NSEnabled">YES</bool>
 											<object class="BWTransparentCheckboxCell" key="NSCell" id="389293806">
 												<int key="NSCellFlags">-2080244224</int>
 												<int key="NSCellFlags2">131072</int>
-												<string key="NSContents">Fade</string>
+												<string key="NSContents">Fade ( ⌘F )</string>
 												<reference key="NSSupport" ref="26"/>
 												<reference key="NSControlView" ref="172613902"/>
 												<int key="NSButtonFlags">1211912703</int>
@@ -2706,6 +2706,32 @@
 												<int key="NSButtonFlags2">129</int>
 												<string key="NSAlternateContents"/>
 												<string key="NSKeyEquivalent"/>
+												<int key="NSPeriodicDelay">200</int>
+												<int key="NSPeriodicInterval">25</int>
+											</object>
+										</object>
+										<object class="BWTransparentCheckbox" id="851075941">
+											<reference key="NSNextResponder" ref="377023104"/>
+											<int key="NSvFlags">268</int>
+											<string key="NSFrame">{{110, 58}, {100, 18}}</string>
+											<reference key="NSSuperview" ref="377023104"/>
+											<bool key="NSEnabled">YES</bool>
+											<object class="BWTransparentCheckboxCell" key="NSCell" id="825635435">
+												<int key="NSCellFlags">-2080244224</int>
+												<int key="NSCellFlags2">131072</int>
+												<string key="NSContents">Update ( ⌘U )</string>
+												<object class="NSFont" key="NSSupport">
+													<string key="NSName">LucidaGrande-Bold</string>
+													<double key="NSSize">11</double>
+													<int key="NSfFlags">16</int>
+												</object>
+												<reference key="NSControlView" ref="851075941"/>
+												<int key="NSButtonFlags">1211912703</int>
+												<int key="NSButtonFlags2">268435586</int>
+												<reference key="NSNormalImage" ref="734942635"/>
+												<reference key="NSAlternateImage" ref="1050163611"/>
+												<string key="NSAlternateContents"/>
+												<string key="NSKeyEquivalent">u</string>
 												<int key="NSPeriodicDelay">200</int>
 												<int key="NSPeriodicInterval">25</int>
 											</object>
@@ -2866,13 +2892,13 @@
 										<object class="BWTransparentCheckbox" id="461394351">
 											<reference key="NSNextResponder" ref="841048501"/>
 											<int key="NSvFlags">268</int>
-											<string key="NSFrame">{{28, 11}, {62, 18}}</string>
+											<string key="NSFrame">{{28, 11}, {98, 18}}</string>
 											<reference key="NSSuperview" ref="841048501"/>
 											<bool key="NSEnabled">YES</bool>
 											<object class="BWTransparentCheckboxCell" key="NSCell" id="1035604929">
 												<int key="NSCellFlags">-2080244224</int>
 												<int key="NSCellFlags2">131072</int>
-												<string key="NSContents">Update</string>
+												<string key="NSContents">Update ( ⌘L )</string>
 												<reference key="NSSupport" ref="26"/>
 												<reference key="NSControlView" ref="461394351"/>
 												<int key="NSButtonFlags">1211912703</int>
@@ -2946,32 +2972,6 @@
 								<int key="NSButtonFlags2">129</int>
 								<string key="NSAlternateContents"/>
 								<string type="base64-UTF8" key="NSKeyEquivalent">Gw</string>
-								<int key="NSPeriodicDelay">200</int>
-								<int key="NSPeriodicInterval">25</int>
-							</object>
-						</object>
-						<object class="BWTransparentCheckbox" id="851075941">
-							<reference key="NSNextResponder" ref="295674585"/>
-							<int key="NSvFlags">268</int>
-							<string key="NSFrame">{{268, 303}, {62, 18}}</string>
-							<reference key="NSSuperview" ref="295674585"/>
-							<bool key="NSEnabled">YES</bool>
-							<object class="BWTransparentCheckboxCell" key="NSCell" id="825635435">
-								<int key="NSCellFlags">-2080244224</int>
-								<int key="NSCellFlags2">131072</int>
-								<string key="NSContents">Update</string>
-								<object class="NSFont" key="NSSupport">
-									<string key="NSName">LucidaGrande-Bold</string>
-									<double key="NSSize">11</double>
-									<int key="NSfFlags">16</int>
-								</object>
-								<reference key="NSControlView" ref="851075941"/>
-								<int key="NSButtonFlags">1211912703</int>
-								<int key="NSButtonFlags2">268435586</int>
-								<reference key="NSNormalImage" ref="734942635"/>
-								<reference key="NSAlternateImage" ref="1050163611"/>
-								<string key="NSAlternateContents"/>
-								<string key="NSKeyEquivalent">u</string>
 								<int key="NSPeriodicDelay">200</int>
 								<int key="NSPeriodicInterval">25</int>
 							</object>
@@ -5734,7 +5734,6 @@
 							<reference ref="1027237189"/>
 							<reference ref="1045941708"/>
 							<reference ref="836797380"/>
-							<reference ref="851075941"/>
 							<reference ref="663227319"/>
 							<reference ref="1049772732"/>
 						</array>
@@ -5880,9 +5879,10 @@
 							<reference ref="618094048"/>
 							<reference ref="114964207"/>
 							<reference ref="270449442"/>
-							<reference ref="172613902"/>
 							<reference ref="983740592"/>
 							<reference ref="968160576"/>
+							<reference ref="172613902"/>
+							<reference ref="851075941"/>
 						</array>
 						<reference key="parent" ref="295674585"/>
 					</object>
@@ -6114,19 +6114,6 @@
 						<reference key="parent" ref="461394351"/>
 					</object>
 					<object class="IBObjectRecord">
-						<int key="objectID">1392</int>
-						<reference key="object" ref="851075941"/>
-						<array class="NSMutableArray" key="children">
-							<reference ref="825635435"/>
-						</array>
-						<reference key="parent" ref="295674585"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">1393</int>
-						<reference key="object" ref="825635435"/>
-						<reference key="parent" ref="851075941"/>
-					</object>
-					<object class="IBObjectRecord">
 						<int key="objectID">1394</int>
 						<reference key="object" ref="663227319"/>
 						<array class="NSMutableArray" key="children">
@@ -6166,6 +6153,19 @@
 						<int key="objectID">1362</int>
 						<reference key="object" ref="189988617"/>
 						<reference key="parent" ref="1049772732"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">1392</int>
+						<reference key="object" ref="851075941"/>
+						<array class="NSMutableArray" key="children">
+							<reference ref="825635435"/>
+						</array>
+						<reference key="parent" ref="811248454"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">1393</int>
+						<reference key="object" ref="825635435"/>
+						<reference key="parent" ref="851075941"/>
 					</object>
 				</array>
 			</object>
@@ -6250,9 +6250,9 @@
 				</object>
 				<string key="1260.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="1282.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="1284.IBEditorWindowLastContentRect">{{1052, 578}, {350, 487}}</string>
+				<string key="1284.IBEditorWindowLastContentRect">{{652, 648}, {350, 487}}</string>
 				<string key="1284.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="1284.IBWindowTemplateEditedContentRect">{{1052, 578}, {350, 487}}</string>
+				<string key="1284.IBWindowTemplateEditedContentRect">{{652, 648}, {350, 487}}</string>
 				<boolean value="NO" key="1284.NSWindowTemplate.visibleAtLaunch"/>
 				<string key="1285.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<object class="NSAffineTransform" key="1285.IBViewBoundsToFrameTransform"/>
@@ -6343,7 +6343,7 @@
 				<string key="1362.IBPluginDependency">com.brandonwalkin.BWToolkit</string>
 				<string key="1363.IBPluginDependency">com.brandonwalkin.BWToolkit</string>
 				<object class="NSAffineTransform" key="1363.IBViewBoundsToFrameTransform">
-					<bytes key="NSTransformStruct">P4AAAL+AAABDAAAAwoAAAA</bytes>
+					<bytes key="NSTransformStruct">P4AAAL+AAABC0gAAwoQAAA</bytes>
 				</object>
 				<string key="1364.IBPluginDependency">com.brandonwalkin.BWToolkit</string>
 				<string key="1365.IBPluginDependency">com.brandonwalkin.BWToolkit</string>
@@ -6402,7 +6402,7 @@
 				<string key="1391.IBPluginDependency">com.brandonwalkin.BWToolkit</string>
 				<string key="1392.IBPluginDependency">com.brandonwalkin.BWToolkit</string>
 				<object class="NSAffineTransform" key="1392.IBViewBoundsToFrameTransform">
-					<bytes key="NSTransformStruct">P4AAAL+AAABC9gAAw6AAAA</bytes>
+					<bytes key="NSTransformStruct">P4AAAL+AAABC0gAAwq4AAA</bytes>
 				</object>
 				<string key="1393.IBPluginDependency">com.brandonwalkin.BWToolkit</string>
 				<string key="1394.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>

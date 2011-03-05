@@ -89,6 +89,9 @@
 		[self addObserver:self forKeyPath:@"shownThisCueDict.actualEndvalue" options:nil context:@"endvalue"];
 		[self addObserver:self forKeyPath:@"shownThisCueDict.fade" options:nil context:@"fade"];
 		[self addObserver:self forKeyPath:@"shownNextCueDict.updateStartvalue" options:nil context:@"endvalue"];
+		
+		thread = [[NSThread alloc] initWithTarget:self selector:@selector(blinkName) object:nil];
+		[thread start];
 	}
 	return self;
 }
@@ -286,7 +289,7 @@
 	
 	[[self shownThisCueDict] setActualEndvalue:[[linkedProperty midiValue] intValue]];
 	
-	
+	blinkRunning = YES;
 	[panel makeKeyAndOrderFront:self];
 }
 
@@ -375,8 +378,6 @@
 }
 
 -(IBAction) go:(id)sender{
-	[[self shownThisCueDict] updateName];
-	[self updateCue:[self shownThisCueDict]];
 	
 	if([[self shownNextCueDict] cue]){
 		if([[self shownNextCueDict] updateStartvalue]){	
@@ -386,13 +387,77 @@
 		//	[self updateCue:[self shownThisCueDict]];
 	}
 	
+	[[self shownThisCueDict] updateName];
+	[self updateCue:[self shownThisCueDict]];
+	
+	
 	[panel orderOut:self];
+	[self stopBlink];
 }
 
 
 -(IBAction) cancel:(id)sender{
-	
+	[self stopBlink];	
 	[panel orderOut:self];
+}
+
+
+-(void) stopBlink{
+	blinkRunning = NO;	
+}
+
+-(void) blinkName{
+	NSString *searchString = @"<--";
+	
+		
+	while(1){
+		if(blinkRunning || blink){
+			NSLog(@"Blink %i", blink);
+			if(thisCue){
+				NSString *beginsTest = [thisCue qName];
+				NSRange prefixRange = [beginsTest rangeOfString:searchString options:(0)];						
+				
+				if(!blink && prefixRange.length == 0)
+					[thisCue setQName:[NSString stringWithFormat:@"%@ <--",[thisCue qName]]];
+				else if(prefixRange.length > 0){
+					NSString * str = [thisCue qName];
+					int length = [str length];
+					[thisCue setQName:[str substringToIndex:length-4]];
+				}					
+			}
+			
+			if(prevCue){
+				NSString *beginsTest = [prevCue qName];
+				NSRange prefixRange = [beginsTest rangeOfString:searchString options:(0)];		
+				
+				if(!blink && prefixRange.length == 0 && prevCue == [[self shownPrevCueDict] cue])
+					[prevCue setQName:[NSString stringWithFormat:@"%@ <--",[prevCue qName]]];
+				else if(prefixRange.length > 0){
+					NSString * str = [prevCue qName];
+					int length = [str length];
+					[prevCue setQName:[str substringToIndex:length-4]];
+				}					
+			}
+			if(nextCue){
+				NSString *beginsTest = [nextCue qName];
+				NSRange prefixRange = [beginsTest rangeOfString:searchString options:(0)];						
+
+				if(!blink && prefixRange.length == 0)
+					[nextCue setQName:[NSString stringWithFormat:@"%@ <--",[nextCue qName]]];
+				else if(prefixRange.length > 0){
+					NSString * str = [nextCue qName];
+					int length = [str length];
+					[nextCue setQName:[str substringToIndex:length-4]];
+				}					
+			}
+			
+			
+			
+			blink = !blink;
+		}
+		
+		[NSThread sleepForTimeInterval:1];
+	}
 }
 
 -(NSDictionary*) getCueInfo:(QLabCue*)cue{

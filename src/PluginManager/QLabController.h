@@ -83,6 +83,10 @@
 	CueObject * shownThisCueDict;
 	CueObject * shownNextCueDict;
 	
+	NSThread * thread;
+	BOOL blinkRunning;
+	BOOL blink;
+	
 }
 @property (readwrite,retain) PluginProperty * linkedProperty;
 @property (readwrite,retain) CueObject * shownPrevCueDict;
@@ -100,6 +104,9 @@
 
 -(QLabApplication*) getQLab;
 -(CueObject*) newCue;
+
+-(void) blinkName;
+-(void) stopBlink;
 
 -(IBAction) setUpdateChecked:(id)sender;
 -(IBAction) go:(id)sender;
