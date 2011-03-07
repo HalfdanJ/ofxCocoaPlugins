@@ -223,14 +223,26 @@ BOOL isRealtimeByte (Byte b)	{ return b >= 0xF8; }
 				//pthread_mutex_lock(&mutex);
 				
 				int rowIndex = 0;
-				NSMutableDictionary * dict;
+				NSMutableDictionary * dict = [NSMutableDictionary dictionary];
+				[dict setObject:[NSNumber numberWithInt:channel] forKey:@"channel"];
+				[dict setObject:[NSNumber numberWithInt:number] forKey:@"number"];
+				[dict setObject:[NSNumber numberWithInt:value] forKey:@"value"];				
+				
+				[self setMidiData:dict];
+				
 				//NSLog(@"%i %@", value, midiBindings);
+				
+				
+				
+				/* This caused a crash when receiving a midi packet sometimes! 
 				
 				[self willChangeValueForKey:@"midiData"];
 				[midiData setObject:[NSNumber numberWithInt:channel] forKey:@"channel"];
 				[midiData setObject:[NSNumber numberWithInt:number] forKey:@"number"];
 				[midiData setObject:[NSNumber numberWithInt:value] forKey:@"value"];				
 				[self didChangeValueForKey:@"midiData"];
+				 
+				 */
 				
 				//NSLog(@"%@",  midiData);
 				
