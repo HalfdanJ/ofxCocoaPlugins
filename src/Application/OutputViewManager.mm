@@ -89,8 +89,6 @@ CFStringRef CopyLocalDisplayName(CGDirectDisplayID display)
 		
 		OutputPanelController * newPanel = [[[OutputPanelController alloc] init] autorelease];
 		[newPanel loadFromNib];
-
-		[[controller openglLock] lock]; // prevent drawing from another thread if we're drawing already
 				
 		[[newPanel panel] setStyleMask:NSResizableWindowMask | NSHUDWindowMask | NSTitledWindowMask | NSUtilityWindowMask];
 		[[newPanel panel] setFrameAutosaveName:[NSString stringWithFormat:@"OutputView %i",i]];
@@ -109,8 +107,6 @@ CFStringRef CopyLocalDisplayName(CGDirectDisplayID display)
 		theDelegate = [[[PluginOutputWindowDelegate alloc]initWithPluginOutputView:[newPanel glView]]retain];
 		[[newPanel panel] setDelegate:theDelegate];
 		
-		[[controller openglLock] unlock]; // prevent drawing from another thread if we're drawing already
-		
 		[glViews addObject:[newPanel glView]];
 				
 	}
@@ -119,12 +115,9 @@ CFStringRef CopyLocalDisplayName(CGDirectDisplayID display)
 	
 	
 	for(OutputPanelController * panelController in outputViewsPanels){
-		[[controller openglLock] lock]; // prevent drawing from another thread if we're drawing already
-		
 		PluginOpenGLView * view = [panelController glView];
 		NSPanel * panel = (NSPanel * )[view window];
 		[view updateDisplayIDWithWindow:panel];
-		[[controller openglLock] unlock]; // prevent drawing from another thread if we're drawing already
 	}
 	
 	setupScreensCalled = YES;
