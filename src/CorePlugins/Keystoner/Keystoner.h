@@ -51,6 +51,11 @@
 	
 	ofImage * gammaFade;
 	
+	int controlWidth;
+	int controlHeight;
+	
+	int selectedSurfaceCorner;
+	
 }
 
 -(IBAction) addProjector:(id)sender;
