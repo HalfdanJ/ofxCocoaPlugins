@@ -19,7 +19,9 @@ extern NSArray * arrayOfSurfaceNames;
 //	if([projectors count] > 1){
 	glViewport((ofGetWidth()/[projectors count])*projectorNumber, 0, ofGetWidth()/[projectors count], ofGetHeight());
 //	}
-	[[projectors objectAtIndex:projectorNumber] applySurface:surfaceName];
+	if([projectors count] > projectorNumber){
+		[[projectors objectAtIndex:projectorNumber] applySurface:surfaceName];
+	}
 }
 
 -(void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context{

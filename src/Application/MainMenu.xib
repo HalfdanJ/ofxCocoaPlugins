@@ -12,7 +12,7 @@
 		</dictionary>
 		<array class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<integer value="1285"/>
-			<integer value="5"/>
+			<integer value="664"/>
 		</array>
 		<array key="IBDocument.PluginDependencies">
 			<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -301,7 +301,7 @@
 																			</object>
 																			<array class="NSMutableArray" key="NSTableColumns">
 																				<object class="NSTableColumn" id="618507644">
-																					<double key="NSWidth">131</double>
+																					<double key="NSWidth">129</double>
 																					<double key="NSMinWidth">16</double>
 																					<double key="NSMaxWidth">3.4028234663852886e+38</double>
 																					<object class="NSTableHeaderCell" key="NSHeaderCell">
@@ -367,7 +367,6 @@
 																					</object>
 																				</object>
 																				<object class="NSTableColumn" id="351699427">
-																					<double key="NSWidth">6</double>
 																					<double key="NSMaxWidth">3.4028234663852886e+38</double>
 																					<object class="NSTableHeaderCell" key="NSHeaderCell">
 																						<int key="NSCellFlags">75628096</int>
@@ -392,7 +391,7 @@
 																					<reference key="NSTableView" ref="218710644"/>
 																				</object>
 																				<object class="NSTableColumn" id="671525457">
-																					<double key="NSWidth">15</double>
+																					<double key="NSWidth">21</double>
 																					<double key="NSMinWidth">10</double>
 																					<double key="NSMaxWidth">3.4028234663852886e+38</double>
 																					<object class="NSTableHeaderCell" key="NSHeaderCell">
@@ -556,17 +555,18 @@
 																	<string key="NSFrame">{{1, 447}, {228, 15}}</string>
 																	<reference key="NSSuperview" ref="738540127"/>
 																	<int key="NSViewLayerContentsRedrawPolicy">2</int>
+																	<bool key="NSEnabled">YES</bool>
 																	<int key="NSsFlags">1</int>
 																	<reference key="NSTarget" ref="738540127"/>
 																	<string key="NSAction">_doScroller:</string>
-																	<double key="NSPercent">0.97021276595744677</double>
+																	<double key="NSPercent">0.99563318777292575</double>
 																</object>
 															</array>
 															<string key="NSFrameSize">{230, 463}</string>
 															<reference key="NSSuperview" ref="475719835"/>
 															<reference key="NSNextKeyView" ref="951348836"/>
 															<int key="NSViewLayerContentsRedrawPolicy">2</int>
-															<int key="NSsFlags">562</int>
+															<int key="NSsFlags">690</int>
 															<reference key="NSVScroller" ref="301581821"/>
 															<reference key="NSHScroller" ref="428797076"/>
 															<reference key="NSContentView" ref="951348836"/>

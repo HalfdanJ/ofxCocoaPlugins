@@ -199,8 +199,15 @@
 			[objects sortUsingDescriptors:[NSArray arrayWithObject:[[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES]]]; 
 			int i=1;
 			for(PluginProperty * p in objects){
-				[p setMidiNumber:[NSNumber numberWithInt:i]];
-				i++;
+				if([p forcedMidiNumber] && i < [[p midiNumber] intValue] + 1){
+					i = [[p midiNumber] intValue] + 1;
+				}
+			}
+			for(PluginProperty * p in objects){
+				if(![p forcedMidiNumber]){
+					[p setMidiNumber:[NSNumber numberWithInt:i]];
+					i++;
+				}
 			}
 			[[globalController qlabController] updateQlabForPlugin:self];
 		}

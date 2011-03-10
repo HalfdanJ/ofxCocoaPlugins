@@ -33,6 +33,7 @@
 	}
 	
 	glPushMatrix();
+	
 	[[outputViews objectAtIndex:viewNumber] applySurface:surfaceName projectorNumber:projectorNumber];
 	
 	appliedSurface = [self getSurface:surfaceName viewNumber:viewNumber projectorNumber:projectorNumber];
@@ -553,7 +554,7 @@
 	}
 	
 	if(hoveredSurfaceCorner == -1){
-	//	[NSCursor pop];
+		//	[NSCursor pop];
 	}
 }
 
@@ -683,12 +684,14 @@
 }
 
 -(KeystoneSurface*) getSurface:(NSString*)name viewNumber:(int)number projectorNumber:(int)projectorNumber{
-	NSArray * theSurfaces = [[[[[outputViewController arrangedObjects] objectAtIndex:number] projectors] objectAtIndex:projectorNumber] surfaces];
-	
-	KeystoneSurface * theSurface;
-	for(theSurface in theSurfaces){
-		if([[theSurface name] isEqualToString:name]){
-			return theSurface;
+	if([[outputViewController arrangedObjects] count] > number && [[[[outputViewController arrangedObjects] objectAtIndex:number] projectors] count] > projectorNumber){
+		NSArray * theSurfaces = [[[[[outputViewController arrangedObjects] objectAtIndex:number] projectors] objectAtIndex:projectorNumber] surfaces];
+		
+		KeystoneSurface * theSurface;
+		for(theSurface in theSurfaces){
+			if([[theSurface name] isEqualToString:name]){
+				return theSurface;
+			}
 		}
 	}
 	return nil;

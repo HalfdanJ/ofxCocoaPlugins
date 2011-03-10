@@ -28,6 +28,7 @@
 	NSNumber * midiChannel;
 	NSNumber * midiNumber;
 	BOOL binded;
+	BOOL forcedMidiNumber;
 }
 @property (retain) NSString * name;
 @property (retain) NSString * pluginName;
@@ -35,7 +36,7 @@
 @property (retain) id value;
 @property (retain) id defaultValue;
 @property (readwrite) int controlType;
-
+@property (readonly) BOOL forcedMidiNumber;
 
 @property (retain, readwrite) NSNumber * graph;
 @property (retain) NSCell * controlCell;
@@ -50,6 +51,8 @@
 -(NSNumber*)midiValue;
 -(void) sendQlab;
 -(void) sendQlabNonVerbose;
+
+-(void) setManualMidiNumber:(NSNumber*)number;
 
 -(void) sendQlabScriptName:(NSString*)description channel:(int)channel control:(int)control value:(int)value fade:(bool)fade;
 //+(PluginProperty*)boolProperty:(BOOL)defValue;

@@ -4,13 +4,14 @@
 
 
 @implementation PluginProperty
-@synthesize value, defaultValue, controlCell ,controlType, midiChannel, midiNumber, name, pluginName;
+@synthesize value, defaultValue, controlCell ,controlType, midiChannel, midiNumber, name, pluginName, forcedMidiNumber;
 
 -(id) init{
 	if([super init]){
 		graphDebugging = NO;
 		//	midiProperties = [[NSMutableDictionary dictionary] retain];
 		binded = NO;
+		forcedMidiNumber = NO;
 	}
 	return self;
 }
@@ -163,6 +164,12 @@
 		}
 	}
 	[self didChangeValueForKey:@"midiNumber"];
+}
+
+-(void) setManualMidiNumber:(NSNumber*)number{
+	forcedMidiNumber = YES;
+	[self setMidiNumber:number];
+	
 }
 
 -(void) reset{
