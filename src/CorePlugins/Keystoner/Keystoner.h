@@ -55,7 +55,8 @@
 	int controlHeight;
 	
 	int selectedSurfaceCorner;
-	
+	int hoveredSurfaceCorner;
+	float zoomLevel;
 }
 
 -(IBAction) addProjector:(id)sender;

@@ -8,11 +8,33 @@ extern ofAppBaseWindow * window;
 
 @implementation PluginOpenGLControlView
 
+-(void) awakeFromNib{
+	NSTrackingArea *area = [[NSTrackingArea alloc] initWithRect:[self frame] options:NSTrackingMouseEnteredAndExited | NSTrackingCursorUpdate | NSTrackingMouseMoved | NSTrackingActiveInActiveApp | NSTrackingInVisibleRect owner:self userInfo:nil];
+	[self addTrackingArea:area];
+	[self release];
+	NSLog(@"awake form nib");
+}
+
+
+-(void) mouseEntered:(NSEvent *)theEvent{
+}
+
+-(void) mouseMoved:(NSEvent *)theEvent{
+	NSPoint curPoint = [self convertPoint:[theEvent locationInWindow] fromView:nil];
+	curPoint.y = [self frame].size.height - curPoint.y;
+	[[((PluginOpenGLControl*)[self layer]) plugin] setControlMouseFlags:[theEvent modifierFlags]]; 
+	[[((PluginOpenGLControl*)[self layer]) plugin] setControlMouseX: curPoint.x]; 
+	[[((PluginOpenGLControl*)[self layer]) plugin] setControlMouseY: curPoint.y];	
+	[[((PluginOpenGLControl*)[self layer]) plugin] controlMouseMoved:curPoint.x y:curPoint.y];
+	
+}
+
 -(BOOL) acceptsFirstResponder{
 	return YES;
 }
 
 - (void)mouseDown:(NSEvent *)theEvent {
+	[[self window] makeFirstResponder:self];
 	NSPoint curPoint = [self convertPoint:[theEvent locationInWindow] fromView:nil];
 	curPoint.y = [self frame].size.height - curPoint.y;
 	

@@ -278,10 +278,13 @@
 }
 
 -(void) initPlugin{
-	selectedSurfaceCorner = -1;
 }
 
 -(void) setup{	
+	selectedSurfaceCorner = -1;
+	hoveredSurfaceCorner = -1;
+	zoomLevel = 0.7;
+	
 	gammaFade = new ofImage();
 	gammaFade->loadImage("gammaFade.png");
 }
@@ -312,6 +315,9 @@
 		
 		i++;		
 	}	
+	
+	
+	
 	/*
 	 trackingLayer = [TrackingLayer layer];
 	 
@@ -356,7 +362,7 @@
 	float aspectProjector = (float)projectorSize.width / projectorSize.height;
 	float aspectContol = (float)controlWidth / controlHeight;
 	
-	float scale = 0.7;
+	float scale = zoomLevel;
 	
 	if(aspectContol < aspectProjector){
 		//Vinduet er smallere end projektoren
@@ -431,16 +437,25 @@
 	if([surface visible]){		
 		glPushMatrix();
 		
-
+		
 		ofSetCircleResolution(30);
-		ofNoFill();
 		
 		for(int i=0;i<4;i++){
+			ofNoFill();
 			ofSetColor(150, 150, 200);
+			if(hoveredSurfaceCorner == i)
+				ofSetColor(200, 120, 150);
 			if(selectedSurfaceCorner == i)
 				ofSetColor(255, 120, 150);
 			NSDictionary * p1 = [[surface cornerPositions] objectAtIndex:i];
 			ofCircle(rect.origin.x+rect.size.width*[[p1 valueForKey:@"x"]floatValue], rect.origin.y+rect.size.height*(1-[[p1 valueForKey:@"y"]floatValue]), 8);
+			
+			if(selectedSurfaceCorner == i){
+				ofFill();
+				ofSetColor(200, 200, 200,100);
+				ofCircle(rect.origin.x+rect.size.width*[[p1 valueForKey:@"x"]floatValue], rect.origin.y+rect.size.height*(1-[[p1 valueForKey:@"y"]floatValue]), 8);
+			}
+			
 		}
 		
 		glTranslated(rect.origin.x, rect.origin.y, 0);
@@ -506,7 +521,44 @@
 	
 }
 
+-(void) controlMouseScrolled:(NSEvent *)theEvent{
+	float deltaY = [theEvent deltaY]*0.01;
+	zoomLevel += deltaY;
+	zoomLevel = ofClamp(zoomLevel, 0.2,0.9);
+}
+
+-(void) controlMouseMoved:(float)x y:(float)y{
+	hoveredSurfaceCorner = -1;
+	NSRect rect = [self projectorControlRect];
+	float d = 1.0/rect.size.width * 10.0;
+	
+	NSPoint p = [self convertMouseToProjectorX:x y:y];
+	
+	for(int i=0;i<4;i++){
+		if(hoveredSurfaceCorner != selectedSurfaceCorner || hoveredSurfaceCorner == -1){
+			NSDictionary * ps = [[[self selectedSurfaceObject] cornerPositions] objectAtIndex:i];
+			NSPoint p2;
+			p2.x = [[ps valueForKey:@"x"] floatValue];
+			p2.y = 1-[[ps valueForKey:@"y"] floatValue];		
+			
+			float x = p.x-p2.x;
+			float y = p.y-p2.y;
+			
+			if(sqrt(x*x + y*y) < d){
+				hoveredSurfaceCorner = i;
+				//[[NSCursor pointingHandCursor] set];
+			}
+		}
+		
+	}
+	
+	if(hoveredSurfaceCorner == -1){
+	//	[NSCursor pop];
+	}
+}
+
 -(void) controlMousePressed:(float)x y:(float)y button:(int)button{
+	hoveredSurfaceCorner = -1;
 	NSRect rect = [self projectorControlRect];
 	float d = 1.0/rect.size.width * 10.0;
 	
@@ -526,20 +578,49 @@
 		if(sqrt(x*x + y*y) < d){
 			selectedSurfaceCorner = i;
 		}
-
+		
 	}
 	
 	
 }
 
 -(void) controlMouseDragged:(float)x y:(float)y button:(int)button{
+	NSPoint p = [self convertMouseToProjectorX:x y:y];
+	
 	if(selectedSurfaceCorner != -1){
+		NSDictionary * ps = [[[self selectedSurfaceObject] cornerPositions] objectAtIndex:selectedSurfaceCorner];
+		[ps setValue:[NSNumber numberWithFloat:p.x] forKey:@"x"];
+		[ps setValue:[NSNumber numberWithFloat:1-p.y] forKey:@"y"];
 		
+		[[self selectedSurfaceObject] recalculate];
 	}
 }
 
 -(void) controlMouseReleased:(float)x y:(float)y{
-	selectedSurfaceCorner = -1;
+	//selectedSurfaceCorner = -1;
+	[self controlMouseMoved:x y:y];
+}
+
+-(void) controlKeyPressed:(int)key{
+	if(selectedSurfaceCorner != -1){
+		NSDictionary * ps = [[[self selectedSurfaceObject] cornerPositions] objectAtIndex:selectedSurfaceCorner];
+		float _px = [[ps valueForKey:@"x"] floatValue];
+		float _py = [[ps valueForKey:@"y"] floatValue];
+		float amount = 0.001;
+		if(key == 123)
+			_px -= amount;
+		if(key == 126)
+			_py += amount;
+		if(key == 124)
+			_px += amount;
+		if(key == 125)
+			_py -= amount;
+		
+		[ps setValue:[NSNumber numberWithFloat:_px] forKey:@"x"];
+		[ps setValue:[NSNumber numberWithFloat:_py] forKey:@"y"];
+		
+		[[self selectedSurfaceObject] recalculate];		
+	}
 }
 
 //Outputview

@@ -96,7 +96,7 @@
 		bool drawBorder = true;
 		float fontSize = 0.0025;
 		
-		int activeCorner = [[GetPlugin(Keystoner) trackingLayer] dragCorner];
+		/*int activeCorner = [[GetPlugin(Keystoner) trackingLayer] dragCorner];
 		ofSetColor(255, 0, 0,255);
 		ofFill();
 		switch (activeCorner) {
@@ -115,7 +115,7 @@
 			default:
 				break;
 		}
-		
+		*/
 		ofSetLineWidth(1);
 		ofSetColor(255, 255, 255, 255*a);
 		int xNumber = resolution+floor(([aspect floatValue]-1)*resolution);
@@ -137,7 +137,7 @@
 		if(drawBorder){
 			
 			ofNoFill();
-			ofSetLineWidth(6);
+			ofSetLineWidth(2);
 			
 			ofSetColor(64, 128, 220,255*a);
 			ofRect(0, 0, 1*[aspect floatValue], 1);

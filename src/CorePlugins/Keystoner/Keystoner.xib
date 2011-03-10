@@ -21,7 +21,7 @@
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="1"/>
+			<integer value="135"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -66,7 +66,46 @@
 									<object class="NSCustomView" id="161209537">
 										<reference key="NSNextResponder" ref="90752361"/>
 										<int key="NSvFlags">274</int>
-										<string key="NSFrame">{{18, 14}, {832, 272}}</string>
+										<object class="NSMutableArray" key="NSSubviews">
+											<bool key="EncodedWithXMLCoder">YES</bool>
+											<object class="NSTextField" id="372974195">
+												<reference key="NSNextResponder" ref="161209537"/>
+												<int key="NSvFlags">268</int>
+												<string key="NSFrame">{{12, 264}, {325, 16}}</string>
+												<reference key="NSSuperview" ref="161209537"/>
+												<bool key="NSEnabled">YES</bool>
+												<object class="NSTextFieldCell" key="NSCell" id="819067262">
+													<int key="NSCellFlags">68288064</int>
+													<int key="NSCellFlags2">272630784</int>
+													<string key="NSContents">Brug scroll-hjulet på musen til at zoome ind og ud</string>
+													<object class="NSFont" key="NSSupport">
+														<string key="NSName">LucidaGrande</string>
+														<double key="NSSize">12</double>
+														<int key="NSfFlags">16</int>
+													</object>
+													<reference key="NSControlView" ref="372974195"/>
+													<object class="NSColor" key="NSBackgroundColor" id="786333491">
+														<int key="NSColorSpace">6</int>
+														<string key="NSCatalogName">System</string>
+														<string key="NSColorName">controlColor</string>
+														<object class="NSColor" key="NSColor">
+															<int key="NSColorSpace">3</int>
+															<bytes key="NSWhite">MC42NjY2NjY2NjY3AA</bytes>
+														</object>
+													</object>
+													<object class="NSColor" key="NSTextColor">
+														<int key="NSColorSpace">6</int>
+														<string key="NSCatalogName">System</string>
+														<string key="NSColorName">headerTextColor</string>
+														<object class="NSColor" key="NSColor" id="353964162">
+															<int key="NSColorSpace">3</int>
+															<bytes key="NSWhite">MAA</bytes>
+														</object>
+													</object>
+												</object>
+											</object>
+										</object>
+										<string key="NSFrame">{{3, 4}, {862, 290}}</string>
 										<reference key="NSSuperview" ref="90752361"/>
 										<string key="NSClassName">PluginOpenGLControlView</string>
 									</object>
@@ -106,42 +145,6 @@
 						<int key="NSBoxType">0</int>
 						<int key="NSTitlePosition">0</int>
 						<bool key="NSTransparent">NO</bool>
-					</object>
-					<object class="NSTextField" id="617827327">
-						<reference key="NSNextResponder" ref="1005"/>
-						<int key="NSvFlags">268</int>
-						<string key="NSFrame">{{393, 311}, {325, 16}}</string>
-						<reference key="NSSuperview" ref="1005"/>
-						<bool key="NSEnabled">YES</bool>
-						<object class="NSTextFieldCell" key="NSCell" id="351232232">
-							<int key="NSCellFlags">68288064</int>
-							<int key="NSCellFlags2">272630784</int>
-							<string key="NSContents">Brug scroll-hjulet på musen til at zoome ind og ud</string>
-							<object class="NSFont" key="NSSupport">
-								<string key="NSName">LucidaGrande</string>
-								<double key="NSSize">12</double>
-								<int key="NSfFlags">16</int>
-							</object>
-							<reference key="NSControlView" ref="617827327"/>
-							<object class="NSColor" key="NSBackgroundColor" id="786333491">
-								<int key="NSColorSpace">6</int>
-								<string key="NSCatalogName">System</string>
-								<string key="NSColorName">controlColor</string>
-								<object class="NSColor" key="NSColor">
-									<int key="NSColorSpace">3</int>
-									<bytes key="NSWhite">MC42NjY2NjY2NjY3AA</bytes>
-								</object>
-							</object>
-							<object class="NSColor" key="NSTextColor">
-								<int key="NSColorSpace">6</int>
-								<string key="NSCatalogName">System</string>
-								<string key="NSColorName">headerTextColor</string>
-								<object class="NSColor" key="NSColor" id="353964162">
-									<int key="NSColorSpace">3</int>
-									<bytes key="NSWhite">MAA</bytes>
-								</object>
-							</object>
-						</object>
 					</object>
 					<object class="NSButton" id="1051933184">
 						<reference key="NSNextResponder" ref="1005"/>
@@ -1663,7 +1666,6 @@
 							<reference ref="823942168"/>
 							<reference ref="322734064"/>
 							<reference ref="1051933184"/>
-							<reference ref="617827327"/>
 							<reference ref="745790761"/>
 						</object>
 						<reference key="parent" ref="0"/>
@@ -2089,20 +2091,6 @@
 						<reference key="parent" ref="1051933184"/>
 					</object>
 					<object class="IBObjectRecord">
-						<int key="objectID">209</int>
-						<reference key="object" ref="617827327"/>
-						<object class="NSMutableArray" key="children">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<reference ref="351232232"/>
-						</object>
-						<reference key="parent" ref="1005"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">210</int>
-						<reference key="object" ref="351232232"/>
-						<reference key="parent" ref="617827327"/>
-					</object>
-					<object class="IBObjectRecord">
 						<int key="objectID">212</int>
 						<reference key="object" ref="745790761"/>
 						<object class="NSMutableArray" key="children">
@@ -2114,7 +2102,25 @@
 					<object class="IBObjectRecord">
 						<int key="objectID">135</int>
 						<reference key="object" ref="161209537"/>
+						<object class="NSMutableArray" key="children">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<reference ref="372974195"/>
+						</object>
 						<reference key="parent" ref="745790761"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">213</int>
+						<reference key="object" ref="372974195"/>
+						<object class="NSMutableArray" key="children">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<reference ref="819067262"/>
+						</object>
+						<reference key="parent" ref="161209537"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">214</int>
+						<reference key="object" ref="819067262"/>
+						<reference key="parent" ref="372974195"/>
 					</object>
 				</object>
 			</object>
@@ -2176,11 +2182,11 @@
 					<string>196.IBPluginDependency</string>
 					<string>196.IBViewBoundsToFrameTransform</string>
 					<string>197.IBPluginDependency</string>
-					<string>209.IBPluginDependency</string>
-					<string>209.IBViewBoundsToFrameTransform</string>
-					<string>210.IBPluginDependency</string>
 					<string>212.IBPluginDependency</string>
 					<string>212.IBViewBoundsToFrameTransform</string>
+					<string>213.IBPluginDependency</string>
+					<string>213.IBViewBoundsToFrameTransform</string>
+					<string>214.IBPluginDependency</string>
 					<string>23.IBPluginDependency</string>
 					<string>24.IBPluginDependency</string>
 					<string>3.IBPluginDependency</string>
@@ -2212,7 +2218,7 @@
 				</object>
 				<object class="NSMutableArray" key="dict.values">
 					<bool key="EncodedWithXMLCoder">YES</bool>
-					<string>{{186, 1323}, {907, 553}}</string>
+					<string>{{274, 271}, {907, 553}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>{628, 654}</string>
 					<string>{{217, 442}, {480, 272}}</string>
@@ -2226,7 +2232,7 @@
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">AcGIAABCsAAAA</bytes>
+						<bytes key="NSTransformStruct">AUGQAABBYAAAA</bytes>
 					</object>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -2274,13 +2280,13 @@
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAABDwwAAw6kAAA</bytes>
-					</object>
-					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<object class="NSAffineTransform">
 						<bytes key="NSTransformStruct">AUP1gABDjgAAA</bytes>
 					</object>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<object class="NSAffineTransform">
+						<bytes key="NSTransformStruct">P4AAAL+AAABDwgAAw3AAAA</bytes>
+					</object>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -2327,7 +2333,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">212</int>
+			<int key="maxID">214</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
