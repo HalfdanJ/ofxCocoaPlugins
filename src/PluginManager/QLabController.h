@@ -86,7 +86,10 @@
 	NSThread * thread;
 	BOOL blinkRunning;
 	BOOL blink;
+
 	
+	BOOL fadeAllowed;
+	BOOL verbose;
 }
 @property (readwrite,retain) PluginProperty * linkedProperty;
 @property (readwrite,retain) CueObject * shownPrevCueDict;
@@ -95,7 +98,7 @@
 
 
 -(void) updateQlabForPlugin:(ofPlugin*) plugin;
--(void) startQlabTransaction:(PluginProperty*)proptery;
+-(void) startQlabTransaction:(PluginProperty*)proptery fadingAllowed:(BOOL)_fadeAllowed verbose:(BOOL)_verbose;
 
 -(void) setMidiChannel:(int)channel number:(int)number forCue:(QLabCue*)cue;
 -(NSDictionary*) getCueInfo:(QLabCue*)cue;

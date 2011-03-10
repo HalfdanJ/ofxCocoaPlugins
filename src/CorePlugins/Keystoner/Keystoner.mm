@@ -133,7 +133,7 @@
 			}
 			if([drawSettings selectedSegment] == 2){
 				ofSetColor(255, 255, 255);
-				
+				ofFill();
 				ofRect(0,0,[[[[projector surfaces]objectAtIndex:[surfaceArrayController selectionIndex]] aspect] floatValue],1);
 			}
 			

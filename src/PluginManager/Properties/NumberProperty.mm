@@ -137,24 +137,12 @@
 	
 }
 -(void) sendQlab{	
-	NSLog(@"Send to qlab %d %d %f %@", [midiChannel intValue], [midiNumber intValue], [value floatValue], name);
-	[[globalController qlabController] startQlabTransaction:self];
-
-	/*
-	int channel = [midiChannel intValue];
-	int number = [midiNumber intValue];
-	int val = [[self midiValue] intValue];
-	if ([NSEvent modifierFlags] & NSAlternateKeyMask) {		
-		NSString * str = [NSString stringWithFormat:@"to %i fading",val];		
-		[self sendQlabScriptName:str channel:channel control:number value:val fade:true];
-	} else {
-		NSString * str = [NSString stringWithFormat:@"to %i",val];		
-		[self sendQlabScriptName:str channel:channel control:number value:val fade:false];
-		
-	}	*/
+	[[globalController qlabController] startQlabTransaction:self fadingAllowed:YES verbose:YES];
 }
 
-
+-(void) sendQlabNonVerbose{
+	[[globalController qlabController] startQlabTransaction:self fadingAllowed:NO verbose:NO];	
+}
 
 
 

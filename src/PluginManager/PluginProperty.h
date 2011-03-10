@@ -49,6 +49,7 @@
 -(void) reset;
 -(NSNumber*)midiValue;
 -(void) sendQlab;
+-(void) sendQlabNonVerbose;
 
 -(void) sendQlabScriptName:(NSString*)description channel:(int)channel control:(int)control value:(int)value fade:(bool)fade;
 //+(PluginProperty*)boolProperty:(BOOL)defValue;

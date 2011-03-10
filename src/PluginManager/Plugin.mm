@@ -170,7 +170,7 @@
 		NSMutableArray * objects = [NSMutableArray arrayWithArray:[properties allValues]];
 		[objects sortUsingDescriptors:[NSArray arrayWithObject:[[NSSortDescriptor alloc] initWithKey:@"midiNumber" ascending:YES]]]; 
 		for(PluginProperty * p in objects){
-			[p sendQlab];
+			[p sendQlabNonVerbose];
 		}
     }
 	

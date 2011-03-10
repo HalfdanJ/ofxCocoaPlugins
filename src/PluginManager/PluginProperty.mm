@@ -169,7 +169,7 @@
 	[self setValue:defaultValue];
 }
 
-
+/*
 -(void) sendQlabScriptName:(NSString*)description channel:(int)channel control:(int)control value:(int)value fade:(bool)fade{
 	NSString* path = [[NSBundle mainBundle] pathForResource:@"SendToQlab" ofType:@"scpt"];
     if (path != nil)
@@ -237,5 +237,5 @@
             }
         }
     }
-}
+}*/
 @end

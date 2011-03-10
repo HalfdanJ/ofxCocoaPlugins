@@ -130,7 +130,10 @@
 	
 }
 
--(void) startQlabTransaction:(PluginProperty*)proptery{
+-(void) startQlabTransaction:(PluginProperty *)proptery fadingAllowed:(BOOL)_fadeAllowed verbose:(BOOL)_verbose{
+	verbose = _verbose;
+	fadeAllowed = _fadeAllowed;
+	
 	thisCue = nil;
 	prevCue = nil;
 	nextCue = nil;
@@ -289,8 +292,14 @@
 	
 	[[self shownThisCueDict] setActualEndvalue:[[linkedProperty midiValue] intValue]];
 	
-	blinkRunning = YES;
-	[panel makeKeyAndOrderFront:self];
+	
+	if(verbose){
+		blinkRunning = YES;
+		[panel makeKeyAndOrderFront:self];
+	} else {
+		if([linkedProperty midiNumber] && [linkedProperty midiChannel])
+			[self go:self];
+	}
 }
 
 -(void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context{
@@ -340,7 +349,7 @@
 	[obj setChannel:[[linkedProperty midiChannel] intValue]];
 	[obj setDuration:[NSNumber numberWithInt:5]];
 	[obj setEndvalue:[[linkedProperty midiValue] intValue] ];
-	[obj setFade:[[NSNumber numberWithInt:1] boolValue]];
+	[obj setFade:fadeAllowed];
 	[obj setNumber:[[linkedProperty midiNumber] intValue]];
 	[obj setStartvalue:[[self shownPrevCueDict] actualEndvalue]];
 	[obj setProperty:linkedProperty];

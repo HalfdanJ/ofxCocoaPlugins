@@ -137,7 +137,7 @@
 	
 }
 -(void) sendQlab{	
-	NSLog(@"Send to qlab %d %d %f %@", [midiChannel intValue], [midiNumber intValue], [value floatValue], name);
+/*	NSLog(@"Send to qlab %d %d %f %@", [midiChannel intValue], [midiNumber intValue], [value floatValue], name);
 	
 	int channel = [midiChannel intValue];
 	int number = [midiNumber intValue];
@@ -150,9 +150,12 @@
 	}
 	
 	[self sendQlabScriptName:str channel:channel control:number value:val fade:NO];
+*/
+	[[globalController qlabController] startQlabTransaction:self fadingAllowed:NO verbose:YES];		
+}
 
-	
-		
+-(void) sendQlabNonVerbose{
+	[[globalController qlabController] startQlabTransaction:self fadingAllowed:NO verbose:NO];	
 }
 
 
