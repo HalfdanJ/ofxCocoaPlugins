@@ -24,11 +24,20 @@
 		
 		manager = [PYMIDIManager sharedInstance];
 		endpoint = [[PYMIDIRealEndpoint alloc] init];
+		//endpoint = [[PYMIDIVirtualEndpoint alloc] initWithName:@"Malpais MIDI"];
+				
 		[endpoint retain];
 		[endpoint addReceiver:self];
 		
 		sendEndpoint = new PYMIDIRealEndpoint;
 		//	[sendEndpoint retain];
+		
+		NSString *appName = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleExecutable"];
+		virtualDestination = [[PYMIDIVirtualDestination alloc] initWithName:[appName stringByAppendingString:@" Virtual MIDI"]];
+		
+		[virtualDestination retain];
+		[virtualDestination makePrivate:NO];
+		[virtualDestination addReceiver:self];
 		
 		updateView = false;
 		
@@ -55,8 +64,7 @@
 
 -(void) initPlugin{
 	//dispatch_async(dispatch_get_main_queue(), ^{
-	
-	
+		
 	//});
 	
 }
@@ -65,7 +73,6 @@
 	[self buildMidiInterfacePopUp];
 	
 	[midiMappingsList setDoubleAction:@selector(showSelectedControl:)];
-	
 	
 	
 }
@@ -111,7 +118,7 @@
 		// do nothing
 	} 
 	if (returnCode == NSAlertAlternateReturn) {     /* "Quit" */
-		[[[NSApplication sharedApplication] delegate] setNoQuestionsAsked:YES];
+		[[[NSApplication sharedApplication] delegate] setQuitWithoutAsking:YES];
 		[[NSApplication sharedApplication] terminate:self];
 	}
 	
@@ -125,7 +132,7 @@
 		// do nothing
 	} 
 	if (returnCode == NSAlertAlternateReturn) {     /* "Quit" */
-		[[[NSApplication sharedApplication] delegate] setNoQuestionsAsked:YES];
+		[[[NSApplication sharedApplication] delegate] setQuitWithoutAsking:YES];
 		[[NSApplication sharedApplication] terminate:self];
 	}
 	

@@ -28,6 +28,8 @@
 	PYMIDIVirtualSource			* endpoint;
 	PYMIDIVirtualDestination	* sendEndpoint;
 	
+	PYMIDIVirtualEndpoint		* virtualDestination;
+	
 	IBOutlet NSArrayController	* boundControlsController;
 	NSMutableArray				* boundControls;
 	

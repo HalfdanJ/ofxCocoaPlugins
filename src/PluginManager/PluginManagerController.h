@@ -70,7 +70,7 @@
 
 	//Application delegation
 	
-	BOOL noQuestionsAsked;
+	BOOL quitWithoutAsking;
 	BOOL isQuitting;
 
 }	
@@ -82,7 +82,7 @@
 @property (readonly) float fps;
 @property (assign) NSMutableArray * plugins;
 @property (retain, readonly) OutputViewManager * viewManager;
-@property (readwrite) BOOL noQuestionsAsked;
+@property (readwrite) BOOL quitWithoutAsking;
 @property (readonly) QLabController * qlabController;
 
 // @property (retain ) NSMutableArray *currentProperties;
