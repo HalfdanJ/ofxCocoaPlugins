@@ -294,6 +294,12 @@ extern ofAppBaseWindow * window;
 			if([[plugin enabled] boolValue] ){		
 				[plugin update:drawingInformation];
 			}
+			
+			NSArray * allProps = [[plugin properties] allValues];
+			for(PluginProperty * prop in allProps){
+				[prop update];
+			}
+			
 			[plugin setUpdateCpuTime:ofGetElapsedTimeMillis()-time];
 			
 		}

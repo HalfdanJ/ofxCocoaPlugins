@@ -91,7 +91,7 @@
 		[self addObserver:self forKeyPath:@"shownNextCueDict.updateStartvalue" options:nil context:@"endvalue"];
 		
 		thread = [[NSThread alloc] initWithTarget:self selector:@selector(blinkName) object:nil];
-		[thread start];
+	//	[thread start];
 	}
 	return self;
 }
@@ -109,16 +109,16 @@
 	QLabWorkspace * workspace = [workspaces objectAtIndex:0];
 	
 	NSMutableArray * objects = [NSMutableArray arrayWithArray:[[plugin properties] allValues]];
-	for(PluginProperty * proptery in objects){
-		
-		for(QLabCue * cue in [workspace cues]){
-			NSString *searchString = [NSString stringWithFormat:@"%@: %@", [proptery pluginName], [proptery name]];
-			
-			NSString *beginsTest = [cue qName];
+	for(QLabCue * cue in [workspace cues]){
+		//NSLog(@"CUe");
+		NSString *beginsTest = [cue qName];
+		for(PluginProperty * proptery in objects){		
+			NSString *searchString = [NSString stringWithFormat:@"[%@: %@]", [proptery pluginName], [proptery name]];		
+			int length = [beginsTest length];
 			NSRange prefixRange = [beginsTest rangeOfString:searchString options:(0)];
 			
 			if(prefixRange.length > 0){
-				NSLog(@"Cue %@ %i",[cue qName], prefixRange.length);
+				NSLog(@"Cue %@ prefix length: %i  searchstring length: %i",[cue qName], prefixRange.length, length);
 				
 				[self setMidiChannel:[[proptery midiChannel] intValue] number:[[proptery midiNumber] intValue] forCue:cue];
 				//[cue set
@@ -151,7 +151,7 @@
 	
 	
 	//Search string
-	NSString *searchString = [NSString stringWithFormat:@"%@: %@", [proptery pluginName], [proptery name]];		
+	NSString *searchString = [NSString stringWithFormat:@"[%@: %@]", [proptery pluginName], [proptery name]];		
 	
 	
 	NSMutableArray * propertyCues = [NSMutableArray array];	
@@ -198,11 +198,12 @@
 	//Nu går vi igennem alle cues, og populater propertyCues, og ser om vi kan udfylde this, next og prev
 	BOOL indexFound = NO;
 	for(QLabCue * cue in [workspace cues]){
-		NSLog(@"%@:",[cue qName]);
+		NSString * cueName = [[cue qName] copy];
+		NSLog(@"%@:",cueName);
 		
-		NSString *beginsTest = [cue qName];
+		NSString *beginsTest = cueName;
 		NSRange prefixRange = [beginsTest rangeOfString:searchString options:(0)];		
-		NSLog(@"Search length: %i for cue %@", prefixRange.length, [cue qName]);
+		NSLog(@"Search length: %i for cue %@", prefixRange.length, cueName);
 		
 		if(prefixRange.length > 0){
 			//Det er en property cue
@@ -294,7 +295,7 @@
 	
 	
 	if(verbose){
-		blinkRunning = YES;
+	//	blinkRunning = YES;
 		[panel makeKeyAndOrderFront:self];
 	} else {
 		if([linkedProperty midiNumber] && [linkedProperty midiChannel])
@@ -418,7 +419,7 @@
 -(void) blinkName{
 	NSString *searchString = @"<--";
 	
-		
+	
 	while(1){
 		if(blinkRunning || blink){
 			NSLog(@"Blink %i", blink);
@@ -450,7 +451,7 @@
 			if(nextCue){
 				NSString *beginsTest = [nextCue qName];
 				NSRange prefixRange = [beginsTest rangeOfString:searchString options:(0)];						
-
+				
 				if(!blink && prefixRange.length == 0)
 					[nextCue setQName:[NSString stringWithFormat:@"%@ <--",[nextCue qName]]];
 				else if(prefixRange.length > 0){

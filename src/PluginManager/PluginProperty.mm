@@ -146,6 +146,8 @@
 	[self didChangeValueForKey:@"midiChannel"];
 }
 
+-(void) update{
+}
 
 
 -(void) setMidiNumber:(NSNumber *)n{
