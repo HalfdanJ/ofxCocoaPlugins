@@ -150,7 +150,7 @@
 	float endV = [[self minValue] floatValue] + ( [[self maxValue] floatValue] -  [[self minValue] floatValue])*v;
 	if(midiSmoothing > 0){
 		midiGoal = endV;
-		cout<<"Got midi"<<midiGoal<<endl; 
+		//cout<<"Got midi"<<midiGoal<<endl; 
 		valueSetFromMidi = YES;
 		thisMidiTime = [NSDate date];
 	} else {

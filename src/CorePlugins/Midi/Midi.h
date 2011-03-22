@@ -40,8 +40,7 @@
 	
 	//New one
 	NSMutableArray * midiBindings;	
-	NSMutableDictionary * midiData;
-	
+	NSMutableArray * midiData;
 	
 	float pitchBends[16];
 	
@@ -49,7 +48,7 @@
 
 @property (assign) NSMutableArray * boundControls;
 @property (assign) NSMutableArray * midiBindings;
-@property (assign) NSMutableDictionary * midiData;
+@property (assign) NSMutableArray * midiData;
 
 -(IBAction) selectMidiInterface:(id)sender;
 -(IBAction) printMidiMappingsList:(id)sender;

@@ -3,6 +3,8 @@
 #include "Midi.h"
 
 
+static NSString *MidiControllerContext = @"org.recoil.midi.controller";
+
 @implementation PluginProperty
 @synthesize value, defaultValue, controlCell ,controlType, midiChannel, midiNumber, name, pluginName, forcedMidiNumber;
 
@@ -104,23 +106,39 @@
 -(void) bindMidi{
 	if(midiChannel != nil && midiNumber != nil){		
 		binded = YES;
-		[GetPlugin(Midi) addObserver:self forKeyPath:@"midiData" options:nil context:nil];
+
+		[[[GetPlugin(Midi) midiData] objectAtIndex:[midiChannel intValue]] addObserver:self forKeyPath:[midiNumber stringValue] options:0 context:MidiControllerContext];
+		
 		//	[[GetPlugin(Midi) midiBindings] addObject:midiProperties];
 	}
 }
 -(void) unbindMidi{
-	binded = NO;
-	[GetPlugin(Midi) removeObserver:self forKeyPath:@"midiData"];
-	
+	if(binded){		
+		[[[GetPlugin(Midi) midiData] objectAtIndex:[midiChannel intValue]] removeObserver:self forKeyPath:[midiNumber stringValue]];
+//		[[[GetPlugin(Midi) midiData] objectForKey:midiChannel] removeObserver:self forKeyPath:midiNumber];
+		binded = NO;
+	}	
 	//[[GetPlugin(Midi) midiBindings] removeObject:midiProperties];
 }
 
 -(void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context{
-	if([keyPath isEqualToString:@"midiData"]){
-	//	NSLog(@"Midi event: %@",[object midiData]);
+	
+	if (context == MidiControllerContext) {
 		if(midiChannel != nil && midiNumber != nil){
-			if([[[object midiData]objectForKey:@"channel"] intValue] == [midiChannel intValue]){
-				if([[[object midiData]objectForKey:@"number"] intValue] == [midiNumber intValue]){			
+			[self midiEvent:[[object objectForKey:keyPath] intValue]];
+		}
+	}
+	
+	if([keyPath isEqualToString:@"intValue"]){
+		if(midiChannel != nil && midiNumber != nil){
+			[self midiEvent:[object intValue]];
+		}
+	}
+	
+	if([keyPath isEqualToString:@"midiData"]){
+		if(midiChannel != nil && midiNumber != nil){
+			if([[[object midiData]objectForKey:@"number"] intValue] == [midiNumber intValue]){			
+				if([[[object midiData]objectForKey:@"channel"] intValue] == [midiChannel intValue]){
 					[self midiEvent:[[[object midiData] objectForKey:@"value"] intValue]];
 				}	
 			}
