@@ -70,7 +70,7 @@
 							<reference key="NSSuperview" ref="276591256"/>
 							<object class="NSOpenGLPixelFormat" key="NSPixelFormat">
 								<object class="NSMutableData" key="NSPixelAttributes">
-									<bytes key="NS.bytes">AAAASgAAAEkAAAA7AAAABwAAAAEAAAAMAAAAEAAAADgAAAAQAAAANwAAAAEAAAAAA</bytes>
+									<bytes key="NS.bytes">AAAASQAAAAwAAAAQAAAAAA</bytes>
 								</object>
 							</object>
 						</object>
