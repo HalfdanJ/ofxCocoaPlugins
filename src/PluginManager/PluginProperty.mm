@@ -148,6 +148,14 @@ static NSString *MidiControllerContext = @"org.recoil.midi.controller";
 
 -(void) setMidiChannel:(NSNumber *)n{
 	[self willChangeValueForKey:@"midiChannel"];
+	if(midiChannel != nil && !binded){
+	} else {
+		if(binded){
+			[self unbindMidi];
+		}
+	}
+	
+	
 	if(midiChannel != nil)
 		[midiChannel release];
 	
@@ -155,12 +163,7 @@ static NSString *MidiControllerContext = @"org.recoil.midi.controller";
 	
 	if(midiChannel != nil && !binded){
 		[self bindMidi];
-	} else {
-		if(binded){
-			[self unbindMidi];
-			[self bindMidi];
-		}
-	}
+	} 
 	[self didChangeValueForKey:@"midiChannel"];
 }
 
@@ -170,6 +173,15 @@ static NSString *MidiControllerContext = @"org.recoil.midi.controller";
 
 -(void) setMidiNumber:(NSNumber *)n{
 	[self willChangeValueForKey:@"midiNumber"];
+	if(midiNumber != nil && !binded){
+	} else {
+		if(binded){
+			[self unbindMidi];
+		}
+	}
+
+	
+	
 	if(midiNumber != nil)
 		[midiNumber release];
 	
@@ -177,12 +189,7 @@ static NSString *MidiControllerContext = @"org.recoil.midi.controller";
 	
 	if(midiNumber != nil && !binded){
 		[self bindMidi];
-	} else {
-		if(binded){
-			[self unbindMidi];
-			[self bindMidi];
-		}
-	}
+	} 
 	[self didChangeValueForKey:@"midiNumber"];
 }
 
