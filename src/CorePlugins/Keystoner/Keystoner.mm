@@ -715,18 +715,21 @@
 }
 
 -(IBAction) addProjector:(id)sender{
+	[[globalController openglLock] lock];
 	KeystonerOutputview * selectedOutputView = [[outputViewController selectedObjects] lastObject];
 	int count = [[selectedOutputView projectors] count];
 	KeystoneProjector * proj =  [[[KeystoneProjector alloc] initWithSurfaces:surfaces viewNumber:[selectedOutputView viewNumber] projectorNumber:count] autorelease];
 	[[selectedOutputView projectors] addObject:proj];
+	[[globalController openglLock] unlock];
 	
 	[self updateProjectorButtons];	
 }
 
 -(IBAction) removeProjector:(id)sender{
+	[[globalController openglLock] lock];
 	KeystonerOutputview * selectedOutputView = [[outputViewController selectedObjects] lastObject];
 	[[selectedOutputView projectors] removeLastObject];
-	
+	[[globalController openglLock] unlock];
 	[self updateProjectorButtons];	
 }
 

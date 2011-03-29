@@ -142,6 +142,14 @@
 			ofSetColor(64, 128, 220,255*a);
 			ofRect(0, 0, 1*[aspect floatValue], 1);
 			
+			if(softedgeTotalParts > 1){
+				ofSetColor(64, 128, 220,255*a);
+				for(int i=0;i<softedgeTotalParts-1;i++){
+					float x = (1+i)*[aspect floatValue] * 1.0/softedgeTotalParts;
+					ofLine(x, 0, x, 1);
+				}
+			}
+			
 			ofFill();
 			ofSetColor(255, 255, 255,255*a);
 			ofSetLineWidth(1);
