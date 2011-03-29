@@ -11,8 +11,9 @@
 			<string key="com.brandonwalkin.BWToolkit">1.2.5</string>
 		</dictionary>
 		<array class="NSMutableArray" key="IBDocument.EditedObjectIDs">
-			<integer value="1285"/>
 			<integer value="664"/>
+			<integer value="12"/>
+			<integer value="1285"/>
 		</array>
 		<array key="IBDocument.PluginDependencies">
 			<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -555,7 +556,6 @@
 																	<string key="NSFrame">{{1, 447}, {228, 15}}</string>
 																	<reference key="NSSuperview" ref="738540127"/>
 																	<int key="NSViewLayerContentsRedrawPolicy">2</int>
-																	<bool key="NSEnabled">YES</bool>
 																	<int key="NSsFlags">1</int>
 																	<reference key="NSTarget" ref="738540127"/>
 																	<string key="NSAction">_doScroller:</string>
@@ -566,7 +566,7 @@
 															<reference key="NSSuperview" ref="475719835"/>
 															<reference key="NSNextKeyView" ref="951348836"/>
 															<int key="NSViewLayerContentsRedrawPolicy">2</int>
-															<int key="NSsFlags">690</int>
+															<int key="NSsFlags">562</int>
 															<reference key="NSVScroller" ref="301581821"/>
 															<reference key="NSHScroller" ref="428797076"/>
 															<reference key="NSContentView" ref="951348836"/>
@@ -1613,6 +1613,7 @@
 									<int key="NSMnemonicLoc">2147483647</int>
 									<reference key="NSOnImage" ref="1048606619"/>
 									<reference key="NSMixedImage" ref="45903834"/>
+									<int key="NSTag">1</int>
 								</object>
 								<object class="NSMenuItem" id="272457464">
 									<reference key="NSMenu" ref="430737210"/>
@@ -1632,6 +1633,7 @@
 									<int key="NSMnemonicLoc">2147483647</int>
 									<reference key="NSOnImage" ref="1048606619"/>
 									<reference key="NSMixedImage" ref="45903834"/>
+									<int key="NSTag">2</int>
 								</object>
 								<object class="NSMenuItem" id="976182519">
 									<reference key="NSMenu" ref="430737210"/>
@@ -1670,6 +1672,7 @@
 									<int key="NSMnemonicLoc">2147483647</int>
 									<reference key="NSOnImage" ref="1048606619"/>
 									<reference key="NSMixedImage" ref="45903834"/>
+									<int key="NSTag">3</int>
 								</object>
 							</array>
 							<string key="NSName">_NSAppleMenu</string>
@@ -6491,9 +6494,9 @@
 				<string key="309.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="354.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="355.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="5.IBEditorWindowLastContentRect">{{338, 69}, {778, 539}}</string>
+				<string key="5.IBEditorWindowLastContentRect">{{364, 69}, {778, 539}}</string>
 				<string key="5.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="5.IBWindowTemplateEditedContentRect">{{338, 69}, {778, 539}}</string>
+				<string key="5.IBWindowTemplateEditedContentRect">{{364, 69}, {778, 539}}</string>
 				<boolean value="YES" key="5.NSWindowTemplate.visibleAtLaunch"/>
 				<boolean value="YES" key="5.windowTemplate.hasMinSize"/>
 				<string key="5.windowTemplate.minSize">{400, 400}</string>
@@ -6552,7 +6555,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">1550</int>
+			<int key="maxID">1552</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">

@@ -281,7 +281,7 @@ CFStringRef CopyLocalDisplayName(CGDirectDisplayID display)
 			[panel setStyleMask:NSResizableWindowMask | NSHUDWindowMask | NSTitledWindowMask | NSUtilityWindowMask];
 			[panel setLevel:NSFloatingWindowLevel];
 			[panel setOpaque:NO];
-			[panel setHidesOnDeactivate:YES];
+			[panel setHidesOnDeactivate:NO];
 			
 			[panel setTitle:[NSString stringWithFormat:@"OutputView %i",i]];
 			[panel setFrameAutosaveName:[NSString stringWithFormat:@"OutputView %i",i]];

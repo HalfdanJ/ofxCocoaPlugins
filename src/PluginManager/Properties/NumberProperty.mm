@@ -9,7 +9,7 @@
 #import "NumberProperty.h"
 
 @implementation NumberProperty
-@synthesize minValue, maxValue;
+@synthesize minValue, maxValue, midiSmoothing;
 
 //Creates only one slider that they all use.. The way you do it apparently
 +(NSSliderCell*) sliderCell{
@@ -17,7 +17,7 @@
 	if(slider == nil){
 		slider = [[NSSliderCell alloc] init];
 	}
-	
+	valueSetFromMidi = NO;
 	return slider;
 }
 
@@ -49,6 +49,25 @@
 	return self;
 }
 
+-(void) update{
+	if(valueSetFromMidi && midiSmoothing > 0 && midiGoal != [self floatValue]){
+		if(-[lastMidiTime timeIntervalSinceNow] < 6){
+			if(fabs(midiGoal-[self floatValue]) < ([[self maxValue] floatValue]-[[self minValue] floatValue])*0.001){
+				[self setFloatValue:midiGoal];
+			} else {
+				float f = [self floatValue] + (midiGoal - [self floatValue])*(1-midiSmoothing);
+				[self setFloatValue:f];
+				valueSetFromMidi = YES;
+			}
+		} else {
+			[self setFloatValue:midiGoal];
+			valueSetFromMidi = YES;
+		}
+		
+		lastMidiTime = thisMidiTime;
+
+	} 
+}
 
 
 -(void) setFloatValue:(float)v{
@@ -81,6 +100,13 @@
 
 -(BOOL) boolValue{
 	return [value boolValue];
+}
+
+-(void) setValue:(NSNumber*)n{
+	[self willChangeValueForKey:@"value"];
+	value = n;
+	[self didChangeValueForKey:@"value"];
+	valueSetFromMidi = NO;
 }
 
 
@@ -122,7 +148,15 @@
 -(void) midiEvent:(int) _value{
 	float v = _value/127.0;
 	float endV = [[self minValue] floatValue] + ( [[self maxValue] floatValue] -  [[self minValue] floatValue])*v;
-	[self setFloatValue:endV];
+	if(midiSmoothing > 0){
+		midiGoal = endV;
+		//cout<<"Got midi"<<midiGoal<<endl; 
+		valueSetFromMidi = YES;
+		thisMidiTime = [NSDate date];
+	} else {
+		[self setFloatValue:endV];
+	}
+
 }
 
 -(NSNumber*)midiValue{

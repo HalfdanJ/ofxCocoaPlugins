@@ -20,7 +20,7 @@ extern ofAppBaseWindow * window;
 @implementation PluginManagerController 
 
 @synthesize saveManager, statsAreaView, sharedOpenglContext, openglLock, fps, plugins, viewManager, qlabController;
-@synthesize noQuestionsAsked;
+@synthesize quitWithoutAsking;
 
 #pragma mark Startup
 
@@ -30,7 +30,7 @@ extern ofAppBaseWindow * window;
 		globalController = self;
 		plugins = [[[NSMutableArray alloc] init] retain];	
 		
-		noQuestionsAsked = YES;
+		quitWithoutAsking = YES;
 		
 		setupAppCalled = NO;
 		previews = YES;
@@ -58,6 +58,13 @@ extern ofAppBaseWindow * window;
 -(void) awakeFromNib{
 	[NSApp setDelegate: self];
     [mainWindow setDelegate:self];
+	
+	NSString * appName = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleExecutable"];
+	[mainWindow setTitle:appName];
+	[[[[[NSApp mainMenu] itemAtIndex:0] submenu] itemWithTag:1] setTitle:[NSString stringWithFormat:@"About %@",appName]];
+	[[[[[NSApp mainMenu] itemAtIndex:0] submenu] itemWithTag:2] setTitle:[NSString stringWithFormat:@"Hide %@",appName]];
+	[[[[[NSApp mainMenu] itemAtIndex:0] submenu] itemWithTag:3] setTitle:[NSString stringWithFormat:@"Quit %@",appName]];
+	
 	[testApp setupApp];
 	setupAppCalled = YES;
 	
@@ -65,7 +72,7 @@ extern ofAppBaseWindow * window;
 	[viewManager setupScreen];
 	
 	NSImage * hazardImage = [NSImage imageNamed:@"hazard stripes small.psd"];	
-	//	[pluginTitleView setFillColor:[NSColor colorWithPatternImage:hazardImage]];
+	//[pluginTitleView setFillColor:[NSColor colorWithPatternImage:hazardImage]];
 	[pluginTitleView setFillColor:[NSColor colorWithDeviceWhite:0.0 alpha:0.3]];
 	
 	[self willChangeValueForKey:@"plugins"];
@@ -294,6 +301,12 @@ extern ofAppBaseWindow * window;
 			if([[plugin enabled] boolValue] ){		
 				[plugin update:drawingInformation];
 			}
+			
+			NSArray * allProps = [[plugin properties] allValues];
+			for(PluginProperty * prop in allProps){
+				[prop update];
+			}
+			
 			[plugin setUpdateCpuTime:ofGetElapsedTimeMillis()-time];
 			
 		}
@@ -706,7 +719,7 @@ extern ofAppBaseWindow * window;
 }
 
 - (NSApplicationTerminateReply)applicationShouldTerminate:(NSApplication *)app {
-	if(noQuestionsAsked){
+	if(quitWithoutAsking){
 		return NSTerminateNow;
 	} else {
 		[self askToQuit:[app mainWindow]];

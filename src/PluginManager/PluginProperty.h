@@ -43,6 +43,7 @@
 @property (retain)	NSNumber * midiChannel;
 @property (retain)	NSNumber * midiNumber;
 
+-(void) update;
 -(void) midiEvent:(int) value;
 -(void) bindMidi;
 -(void) unbindMidi;

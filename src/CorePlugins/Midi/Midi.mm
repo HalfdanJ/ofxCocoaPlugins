@@ -24,11 +24,20 @@
 		
 		manager = [PYMIDIManager sharedInstance];
 		endpoint = [[PYMIDIRealEndpoint alloc] init];
+		//endpoint = [[PYMIDIVirtualEndpoint alloc] initWithName:@"Malpais MIDI"];
+		
 		[endpoint retain];
 		[endpoint addReceiver:self];
 		
 		sendEndpoint = new PYMIDIRealEndpoint;
 		//	[sendEndpoint retain];
+		
+		NSString *appName = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleExecutable"];
+		virtualDestination = [[PYMIDIVirtualDestination alloc] initWithName:[appName stringByAppendingString:@" Virtual MIDI"]];
+		
+		[virtualDestination retain];
+		[virtualDestination makePrivate:NO];
+		[virtualDestination addReceiver:self];
 		
 		updateView = false;
 		
@@ -40,7 +49,19 @@
 		
 		
 		midiBindings = [[NSMutableArray array] retain];
-		midiData = [[NSMutableDictionary dictionary] retain];
+		midiData = [[NSMutableArray array] retain];
+		
+		for(int i=0; i<17; i++){
+			
+			NSMutableDictionary * aChannel = [NSMutableDictionary dictionary];
+			
+			for (int j=0; j<128; j++) {
+				[aChannel setObject:[NSNumber numberWithInt:0] forKey:[NSString stringWithFormat:@"%i", j]];
+			}
+			
+			[midiData addObject:aChannel]; 
+			
+		}
 		
 		for(int i=0;i<16;i++){
 			pitchBends[i] = 0;
@@ -56,7 +77,6 @@
 -(void) initPlugin{
 	//dispatch_async(dispatch_get_main_queue(), ^{
 	
-	
 	//});
 	
 }
@@ -65,7 +85,6 @@
 	[self buildMidiInterfacePopUp];
 	
 	[midiMappingsList setDoubleAction:@selector(showSelectedControl:)];
-	
 	
 	
 }
@@ -111,7 +130,7 @@
 		// do nothing
 	} 
 	if (returnCode == NSAlertAlternateReturn) {     /* "Quit" */
-		[[[NSApplication sharedApplication] delegate] setNoQuestionsAsked:YES];
+		[[[NSApplication sharedApplication] delegate] setQuitWithoutAsking:YES];
 		[[NSApplication sharedApplication] terminate:self];
 	}
 	
@@ -125,7 +144,7 @@
 		// do nothing
 	} 
 	if (returnCode == NSAlertAlternateReturn) {     /* "Quit" */
-		[[[NSApplication sharedApplication] delegate] setNoQuestionsAsked:YES];
+		[[[NSApplication sharedApplication] delegate] setQuitWithoutAsking:YES];
 		[[NSApplication sharedApplication] terminate:self];
 	}
 	
@@ -138,10 +157,10 @@
 	
 	updateTimeInterval = timeInterval;
 	
-	NSMutableIndexSet * rowIndexesChanged = [[NSMutableIndexSet alloc] init];
+	//	NSMutableIndexSet * rowIndexesChanged = [[NSMutableIndexSet alloc] init];
 	
-	id theBinding;
-	int rowIndex = 0;
+	//	id theBinding;
+	//	int rowIndex = 0;
 	
 	/*pthread_mutex_lock(&mutex);
 	 
@@ -160,11 +179,11 @@
 	 
 	 pthread_mutex_unlock(&mutex);*/
 	
-	if(timeInterval - midiTimeInterval > 0.15) {
-		//		[[[globalController controlPanel] midiStatus] setState:NSOffState];
-	}
+	//	if(timeInterval - midiTimeInterval > 0.15) {
+	//		[[[globalController controlPanel] midiStatus] setState:NSOffState];
+	//	}
 	
-	[rowIndexesChanged release];
+	//	[rowIndexesChanged release];
 }
 
 BOOL isDataByte (Byte b)		{ return b < 0x80; }
@@ -172,9 +191,9 @@ BOOL isStatusByte (Byte b)		{ return b >= 0x80 && b < 0xF8; }
 BOOL isRealtimeByte (Byte b)	{ return b >= 0xF8; }
 
 - (void)processMIDIPacketList:(MIDIPacketList*)packetList sender:(id)sender {
-	midiTimeInterval = updateTimeInterval;
+	//	midiTimeInterval = updateTimeInterval;
 	
-	NSMutableIndexSet * rowIndexesChanged = [[NSMutableIndexSet alloc] init];
+	//	NSMutableIndexSet * rowIndexesChanged = [[NSMutableIndexSet alloc] init];
 	
 	MIDIPacket * packet = &packetList->packet[0];
 	
@@ -222,25 +241,33 @@ BOOL isRealtimeByte (Byte b)	{ return b >= 0xF8; }
 				
 				//pthread_mutex_lock(&mutex);
 				
-				int rowIndex = 0;
+				//int rowIndex = 0;
+				
 				NSMutableDictionary * dict = [NSMutableDictionary dictionary];
 				[dict setObject:[NSNumber numberWithInt:channel] forKey:@"channel"];
 				[dict setObject:[NSNumber numberWithInt:number] forKey:@"number"];
 				[dict setObject:[NSNumber numberWithInt:value] forKey:@"value"];				
 				
-				[self setMidiData:dict];
+				if(channel >= 0 && number >= 0){
+					[[midiData objectAtIndex:channel] setObject:[NSNumber numberWithInt:value] forKey:[NSString stringWithFormat:@"%i", number]];
+				}
+				//				[[midiData objectForKey:[NSNumber numberWithInt:channel]] setObject:[NSNumber numberWithInt:value] forKey:[NSNumber numberWithInt:number]];
+				
+				//				[midiData setObject:[NSNumber numberWithInt:value] forKey:[NSString stringWithFormat:@"%i.%i", channel, number]];
+				
+				//				[self setMidiData:dict];
 				
 				//NSLog(@"%i %@", value, midiBindings);
 				
 				
 				
 				/* This caused a crash when receiving a midi packet sometimes! 
-				
-				[self willChangeValueForKey:@"midiData"];
-				[midiData setObject:[NSNumber numberWithInt:channel] forKey:@"channel"];
-				[midiData setObject:[NSNumber numberWithInt:number] forKey:@"number"];
-				[midiData setObject:[NSNumber numberWithInt:value] forKey:@"value"];				
-				[self didChangeValueForKey:@"midiData"];
+				 
+				 [self willChangeValueForKey:@"midiData"];
+				 [midiData setObject:[NSNumber numberWithInt:channel] forKey:@"channel"];
+				 [midiData setObject:[NSNumber numberWithInt:number] forKey:@"number"];
+				 [midiData setObject:[NSNumber numberWithInt:value] forKey:@"value"];				
+				 [self didChangeValueForKey:@"midiData"];
 				 
 				 */
 				
@@ -268,22 +295,22 @@ BOOL isRealtimeByte (Byte b)	{ return b >= 0xF8; }
 			}
 			
 			/*
-			// handle plugin activation/deactivation
-			if (number == 1) {
-				
-				ofPlugin * p;
-				
-				for (p in [globalController plugins]) {
-					if ([p ] == channel) {
-						if (value == 0) {
-							[p setEnabled:[NSNumber numberWithInt:0]];
-						} else {
-							[p setEnabled:[NSNumber numberWithInt:1]];
-						}
-					}
-				}
-				
-			} 
+			 // handle plugin activation/deactivation
+			 if (number == 1) {
+			 
+			 ofPlugin * p;
+			 
+			 for (p in [globalController plugins]) {
+			 if ([p ] == channel) {
+			 if (value == 0) {
+			 [p setEnabled:[NSNumber numberWithInt:0]];
+			 } else {
+			 [p setEnabled:[NSNumber numberWithInt:1]];
+			 }
+			 }
+			 }
+			 
+			 } 
 			 
 			 else if (number == 2) {
 			 

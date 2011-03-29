@@ -21,11 +21,17 @@ extern PluginManagerController * globalController;
 @interface NumberProperty : PluginProperty {
 	NSNumber * minValue;
 	NSNumber * maxValue;
+	
+	float midiSmoothing;
+	float midiGoal;
+	bool valueSetFromMidi;
+	NSDate * thisMidiTime;
+	NSDate * lastMidiTime;
 
 }
 @property (retain) NSNumber * minValue;
 @property (retain) NSNumber * maxValue;
-
+@property (readwrite) float midiSmoothing;
 
 +(NumberProperty*)sliderPropertyWithDefaultvalue:(float)defaultValue minValue:(float)min maxValue:(float)max;
 
