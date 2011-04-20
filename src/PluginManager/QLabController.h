@@ -115,7 +115,10 @@
 -(IBAction) go:(id)sender;
 -(IBAction) cancel:(id)sender;
 
--(NSDictionary*) getThisCueDict;
--(NSDictionary*) getNextCueDict;
--(NSDictionary*) getPrevCueDict;
+//-(NSDictionary*) getThisCueDict;
+//-(NSDictionary*) getNextCueDict;
+//-(NSDictionary*) getPrevCueDict;
+
+-(void) populateCueDict:(CueObject*)obj;
+-(void) updateCue:(CueObject*)cue;
 @end

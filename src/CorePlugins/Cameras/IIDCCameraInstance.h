@@ -54,7 +54,7 @@
 @property (readwrite) dc1394framerate_t	videoFramerate;
 
 -(id)initWithGuid:(NSString*)guid;
-- (void)videoGrabberRespawn;
+-(void)videoGrabberRespawn;
 
 -(BOOL) isFrameNew;
 

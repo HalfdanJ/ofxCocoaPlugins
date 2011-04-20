@@ -70,7 +70,7 @@
 -(void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context{
 	if([(NSString*)context isEqualToString:@"customProperties"]){			
 		Camera * cam;
-		NSLog(@"%@ %i",customProperties,[[customProperties objectForKey:@"cameras"] count]);
+		NSLog(@"%@ %lu",customProperties,[[customProperties objectForKey:@"cameras"] count]);
 		int i=0;
 		for(cam in cameras){
 			if([[customProperties objectForKey:@"cameras"] count] > i){
@@ -148,7 +148,7 @@
 	
 }
 
--(BOOL) willDraw:(int)viewNumber{
+-(BOOL)willDraw:(NSMutableDictionary *)drawingInformation{
 	return NO;
 }
 

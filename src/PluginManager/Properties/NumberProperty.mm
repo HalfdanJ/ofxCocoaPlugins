@@ -7,6 +7,7 @@
 //
 
 #import "NumberProperty.h"
+#import "QLabController.h"
 
 @implementation NumberProperty
 @synthesize minValue, maxValue, midiSmoothing;
@@ -17,7 +18,6 @@
 	if(slider == nil){
 		slider = [[NSSliderCell alloc] init];
 	}
-	valueSetFromMidi = NO;
 	return slider;
 }
 
@@ -45,6 +45,7 @@
 
 -(id) init{
 	if([super init]){
+        valueSetFromMidi = NO;
 	}
 	return self;
 }

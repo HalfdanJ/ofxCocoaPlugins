@@ -29,7 +29,7 @@
 		[endpoint retain];
 		[endpoint addReceiver:self];
 		
-		sendEndpoint = new PYMIDIRealEndpoint;
+		sendEndpoint = (PYMIDIVirtualDestination*) new PYMIDIRealEndpoint;
 		//	[sendEndpoint retain];
 		
 		NSString *appName = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleExecutable"];
@@ -130,12 +130,12 @@
 		// do nothing
 	} 
 	if (returnCode == NSAlertAlternateReturn) {     /* "Quit" */
-		[[[NSApplication sharedApplication] delegate] setQuitWithoutAsking:YES];
+		[(PluginManagerController*)[[NSApplication sharedApplication] delegate] setQuitWithoutAsking:YES];
 		[[NSApplication sharedApplication] terminate:self];
 	}
 	
 	if (returnCode == NSAlertOtherReturn) {			/* "Show conflicts" */
-		[globalController changeView:[[globalController viewItems] indexOfObject:self]];
+//		[globalController changeView:[[globalController viewItems] indexOfObject:self]];
 	}       
 }
 
@@ -144,12 +144,12 @@
 		// do nothing
 	} 
 	if (returnCode == NSAlertAlternateReturn) {     /* "Quit" */
-		[[[NSApplication sharedApplication] delegate] setQuitWithoutAsking:YES];
+		[(PluginManagerController*)[[NSApplication sharedApplication] delegate] setQuitWithoutAsking:YES];
 		[[NSApplication sharedApplication] terminate:self];
 	}
 	
 	if (returnCode == NSAlertOtherReturn) {			/* "Show conflicts" */
-		[globalController changeView:[[globalController viewItems] indexOfObject:self]];
+	//	[globalController changeView:[[globalController viewItems] indexOfObject:self]];
 	}       
 }
 
@@ -449,29 +449,25 @@ BOOL isRealtimeByte (Byte b)	{ return b >= 0xF8; }
 	[self buildMidiInterfacePopUp];
 }
 
--(void)sendValue:(int)midiValue forNote:(int)midiNote onChannel:(int)midiChannel{
+-(void)sendValue:(int)midiValue forNote:(int)midiNote onChannel:(int)_midiChannel{
 	
-	Byte packetbuffer[128];
 	MIDIPacketList packetlist;
 	MIDIPacket     *packet     = MIDIPacketListInit(&packetlist);
-	Byte mdata[3] = {(143+midiChannel), midiNote, midiValue};
+	Byte mdata[3] = {(143+_midiChannel), midiNote, midiValue};
 	packet = MIDIPacketListAdd(&packetlist, sizeof(packetlist),
 							   packet, 0, 3, mdata);
-	cout<<"Prepare midi send"<<packet<<"  "<<midiValue<<"   "<<midiNote<<"   "<<midiChannel<<endl;
+	cout<<"Prepare midi send"<<packet<<"  "<<midiValue<<"   "<<midiNote<<"   "<<_midiChannel<<endl;
 	if (endpoint) {
 		[sendEndpoint addSender:self];
 		[sendEndpoint processMIDIPacketList:&packetlist sender:self];
 		[sendEndpoint removeSender:self];
-		cout<<"Midi send"<<packet<<"  "<<midiValue<<"   "<<midiNote<<"   "<<midiChannel<<endl;
+		cout<<"Midi send"<<packet<<"  "<<midiValue<<"   "<<midiNote<<"   "<<_midiChannel<<endl;
 	}
 	
 }
 
 -(IBAction) sendGo:(id)sender{
-	//	[self sendValue:1 forNote:1 onChannel:1];
-	
-	Byte packetbuffer[128];
-	MIDIPacketList packetlist;
+    MIDIPacketList packetlist;
 	MIDIPacket     *packet     = MIDIPacketListInit(&packetlist);
 	
 	//	F0 7F <device_ID> 02 <command_format> <command> <data> F7
@@ -496,7 +492,6 @@ BOOL isRealtimeByte (Byte b)	{ return b >= 0xF8; }
 -(IBAction) sendResetAll:(id)sender{
 	//	[self sendValue:1 forNote:1 onChannel:1];
 	
-	Byte packetbuffer[128];
 	MIDIPacketList packetlist;
 	MIDIPacket     *packet     = MIDIPacketListInit(&packetlist);
 	

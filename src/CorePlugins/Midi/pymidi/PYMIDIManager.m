@@ -155,7 +155,7 @@ midiNotifyProc (const MIDINotification* message, void* refCon)
     
     // Sync up all the known MIDI endpoints with CoreMIDI
     enumerator = [realSourceArray objectEnumerator];
-    while (endpoint = [enumerator nextObject])
+    while ((endpoint = [enumerator nextObject]))
         [endpoint syncWithMIDIEndpoint];
     
     // Find any non-virtual endpoints that we don't already know about
@@ -232,7 +232,7 @@ midiNotifyProc (const MIDINotification* message, void* refCon)
     
     // Sync up all the known MIDI endpoints with CoreMIDI
     enumerator = [realDestinationArray objectEnumerator];
-    while (endpoint = [enumerator nextObject])
+    while ((endpoint = [enumerator nextObject]))
         [endpoint syncWithMIDIEndpoint];
     
     // Find any non-virtual endpoints that we don't already know about

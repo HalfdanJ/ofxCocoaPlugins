@@ -184,7 +184,7 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 	
 	// draw here	
 	if([controller isPluginsInited]){	
-		if([controller willDraw:drawingInformation] || 	![controller isSetupCalled]){
+		if(![controller isSetupCalled] || [controller willDraw:drawingInformation]){
 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 			
@@ -343,7 +343,7 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 	[[self window] setFrame:windowRect display:YES animate:YES];
 	
 	free(displays);
-	NSLog(@"		Select display %i for outputView %i",[sender indexOfSelectedItem]-1, viewNumber);
+	NSLog(@"		Select display %ld for outputView %i",[sender indexOfSelectedItem]-1, viewNumber);
 }
 
 

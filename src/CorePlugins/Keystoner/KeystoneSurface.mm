@@ -90,7 +90,7 @@
 	glPushMatrix();{
 		
 		ofEnableAlphaBlending();
-		string text = [name cString];
+		string text = [name cStringUsingEncoding:NSUTF8StringEncoding ];
 		float resolution = 14.0;
 		float a = 1.0;
 		bool drawBorder = true;

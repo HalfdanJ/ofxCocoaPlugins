@@ -257,7 +257,7 @@ PYMIDIIsEndpointLocalVirtual (MIDIEndpointRef midiEndpointRef)
     
     NSEnumerator* enumerator = [self objectEnumerator];
     id object;
-    while (object = [enumerator nextObject]) {
+    while ((object = [enumerator nextObject])) {
         method = (BOOL (*)(id, SEL))[object methodForSelector:filter];
         if (method (object, filter))
         	[newArray addObject:object];

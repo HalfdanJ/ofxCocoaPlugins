@@ -1,5 +1,6 @@
-#include "Plugin.h"
 #pragma once
+#include "Plugin.h"
+
 @interface TrackingLayer : CALayer {
 	CALayer * contentLayer;
 	CALayer * outputViewLayer;
@@ -27,4 +28,9 @@
 -(void)setScale:(float)scale;
 -(void) setup;
 -(void) scrollWheel:(NSEvent *)theEvent;
+
+-(void) mouseDown:(CGPoint)cgLocation;
+-(void) mouseDragged:(CGPoint)cgLocation;
+-(void) keyDown:(NSEvent *)theEvent;
+
 @end

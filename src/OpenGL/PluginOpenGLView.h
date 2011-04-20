@@ -1,8 +1,5 @@
 #pragma once
 
-
-
-
 #import "GLee.h"
 #include "ofMain.h"
 
@@ -16,18 +13,18 @@
 @interface PluginOpenGLView : NSOpenGLView {
 	PluginManagerController * controller;
 	OutputViewManager * viewManager;
-
+    
 	int viewNumber;
 	
 	double	deltaTime;
 	double framesPerSecond;
-
+    
 	int	viewWidth;
 	int	viewHeight;
-
+    
 	CVDisplayLinkRef displayLink; //display link for managing rendering thread
 	CGDirectDisplayID    viewDisplayID;
-
+    
 	NSMutableDictionary * drawingInformation;
 	
 	BOOL fullscreen;
@@ -37,7 +34,7 @@
 	CGDirectDisplayID displayId;
 	
 	OutputViewStats * statsView;
-		
+    
 	NSSize screenSize;
 	
 	float avgTime;
@@ -46,6 +43,7 @@
 	
 	int backingWidth, backingHeight;
 }
+
 @property (assign, readonly) int viewWidth;
 @property (assign, readonly) int viewHeight;
 @property (readwrite) int viewNumber;
@@ -56,11 +54,13 @@
 @property (readwrite) NSSize screenSize;
 @property BOOL inFullscreen;
 
-- (CVReturn)getFrameForTime:(CFTimeInterval)timeInterval displayTime:(const CVTimeStamp *)outputTime;
-- (void) updateDisplayIDWithWindow:(NSWindow*)window;
+-(CVReturn)getFrameForTime:(CFTimeInterval)timeInterval displayTime:(const CVTimeStamp *)outputTime;
+-(void) updateDisplayIDWithWindow:(NSWindow*)window;
 
 -(void) setDisplayNumber:(id)sender;
 
 -(void) setBackingWidth:(int) width height:(int)height;
+-(void)updateStats;
+
 @end
 

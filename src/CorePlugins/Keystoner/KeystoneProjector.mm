@@ -1,6 +1,7 @@
 
 #import "KeystoneProjector.h"
 #import "Keystoner.h"
+#import "KeystoneSurface.h"
 
 @implementation KeystoneProjector
 @synthesize surfaces,viewNumber, projectorNumber;
@@ -52,7 +53,7 @@
 	[self didChangeValueForKey:@"projectorNumber"];
 	
 	for(KeystoneSurface * surf in surfaces){
-		[surf projectorNumber:v];
+		[surf setProjectorNumber:v];
 	}
 	
 }

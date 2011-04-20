@@ -1,7 +1,7 @@
 #pragma once
 
 #include "ofAppBaseWindow.h"
-#include "TestAppController.h"
+#include "AppController.h"
 
 
 class ofAppCocoaWindow : public ofAppBaseWindow{
@@ -92,7 +92,7 @@ public:
 	int 			nonFullScreenX;
 	int 			nonFullScreenY;
 	
-	TestAppController * windowController;
+	AppController * windowController;
 	
 
 };

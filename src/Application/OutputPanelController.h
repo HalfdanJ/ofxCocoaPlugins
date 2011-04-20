@@ -5,13 +5,13 @@
 #import <Cocoa/Cocoa.h>
 #import "PluginOpenGLView.h"
 
+//OutputPanelController creates the output opengl views from nib
 @interface OutputPanelController : NSObject {
 	IBOutlet NSPanel * panel;
 	IBOutlet NSPopUpButton * displayPopup;
 	IBOutlet PluginOpenGLView * glView;
-	IBOutlet NSSlider * scaleSlider;
 }
-@property (readonly, retain) NSSlider * scaleSlider;
+
 @property (readonly, retain) NSPanel * panel;
 @property (readonly, retain) NSPopUpButton * displayPopup;
 @property (readonly, retain) PluginOpenGLView * glView;

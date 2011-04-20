@@ -1,21 +1,13 @@
 #import "PluginManagerController.h"
 #include "Plugin.h"
-//#import <QTKit/QTKit.h>
-#import <BWToolkitFramework/BWToolkitFramework.h>
-
-
 #include "PluginIncludes.h"
 
-#include "TestAppController.h"
-//#include "GraphDebugger.h"
+#include "AppController.h"
 #include "PluginListMeterCell.h"
 
 PluginManagerController * globalController;
 
 extern ofAppBaseWindow * window;
-//extern GraphDebugger * globalGraphDebugger;
-
-
 
 @implementation PluginManagerController 
 
@@ -25,7 +17,8 @@ extern ofAppBaseWindow * window;
 #pragma mark Startup
 
 -(id) init{
-	if (self = [super init])
+    self = [super init];
+	if (self)
     {
 		globalController = self;
 		plugins = [[[NSMutableArray alloc] init] retain];	
@@ -36,7 +29,7 @@ extern ofAppBaseWindow * window;
 		previews = YES;
 		
 		NSBundle *bundle = [NSBundle mainBundle];
-		ofSetDataPathRoot([[[[bundle bundlePath] stringByDeletingLastPathComponent] stringByAppendingString:@"/data/"] cString]);
+		ofSetDataPathRoot([[[[bundle bundlePath] stringByDeletingLastPathComponent] stringByAppendingString:@"/data/"] cStringUsingEncoding:NSUTF8StringEncoding]);
 		
 		//Lock used by OpenGL
 		openglLock = [NSRecursiveLock new];
@@ -71,7 +64,7 @@ extern ofAppBaseWindow * window;
 	//Setup outputviews
 	[viewManager setupScreen];
 	
-	NSImage * hazardImage = [NSImage imageNamed:@"hazard stripes small.psd"];	
+	//NSImage * hazardImage = [NSImage imageNamed:@"hazard stripes small.psd"];	
 	//[pluginTitleView setFillColor:[NSColor colorWithPatternImage:hazardImage]];
 	[pluginTitleView setFillColor:[NSColor colorWithDeviceWhite:0.0 alpha:0.3]];
 	
@@ -281,8 +274,8 @@ extern ofAppBaseWindow * window;
 			for(group in plugins){
 				ofPlugin * plugin;
 				for(plugin in [group objectForKey:@"children"]){
-					if([[plugin name] isEqualToString:[NSString stringWithCString:m.getArgAsString(0).c_str()]]){
-						PluginProperty * prop = [[plugin properties] objectForKey:[NSString stringWithCString:m.getArgAsString(1).c_str()]];
+					if([[plugin name] isEqualToString:[NSString stringWithCString:m.getArgAsString(0).c_str() encoding:NSUTF8StringEncoding]]){
+						PluginProperty * prop = [[plugin properties] objectForKey:[NSString stringWithCString:m.getArgAsString(1).c_str() encoding:NSUTF8StringEncoding]];
 						if(prop != nil){
 							[prop setValue:[NSNumber numberWithFloat:m.getArgAsFloat(2)]];
 						}
@@ -373,9 +366,7 @@ extern ofAppBaseWindow * window;
 		for(ofPlugin * plugin in [group objectForKey:@"children"]){
 			
 			glPushMatrix();
-	
-			int time = ofGetElapsedTimeMillis();
-			
+				
 			if(!isQuitting && [[plugin enabled]boolValue] ){
 				//	ofEnableAlphaBlending();
 				//	glBlendColor([[plugin alpha] floatValue], [[plugin alpha] floatValue], [[plugin alpha] floatValue], [[plugin alpha] floatValue]);
@@ -393,8 +384,6 @@ extern ofAppBaseWindow * window;
 	
 	
 	//Calculate cpu usage
-	int totalTime = ofGetElapsedTimeMillis()- startFrameTime;
-	
 	if(ofGetElapsedTimeMillis() - lastPowerMeterUpdate > 100){	
 		for(NSDictionary * group in plugins){
 			for(ofPlugin * plugin in [group objectForKey:@"children"]){		
@@ -467,9 +456,14 @@ extern ofAppBaseWindow * window;
 -(IBAction)changePlugin:(id)sender{
 	[openglLock lock];
 	if([[self selectedPlugin] view] != nil){		
-		NSRect frame = [[pluginControllerView superview] frame];
-		NSRect bounf = [[[self selectedPlugin] view] bounds];
-		[pluginControllerView setBoundsSize:NSMakeSize(bounf.size.width, bounf.size.height)];
+//		NSRect frame = [[pluginControllerView superview] frame];
+//		NSRect bounf = [[[self selectedPlugin] view] bounds];
+        
+        [[[self selectedPlugin] view] setFrame:[pluginControllerView bounds]];
+        [pluginControllerView replaceSubview:[[pluginControllerView subviews] objectAtIndex:0] with:[[self selectedPlugin] view]];
+		
+        
+		/*[pluginControllerView setBoundsSize:NSMakeSize(bounf.size.width, bounf.size.height)];
 		[pluginControllerView setFrameSize:NSMakeSize(bounf.size.width, bounf.size.height)];	
 		[pluginControllerView replaceSubview:[[pluginControllerView subviews] objectAtIndex:0] with:[[self selectedPlugin] view]];
 		bounf = [[[self selectedPlugin] view] bounds];	
@@ -491,7 +485,7 @@ extern ofAppBaseWindow * window;
 			
 		} else {
 			[pluginControllerView setAutoresizingMask:NSViewMinXMargin | NSViewMinYMargin  ];	
-		}
+		}*/
 		
 	} else {
 		[pluginControllerView replaceSubview:[[pluginControllerView subviews] objectAtIndex:0] with:[[[NSView alloc]initWithFrame:[[pluginControllerView superview] frame]]autorelease]];
@@ -541,6 +535,7 @@ extern ofAppBaseWindow * window;
 			}
 		}
 	}
+    return nil;
 }
 
 
@@ -699,7 +694,7 @@ extern ofAppBaseWindow * window;
 	}
 	
 }
-
+/*
 -(void) encodeWithCoder:(NSCoder *)coder{
 	NSLog(@"Encode");
 	[coder encodeObject:plugins forKey:@"plugins"];
@@ -710,7 +705,7 @@ extern ofAppBaseWindow * window;
 	NSLog(@"Decode");
 	[plugins initWithCoder:coder];
 	
-}
+}*/
 
 
 - (BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)theApplication

@@ -27,22 +27,20 @@
 
 extern PluginManagerController * globalController;
 
-@interface ofPlugin : NSObject <NSCoding>
+@interface ofPlugin : NSObject 
 {
+    IBOutlet NSView * view;
+	IBOutlet PluginOpenGLControlView * controlGlView;
+
 	NSString * name;
 	NSNumber * enabled;
-	
+    NSImage * icon; //Not in use
+
 	BOOL initPluginCalled;
 	BOOL setupCalled;
 
-	IBOutlet NSView * view;
-//	IBOutlet ofPlugin * plugin;
-	IBOutlet PluginOpenGLControlView * controlGlView;
 	CAOpenGLLayer *controlLayer;
 
-	//float updateCpuUsage;
-	//float drawCpuUsage;
-	
 	int updateCpuTime;
 	int drawCpuTime;
 	
@@ -53,18 +51,15 @@ extern PluginManagerController * globalController;
 	NSMutableDictionary * powerMeterDictionary;
 	NSMutableDictionary * customProperties;
 
-	//float lastTime;
 	float controlMouseX;
 	float controlMouseY;
 	int controlMouseFlags;
 	
-	NSImage * icon;
-	
-	NSNumber * midiChannel;
-	
+	NSNumber * midiChannel;	
 }
+
 @property (retain, readwrite) NSString *name;
-@property (assign, readwrite) NSNumber *enabled;
+@property (retain, readwrite) NSNumber *enabled;
 
 @property (assign, readwrite) NSView * view;
 @property (readwrite) float updateCpuUsage;
@@ -77,13 +72,12 @@ extern PluginManagerController * globalController;
 @property (retain) 	NSMutableDictionary * customProperties;
 @property (retain) 	NSMutableDictionary * powerMeterDictionary;
 @property (retain) NSImage * icon;
-//@property (readwrite) float lastTime;
 @property (readwrite) float controlMouseX;
 @property (readwrite) float controlMouseY;
 @property (readwrite) int controlMouseFlags;
 @property (retain, readwrite) NSNumber * midiChannel;
 
-- (void) initPlugin; //The function wich the different plugin can put their init code in
+- (void) initPlugin; //The function which the different plugin can put their init code in
 - (BOOL) loadPluginNibFile;
 - (void) setup;
 - (void) draw:(NSDictionary*)drawingInformation;
@@ -98,18 +92,18 @@ extern PluginManagerController * globalController;
 - (void) controlMouseScrolled:(NSEvent *)theEvent;
 - (void) controlKeyPressed:(int)key;
 
--(void) setBoolEnabled:(BOOL)b;
--(BOOL) boolEnabled;
+- (void) setBoolEnabled:(BOOL)b;
+- (BOOL) boolEnabled;
 
 - (BOOL) isEnabled;
 - (BOOL) autoresizeControlview;
--(BOOL) willDraw:(NSMutableDictionary*)drawingInformation;
+- (BOOL) willDraw:(NSMutableDictionary*)drawingInformation;
 
--(void) addProperty:(PluginProperty*)p named:(NSString*)name;
--(void) assignMidiChannel:(int) channel;
+- (void) addProperty:(PluginProperty*)p named:(NSString*)name;
+- (void) assignMidiChannel:(int) channel;
 
--(IBAction) qlabAll:(id)sender;
--(IBAction) generateMidiNumbers:(id)sender;
+- (IBAction) qlabAll:(id)sender;
+- (IBAction) generateMidiNumbers:(id)sender;
 
 - (void) applicationWillTerminate: (NSNotification *)note;
 

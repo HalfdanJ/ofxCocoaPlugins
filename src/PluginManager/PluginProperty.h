@@ -10,6 +10,8 @@
 #define BOOL_PROPERTY 4
 
 
+
+
 //@class GraphDebugger;
 //extern GraphDebugger * globalGraphDebugger;
 
@@ -55,7 +57,7 @@
 
 -(void) setManualMidiNumber:(NSNumber*)number;
 
--(void) sendQlabScriptName:(NSString*)description channel:(int)channel control:(int)control value:(int)value fade:(bool)fade;
+//-(void) sendQlabScriptName:(NSString*)description channel:(int)channel control:(int)control value:(int)value fade:(bool)fade;
 //+(PluginProperty*)boolProperty:(BOOL)defValue;
 //+(PluginProperty*)stringProperty:(NSString*)defValue;
 

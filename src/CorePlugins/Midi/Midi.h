@@ -70,6 +70,6 @@
 
 -(NSString*) getAppleScriptConnectionString;
 
--(id)tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(int)rowIndex;
+//-(id)tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(int)rowIndex;
 -(float) getPitchBend:(int)channel;
 @end

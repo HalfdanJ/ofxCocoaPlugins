@@ -38,4 +38,8 @@
 }
 -(void) loadSettingsDict:(NSMutableDictionary*)dict{}
 -(void) addPropertiesToSave:(NSMutableDictionary*)dict{}
+- (void)update{}
+-(void)videoGrabberInit{}
+-(NSView *)makeViewInRect:(NSRect)rect{return nil;}
+-(void)close{}
 @end

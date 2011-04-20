@@ -118,7 +118,7 @@
 			NSRange prefixRange = [beginsTest rangeOfString:searchString options:(0)];
 			
 			if(prefixRange.length > 0){
-				NSLog(@"Cue %@ prefix length: %i  searchstring length: %i",[cue qName], prefixRange.length, length);
+				NSLog(@"Cue %@ prefix length: %lu  searchstring length: %i",[cue qName], prefixRange.length, length);
 				
 				[self setMidiChannel:[[proptery midiChannel] intValue] number:[[proptery midiNumber] intValue] forCue:cue];
 				//[cue set
@@ -192,7 +192,7 @@
 	}
 	
 	
-	NSLog(@"Make new cue: %i	multiple selection: %i   Number selection: %i",makeNewCue,multipleSelection,[selectedCues count]);
+	NSLog(@"Make new cue: %i	multiple selection: %i   Number selection: %lu",makeNewCue,multipleSelection,[selectedCues count]);
 	
 	
 	//Nu går vi igennem alle cues, og populater propertyCues, og ser om vi kan udfylde this, next og prev
@@ -203,17 +203,17 @@
 		
 		NSString *beginsTest = cueName;
 		NSRange prefixRange = [beginsTest rangeOfString:searchString options:(0)];		
-		NSLog(@"Search length: %i for cue %@", prefixRange.length, cueName);
+		NSLog(@"Search length: %lu for cue %@", prefixRange.length, cueName);
 		
 		if(prefixRange.length > 0){
 			//Det er en property cue
 			[propertyCues addObject:[NSDictionary dictionaryWithObjectsAndKeys:[cue qName],@"name",nil]];
 			
 			
-			if(!makeNewCue && [[[selectedPropertyCues objectAtIndex:0] uniqueID] isEqualToString:[cue uniqueID]]){
+			if(!makeNewCue && [[((QLabCue*)[selectedPropertyCues objectAtIndex:0]) uniqueID] isEqualToString:[cue uniqueID]]){
 				indexFound = YES;
 			}	
-			if([[[selectedPropertyCues lastObject] uniqueID] isEqualToString:[cue uniqueID]]){
+			if([[((QLabCue*)[selectedPropertyCues lastObject]) uniqueID] isEqualToString:[cue uniqueID]]){
 				thisCue = cue;
 				if(prevCue == cue){
 					prevCue = nil;
@@ -232,7 +232,7 @@
 		} else {
 			//Det er ikke nogen property cue
 			if(makeNewCue){
-				if([[[selectedCues lastObject] uniqueID] isEqualToString:[cue uniqueID]]){
+				if([[((QLabCue*)[selectedCues lastObject]) uniqueID] isEqualToString:[cue uniqueID]]){
 					indexFound = YES;
 				}
 			} else {
@@ -509,7 +509,7 @@
 				
 				// call the event in AppleScript
 				NSAppleEventDescriptor* retDesc = [appleScript executeAppleEvent:event error:&errors];
-				if (retDesc);
+				if (retDesc)
 				{
 					[dict setValue:[NSNumber numberWithInt:[[retDesc descriptorAtIndex:1] int32Value]] forKey:@"channel"];
 					[dict setValue:[NSNumber numberWithInt:[[retDesc descriptorAtIndex:2] int32Value]] forKey:@"number"];
@@ -575,7 +575,7 @@
 				[event setParamDescriptor:parameters forKeyword:keyDirectObject];
 				
 				// call the event in AppleScript
-				if (![appleScript executeAppleEvent:event error:&errors]);
+				if (![appleScript executeAppleEvent:event error:&errors])
 				{
 					// report any errors from 'errors'
 				}
@@ -642,7 +642,7 @@
 					[event setParamDescriptor:parameters forKeyword:keyDirectObject];
 					
 					// call the event in AppleScript
-					if (![appleScript executeAppleEvent:event error:&errors]);
+					if (![appleScript executeAppleEvent:event error:&errors])
 					{
 						NSLog(@"Error updating cue.. Damn! %@",errors);
 					}
@@ -686,7 +686,7 @@
 					[event setParamDescriptor:parameters forKeyword:keyDirectObject];
 					
 					// call the event in AppleScript
-					if (![appleScript executeAppleEvent:event error:&errors]);
+					if (![appleScript executeAppleEvent:event error:&errors])
 					{
 						NSLog(@"Error updating cue.. Damn! %@",errors);
 					}

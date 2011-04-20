@@ -12,11 +12,11 @@
 #include "ofxOsc.h"
 
 @class ofPlugin;
-@class TestAppController;
+@class AppController;
 @class QLabController;
 
-@interface PluginManagerController : NSObject <NSCoding, NSWindowDelegate>{
-	IBOutlet TestAppController * testApp;
+@interface PluginManagerController : NSObject <NSWindowDelegate>{
+	IBOutlet AppController * testApp;
 //	IBOutlet NSView * outputView;
 	IBOutlet MainWindow * mainWindow;
 	IBOutlet NSView * pluginControllerView;
@@ -91,7 +91,7 @@
 -(IBAction) toggleGraphView:(id)sender;
 -(IBAction) showGraphView:(id)sender;
 -(IBAction) hideGraphView:(id)sender;
--(IBAction) pressGraphViewButton:(id)sender;
+//-(IBAction) pressGraphViewButton:(id)sender;
 -(IBAction)changePlugin:(id)sender;
 
 - (void) initPlugins;
@@ -121,7 +121,7 @@
 - (BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)theApplication;
 - (NSApplicationTerminateReply)applicationShouldTerminate:(NSApplication *)app;
 - (BOOL)windowShouldClose:(NSWindow *)sender;
-- (void)applicationDidFinishLaunching:(NSNotification *)aNotification;
+//- (void)applicationDidFinishLaunching:(NSNotification *)aNotification;
 - (void)willEndCloseSheet:(NSWindow *)sheet returnCode:(int)returnCode contextInfo:(void *)contextInfo;
 - (void)didEndCloseSheet:(NSWindow *)sheet returnCode:(int)returnCode contextInfo:(void *)contextInfo;
 - (void)askToQuit:(NSWindow *) theWindow;

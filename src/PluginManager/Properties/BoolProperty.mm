@@ -7,7 +7,7 @@
 //
 
 #import "BoolProperty.h"
-
+#import "QlabController.h"
 
 @implementation BoolProperty
 //Creates only one slider that they all use.. The way you do it apparently

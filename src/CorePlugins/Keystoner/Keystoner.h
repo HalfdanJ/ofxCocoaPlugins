@@ -17,6 +17,8 @@
 
 #include "KeystonerOutputview.h"
 #include "TrackingLayer.h"
+#import "KeystoneSurface.h"
+
 
 @interface Keystoner : ofPlugin {
 	IBOutlet NSSegmentedControl * outputViewPicker;

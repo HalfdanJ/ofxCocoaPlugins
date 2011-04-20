@@ -80,8 +80,9 @@ void  ofAppCocoaWindow::runAppViaInfiniteLoop(ofBaseApp * appPtr) {
 	OFSAptrForCocoa->mouseY = 0;
 
 
-	
-	NSApplicationMain(0,  NULL);
+ //   return NSApplicationMain(argc, (const char **)argv);
+
+	//NSApplicationMain(0,  NULL);
 
 }
 
@@ -220,7 +221,7 @@ int	ofAppCocoaWindow::getFrameNum() {
 }
 
 void ofAppCocoaWindow::setWindowTitle(string title) {
-	[[[NSApplication sharedApplication] mainWindow] setTitle:[NSString stringWithCString:title.c_str()]];
+//	[[[NSApplication sharedApplication] mainWindow] setTitle:[NSString stringWithCString:title.c_str()]];
 }
 
 

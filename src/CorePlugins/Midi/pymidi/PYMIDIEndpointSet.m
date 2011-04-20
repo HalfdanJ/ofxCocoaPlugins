@@ -78,13 +78,13 @@
     
     // First try to match by unique ID...
     enumerator = [endpointArray objectEnumerator];
-    while (endpoint = [enumerator nextObject]) {
+    while ((endpoint = [enumerator nextObject])) {
         if ([endpoint uniqueID] == [descriptor uniqueID]) return endpoint;
     }
     
     // ...and, if that fails, try to match by name
     enumerator = [endpointArray objectEnumerator];
-    while (endpoint = [enumerator nextObject]) {
+    while ((endpoint = [enumerator nextObject])) {
         if ([[endpoint name] isEqualToString:[descriptor name]]) return endpoint;
     }
     

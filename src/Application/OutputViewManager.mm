@@ -20,6 +20,7 @@
 static void KeyArrayCallback(const void *key, const void *value, void
 							 *context) { CFArrayAppendValue((CFMutableArrayRef)context, key);  }
 
+//Code to get the names of the displays
 CFStringRef CopyLocalDisplayName(CGDirectDisplayID display)
 {
     CFArrayRef          langKeys, orderLangKeys;
@@ -81,9 +82,7 @@ CFStringRef CopyLocalDisplayName(CGDirectDisplayID display)
 //Creates the panels with glviews inside
 //
 
--(void) setupScreen{
-	NSUserDefaults * userDefaults = [NSUserDefaults standardUserDefaults];
-	
+-(void) setupScreen{	
 	int i;
 	for(i=0;i<numberOutputViews;i++){
 		
@@ -124,7 +123,7 @@ CFStringRef CopyLocalDisplayName(CGDirectDisplayID display)
 	
 	BOOL goFullscreen = YES;
 	for(PluginOpenGLView * view in glViews){
-		if([view displayId] == 0 || [view displayId] == CGMainDisplayID()){
+		if([view displayId] == 0 ){//|| [view displayId] == CGMainDisplayID()){
 			//Go not to fullscreen if a primary monitor is selected, or no monitor
 			goFullscreen = NO;
 		}		
@@ -135,15 +134,12 @@ CFStringRef CopyLocalDisplayName(CGDirectDisplayID display)
 			[self goFullscreen];
 		});
 	}
-	
-	
-	//[self showViews];
 }
 
 
 //
 //------
-//Updates the popups
+//Updates the popups for choosing display
 //
 
 -(void) refreshScreens{
@@ -167,7 +163,7 @@ CFStringRef CopyLocalDisplayName(CGDirectDisplayID display)
 		int i;
 		for(i = 0; i < dspCount; i++)
 		{	CFStringRef name = CopyLocalDisplayName(displays[i]) ;
-			NSLog(@"	Display %i: %ix%i %@",i, CGDisplayPixelsWide(displays[i]),CGDisplayPixelsHigh(displays[i]),  name);
+			NSLog(@"	Display %i: %lux%lu %@",i, CGDisplayPixelsWide(displays[i]),CGDisplayPixelsHigh(displays[i]),  name);
 			[popup addItemWithTitle:[NSString stringWithFormat:@"%i: %@ %ix%i", i,name, CGDisplayPixelsWide(displays[i]),CGDisplayPixelsHigh(displays[i])]];			
 			if([[userDefaults valueForKey:[NSString stringWithFormat:@"DisplayIdForView%i",[view viewNumber]]] intValue] ==  displays[i]){
 				[popup selectItem:[popup lastItem]];
@@ -356,8 +352,8 @@ CFStringRef CopyLocalDisplayName(CGDirectDisplayID display)
 - (id) initWithPluginOutputView:(PluginOpenGLView*)thePOV{
 	if ([super init]) {
 		pov = thePOV;
-		return self;
 	}
+    return self;
 }
 
 - (NSSize)windowWillResize:(NSWindow *)window toSize: (NSSize)proposedFrameSize

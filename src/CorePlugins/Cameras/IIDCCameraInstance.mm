@@ -55,19 +55,19 @@
 	if([(NSString*) context isEqualToString:@"videoMode"]){
 		//Video mode has changed
 		if([[videoModesController selectedObjects]lastObject] != nil){
-			[self setVideoMode:(dc1394video_mode_t)[[[[[videoModesController selectedObjects]lastObject] value] objectForKey:@"mode"] intValue]];
+			[self setVideoMode:(dc1394video_mode_t)[[(id)[[[videoModesController selectedObjects]lastObject] value] objectForKey:@"mode"] intValue]];
 		}
 	}
 	if([(NSString*) context isEqualToString:@"videoFramerate"]){
 		//Video framerate has changed
 		if([[videoFrameratesController selectedObjects]lastObject] != nil){
-			[self setVideoFramerate:(dc1394framerate_t)[[[[[videoFrameratesController selectedObjects]lastObject] value] objectForKey:@"mode"] intValue]];
+			[self setVideoFramerate:(dc1394framerate_t)[[(id)[[[videoFrameratesController selectedObjects]lastObject] value] objectForKey:@"mode"] intValue]];
 		}
 	}
 	if([(NSString*) context isEqualToString:@"videoColorCoding"]){
 		//Video color has changed
 		if([[videoColorCodingsController selectedObjects]lastObject] != nil){
-			[self setVideoColorCoding:(dc1394color_coding_t)[[[[[videoModesController selectedObjects]lastObject] value] objectForKey:@"mode"] intValue]];
+			[self setVideoColorCoding:(dc1394color_coding_t)[[(id)[[[videoModesController selectedObjects]lastObject] value] objectForKey:@"mode"] intValue]];
 		}
 	}
 }
@@ -309,7 +309,7 @@
 		hasBlacked  = YES;
 		unsigned char * bytes;
 		bytes = new unsigned char[width*height*3];
-		int s = width*height*3;
+            //int s = width*height*3;
 		/*			for(int i=0;i<s;i++){
 		 bytes[i] = 0;	
 		 }*/
@@ -408,7 +408,7 @@
 	videoGrabber->set1394bMode(false);
 	
 	
-	videoGrabber->setDeviceID([guid cString]);	
+	videoGrabber->setDeviceID([guid cStringUsingEncoding:NSUTF8StringEncoding]);	
 	
 	
 	
@@ -463,7 +463,7 @@
 			NSMutableDictionary * dict = [NSMutableDictionary dictionary];
 			[dict setObject:[NSNumber numberWithInt:mode] forKey:@"mode"];
 			
-			[videoModes setObject:dict forKey:[NSString stringWithCString:modeString]];
+			[videoModes setObject:dict forKey:[NSString stringWithCString:modeString encoding:NSUTF8StringEncoding]];
 		}
 		[self didChangeValueForKey:@"videoModes"];
 		
@@ -476,7 +476,7 @@
 			NSMutableDictionary * dict = [NSMutableDictionary dictionary];
 			[dict setObject:[NSNumber numberWithInt:mode] forKey:@"mode"];
 			
-			[videoFramerates setObject:dict forKey:[NSString stringWithCString:modeString]];
+			[videoFramerates setObject:dict forKey:[NSString stringWithCString:modeString  encoding:NSUTF8StringEncoding]];
 		}
 		[self didChangeValueForKey:@"videoFramerates"];
 		
@@ -518,4 +518,6 @@
 		}
 	}
 }
+
+-(void)videoGrabberRespawn{}
 @end

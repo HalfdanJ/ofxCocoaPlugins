@@ -138,14 +138,11 @@ Warp::MatrixMultiply()
 
 ofxPoint2f	Warp::convertPoint(ofxPoint2f point){
 	double pts[] = {point.x,point.y};
-	CvMat foundRect = cvMat(1, 1, CV_64FC2, pts);
-	CvMat * dst =cvCreateMat(3, 3, CV_32FC1);
-	
-//	cvInvert(cv_translate_3x3, dst);
-	
+	CvMat foundRect = cvMat(1, 1, CV_64FC2, pts);		
 	
 	cvPerspectiveTransform(&foundRect, &foundRect, cv_translate_3x3);
 	
 	float *matrix = foundRect.data.fl;
 	cout<<"In: "<<point.x<<", "<<point.y<<"  Out: "<<matrix[0]<<","<<matrix[1]<<endl;
+    return ofxPoint2f(matrix[0],matrix[1]);
 }

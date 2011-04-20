@@ -741,7 +741,7 @@ void Libdc1394Grabber::captureFrame()
 	}
 
 }
-
+/*
 static void rgb2bgr(const unsigned char *src, unsigned char *dest, unsigned long long int NumPixels)
 {
 	register int i = NumPixels - 1;
@@ -751,7 +751,7 @@ static void rgb2bgr(const unsigned char *src, unsigned char *dest, unsigned long
 		dest[j--] = src[i--];
 		dest[j--] = src[i--];
 	}
-}
+}*/
 
 void Libdc1394Grabber::processCameraImageData( unsigned char* _cameraImageData )
 {

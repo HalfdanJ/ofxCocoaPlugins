@@ -1,15 +1,14 @@
 //
-//  MainWindow.mm
-//  simpleExample
+//  MainWindow.m
 //
 //  Created by Jonas Jongejan on 26/02/10.
-//  Copyright 2010 HalfdanJ. All rights reserved.
 //
 
 #import "MainWindow.h"
 #import <QuartzCore/QuartzCore.h>
 #import "LoadProgressIndicator.h"
 
+//Loading box viewsize
 const float w = 300;
 const float h = 65;	
 
@@ -17,10 +16,16 @@ const float h = 65;
 @implementation MainWindow
 
 -(id) initWithContentRect:(NSRect)contentRect styleMask:(NSUInteger)aStyle backing:(NSBackingStoreType)bufferingType defer:(BOOL)flag{
-	[super initWithContentRect:contentRect styleMask:aStyle backing:bufferingType defer:flag];
-	loadingState = YES;
 	
+	loadingState = YES;
+	return [super initWithContentRect:contentRect styleMask:aStyle backing:bufferingType defer:flag];
 }
+
+
+//
+//-------
+//Loading box fadein
+
 
 -(void)fadeOverlayIn {
 	[NSAnimationContext beginGrouping];
@@ -29,24 +34,33 @@ const float h = 65;
 	[NSAnimationContext endGrouping];
 }
 
+//
+//-------
+//
+
 -(void)fadeOverlayOut {
 	[NSAnimationContext beginGrouping];
 	[[NSAnimationContext currentContext] setDuration:0.5f];
 	[[topView animator] setAlphaValue:0];
 	[NSAnimationContext endGrouping];
-	[NSTimer scheduledTimerWithTimeInterval:0.5f target:self selector:@selector(finishedFadeLoading) userInfo:nil repeats:NO];
 }
+
+//
+//-------
+//
 
 -(void) awakeFromNib{
 	[super awakeFromNib];
 	[[self contentView] setWantsLayer:NO];
+    
+    //Create loading view
 	if(loadingState){
 		{		
 			topView = [[NSView alloc] initWithFrame:[[self contentView] frame]];
 			
 			CALayer *coverlayer = [CALayer layer]; 
 			CGColorSpaceRef colorSpace = CGColorSpaceCreateWithName(kCGColorSpaceGenericRGB);
-			CGFloat components[4] = {133/255.0, 133/255.0, 127/255.0, 1.0};
+			CGFloat components[4] = {0.2, 0.2, 0.21, 1.0};
 			CGColorRef color = CGColorCreate(colorSpace, components);
 			coverlayer.backgroundColor = color; 
 			
@@ -57,9 +71,7 @@ const float h = 65;
 			CGColorSpaceRelease(colorSpace);
 		}
 		
-		
-		//Loading window
-		{
+        {
 			NSRect rect = NSMakeRect([[self contentView] frame].size.width / 2.0 - w/2.0, 
 									 [[self contentView] frame].size.height / 2.0 - h/2.0,
 									 w,
@@ -68,10 +80,7 @@ const float h = 65;
 			statusView = [[NSView alloc] initWithFrame:rect];
 			
 			
-			/*NSRect iconRect = NSMakeRect(10, 10, 50, 50);		
-			iconView = [[NSImageView alloc] initWithFrame:iconRect];
-			[iconView setImage:[NSImage imageNamed:@"icon"]];
-			[statusView addSubview:iconView];*/
+
 			
 			NSRect indicatorRect = NSMakeRect(w/2.0-130, 10, 260, 20);		
 			loadIndicator = [[LoadProgressIndicator alloc] initWithFrame:indicatorRect];
@@ -93,7 +102,7 @@ const float h = 65;
 			
 			CALayer *coverlayer = [CALayer layer]; 
 			CGColorSpaceRef colorSpace = CGColorSpaceCreateWithName(kCGColorSpaceGenericRGB);
-			CGFloat components[4] = {75/255.0, 75/255.0, 75/255.0, 0.8};
+			CGFloat components[4] = {0.1, 0.1, 0.12, 0.8};
 			CGColorRef color = CGColorCreate(colorSpace, components);
 			coverlayer.backgroundColor = color; 
 			coverlayer.cornerRadius = 20.0;
@@ -114,22 +123,34 @@ const float h = 65;
  
 }
 
+//
+//-------
+//
+
 -(void) setFinishedLoading{
 	[self fadeOverlayOut];
 	loadingState = NO;
 }
 
--(void) finishedFadeLoading{
-	
-}
+//
+//-------
+//
 
 -(void) setLoadStatusText:(NSString*)text{
 	[loadText setStringValue:text];
 }
 
+//
+//-------
+//
+
 -(void)	setLoadPercentage:(float)percentage{
 	[loadIndicator setDoubleValue:percentage];		
 }
+
+//
+//-------
+//
 
 -(void) addPluginDetail:(NSString*)name text:(NSString*)text  {
 	int _h = 14;
@@ -165,16 +186,23 @@ const float h = 65;
 	
 }
 
+//
+//-------
+//
+
 -(void) setPluginDetailNumber:(int)n to:(NSString*)s{
 	[[[statusView subviews] objectAtIndex:n*2+3] setStringValue:s];
 	[[[statusView subviews] objectAtIndex:n*2+3] setNeedsDisplay:YES];
 }
+
+//
+//-------
+//
 
 -(void) sendEvent:(NSEvent *)theEvent{
 	if(!loadingState){
 		[super sendEvent:theEvent];
 	}
 }
-
 
 @end

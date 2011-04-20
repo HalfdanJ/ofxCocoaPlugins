@@ -1,7 +1,7 @@
 
 #include "Plugin.h"
 #import "PluginOpenGLControl.h"
-
+#import "QLabController.h"
 
 @implementation ofPlugin
 @synthesize  name, enabled, view,  updateCpuTime,  drawCpuTime, initPluginCalled, setupCalled, properties, customProperties, powerMeterDictionary,  controlMouseX, controlMouseY, controlMouseFlags, icon, midiChannel;
@@ -104,14 +104,14 @@
 	return [enabled boolValue];
 }	
 
--(id) initWithCoder:(NSCoder *)coder{
+/*-(id) initWithCoder:(NSCoder *)coder{
 	NSLog(@"Decode enabled: %i", [coder decodeBoolForKey:@"enabled"]);
 }
 
 -(void) encodeWithCoder:(NSCoder *)coder{
 	NSLog(@"Encode plugin");
 	[coder encodeBool:[enabled boolValue] forKey:@"enabled"];
-}
+}*/
 
 -(void) setUpdateCpuUsage:(float)v{
 	[self willChangeValueForKey:@"powerMeterDictionary"];

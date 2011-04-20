@@ -8,18 +8,11 @@
 
 
 #import <Cocoa/Cocoa.h>
-#import "GRChartView.h"
-#import "GRPieDataSet.h"
-#import "GRXYDataSet.h"
-#import "GRAreaDataSet.h"
-#import "GRLineDataSet.h"
-#import "GRColumnDataSet.h"
-#import "GRAxes.h"
 
 @class PluginOpenGLView;
 @interface OutputViewStats : NSView {
 	NSNumber* fps;
-	GRChartView * graphView;
+//	GRChartView * graphView;
 	
 	NSMutableArray * historyData;
 }

@@ -41,7 +41,7 @@
 		[self addSubview:fpsField];
 		
 		
-		graphView = [[GRChartView alloc] initWithFrame:NSMakeRect(100, 3,  100, 20)];
+	/*	graphView = [[GRChartView alloc] initWithFrame:NSMakeRect(100, 3,  100, 20)];
 		[graphView setDelegate:self];
 		[graphView setDataSource:self];
 		GRAxes * axes = [graphView axes];
@@ -83,7 +83,7 @@
 		[axes setProperty:[NSNumber numberWithInt:80] forKey:@"GRAxesYPlotMax"];	
 		[axes setProperty:[NSNumber numberWithInt:0] forKey:@"GRAxesYPlotMin"];
 		
-		GRLineDataSet * dataSet = [[GRColumnDataSet  alloc] initWithOwnerChart: graphView] ;
+        GRLineDataSet * dataSet = [[GRColumnDataSet  alloc] initWithOwnerChart: graphView] ;
 		[dataSet setProperty: [NSNumber numberWithInt: 0] forKey: GRDataSetDrawPlotLine];
 		[dataSet setProperty: [NSNumber numberWithInt: 0] forKey: @"GRDataSetDrawMarkers"];
 		[dataSet setProperty: [NSNumber numberWithInt: 1] forKey: @"GRDataSetCategoryGapFraction"];
@@ -96,12 +96,13 @@
 		
 		
 		[self addSubview:graphView];
+     */
 		
 	}
 	return self;
 }
 
-
+/*
 - (NSInteger) chart: (GRChartView *) chartView numberOfElementsForDataSet: (GRDataSet *) dataSet
 {
 	return [historyData count];
@@ -119,10 +120,10 @@
 {
 	return element;
 }
-
+*/
 -(void)reloadGraph{
 //	dispatch_async(dispatch_get_main_queue(), ^{			
-	[graphView reloadData];
+	//[graphView reloadData];
 //	});
 }
 

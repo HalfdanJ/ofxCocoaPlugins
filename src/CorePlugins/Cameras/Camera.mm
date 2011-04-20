@@ -8,7 +8,7 @@
 
 #import "Camera.h"
 
-#import <BWToolkitFramework/BWToolkitFramework.h>
+//#import <BWToolkitFramework/BWToolkitFramework.h>
 
 
 @implementation Camera

@@ -135,7 +135,7 @@
 			if([drawSettings selectedSegment] == 2){
 				ofSetColor(255, 255, 255);
 				ofFill();
-				ofRect(0,0,[[[[projector surfaces]objectAtIndex:[surfaceArrayController selectionIndex]] aspect] floatValue],1);
+				ofRect(0,0,[[((KeystoneSurface*)[[projector surfaces]objectAtIndex:[surfaceArrayController selectionIndex]]) aspect] floatValue],1);
 			}
 			
 			[self popSurface];
@@ -282,6 +282,8 @@
 }
 
 -(void) setup{	
+    sleep(5);
+
 	selectedSurfaceCorner = -1;
 	hoveredSurfaceCorner = -1;
 	zoomLevel = 0.7;
@@ -352,10 +354,8 @@
 	NSRect ret;
 	
 	int _window = [self selectedOutputview];
-	int _projector = [self selectedProjector];
 	
 	KeystonerOutputview * outputView = [outputViews objectAtIndex:_window];
-	KeystoneProjector * projector = [[outputView projectors] objectAtIndex:_projector];
 	
 	NSSize projectorSize = [outputView size];
 	projectorSize.width /= [[outputView projectors] count];
@@ -683,13 +683,13 @@
 	[self setSelectedSurface:[s firstIndex]];
 }
 
--(KeystoneSurface*) getSurface:(NSString*)name viewNumber:(int)number projectorNumber:(int)projectorNumber{
+-(KeystoneSurface*) getSurface:(NSString*)_name viewNumber:(int)number projectorNumber:(int)projectorNumber{
 	if([[outputViewController arrangedObjects] count] > number && [[[[outputViewController arrangedObjects] objectAtIndex:number] projectors] count] > projectorNumber){
 		NSArray * theSurfaces = [[[[[outputViewController arrangedObjects] objectAtIndex:number] projectors] objectAtIndex:projectorNumber] surfaces];
 		
 		KeystoneSurface * theSurface;
 		for(theSurface in theSurfaces){
-			if([[theSurface name] isEqualToString:name]){
+			if([[theSurface name] isEqualToString:_name]){
 				return theSurface;
 			}
 		}
@@ -697,16 +697,16 @@
 	return nil;
 }
 
--(KeystoneSurface*) getSurface:(NSString*)name viewName:(NSString*)viewName projectorNumber:(int)projectorNumber{
+-(KeystoneSurface*) getSurface:(NSString*)_name viewName:(NSString*)viewName projectorNumber:(int)projectorNumber{
 	
 	KeystonerOutputview * outputView;
 	for(outputView in [outputViewController arrangedObjects]){
 		if([[outputView name] isEqualToString:viewName]){
-			NSArray * surfaces = [[[outputView projectors] objectAtIndex:projectorNumber] surfaces];
-			KeystoneSurface * surface;
-			for(surface in surfaces){
-				if([[surface name] isEqualToString:name]){
-					return surface;
+			NSArray * _surfaces = [[[outputView projectors] objectAtIndex:projectorNumber] surfaces];
+			KeystoneSurface * _surface;
+			for(_surface in _surfaces){
+				if([[_surface name] isEqualToString:_name]){
+					return _surface;
 				}
 			}
 		}

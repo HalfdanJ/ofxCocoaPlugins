@@ -9,7 +9,6 @@
 	IBOutlet NSTreeController * pluginsTreeController;
 
 	NSKeyedArchiver * archiver;
-	//NSKeyedUnarchiver *unarchiver;
 	NSMutableData *data;
 	NSMutableDictionary * saveDictionary;
 

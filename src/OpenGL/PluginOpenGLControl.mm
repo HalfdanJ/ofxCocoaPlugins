@@ -9,15 +9,23 @@ extern ofAppBaseWindow * window;
 @implementation PluginOpenGLControlView
 
 -(void) awakeFromNib{
+    //Create tracking view that is used when clicking in the plugin control view
 	NSTrackingArea *area = [[NSTrackingArea alloc] initWithRect:[self frame] options:NSTrackingMouseEnteredAndExited | NSTrackingCursorUpdate | NSTrackingMouseMoved | NSTrackingActiveInActiveApp | NSTrackingInVisibleRect owner:self userInfo:nil];
 	[self addTrackingArea:area];
 	[self release];
-	NSLog(@"awake form nib");
 }
 
+//
+//------
+//
 
--(void) mouseEntered:(NSEvent *)theEvent{
+-(BOOL) acceptsFirstResponder{
+	return YES;
 }
+
+//
+//------
+//
 
 -(void) mouseMoved:(NSEvent *)theEvent{
 	NSPoint curPoint = [self convertPoint:[theEvent locationInWindow] fromView:nil];
@@ -29,9 +37,9 @@ extern ofAppBaseWindow * window;
 	
 }
 
--(BOOL) acceptsFirstResponder{
-	return YES;
-}
+//
+//------
+//
 
 - (void)mouseDown:(NSEvent *)theEvent {
 	[[self window] makeFirstResponder:self];
@@ -44,11 +52,19 @@ extern ofAppBaseWindow * window;
 	[[((PluginOpenGLControl*)[self layer]) plugin] controlMousePressed:curPoint.x y:curPoint.y button:0];
 }
 
+//
+//------
+//
+
 - (void)mouseUp:(NSEvent *)theEvent {
 	NSPoint curPoint = [self convertPoint:[theEvent locationInWindow] fromView:nil];
 	curPoint.y = [self frame].size.height - curPoint.y;
 	[[((PluginOpenGLControl*)[self layer]) plugin] controlMouseReleased:curPoint.x y:curPoint.y];
 }
+
+//
+//------
+//
 
 - (void)mouseDragged:(NSEvent *)theEvent {
 	NSPoint curPoint = [self convertPoint:[theEvent locationInWindow] fromView:nil];
@@ -60,9 +76,17 @@ extern ofAppBaseWindow * window;
 
 }
 
+//
+//------
+//
+
 -(void) scrollWheel:(NSEvent *)theEvent{
 	[[((PluginOpenGLControl*)[self layer]) plugin] controlMouseScrolled:theEvent];
 }
+
+//
+//------
+//
 
 -(void) keyDown:(NSEvent *)theEvent{
 	unsigned short keyCode = [theEvent keyCode];

@@ -33,11 +33,12 @@
 -(IBAction) goWindow;
 -(IBAction) pressFullscreenButton:(id)sender;
 
+-(void) showViews;
+
 -(void) setupScreen;
 -(void) refreshScreens;
 
 -(CGDisplayCount) getDisplayList:(CGDirectDisplayID **)displays;
--(void) showViews;
 @end
 
 @interface PluginOutputWindowDelegate : NSObject < NSWindowDelegate >
