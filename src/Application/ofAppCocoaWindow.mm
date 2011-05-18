@@ -96,42 +96,6 @@ void ofAppCocoaWindow::update(){
 }
 
 void ofAppCocoaWindow::render(int width, int height){
-	windowW = width;
-	windowH = height;
-		
-	height = height > 0 ? height : 1;
-	// set viewport, clear the screen
-	glViewport( 0, 0, width, height );
-	float * bgPtr = ofBgColorPtr();
-	bool bClearAuto = ofbClearBg();
-
-
-	#ifdef TARGET_WIN32
-		//windows doesn't get accumulation in window mode
-		if ((bClearAuto == true || windowMode == OF_WINDOW) || nFrameCount < 3){
-	#else
-		//mac and linux does :)
-		if ( bClearAuto == true || nFrameCount < 3){
-	#endif
-		glClearColor(bgPtr[0],bgPtr[1],bgPtr[2], bgPtr[3]);
-		glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	}
-
-	if( bEnableSetupScreen )ofSetupScreen();
-
-	height = height > 0 ? height : 1;
-	// set viewport, clear the screen
-	glViewport( 0, 0, width, height);
-	//float * bgPtr = ofBgColorPtr();
-	//bool bClearAuto = ofbClearBg();
-
-	ofSetupScreen();
-	OFSAptrForCocoa->draw();
-	
-    timeThen = timeNow;
-  	// --------------
-
-	nFrameCount++;		// increase the overall frame count
 	
 }
 

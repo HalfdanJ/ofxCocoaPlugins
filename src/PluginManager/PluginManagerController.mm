@@ -4,6 +4,7 @@
 
 #include "AppController.h"
 #include "PluginListMeterCell.h"
+#import "BeamSync.h"
 
 PluginManagerController * globalController;
 
@@ -200,13 +201,11 @@ extern ofAppBaseWindow * window;
 	
 	if( sharedOpenglContext == nil )
 	{
-		//	printf( "getSharedContext: Selecting main context\n" );
 		NSOpenGLContext * newContext = [[NSOpenGLContext alloc] initWithFormat:nsPixelFormat shareContext:nil];
 		[newContext retain];
 		sharedOpenglContext = newContext;
 		return newContext;
 	} else {
-		//	printf( "getSharedContext: Creating secondary context\n" );
 		NSOpenGLContext * newContext = [[NSOpenGLContext alloc] initWithFormat:nsPixelFormat shareContext:sharedOpenglContext];
 		return [newContext retain];
 	}
@@ -681,6 +680,8 @@ extern ofAppBaseWindow * window;
 
 - (void) applicationWillTerminate: (NSNotification *)note
 {
+    [BeamSync enable];
+
 	[openglLock lock];
 	
 	isQuitting = YES;

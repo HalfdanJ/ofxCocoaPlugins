@@ -61,6 +61,7 @@
 		for(group in [controller plugins]){
 			ofPlugin * plugin;
 			for(plugin in [group objectForKey:@"children"]){
+                [plugin willSave];
 				[archiver encodeObject:[plugin enabled] forKey:[NSString stringWithFormat:@"%@Enabled", [plugin name]]];
 				[archiver encodeObject:[plugin properties] forKey:[NSString stringWithFormat:@"%@Properties", [plugin name]]];
 
@@ -148,16 +149,18 @@
 					//Make a temporary dictionary of the custom propterties
 					NSMutableDictionary * tempDict2 = [_unarchiver decodeObjectForKey:[NSString stringWithFormat:@"%@CustomProperties", [plugin name]]];				
 					[plugin willChangeValueForKey:@"customProperties"];
+                  //  NSLog(@"Custom properties %@",tempDict2);
 					for(key in [tempDict2 allKeys]){
 						//Go through all the properties in the temporary dictionary, and replace the ones in the real plugin
-						id  prop = [[plugin customProperties] objectForKey:key];
-
-						if(prop != nil){						
+					//	id  prop = [[plugin customProperties] objectForKey:key];
+					//	if(prop != nil){						
+//                        NSLog(@"Key %@",key);
 							[[plugin customProperties] setObject:[tempDict2 objectForKey:key] forKey:key];
-						}
+					//	}
 					}
 					[plugin didChangeValueForKey:@"customProperties"];
-					
+                    [plugin customPropertiesLoaded];
+
 					[tempDict release];		
 				}
 			}

@@ -39,6 +39,8 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 									  CVOptionFlags *flagsOut, void *displayLinkContext)
 {
 	CVReturn result = [(PluginOpenGLView *)displayLinkContext getFrameForTime:((now->videoTime*1.0)/now->videoTimeScale) displayTime:outputTime];
+//    CVReturn result = [(PluginOpenGLView *)displayLinkContext getFrameForTime:outputTime];
+
 	return result;
 }
 
@@ -91,7 +93,7 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 // set up the OpenGL environs
 - (void)prepareOpenGL
 {
-	/*GLint swapInterval = 1;
+	GLint swapInterval = 1;
 	 
 	 // really nice perspective calculations
 	 glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
@@ -104,12 +106,14 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 	 // set up the GL contexts swap interval -- passing 1 means that
 	 // the buffers are swapped only during the vertical retrace of the monitor
 	 [[self openGLContext] setValues:&swapInterval forParameter:NSOpenGLCPSwapInterval];
-	 */
+	
 	//[self setOpenGLContext:[controller getSharedContext:(CGLPixelFormatObj)[[self pixelFormat] CGLPixelFormatObj]]];
 	
 	
 	NSOpenGLPixelFormatAttribute attrs[] =
 	{
+        
+        /*
 //		NSOpenGLPFAWindow,
 //		NSOpenGLPFAAccelerated,
 //		NSOpenGLPFADoubleBuffer,
@@ -117,6 +121,27 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 		NSOpenGLPFAPixelBuffer,
 		NSOpenGLPFASampleBuffers, (NSOpenGLPixelFormatAttribute)4,
 		NSOpenGLPFASamples, (NSOpenGLPixelFormatAttribute)4,
+        
+        kCGLPFAColorSize, 24,
+		kCGLPFADepthSize, 16,
+        
+        NSOpenGLPFADoubleBuffer,
+        NSOpenGLPFAAccelerated,
+        NSOpenGLPFADepthSize, 24,
+        NSOpenGLPFAStencilSize, 8,
+        NSOpenGLPFASingleRenderer,
+        NSOpenGLPFAScreenMask, CGDisplayIDToOpenGLDisplayMask(kCGDirectMainDisplay),
+        NSOpenGLPFANoRecovery,
+*/        
+        
+        kCGLPFAAccelerated,
+		kCGLPFANoRecovery,
+		kCGLPFADoubleBuffer,
+		kCGLPFAColorSize, 24,
+		kCGLPFADepthSize, 16,
+
+        
+        
 		(NSOpenGLPixelFormatAttribute)nil
 	};
 	
@@ -124,7 +149,9 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 	
 	[self setPixelFormat:pixelFormat];
 	
-	glEnable(GL_MULTISAMPLE);
+	//glEnable(GL_MULTISAMPLE);
+    
+    
     // create display link for the main display
 	if (NULL == displayLink) {
 		
@@ -225,6 +252,8 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 			[[self openGLContext] flushBuffer];
 #else
 			glFlush();
+        //    [[self openGLContext] flushBuffer];
+
 			[statsView addHistory:[drawingInformation valueForKey:@"fps"]];
 #endif
 		}
@@ -247,7 +276,7 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 // if we have a frame available to render -- if we do, draw -- if not, just task the Visual Context and split
 - (CVReturn)getFrameForTime:(CFTimeInterval)timeInterval displayTime:(const CVTimeStamp *)outputTime
 {
-	NSAutoreleasePool *pool = [NSAutoreleasePool new];
+	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
 	
 	[drawingInformation setValue:[NSNumber numberWithDouble:timeInterval] forKey:@"timeInterval"];
 	[drawingInformation setValue:[NSNumber numberWithDouble:outputTime->videoTime] forKey:@"outputTime.videoTime"];
@@ -302,6 +331,7 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 
 - (void)windowChangedScreen:(NSNotification*)inNotification
 {
+
     NSWindow *window = [inNotification object];
 	[self updateDisplayIDWithWindow:window];
 }

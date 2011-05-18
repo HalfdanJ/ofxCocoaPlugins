@@ -6,6 +6,9 @@
 //  Copyright 2010 __MyCompanyName__. All rights reserved.
 //
 
+
+
+
 #import "OutputViewManager.h"
 #include "PluginOpenGLView.h"
 #include "PluginManagerController.h"
@@ -15,6 +18,8 @@
 #include <IOKit/graphics/IOGraphicsInterface.h>
 #include <IOKit/graphics/IOGraphicsLib.h>
 #include <IOKit/graphics/IOGraphicsTypes.h>
+
+#import "BeamSync.h"
 
 
 static void KeyArrayCallback(const void *key, const void *value, void
@@ -241,7 +246,11 @@ CFStringRef CopyLocalDisplayName(CGDirectDisplayID display)
 					
 					[view updateDisplayIDWithWindow:panel];
 					
-					[[panelController displayPopup] setEnabled:NO];							
+					[[panelController displayPopup] setEnabled:NO];	
+                    
+                    
+                    [BeamSync disable];
+                                       
 				}
 			}
 			i++;				
@@ -295,6 +304,9 @@ CFStringRef CopyLocalDisplayName(CGDirectDisplayID display)
 			[view updateDisplayIDWithWindow:panel];
 			
 			i++;	
+            
+            [BeamSync enable];
+
 		}
 		
 	}

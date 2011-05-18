@@ -83,6 +83,9 @@ extern PluginManagerController * globalController;
 - (void) draw:(NSDictionary*)drawingInformation;
 - (void) update:(NSDictionary*)drawingInformation;
 
+- (void) customPropertiesLoaded;
+- (void) willSave;
+
 - (void) controlDraw:(NSDictionary*)drawingInformation;
 
 - (void) controlMouseMoved:(float) x y:(float)y;

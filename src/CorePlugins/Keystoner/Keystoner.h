@@ -6,7 +6,7 @@
 #define Aspect(s,p) ([[Surface(s,p) aspect] floatValue])
 
 //#define ApplySurface(s,p) if([Surface(s,p) visible]) { [Surface(s,p) apply];
-#define ApplySurfaceForProjector(s,p) if([Surface(s,p) visible]) { [GetPlugin(Keystoner)  applySurface:s projectorNumber:p viewNumber:ViewNumber];
+#define ApplySurfaceForProjector(s,p) {if([Surface(s,p) visible]) { [GetPlugin(Keystoner)  applySurface:s projectorNumber:p viewNumber:ViewNumber];
 #define PopSurfaceForProjector() [GetPlugin(Keystoner)  popSurface]; }
 
 #define ApplySurface(s) {int appliedProjector=-1;for(KeystoneProjector*proj in [[[GetPlugin(Keystoner) outputViews] objectAtIndex:ViewNumber] projectors]){ appliedProjector++; if(appliedProjector > 0)[GetPlugin(Keystoner)  popSurface]; ApplySurfaceForProjector(s,appliedProjector)

@@ -128,8 +128,7 @@ extern ofAppBaseWindow * window;
 	
 	glViewport(0, 0, [self frame].size.width , [self frame].size.height);
 	if(![plugin setupCalled]){
-		[plugin setup];
-		[plugin setSetupCalled:YES];
+        glClear(GL_COLOR_BUFFER_BIT);
 	} else {		
 		glClear(GL_COLOR_BUFFER_BIT);
 		glMatrixMode(GL_MODELVIEW);
@@ -156,8 +155,9 @@ extern ofAppBaseWindow * window;
 	}
 	
 	// Call super to finalize the drawing. By default all it does is call glFlush().
-	[super drawInCGLContext:glContext pixelFormat:pixelFormat forLayerTime:timeInterval displayTime:timeStamp];
-	
+	//[super drawInCGLContext:glContext pixelFormat:pixelFormat forLayerTime:timeInterval displayTime:timeStamp];
+    glFlush();
+
 	CGLUnlockContext(glContext);	
 	[[globalController openglLock] unlock];
 	

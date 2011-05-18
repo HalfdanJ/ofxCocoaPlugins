@@ -74,6 +74,9 @@
 - (void) controlMouseScrolled:(NSEvent *)theEvent{}
 - (void) controlKeyPressed:(int)key{}
 
+- (void) customPropertiesLoaded{}
+- (void) willSave{}
+
 - (BOOL) isEnabled{
 	return [[self enabled] isEqualToNumber:[NSNumber numberWithBool:YES]];
 }
