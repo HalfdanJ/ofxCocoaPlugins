@@ -76,6 +76,12 @@ extern ofAppBaseWindow * window;
 
 }
 
+- (void)mouseExited:(NSEvent *)theEvent{
+    NSPoint curPoint = [self convertPoint:[theEvent locationInWindow] fromView:nil];
+	curPoint.y = [self frame].size.height - curPoint.y;
+	[[((PluginOpenGLControl*)[self layer]) plugin] controlMouseReleased:curPoint.x y:curPoint.y];
+}
+
 //
 //------
 //
@@ -122,6 +128,8 @@ extern ofAppBaseWindow * window;
 {	
 	NSAutoreleasePool * perFramePool = [[NSAutoreleasePool alloc] init];
 	[[globalController openglLock] lock];
+   // NSLog(@"Lock to control draw %@",plugin);
+
 	
 	CGLLockContext(glContext);
 	CGLSetCurrentContext(glContext);
@@ -159,9 +167,13 @@ extern ofAppBaseWindow * window;
     glFlush();
 
 	CGLUnlockContext(glContext);	
-	[[globalController openglLock] unlock];
+    [perFramePool release];	
+
+    
+     //   NSLog(@"Unlock to control draw %@",plugin);
+    [[globalController openglLock] unlock];
+
 	
-	[perFramePool release];	
 }
 
 

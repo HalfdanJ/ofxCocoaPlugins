@@ -105,10 +105,10 @@ void bits_uint(unsigned int value)
 
 
 
--(void)releaseCGLContext:(CGLContextObj)glContext
-{
-    [super releaseCGLContext:glContext];
-}
+//-(void)releaseCGLContext:(CGLContextObj)glContext
+//{
+//    [super releaseCGLContext:glContext];
+//}
 
 
 @end
