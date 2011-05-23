@@ -72,6 +72,7 @@
 	
 	BOOL quitWithoutAsking;
 	BOOL isQuitting;
+    
 
 }	
 

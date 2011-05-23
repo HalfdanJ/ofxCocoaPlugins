@@ -4,7 +4,7 @@
 #import "QLabController.h"
 
 @implementation ofPlugin
-@synthesize  name, enabled, view,  updateCpuTime,  drawCpuTime, initPluginCalled, setupCalled, properties, customProperties, powerMeterDictionary,  controlMouseX, controlMouseY, controlMouseFlags, icon, midiChannel;
+@synthesize  name, enabled, view,  updateCpuTime,  drawCpuTime, initPluginCalled, setupCalled, properties, customProperties, powerMeterDictionary,  controlMouseX, controlMouseY, controlMouseFlags, icon, midiChannel, controlGlView;
 
 -(id) init{
 	if([super init]){
@@ -38,15 +38,10 @@
 
 -(void) awakeFromNib{	
 	if(controlGlView != nil){
-		//Setup the opengl view
-		controlLayer = [PluginOpenGLControl layer];
-		[((PluginOpenGLControl*)controlLayer) setPlugin:self];
-		controlLayer.asynchronous = YES;
-		controlLayer.needsDisplayOnBoundsChange = YES;
-		[controlGlView setWantsLayer:YES];
-		[controlGlView setLayer:controlLayer];			
+        controlGlView.controller = globalController;
 	}
 }
+ 
 
 - (void) applicationWillTerminate: (NSNotification *)note{}
 

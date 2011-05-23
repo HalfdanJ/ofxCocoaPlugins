@@ -10,13 +10,32 @@
 #import <QuartzCore/QuartzCore.h>
 #import "Plugin.h"
 
-@interface PluginOpenGLControlView : NSView {	
+@class PluginManagerController;
+
+extern PluginManagerController * globalController;
+
+@interface PluginOpenGLControlView : NSOpenGLView {	
+	PluginManagerController * controller;
+
+	NSMutableDictionary * drawingInformation;
+    ofPlugin * plugin;
+	int backingWidth, backingHeight;
+    
+    CVDisplayLinkRef displayLink; //display link for managing rendering thread
+	CGDirectDisplayID    viewDisplayID;
+
 }
+
+@property (retain) PluginManagerController * controller;
+@property (retain) NSMutableDictionary * drawingInformation;
+@property (retain) ofPlugin * plugin;
 @end
 
 
-@interface PluginOpenGLControl : SharedContextLayer {
+@interface PluginOpenGLControl : NSOpenGLView {
 	NSMutableDictionary * drawingInformation;
+    ofPlugin * plugin;
+
 }
 @property (assign, readwrite) ofPlugin * plugin;
 
