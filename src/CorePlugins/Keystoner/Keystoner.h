@@ -24,6 +24,12 @@
 #import "KeystoneSurface.h"
 
 
+//{int appliedProjector=-1;for(KeystoneProjector*proj in [[[GetPlugin(Keystoner) outputViews] objectAtIndex:ViewNumber] projectors]){ appliedProjector++; if(appliedProjector > 0)[GetPlugin(Keystoner)  popSurface]; {if([Surface(s,p) visible]) { [GetPlugin(Keystoner)  applySurface:s projectorNumber:p viewNumber:ViewNumber];
+//    
+//    
+//    [GetPlugin(Keystoner)  popSurface]; } }}
+
+
 @interface Keystoner : ofPlugin {
 	IBOutlet NSSegmentedControl * outputViewPicker;
 	IBOutlet NSSegmentedControl * projectorPicker;

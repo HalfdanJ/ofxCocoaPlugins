@@ -4,7 +4,7 @@
 
 #import <Cocoa/Cocoa.h>
 #include "PluginManagerController.h"
-#include "SharedContextLayer.h"
+//#include "SharedContextLayer.h"
 
 #define Prop(p) [properties objectForKey:(p)] 
 #define PropF(p) [Prop( (p) ) floatValue]
@@ -39,7 +39,7 @@ extern PluginManagerController * globalController;
 	BOOL initPluginCalled;
 	BOOL setupCalled;
 
-	CAOpenGLLayer *controlLayer;
+	NSOpenGLView *controlLayer;
 
 	int updateCpuTime;
 	int drawCpuTime;
@@ -60,6 +60,8 @@ extern PluginManagerController * globalController;
 
 @property (retain, readwrite) NSString *name;
 @property (retain, readwrite) NSNumber *enabled;
+@property (readwrite) PluginOpenGLControlView * controlGlView;
+//@property (readwrite) CAOpenGLLayer *controlLayer;
 
 @property (assign, readwrite) NSView * view;
 @property (readwrite) float updateCpuUsage;

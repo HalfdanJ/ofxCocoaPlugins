@@ -5,6 +5,7 @@
 #include "AppController.h"
 #include "PluginListMeterCell.h"
 #import "BeamSync.h"
+#include "PluginOpenGLControl.h"
 
 PluginManagerController * globalController;
 
@@ -455,37 +456,11 @@ extern ofAppBaseWindow * window;
 -(IBAction)changePlugin:(id)sender{
 	[openglLock lock];
 	if([[self selectedPlugin] view] != nil){		
-//		NSRect frame = [[pluginControllerView superview] frame];
-//		NSRect bounf = [[[self selectedPlugin] view] bounds];
-        
         [[[self selectedPlugin] view] setFrame:[pluginControllerView bounds]];
         [pluginControllerView replaceSubview:[[pluginControllerView subviews] objectAtIndex:0] with:[[self selectedPlugin] view]];
-		
-        
-		/*[pluginControllerView setBoundsSize:NSMakeSize(bounf.size.width, bounf.size.height)];
-		[pluginControllerView setFrameSize:NSMakeSize(bounf.size.width, bounf.size.height)];	
-		[pluginControllerView replaceSubview:[[pluginControllerView subviews] objectAtIndex:0] with:[[self selectedPlugin] view]];
-		bounf = [[[self selectedPlugin] view] bounds];	
-		[pluginControllerView setBoundsSize:NSMakeSize(bounf.size.width, bounf.size.height)];
-		[pluginControllerView setFrameSize:NSMakeSize(bounf.size.width, bounf.size.height)];
-		
-		if([[self selectedPlugin] autoresizeControlview]){	
-			
-			[pluginControllerView setFrameSize:NSMakeSize(frame.size.width, frame.size.height)];
-			//			[pluginControllerView setBoundsSize:NSMakeSize(bounf.size.width, bounf.size.height)];
-			
-			[pluginControllerView setAutoresizesSubviews:YES];	
-			[pluginControllerView setAutoresizingMask: NSViewWidthSizable |  NSViewMaxXMargin | NSViewMinXMargin  | NSViewHeightSizable |  NSViewMaxYMargin | NSViewMinYMargin  ];
-			
-			[pluginControllerView setFrameSize:NSMakeSize(frame.size.width, frame.size.height)];
-			//			[pluginControllerView setBoundsSize:NSMakeSize(bounf.size.width, bounf.size.height)];
-			
-			[pluginControllerView needsDisplay];
-			
-		} else {
-			[pluginControllerView setAutoresizingMask:NSViewMinXMargin | NSViewMinYMargin  ];	
-		}*/
-		
+
+        [self selectedPlugin].controlGlView.plugin = [self selectedPlugin];
+
 	} else {
 		[pluginControllerView replaceSubview:[[pluginControllerView subviews] objectAtIndex:0] with:[[[NSView alloc]initWithFrame:[[pluginControllerView superview] frame]]autorelease]];
 		[pluginControllerView setAutoresizesSubviews:YES];	
@@ -504,6 +479,7 @@ extern ofAppBaseWindow * window;
 		//	[[pluginSplitView animator] setPosition:20+[[[self selectedPlugin] properties] count]*20 ofDividerAtIndex:0];
 		[[pluginSplitView animator] setPosition:0 ofDividerAtIndex:0];
 	}
+    
 	[openglLock unlock];
 
 }
