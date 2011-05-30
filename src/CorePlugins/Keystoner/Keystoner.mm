@@ -63,6 +63,11 @@
 			glVertex2f(point-margin, 0);
 			glVertex2f(point-margin,1.0);
 			//alpha color
+			glColor4f(0.0,0.0,0.0,0.7);
+			glVertex2f(point, 0);
+			glVertex2f(point,1.0);
+			
+			
 			glColor4f(0.0,0.0,0.0,0.0);
 			glVertex2f(point+margin, 0);
 			glVertex2f(point+margin,1.0);
@@ -96,6 +101,12 @@
 			glColor4f(0.0,0.0,0.0,1.0);
 			glVertex2f(point+margin, 0);
 			glVertex2f(point+margin,1.0);
+			
+			//alpha color
+			glColor4f(0.0,0.0,0.0,0.7);
+			glVertex2f(point, 0);
+			glVertex2f(point,1.0);
+			
 			//alpha color
 			glColor4f(0.0,0.0,0.0,0.0);
 			glVertex2f(point-margin, 0);
