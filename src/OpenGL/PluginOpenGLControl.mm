@@ -44,7 +44,8 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
         NSOpenGLPFAMultisample,
         NSOpenGLPFASampleBuffers, (NSOpenGLPixelFormatAttribute)4,
         NSOpenGLPFASamples, (NSOpenGLPixelFormatAttribute)8,
-        
+        NSOpenGLPFADepthSize, 32,
+
         
         
 		(NSOpenGLPixelFormatAttribute)nil
@@ -137,9 +138,11 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
         glClearColor(0.0, 0.0, 0.0, 0.0);
         glClear(GL_COLOR_BUFFER_BIT);
 	} else {		
+        
         glClearColor(0.0, 0.0, 0.0, 0.0);
         glClear(GL_COLOR_BUFFER_BIT);
-		glMatrixMode(GL_MODELVIEW);
+		glMatrixMode(GL_MODELVIEW);       
+        
 		glPushMatrix();
 		glTranslated(-1, 1, 0);
 		glScaled(2.0/[self frame].size.width, -2.0/[self frame].size.height, 1);

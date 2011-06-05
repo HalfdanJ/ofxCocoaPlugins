@@ -39,6 +39,10 @@
 	appliedSurface = [self getSurface:surfaceName viewNumber:viewNumber projectorNumber:projectorNumber];
 }
 
+-(void) applySurface:(KeystoneSurface*)surface{
+    [self applySurface:[surface name] projectorNumber:[surface projectorNumber] viewNumber:[surface viewNumber]];
+}
+
 -(void) popSurface{
 	if(appliedSurface != nil){
 		int part = [appliedSurface softedgePart];
@@ -122,6 +126,7 @@
 }
 
 -(void) draw:(NSDictionary *)drawingInformation{
+    ofEnableAlphaBlending();
 	int viewNo = ViewNumber;
 	NSArray * projectors = [[[outputViewController arrangedObjects] objectAtIndex:viewNo] projectors];
 	KeystoneProjector * projector;
