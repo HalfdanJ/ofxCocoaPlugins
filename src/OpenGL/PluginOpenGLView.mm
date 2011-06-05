@@ -149,7 +149,7 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 	
 	[self setPixelFormat:pixelFormat];
 	
-	//glEnable(GL_MULTISAMPLE);
+	glEnable(GL_MULTISAMPLE);
     
     
     // create display link for the main display
@@ -162,7 +162,6 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 			
 			// set the renderer output callback function
 			CVDisplayLinkSetOutputCallback(displayLink, &MyDisplayLinkCallback, self);
-			
 			// activates a display link.
 			CVDisplayLinkStart(displayLink);
 		} else {

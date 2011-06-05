@@ -84,6 +84,8 @@
 -(void) setup;
 
 -(void) applySurface:(NSString*)surfaceName projectorNumber:(int)projectorNumber viewNumber:(int)viewNumber;
+-(void) applySurface:(KeystoneSurface*)surface;
+
 -(void) popSurface;
 @property (retain, readonly) TrackingLayer * trackingLayer;
 
