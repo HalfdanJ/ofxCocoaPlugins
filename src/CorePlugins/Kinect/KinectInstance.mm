@@ -11,7 +11,7 @@
 
 @implementation KinectInstance
 @synthesize surface, kinectController;
-@synthesize kinectConnected, deviceChar, bus;
+@synthesize kinectConnected, deviceChar, bus, stop;
 
 - (id)init
 {
@@ -42,9 +42,10 @@
 
 
 -(void) setup{
+    NSLog(@"Setup instance");
         unsigned short vendor_id; 
      unsigned short product_id; 
-     unsigned char bus; 
+     unsigned char _bus; 
      unsigned char address; 
      
   //   string connection_string = info.GetCreationInfo(); 
@@ -53,17 +54,19 @@
      
     
 	//ofSetLogLevel(OF_LOG_VERBOSE);	
+    depth.deviceInfoChar =  [deviceChar cStringUsingEncoding:NSUTF8StringEncoding];
+    cout<<"Connect to "<<depth.deviceInfoChar <<endl;
 	context.setup();
-    depth.deviceInfoChar = deviceChar;
 	kinectConnected = depth.setup(&context);
     ir.setup(&context);
     if(kinectConnected){
 		//	users.setup(&context, &depth);		
-        [self setDeviceChar:depth.deviceInfoChar];
-        sscanf(depth.deviceInfoChar, "%hx/%hx@%hhu/%hhu", &vendor_id,&product_id, &bus, &address); 
-        [self setBus:bus];
+        [self setDeviceChar:[NSString stringWithUTF8String:depth.deviceInfoChar]];
+        sscanf(depth.deviceInfoChar, "%hx/%hx@%hhu/%hhu", &vendor_id,&product_id, &_bus, &address); 
+        [self setBus:_bus];
 
-		[self calculateMatrix];	 
+		[self calculateMatrix];	
+        NSLog(@"Connected to kinect %@ bus %i",[NSString stringWithCString:depth.deviceInfoChar encoding:NSUTF8StringEncoding], [self bus]);
 	}	
 }
 
@@ -107,6 +110,95 @@
 
 
 
+#pragma mark Conversion 
+
+
+-(ofxPoint3f) convertKinectToWorld:(ofxPoint3f)p{
+    if(!stop){
+        XnPoint3D pIn;
+        pIn.X = p.x;
+        pIn.Y = p.y;
+        pIn.Z = p.z;
+        XnPoint3D pOut;
+        
+        depth.getXnDepthGenerator().ConvertProjectiveToRealWorld(1, &pIn, &pOut);
+        
+        return ofxPoint3f(pOut.X, pOut.Y, pOut.Z);
+    } else {
+        return nil;
+    }
+}
+
+-(ofxPoint3f) convertWorldToKinect:(ofxPoint3f)p{
+    if(!stop){
+        XnPoint3D pIn;
+        pIn.X = p.x;
+        pIn.Y = p.y;
+        pIn.Z = p.z;
+        XnPoint3D pOut;
+        
+        depth.getXnDepthGenerator().ConvertRealWorldToProjective(1, &pIn, &pOut);
+        
+        return ofxPoint3f(pOut.X, pOut.Y, pOut.Z);
+    } else {
+        return nil;
+    }
+}
+
+-(ofxPoint3f) convertWorldToSurface:(ofxPoint3f) p{
+    p -= [self point3:0];	
+    
+    float rotatex,rotatey,rotatez,rotateval;
+    rotationQuaternion.getRotate(rotateval, rotatex, rotatey, rotatez);
+    
+    p.rotate(rotateval*RAD_TO_DEG,ofxVec3f(rotatex, rotatey, rotatez));
+    p.rotate(-angle1,ofxVec3f(1,0,0));
+    
+    
+    float localScale = ([self projPoint:1] - [self projPoint:0]).length(); 
+    p.z *= -scale*localScale;
+    p.x *= scale*localScale;
+    p.y *= -scale*localScale;
+    
+    p.rotate(-angle2, ofxVec3f(0,0,1));
+    
+    p += ofxPoint3f([self projPoint:0].x, [self projPoint:0].y,0 );
+    
+    return p;
+}
+
+-(ofxPoint3f) convertSurfaceToWorld:(ofxPoint3f) p{
+    p -= ofxPoint3f([self projPoint:0].x, [self projPoint:0].y,0 );
+    
+    p.rotate(angle2, ofxVec3f(0,0,1));
+    
+    float localScale = ([self projPoint:1] - [self projPoint:0]).length(); 
+    p.z /= -scale*localScale;
+    p.x /= scale*localScale;
+    p.y /= -scale*localScale;
+    
+    p.rotate(angle1,ofxVec3f(1,0,0));
+    
+    
+    float rotatex,rotatey,rotatez,rotateval;
+    rotationQuaternion.getRotate(rotateval, rotatex, rotatey, rotatez);
+    p.rotate(-rotateval*RAD_TO_DEG,ofxVec3f(rotatex, rotatey, rotatez));
+    
+    p += [self point3:0];	
+    
+    return p;
+    
+}
+
+-(ofxPoint3f) convertWorldToProjection:(ofxPoint3f) p{
+    ofxPoint2f p2 = [self convertWorldToSurface:p];
+    return [[self surface] convertToProjection:p2];
+}
+
+
+#pragma mark Calibration 
+
+
 -(void) calculateMatrix{
     ofxVec2f v1, v2, v3;
     ofxPoint3f points[3];
@@ -134,12 +226,12 @@
     
     v1 = ofxVec2f(redPoint.z,redPoint.y);
     v2 = ofxVec2f(0,1);	
-    float angle1 = v1.angle(v2);
+    angle1 = v1.angle(v2);
     
- //!   [Prop(@"angle1") setFloatValue:angle1];
+    //!   [Prop(@"angle1") setFloatValue:angle1];
     
-    float angle2 = (projHandles[1] - projHandles[0]).angle(ofxVec2f(0,-1));
- //!   [Prop(@"angle2") setFloatValue:angle2];
+    angle2 = (projHandles[1] - projHandles[0]).angle(ofxVec2f(0,-1));
+    //!   [Prop(@"angle2") setFloatValue:angle2];
     
     //rotationQuaternion.inverse();
     
@@ -195,132 +287,45 @@
     
 }
 
-/*
--(ofxPoint3f) convertKinectToWorld:(ofxPoint3f)p{
-    if(!stop){
-        XnPoint3D pIn;
-        pIn.X = p.x;
-        pIn.Y = p.y;
-        pIn.Z = p.z;
-        XnPoint3D pOut;
-        
-        depth.getXnDepthGenerator().ConvertProjectiveToRealWorld(1, &pIn, &pOut);
-        
-        return ofxPoint3f(pOut.X, pOut.Y, pOut.Z);
-    } else {
-        return nil;
-    }
+
+-(void) reset{
+    [self setPoint3:0 coord:ofxPoint3f(0,0,0)];
+    [self setPoint3:1 coord:ofxPoint3f(1,0,0)];
+    [self setPoint3:2 coord:ofxPoint3f(0,1,0)];
+    
+    [self setPoint2:0 coord:ofxPoint2f(0.1,0.1)];
+    [self setPoint2:1 coord:ofxPoint2f(0.9,0.1)];
+    [self setPoint2:2 coord:ofxPoint2f(0.1,0.9)];
+    
+    [self setProjPoint:0 coord:ofxPoint2f(0,0.1)];
+    [self setProjPoint:1 coord:ofxPoint2f([self surfaceAspect],0.1)];
+    [self setProjPoint:2 coord:ofxPoint2f(0,1)];
+    
+    [self calculateMatrix];
 }
-
--(ofxPoint3f) convertWorldToKinect:(ofxPoint3f)p{
-    if(!stop){
-        XnPoint3D pIn;
-        pIn.X = p.x;
-        pIn.Y = p.y;
-        pIn.Z = p.z;
-        XnPoint3D pOut;
-        
-        depth.getXnDepthGenerator().ConvertRealWorldToProjective(1, &pIn, &pOut);
-        
-        return ofxPoint3f(pOut.X, pOut.Y, pOut.Z);
-    } else {
-        return nil;
-    }
-}
-
--(ofxPoint3f) convertWorldToSurface:(ofxPoint3f) p{
-    p -= [self point3:0];	
-    
-    float rotatex,rotatey,rotatez,rotateval;
-    rotationQuaternion.getRotate(rotateval, rotatex, rotatey, rotatez);
-    
-    p.rotate(rotateval*RAD_TO_DEG,ofxVec3f(rotatex, rotatey, rotatez));
-    p.rotate(-PropF(@"angle1"),ofxVec3f(1,0,0));
-    
-    
-    float localScale = ([self projPoint:1] - [self projPoint:0]).length(); 
-    p.z *= -scale*localScale;
-    p.x *= scale*localScale;
-    p.y *= -scale*localScale;
-    
-    p.rotate(-PropF(@"angle2"), ofxVec3f(0,0,1));
-    
-    p += ofxPoint3f([self projPoint:0].x, [self projPoint:0].y,0 );
-    
-    return p;
-}
-
--(ofxPoint3f) convertSurfaceToWorld:(ofxPoint3f) p{
-    p -= ofxPoint3f([self projPoint:0].x, [self projPoint:0].y,0 );
-    
-    p.rotate(PropF(@"angle2"), ofxVec3f(0,0,1));
-    
-    float localScale = ([self projPoint:1] - [self projPoint:0]).length(); 
-    p.z /= -scale*localScale;
-    p.x /= scale*localScale;
-    p.y /= -scale*localScale;
-    
-    p.rotate(PropF(@"angle1"),ofxVec3f(1,0,0));
-    
-    
-    float rotatex,rotatey,rotatez,rotateval;
-    rotationQuaternion.getRotate(rotateval, rotatex, rotatey, rotatez);
-    p.rotate(-rotateval*RAD_TO_DEG,ofxVec3f(rotatex, rotatey, rotatez));
-    
-    p += [self point3:0];	
-    
-    return p;
-    
-}
-
--(ofxPoint3f) convertWorldToProjection:(ofxPoint3f) p{
-    ofxPoint2f p2 = [self convertWorldToSurface:p];
-    return [[self surface] convertToProjection:p2];
-}
-*/
-
-
 
 -(ofxPoint3f) point3:(int)point{
-    NSMutableDictionary * customProperties = [kinectController customProperties];
-    if(point3Cache[point] == nil)
-        point3Cache[point] = ofxPoint3f([[customProperties valueForKey:[NSString stringWithFormat:@"point%ix",point]] floatValue], [[customProperties valueForKey:[NSString stringWithFormat:@"point%iy",point]] floatValue], [[customProperties valueForKey:[NSString stringWithFormat:@"point%iz",point]] floatValue]);
-    
     return point3Cache[point];	
 }
 -(ofxPoint2f) point2:(int)point{
-    NSMutableDictionary * customProperties = [kinectController customProperties];
-    if(point2Cache[point] == nil)
-        point2Cache[point] = ofxPoint2f([[customProperties valueForKey:[NSString stringWithFormat:@"point%ia",point]] floatValue], [[customProperties valueForKey:[NSString stringWithFormat:@"point%ib",point]] floatValue]);
-    
     return point2Cache[point];
 }
 -(ofxPoint2f) projPoint:(int)point{
-    NSMutableDictionary * customProperties = [kinectController customProperties];
-    if(projPointCache[point] == nil)
-        projPointCache[point] = ofxPoint2f([[customProperties valueForKey:[NSString stringWithFormat:@"proj%ix",point]] floatValue], [[customProperties valueForKey:[NSString stringWithFormat:@"proj%iy",point]] floatValue]);
     return projPointCache[point];
 }
 
 -(void) setPoint3:(int) point coord:(ofxPoint3f)coord{
-    NSMutableDictionary * customProperties = [kinectController customProperties];
-   [customProperties setValue:[NSNumber numberWithFloat:coord.x] forKey:[NSString stringWithFormat:@"point%ix",point]];
-    [customProperties setValue:[NSNumber numberWithFloat:coord.y] forKey:[NSString stringWithFormat:@"point%iy",point]];
-    [customProperties setValue:[NSNumber numberWithFloat:coord.z] forKey:[NSString stringWithFormat:@"point%iz",point]];
-    point3Cache[point] = nil;
+    point3Cache[point] = coord;
 }
 -(void) setPoint2:(int) point coord:(ofxPoint2f)coord{
-    NSMutableDictionary * customProperties = [kinectController customProperties];
-    [customProperties setValue:[NSNumber numberWithFloat:coord.x] forKey:[NSString stringWithFormat:@"point%ia",point]];
-    [customProperties setValue:[NSNumber numberWithFloat:coord.y] forKey:[NSString stringWithFormat:@"point%ib",point]];
-    point2Cache[point] = nil;
+    point2Cache[point] = coord;
 }
 -(void) setProjPoint:(int) point coord:(ofxPoint2f)coord{
-    NSMutableDictionary * customProperties = [kinectController customProperties];
-    [customProperties setValue:[NSNumber numberWithFloat:coord.x] forKey:[NSString stringWithFormat:@"proj%ix",point]];
-    [customProperties setValue:[NSNumber numberWithFloat:coord.y] forKey:[NSString stringWithFormat:@"proj%iy",point]];
-    projPointCache[point] = nil;
+    projPointCache[point] = coord;
 }
+
+#pragma mark OpenNI getters 
+
 
 -(ofxUserGenerator*) getUserGenerator{
     return &users;	
@@ -331,6 +336,15 @@
 }
 -(ofxIRGenerator*) getIRGenerator{
     return &ir;
+}
+-(ofxOpenNIContext*) getOpenNIContext{
+    return &context;
+}
+
+#pragma mark Keystoner
+
+-(float) surfaceAspect{
+    return 	[[[self surface] aspect] floatValue];
 }
 
 

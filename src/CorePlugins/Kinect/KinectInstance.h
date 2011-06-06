@@ -28,16 +28,19 @@
     KeystoneSurface * surface;   
     Kinect * kinectController;
 
-    const char * deviceChar;
+    NSString * deviceChar;
     int bus;
+    
+    float angle1, angle2;
 }
 
 @property (readwrite, assign) KeystoneSurface * surface;
 @property (readwrite, assign)  Kinect * kinectController;
 
 @property (readonly) BOOL kinectConnected;
-@property (readwrite) const char * deviceChar;
+@property (readwrite) NSString * deviceChar;
 @property (readwrite) int bus;
+@property (readwrite) BOOL stop;
 
 -(void) setup;
 -(void) update:(NSDictionary *)drawingInformation;
@@ -63,13 +66,14 @@
 -(float) surfaceAspect;
 
 -(ofxUserGenerator*) getUserGenerator;
--(IBAction) resetCalibration:(id)sender;
 -(void) reset;
 
 -(KeystoneSurface*) surface;
+-(float) surfaceAspect;
 
 -(ofxDepthGenerator*) getDepthGenerator;
 -(ofxIRGenerator*) getIRGenerator;
+-(ofxOpenNIContext*) getOpenNIContext;
 
 
 @end
