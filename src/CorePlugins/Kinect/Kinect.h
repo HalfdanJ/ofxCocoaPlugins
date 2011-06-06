@@ -19,10 +19,12 @@ struct Dancer {
 	IBOutlet NSButton * drawCalibration;
 	IBOutlet NSTabView * openglTabView;	
     IBOutlet NSPopUpButton *surfacePopUp;
+    IBOutlet NSPopUpButton *kinectDevicePopUp;
     IBOutlet NSSegmentedControl *instanceSegmentedControl;
     
     NSMutableArray * surfaces;
     NSMutableArray * instances;
+    NSMutableArray * availableDevices;
     
     ofxVec3f camCoord;
     ofxVec3f eyeCoord;
@@ -34,6 +36,7 @@ struct Dancer {
 }
 
 @property (readonly)  NSMutableArray * instances;
+@property (readonly)  NSMutableArray * availableDevices;
 
 -(IBAction) storeCalibration:(id)sender;
 -(IBAction) setPriority:(id)sender;

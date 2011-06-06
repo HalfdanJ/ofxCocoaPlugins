@@ -28,12 +28,16 @@
     KeystoneSurface * surface;   
     Kinect * kinectController;
 
+    const char * deviceChar;
+    int bus;
 }
 
 @property (readwrite, assign) KeystoneSurface * surface;
 @property (readwrite, assign)  Kinect * kinectController;
 
 @property (readonly) BOOL kinectConnected;
+@property (readwrite) const char * deviceChar;
+@property (readwrite) int bus;
 
 -(void) setup;
 -(void) update:(NSDictionary *)drawingInformation;

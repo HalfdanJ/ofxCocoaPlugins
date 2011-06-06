@@ -11,7 +11,7 @@
 
 @implementation KinectInstance
 @synthesize surface, kinectController;
-@synthesize kinectConnected;
+@synthesize kinectConnected, deviceChar, bus;
 
 - (id)init
 {
@@ -28,6 +28,8 @@
         point3Cache[0] = nil;
         point3Cache[1] = nil;
         point3Cache[2] = nil;
+        
+        deviceChar = nil;
     }
     
     return self;
@@ -40,23 +42,27 @@
 
 
 -(void) setup{
-    /*    unsigned short vendor_id; 
+        unsigned short vendor_id; 
      unsigned short product_id; 
      unsigned char bus; 
      unsigned char address; 
      
-     sscanf(info.GetCreationInfo(), "%hx/%hx@%hhu/%hhu", &vendor_id,&product_id, &bus, &address); 
-     string connection_string = info.GetCreationInfo(); 
-     transform (connection_string.begin (), connection_string.end (), connection_string.begin (), std::towlower);
-     printf("vendor_id %i product_id %i bus %i address %i connection %s \n", vendor_id, product_id, bus, address, connection_string.c_str()); 
-     */
+  //   string connection_string = info.GetCreationInfo(); 
+//     transform (connection_string.begin (), connection_string.end (), connection_string.begin (), std::towlower);
+//     printf("vendor_id %i product_id %i bus %i address %i connection %s \n", vendor_id, product_id, bus, address, connection_string.c_str()); 
+     
     
 	//ofSetLogLevel(OF_LOG_VERBOSE);	
 	context.setup();
+    depth.deviceInfoChar = deviceChar;
 	kinectConnected = depth.setup(&context);
     ir.setup(&context);
     if(kinectConnected){
 		//	users.setup(&context, &depth);		
+        [self setDeviceChar:depth.deviceInfoChar];
+        sscanf(depth.deviceInfoChar, "%hx/%hx@%hhu/%hhu", &vendor_id,&product_id, &bus, &address); 
+        [self setBus:bus];
+
 		[self calculateMatrix];	 
 	}	
 }
