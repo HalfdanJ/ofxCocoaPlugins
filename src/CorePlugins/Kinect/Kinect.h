@@ -20,7 +20,8 @@ struct Dancer {
 	IBOutlet NSTabView * openglTabView;	
     IBOutlet NSPopUpButton *surfacePopUp;
     IBOutlet NSPopUpButton *kinectDevicePopUp;
-    IBOutlet NSSegmentedControl *instanceSegmentedControl;
+    IBOutlet NSSegmentedControl *instanceSegmentedControl;    
+    IBOutlet NSObjectController *instanceController;
     
     NSMutableArray * surfaces;
     NSMutableArray * instances;
@@ -49,7 +50,7 @@ struct Dancer {
 
 - (id) initWithNumberKinects:(int)numberKinects;
 
-- (KinectInstance*) getInstanceNumber:(int)num;
+- (KinectInstance*) getInstance:(int)num;
 - (KinectInstance*) getSelectedConfigureInstance;
 
 - (ofxTrackedUser*) getDancer:(int)d;

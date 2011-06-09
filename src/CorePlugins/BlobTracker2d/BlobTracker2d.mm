@@ -1,0 +1,126 @@
+#import "BlobTracker2d.h"
+#import "Kinect.h"
+
+@implementation BlobTracker2d
+
+-(void)initPlugin{
+    instances = [NSMutableArray array];
+    int i=0;
+    for(KinectInstance * kinect in [GetPlugin(Kinect) instances]){
+        BlobTrackerInstance2d * newInstance = [[BlobTrackerInstance2d alloc] init];
+        [newInstance setCameraInstance:kinect];
+        [newInstance setTrackerNumber:i];
+        [instances addObject:newInstance];
+        i++;
+    }
+    
+}
+
+-(void)awakeFromNib{
+    [super awakeFromNib];
+    
+    
+    int number = [instances count];
+    
+    
+    
+    
+    int i=0;
+    for(BlobTrackerInstance2d * instance in instances){
+        [NSBundle loadNibNamed:@"BlobTrackerInstance2d"  owner:instance];
+        if(i==0){
+            controlWidth = [[instance view] frame].size.width;
+            controlHeight = [[instance view] frame].size.height;
+            [[self view] setFrame:NSMakeRect(0,0,controlWidth+800, number*controlHeight)];
+
+        }
+        
+        [[instance view] setFrame:NSMakeRect([[self view]bounds].origin.x+800, [[self view]bounds].origin.y+controlHeight*(number-i-1), controlWidth, controlHeight)];
+        [[self view] addSubview:[instance view]];
+        i++;
+    }
+    
+    [[self controlGlView] setFrame:NSMakeRect([[self view]bounds].origin.x, [[self view]bounds].origin.y, 800, controlHeight*number)];    
+}
+
+-(void)customPropertiesLoaded{		
+    NSLog(@"Set Custom Properties: %@ %lu",customProperties,[[customProperties objectForKey:@"instances"] count]);
+    int i=0;
+    for(BlobTrackerInstance2d * instance in instances){
+        if([[customProperties objectForKey:@"instances"] count] > i){
+            NSMutableDictionary * dict = [[customProperties objectForKey:@"instances"] objectAtIndex:i];
+            [instance setProperties:[dict valueForKey:@"properties"]];
+        }
+        i++;
+    }
+    
+}
+
+-(void)willSave{	
+	NSMutableArray * camerasArray = [NSMutableArray arrayWithCapacity:[instances count]];
+	
+	BlobTrackerInstance2d * instance;
+	for(instance in instances){
+        NSMutableDictionary * props = [NSMutableDictionary dictionary];
+        [props setObject:[instance properties] forKey:@"properties"];
+        
+        [camerasArray addObject:props];
+		
+		
+		
+	}
+	
+	[customProperties setObject:camerasArray forKey:@"instances"];
+}
+
+
+
+-(void) setup{
+    for(BlobTrackerInstance2d * instance in instances){
+        [instance setup];
+    }
+}
+
+
+-(void)controlDraw:(NSDictionary *)drawingInformation{
+    ofSetColor(0,0,0);
+    int blockWidth = 800/3;
+    int blockHeight = blockWidth * 3.0/4.0;;
+
+    glPushMatrix();{
+        for(BlobTrackerInstance2d * instance in instances){
+           // [[instance view] setNeedsDisplay:YES];
+
+            ofFill();
+            ofSetColor(0,0,0);
+        //    ofRect(0,0,controlWidth,controlHeight);
+            
+            ofSetColor(255,255,255);
+            [instance drawInput:NSMakeRect(0,0,blockWidth, blockHeight)];
+            [instance drawSurfaceMask:NSMakeRect(0,0,blockWidth, blockHeight)];
+            
+            [instance drawBackground:NSMakeRect(blockWidth,0,blockWidth, blockHeight)];
+            
+            [instance drawDifference:NSMakeRect(blockWidth*2,0,blockWidth, blockHeight)];
+
+            [instance drawBlobs:NSMakeRect(blockWidth*2,0,blockWidth, blockHeight)];
+            
+            glTranslated(0, controlHeight, 0);
+        }        
+    }glPopMatrix();
+}
+
+
+-(void) update:(NSDictionary *)drawingInformation{
+    for(BlobTrackerInstance2d * instance in instances){
+        [instance update:drawingInformation];
+    }
+}
+
+-(BlobTrackerInstance2d*) getInstance:(int) num{
+    if(num >= 0 && num < [instances count]){
+        return [instances objectAtIndex:num];
+    } 
+    return nil;
+}
+@end

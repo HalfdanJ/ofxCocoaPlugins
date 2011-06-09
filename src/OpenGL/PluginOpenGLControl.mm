@@ -62,7 +62,7 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
     
     GLint zeroOpacity = 0;
 	[[self openGLContext] setValues:&zeroOpacity forParameter:NSOpenGLCPSurfaceOpacity];
-
+    
 	backingWidth = 0;
 	backingHeight = 0;
     
@@ -127,7 +127,7 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 
 
 
--(void) drawRect:(NSRect)dirtyRect{
+-(void) draw{
     
 	[[controller openglLock] lock]; // prevent drawing from another thread if we're drawing already
 	
@@ -217,7 +217,7 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 	
     if([self plugin] == [globalController selectedPlugin]){
         [drawingInformation setValue:[NSNumber numberWithDouble:timeInterval] forKey:@"timeInterval"];
-        [self drawRect:NSZeroRect];
+        [self draw];
     }
     [pool release];
 	

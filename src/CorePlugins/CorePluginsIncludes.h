@@ -2,3 +2,4 @@
 #include "Cameras.h"
 #include "Midi.h"
 #include "Kinect.h"
+#include "BlobTracker2d.h"

@@ -11,7 +11,7 @@
 
 @implementation KinectInstance
 @synthesize surface, kinectController;
-@synthesize kinectConnected, deviceChar, bus, stop;
+@synthesize kinectConnected, deviceChar, bus, stop, kinectNumber, irEnabled, levelsLow, levelsHigh, coordWarper;
 
 - (id)init
 {
@@ -30,6 +30,8 @@
         point3Cache[2] = nil;
         
         deviceChar = nil;
+        connectionRefused = NO;
+        coordWarper = nil;
     }
     
     return self;
@@ -43,35 +45,22 @@
 
 -(void) setup{
     NSLog(@"Setup instance");
-        unsigned short vendor_id; 
-     unsigned short product_id; 
-     unsigned char _bus; 
-     unsigned char address; 
-     
-  //   string connection_string = info.GetCreationInfo(); 
-//     transform (connection_string.begin (), connection_string.end (), connection_string.begin (), std::towlower);
-//     printf("vendor_id %i product_id %i bus %i address %i connection %s \n", vendor_id, product_id, bus, address, connection_string.c_str()); 
-     
     
-	//ofSetLogLevel(OF_LOG_VERBOSE);	
-    depth.deviceInfoChar =  [deviceChar cStringUsingEncoding:NSUTF8StringEncoding];
-    cout<<"Connect to "<<depth.deviceInfoChar <<endl;
-	context.setup();
-	kinectConnected = depth.setup(&context);
-    ir.setup(&context);
-    if(kinectConnected){
-		//	users.setup(&context, &depth);		
-        [self setDeviceChar:[NSString stringWithUTF8String:depth.deviceInfoChar]];
-        sscanf(depth.deviceInfoChar, "%hx/%hx@%hhu/%hhu", &vendor_id,&product_id, &_bus, &address); 
-        [self setBus:_bus];
-
-		[self calculateMatrix];	
-        NSLog(@"Connected to kinect %@ bus %i",[NSString stringWithCString:depth.deviceInfoChar encoding:NSUTF8StringEncoding], [self bus]);
-	}	
+    if(irEnabled && !kinectConnected){
+        [self startContext];
+    }
 }
 
 -(void) update:(NSDictionary *)drawingInformation{
-	if(kinectConnected && !stop){
+    if(irEnabled && !kinectConnected && !connectionRefused){
+        [self startContext];
+    } 
+    
+    if(!irEnabled && kinectConnected && !connectionRefused){
+        [self stopContext];
+    } 
+    
+    if(kinectConnected && !stop){
 		context.update();
 		depth.update();
 		//users.update();	
@@ -79,6 +68,46 @@
     }
 
 }
+
+-(void)startContext{
+    unsigned short vendor_id; 
+    unsigned short product_id; 
+    unsigned char _bus; 
+    unsigned char address; 
+    
+    //   string connection_string = info.GetCreationInfo(); 
+    //     transform (connection_string.begin (), connection_string.end (), connection_string.begin (), std::towlower);
+    //     printf("vendor_id %i product_id %i bus %i address %i connection %s \n", vendor_id, product_id, bus, address, connection_string.c_str()); 
+    
+    
+	//ofSetLogLevel(OF_LOG_VERBOSE);	
+    depth.deviceInfoChar =  [deviceChar cStringUsingEncoding:NSUTF8StringEncoding];
+    cout<<"Connect to "<<depth.deviceInfoChar <<endl;
+	context.setup();
+	kinectConnected = depth.setup(&context);
+    ir.setup(&context);
+    ir.levelsLow = levelsLow;
+    ir.levelsHigh = levelsHigh;
+    
+    if(kinectConnected){
+		//	users.setup(&context, &depth);		
+        [self setDeviceChar:[NSString stringWithUTF8String:depth.deviceInfoChar]];
+        sscanf(depth.deviceInfoChar, "%hx/%hx@%hhu/%hhu", &vendor_id,&product_id, &_bus, &address); 
+        [self setBus:_bus];
+        
+		[self calculateMatrix];	
+        NSLog(@"Connected to kinect %@ bus %i",[NSString stringWithCString:depth.deviceInfoChar encoding:NSUTF8StringEncoding], [self bus]);
+        connectionRefused = NO;
+	} else {
+        connectionRefused = YES;
+    }
+} 
+
+-(void)stopContext{
+    context.getXnContext().Shutdown();
+    kinectConnected = NO;
+}
+
 
 
 
@@ -106,6 +135,22 @@
     }
     return points;	
     
+}
+
+#pragma mark Setters
+
+-(void)setIrEnabled:(BOOL)_irEnabled{
+    irEnabled = _irEnabled;
+}
+
+-(void)setLevelsLow:(float)_levelsLow{
+    levelsLow = _levelsLow;
+    ir.levelsLow = levelsLow;
+}
+
+-(void)setLevelsHigh:(float)_levelsHigh{
+    levelsHigh = _levelsHigh;
+    ir.levelsHigh = levelsHigh;
 }
 
 
@@ -215,17 +260,21 @@
     ofxVec3f bluePoint = (points[2]-points[0]);
     ofxVec3f redPoint = (points[1]-points[0]);
     
+    
+    
     rotationQuaternion.makeRotate(bluePoint, ofxVec3f(1,0,0));
     
     bluePoint = bluePoint * rotationQuaternion;
     
-    cout<<bluePoint.x<<"  "<<bluePoint.y<<"  "<<bluePoint.z<<endl;
+   // cout<<bluePoint.x<<"  "<<bluePoint.y<<"  "<<bluePoint.z<<endl;
     
     
     redPoint = redPoint*rotationQuaternion;
     
     v1 = ofxVec2f(redPoint.z,redPoint.y);
-    v2 = ofxVec2f(0,1);	
+    v2 = ofxVec2f(0,1);
+    
+    
     angle1 = v1.angle(v2);
     
     //!   [Prop(@"angle1") setFloatValue:angle1];
@@ -284,7 +333,30 @@
      PropF(@"angle3")*DEG_TO_RAD, ofxVec3f(0,0,1));*/
     scale = 1.0/(points[1]-points[0]).length() ;
     
+    if(coordWarper != nil){
+     //   delete coordWarper;
+    }
+    coordWarper = new coordWarping();
     
+    ofxPoint2f src[4];
+    ofxPoint2f dst[4];    
+    
+    src[0].x = 0;
+    src[0].y = 0;
+    src[1].x = 1;
+    src[1].y = 0;
+    src[2].x = 1;
+    src[2].y = 1;
+    src[3].x = 0;
+    src[3].y = 1;
+    
+    for(int i=0;i<4;i++){
+        ofxPoint2f p = [self surfaceCorner:i];
+        dst[i].x = p.x / 640;
+        dst[i].y = p.y / 480;
+    }
+    
+    coordWarper->calculateMatrix(dst, src);
 }
 
 
@@ -322,6 +394,29 @@
 }
 -(void) setProjPoint:(int) point coord:(ofxPoint2f)coord{
     projPointCache[point] = coord;
+}
+
+-(ofxPoint2f) surfaceCorner:(int)n{
+    ofxPoint3f world;
+    switch (n) {
+        case 0:
+            world = [self convertSurfaceToWorld:ofxPoint3f(0,0,0)];
+            break;
+        case 1:
+            world = [self convertSurfaceToWorld:ofxPoint3f([self surfaceAspect],0,0)];
+            break;
+        case 2:
+            world = [self convertSurfaceToWorld:ofxPoint3f([self surfaceAspect],1,0)];
+            break;
+        case 3:
+            world = [self convertSurfaceToWorld:ofxPoint3f(0,1,0)];
+            break;
+
+        default:
+            break;
+    }
+
+    return [self convertWorldToKinect:world];    
 }
 
 #pragma mark OpenNI getters 

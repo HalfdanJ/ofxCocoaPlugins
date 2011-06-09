@@ -62,6 +62,7 @@
         for(int i=0;i<numberKinects;i++){
             KinectInstance * newInstance = [[KinectInstance alloc] init];
             [newInstance setKinectController:self];
+            [newInstance setKinectNumber:i];
             [instances addObject:newInstance];           
         }
     }
@@ -71,7 +72,7 @@
 
 -(void)initPlugin{
     [self addProperty:[NumberProperty sliderPropertyWithDefaultvalue:0.5 minValue:0 maxValue:1] named:@"pointResolution"];
-
+    
     /*   [self addProperty:[NumberProperty sliderPropertyWithDefaultvalue:0.0 minValue:-30 maxValue:30] named:@"angle1"];
      [self addProperty:[NumberProperty sliderPropertyWithDefaultvalue:0.0 minValue:-30 maxValue:30] named:@"angle2"];
      [self addProperty:[NumberProperty sliderPropertyWithDefaultvalue:0.0 minValue:-30 maxValue:30] named:@"angle3"];
@@ -122,6 +123,9 @@
             NSMutableDictionary * dict = [[customProperties objectForKey:@"instances"] objectAtIndex:i];
             [kinect setDeviceChar:[dict objectForKey:@"deviceChar"]];
             [kinect setSurface:[GetPlugin(Keystoner) getSurface:[dict objectForKey:@"surfaceName"] viewNumber:[[dict objectForKey:@"surfaceViewNumber"] intValue] projectorNumber:[[dict objectForKey:@"surfaceProjectorNumber"] intValue]]];
+            [kinect setIrEnabled:[[dict objectForKey:@"irEnabled"] boolValue]];
+            [kinect setLevelsHigh:[[dict objectForKey:@"levelHigh"] floatValue]];
+            [kinect setLevelsLow:[[dict objectForKey:@"levelsLow"] floatValue]];
             
             for(int i=0;i<3;i++){
                 [kinect setPoint2:i coord:ofxPoint2f([[dict objectForKey:[NSString stringWithFormat:@"point%ia",i]] floatValue],[[dict objectForKey:[NSString stringWithFormat:@"point%ib",i]] floatValue] )];
@@ -151,6 +155,10 @@
             [props setObject:[[kinect surface] name] forKey:@"surfaceName"];
             [props setObject:[NSNumber numberWithInt:[[kinect surface] viewNumber]] forKey:@"surfaceViewNumber"];
             [props setObject:[NSNumber numberWithInt:[[kinect surface] projectorNumber]] forKey:@"surfaceProjectorNumber"];
+            [props setObject:[NSNumber numberWithFloat:[kinect levelsLow]] forKey:@"levelsLow"];
+            [props setObject:[NSNumber numberWithFloat:[kinect levelsHigh]] forKey:@"levelHigh"];
+            
+            [props setObject:[NSNumber numberWithBool:[kinect irEnabled]] forKey:@"irEnabled"];
             
             for(int i=0;i<3;i++){
                 [props setObject:[NSNumber numberWithFloat:[kinect point2:i].x] forKey:[NSString stringWithFormat:@"point%ia",i]];               
@@ -205,6 +213,8 @@
         }
         i++;
     }
+    
+    [instanceController setContent:[self getSelectedConfigureInstance]];
 }
 
 - (IBAction)changeDevice:(id)sender {
@@ -254,10 +264,12 @@
             [instanceSegmentedControl setLabel:[NSString stringWithFormat:@"Kinect %i",i] forSegment:i];
             [instanceSegmentedControl setWidth:w forSegment:i];
         });
+       
         BOOL deviceFound = NO;
         for(NSMutableDictionary * dict in availableDevices){
-            if([[dict objectForKey:@"deviceChar"] isEqualToString:[instance deviceChar]]){
+            if([[dict objectForKey:@"deviceChar"] length] > 0 && [[[dict objectForKey:@"deviceChar"] substringToIndex:14] isEqualToString:[[instance deviceChar] substringToIndex:14]]){
                 NSLog(@"Device found for kinect %i!", i);
+                [instance setDeviceChar:[dict objectForKey:@"deviceChar"]];
                 deviceFound = YES;
                 break;
             }
@@ -277,21 +289,24 @@
     
     //Populate the kinect device popup
     // dispatch_async(dispatch_get_main_queue(), ^{
-    
+    dispatch_async(dispatch_get_main_queue(), ^{
+
     [kinectDevicePopUp removeAllItems];
     for(NSMutableDictionary * dict in availableDevices){
         [kinectDevicePopUp addItemWithTitle:[dict objectForKey:@"name"]];
     }
     
     
-    i = 0;
+   int i = 0;
     NSArray *itemArray = [kinectDevicePopUp itemArray];
     NSDictionary *attributes = [NSDictionary
                                 dictionaryWithObjectsAndKeys:
                                 [NSColor redColor], NSForegroundColorAttributeName,
                                 [NSFont systemFontOfSize: [NSFont systemFontSize]],
                                 NSFontAttributeName, nil];    
-    
+       // NSLog(@"Availalbe devices %@",availableDevices);
+        
+        //        NSLog(@"popup devices %@",itemArray);
     for(NSMutableDictionary * dict in availableDevices){
         if(![[dict objectForKey:@"available"] boolValue] && i > 0){
             NSMenuItem *item = [itemArray objectAtIndex:i];
@@ -303,7 +318,9 @@
         }
         i++;
     }
-    [self setSelectedInstance:self];
+    
+        [self setSelectedInstance:self];
+    });
     //});
 }
 
@@ -426,16 +443,18 @@
 }
 
 -(void) draw:(NSDictionary *)drawingInformation{
-	/*if([drawCalibration state]){
+	if([drawCalibration state]){
+        KinectInstance * kinect = [self getSelectedConfigureInstance];
+
      //ApplySurface(@"Floor");
      glPushMatrix();
-     [GetPlugin(Keystoner) applySurface:[self surface]];
+     [GetPlugin(Keystoner) applySurface:[kinect surface]];
      //        [[self surface] apply];
      
      ofxPoint2f projHandles[3];	
-     projHandles[0] = [self projPoint:0];
-     projHandles[1] = [self projPoint:1];
-     projHandles[2] = [self projPoint:2];
+     projHandles[0] = [kinect projPoint:0];
+     projHandles[1] = [kinect projPoint:1];
+     projHandles[2] = [kinect projPoint:2];
      
      ofFill();
      //Y Axis 
@@ -451,8 +470,10 @@
      ofSetColor(0, 0, 255);
      ofCircle(projHandles[2].x,projHandles[2].y, 10/640.0);
      ofLine(projHandles[0].x, projHandles[0].y, projHandles[2].x, projHandles[2].y);
-     
-     
+    
+        [GetPlugin(Keystoner) popSurface];
+    }
+     /*
      
      for(PersistentBlob * b in persistentBlobs){
      ofxPoint3f p = [b centroidFiltered];
@@ -668,7 +689,29 @@
                 
                 glPushMatrix();{
                     glTranslated((640/2), 0, 0);
+                    
+                    ofFill();
+                    ofSetColor(0,255, 0,15);
+                    glBegin(GL_QUADS);
+                    for(int i=0;i<4;i++){
+                        ofxPoint2f p = [kinect surfaceCorner:i];
+                        glVertex2f(p.x*0.5,p.y*0.5);
+                    }
+                    glEnd();
+                    
+                    ofSetColor(0,255, 0,30);
+                    glBegin(GL_LINE_STRIP);
+                    for(int i=0;i<4;i++){
+                        ofxPoint2f p = [kinect surfaceCorner:i];
+                        glVertex2f(p.x*0.5,p.y*0.5);
+                    }
+                    ofxPoint2f p = [kinect surfaceCorner:0];
+                    glVertex2f(p.x*0.5,p.y*0.5);
+                    glEnd();
+                    
+                    
                     ofNoFill();
+
                     //Y Axis 
                     ofSetColor(0, 255, 0);
                     handleImage->draw(handles[0].x*320.0 - 13,handles[0].y*240.0 - 13, 25, 25);
@@ -909,7 +952,7 @@
                     
                     //kinects with same surface 
                     for(KinectInstance * pointKinect in instances){
-                        if([pointKinect surface] == [kinect surface]){
+                        if([pointKinect surface] == [kinect surface] && [pointKinect kinectConnected]){
                             xn::DepthMetaData dmd;
                             [pointKinect getDepthGenerator]->getXnDepthGenerator().GetMetaData(dmd);
                             
@@ -1176,14 +1219,14 @@
 }
 
 
--(KinectInstance*) getInstanceNumber:(int)num{
+-(KinectInstance*) getInstance:(int)num{
     return [instances objectAtIndex:num];
 }
 
 -(KinectInstance*) getSelectedConfigureInstance{
     if([instanceSegmentedControl selectedSegment] == -1)
         return nil;
-    return [self getInstanceNumber:[instanceSegmentedControl selectedSegment]];
+    return [self getInstance:[instanceSegmentedControl selectedSegment]];
 }
 
 -(ofxTrackedUser*) getDancer:(int)d{
@@ -1301,48 +1344,49 @@
 
 -(void) controlMousePressed:(float)x y:(float)y button:(int)button{
     KinectInstance * instance = [self getSelectedConfigureInstance];
-    
-    if([openglTabView indexOfTabViewItem:[openglTabView selectedTabViewItem]] == 0){
-        
-        ofxPoint2f mouse = ofPoint(2*x/640,2*y/480);
-        draggedPoint = -1;
-        if(mouse.y <= 1){
-            for(int i=0;i<3;i++){
-                if (mouse.distance([instance point2:i]) < 0.035) {
-                    draggedPoint = i;
-                }
-            }
-        } else {
-            mouse.y -= 1;	
-            float aspect = [instance surfaceAspect];
-            if(aspect < 1){
-                mouse.x -= 0.5;
-                mouse.x += aspect/2.0;
-            } else {
-                mouse.y -= 0.5;
-                mouse.y += (1.0/aspect)/2.0;
-                mouse *= aspect;
-            }
+    if([instance kinectConnected]){
+        if([openglTabView indexOfTabViewItem:[openglTabView selectedTabViewItem]] == 0){
             
-            for(int i=0;i<2;i++){
-                if (mouse.distance([instance projPoint:i]) < 0.035) {
-                    draggedPoint = i+3;
+            ofxPoint2f mouse = ofPoint(2*x/640,2*y/480);
+            draggedPoint = -1;
+            if(mouse.y <= 1){
+                for(int i=0;i<3;i++){
+                    if (mouse.distance([instance point2:i]) < 0.035) {
+                        draggedPoint = i;
+                    }
+                }
+            } else {
+                mouse.y -= 1;	
+                float aspect = [instance surfaceAspect];
+                if(aspect < 1){
+                    mouse.x -= 0.5;
+                    mouse.x += aspect/2.0;
+                } else {
+                    mouse.y -= 0.5;
+                    mouse.y += (1.0/aspect)/2.0;
+                    mouse *= aspect;
+                }
+                
+                for(int i=0;i<2;i++){
+                    if (mouse.distance([instance projPoint:i]) < 0.035) {
+                        draggedPoint = i+3;
+                    }
                 }
             }
+            xn::DepthMetaData dmd;
+            [instance getDepthGenerator]->getXnDepthGenerator().GetMetaData(dmd);
+            
+            XnPoint3D pIn;
+            pIn.X = mouse.x*640;
+            pIn.Y = mouse.y*480;
+            
+            if(draggedPoint != -1){
+                [NSCursor hide];
+            }
+            NSLog(@"Mouse pressed %i  mouse: %fx%f   depth at mouse: %i",draggedPoint, mouse.x, mouse.y,dmd.Data()[(int)pIn.X+(int)pIn.Y*640]);
+        } else if([openglTabView indexOfTabViewItem:[openglTabView selectedTabViewItem]] == 1){
+            mouseLastX = x; mouseLastY = y;
         }
-        xn::DepthMetaData dmd;
-        [instance getDepthGenerator]->getXnDepthGenerator().GetMetaData(dmd);
-        
-        XnPoint3D pIn;
-        pIn.X = mouse.x*640;
-        pIn.Y = mouse.y*480;
-        
-        if(draggedPoint != -1){
-            [NSCursor hide];
-        }
-        NSLog(@"Mouse pressed %i  mouse: %fx%f   depth at mouse: %i",draggedPoint, mouse.x, mouse.y,dmd.Data()[(int)pIn.X+(int)pIn.Y*640]);
-    } else if([openglTabView indexOfTabViewItem:[openglTabView selectedTabViewItem]] == 1){
-        mouseLastX = x; mouseLastY = y;
     }
 }
 
