@@ -81,6 +81,23 @@
     }
 }
 
+-(void)draw:(NSDictionary *)drawingInformation{
+    glPushMatrix();{
+        for(BlobTrackerInstance2d * instance in instances){
+            // [[instance view] setNeedsDisplay:YES];
+            
+            if([instance isKinect] && [instance drawDebug] ){
+                KeystoneSurface * surface = [[instance cameraInstance] surface];
+                [GetPlugin(Keystoner) applySurface:surface];            
+                [instance drawBlobs:NSMakeRect(0,0,[[surface aspect] floatValue], 1)];
+                [GetPlugin(Keystoner) popSurface];            
+
+            }
+
+        }        
+    }glPopMatrix();
+}
+
 
 -(void)controlDraw:(NSDictionary *)drawingInformation{
     ofSetColor(0,0,0);

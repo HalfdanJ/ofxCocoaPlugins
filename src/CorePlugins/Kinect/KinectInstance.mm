@@ -46,18 +46,21 @@
 -(void) setup{
     NSLog(@"Setup instance");
     
-    if(irEnabled && !kinectConnected){
+   // if(irEnabled && !kinectConnected){
+     if(!kinectConnected){
         [self startContext];
     }
 }
 
 -(void) update:(NSDictionary *)drawingInformation{
     if(irEnabled && !kinectConnected && !connectionRefused){
-        [self startContext];
+       // [self startContext];
+        depth.getXnDepthGenerator().StartGenerating();
     } 
     
     if(!irEnabled && kinectConnected && !connectionRefused){
-        [self stopContext];
+      //  [self stopContext];
+        depth.getXnDepthGenerator().StopGenerating();
     } 
     
     if(kinectConnected && !stop){

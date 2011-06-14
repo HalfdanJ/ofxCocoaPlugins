@@ -445,35 +445,59 @@
 -(void) draw:(NSDictionary *)drawingInformation{
 	if([drawCalibration state]){
         KinectInstance * kinect = [self getSelectedConfigureInstance];
+        
+        //ApplySurface(@"Floor");
+        glPushMatrix();
+        [GetPlugin(Keystoner) applySurface:[kinect surface]];
+        
+        ofxPoint3f corners[4];
+        corners[0] = [kinect convertSurfaceToWorld:ofxPoint3f(0,0,0)];
+        corners[1] = [kinect convertSurfaceToWorld:ofxPoint3f([kinect surfaceAspect],0,0)];
+        corners[2] = [kinect convertSurfaceToWorld:ofxPoint3f([kinect surfaceAspect],1,0)];
+        corners[3] = [kinect convertSurfaceToWorld:ofxPoint3f(0,1,0)];        
+        for(int i=0;i<4;i++){
+            corners[i] = [kinect convertWorldToKinect:ofxPoint3f(corners[i])];
+        }
+        
+        [kinect getIRGenerator]->generateTexture();
+        ofTexture * tex = [kinect getIRGenerator]->getTexture();
+        ofSetColor(255, 255, 255,255);
+        tex->bind();
+        glBegin(GL_QUADS);
+        glTexCoord2f(corners[0].x, corners[0].y);     glVertex3d(0, 0, 0);
+        glTexCoord2f(corners[1].x, corners[1].y);   glVertex3d([kinect surfaceAspect], 0, 0);
+        glTexCoord2f(corners[2].x, corners[2].y);   glVertex3d([kinect surfaceAspect], 1, 0);
+        glTexCoord2f(corners[3].x, corners[3].y);   glVertex3d(0, 1, 0);
+        glEnd();
+        tex->unbind();
 
-     //ApplySurface(@"Floor");
-     glPushMatrix();
-     [GetPlugin(Keystoner) applySurface:[kinect surface]];
-     //        [[self surface] apply];
-     
-     ofxPoint2f projHandles[3];	
-     projHandles[0] = [kinect projPoint:0];
-     projHandles[1] = [kinect projPoint:1];
-     projHandles[2] = [kinect projPoint:2];
-     
-     ofFill();
-     //Y Axis 
-     ofSetColor(0, 255, 0);
-     ofCircle(projHandles[0].x,projHandles[0].y, 10/640.0);
-     
-     //X Axis
-     ofSetColor(255, 0, 0);
-     ofCircle(projHandles[1].x,projHandles[1].y, 10/640.0);
-     ofLine(projHandles[0].x, projHandles[0].y, projHandles[1].x, projHandles[1].y);
-     
-     //Z Axis
-     ofSetColor(0, 0, 255);
-     ofCircle(projHandles[2].x,projHandles[2].y, 10/640.0);
-     ofLine(projHandles[0].x, projHandles[0].y, projHandles[2].x, projHandles[2].y);
-    
+        
+        
+        //        [[self surface] apply];
+        
+        ofxPoint2f projHandles[3];	
+        projHandles[0] = [kinect projPoint:0];
+        projHandles[1] = [kinect projPoint:1];
+        projHandles[2] = [kinect projPoint:2];
+        
+        ofFill();
+        //Y Axis 
+        ofSetColor(0, 255, 0);
+        ofCircle(projHandles[0].x,projHandles[0].y, 10/640.0);
+        
+        //X Axis
+        ofSetColor(255, 0, 0);
+        ofCircle(projHandles[1].x,projHandles[1].y, 10/640.0);
+        ofLine(projHandles[0].x, projHandles[0].y, projHandles[1].x, projHandles[1].y);
+        
+        //Z Axis
+        ofSetColor(0, 0, 255);
+        ofCircle(projHandles[2].x,projHandles[2].y, 10/640.0);
+        ofLine(projHandles[0].x, projHandles[0].y, projHandles[2].x, projHandles[2].y);
+        
         [GetPlugin(Keystoner) popSurface];
     }
-     /*
+    /*
      
      for(PersistentBlob * b in persistentBlobs){
      ofxPoint3f p = [b centroidFiltered];
@@ -857,8 +881,8 @@
                     
                     ofxPoint3f corners[4];
                     corners[0] = [kinect convertSurfaceToWorld:ofxPoint3f(0,0,0)];
-                    corners[1] = [kinect convertSurfaceToWorld:ofxPoint3f(1,0,0)];
-                    corners[2] = [kinect convertSurfaceToWorld:ofxPoint3f(1,1,0)];
+                    corners[1] = [kinect convertSurfaceToWorld:ofxPoint3f([kinect surfaceAspect],0,0)];
+                    corners[2] = [kinect convertSurfaceToWorld:ofxPoint3f([kinect surfaceAspect],1,0)];
                     corners[3] = [kinect convertSurfaceToWorld:ofxPoint3f(0,1,0)];
                     
                     for(int i=0;i<4;i++){

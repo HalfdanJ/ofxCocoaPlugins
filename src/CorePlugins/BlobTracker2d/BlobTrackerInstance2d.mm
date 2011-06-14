@@ -206,7 +206,7 @@
     }
     
     
-    if(update){
+    if(update && [activeButton state]){
         pthread_mutex_lock(&mutex);
         *threadGrayImage = *grayImage;
         *threadGrayDiff = *grayDiff;
@@ -722,5 +722,8 @@
 		[data release];
 }
 
+-(BOOL) drawDebug{
+    return [drawDebugButton state];   
 
+}
 @end

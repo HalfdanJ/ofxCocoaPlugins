@@ -17,6 +17,7 @@
 	IBOutlet NSSlider * thresholdSlider;
 	IBOutlet NSButton * activeButton;
 	IBOutlet NSButton * learnBackgroundButton;
+    IBOutlet NSButton * drawDebugButton;
 	IBOutlet NSSlider * persistentSlider;
 
     
@@ -91,6 +92,7 @@
 
 -(void) getSurfaceMaskCorners:(ofPoint*)point clamped:(BOOL)clamp;
 -(BOOL) isKinect;
+-(BOOL) drawDebug;
 
 
 -(void) performBlobTracking:(id)param;
