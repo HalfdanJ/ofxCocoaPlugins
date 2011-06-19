@@ -23,7 +23,7 @@
 		userDefaults = [[NSUserDefaults standardUserDefaults] retain];
 		
 		manager = [PYMIDIManager sharedInstance];
-		endpoint = [[PYMIDIRealEndpoint alloc] init];
+		endpoint = (PYMIDIVirtualSource*)[[PYMIDIRealEndpoint alloc] init];
 		//endpoint = [[PYMIDIVirtualEndpoint alloc] initWithName:@"Malpais MIDI"];
 		
 		[endpoint retain];
