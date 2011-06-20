@@ -290,38 +290,39 @@
     //Populate the kinect device popup
     // dispatch_async(dispatch_get_main_queue(), ^{
     dispatch_async(dispatch_get_main_queue(), ^{
+        
+        [kinectDevicePopUp removeAllItems];
+        for(NSMutableDictionary * dict in availableDevices){
+            [kinectDevicePopUp addItemWithTitle:[dict objectForKey:@"name"]];
+        }
+        
 
-    [kinectDevicePopUp removeAllItems];
-    for(NSMutableDictionary * dict in availableDevices){
-        [kinectDevicePopUp addItemWithTitle:[dict objectForKey:@"name"]];
-    }
-    
-    
-   int i = 0;
-    NSArray *itemArray = [kinectDevicePopUp itemArray];
-    NSDictionary *attributes = [NSDictionary
-                                dictionaryWithObjectsAndKeys:
-                                [NSColor redColor], NSForegroundColorAttributeName,
-                                [NSFont systemFontOfSize: [NSFont systemFontSize]],
-                                NSFontAttributeName, nil];    
-       // NSLog(@"Availalbe devices %@",availableDevices);
+        
+       int i = 0;
+        NSArray *itemArray = [kinectDevicePopUp itemArray];
+        NSDictionary *attributes = [NSDictionary
+                                    dictionaryWithObjectsAndKeys:
+                                    [NSColor redColor], NSForegroundColorAttributeName,
+                                    [NSFont systemFontOfSize: [NSFont systemFontSize]],
+                                    NSFontAttributeName, nil];    
+        // NSLog(@"Availalbe devices %@",availableDevices);
         
         //        NSLog(@"popup devices %@",itemArray);
-    for(NSMutableDictionary * dict in availableDevices){
-        if(![[dict objectForKey:@"available"] boolValue] && i > 0){
-            NSMenuItem *item = [itemArray objectAtIndex:i];
-            NSAttributedString *as = [[NSAttributedString alloc] 
-                                      initWithString:[item title]
-                                      attributes:attributes];
-            
-            [item setAttributedTitle:as];
-        }
-        i++;
-    }
-    
+       /* for(NSMutableDictionary * dict in availableDevices){
+            if(![[dict objectForKey:@"available"] boolValue] && i > 0){
+                NSMenuItem *item = [itemArray objectAtIndex:i];
+                NSAttributedString *as = [[NSAttributedString alloc] 
+                                          initWithString:[item title]
+                                          attributes:attributes];
+                
+                [item setAttributedTitle:as];
+            }
+            i++;
+        }*/
+        
         [self setSelectedInstance:self];
+
     });
-    //});
 }
 
 -(void) update:(NSDictionary *)drawingInformation{
@@ -445,6 +446,7 @@
 -(void) draw:(NSDictionary *)drawingInformation{
 	if([drawCalibration state]){
         KinectInstance * kinect = [self getSelectedConfigureInstance];
+        if([kinect kinectConnected]){
         
         //ApplySurface(@"Floor");
         glPushMatrix();
@@ -459,7 +461,7 @@
             corners[i] = [kinect convertWorldToKinect:ofxPoint3f(corners[i])];
         }
         
-        [kinect getIRGenerator]->generateTexture();
+        //[kinect getIRGenerator]->generateTexture();
         ofTexture * tex = [kinect getIRGenerator]->getTexture();
         ofSetColor(255, 255, 255,255);
         tex->bind();
@@ -496,6 +498,7 @@
         ofLine(projHandles[0].x, projHandles[0].y, projHandles[2].x, projHandles[2].y);
         
         [GetPlugin(Keystoner) popSurface];
+        }
     }
     /*
      

@@ -370,7 +370,7 @@
     grayDiff->draw(rect.origin.x, rect.origin.y, rect.size.width, rect.size.height);    
 }
 
--(void) drawBlobs:(NSRect)rect{
+-(void) drawBlobs:(NSRect)rect warped:(BOOL)warp{
 	for(PersistentBlob2d * blob in persistentBlobs){
 		int i=blob->pid%5;
 		switch (i) {
@@ -403,7 +403,9 @@
             for(int i=0;i<[b nPts];i++){
 				ofxVec2f p = [b pts][i];
 				//				p = [GetPlugin(ProjectionSurfaces) convertPoint:[b pts][i] fromProjection:"Front" surface:"Floor"];
-				p = [b originalblob]->pts[i];
+
+                if(!warp)
+                	p = [b originalblob]->pts[i];
 				glVertex2f(rect.origin.x+p.x*rect.size.width, rect.origin.y+p.y*rect.size.height);
 				//glVertex2f(w*3+p.x/640.0*w, p.y/480.0*h);
 				//cout<<p.x<<"  "<<p.y<<endl;
