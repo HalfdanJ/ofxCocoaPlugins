@@ -1,5 +1,4 @@
 #include "Keystoner.h"
-#include "Cameras.h"
+//#include "Cameras.h"
 #include "Midi.h"
-#include "Kinect.h"
-#include "BlobTracker2d.h"
+//#include "Kinect.h"

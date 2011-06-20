@@ -376,7 +376,9 @@
     [self setProjPoint:1 coord:ofxPoint2f([self surfaceAspect],0.1)];
     [self setProjPoint:2 coord:ofxPoint2f(0,1)];
     
+    if(kinectConnected){
     [self calculateMatrix];
+    }
 }
 
 -(ofxPoint3f) point3:(int)point{

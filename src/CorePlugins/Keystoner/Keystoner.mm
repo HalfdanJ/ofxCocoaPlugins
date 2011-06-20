@@ -26,6 +26,10 @@
 	return self;
 }
 
+-(void)initPlugin{
+    [self addProperty:[NumberProperty sliderPropertyWithDefaultvalue:50 minValue:0 maxValue:300] named:@"softedgeSize"];
+}
+
 -(void) applySurface:(NSString*)surfaceName projectorNumber:(int)projectorNumber viewNumber:(int)viewNumber{
 	if(appliedSurface != nil){
 		NSLog(@"Surface was already applied. Pop first!");
@@ -48,7 +52,7 @@
 		int part = [appliedSurface softedgePart];
 		int numParts = [appliedSurface softedgeTotalParts];
 		
-		float margin = 0.05;
+		float margin = 0.1*PropF(@"softedgeSize")/100.0;
 		ofEnableAlphaBlending();
 		ofSetColor(0, 0, 0,255);
 		if(part > 1 && numParts > 1){
@@ -292,9 +296,6 @@
 
 -(BOOL) autoresizeControlview{
 	return YES;
-}
-
--(void) initPlugin{
 }
 
 -(void) setup{	
