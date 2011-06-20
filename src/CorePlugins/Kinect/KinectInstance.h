@@ -14,6 +14,7 @@
 	ofxUserGenerator  users;
     
     BOOL kinectConnected;
+    BOOL connectionRefused;
 	BOOL stop;
 
     float scale, scalex;
@@ -28,16 +29,35 @@
     KeystoneSurface * surface;   
     Kinect * kinectController;
 
-    const char * deviceChar;
+    NSString * deviceChar;
     int bus;
+    
+    float angle1, angle2;
+    
+    int kinectNumber;
+    
+    BOOL irEnabled;
+    
+    float levelsLow, levelsHigh;
+    
+    coordWarping * coordWarper;
 }
 
 @property (readwrite, assign) KeystoneSurface * surface;
 @property (readwrite, assign)  Kinect * kinectController;
 
 @property (readonly) BOOL kinectConnected;
-@property (readwrite) const char * deviceChar;
+@property (readwrite, assign) NSString * deviceChar;
 @property (readwrite) int bus;
+@property (readwrite) BOOL stop;
+
+@property (readwrite) int kinectNumber;
+@property (readwrite) BOOL irEnabled;
+
+@property (readwrite) float levelsLow;
+@property (readwrite) float levelsHigh;
+
+@property (readwrite) coordWarping * coordWarper;
 
 -(void) setup;
 -(void) update:(NSDictionary *)drawingInformation;
@@ -49,6 +69,8 @@
 -(void) setPoint3:(int) point coord:(ofxPoint3f)coord;
 -(void) setPoint2:(int) point coord:(ofxPoint2f)coord;
 -(void) setProjPoint:(int) point coord:(ofxPoint2f)coord;
+
+-(ofxPoint2f) surfaceCorner:(int)n;
 
 -(ofxPoint3f) convertKinectToWorld:(ofxPoint3f)p;
 -(ofxPoint3f) convertWorldToKinect:(ofxPoint3f)p;
@@ -63,13 +85,14 @@
 -(float) surfaceAspect;
 
 -(ofxUserGenerator*) getUserGenerator;
--(IBAction) resetCalibration:(id)sender;
 -(void) reset;
 
 -(KeystoneSurface*) surface;
+-(float) surfaceAspect;
 
 -(ofxDepthGenerator*) getDepthGenerator;
 -(ofxIRGenerator*) getIRGenerator;
+-(ofxOpenNIContext*) getOpenNIContext;
 
 
 @end

@@ -104,9 +104,12 @@ extern ofAppBaseWindow * window;
 
 -(void) initPlugins{
 	NSLog(@"------ Init plugins: ------");	
+
 	[mainWindow setLoadStatusText:[NSString stringWithFormat:@"Initing plugins 1/%d",[self countOfPlugins]]];
 
 	dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        //[[self openglLock] lock]; 
+
 		//	dispatch_async(dispatch_get_main_queue(), ^{
 		int i=0;
 		for(NSDictionary * group in plugins){
@@ -153,6 +156,8 @@ extern ofAppBaseWindow * window;
 				i++;
 			}			
 		}
+     //   [[self openglLock] unlock]; 
+
 	});		   
 	
 }

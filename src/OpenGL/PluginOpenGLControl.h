@@ -40,5 +40,6 @@ extern PluginManagerController * globalController;
 @property (assign, readwrite) ofPlugin * plugin;
 
 
+-(void) draw;
 
 @end
