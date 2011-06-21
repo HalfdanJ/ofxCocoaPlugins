@@ -224,8 +224,7 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 			
 			
 			
-			glTranslated(-1, 1, 0.0);
-			
+			glTranslated(-1, 1, 0.0);			
 			glScaled(2, -2, 1.0);
 			
 			
