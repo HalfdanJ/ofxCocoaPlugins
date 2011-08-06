@@ -12,7 +12,11 @@
 	[self addProperty:[NumberProperty sliderPropertyWithDefaultvalue:0 minValue:0 maxValue:1] named:@"chapter"];	
 	[self addProperty:[NumberProperty sliderPropertyWithDefaultvalue:1 minValue:0 maxValue:1] named:@"volume"];	
 	
-	[self assignMidiChannel:8];	
+    [self addProperty:[NumberProperty sliderPropertyWithDefaultvalue:1 minValue:0 maxValue:1] named:@"colorR"];	
+    [self addProperty:[NumberProperty sliderPropertyWithDefaultvalue:1 minValue:0 maxValue:1] named:@"colorG"];	
+    [self addProperty:[NumberProperty sliderPropertyWithDefaultvalue:1 minValue:0 maxValue:1] named:@"colorB"];	
+    
+	[self assignMidiChannel:2];	
 	lastFramesVideo = -1;
 	forceDrawNextFrame = NO;
 	
@@ -379,15 +383,15 @@
 			
 			glEnable(target);
 			glBindTexture(target, _name);
-			ofSetColor(255,255, 255, 255);						
+			ofSetColor(255.0*PropF(@"colorR"),255.0*PropF(@"colorG"), 255.0*PropF(@"colorB"), 255);						
 			glPushMatrix();
 			
-			int projector = 0;
+			int projector = 1;
 			[GetPlugin(Keystoner)  applySurface:@"Screen" projectorNumber:projector viewNumber:ViewNumber];
 
 			
 			float aspect;
-			if(i == 0){
+			//if(i == 0){
 				aspect = Aspect(@"Screen",projector);	
 				glBegin(GL_QUADS);{
 					glTexCoord2f(topLeft[0], topLeft[1]);  glVertex2f(0, 0);
@@ -395,7 +399,7 @@
 					glTexCoord2f(bottomRight[0], bottomRight[1]);    glVertex2f(aspect,  1);
 					glTexCoord2f(bottomLeft[0], bottomLeft[1]); glVertex2f( 0, 1);
 				}glEnd();
-			} else {
+			/*} else {
 				aspect = sizes[i].width / sizes[i].height;		
 				float projAspect =  Aspect(@"Wall",projector);
 				glBegin(GL_QUADS);{
@@ -404,7 +408,7 @@
 					glTexCoord2f(bottomRight[0], bottomRight[1]);    glVertex2f(projAspect,  1);
 					glTexCoord2f(bottomLeft[0], bottomLeft[1]); glVertex2f( -(aspect-projAspect), 1);
 				}glEnd();
-			}
+			}*/
 			//		ApplySurface(([NSString stringWithFormat:@"Skærm%i",i+1])){
 
 			

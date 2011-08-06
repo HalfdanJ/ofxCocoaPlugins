@@ -89,7 +89,7 @@
             if([instance isKinect] && [instance drawDebug] ){
                 KeystoneSurface * surface = [[instance cameraInstance] surface];
                 [GetPlugin(Keystoner) applySurface:surface];            
-                [instance drawBlobs:NSMakeRect(0,0,[[surface aspect] floatValue], 1)];
+                [instance drawBlobs:NSMakeRect(0,0,[[surface aspect] floatValue], 1) warped:YES];
                 [GetPlugin(Keystoner) popSurface];            
 
             }
@@ -120,7 +120,7 @@
             
             [instance drawDifference:NSMakeRect(blockWidth*2,0,blockWidth, blockHeight)];
 
-            [instance drawBlobs:NSMakeRect(blockWidth*2,0,blockWidth, blockHeight)];
+            [instance drawBlobs:NSMakeRect(blockWidth*2,0,blockWidth, blockHeight) warped:NO];
             
             glTranslated(0, controlHeight, 0);
         }        

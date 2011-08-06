@@ -54,13 +54,13 @@
 
 -(void) update:(NSDictionary *)drawingInformation{
     if(irEnabled && !kinectConnected && !connectionRefused){
-       // [self startContext];
-        depth.getXnDepthGenerator().StartGenerating();
+        [self startContext];
+       // depth.getXnDepthGenerator().StartGenerating();
     } 
     
     if(!irEnabled && kinectConnected && !connectionRefused){
-      //  [self stopContext];
-        depth.getXnDepthGenerator().StopGenerating();
+        [self stopContext];
+      //  depth.getXnDepthGenerator().StopGenerating();
     } 
     
     if(kinectConnected && !stop){

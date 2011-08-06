@@ -87,7 +87,7 @@
 -(void) drawBackground:(NSRect)rect;
 -(void) drawDifference:(NSRect)rect;
 
--(void) drawBlobs:(NSRect)rect;
+-(void) drawBlobs:(NSRect)rect warped:(BOOL)warp;
 -(void) drawSurfaceMask:(NSRect)rect;
 
 -(void) getSurfaceMaskCorners:(ofPoint*)point clamped:(BOOL)clamp;
