@@ -310,11 +310,16 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 //------
 //
 
--(void) keyDown:(NSEvent *)theEvent{
+-(void) keyDown:(NSEvent *)theEvent {
+    ;
 	unsigned short keyCode = [theEvent keyCode];
-	[[self plugin] controlKeyPressed:keyCode];
+	[[self plugin] controlKeyPressed:keyCode modifier:[theEvent modifierFlags]];
 }
 
+-(void) keyUp:(NSEvent *)theEvent{
+	unsigned short keyCode = [theEvent keyCode];
+	[[self plugin] controlKeyReleased:keyCode modifier:[theEvent modifierFlags]];;
+}
 
 @end
 

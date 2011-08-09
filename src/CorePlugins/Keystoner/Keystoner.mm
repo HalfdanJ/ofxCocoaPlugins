@@ -619,7 +619,7 @@
 	[self controlMouseMoved:x y:y];
 }
 
--(void) controlKeyPressed:(int)key{
+-(void) controlKeyPressed:(int)key modifier:(int)modifier{
 	if(selectedSurfaceCorner != -1){
 		NSDictionary * ps = [[[self selectedSurfaceObject] cornerPositions] objectAtIndex:selectedSurfaceCorner];
 		float _px = [[ps valueForKey:@"x"] floatValue];
