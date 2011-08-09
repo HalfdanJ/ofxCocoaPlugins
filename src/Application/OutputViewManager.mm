@@ -57,7 +57,7 @@ CFStringRef CopyLocalDisplayName(CGDirectDisplayID display)
         CFRetain( localName );
     }
 	CFRelease(langKey);
-    CFRelease(orderLangKeys);
+//    CFRelease(orderLangKeys);
     CFRelease(dict);
     return localName;
 }
@@ -319,6 +319,8 @@ CFStringRef CopyLocalDisplayName(CGDirectDisplayID display)
 		[self goWindow];
 	}
 }
+
+
 
 //
 //-----

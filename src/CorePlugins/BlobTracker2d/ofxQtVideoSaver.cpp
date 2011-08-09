@@ -403,7 +403,7 @@ void ofxQtVideoSaver::finishMovie(){
 
 
 	/*  Step 7 (optional):  Place the movie atom as the first atom in a new 
-    movie file, and interleave the media data (FlattenMovieData).        
+    movie file, and interleave the media dat a (FlattenMovieData).        
     ===================================================================  */
     
     // no flattening necessary I think .....  

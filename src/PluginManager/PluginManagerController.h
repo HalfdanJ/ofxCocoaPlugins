@@ -73,6 +73,7 @@
 	BOOL quitWithoutAsking;
 	BOOL isQuitting;
     
+    BOOL propertiesShown;
 
 }	
 
@@ -92,6 +93,7 @@
 -(IBAction) toggleGraphView:(id)sender;
 -(IBAction) showGraphView:(id)sender;
 -(IBAction) hideGraphView:(id)sender;
+-(IBAction) pressToggleParametersButton:(id)sender;
 //-(IBAction) pressGraphViewButton:(id)sender;
 -(IBAction)changePlugin:(id)sender;
 

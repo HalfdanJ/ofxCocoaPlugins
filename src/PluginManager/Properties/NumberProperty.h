@@ -31,7 +31,7 @@ extern PluginManagerController * globalController;
 }
 @property (retain) NSNumber * minValue;
 @property (retain) NSNumber * maxValue;
-@property (readwrite) float midiSmoothing;
+@property (readwrite) float midiSmoothing; //closer to 1 is more smoothing (eg. 0.99)
 
 +(NumberProperty*)sliderPropertyWithDefaultvalue:(float)defaultValue minValue:(float)min maxValue:(float)max;
 
@@ -43,5 +43,7 @@ extern PluginManagerController * globalController;
 -(double)doubleValue;
 -(int) intValue;
 -(BOOL) boolValue;
+
+-(void) clearSmoothing;
 
 @end

@@ -27,6 +27,9 @@
 	[super dealloc];
 }
 
+-(void)clearSmoothing{
+    lastMidiTime = nil;    
+}
 
 +(NumberProperty*)sliderPropertyWithDefaultvalue:(float)defValue minValue:(float)min maxValue:(float)max{
 	static NumberProperty * prop = nil;
@@ -52,7 +55,7 @@
 
 -(void) update{
 	if(valueSetFromMidi && midiSmoothing > 0 && midiGoal != [self floatValue]){
-		if(-[lastMidiTime timeIntervalSinceNow] < 6){
+		if(lastMidiTime != nil && -[lastMidiTime timeIntervalSinceNow] < 6){
 			if(fabs(midiGoal-[self floatValue]) < ([[self maxValue] floatValue]-[[self minValue] floatValue])*0.001){
 				[self setFloatValue:midiGoal];
 			} else {

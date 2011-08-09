@@ -474,15 +474,19 @@ extern ofAppBaseWindow * window;
 	
 	if([[[self selectedPlugin] properties] count] == 0){
 		[[pluginSplitView animator] setPosition:0.0 ofDividerAtIndex:0];
+        propertiesShown = NO;
 	} else if([[self selectedPlugin] view] == nil){
 		//		[pluginSplitView setPosition:1.0 ofDividerAtIndex:0];
 		//		[pluginSplitView toggleCollapse:self];
 		[[pluginSplitView animator] setPosition:600 ofDividerAtIndex:0];
-		
+		propertiesShown = YES;
 		//BWSplitView 
 	} else {
-		//	[[pluginSplitView animator] setPosition:20+[[[self selectedPlugin] properties] count]*20 ofDividerAtIndex:0];
-		[[pluginSplitView animator] setPosition:0 ofDividerAtIndex:0];
+        if(propertiesShown){
+			[[pluginSplitView animator] setPosition:20+[[[self selectedPlugin] properties] count]*20 ofDividerAtIndex:0];
+        } else {
+            [[pluginSplitView animator] setPosition:0 ofDividerAtIndex:0];
+        }
 	}
     
 	[openglLock unlock];
@@ -559,6 +563,17 @@ extern ofAppBaseWindow * window;
 -(IBAction) hideGraphView:(id)sender{
 	[graphPanel orderOut:nil];
 	[toolbarGraphItem setLabel:@"Show graph"];
+}
+
+-(IBAction) pressToggleParametersButton:(id)sender{
+    if(propertiesShown){
+        propertiesShown = NO;
+        [[pluginSplitView animator] setPosition:0 ofDividerAtIndex:0]; 
+
+    } else {
+        propertiesShown = YES;
+        [[pluginSplitView animator] setPosition:20+[[[self selectedPlugin] properties] count]*20 ofDividerAtIndex:0]; 
+    }  
 }
 /*
  -(IBAction) pressGraphViewButton:(id)sender{
