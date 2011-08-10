@@ -44,13 +44,14 @@
             for (xn::NodeInfoList::Iterator nodeIt =device_node_info_list.Begin(); nodeIt != device_node_info_list.End(); ++nodeIt) { 
                 xn::NodeInfo deviceInfo = *nodeIt;
                 const xn::NodeInfo& info = *nodeIt; 
+                cout<<info.GetCreationInfo()<<endl;
                 sscanf(info.GetCreationInfo(), "%hx/%hx@%hhu/%hhu", &vendor_id,&product_id, &bus, &address); 
                 string connection_string = info.GetCreationInfo(); 
                 transform (connection_string.begin (), connection_string.end (), connection_string.begin (), std::towlower);
                 
                 newDict = [NSMutableDictionary dictionary];
                 [newDict setObject:[NSNumber numberWithBool:YES] forKey:@"available"];
-                [newDict setObject:[NSString stringWithFormat:@"Kinect %i",bus] forKey:@"name"];
+                [newDict setObject:[NSString stringWithFormat:@"Kinect %i",address] forKey:@"name"];
                 [newDict setObject:[NSString stringWithUTF8String:info.GetCreationInfo()] forKey:@"deviceChar"];
                 [availableDevices addObject:newDict];                
             } 
@@ -267,7 +268,7 @@
        
         BOOL deviceFound = NO;
         for(NSMutableDictionary * dict in availableDevices){
-            if([[dict objectForKey:@"deviceChar"] length] > 0 && [[[dict objectForKey:@"deviceChar"] substringToIndex:14] isEqualToString:[[instance deviceChar] substringToIndex:14]]){
+            if([[dict objectForKey:@"deviceChar"] length] > 0 && [[instance deviceChar] length] > 0 &&  [[[dict objectForKey:@"deviceChar"] substringToIndex:14] isEqualToString:[[instance deviceChar] substringToIndex:14]]){
                 NSLog(@"Device found for kinect %i!", i);
                 [instance setDeviceChar:[dict objectForKey:@"deviceChar"]];
                 deviceFound = YES;
@@ -278,7 +279,7 @@
             NSLog(@"Device not found for kinect %i deviceChar %@", i, [instance deviceChar]);
             NSMutableDictionary * newDict = [NSMutableDictionary dictionary];
             [newDict setObject:[NSNumber numberWithBool:NO] forKey:@"available"];
-            [newDict setObject:[NSString stringWithFormat:@"Kinect %i",[instance bus]] forKey:@"name"];
+            [newDict setObject:[NSString stringWithFormat:@"Kinect %i",[instance adr]] forKey:@"name"];
             [newDict setObject:[instance deviceChar] forKey:@"deviceChar"];
             [availableDevices addObject:newDict];
         }
@@ -305,7 +306,7 @@
                                     [NSColor redColor], NSForegroundColorAttributeName,
                                     [NSFont systemFontOfSize: [NSFont systemFontSize]],
                                     NSFontAttributeName, nil];    
-        // NSLog(@"Availalbe devices %@",availableDevices);
+         NSLog(@"Availalbe devices %@",availableDevices);
         
         //        NSLog(@"popup devices %@",itemArray);
        /* for(NSMutableDictionary * dict in availableDevices){

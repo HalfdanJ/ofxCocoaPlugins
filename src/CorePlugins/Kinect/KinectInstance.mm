@@ -11,7 +11,7 @@
 
 @implementation KinectInstance
 @synthesize surface, kinectController;
-@synthesize kinectConnected, deviceChar, bus, stop, kinectNumber, irEnabled, levelsLow, levelsHigh, coordWarper;
+@synthesize kinectConnected, deviceChar, bus,adr, stop, kinectNumber, irEnabled, calibration2d, levelsLow, levelsHigh, coordWarper;
 
 - (id)init
 {
@@ -97,9 +97,10 @@
         [self setDeviceChar:[NSString stringWithUTF8String:depth.deviceInfoChar]];
         sscanf(depth.deviceInfoChar, "%hx/%hx@%hhu/%hhu", &vendor_id,&product_id, &_bus, &address); 
         [self setBus:_bus];
-        
+        [self setAdr:address];
+
 		[self calculateMatrix];	
-        NSLog(@"Connected to kinect %@ bus %i",[NSString stringWithCString:depth.deviceInfoChar encoding:NSUTF8StringEncoding], [self bus]);
+        NSLog(@"Connected to kinect %@ bus %i adr %i",[NSString stringWithCString:depth.deviceInfoChar encoding:NSUTF8StringEncoding], [self bus], [self adr]);
         connectionRefused = NO;
 	} else {
         connectionRefused = YES;

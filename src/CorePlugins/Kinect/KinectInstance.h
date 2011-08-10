@@ -31,12 +31,14 @@
 
     NSString * deviceChar;
     int bus;
+    int adr;
     
     float angle1, angle2;
     
     int kinectNumber;
     
     BOOL irEnabled;
+    BOOL calibration2d;
     
     float levelsLow, levelsHigh;
     
@@ -49,10 +51,12 @@
 @property (readonly) BOOL kinectConnected;
 @property (readwrite, assign) NSString * deviceChar;
 @property (readwrite) int bus;
+@property (readwrite) int adr;
 @property (readwrite) BOOL stop;
 
 @property (readwrite) int kinectNumber;
 @property (readwrite) BOOL irEnabled;
+@property (readwrite) BOOL calibration2d;
 
 @property (readwrite) float levelsLow;
 @property (readwrite) float levelsHigh;
@@ -69,7 +73,6 @@
 -(void) setPoint3:(int) point coord:(ofxPoint3f)coord;
 -(void) setPoint2:(int) point coord:(ofxPoint2f)coord;
 -(void) setProjPoint:(int) point coord:(ofxPoint2f)coord;
-
 -(ofxPoint2f) surfaceCorner:(int)n;
 
 -(ofxPoint3f) convertKinectToWorld:(ofxPoint3f)p;
