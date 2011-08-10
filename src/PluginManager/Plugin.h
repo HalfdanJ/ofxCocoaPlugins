@@ -95,8 +95,8 @@ extern PluginManagerController * globalController;
 - (void) controlMouseReleased:(float) x y:(float)y;
 - (void) controlMouseDragged:(float) x y:(float)y button:(int)button;
 - (void) controlMouseScrolled:(NSEvent *)theEvent;
-- (void) controlKeyPressed:(int)key;
-
+- (void) controlKeyPressed:(int)key modifier:(int)modifier;
+- (void) controlKeyReleased:(int)key modifier:(int)modifier;
 - (void) setBoolEnabled:(BOOL)b;
 - (BOOL) boolEnabled;
 

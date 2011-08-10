@@ -31,8 +31,9 @@ extern ofAppBaseWindow * window;
 		previews = YES;
 		
 		NSBundle *bundle = [NSBundle mainBundle];
-		ofSetDataPathRoot([[[[bundle bundlePath] stringByDeletingLastPathComponent] stringByAppendingString:@"/data/"] cStringUsingEncoding:NSUTF8StringEncoding]);
-		
+		//ofSetDataPathRoot([[[[bundle bundlePath] stringByDeletingLastPathComponent] stringByAppendingString:@"/data/"] cStringUsingEncoding:NSUTF8StringEncoding]);
+        ofSetDataPathRoot("../../../data/");
+        
 		//Lock used by OpenGL
 		openglLock = [NSRecursiveLock new];
 		
