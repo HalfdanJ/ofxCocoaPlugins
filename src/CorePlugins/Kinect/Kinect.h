@@ -17,6 +17,8 @@ struct Dancer {
 
 @interface Kinect : ofPlugin {	
 	IBOutlet NSButton * drawCalibration;
+    IBOutlet NSButton *warpCalibration;
+    IBOutlet NSButton *drawDepth;
 	IBOutlet NSTabView * openglTabView;	
     IBOutlet NSPopUpButton *surfacePopUp;
     IBOutlet NSPopUpButton *kinectDevicePopUp;

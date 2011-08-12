@@ -265,7 +265,7 @@
             [instanceSegmentedControl setLabel:[NSString stringWithFormat:@"Kinect %i",i] forSegment:i];
             [instanceSegmentedControl setWidth:w forSegment:i];
         });
-       
+        
         BOOL deviceFound = NO;
         for(NSMutableDictionary * dict in availableDevices){
             if([[dict objectForKey:@"deviceChar"] length] > 0 && [[instance deviceChar] length] > 0 &&  [[[dict objectForKey:@"deviceChar"] substringToIndex:14] isEqualToString:[[instance deviceChar] substringToIndex:14]]){
@@ -297,32 +297,32 @@
             [kinectDevicePopUp addItemWithTitle:[dict objectForKey:@"name"]];
         }
         
-
         
-       int i = 0;
+        
+        int i = 0;
         NSArray *itemArray = [kinectDevicePopUp itemArray];
         NSDictionary *attributes = [NSDictionary
                                     dictionaryWithObjectsAndKeys:
                                     [NSColor redColor], NSForegroundColorAttributeName,
                                     [NSFont systemFontOfSize: [NSFont systemFontSize]],
                                     NSFontAttributeName, nil];    
-         NSLog(@"Availalbe devices %@",availableDevices);
+        NSLog(@"Availalbe devices %@",availableDevices);
         
         //        NSLog(@"popup devices %@",itemArray);
-       /* for(NSMutableDictionary * dict in availableDevices){
-            if(![[dict objectForKey:@"available"] boolValue] && i > 0){
-                NSMenuItem *item = [itemArray objectAtIndex:i];
-                NSAttributedString *as = [[NSAttributedString alloc] 
-                                          initWithString:[item title]
-                                          attributes:attributes];
-                
-                [item setAttributedTitle:as];
-            }
-            i++;
-        }*/
+        /* for(NSMutableDictionary * dict in availableDevices){
+         if(![[dict objectForKey:@"available"] boolValue] && i > 0){
+         NSMenuItem *item = [itemArray objectAtIndex:i];
+         NSAttributedString *as = [[NSAttributedString alloc] 
+         initWithString:[item title]
+         attributes:attributes];
+         
+         [item setAttributedTitle:as];
+         }
+         i++;
+         }*/
         
         [self setSelectedInstance:self];
-
+        
     });
 }
 
@@ -448,57 +448,71 @@
 	if([drawCalibration state]){
         KinectInstance * kinect = [self getSelectedConfigureInstance];
         if([kinect kinectConnected]){
-        
-        //ApplySurface(@"Floor");
-        glPushMatrix();
-        [GetPlugin(Keystoner) applySurface:[kinect surface]];
-        
-        ofxPoint3f corners[4];
-        corners[0] = [kinect convertSurfaceToWorld:ofxPoint3f(0,0,0)];
-        corners[1] = [kinect convertSurfaceToWorld:ofxPoint3f([kinect surfaceAspect],0,0)];
-        corners[2] = [kinect convertSurfaceToWorld:ofxPoint3f([kinect surfaceAspect],1,0)];
-        corners[3] = [kinect convertSurfaceToWorld:ofxPoint3f(0,1,0)];        
-        for(int i=0;i<4;i++){
-            corners[i] = [kinect convertWorldToKinect:ofxPoint3f(corners[i])];
-        }
-        
-        //[kinect getIRGenerator]->generateTexture();
-        ofTexture * tex = [kinect getIRGenerator]->getTexture();
-        ofSetColor(255, 255, 255,255);
-        tex->bind();
-        glBegin(GL_QUADS);
-        glTexCoord2f(corners[0].x, corners[0].y);     glVertex3d(0, 0, 0);
-        glTexCoord2f(corners[1].x, corners[1].y);   glVertex3d([kinect surfaceAspect], 0, 0);
-        glTexCoord2f(corners[2].x, corners[2].y);   glVertex3d([kinect surfaceAspect], 1, 0);
-        glTexCoord2f(corners[3].x, corners[3].y);   glVertex3d(0, 1, 0);
-        glEnd();
-        tex->unbind();
-
-        
-        
-        //        [[self surface] apply];
-        
-        ofxPoint2f projHandles[3];	
-        projHandles[0] = [kinect projPoint:0];
-        projHandles[1] = [kinect projPoint:1];
-        projHandles[2] = [kinect projPoint:2];
-        
-        ofFill();
-        //Y Axis 
-        ofSetColor(0, 255, 0);
-        ofCircle(projHandles[0].x,projHandles[0].y, 10/640.0);
-        
-        //X Axis
-        ofSetColor(255, 0, 0);
-        ofCircle(projHandles[1].x,projHandles[1].y, 10/640.0);
-        ofLine(projHandles[0].x, projHandles[0].y, projHandles[1].x, projHandles[1].y);
-        
-        //Z Axis
-        ofSetColor(0, 0, 255);
-        ofCircle(projHandles[2].x,projHandles[2].y, 10/640.0);
-        ofLine(projHandles[0].x, projHandles[0].y, projHandles[2].x, projHandles[2].y);
-        
-        [GetPlugin(Keystoner) popSurface];
+            
+            //ApplySurface(@"Floor");
+            glPushMatrix();
+            [GetPlugin(Keystoner) applySurface:[kinect surface]];
+            ofFill();
+            
+            ofxPoint3f corners[4];
+            corners[0] = [kinect convertSurfaceToWorld:ofxPoint3f(0,0,0)];
+            corners[1] = [kinect convertSurfaceToWorld:ofxPoint3f([kinect surfaceAspect],0,0)];
+            corners[2] = [kinect convertSurfaceToWorld:ofxPoint3f([kinect surfaceAspect],1,0)];
+            corners[3] = [kinect convertSurfaceToWorld:ofxPoint3f(0,1,0)];        
+            for(int i=0;i<4;i++){
+                corners[i] = [kinect convertWorldToKinect:ofxPoint3f(corners[i])];
+            }
+            
+            //[kinect getIRGenerator]->generateTexture();
+            ofTexture * tex = [kinect getIRGenerator]->getTexture();
+            if([drawDepth state]){
+                tex = [kinect getDepthGenerator]->getTexture();
+            }
+            ofSetColor(255, 255, 255,255);
+            tex->bind();
+            if([warpCalibration state]){
+            glBegin(GL_QUADS);
+            glTexCoord2f(corners[0].x, corners[0].y);     glVertex3d(0, 0, 0);
+            glTexCoord2f(corners[1].x, corners[1].y);   glVertex3d([kinect surfaceAspect], 0, 0);
+            glTexCoord2f(corners[2].x, corners[2].y);   glVertex3d([kinect surfaceAspect], 1, 0);
+            glTexCoord2f(corners[3].x, corners[3].y);   glVertex3d(0, 1, 0);
+            glEnd();
+            } else {
+                glBegin(GL_QUADS);
+                glTexCoord2f(0,0);     glVertex3d(0, 0, 0);
+                glTexCoord2f(640,0);   glVertex3d([kinect surfaceAspect], 0, 0);
+                glTexCoord2f(640,480);   glVertex3d([kinect surfaceAspect], 1, 0);
+                glTexCoord2f(0,480);   glVertex3d(0, 1, 0);
+                glEnd();
+                
+            }
+            tex->unbind();
+            
+            
+            
+            //        [[self surface] apply];
+            
+            ofxPoint2f projHandles[3];	
+            projHandles[0] = [kinect projPoint:0];
+            projHandles[1] = [kinect projPoint:1];
+            projHandles[2] = [kinect projPoint:2];
+            
+            ofFill();
+            //Y Axis 
+            ofSetColor(0, 255, 0);
+            ofCircle(projHandles[0].x,projHandles[0].y, 10/640.0);
+            
+            //X Axis
+            ofSetColor(255, 0, 0);
+            ofCircle(projHandles[1].x,projHandles[1].y, 10/640.0);
+            ofLine(projHandles[0].x, projHandles[0].y, projHandles[1].x, projHandles[1].y);
+            
+            //Z Axis
+            ofSetColor(0, 0, 255);
+            ofCircle(projHandles[2].x,projHandles[2].y, 10/640.0);
+            ofLine(projHandles[0].x, projHandles[0].y, projHandles[2].x, projHandles[2].y);
+            
+            [GetPlugin(Keystoner) popSurface];
         }
     }
     /*
@@ -689,7 +703,7 @@
                     
                     //X Axis
                     ofSetColor(255, 0, 0);
-                    //                    ofCircle(handles[1].x,handles[1].y, 10/640.0);
+                    //                  ofCircle(handles[1].x,handles[1].y, 10/640.0);
                     ofLine(handles[0].x*320.0, handles[0].y*240.0, handles[1].x*320.0, handles[1].y*240.0);
                     handleImage->draw(handles[1].x*320.0 - 13,handles[1].y*240.0 - 13, 25, 25);
                     
@@ -739,7 +753,7 @@
                     
                     
                     ofNoFill();
-
+                    
                     //Y Axis 
                     ofSetColor(0, 255, 0);
                     handleImage->draw(handles[0].x*320.0 - 13,handles[0].y*240.0 - 13, 25, 25);
