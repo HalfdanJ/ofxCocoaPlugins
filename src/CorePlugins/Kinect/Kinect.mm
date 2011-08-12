@@ -471,12 +471,12 @@
             ofSetColor(255, 255, 255,255);
             tex->bind();
             if([warpCalibration state]){
-            glBegin(GL_QUADS);
-            glTexCoord2f(corners[0].x, corners[0].y);     glVertex3d(0, 0, 0);
-            glTexCoord2f(corners[1].x, corners[1].y);   glVertex3d([kinect surfaceAspect], 0, 0);
-            glTexCoord2f(corners[2].x, corners[2].y);   glVertex3d([kinect surfaceAspect], 1, 0);
-            glTexCoord2f(corners[3].x, corners[3].y);   glVertex3d(0, 1, 0);
-            glEnd();
+                glBegin(GL_QUADS);
+                glTexCoord2f(corners[0].x, corners[0].y);     glVertex3d(0, 0, 0);
+                glTexCoord2f(corners[1].x, corners[1].y);   glVertex3d([kinect surfaceAspect], 0, 0);
+                glTexCoord2f(corners[2].x, corners[2].y);   glVertex3d([kinect surfaceAspect], 1, 0);
+                glTexCoord2f(corners[3].x, corners[3].y);   glVertex3d(0, 1, 0);
+                glEnd();
             } else {
                 glBegin(GL_QUADS);
                 glTexCoord2f(0,0);     glVertex3d(0, 0, 0);
@@ -661,21 +661,26 @@
 		ofDrawBitmapString("Kinect not connected", 640/2-80, 480/2-8);
 	} else {
 		ofEnableAlphaBlending();
+        bool calib2d = [kinect calibration2d];
+        
         ofxPoint3f points[3];
-        ofxPoint2f handles[3];
-        ofxPoint2f projHandles[3];
+        ofxPoint2f handles[4];
+        ofxPoint2f projHandles[4];
         
-        points[0] = [kinect point3:0];
-        points[1] = [kinect point3:1];
-        points[2] = [kinect point3:2];
-        
-        handles[0] = [kinect point2:0];
-        handles[1] = [kinect point2:1];
-        handles[2] = [kinect point2:2];
-        
-        projHandles[0] = [kinect projPoint:0];
-        projHandles[1] = [kinect projPoint:1];
-        projHandles[2] = [kinect projPoint:2];
+        if(!calib2d){
+            points[0] = [kinect point3:0]; //Used in 3d space
+            points[1] = [kinect point3:1];
+            points[2] = [kinect point3:2];
+            
+            handles[0] = [kinect point2:0]; //The ones to calibrate with
+            handles[1] = [kinect point2:1];
+            handles[2] = [kinect point2:2];
+            
+            projHandles[0] = [kinect projPoint:0]; //The calibration markers on the surface
+            projHandles[1] = [kinect projPoint:1];
+            projHandles[2] = [kinect projPoint:2];
+            projHandles[3] = [kinect projPoint:3];
+        }
 		
         
         if([openglTabView indexOfTabViewItem:[openglTabView selectedTabViewItem]] == 0){
@@ -818,6 +823,13 @@
                     ofNoFill();
                     handleImage->draw(int(projHandles[2].x*320.0) - 13,int(projHandles[2].y*240.0) - 13, 25, 25);
                     ofLine(projHandles[0].x*320.0, projHandles[0].y*240.0 , projHandles[2].x*320.0, projHandles[2].y*240.0 );
+                    
+                    //4th point
+                    ofSetColor(255, 255, 0,100);
+                    ofNoFill();
+                    handleImage->draw(int(projHandles[3].x*320.0) - 13,int(projHandles[3].y*240.0) - 13, 25, 25);
+//                    ofLine(projHandles[0].x*320.0, projHandles[0].y*240.0 , projHandles[3].x*320.0, projHandles[2].y*240.0 );
+
                     
                     
                 }glPopMatrix();
