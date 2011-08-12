@@ -74,41 +74,10 @@
 -(void)initPlugin{
     [self addProperty:[NumberProperty sliderPropertyWithDefaultvalue:0.5 minValue:0 maxValue:1] named:@"pointResolution"];
     
-    /*   [self addProperty:[NumberProperty sliderPropertyWithDefaultvalue:0.0 minValue:-30 maxValue:30] named:@"angle1"];
-     [self addProperty:[NumberProperty sliderPropertyWithDefaultvalue:0.0 minValue:-30 maxValue:30] named:@"angle2"];
-     [self addProperty:[NumberProperty sliderPropertyWithDefaultvalue:0.0 minValue:-30 maxValue:30] named:@"angle3"];
-     
-     [self addProperty:[NumberProperty sliderPropertyWithDefaultvalue:0.0 minValue:0 maxValue:10] named:@"surface"];
-     
-     [self addProperty:[NumberProperty sliderPropertyWithDefaultvalue:0.0 minValue:0 maxValue:500] named:@"segmentSize"];
-	 
-     [self addProperty:[NumberProperty sliderPropertyWithDefaultvalue:0.0 minValue:0 maxValue:10000] named:@"minDistance"];
-     [self addProperty:[NumberProperty sliderPropertyWithDefaultvalue:10000 minValue:0 maxValue:10000] named:@"maxDistance"];	
-     
-     [self addProperty:[NumberProperty sliderPropertyWithDefaultvalue:0 minValue:-10000 maxValue:10000] named:@"yMin"];	
-     [self addProperty:[NumberProperty sliderPropertyWithDefaultvalue:1000 minValue:0 maxValue:10000] named:@"yMax"];	
-     
-     [self addProperty:[NumberProperty sliderPropertyWithDefaultvalue:1 minValue:0 maxValue:1] named:@"persistentDist"];	
-     
-     [self addProperty:[NumberProperty sliderPropertyWithDefaultvalue:0 minValue:0 maxValue:1] named:@"levelsIRLow"];	
-     [self addProperty:[NumberProperty sliderPropertyWithDefaultvalue:1 minValue:0 maxValue:1] named:@"levelsIRHigh"];	
-     
-     [self addProperty:[BoolProperty boolPropertyWithDefaultvalue:1.0] named:@"blobTracking"];
-     
-     [self assignMidiChannel:2];
-     
-     if([customProperties valueForKey:@"point0a"] == nil){
-     [self reset];
-     }
-     
-     stop = NO;
-     
-     for(int i=0;i<3;i++){
-     dancers[i].userId = -1;
-     dancers[i].state = 0;
-     }
-     
-     */
+    for (int i=0; i<[instances count]; i++) {
+        [self addProperty:[BoolProperty boolPropertyWithDefaultvalue:1.0] named:[NSString stringWithFormat:@"kinect%iEnabled",i]];
+    }
+    
     camCoord = ofxVec3f(0,0,-5);
     eyeCoord = ofxVec3f(0,0,0);
     
@@ -118,24 +87,37 @@
 
 -(void)customPropertiesLoaded{		
     NSLog(@"Set Custom Properties: %@ %lu",customProperties,[[customProperties objectForKey:@"instances"] count]);
-    int i=0;
+    int u=0;
     for(KinectInstance * kinect in instances){
-        if([[customProperties objectForKey:@"instances"] count] > i){
-            NSMutableDictionary * dict = [[customProperties objectForKey:@"instances"] objectAtIndex:i];
+        if([[customProperties objectForKey:@"instances"] count] > u){
+            NSMutableDictionary * dict = [[customProperties objectForKey:@"instances"] objectAtIndex:u];
             [kinect setDeviceChar:[dict objectForKey:@"deviceChar"]];
             [kinect setSurface:[GetPlugin(Keystoner) getSurface:[dict objectForKey:@"surfaceName"] viewNumber:[[dict objectForKey:@"surfaceViewNumber"] intValue] projectorNumber:[[dict objectForKey:@"surfaceProjectorNumber"] intValue]]];
             [kinect setIrEnabled:[[dict objectForKey:@"irEnabled"] boolValue]];
             [kinect setLevelsHigh:[[dict objectForKey:@"levelHigh"] floatValue]];
             [kinect setLevelsLow:[[dict objectForKey:@"levelsLow"] floatValue]];
             
-            for(int i=0;i<3;i++){
-                [kinect setPoint2:i coord:ofxPoint2f([[dict objectForKey:[NSString stringWithFormat:@"point%ia",i]] floatValue],[[dict objectForKey:[NSString stringWithFormat:@"point%ib",i]] floatValue] )];
-                [kinect setPoint3:i coord:ofxPoint3f([[dict objectForKey:[NSString stringWithFormat:@"point%ix",i]] floatValue],[[dict objectForKey:[NSString stringWithFormat:@"point%iy",i]] floatValue],[[dict objectForKey:[NSString stringWithFormat:@"point%iz",i]] floatValue] )];
+            for(int i=0;i<4;i++){
+                [kinect setPoint2:i coord:
+                 ofxPoint2f([[dict objectForKey:[NSString stringWithFormat:@"point%ia",i]] floatValue],
+                            [[dict objectForKey:[NSString stringWithFormat:@"point%ib",i]] floatValue] )];
                 
-                [kinect setProjPoint:i coord:ofxPoint2f([[dict objectForKey:[NSString stringWithFormat:@"projPoint%ix",i]] floatValue],[[dict objectForKey:[NSString stringWithFormat:@"projPoint%iy",i]] floatValue] )];
+                [kinect setProjPoint:i coord:
+                 ofxPoint2f([[dict objectForKey:[NSString stringWithFormat:@"projPoint%ix",i]] floatValue],
+                            [[dict objectForKey:[NSString stringWithFormat:@"projPoint%iy",i]] floatValue] )];
             }
+            
+            for(int i=0;i<3;i++){
+                [kinect setPoint3:i coord:
+                 ofxPoint3f([[dict objectForKey:[NSString stringWithFormat:@"point%ix",i]] floatValue],
+                            [[dict objectForKey:[NSString stringWithFormat:@"point%iy",i]] floatValue],
+                            [[dict objectForKey:[NSString stringWithFormat:@"point%iz",i]] floatValue] )];
+                
+            }
+            [kinect setCalibration2d:[[dict objectForKey:[NSString stringWithFormat:@"calibration2d"]] boolValue]];
+
         }
-        i++;
+        u++;
     }
     
 }
@@ -158,19 +140,22 @@
             [props setObject:[NSNumber numberWithInt:[[kinect surface] projectorNumber]] forKey:@"surfaceProjectorNumber"];
             [props setObject:[NSNumber numberWithFloat:[kinect levelsLow]] forKey:@"levelsLow"];
             [props setObject:[NSNumber numberWithFloat:[kinect levelsHigh]] forKey:@"levelHigh"];
-            
+            [props setObject:[NSNumber numberWithBool:[kinect calibration2d]] forKey:@"calibration2d"];
+
             [props setObject:[NSNumber numberWithBool:[kinect irEnabled]] forKey:@"irEnabled"];
             
-            for(int i=0;i<3;i++){
+            for(int i=0;i<4;i++){
                 [props setObject:[NSNumber numberWithFloat:[kinect point2:i].x] forKey:[NSString stringWithFormat:@"point%ia",i]];               
                 [props setObject:[NSNumber numberWithFloat:[kinect point2:i].y] forKey:[NSString stringWithFormat:@"point%ib",i]];               
                 
+                [props setObject:[NSNumber numberWithFloat:[kinect projPoint:i].x] forKey:[NSString stringWithFormat:@"projPoint%ix",i]];               
+                [props setObject:[NSNumber numberWithFloat:[kinect projPoint:i].y] forKey:[NSString stringWithFormat:@"projPoint%iy",i]];    
+            }
+            
+            for(int i=0;i<3;i++){
                 [props setObject:[NSNumber numberWithFloat:[kinect point3:i].x] forKey:[NSString stringWithFormat:@"point%ix",i]];               
                 [props setObject:[NSNumber numberWithFloat:[kinect point3:i].y] forKey:[NSString stringWithFormat:@"point%iy",i]];               
                 [props setObject:[NSNumber numberWithFloat:[kinect point3:i].z] forKey:[NSString stringWithFormat:@"point%iz",i]];               
-                
-                [props setObject:[NSNumber numberWithFloat:[kinect projPoint:i].x] forKey:[NSString stringWithFormat:@"projPoint%ix",i]];               
-                [props setObject:[NSNumber numberWithFloat:[kinect projPoint:i].y] forKey:[NSString stringWithFormat:@"projPoint%iy",i]];    
             }
         }
         
@@ -453,16 +438,20 @@
             glPushMatrix();
             [GetPlugin(Keystoner) applySurface:[kinect surface]];
             ofFill();
-            
+
             ofxPoint3f corners[4];
+          /* 
             corners[0] = [kinect convertSurfaceToWorld:ofxPoint3f(0,0,0)];
             corners[1] = [kinect convertSurfaceToWorld:ofxPoint3f([kinect surfaceAspect],0,0)];
             corners[2] = [kinect convertSurfaceToWorld:ofxPoint3f([kinect surfaceAspect],1,0)];
             corners[3] = [kinect convertSurfaceToWorld:ofxPoint3f(0,1,0)];        
             for(int i=0;i<4;i++){
                 corners[i] = [kinect convertWorldToKinect:ofxPoint3f(corners[i])];
-            }
+            }*/
             
+            for(int i=0;i<4;i++){
+                corners[i] = [kinect surfaceCorner:i];
+            }
             //[kinect getIRGenerator]->generateTexture();
             ofTexture * tex = [kinect getIRGenerator]->getTexture();
             if([drawDepth state]){
@@ -492,10 +481,11 @@
             
             //        [[self surface] apply];
             
-            ofxPoint2f projHandles[3];	
+            ofxPoint2f projHandles[4];	
             projHandles[0] = [kinect projPoint:0];
             projHandles[1] = [kinect projPoint:1];
             projHandles[2] = [kinect projPoint:2];
+            projHandles[3] = [kinect projPoint:3];
             
             ofFill();
             //Y Axis 
@@ -511,6 +501,10 @@
             ofSetColor(0, 0, 255);
             ofCircle(projHandles[2].x,projHandles[2].y, 10/640.0);
             ofLine(projHandles[0].x, projHandles[0].y, projHandles[2].x, projHandles[2].y);
+            
+            ofSetColor(255, 255, 0);
+            ofCircle(projHandles[3].x,projHandles[3].y, 10/640.0);
+            
             
             [GetPlugin(Keystoner) popSurface];
         }
@@ -667,6 +661,13 @@
         ofxPoint2f handles[4];
         ofxPoint2f projHandles[4];
         
+        
+        projHandles[0] = [kinect projPoint:0]; //The calibration markers on the surface
+        projHandles[1] = [kinect projPoint:1];
+        projHandles[2] = [kinect projPoint:2];
+        projHandles[3] = [kinect projPoint:3];
+        
+        
         if(!calib2d){
             points[0] = [kinect point3:0]; //Used in 3d space
             points[1] = [kinect point3:1];
@@ -675,11 +676,12 @@
             handles[0] = [kinect point2:0]; //The ones to calibrate with
             handles[1] = [kinect point2:1];
             handles[2] = [kinect point2:2];
+        } else {
+            handles[0] = [kinect point2:0]; //The ones to calibrate with
+            handles[1] = [kinect point2:1];
+            handles[2] = [kinect point2:2];
+            handles[3] = [kinect point2:3];
             
-            projHandles[0] = [kinect projPoint:0]; //The calibration markers on the surface
-            projHandles[1] = [kinect projPoint:1];
-            projHandles[2] = [kinect projPoint:2];
-            projHandles[3] = [kinect projPoint:3];
         }
 		
         
@@ -700,24 +702,33 @@
                 
                 
                 glPushMatrix();{
-                    ofNoFill();
-                    //Y Axis 
-                    ofSetColor(0, 255, 0);
-                    //ofCircle(handles[0].x,handles[0].y, 10/640.0);
-                    handleImage->draw(handles[0].x*320.0 - 13,handles[0].y*240.0 - 13, 25, 25);
-                    
-                    //X Axis
-                    ofSetColor(255, 0, 0);
-                    //                  ofCircle(handles[1].x,handles[1].y, 10/640.0);
-                    ofLine(handles[0].x*320.0, handles[0].y*240.0, handles[1].x*320.0, handles[1].y*240.0);
-                    handleImage->draw(handles[1].x*320.0 - 13,handles[1].y*240.0 - 13, 25, 25);
-                    
-                    
-                    //Z Axis
-                    ofSetColor(0, 0, 255);
-                    // ofCircle(handles[2].x,handles[2].y, 10/640.0);
-                    ofLine(handles[0].x*320.0, handles[0].y*240.0, handles[2].x*320.0, handles[2].y*240.0);
-                    handleImage->draw(handles[2].x*320.0 - 13,handles[2].y*240.0 - 13, 25, 25);
+                        ofNoFill();
+                        //Y Axis 
+                        ofSetColor(0, 255, 0);
+                        //ofCircle(handles[0].x,handles[0].y, 10/640.0);
+                        handleImage->draw(handles[0].x*320.0 - 13,handles[0].y*240.0 - 13, 25, 25);
+                        
+                        //X Axis
+                        ofSetColor(255, 0, 0);
+                        //                  ofCircle(handles[1].x,handles[1].y, 10/640.0);
+                        ofLine(handles[0].x*320.0, handles[0].y*240.0, handles[1].x*320.0, handles[1].y*240.0);
+                        handleImage->draw(handles[1].x*320.0 - 13,handles[1].y*240.0 - 13, 25, 25);
+                        
+                        
+                        //Z Axis
+                        ofSetColor(0, 0, 255);
+                        // ofCircle(handles[2].x,handles[2].y, 10/640.0);
+                        ofLine(handles[0].x*320.0, handles[0].y*240.0, handles[2].x*320.0, handles[2].y*240.0);
+                        handleImage->draw(handles[2].x*320.0 - 13,handles[2].y*240.0 - 13, 25, 25);
+                        
+                        if(calib2d){
+                            //4th
+                            ofSetColor(255, 255, 255);
+                            ofLine(handles[1].x*320.0, handles[1].y*240.0, handles[3].x*320.0, handles[3].y*240.0);
+                            ofLine(handles[2].x*320.0, handles[2].y*240.0, handles[3].x*320.0, handles[3].y*240.0);
+                            ofSetColor(255, 255, 0);
+                            handleImage->draw(handles[3].x*320.0 - 13,handles[3].y*240.0 - 13, 25, 25);                        
+                        }
                     
                     
                 }glPopMatrix();
@@ -764,14 +775,25 @@
                     handleImage->draw(handles[0].x*320.0 - 13,handles[0].y*240.0 - 13, 25, 25);
                     
                     //X Axis
-                    ofSetColor(255, 0, 0);
+                    ofSetColor(255, 255, 255);
                     ofLine(handles[0].x*320.0, handles[0].y*240.0, handles[1].x*320.0, handles[1].y*240.0);
+                    ofSetColor(255, 0, 0);
                     handleImage->draw(handles[1].x*320.0 - 13,handles[1].y*240.0 - 13, 25, 25);
                     
                     //Z Axis
-                    ofSetColor(0, 0, 255);
+                    ofSetColor(255, 255, 255);                    
                     ofLine(handles[0].x*320.0, handles[0].y*240.0, handles[2].x*320.0, handles[2].y*240.0);
+                    ofSetColor(0, 0, 255);
                     handleImage->draw(handles[2].x*320.0 - 13,handles[2].y*240.0 - 13, 25, 25);
+                    
+                    if(calib2d){
+                        //4th
+                        ofSetColor(255, 255, 255);
+                        ofLine(handles[1].x*320.0, handles[1].y*240.0, handles[3].x*320.0, handles[3].y*240.0);
+                        ofLine(handles[2].x*320.0, handles[2].y*240.0, handles[3].x*320.0, handles[3].y*240.0);
+                        ofSetColor(255, 255, 0);
+                        handleImage->draw(handles[3].x*320.0 - 13,handles[3].y*240.0 - 13, 25, 25);                        
+                    }
                     
                     
                 }glPopMatrix();
@@ -828,8 +850,8 @@
                     ofSetColor(255, 255, 0,100);
                     ofNoFill();
                     handleImage->draw(int(projHandles[3].x*320.0) - 13,int(projHandles[3].y*240.0) - 13, 25, 25);
-//                    ofLine(projHandles[0].x*320.0, projHandles[0].y*240.0 , projHandles[3].x*320.0, projHandles[2].y*240.0 );
-
+                    //                    ofLine(projHandles[0].x*320.0, projHandles[0].y*240.0 , projHandles[3].x*320.0, projHandles[2].y*240.0 );
+                    
                     
                     
                 }glPopMatrix();
@@ -1025,7 +1047,7 @@
                                         [pointKinect getDepthGenerator]->getXnDepthGenerator().ConvertProjectiveToRealWorld(1, &pIn, &pOut);
                                         ofxPoint3f p = [pointKinect convertWorldToSurface:ofxPoint3f(pOut.X, pOut.Y, pOut.Z)];;
                                         
-                                        if(p.x >  0 && p.x < 1 && p.y > 0 && p.y < 1 && p.z > 0){
+                                        if(p.x >  0 && p.x < [kinect surfaceAspect] && p.y > 0 && p.y < 1 && p.z > 0){
                                             if(pointKinect != kinect){
                                                 glColor4f(0.3,1.0,0.3,0.5);                                            
                                             } else {
@@ -1344,22 +1366,28 @@
         if(draggedPoint != -1){
             ofxPoint2f mouse = ofPoint(2*x/640.0,2*y/480.0);
             
-            if(draggedPoint <= 2){
-                xn::DepthMetaData dmd;
-                [instance getDepthGenerator]->getXnDepthGenerator().GetMetaData(dmd);
-                
-                XnPoint3D pIn;
-                pIn.X = mouse.x*640;
-                pIn.Y = mouse.y*480;
-                pIn.Z = dmd.Data()[(int)pIn.X+(int)pIn.Y*640];
-                XnPoint3D pOut;
-                
-                if(pIn.Z != 0){
-                    [instance getDepthGenerator]->getXnDepthGenerator().ConvertProjectiveToRealWorld(1, &pIn, &pOut);
-                    ofxPoint3f coord = ofxPoint3f(pOut.X, pOut.Y, pOut.Z);
-                    [instance setPoint3:draggedPoint coord:coord];
+            if(draggedPoint <= 3){
+                if([instance calibration2d]){
+                    mouse.x -= 1;
                     [instance setPoint2:draggedPoint coord:mouse];
+                } else {
+                    xn::DepthMetaData dmd;
+                    [instance getDepthGenerator]->getXnDepthGenerator().GetMetaData(dmd);
+                    
+                    XnPoint3D pIn;
+                    pIn.X = mouse.x*640;
+                    pIn.Y = mouse.y*480;
+                    pIn.Z = dmd.Data()[(int)pIn.X+(int)pIn.Y*640];
+                    XnPoint3D pOut;
+                    
+                    if(pIn.Z != 0){
+                        [instance getDepthGenerator]->getXnDepthGenerator().ConvertProjectiveToRealWorld(1, &pIn, &pOut);
+                        ofxPoint3f coord = ofxPoint3f(pOut.X, pOut.Y, pOut.Z);
+                        [instance setPoint3:draggedPoint coord:coord];
+                        [instance setPoint2:draggedPoint coord:mouse];
+                    }
                 }
+               
             } else {
                 mouse.y -= 1;
                 float aspect = [instance surfaceAspect];
@@ -1375,11 +1403,11 @@
                 mouse.x = ofClamp(mouse.x, 0, [instance surfaceAspect]);
                 mouse.y = ofClamp(mouse.y, 0, 1);
                 
-                [instance setProjPoint:draggedPoint-3 coord:mouse];
+                [instance setProjPoint:draggedPoint-4 coord:mouse];
                 
-                if(draggedPoint-3 <= 1){
+                if(draggedPoint-4 <= 1){
                     ofxVec2f v = [instance projPoint:1] - [instance projPoint:0];
-                    v = ofxVec2f(-v.y,v.x);
+                    v = ofxVec2f(-v.y,v.x)*1.0/aspect;
                     
                     [instance setProjPoint:2 coord:[instance projPoint:0]+v];
                 }
@@ -1404,9 +1432,18 @@
             ofxPoint2f mouse = ofPoint(2*x/640,2*y/480);
             draggedPoint = -1;
             if(mouse.y <= 1){
-                for(int i=0;i<3;i++){
-                    if (mouse.distance([instance point2:i]) < 0.035) {
-                        draggedPoint = i;
+                if([instance calibration2d]){
+                    mouse.x -= 1;
+                    for(int i=0;i<4;i++){
+                        if (mouse.distance([instance point2:i]) < 0.035) {
+                            draggedPoint = i;
+                        }
+                    }
+                } else {
+                    for(int i=0;i<3;i++){
+                        if (mouse.distance([instance point2:i]) < 0.035) {
+                            draggedPoint = i;
+                        }
                     }
                 }
             } else {
@@ -1423,7 +1460,7 @@
                 
                 for(int i=0;i<2;i++){
                     if (mouse.distance([instance projPoint:i]) < 0.035) {
-                        draggedPoint = i+3;
+                        draggedPoint = i+4;
                     }
                 }
             }

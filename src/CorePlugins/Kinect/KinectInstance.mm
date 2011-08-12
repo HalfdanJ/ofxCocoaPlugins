@@ -20,10 +20,12 @@
         projPointCache[0] = nil;
         projPointCache[1] = nil;
         projPointCache[2] = nil;
-        
+        projPointCache[3] = nil;
+
         point2Cache[0] = nil;
         point2Cache[1] = nil;
         point2Cache[2] = nil;
+        point2Cache[3] = nil;
         
         point3Cache[0] = nil;
         point3Cache[1] = nil;
@@ -42,12 +44,19 @@
     [super dealloc];
 }
 
+-(void)setCalibration2d:(BOOL) b{
+    calibration2d = b;
+    if(kinectConnected){
+        
+        [ self calculateMatrix];
+    }
+}
 
 -(void) setup{
     NSLog(@"Setup instance");
     
-   // if(irEnabled && !kinectConnected){
-     if(!kinectConnected){
+    // if(irEnabled && !kinectConnected){
+    if(!kinectConnected){
         [self startContext];
     }
 }
@@ -55,12 +64,12 @@
 -(void) update:(NSDictionary *)drawingInformation{
     if(irEnabled && !kinectConnected && !connectionRefused){
         [self startContext];
-       // depth.getXnDepthGenerator().StartGenerating();
+        // depth.getXnDepthGenerator().StartGenerating();
     } 
     
     if(!irEnabled && kinectConnected && !connectionRefused){
         [self stopContext];
-      //  depth.getXnDepthGenerator().StopGenerating();
+        //  depth.getXnDepthGenerator().StopGenerating();
     } 
     
     if(kinectConnected && !stop){
@@ -69,7 +78,7 @@
 		//users.update();	
         
     }
-
+    
 }
 
 -(void)startContext{
@@ -98,7 +107,7 @@
         sscanf(depth.deviceInfoChar, "%hx/%hx@%hhu/%hhu", &vendor_id,&product_id, &_bus, &address); 
         [self setBus:_bus];
         [self setAdr:address];
-
+        
 		[self calculateMatrix];	
         NSLog(@"Connected to kinect %@ bus %i adr %i",[NSString stringWithCString:depth.deviceInfoChar encoding:NSUTF8StringEncoding], [self bus], [self adr]);
         connectionRefused = NO;
@@ -217,26 +226,29 @@
 }
 
 -(ofxPoint3f) convertSurfaceToWorld:(ofxPoint3f) p{
-    p -= ofxPoint3f([self projPoint:0].x, [self projPoint:0].y,0 );
-    
-    p.rotate(angle2, ofxVec3f(0,0,1));
-    
-    float localScale = ([self projPoint:1] - [self projPoint:0]).length(); 
-    p.z /= -scale*localScale;
-    p.x /= scale*localScale;
-    p.y /= -scale*localScale;
-    
-    p.rotate(angle1,ofxVec3f(1,0,0));
-    
-    
-    float rotatex,rotatey,rotatez,rotateval;
-    rotationQuaternion.getRotate(rotateval, rotatex, rotatey, rotatez);
-    p.rotate(-rotateval*RAD_TO_DEG,ofxVec3f(rotatex, rotatey, rotatez));
-    
-    p += [self point3:0];	
-    
-    return p;
-    
+    if([self calibration2d]){
+        return ofxPoint3f();
+    } else {
+        p -= ofxPoint3f([self projPoint:0].x, [self projPoint:0].y,0 );
+        
+        p.rotate(angle2, ofxVec3f(0,0,1));
+        
+        float localScale = ([self projPoint:1] - [self projPoint:0]).length(); 
+        p.z /= -scale*localScale;
+        p.x /= scale*localScale;
+        p.y /= -scale*localScale;
+        
+        p.rotate(angle1,ofxVec3f(1,0,0));
+        
+        
+        float rotatex,rotatey,rotatez,rotateval;
+        rotationQuaternion.getRotate(rotateval, rotatex, rotatey, rotatez);
+        p.rotate(-rotateval*RAD_TO_DEG,ofxVec3f(rotatex, rotatey, rotatez));
+        
+        p += [self point3:0];	
+        
+        return p;
+    }
 }
 
 -(ofxPoint3f) convertWorldToProjection:(ofxPoint3f) p{
@@ -249,118 +261,103 @@
 
 
 -(void) calculateMatrix{
-    ofxVec2f v1, v2, v3;
-    ofxPoint3f points[3];
-    ofxPoint2f projHandles[3];
-    
-    points[0] = [self point3:0];
-    points[1] = [self point3:1];
-    points[2] = [self point3:2];
-    
-    projHandles[0] = [self projPoint:0];
-    projHandles[1] = [self projPoint:1];
-    projHandles[2] = [self projPoint:2];	
-    
-    ofxVec3f bluePoint = (points[2]-points[0]);
-    ofxVec3f redPoint = (points[1]-points[0]);
-    
-    
-    
-    rotationQuaternion.makeRotate(bluePoint, ofxVec3f(1,0,0));
-    
-    bluePoint = bluePoint * rotationQuaternion;
-    
-   // cout<<bluePoint.x<<"  "<<bluePoint.y<<"  "<<bluePoint.z<<endl;
-    
-    
-    redPoint = redPoint*rotationQuaternion;
-    
-    v1 = ofxVec2f(redPoint.z,redPoint.y);
-    v2 = ofxVec2f(0,1);
-    
-    
-    angle1 = v1.angle(v2);
-    
-    //!   [Prop(@"angle1") setFloatValue:angle1];
-    
-    angle2 = (projHandles[1] - projHandles[0]).angle(ofxVec2f(0,-1));
-    //!   [Prop(@"angle2") setFloatValue:angle2];
-    
-    //rotationQuaternion.inverse();
-    
-    // cout<<redPoint.x<<"  "<<redPoint.y<<"  "<<redPoint.z<<endl;
-    /*
-     //Angle 1 er y akse rotation. Vinklen mellem de to blå akser (2)
-     v1 = ofxVec2f(bluePoint.x,bluePoint.z);
-     //	v2 = ofxVec2f((projHandles[2]-projHandles[0]).x,(projHandles[2]-projHandles[0]).y);	
-     v3 = ofxVec2f(1,0);	
-     float angle1 = -v1.angle(v3);
-     
-     
-     bluePoint.rotate(angle1, ofxVec3f(0,1,0));
-     redPoint.rotate(angle1, ofxVec3f(0,1,0));
-     
-     //Angle 2 er z akse rotation (roll). Den er fastdefineret i gulvspace
-     v1 = ofxVec2f(bluePoint.x,bluePoint.y);
-     v2 = ofxVec2f(1,0);	
-     float angle2 = v1.angle(v2);
-     
-     
-     bluePoint.rotate(angle2, ofxVec3f(0,0,1));
-     redPoint.rotate(angle2, ofxVec3f(0,0,1));
-     
-     //Angle 3 er x akse rotation. 
-     v1 = ofxVec2f(redPoint.z,redPoint.y);
-     v2 = ofxVec2f(1,0);	
-     float angle3 = v1.angle(v2);
-     
-     
-     [Prop(@"angle1") setFloatValue:angle1];
-     [Prop(@"angle2") setFloatValue:angle2];
-     [Prop(@"angle3") setFloatValue:angle3];
-     
-     /*rotationMatrix.makeRotationMatrix( PropF(@"angle1")*DEG_TO_RAD, ofxVec3f(0,1,0),
-     0, ofxVec3f(1,0,0),
-     PropF(@"angle3")*DEG_TO_RAD, ofxVec3f(0,0,1));
-     
-     
-     v2 = ofxVec2f(1,0);	
-     //v3 = ofxVec2f((projHandles[1]-projHandles[0]).x,(projHandles[1]-projHandles[0]).y);	
-     float angle2 = v1.angle(v2);	
-     
-     ofxVec3f dir = rotationMatrix.transform3x3(rotationMatrix,ofxVec3f(0,0,1));
-     cout<<dir.x<<"  "<<dir.y<<"  "<<dir.z<<endl;*/
-    
-    /*
-     rotationMatrix.makeRotationMatrix( PropF(@"angle1")*DEG_TO_RAD, ofxVec3f(0,1,0),
-     -PropF(@"angle2")*DEG_TO_RAD, ofxVec3f(1,0,0),
-     PropF(@"angle3")*DEG_TO_RAD, ofxVec3f(0,0,1));*/
-    scale = 1.0/(points[1]-points[0]).length() ;
-    
-    if(coordWarper != nil){
-     //   delete coordWarper;
+    if([self calibration2d]){
+        ofxPoint2f handles[4];
+        ofxPoint2f projHandles[4];
+        
+        handles[0] = [self point2:0];
+        handles[1] = [self point2:1];
+        handles[3] = [self point2:2];
+        handles[2] = [self point2:3];
+        
+        projHandles[0] = [self projPoint:0];
+        projHandles[1] = [self projPoint:1];
+        projHandles[3] = [self projPoint:2];	
+        projHandles[2] = [self projPoint:3];	//on purpose that 2 and 3 are mirrored
+        
+        //Create the coordinate warper
+        coordWarper = new coordWarping();        
+        ofxPoint2f src[4];
+        ofxPoint2f dst[4];    
+
+        
+        
+        src[0].x = [self projPoint:0].x/[self surfaceAspect];;
+        src[0].y = [self projPoint:0].y;
+        src[1].x = [self projPoint:1].x/[self surfaceAspect];
+        src[1].y = [self projPoint:1].y;
+        src[2].x = [self projPoint:3].x/[self surfaceAspect];
+        src[2].y = [self projPoint:3].y;
+        src[3].x = [self projPoint:2].x/[self surfaceAspect];
+        src[3].y = [self projPoint:2].y;    
+        
+        
+        for(int i=0;i<4;i++){
+            ofxPoint2f p = handles[i];
+            dst[i].x = p.x ;
+            dst[i].y = p.y ;
+        }
+        
+        coordWarper->calculateMatrix(dst, src);
+        
+    } else {
+        ofxVec2f v1, v2, v3;
+        ofxPoint3f points[3];
+        ofxPoint2f projHandles[3];
+        
+        points[0] = [self point3:0];
+        points[1] = [self point3:1];
+        points[2] = [self point3:2];
+        
+        projHandles[0] = [self projPoint:0];
+        projHandles[1] = [self projPoint:1];
+        projHandles[2] = [self projPoint:2];	
+        
+        //Relative vectors
+        ofxVec3f bluePoint = (points[2]-points[0]);
+        ofxVec3f redPoint = (points[1]-points[0]);  
+        
+        //Find first rotation quarternion to blue point
+        rotationQuaternion.makeRotate(bluePoint, ofxVec3f(1,0,0));        
+        bluePoint = bluePoint * rotationQuaternion;
+        
+        //rotate the redpoint relative to the blue rotation
+        redPoint = redPoint*rotationQuaternion;
+        
+        v1 = ofxVec2f(redPoint.z,redPoint.y);
+        v2 = ofxVec2f(0,1);
+        
+        //Calculate the red rotation
+        angle1 = v1.angle(v2);        
+        angle2 = (projHandles[1] - projHandles[0]).angle(ofxVec2f(0,-1));
+        scale = 1.0/(points[1]-points[0]).length() ;
+        
+        
+        //Create the coordinate warper
+        coordWarper = new coordWarping();
+        
+        ofxPoint2f src[4];
+        ofxPoint2f dst[4];    
+        
+        
+        src[0].x = 0;
+        src[0].y = 0;
+        src[1].x = 1;
+        src[1].y = 0;
+        src[2].x = 1;
+        src[2].y = 1;
+        src[3].x = 0;
+        src[3].y = 1;
+        
+        
+        for(int i=0;i<4;i++){
+            ofxPoint2f p = [self surfaceCorner:i];
+            dst[i].x = p.x / 640;
+            dst[i].y = p.y / 480;
+        }
+        
+        coordWarper->calculateMatrix(dst, src);
     }
-    coordWarper = new coordWarping();
-    
-    ofxPoint2f src[4];
-    ofxPoint2f dst[4];    
-    
-    src[0].x = 0;
-    src[0].y = 0;
-    src[1].x = 1;
-    src[1].y = 0;
-    src[2].x = 1;
-    src[2].y = 1;
-    src[3].x = 0;
-    src[3].y = 1;
-    
-    for(int i=0;i<4;i++){
-        ofxPoint2f p = [self surfaceCorner:i];
-        dst[i].x = p.x / 640;
-        dst[i].y = p.y / 480;
-    }
-    
-    coordWarper->calculateMatrix(dst, src);
 }
 
 
@@ -372,13 +369,14 @@
     [self setPoint2:0 coord:ofxPoint2f(0.1,0.1)];
     [self setPoint2:1 coord:ofxPoint2f(0.9,0.1)];
     [self setPoint2:2 coord:ofxPoint2f(0.1,0.9)];
+    [self setPoint2:3 coord:ofxPoint2f(0.9,0.9)];
     
-    [self setProjPoint:0 coord:ofxPoint2f(0,0.1)];
-    [self setProjPoint:1 coord:ofxPoint2f([self surfaceAspect],0.1)];
+    [self setProjPoint:0 coord:ofxPoint2f(0,0.00001)];
+    [self setProjPoint:1 coord:ofxPoint2f([self surfaceAspect],0.000001)];
     [self setProjPoint:2 coord:ofxPoint2f(0,1)];
     
     if(kinectConnected){
-    [self calculateMatrix];
+        [self calculateMatrix];
     }
 }
 
@@ -389,6 +387,14 @@
     return point2Cache[point];
 }
 -(ofxPoint2f) projPoint:(int)point{
+    if(point == 3){
+        ofxVec2f v1 = [self projPoint:1] - [self projPoint:0];
+        ofxVec2f v2 = [self projPoint:2] - [self projPoint:0];
+        
+        ofxVec2f v = v1+v2;
+        return [self projPoint:0] + v;        
+    }
+    
     return projPointCache[point];
 }
 
@@ -403,26 +409,47 @@
 }
 
 -(ofxPoint2f) surfaceCorner:(int)n{
-    ofxPoint3f world;
-    switch (n) {
-        case 0:
-            world = [self convertSurfaceToWorld:ofxPoint3f(0,0,0)];
-            break;
-        case 1:
-            world = [self convertSurfaceToWorld:ofxPoint3f([self surfaceAspect],0,0)];
-            break;
-        case 2:
-            world = [self convertSurfaceToWorld:ofxPoint3f([self surfaceAspect],1,0)];
-            break;
-        case 3:
-            world = [self convertSurfaceToWorld:ofxPoint3f(0,1,0)];
-            break;
+    if(calibration2d){
+        switch (n) {
+            case 0:
+                return coordWarper->inversetransform (0,0)*ofxVec2f(640,480);        
+                break;
+            case 1:
+                return coordWarper->inversetransform (1,0)*ofxVec2f(640,480);        
+                break;
+            case 2:
+                return coordWarper->inversetransform (1,1)*ofxVec2f(640,480);        
+                break;
+            case 3:
+                return coordWarper->inversetransform (0,1)*ofxVec2f(640,480);        
+                break;
+                
+            default:
+                break;
+        }
 
-        default:
-            break;
-    }
-
-    return [self convertWorldToKinect:world];    
+    } else {
+        ofxPoint3f world;
+        switch (n) {
+            case 0:
+                world = [self convertSurfaceToWorld:ofxPoint3f(0,0,0)];
+                break;
+            case 1:
+                world = [self convertSurfaceToWorld:ofxPoint3f([self surfaceAspect],0,0)];
+                break;
+            case 2:
+                world = [self convertSurfaceToWorld:ofxPoint3f([self surfaceAspect],1,0)];
+                break;
+            case 3:
+                world = [self convertSurfaceToWorld:ofxPoint3f(0,1,0)];
+                break;
+                
+            default:
+                break;
+        }
+        
+        return [self convertWorldToKinect:world];    
+    } 
 }
 
 #pragma mark OpenNI getters 

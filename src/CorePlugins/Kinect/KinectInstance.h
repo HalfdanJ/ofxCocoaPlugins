@@ -20,8 +20,8 @@
     float scale, scalex;
 
 
-    ofxPoint2f projPointCache[3];
-	ofxPoint2f point2Cache[3];
+    ofxPoint2f projPointCache[4];
+	ofxPoint2f point2Cache[4];
 	ofxPoint3f point3Cache[3];
     
     ofxQuaternion rotationQuaternion;
