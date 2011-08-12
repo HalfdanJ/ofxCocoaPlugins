@@ -77,6 +77,7 @@
 @property (assign) id cameraInstance;
 
 @property (readonly)  ofxCvGrayscaleImage *	grayDiff;
+@property (readonly)  ofxCvGrayscaleImage *	grayBg;
 
 @property (readwrite) int trackerNumber;
 

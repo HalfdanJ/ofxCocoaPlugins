@@ -10,7 +10,7 @@
 #import "KinectInstance.h"
 
 @implementation BlobTrackerInstance2d
-@synthesize view, name, properties, cameraInstance, trackerNumber, grayDiff;
+@synthesize view, name, properties, cameraInstance, trackerNumber, grayDiff, grayBg;
 
 - (id)init
 {
@@ -475,12 +475,11 @@
         realCorners[3] = ofPoint(0,480);
         
         KinectInstance * kinect = cameraInstance;
-        corners[0] = [kinect convertSurfaceToWorld:ofxPoint3f(0,0,0)];
-        corners[1] = [kinect convertSurfaceToWorld:ofxPoint3f([kinect surfaceAspect],0,0)];
-        corners[2] = [kinect convertSurfaceToWorld:ofxPoint3f([kinect surfaceAspect],1,0)];
-        corners[3] = [kinect convertSurfaceToWorld:ofxPoint3f(0,1,0)];        
+        corners[0] = [kinect surfaceCorner:0];
+        corners[1] = [kinect surfaceCorner:1];
+        corners[2] = [kinect surfaceCorner:3];
+        corners[3] = [kinect surfaceCorner:2];
         for(int i=0;i<4;i++){
-            corners[i] = [kinect convertWorldToKinect:ofxPoint3f(corners[i])];
             if(clamp){
                 corners[i].x = ofClamp(corners[i].x,0,640);
                 corners[i].y = ofClamp(corners[i].y,0,480);
