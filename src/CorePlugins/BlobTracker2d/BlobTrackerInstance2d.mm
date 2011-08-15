@@ -525,6 +525,7 @@
 	ofImage loadImg;
 	if (loadImg.loadImage([basePath cStringUsingEncoding:NSUTF8StringEncoding])) {
 		grayBg->setFromPixels(loadImg.getPixels(), loadImg.getWidth(), loadImg.getHeight());
+        grayBg->draw(0, 0,0,0);
 		//		return true;
 	} else {
 		//		return false;
