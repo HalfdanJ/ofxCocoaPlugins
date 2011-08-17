@@ -7,7 +7,7 @@
 #import "KinectInstance.h"
 
 //Define for not starting openni at startup and thereby having quicker startup (without code crashing)
-#define FASTDEBUG 
+//#define FASTDEBUG 
 
 
 struct Dancer {

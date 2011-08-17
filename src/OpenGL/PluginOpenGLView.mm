@@ -213,7 +213,8 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 	// draw here	
 	if([controller isPluginsInited]){	
 		if(![controller isSetupCalled] || [controller willDraw:drawingInformation]){
-			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+            ofBackground(0, 0, 0);
+//			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 			
 			glMatrixMode(GL_TEXTURE);
