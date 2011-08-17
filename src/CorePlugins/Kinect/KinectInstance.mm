@@ -82,6 +82,9 @@
 }
 
 -(void)startContext{
+#ifdef FASTDEBUG
+    connectionRefused = YES;
+#else     
     unsigned short vendor_id; 
     unsigned short product_id; 
     unsigned char _bus; 
@@ -114,6 +117,7 @@
 	} else {
         connectionRefused = YES;
     }
+#endif
 } 
 
 -(void)stopContext{
@@ -409,6 +413,9 @@
 }
 
 -(ofxPoint2f) surfaceCorner:(int)n{
+    if(!kinectConnected){
+        return ofxPoint2f();
+    }
     if(calibration2d){
         switch (n) {
             case 0:

@@ -19,7 +19,7 @@
 
 -(id) initWithNumberKinects:(int)numberKinects{
     if([self init]){
-        
+#ifndef FASTDEBUG
         availableDevices = [NSMutableArray array];
         NSMutableDictionary * newDict = [NSMutableDictionary dictionary];
         [newDict setObject:[NSNumber numberWithBool:NO] forKey:@"available"];
@@ -58,7 +58,7 @@
         } 
         
         
-        
+#endif
         instances = [NSMutableArray arrayWithCapacity:numberKinects];
         for(int i=0;i<numberKinects;i++){
             KinectInstance * newInstance = [[KinectInstance alloc] init];
