@@ -34,6 +34,7 @@
         deviceChar = nil;
         connectionRefused = NO;
         coordWarper = nil;
+        kinectConnected  = NO;
     }
     
     return self;
@@ -56,7 +57,7 @@
     NSLog(@"Setup instance");
     
     // if(irEnabled && !kinectConnected){
-    if(!kinectConnected){
+    if(!kinectConnected && irEnabled){
         [self startContext];
     }
 }

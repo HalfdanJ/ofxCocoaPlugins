@@ -43,7 +43,12 @@
         } else { 
             for (xn::NodeInfoList::Iterator nodeIt =device_node_info_list.Begin(); nodeIt != device_node_info_list.End(); ++nodeIt) { 
                 xn::NodeInfo deviceInfo = *nodeIt;
-                const xn::NodeInfo& info = *nodeIt; 
+                const xn::NodeInfo& info = *nodeIt;
+              /*  
+                const XnProductionNodeDescription& description = info.GetDescription();
+                printf("Image: vendor %s name %s instance %s\n",description.strVendor, description.strName, info.GetInstanceName());
+                
+                cout<<<<endl;*/
                 cout<<info.GetCreationInfo()<<endl;
                 sscanf(info.GetCreationInfo(), "%hx/%hx@%hhu/%hhu", &vendor_id,&product_id, &bus, &address); 
                 string connection_string = info.GetCreationInfo(); 
@@ -51,7 +56,7 @@
                 
                 newDict = [NSMutableDictionary dictionary];
                 [newDict setObject:[NSNumber numberWithBool:YES] forKey:@"available"];
-                [newDict setObject:[NSString stringWithFormat:@"Kinect %i",address] forKey:@"name"];
+                [newDict setObject:[NSString stringWithFormat:@"Kinect %i",bus] forKey:@"name"];
                 [newDict setObject:[NSString stringWithUTF8String:info.GetCreationInfo()] forKey:@"deviceChar"];
                 [availableDevices addObject:newDict];                
             } 
@@ -115,7 +120,7 @@
                 
             }
             [kinect setCalibration2d:[[dict objectForKey:[NSString stringWithFormat:@"calibration2d"]] boolValue]];
-
+            
         }
         u++;
     }
@@ -141,7 +146,7 @@
             [props setObject:[NSNumber numberWithFloat:[kinect levelsLow]] forKey:@"levelsLow"];
             [props setObject:[NSNumber numberWithFloat:[kinect levelsHigh]] forKey:@"levelHigh"];
             [props setObject:[NSNumber numberWithBool:[kinect calibration2d]] forKey:@"calibration2d"];
-
+            
             [props setObject:[NSNumber numberWithBool:[kinect irEnabled]] forKey:@"irEnabled"];
             
             for(int i=0;i<4;i++){
@@ -244,7 +249,6 @@
         if([instance point2:0] == nil)
             [instance reset];
         
-        [instance setup];
         
         dispatch_async(dispatch_get_main_queue(), ^{
             [instanceSegmentedControl setLabel:[NSString stringWithFormat:@"Kinect %i",i] forSegment:i];
@@ -253,7 +257,7 @@
         
         BOOL deviceFound = NO;
         for(NSMutableDictionary * dict in availableDevices){
-            if([[dict objectForKey:@"deviceChar"] length] > 0 && [[instance deviceChar] length] > 0 &&  [[[dict objectForKey:@"deviceChar"] substringToIndex:14] isEqualToString:[[instance deviceChar] substringToIndex:14]]){
+            if([[dict objectForKey:@"deviceChar"] length] > 0 && [[instance deviceChar] length] > 0 &&  [[dict objectForKey:@"deviceChar"] isEqualToString:[instance deviceChar] ]){
                 NSLog(@"Device found for kinect %i!", i);
                 [instance setDeviceChar:[dict objectForKey:@"deviceChar"]];
                 deviceFound = YES;
@@ -262,12 +266,22 @@
         }
         if(!deviceFound && [instance deviceChar]){
             NSLog(@"Device not found for kinect %i deviceChar %@", i, [instance deviceChar]);
-            NSMutableDictionary * newDict = [NSMutableDictionary dictionary];
-            [newDict setObject:[NSNumber numberWithBool:NO] forKey:@"available"];
-            [newDict setObject:[NSString stringWithFormat:@"Kinect %i",[instance adr]] forKey:@"name"];
-            [newDict setObject:[instance deviceChar] forKey:@"deviceChar"];
-            [availableDevices addObject:newDict];
+            [instance setIrEnabled:NO];
+            
+            if([instance bus] != 0){
+                NSMutableDictionary * newDict = [NSMutableDictionary dictionary];
+                [newDict setObject:[NSNumber numberWithBool:NO] forKey:@"available"];
+                [newDict setObject:[NSString stringWithFormat:@"Kinect %i",[instance bus]] forKey:@"name"];
+                [newDict setObject:[instance deviceChar] forKey:@"deviceChar"];
+                [availableDevices addObject:newDict];
+            }
+        } 
+        
+        if(deviceFound){
+            [instance setup];
         }
+        
+        
         
         
         i++;
@@ -438,16 +452,16 @@
             glPushMatrix();
             [GetPlugin(Keystoner) applySurface:[kinect surface]];
             ofFill();
-
+            
             ofxPoint3f corners[4];
-          /* 
-            corners[0] = [kinect convertSurfaceToWorld:ofxPoint3f(0,0,0)];
-            corners[1] = [kinect convertSurfaceToWorld:ofxPoint3f([kinect surfaceAspect],0,0)];
-            corners[2] = [kinect convertSurfaceToWorld:ofxPoint3f([kinect surfaceAspect],1,0)];
-            corners[3] = [kinect convertSurfaceToWorld:ofxPoint3f(0,1,0)];        
-            for(int i=0;i<4;i++){
-                corners[i] = [kinect convertWorldToKinect:ofxPoint3f(corners[i])];
-            }*/
+            /* 
+             corners[0] = [kinect convertSurfaceToWorld:ofxPoint3f(0,0,0)];
+             corners[1] = [kinect convertSurfaceToWorld:ofxPoint3f([kinect surfaceAspect],0,0)];
+             corners[2] = [kinect convertSurfaceToWorld:ofxPoint3f([kinect surfaceAspect],1,0)];
+             corners[3] = [kinect convertSurfaceToWorld:ofxPoint3f(0,1,0)];        
+             for(int i=0;i<4;i++){
+             corners[i] = [kinect convertWorldToKinect:ofxPoint3f(corners[i])];
+             }*/
             
             for(int i=0;i<4;i++){
                 corners[i] = [kinect surfaceCorner:i];
@@ -702,33 +716,33 @@
                 
                 
                 glPushMatrix();{
-                        ofNoFill();
-                        //Y Axis 
-                        ofSetColor(0, 255, 0);
-                        //ofCircle(handles[0].x,handles[0].y, 10/640.0);
-                        handleImage->draw(handles[0].x*320.0 - 13,handles[0].y*240.0 - 13, 25, 25);
-                        
-                        //X Axis
-                        ofSetColor(255, 0, 0);
-                        //                  ofCircle(handles[1].x,handles[1].y, 10/640.0);
-                        ofLine(handles[0].x*320.0, handles[0].y*240.0, handles[1].x*320.0, handles[1].y*240.0);
-                        handleImage->draw(handles[1].x*320.0 - 13,handles[1].y*240.0 - 13, 25, 25);
-                        
-                        
-                        //Z Axis
-                        ofSetColor(0, 0, 255);
-                        // ofCircle(handles[2].x,handles[2].y, 10/640.0);
-                        ofLine(handles[0].x*320.0, handles[0].y*240.0, handles[2].x*320.0, handles[2].y*240.0);
-                        handleImage->draw(handles[2].x*320.0 - 13,handles[2].y*240.0 - 13, 25, 25);
-                        
-                        if(calib2d){
-                            //4th
-                            ofSetColor(255, 255, 255);
-                            ofLine(handles[1].x*320.0, handles[1].y*240.0, handles[3].x*320.0, handles[3].y*240.0);
-                            ofLine(handles[2].x*320.0, handles[2].y*240.0, handles[3].x*320.0, handles[3].y*240.0);
-                            ofSetColor(255, 255, 0);
-                            handleImage->draw(handles[3].x*320.0 - 13,handles[3].y*240.0 - 13, 25, 25);                        
-                        }
+                    ofNoFill();
+                    //Y Axis 
+                    ofSetColor(0, 255, 0);
+                    //ofCircle(handles[0].x,handles[0].y, 10/640.0);
+                    handleImage->draw(handles[0].x*320.0 - 13,handles[0].y*240.0 - 13, 25, 25);
+                    
+                    //X Axis
+                    ofSetColor(255, 0, 0);
+                    //                  ofCircle(handles[1].x,handles[1].y, 10/640.0);
+                    ofLine(handles[0].x*320.0, handles[0].y*240.0, handles[1].x*320.0, handles[1].y*240.0);
+                    handleImage->draw(handles[1].x*320.0 - 13,handles[1].y*240.0 - 13, 25, 25);
+                    
+                    
+                    //Z Axis
+                    ofSetColor(0, 0, 255);
+                    // ofCircle(handles[2].x,handles[2].y, 10/640.0);
+                    ofLine(handles[0].x*320.0, handles[0].y*240.0, handles[2].x*320.0, handles[2].y*240.0);
+                    handleImage->draw(handles[2].x*320.0 - 13,handles[2].y*240.0 - 13, 25, 25);
+                    
+                    if(calib2d){
+                        //4th
+                        ofSetColor(255, 255, 255);
+                        ofLine(handles[1].x*320.0, handles[1].y*240.0, handles[3].x*320.0, handles[3].y*240.0);
+                        ofLine(handles[2].x*320.0, handles[2].y*240.0, handles[3].x*320.0, handles[3].y*240.0);
+                        ofSetColor(255, 255, 0);
+                        handleImage->draw(handles[3].x*320.0 - 13,handles[3].y*240.0 - 13, 25, 25);                        
+                    }
                     
                     
                 }glPopMatrix();
@@ -1387,7 +1401,7 @@
                         [instance setPoint2:draggedPoint coord:mouse];
                     }
                 }
-               
+                
             } else {
                 mouse.y -= 1;
                 float aspect = [instance surfaceAspect];
