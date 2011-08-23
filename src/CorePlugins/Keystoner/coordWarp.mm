@@ -7,8 +7,8 @@ coordWarping::coordWarping(){
 }
 
 coordWarping::~coordWarping(){
-	delete translate;
-	delete itranslate;
+	cvReleaseMat(&translate);
+	cvReleaseMat(&itranslate);
 }
 
 //---------------------------

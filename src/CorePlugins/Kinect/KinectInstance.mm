@@ -128,11 +128,8 @@
 
 
 
-
-
 -(vector<ofxPoint3f>) getPointsInBoxXMin:(float)xMin xMax:(float)xMax yMin:(float)yMin yMax:(float)yMax zMin:(float)zMin zMax:(float)zMax res:(int)res{
-    vector<ofxPoint3f> points;
-    
+    vector<ofxPoint3f> points;    
     if(kinectConnected ){
         xn::DepthMetaData dmd;
         depth.getXnDepthGenerator().GetMetaData(dmd);	

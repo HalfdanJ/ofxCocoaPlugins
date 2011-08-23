@@ -3,7 +3,7 @@
 #include <algorithm>
 
 
-
+#include "TextureGrid.h"
 
 
 
@@ -453,7 +453,7 @@
             [GetPlugin(Keystoner) applySurface:[kinect surface]];
             ofFill();
             
-            ofxPoint3f corners[4];
+            ofxPoint2f corners[4];
             /* 
              corners[0] = [kinect convertSurfaceToWorld:ofxPoint3f(0,0,0)];
              corners[1] = [kinect convertSurfaceToWorld:ofxPoint3f([kinect surfaceAspect],0,0)];
@@ -472,25 +472,44 @@
                 tex = [kinect getDepthGenerator]->getTexture();
             }
             ofSetColor(255, 255, 255,255);
-            tex->bind();
-            if([warpCalibration state]){
-                glBegin(GL_QUADS);
-                glTexCoord2f(corners[0].x, corners[0].y);     glVertex3d(0, 0, 0);
-                glTexCoord2f(corners[1].x, corners[1].y);   glVertex3d([kinect surfaceAspect], 0, 0);
-                glTexCoord2f(corners[2].x, corners[2].y);   glVertex3d([kinect surfaceAspect], 1, 0);
-                glTexCoord2f(corners[3].x, corners[3].y);   glVertex3d(0, 1, 0);
-                glEnd();
+            
+            /*glTexParameteri( GL_TEXTURE_RECTANGLE_EXT, GL_TEXTURE_MAG_FILTER, GL_LINEAR );
+            glTexParameteri( GL_TEXTURE_RECTANGLE_EXT, GL_TEXTURE_MIN_FILTER, GL_LINEAR );
+            glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR );
+            glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR );
+            */
+//                      texCoords[0] = ofxPoint2f(0.0,0.0);
+//            texCoords[1] = ofxPoint2f(640,0.0);
+//            texCoords[2] = ofxPoint2f(640,480);
+//            texCoords[3] = ofxPoint2f(0.0,480);
+//            
+                     
+
+         
+            if([warpCalibration state]){                
+                
+                ofxPoint2f poly[4];
+                
+                poly[0] = ofxPoint2f(0.0,0.0);
+                poly[1] = ofxPoint2f([kinect surfaceAspect],0.0);
+                poly[2] = ofxPoint2f([kinect surfaceAspect],1.0);
+                poly[3] = ofxPoint2f(0.0,1.0);
+                
+
+                TextureGrid texGrid;
+                texGrid.drawTextureGrid(tex,  poly, corners, 10);
             } else {
+                tex->bind();
+
                 glBegin(GL_QUADS);
                 glTexCoord2f(0,0);     glVertex3d(0, 0, 0);
                 glTexCoord2f(640,0);   glVertex3d([kinect surfaceAspect], 0, 0);
                 glTexCoord2f(640,480);   glVertex3d([kinect surfaceAspect], 1, 0);
                 glTexCoord2f(0,480);   glVertex3d(0, 1, 0);
                 glEnd();
-                
+                tex->unbind();
             }
-            tex->unbind();
-            
+                    
             
             
             //        [[self surface] apply];

@@ -38,6 +38,10 @@ public:
 			filter(s);
 		}
 	}
+    
+    float value(){
+        return Zl[0]*Nl[0] + Zl[1]*Nl[1] + Zl[2]*Nl[2] + Zl[3]*Nl[3];
+    }
 	
 	float filter(float s){
 		Zl[3]=Zl[2];
@@ -45,8 +49,8 @@ public:
 		Zl[1]=Zl[0];
 		
 		Zl[0]= s - (Dl[1]*Zl[1] + Dl[2]*Zl[2] + Dl[3]*Zl[3]);
-		return Zl[0]*Nl[0] + Zl[1]*Nl[1] + Zl[2]*Nl[2] + Zl[3]*Nl[3];
-		
+
+		return value();		
 	}
 	
 };
