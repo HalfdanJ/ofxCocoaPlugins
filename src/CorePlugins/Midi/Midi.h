@@ -6,6 +6,14 @@
 
 #include "PYMIDI.h"
 
+struct MTCTime {
+    int frames;
+    int seconds;
+    int minutes;
+    int hours;
+    int fps;
+};
+
 @interface Midi : ofPlugin <NSTableViewDataSource> {
 	
 	pthread_mutex_t mutex;
@@ -43,12 +51,16 @@
 	NSMutableArray * midiData;
 	
 	float pitchBends[16];
-	
+    
+    MTCTime mtcTime, mtcTimeTemp;
+	NSString * mtcTimeString;
 }
 
 @property (assign) NSMutableArray * boundControls;
 @property (assign) NSMutableArray * midiBindings;
 @property (assign) NSMutableArray * midiData;
+
+@property (readwrite) NSString * mtcTimeString;
 
 -(IBAction) selectMidiInterface:(id)sender;
 -(IBAction) printMidiMappingsList:(id)sender;
@@ -72,4 +84,8 @@
 
 //-(id)tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(int)rowIndex;
 -(float) getPitchBend:(int)channel;
+
+-(MTCTime) getMTCTime;
+-(float) getMTCSeconds;
+
 @end

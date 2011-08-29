@@ -11,7 +11,7 @@
 #include "PYMIDI.h"
 
 @implementation Midi
-@synthesize boundControls, midiBindings, midiData;
+@synthesize boundControls, midiBindings, midiData, mtcTimeString;
 
 -(id) init{
 	if([super init]){
@@ -135,7 +135,7 @@
 	}
 	
 	if (returnCode == NSAlertOtherReturn) {			/* "Show conflicts" */
-//		[globalController changeView:[[globalController viewItems] indexOfObject:self]];
+        //		[globalController changeView:[[globalController viewItems] indexOfObject:self]];
 	}       
 }
 
@@ -149,7 +149,7 @@
 	}
 	
 	if (returnCode == NSAlertOtherReturn) {			/* "Show conflicts" */
-	//	[globalController changeView:[[globalController viewItems] indexOfObject:self]];
+        //	[globalController changeView:[[globalController viewItems] indexOfObject:self]];
 	}       
 }
 
@@ -186,6 +186,14 @@
 	//	[rowIndexesChanged release];
 }
 
+-(MTCTime)getMTCTime{
+    return mtcTime;
+}
+
+-(float)getMTCSeconds{
+    return mtcTime.hours*60*60 + mtcTime.minutes*60 + mtcTime.seconds + (mtcTime.frames / (float)mtcTime.fps);
+}   
+
 BOOL isDataByte (Byte b)		{ return b < 0x80; }
 BOOL isStatusByte (Byte b)		{ return b >= 0x80 && b < 0xF8; }
 BOOL isRealtimeByte (Byte b)	{ return b >= 0xF8; }
@@ -201,6 +209,7 @@ BOOL isRealtimeByte (Byte b)	{ return b >= 0xF8; }
 		
 		for (int j = 0; j < packet->length; j+=3) {
 			
+            
 			bool noteOn = false;
 			bool noteOff = false;
 			bool controlChange;
@@ -235,6 +244,58 @@ BOOL isRealtimeByte (Byte b)	{ return b >= 0xF8; }
 				value =  packet->data[1+j] + packet->data[2+j]*127;
 				pitchBends[channel-1] = value; 
 			}
+            if(packet->data[0+j] == 241){
+                // MTC 
+                // http://www.compeng.dit.ie/staff/tscarff/Music_technology/midi/MTC.htm                
+                //
+                int nnn = (packet->data[1+j] & 112)/16;
+                int dddd = packet->data[1+j] & 15;
+                
+                switch (nnn) {
+                    case 0:
+                        mtcTimeTemp.frames = (mtcTimeTemp.frames & 0xF0) + dddd;
+                        break;
+                    case 1:
+                        mtcTimeTemp.frames = (mtcTimeTemp.frames & 0xF) + dddd*0x10;
+                        break;
+                    case 2:
+                        mtcTimeTemp.seconds = (mtcTimeTemp.seconds & 0xF0) + dddd;
+                        break;
+                    case 3:
+                        mtcTimeTemp.seconds = (mtcTimeTemp.seconds & 0xF) + dddd*0x10;
+                        break;
+                    case 4:
+                        mtcTimeTemp.minutes = (mtcTimeTemp.minutes & 0xF0) + dddd;
+                        break;
+                    case 5:
+                        mtcTimeTemp.minutes = (mtcTimeTemp.minutes & 0xF) + dddd*0x10;
+                        break;
+                    case 6:
+                        mtcTimeTemp.hours = (mtcTimeTemp.hours & 0xF) + dddd*0x10;
+                        break;
+                    case 7:
+                    {
+                        mtcTimeTemp.hours = (mtcTimeTemp.hours & 0xF) + (dddd&1)*0x10;
+                        int f = (dddd&6)/2; 
+                        if(f==0)
+                            mtcTimeTemp.fps = 24;
+                        if(f==1)             
+                            mtcTimeTemp.fps = 25;
+                        if(f==2)             
+                            mtcTimeTemp.fps = 30; //(drop frame)
+                        if(f==3)
+                            mtcTimeTemp.fps = 30;                   
+                        
+                        mtcTime = mtcTimeTemp;
+                        
+                        [self setMtcTimeString:[NSString stringWithFormat:@"%i:%i:%i:%i @ %i fps",mtcTime.hours, mtcTime.minutes, mtcTime.seconds, mtcTime.frames, mtcTime.fps ]];
+                        break;
+                    }
+                    default:
+                        break;
+                }
+                
+            }
 			
 			
 			if([self isEnabled]){
