@@ -10,7 +10,7 @@
 #import "KinectInstance.h"
 
 @implementation BlobTrackerInstance2d
-@synthesize view, name, properties, cameraInstance, trackerNumber, grayDiff, grayBg;
+@synthesize view, name, properties, cameraInstance, trackerNumber, grayDiff, grayBg, learnBackgroundButton;
 
 - (id)init
 {

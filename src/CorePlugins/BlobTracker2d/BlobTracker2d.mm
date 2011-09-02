@@ -12,8 +12,22 @@
         [newInstance setTrackerNumber:i];
         [instances addObject:newInstance];
         i++;
+        
+        [self addProperty:[BoolProperty boolPropertyWithDefaultvalue:NO] named:[NSString stringWithFormat:@"grab%i", i]];
     }
     
+}
+
+-(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context{
+    int i=1;
+    for(BlobTrackerInstance2d * instance in instances){
+        BoolProperty * p = Prop(([NSString stringWithFormat:@"grab%i", i]));
+        if(p == object && [p boolValue]){
+            [p setBoolValue:NO];
+            [[instance learnBackgroundButton] setState:1];           
+        }
+        i++;
+    }
 }
 
 -(void)awakeFromNib{
@@ -129,8 +143,11 @@
 
 
 -(void) update:(NSDictionary *)drawingInformation{
+    int i=1;
     for(BlobTrackerInstance2d * instance in instances){
+
         [instance update:drawingInformation];
+        i++;
     }
 }
 

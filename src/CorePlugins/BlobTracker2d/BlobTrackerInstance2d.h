@@ -16,7 +16,7 @@
     IBOutlet NSSlider * blurSlider;
 	IBOutlet NSSlider * thresholdSlider;
 	IBOutlet NSButton * activeButton;
-	IBOutlet NSButton * learnBackgroundButton;
+	 NSButton * learnBackgroundButton;
     IBOutlet NSButton * drawDebugButton;
 	IBOutlet NSSlider * persistentSlider;
 
@@ -78,6 +78,8 @@
 
 @property (readonly)  ofxCvGrayscaleImage *	grayDiff;
 @property (readonly)  ofxCvGrayscaleImage *	grayBg;
+@property (assign) 	IBOutlet NSButton * learnBackgroundButton;
+
 
 @property (readwrite) int trackerNumber;
 
