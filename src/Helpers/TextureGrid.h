@@ -27,7 +27,7 @@ public:
         float step = 1.0/gridSize;
         for(float x=0 ; x<1 ; x+=step){
             glBegin(GL_QUAD_STRIP);
-            for(float y=0 ; y<=1 ; y+=step){   
+            for(float y=0 ; y<=1+step ; y+=step){   
                 ofPoint p1 = warper1->transform(x, y);
                 ofPoint p2 = warper1->transform(x+step, y);
 

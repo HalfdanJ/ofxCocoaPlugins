@@ -182,6 +182,14 @@
      ir.levelsHigh = PropF(@"levelsIRHigh");
      }
      */
+    int i=0;
+	KinectInstance * kinect;
+	for(kinect in instances){
+        if(object == Prop( ([NSString stringWithFormat:@"kinect%iEnabled",i]))  ){
+            [kinect setIrEnabled:[object boolValue]];
+        }
+        i++;
+    }
 }
 
 
