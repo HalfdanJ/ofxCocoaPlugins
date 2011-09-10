@@ -11,7 +11,7 @@
 
 @implementation KinectInstance
 @synthesize surface, kinectController;
-@synthesize kinectConnected, deviceChar, bus,adr, stop, kinectNumber, irEnabled, calibration2d, levelsLow, levelsHigh, coordWarper;
+@synthesize kinectConnected, deviceChar, bus,adr, stop, kinectNumber, irEnabled, calibration2d, levelsLow, levelsHigh, coordWarper, colorEnabled;
 
 - (id)init
 {
@@ -104,6 +104,10 @@
     ir.setup(&context);
     ir.levelsLow = levelsLow;
     ir.levelsHigh = levelsHigh;
+    
+    if(colorEnabled){
+        color.setup(&context);
+    }
     
     if(kinectConnected){
 		//	users.setup(&context, &depth);		
@@ -469,6 +473,10 @@
 }
 -(ofxIRGenerator*) getIRGenerator{
     return &ir;
+}
+
+-(ofxImageGenerator *)getColorGenerator{
+    return &color;
 }
 -(ofxOpenNIContext*) getOpenNIContext{
     return &context;

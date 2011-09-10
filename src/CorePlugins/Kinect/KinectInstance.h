@@ -11,11 +11,13 @@
     ofxOpenNIContext  context;
 	ofxDepthGenerator  depth;
     ofxIRGenerator ir;
+    ofxImageGenerator color;
 	ofxUserGenerator  users;
     
     BOOL kinectConnected;
     BOOL connectionRefused;
 	BOOL stop;
+    BOOL colorEnabled;
 
     float scale, scalex;
 
@@ -53,6 +55,7 @@
 @property (readwrite) int bus;
 @property (readwrite) int adr;
 @property (readwrite) BOOL stop;
+@property (readwrite) BOOL colorEnabled;
 
 @property (readwrite) int kinectNumber;
 @property (readwrite) BOOL irEnabled;
@@ -95,6 +98,7 @@
 
 -(ofxDepthGenerator*) getDepthGenerator;
 -(ofxIRGenerator*) getIRGenerator;
+-(ofxImageGenerator*) getColorGenerator;
 -(ofxOpenNIContext*) getOpenNIContext;
 
 
