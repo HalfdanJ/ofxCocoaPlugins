@@ -101,13 +101,15 @@
     cout<<"Connect to "<<depth.deviceInfoChar <<endl;
 	context.setup();
 	kinectConnected = depth.setup(&context);
-    ir.setup(&context);
-    ir.levelsLow = levelsLow;
-    ir.levelsHigh = levelsHigh;
-    
     if(colorEnabled){
         color.setup(&context);
     }
+    ir.setup(&context);
+   ir.levelsLow = levelsLow;
+  
+    ir.levelsHigh = levelsHigh;
+    
+    
     
     if(kinectConnected){
 		//	users.setup(&context, &depth);		

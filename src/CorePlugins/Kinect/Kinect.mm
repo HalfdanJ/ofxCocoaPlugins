@@ -738,7 +738,11 @@
                 
                 glPushMatrix();{
                     glScaled(0.5, 0.5, 1.0);
+                    if([kinect colorEnabled]){
+                    [kinect getColorGenerator]->draw();                        
+                    } else {
                     [kinect getDepthGenerator]->draw();
+                    }
                 }glPopMatrix();
                 
                 

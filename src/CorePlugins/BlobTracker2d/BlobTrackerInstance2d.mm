@@ -10,7 +10,7 @@
 #import "KinectInstance.h"
 
 @implementation BlobTrackerInstance2d
-@synthesize view, name, properties, cameraInstance, trackerNumber, grayDiff, grayBg, learnBackgroundButton;
+@synthesize view, name, properties, cameraInstance, trackerNumber, grayDiff, grayBg, learnBackgroundButton, active;
 
 - (id)init
 {
@@ -127,6 +127,7 @@
             if ([learnBackgroundButton state] == NSOnState){            
                 NSLog(@"Tracker %i Learn Background", trackerNumber);
                 *grayBg = *grayImageBlured;
+                grayBg->draw(0, 0,0,0);
                 [self saveBackground];
                 [learnBackgroundButton setState:NSOffState];
             }  

@@ -54,6 +54,7 @@
 	BOOL recording;
     
     BOOL live;
+    BOOL active;
     
 	//videoplayerWrapper * videoPlayer;
     QTKitMovieRenderer * videoPlayer;
@@ -79,7 +80,7 @@
 @property (readonly)  ofxCvGrayscaleImage *	grayDiff;
 @property (readonly)  ofxCvGrayscaleImage *	grayBg;
 @property (assign) 	IBOutlet NSButton * learnBackgroundButton;
-
+@property (readwrite) BOOL active;
 
 @property (readwrite) int trackerNumber;
 
