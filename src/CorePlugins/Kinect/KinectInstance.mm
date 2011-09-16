@@ -129,6 +129,7 @@
 
 -(void)stopContext{
     context.getXnContext().Shutdown();
+    ir.connected = NO;
     kinectConnected = NO;
 }
 

@@ -54,6 +54,9 @@ struct MTCTime {
     
     MTCTime mtcTime, mtcTimeTemp;
 	NSString * mtcTimeString;
+    
+    ofSerial * serial;
+    bool serialConnected;
 }
 
 @property (assign) NSMutableArray * boundControls;

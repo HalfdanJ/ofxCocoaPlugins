@@ -86,6 +86,9 @@
 	
 	[midiMappingsList setDoubleAction:@selector(showSelectedControl:)];
 	
+    serial = new ofSerial();
+    serial->enumerateDevices();
+    serialConnected = serial->setup(7, 115200);
 	
 }
 
@@ -153,9 +156,18 @@
 	}       
 }
 
--(void) update:(CFTimeInterval)timeInterval displayTime:(const CVTimeStamp *)outputTime{
+-(void)update:(NSDictionary *)drawingInformation{
+
+    if(serial->available() > 0){
+        int r = serial->readByte();
+        if(r == 'a'){
+            [self sendValue:1 forNote:1 onChannel:1];
+        } else if(r == 'b'){
+            [self sendValue:2 forNote:1 onChannel:1];
+        }
+    }
 	
-	updateTimeInterval = timeInterval;
+	//updateTimeInterval = timeInterval;
 	
 	//	NSMutableIndexSet * rowIndexesChanged = [[NSMutableIndexSet alloc] init];
 	
