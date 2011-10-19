@@ -1,0 +1,3 @@
+[submodule "ofxCocoaPlugins/libs/openframeworks"]
+	path = ofxCocoaPlugins/libs/openframeworks
+	url = https://github.com/openframeworks/openFrameworks.git
