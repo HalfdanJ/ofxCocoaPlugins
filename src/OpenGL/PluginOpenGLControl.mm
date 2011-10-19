@@ -137,6 +137,11 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 	if(![plugin setupCalled]){
         glClearColor(0.0, 0.0, 0.0, 0.0);
         glClear(GL_COLOR_BUFFER_BIT);
+        
+        if([[globalController viewManager] numberOutputViews] == 0){
+            [plugin setup];
+            [plugin setSetupCalled:YES];
+        }
 	} else {		
         
         glClearColor(0.0, 0.0, 0.0, 0.0);
@@ -242,10 +247,10 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 -(void) mouseMoved:(NSEvent *)theEvent{
 	NSPoint curPoint = [self convertPoint:[theEvent locationInWindow] fromView:nil];
 	curPoint.y = [self frame].size.height - curPoint.y;
-	[[((PluginOpenGLControl*)[self layer]) plugin] setControlMouseFlags:[theEvent modifierFlags]]; 
-	[[((PluginOpenGLControl*)[self layer]) plugin] setControlMouseX: curPoint.x]; 
-	[[((PluginOpenGLControl*)[self layer]) plugin] setControlMouseY: curPoint.y];	
-	[[((PluginOpenGLControl*)[self layer]) plugin] controlMouseMoved:curPoint.x y:curPoint.y];
+	[[self plugin] setControlMouseFlags:[theEvent modifierFlags]]; 
+	[[self plugin] setControlMouseX: curPoint.x]; 
+	[[self plugin] setControlMouseY: curPoint.y];	
+	[[self plugin] controlMouseMoved:curPoint.x y:curPoint.y];
 	
 }
 
