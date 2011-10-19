@@ -13,7 +13,6 @@
 		DDA70006144F1CEE00F81C9E /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDA70005144F1CEE00F81C9E /* Cocoa.framework */; };
 		DDA70010144F1CEE00F81C9E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DDA7000E144F1CEE00F81C9E /* InfoPlist.strings */; };
 		DDA70012144F1CEE00F81C9E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DDA70011144F1CEE00F81C9E /* main.m */; };
-		DDA70016144F1CEE00F81C9E /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = DDA70014144F1CEE00F81C9E /* Credits.rtf */; };
 		DDA70019144F1CEE00F81C9E /* ExampleAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DDA70018144F1CEE00F81C9E /* ExampleAppDelegate.m */; };
 /* End PBXBuildFile section */
 
@@ -53,7 +52,6 @@
 		DDA7000F144F1CEE00F81C9E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		DDA70011144F1CEE00F81C9E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		DDA70013144F1CEE00F81C9E /* Example-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Example-Prefix.pch"; sourceTree = "<group>"; };
-		DDA70015144F1CEE00F81C9E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
 		DDA70017144F1CEE00F81C9E /* ExampleAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExampleAppDelegate.h; sourceTree = "<group>"; };
 		DDA70018144F1CEE00F81C9E /* ExampleAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExampleAppDelegate.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -124,7 +122,6 @@
 				DDA7000E144F1CEE00F81C9E /* InfoPlist.strings */,
 				DDA70011144F1CEE00F81C9E /* main.m */,
 				DDA70013144F1CEE00F81C9E /* Example-Prefix.pch */,
-				DDA70014144F1CEE00F81C9E /* Credits.rtf */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -204,7 +201,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				DDA70010144F1CEE00F81C9E /* InfoPlist.strings in Resources */,
-				DDA70016144F1CEE00F81C9E /* Credits.rtf in Resources */,
 				DD9EA902144F308F00E313C0 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -230,14 +226,6 @@
 				DDA7000F144F1CEE00F81C9E /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		DDA70014144F1CEE00F81C9E /* Credits.rtf */ = {
-			isa = PBXVariantGroup;
-			children = (
-				DDA70015144F1CEE00F81C9E /* en */,
-			);
-			name = Credits.rtf;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

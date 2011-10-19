@@ -1,0 +1,7 @@
+//
+// Prefix header for all source files of the 'ofxCocoaPlugins' target in the 'ofxCocoaPlugins' project
+//
+
+#ifdef __OBJC__
+    #import <Cocoa/Cocoa.h>
+#endif
