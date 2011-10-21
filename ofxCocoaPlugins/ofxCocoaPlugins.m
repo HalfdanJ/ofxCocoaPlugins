@@ -6,6 +6,7 @@
 //
 
 #import "ofxCocoaPlugins.h"
+#import <AppKit/AppKit.h>
 
 @implementation ofxCocoaPlugins
 

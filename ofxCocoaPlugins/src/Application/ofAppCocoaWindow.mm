@@ -1,11 +1,13 @@
-#import "GLee.h"
-#include <AppKit/AppKit.h>
 
 #include "ofAppCocoaWindow.h"
-#include "ofMain.h"
+//#include "ofMain.h"
+//#include <AppKit/AppKit.h>
 
-ofBaseApp * OFSAptrForCocoa = NULL;
-ofAppCocoaWindow * ofWindowPtr;
+static ofAppCocoaWindow * ofWindowPtr;
+
+/*ofAppCocoaWindow* appWindow() {
+    return ofWindowPtr;
+}*/
 
 /******** Constructor ************/
 
@@ -75,9 +77,8 @@ void  ofAppCocoaWindow::runAppViaInfiniteLoop(ofBaseApp * appPtr) {
 	
 	ofWindowPtr = this;
 	
-	OFSAptrForCocoa = appPtr;
-	OFSAptrForCocoa->mouseX = 0;
-	OFSAptrForCocoa->mouseY = 0;
+	ofGetAppPtr()->mouseX = 0;
+	ofGetAppPtr()->mouseY = 0;
 
 
  //   return NSApplicationMain(argc, (const char **)argv);
@@ -92,7 +93,7 @@ void ofAppCocoaWindow::setup( )
 }
 
 void ofAppCocoaWindow::update(){	
-	OFSAptrForCocoa->update();
+	ofGetAppPtr()->update();
 }
 
 void ofAppCocoaWindow::render(int width, int height){
@@ -106,30 +107,30 @@ void ofAppCocoaWindow::keyPressed(int key){
 		ofSetFullscreen(false);
 	}
 	
-	OFSAptrForCocoa->keyPressed(key);
+	ofGetAppPtr()->keyPressed(key);
 }
 
 void ofAppCocoaWindow::mousePressed(float x, float y, int button){
-	OFSAptrForCocoa->mousePressed(x, windowH-y, button);
-	OFSAptrForCocoa->mouseX = x;
-	OFSAptrForCocoa->mouseY = windowH-y;
+	ofGetAppPtr()->mousePressed(x, windowH-y, button);
+	ofGetAppPtr()->mouseX = x;
+	ofGetAppPtr()->mouseY = windowH-y;
 }
 
 void ofAppCocoaWindow::mouseDragged(float x, float y, int button){
-	OFSAptrForCocoa->mouseDragged(x, windowH-y, button);
-	OFSAptrForCocoa->mouseX = x;
-	OFSAptrForCocoa->mouseY = windowH-y;
+	ofGetAppPtr()->mouseDragged(x, windowH-y, button);
+	ofGetAppPtr()->mouseX = x;
+	ofGetAppPtr()->mouseY = windowH-y;
 }
 
 void ofAppCocoaWindow::mouseReleased(int button){
-	OFSAptrForCocoa->mouseReleased(OFSAptrForCocoa->mouseX, OFSAptrForCocoa->mouseY, button);
+	ofGetAppPtr()->mouseReleased(ofGetAppPtr()->mouseX, ofGetAppPtr()->mouseY, button);
 }
 
 
 void ofAppCocoaWindow::mouseMoved(float x, float y){
-	OFSAptrForCocoa->mouseMoved(x, windowH-y);
-	OFSAptrForCocoa->mouseX = x;
-	OFSAptrForCocoa->mouseY = windowH-y;
+	ofGetAppPtr()->mouseMoved(x, windowH-y);
+	ofGetAppPtr()->mouseX = x;
+	ofGetAppPtr()->mouseY = windowH-y;
 }
 
 
@@ -171,7 +172,7 @@ int	ofAppCocoaWindow::getWindowMode() {
 }
 
 float ofAppCocoaWindow::getFrameRate() {
-	return frameRate;
+	return (float)frameRate;
 }
 
 /******** Other stuff ************/

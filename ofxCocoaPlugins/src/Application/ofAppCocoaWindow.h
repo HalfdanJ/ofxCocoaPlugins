@@ -1,7 +1,9 @@
 #pragma once
 
 #include "ofAppBaseWindow.h"
-#include "AppController.h"
+//#include "AppController.h"
+#include "ofBaseApp.h"
+#include "ofAppRunner.h"
 
 
 class ofAppCocoaWindow : public ofAppBaseWindow{
@@ -46,6 +48,7 @@ public:
 	virtual void		mouseDragged(float x, float y, int button);
 	virtual void		mouseReleased(int button);
 	
+    
 	void setup(); //added
 	void update();
 	void render(int width, int height);
@@ -87,12 +90,12 @@ public:
 	int 			prevMillis;
 	int 			diffMillis;
 
-	float 			frameRate;
-	float			frameRateGoal;
+	double 			frameRate;
+	double			frameRateGoal;
 	int 			nonFullScreenX;
 	int 			nonFullScreenY;
 	
-	AppController * windowController;
+	//AppController * windowController;
 	
 
 };
