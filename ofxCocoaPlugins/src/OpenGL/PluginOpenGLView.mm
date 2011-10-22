@@ -1,16 +1,20 @@
 //Based on QTCoreVideo101 example by apple
+#import "ofAppCocoaWindow.h"
+#import "ofMain.h"
 
 #import "PluginOpenGLView.h"
 #import <OpenGL/gl.h>
+#import <OpenGL/OpenGL.h>
+#import <OpenGL/glext.h>
 #import <OpenGL/glu.h>
-#import <GLUT/glut.h>
 
-#import "ofAppCocoaWindow.h"
 #import "PluginManagerController.h"
 #import "OutputViewStats.h"
 
+//#include "ofAppRunner.h"
 
-extern ofAppBaseWindow * window;
+
+extern ofPtr<ofAppBaseWindow> window;
 
 
 //
@@ -116,25 +120,25 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
         NSOpenGLPFASampleBuffers, 1,
         NSOpenGLPFASamples, 4,
         
-        /*
-//		NSOpenGLPFAWindow,
-//		NSOpenGLPFAAccelerated,
-//		NSOpenGLPFADoubleBuffer,
-		NSOpenGLPFAPixelBuffer,
-		NSOpenGLPFASampleBuffers, (NSOpenGLPixelFormatAttribute)4,
-		NSOpenGLPFASamples, (NSOpenGLPixelFormatAttribute)4,
+//        
+////		NSOpenGLPFAWindow,
+////		NSOpenGLPFAAccelerated,
+////		NSOpenGLPFADoubleBuffer,
+//		NSOpenGLPFAPixelBuffer,
+//		NSOpenGLPFASampleBuffers, (NSOpenGLPixelFormatAttribute)4,
+//		NSOpenGLPFASamples, (NSOpenGLPixelFormatAttribute)4,
+//        
+//        kCGLPFAColorSize, 24,
+//		kCGLPFADepthSize, 16,
+//        
+//        NSOpenGLPFADoubleBuffer,
+//        NSOpenGLPFAAccelerated,
+//        NSOpenGLPFADepthSize, 24,
+//        NSOpenGLPFAStencilSize, 8,
+//        NSOpenGLPFASingleRenderer,
+//        NSOpenGLPFAScreenMask, CGDisplayIDToOpenGLDisplayMask(kCGDirectMainDisplay),
+//        NSOpenGLPFANoRecovery,
         
-        kCGLPFAColorSize, 24,
-		kCGLPFADepthSize, 16,
-        
-        NSOpenGLPFADoubleBuffer,
-        NSOpenGLPFAAccelerated,
-        NSOpenGLPFADepthSize, 24,
-        NSOpenGLPFAStencilSize, 8,
-        NSOpenGLPFASingleRenderer,
-        NSOpenGLPFAScreenMask, CGDisplayIDToOpenGLDisplayMask(kCGDirectMainDisplay),
-        NSOpenGLPFANoRecovery,
-*/        
         
         kCGLPFAAccelerated,
 		kCGLPFANoRecovery,
@@ -238,8 +242,7 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 			//			
 			glPushMatrix();
 			
-			((ofAppCocoaWindow*)window)->windowW = [self frame].size.width;
-			((ofAppCocoaWindow*)window)->windowH = [self frame].size.height;
+            ofSetWindowShape([self frame].size.width, [self frame].size.height);
 			
 			if(![controller isSetupCalled]){
 				[controller callSetup];
@@ -346,7 +349,7 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 -(void) setDisplayNumber:(id)sender{
 	CGDisplayCount		dspCount = 0;
 	CGDirectDisplayID *displays = nil;
-	dspCount = [viewManager getDisplayList:&displays];
+	dspCount = (CGDisplayCount) [viewManager getDisplayList:&displays];
 	
 	if([sender indexOfSelectedItem] == 0){
 		displayId = nil;

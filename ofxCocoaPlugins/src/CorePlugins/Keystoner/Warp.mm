@@ -47,7 +47,7 @@ Warp::GetClosestCorner(float x, float y)
 	float fDistMin = 1000;
 	float fDist;
 	int iCorner = 0;
-	ofxPoint2f vPos(x, y);
+	ofVec2f vPos(x, y);
 
 	for (int i = 0; i < 4; ++i)
 	{
@@ -136,7 +136,7 @@ Warp::MatrixMultiply()
 }
 
 
-ofxPoint2f	Warp::convertPoint(ofxPoint2f point){
+ofVec2f	Warp::convertPoint(ofVec2f point){
 	double pts[] = {point.x,point.y};
 	CvMat foundRect = cvMat(1, 1, CV_64FC2, pts);		
 	
@@ -144,5 +144,5 @@ ofxPoint2f	Warp::convertPoint(ofxPoint2f point){
 	
 	float *matrix = foundRect.data.fl;
 	cout<<"In: "<<point.x<<", "<<point.y<<"  Out: "<<matrix[0]<<","<<matrix[1]<<endl;
-    return ofxPoint2f(matrix[0],matrix[1]);
+    return ofVec2f(matrix[0],matrix[1]);
 }

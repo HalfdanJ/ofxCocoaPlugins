@@ -48,11 +48,11 @@
 	}
 	
 	warp->MatrixCalculate();
-	ofxPoint2f a[4];
-	a[0] = ofxPoint2f(0,0);
-	a[1] = ofxPoint2f(1,0);
-	a[2] = ofxPoint2f(1,1);
-	a[3] = ofxPoint2f(0,1);
+	ofVec2f a[4];
+	a[0] = ofVec2f(0,0);
+	a[1] = ofVec2f(1,0);
+	a[2] = ofVec2f(1,1);
+	a[3] = ofVec2f(0,1);
 	coordWarp->calculateMatrix(a, warp->corners);
 	
 }
@@ -318,14 +318,14 @@
 	[self didChangeValueForKey:@"cornerPositions"];
 }
 
--(ofxPoint2f) convertToProjection:(ofxPoint2f)p{
+-(ofVec2f) convertToProjection:(ofVec2f)p{
 	p.x /= [aspect floatValue];
-	ofxPoint2f r = (ofxPoint2f) coordWarp->transform(p.x, p.y);
+	ofVec2f r = (ofVec2f) coordWarp->transform(p.x, p.y);
 	return r;
 }
 
--(ofxPoint2f) convertFromProjection:(ofxPoint2f)p{
-	ofxPoint2f r = coordWarp->inversetransform(p.x, p.y);
+-(ofVec2f) convertFromProjection:(ofVec2f)p{
+	ofVec2f r = coordWarp->inversetransform(p.x, p.y);
 	r.x *= [aspect floatValue];
 	//r.y = p.y;
 	return r;

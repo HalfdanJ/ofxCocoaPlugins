@@ -6,16 +6,16 @@
 -(id) init{
 	if([super init]){
 		timeoutCounter = 0;
-		centroid = new ofxPoint2f;
-		lastcentroid = new ofxPoint2f;
-		centroidV = new ofxVec2f;
+		centroid = new ofVec2f;
+		lastcentroid = new ofVec2f;
+		centroidV = new ofVec2f;
 		blobs = [[NSMutableArray array] retain];
 	}
 	return self;
 }
 
--(ofxPoint2f) getLowestPoint{
-	ofxPoint2f low;
+-(ofVec2f) getLowestPoint{
+	ofVec2f low;
 	Blob2d * blob;
 	for(blob in blobs){
 		if([blob getLowestPoint].y > low.y){
@@ -68,7 +68,7 @@
 }
 
 
--(ofxPoint2f) getLowestPoint{
+-(ofVec2f) getLowestPoint{
 	
 	if(low)
 		return *low;
@@ -79,7 +79,7 @@
 					low->x = [self pts][u].x;
 					low->y = [self pts][u].y;
 				} else {
-					low = new ofxPoint2f([self pts][u]);
+					low = new ofVec2f([self pts][u]);
 				}
 			}
 		}
@@ -136,7 +136,7 @@
 /*-(void) lensCorrect{
 	Lenses * lenses = GetPlugin(Lenses);
 	for(int i=0;i<blob->nPts;i++){
-		blob->pts[i] = [lenses undistortPoint:(ofxPoint2f)blob->pts[i] fromCameraId:cameraId];
+		blob->pts[i] = [lenses undistortPoint:(ofVec2f)blob->pts[i] fromCameraId:cameraId];
 	}
 	blob->centroid = [lenses undistortPoint:blob->centroid fromCameraId:cameraId];
 	

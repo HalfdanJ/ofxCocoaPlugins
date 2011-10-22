@@ -1,11 +1,4 @@
-//
-//  NumberProperty.h
-//  loadnloop
-//
-//  Created by LoadNLoop on 24/03/10.
-//  Copyright 2010 __MyCompanyName__. All rights reserved.
-//
-#include "GLee.h"
+#include "GL/glew.h"
 
 #import <Cocoa/Cocoa.h>
 #import <ScriptingBridge/ScriptingBridge.h>

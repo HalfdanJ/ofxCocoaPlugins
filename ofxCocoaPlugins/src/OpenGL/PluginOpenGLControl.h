@@ -8,9 +8,9 @@
 
 #import <Cocoa/Cocoa.h>
 #import <QuartzCore/QuartzCore.h>
-#import "Plugin.h"
 
 @class PluginManagerController;
+@class ofPlugin;
 
 extern PluginManagerController * globalController;
 
@@ -29,6 +29,9 @@ extern PluginManagerController * globalController;
 @property (retain) PluginManagerController * controller;
 @property (retain) NSMutableDictionary * drawingInformation;
 @property (retain) ofPlugin * plugin;
+
+- (CVReturn)getFrameForTime:(CFTimeInterval)timeInterval displayTime:(const CVTimeStamp *)outputTime;
+
 @end
 
 

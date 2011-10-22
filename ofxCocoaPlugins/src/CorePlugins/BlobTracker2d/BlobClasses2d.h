@@ -2,16 +2,16 @@
 
 #include "Plugin.h"
 #include "ofxOpenCv.h"
-#include "ofxVectorMath.h"
+#include "ofVectorMath.h"
 #import "Keystoner.h"
 
 @interface PersistentBlob2d : NSObject
 {
 @public
 	long unsigned int pid;
-	ofxPoint2f * centroid;
-	ofxPoint2f * lastcentroid;
-	ofxVec2f   * centroidV;
+	ofVec2f * centroid;
+	ofVec2f * lastcentroid;
+	ofVec2f   * centroidV;
 	
 	
 	int timeoutCounter;
@@ -20,7 +20,7 @@
 }
 @property (assign) NSMutableArray * blobs;
 
--(ofxPoint2f) getLowestPoint;
+-(ofVec2f) getLowestPoint;
 -(void) dealloc;
 
 @end
@@ -31,7 +31,7 @@
 	ofxCvBlob * blob;
 	ofxCvBlob * originalblob;
 	//ofxCvBlob * floorblob;
-	ofxPoint2f * low;
+	ofVec2f * low;
     
     coordWarping * coordWarp;
 	
@@ -59,7 +59,7 @@
 -(ofRectangle) boundingRect;
 -(BOOL) hole;
 
--(ofxPoint2f) getLowestPoint;
+-(ofVec2f) getLowestPoint;
 
 
 

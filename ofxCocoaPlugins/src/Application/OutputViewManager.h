@@ -1,5 +1,5 @@
 #pragma once
-#import "GLee.h"
+#include "GL/glew.h"
 
 #import <Cocoa/Cocoa.h>
 #import "PluginOpenGLView.h"

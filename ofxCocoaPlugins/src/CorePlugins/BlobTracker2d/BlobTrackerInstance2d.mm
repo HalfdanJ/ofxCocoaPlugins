@@ -217,7 +217,7 @@
         
         //Clear blobs
         for(pblob in persistentBlobs){
-            ofxPoint2f p = pblob->centroid - pblob->lastcentroid;
+            ofVec2f p = pblob->centroid - pblob->lastcentroid;
             pblob->centroidV->x = p.x;
             pblob->centroidV->y = p.y;
             pblob->lastcentroid = pblob->centroid ;
@@ -269,9 +269,9 @@
                 surface = [kinect surface];
             }
             
-            ofxPoint2f centroid = ofxPoint2f([blob centroid].x, [blob centroid].y);
-            //				ofxPoint2f floorCentroid = [GetPlugin(ProjectionSurfaces) convertPoint:centroid fromProjection:"Front" surface:"Floor"];
-            ofxPoint2f floorCentroid = [surface convertFromProjection:centroid];
+            ofVec2f centroid = ofVec2f([blob centroid].x, [blob centroid].y);
+            //				ofVec2f floorCentroid = [GetPlugin(ProjectionSurfaces) convertPoint:centroid fromProjection:"Front" surface:"Floor"];
+            ofVec2f floorCentroid = [surface convertFromProjection:centroid];
             
             //Går igennem alle grupper for at finde den nærmeste gruppe som blobben kan tilhøre
             //Magisk høj dist: 0.3
@@ -289,9 +289,9 @@
              }*/
             if(!blobFound){						
                 for(int u=0;u<[persistentBlobs count];u++){
-                    //						ofxPoint2f centroidPoint = [GetPlugin(ProjectionSurfaces) convertPoint:*((PersistentBlob*)[persistentBlobs objectAtIndex:u])->centroid fromProjection:"Front" surface:"Floor"];
+                    //						ofVec2f centroidPoint = [GetPlugin(ProjectionSurfaces) convertPoint:*((PersistentBlob*)[persistentBlobs objectAtIndex:u])->centroid fromProjection:"Front" surface:"Floor"];
                     
-                    ofxPoint2f centroidPoint = [surface convertFromProjection:*((PersistentBlob2d*)[persistentBlobs objectAtIndex:u])->centroid];
+                    ofVec2f centroidPoint = [surface convertFromProjection:*((PersistentBlob2d*)[persistentBlobs objectAtIndex:u])->centroid];
                     float dist = floorCentroid.distance(centroidPoint);
                     if(dist < persistentDistance && (dist < shortestDist || bestId == -1)){
                         bestId = u;
@@ -314,7 +314,7 @@
                 //regner centroid ud fra alle blobs i den
                 bestBlob->centroid->set(0, 0);
                 for(int g=0;g<[bestBlob->blobs count];g++){
-                    ofxPoint2f blobCentroid = ofxPoint2f([[bestBlob->blobs objectAtIndex:g] centroid].x, [[bestBlob->blobs objectAtIndex:g] centroid].y);
+                    ofVec2f blobCentroid = ofVec2f([[bestBlob->blobs objectAtIndex:g] centroid].x, [[bestBlob->blobs objectAtIndex:g] centroid].y);
                     *bestBlob->centroid += blobCentroid;					
                 }
                 *bestBlob->centroid /= (float)[bestBlob->blobs count];
@@ -402,7 +402,7 @@
 		for(Blob2d * b in [blob blobs]){
 			glBegin(GL_LINE_STRIP);
             for(int i=0;i<[b nPts];i++){
-				ofxVec2f p = [b pts][i];
+				ofVec2f p = [b pts][i];
 				//				p = [GetPlugin(ProjectionSurfaces) convertPoint:[b pts][i] fromProjection:"Front" surface:"Floor"];
 
                 if(!warp)

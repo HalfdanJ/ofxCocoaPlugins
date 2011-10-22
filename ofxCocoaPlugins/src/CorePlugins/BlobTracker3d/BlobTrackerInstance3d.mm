@@ -84,7 +84,7 @@
         
         //Clear blobs
         for(PersistentBlob * pblob in persistentBlobs){
-            ofxPoint2f p = pblob->centroid - pblob->lastcentroid;
+            ofVec2f p = pblob->centroid - pblob->lastcentroid;
             pblob->centroidV->x = p.x;
             pblob->centroidV->y = p.y;
             pblob->lastcentroid = pblob->centroid ;
@@ -99,7 +99,7 @@
             
             ofxPoint3f centroid = ofxPoint3f([blob centroid].x*640, [blob centroid].y*480, [blob avgDepth]);
             ofxPoint3f surfaceCentroid3 = [self convertWorldToSurface:[self convertKinectToWorld:centroid]];
-            ofxPoint2f surfaceCentroid = ofxPoint2f(surfaceCentroid3.x, surfaceCentroid3.z);
+            ofVec2f surfaceCentroid = ofVec2f(surfaceCentroid3.x, surfaceCentroid3.z);
             
             //Går igennem alle grupper for at finde den nærmeste gruppe som blobben kan tilhøre
             //Magisk høj dist: 0.3
@@ -107,8 +107,8 @@
             
             if(!blobFound){						
                 for(int u=0;u<[persistentBlobs count];u++){
-                    //						ofxPoint2f centroidPoint = [GetPlugin(ProjectionSurfaces) convertPoint:*((PersistentBlob*)[persistentBlobs objectAtIndex:u])->centroid fromProjection:"Front" surface:"Floor"];
-                    ofxPoint2f centroidPoint = *((PersistentBlob*)[persistentBlobs objectAtIndex:u])->centroid;
+                    //						ofVec2f centroidPoint = [GetPlugin(ProjectionSurfaces) convertPoint:*((PersistentBlob*)[persistentBlobs objectAtIndex:u])->centroid fromProjection:"Front" surface:"Floor"];
+                    ofVec2f centroidPoint = *((PersistentBlob*)[persistentBlobs objectAtIndex:u])->centroid;
                     float dist = surfaceCentroid.distance(centroidPoint);
                     if(dist < PropF(@"persistentDist") && (dist < shortestDist || bestId == -1)){
                         bestId = u;
@@ -134,7 +134,7 @@
                 for(int g=0;g<[bestBlob->blobs count];g++){
                     ofxPoint3f kinectCentroid = ofxPoint3f([[bestBlob->blobs objectAtIndex:g] centroid].x*640, [[bestBlob->blobs objectAtIndex:g] centroid].y*480, [[bestBlob->blobs objectAtIndex:g] avgDepth]);
                     ofxPoint3f blobCentroid3 = [self convertWorldToSurface:[self convertKinectToWorld:kinectCentroid]];
-                    ofxPoint2f blobCentroid = ofxPoint2f(blobCentroid3.x, blobCentroid3.z);
+                    ofVec2f blobCentroid = ofVec2f(blobCentroid3.x, blobCentroid3.z);
                     *bestBlob->centroid += blobCentroid;					
                 }
                 *bestBlob->centroid /= (float)[bestBlob->blobs count];
@@ -282,7 +282,7 @@
                                 avg /= (float)blob->pts.size();
                                 [blobObj setAvgDepth:avg];
                                 
-                                ofxPoint2f p = [blobObj getLowestPoint];
+                                ofVec2f p = [blobObj getLowestPoint];
                                 ofxPoint3f p3 = [self convertWorldToSurface:[self convertKinectToWorld:ofxPoint3f(p.x*640,p.y*480,avg)]];
                                 if(p3.y > ymin && p3.y < ymax){								
                                     [threadBlobs addObject:blobObj];							

@@ -1,4 +1,4 @@
-#include "GLee.h"
+#include "GL/glew.h"
 
 #import <Cocoa/Cocoa.h>
 #include "PluginProperty.h"

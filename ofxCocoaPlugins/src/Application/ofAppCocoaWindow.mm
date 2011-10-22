@@ -1,5 +1,6 @@
 
 #include "ofAppCocoaWindow.h"
+
 //#include "ofMain.h"
 //#include <AppKit/AppKit.h>
 
@@ -143,10 +144,8 @@ void ofAppCocoaWindow::setWindowPosition(int x, int y) {
 }
 
 void ofAppCocoaWindow::setWindowShape(int w, int h) {
-	requestedWidth  = w;
-	requestedHeight = h;
-	bNewScreenSize = true;
-	
+    windowW = w;
+    windowH = h;
 }
 
 

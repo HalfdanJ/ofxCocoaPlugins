@@ -1,9 +1,20 @@
-#include "GLee.h"
 
-#import <OpenGL/OpenGL.h>
-#import "PluginOpenGLControl.h"
-extern ofAppBaseWindow * window;
 #import "ofAppCocoaWindow.h"
+#import "ofMain.h"
+
+//#import "PluginOpenGLView.h"
+//#import <OpenGL/gl.h>
+//#import <OpenGL/OpenGL.h>
+//#import <OpenGL/glext.h>
+//#import <OpenGL/glu.h>
+
+#import "PluginOpenGLControl.h"
+
+#include "ofAppRunner.h"
+
+//extern ofAppBaseWindow * window;
+
+//#import "Plugin.h"
 
 
 @implementation PluginOpenGLControlView
@@ -13,7 +24,7 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 									  const CVTimeStamp *outputTime, CVOptionFlags flagsIn,
 									  CVOptionFlags *flagsOut, void *displayLinkContext)
 {
-	return [(PluginOpenGLView *)displayLinkContext getFrameForTime:((now->videoTime*1.0)/now->videoTimeScale) displayTime:outputTime];
+	return [(PluginOpenGLControlView *)displayLinkContext getFrameForTime:((now->videoTime*1.0)/now->videoTimeScale) displayTime:outputTime];
 }
 
 -(void) awakeFromNib{
@@ -151,18 +162,16 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 		glPushMatrix();
 		glTranslated(-1, 1, 0);
 		glScaled(2.0/[self frame].size.width, -2.0/[self frame].size.height, 1);
-		int tmpW = ((ofAppCocoaWindow*)window)->windowW;
-		int tmpH = ((ofAppCocoaWindow*)window)->windowH;
+        
+        ofPoint tmpSize = ofGetWindowSize();
 		
-		((ofAppCocoaWindow*)window)->windowW = [self frame].size.width;
-		((ofAppCocoaWindow*)window)->windowH = [self frame].size.height;
+        ofSetWindowShape([self frame].size.width, [self frame].size.height);
 		
 		ofSetupScreen();
 		
 		[plugin controlDraw:drawingInformation];
 		
-		((ofAppCocoaWindow*)window)->windowW = tmpW;
-		((ofAppCocoaWindow*)window)->windowH = tmpH;
+        ofSetWindowShape(tmpSize.x, tmpSize.y);
 		
 		glPopMatrix();		
 	}

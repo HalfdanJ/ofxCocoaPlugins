@@ -2,10 +2,10 @@
 <archive type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="8.00">
 	<data>
 		<int key="IBDocument.SystemTarget">1070</int>
-		<string key="IBDocument.SystemVersion">11B26</string>
+		<string key="IBDocument.SystemVersion">11C74</string>
 		<string key="IBDocument.InterfaceBuilderVersion">1617</string>
-		<string key="IBDocument.AppKitVersion">1138</string>
-		<string key="IBDocument.HIToolboxVersion">566.00</string>
+		<string key="IBDocument.AppKitVersion">1138.23</string>
+		<string key="IBDocument.HIToolboxVersion">567.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaPlugin</string>
 			<string key="NS.object.0">1617</string>
@@ -227,7 +227,7 @@
 							<nil key="NSToolbarItemView"/>
 							<object class="NSCustomResource" key="NSToolbarItemImage">
 								<string key="NSClassName">NSImage</string>
-								<string key="NSResourceName">NSToolbarShowColorsItemImage</string>
+								<string key="NSResourceName">NSToolbarShowColors</string>
 							</object>
 							<nil key="NSToolbarItemTarget"/>
 							<string key="NSToolbarItemAction">orderFrontColorPanel:</string>
@@ -247,7 +247,7 @@
 							<nil key="NSToolbarItemView"/>
 							<object class="NSCustomResource" key="NSToolbarItemImage">
 								<string key="NSClassName">NSImage</string>
-								<string key="NSResourceName">NSToolbarShowFontsItemImage</string>
+								<string key="NSResourceName">NSToolbarShowFonts</string>
 							</object>
 							<nil key="NSToolbarItemTarget"/>
 							<string key="NSToolbarItemAction">orderFrontFontPanel:</string>
@@ -920,7 +920,7 @@
 																			<int key="NSvFlags">4352</int>
 																			<string key="NSFrameSize">{552, 205}</string>
 																			<reference key="NSSuperview" ref="56426648"/>
-																			<reference key="NSNextKeyView" ref="713565026"/>
+																			<reference key="NSNextKeyView" ref="337731750"/>
 																			<int key="NSViewLayerContentsRedrawPolicy">2</int>
 																			<bool key="NSEnabled">YES</bool>
 																			<object class="NSTableHeaderView" key="NSHeaderView" id="878935289">
@@ -932,10 +932,11 @@
 																				<int key="NSViewLayerContentsRedrawPolicy">2</int>
 																				<reference key="NSTableView" ref="156568582"/>
 																			</object>
-																			<object class="_NSCornerView" key="NSCornerView">
-																				<nil key="NSNextResponder"/>
+																			<object class="_NSCornerView" key="NSCornerView" id="145808714">
+																				<reference key="NSNextResponder" ref="995728483"/>
 																				<int key="NSvFlags">-2147483392</int>
 																				<string key="NSFrame">{{517, 0}, {16, 17}}</string>
+																				<reference key="NSSuperview" ref="995728483"/>
 																				<reference key="NSNextKeyView" ref="56426648"/>
 																				<int key="NSViewLayerContentsRedrawPolicy">2</int>
 																			</object>
@@ -1389,16 +1390,18 @@
 																	<reference key="NSBGColor" ref="624059531"/>
 																	<int key="NScvFlags">4</int>
 																</object>
+																<reference ref="145808714"/>
 															</array>
 															<string key="NSFrameSize">{552, 222}</string>
 															<reference key="NSSuperview" ref="197331361"/>
-															<reference key="NSNextKeyView" ref="337731750"/>
+															<reference key="NSNextKeyView" ref="56426648"/>
 															<int key="NSViewLayerContentsRedrawPolicy">2</int>
 															<int key="NSsFlags">133680</int>
 															<reference key="NSVScroller" ref="577278233"/>
 															<reference key="NSHScroller" ref="713565026"/>
 															<reference key="NSContentView" ref="56426648"/>
 															<reference key="NSHeaderClipView" ref="337731750"/>
+															<reference key="NSCornerView" ref="145808714"/>
 															<bytes key="NSScrollAmts">QSAAAEEgAABBmAAAQZgAAA</bytes>
 														</object>
 													</array>
@@ -1468,7 +1471,6 @@
 																	<int key="NSvFlags">-2147483392</int>
 																	<string key="NSFrame">{{531, 0}, {15, 257}}</string>
 																	<reference key="NSSuperview" ref="362889845"/>
-																	<reference key="NSNextKeyView"/>
 																	<reference key="NSTarget" ref="362889845"/>
 																	<string key="NSAction">_doScroller:</string>
 																	<double key="NSCurValue">1</double>
@@ -1526,7 +1528,7 @@
 					<reference key="NSNextKeyView" ref="612750560"/>
 					<int key="NSViewLayerContentsRedrawPolicy">2</int>
 				</object>
-				<string key="NSScreenRect">{{0, 0}, {1920, 1058}}</string>
+				<string key="NSScreenRect">{{0, 0}, {1440, 878}}</string>
 				<string key="NSMinSize">{900, 441}</string>
 				<string key="NSMaxSize">{10000000000000, 10000000000000}</string>
 				<string key="NSFrameAutosaveName">MainWindow</string>
@@ -2374,7 +2376,7 @@
 					<string key="NSFrameSize">{350, 487}</string>
 					<reference key="NSNextKeyView" ref="811127690"/>
 				</object>
-				<string key="NSScreenRect">{{0, 0}, {1920, 1058}}</string>
+				<string key="NSScreenRect">{{0, 0}, {1440, 878}}</string>
 				<string key="NSMaxSize">{10000000000000, 10000000000000}</string>
 				<bool key="NSWindowIsRestorable">YES</bool>
 			</object>
@@ -6424,431 +6426,7 @@
 			<nil key="sourceID"/>
 			<int key="maxID">1727</int>
 		</object>
-		<object class="IBClassDescriber" key="IBDocument.Classes">
-			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
-				<object class="IBPartialClassDescription">
-					<string key="className">AppController</string>
-					<string key="superclassName">NSObject</string>
-					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="mainView">NSView</string>
-						<string key="pluginManagerController">PluginManagerController</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="mainView">
-							<string key="name">mainView</string>
-							<string key="candidateClassName">NSView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="pluginManagerController">
-							<string key="name">pluginManagerController</string>
-							<string key="candidateClassName">PluginManagerController</string>
-						</object>
-					</dictionary>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/AppController.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">MainWindow</string>
-					<string key="superclassName">NSWindow</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/MainWindow.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">NSDocument</string>
-					<dictionary class="NSMutableDictionary" key="actions">
-						<string key="printDocument:">id</string>
-						<string key="revertDocumentToSaved:">id</string>
-						<string key="runPageLayout:">id</string>
-						<string key="saveDocument:">id</string>
-						<string key="saveDocumentAs:">id</string>
-						<string key="saveDocumentTo:">id</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="actionInfosByName">
-						<object class="IBActionInfo" key="printDocument:">
-							<string key="name">printDocument:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="revertDocumentToSaved:">
-							<string key="name">revertDocumentToSaved:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="runPageLayout:">
-							<string key="name">runPageLayout:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="saveDocument:">
-							<string key="name">saveDocument:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="saveDocumentAs:">
-							<string key="name">saveDocumentAs:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="saveDocumentTo:">
-							<string key="name">saveDocumentTo:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-					</dictionary>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/NSDocument.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">OutputViewManager</string>
-					<string key="superclassName">NSObject</string>
-					<object class="NSMutableDictionary" key="actions">
-						<string key="NS.key.0">pressFullscreenButton:</string>
-						<string key="NS.object.0">id</string>
-					</object>
-					<object class="NSMutableDictionary" key="actionInfosByName">
-						<string key="NS.key.0">pressFullscreenButton:</string>
-						<object class="IBActionInfo" key="NS.object.0">
-							<string key="name">pressFullscreenButton:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-					</object>
-					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="controller">PluginManagerController</string>
-						<string key="toolbarFullscreenItem">NSToolbarItem</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="controller">
-							<string key="name">controller</string>
-							<string key="candidateClassName">PluginManagerController</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="toolbarFullscreenItem">
-							<string key="name">toolbarFullscreenItem</string>
-							<string key="candidateClassName">NSToolbarItem</string>
-						</object>
-					</dictionary>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/OutputViewManager.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">PluginControlView</string>
-					<string key="superclassName">NSView</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/PluginControlView.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">PluginEnabledCell</string>
-					<string key="superclassName">NSButtonCell</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/PluginEnabledCell.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">PluginManagerController</string>
-					<string key="superclassName">NSObject</string>
-					<dictionary class="NSMutableDictionary" key="actions">
-						<string key="changePlugin:">id</string>
-						<string key="hideGraphView:">id</string>
-						<string key="pressToggleParametersButton:">id</string>
-						<string key="showGraphView:">id</string>
-						<string key="toggleGraphView:">id</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="actionInfosByName">
-						<object class="IBActionInfo" key="changePlugin:">
-							<string key="name">changePlugin:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="hideGraphView:">
-							<string key="name">hideGraphView:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="pressToggleParametersButton:">
-							<string key="name">pressToggleParametersButton:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="showGraphView:">
-							<string key="name">showGraphView:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="toggleGraphView:">
-							<string key="name">toggleGraphView:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="graphPanel">NSPanel</string>
-						<string key="mainWindow">MainWindow</string>
-						<string key="pluginControllerView">NSView</string>
-						<string key="pluginMeterColumn">NSTableColumn</string>
-						<string key="pluginPropertiesController">NSDictionaryController</string>
-						<string key="pluginPropertiesView">NSView</string>
-						<string key="pluginSplitView">NSSplitView</string>
-						<string key="pluginTitleView">NSBox</string>
-						<string key="pluginsOutlineView">NSOutlineView</string>
-						<string key="pluginsTreeController">NSTreeController</string>
-						<string key="propertiesControlColumn">NSTableColumn</string>
-						<string key="propertiesValueColumn">NSTableColumn</string>
-						<string key="qlabController">QLabController</string>
-						<string key="saveManager">SaveManager</string>
-						<string key="statsAreaView">NSView</string>
-						<string key="testApp">AppController</string>
-						<string key="toolbar">NSToolbar</string>
-						<string key="toolbarGraphItem">NSToolbarItem</string>
-						<string key="viewManager">OutputViewManager</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="graphPanel">
-							<string key="name">graphPanel</string>
-							<string key="candidateClassName">NSPanel</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="mainWindow">
-							<string key="name">mainWindow</string>
-							<string key="candidateClassName">MainWindow</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="pluginControllerView">
-							<string key="name">pluginControllerView</string>
-							<string key="candidateClassName">NSView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="pluginMeterColumn">
-							<string key="name">pluginMeterColumn</string>
-							<string key="candidateClassName">NSTableColumn</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="pluginPropertiesController">
-							<string key="name">pluginPropertiesController</string>
-							<string key="candidateClassName">NSDictionaryController</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="pluginPropertiesView">
-							<string key="name">pluginPropertiesView</string>
-							<string key="candidateClassName">NSView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="pluginSplitView">
-							<string key="name">pluginSplitView</string>
-							<string key="candidateClassName">NSSplitView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="pluginTitleView">
-							<string key="name">pluginTitleView</string>
-							<string key="candidateClassName">NSBox</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="pluginsOutlineView">
-							<string key="name">pluginsOutlineView</string>
-							<string key="candidateClassName">NSOutlineView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="pluginsTreeController">
-							<string key="name">pluginsTreeController</string>
-							<string key="candidateClassName">NSTreeController</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="propertiesControlColumn">
-							<string key="name">propertiesControlColumn</string>
-							<string key="candidateClassName">NSTableColumn</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="propertiesValueColumn">
-							<string key="name">propertiesValueColumn</string>
-							<string key="candidateClassName">NSTableColumn</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="qlabController">
-							<string key="name">qlabController</string>
-							<string key="candidateClassName">QLabController</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="saveManager">
-							<string key="name">saveManager</string>
-							<string key="candidateClassName">SaveManager</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="statsAreaView">
-							<string key="name">statsAreaView</string>
-							<string key="candidateClassName">NSView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="testApp">
-							<string key="name">testApp</string>
-							<string key="candidateClassName">AppController</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="toolbar">
-							<string key="name">toolbar</string>
-							<string key="candidateClassName">NSToolbar</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="toolbarGraphItem">
-							<string key="name">toolbarGraphItem</string>
-							<string key="candidateClassName">NSToolbarItem</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="viewManager">
-							<string key="name">viewManager</string>
-							<string key="candidateClassName">OutputViewManager</string>
-						</object>
-					</dictionary>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/PluginManagerController.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">PropertiesValueCell</string>
-					<string key="superclassName">NSTextFieldCell</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/PropertiesValueCell.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">QLabController</string>
-					<string key="superclassName">NSObject</string>
-					<dictionary class="NSMutableDictionary" key="actions">
-						<string key="cancel:">id</string>
-						<string key="go:">id</string>
-						<string key="setUpdateChecked:">id</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="actionInfosByName">
-						<object class="IBActionInfo" key="cancel:">
-							<string key="name">cancel:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="go:">
-							<string key="name">go:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="setUpdateChecked:">
-							<string key="name">setUpdateChecked:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="cancelButton">NSButton</string>
-						<string key="nextEnd">NSTextField</string>
-						<string key="nextName">NSTextField</string>
-						<string key="nextStart">NSTextField</string>
-						<string key="nextUpdateButton">NSButton</string>
-						<string key="okButton">NSButton</string>
-						<string key="panel">NSPanel</string>
-						<string key="prevEnd">NSTextField</string>
-						<string key="prevName">NSTextField</string>
-						<string key="prevStart">NSTextField</string>
-						<string key="takeButton">NSButton</string>
-						<string key="thisEnd">NSTextField</string>
-						<string key="thisName">NSTextField</string>
-						<string key="thisStart">NSTextField</string>
-						<string key="updateCheck">NSButton</string>
-						<string key="zeroButton">NSButton</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="cancelButton">
-							<string key="name">cancelButton</string>
-							<string key="candidateClassName">NSButton</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="nextEnd">
-							<string key="name">nextEnd</string>
-							<string key="candidateClassName">NSTextField</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="nextName">
-							<string key="name">nextName</string>
-							<string key="candidateClassName">NSTextField</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="nextStart">
-							<string key="name">nextStart</string>
-							<string key="candidateClassName">NSTextField</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="nextUpdateButton">
-							<string key="name">nextUpdateButton</string>
-							<string key="candidateClassName">NSButton</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="okButton">
-							<string key="name">okButton</string>
-							<string key="candidateClassName">NSButton</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="panel">
-							<string key="name">panel</string>
-							<string key="candidateClassName">NSPanel</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="prevEnd">
-							<string key="name">prevEnd</string>
-							<string key="candidateClassName">NSTextField</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="prevName">
-							<string key="name">prevName</string>
-							<string key="candidateClassName">NSTextField</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="prevStart">
-							<string key="name">prevStart</string>
-							<string key="candidateClassName">NSTextField</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="takeButton">
-							<string key="name">takeButton</string>
-							<string key="candidateClassName">NSButton</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="thisEnd">
-							<string key="name">thisEnd</string>
-							<string key="candidateClassName">NSTextField</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="thisName">
-							<string key="name">thisName</string>
-							<string key="candidateClassName">NSTextField</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="thisStart">
-							<string key="name">thisStart</string>
-							<string key="candidateClassName">NSTextField</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="updateCheck">
-							<string key="name">updateCheck</string>
-							<string key="candidateClassName">NSButton</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="zeroButton">
-							<string key="name">zeroButton</string>
-							<string key="candidateClassName">NSButton</string>
-						</object>
-					</dictionary>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/QLabController.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">SaveManager</string>
-					<string key="superclassName">NSObject</string>
-					<dictionary class="NSMutableDictionary" key="actions">
-						<string key="loadDataFromDisk:">id</string>
-						<string key="loadLastDataFromDisk:">id</string>
-						<string key="saveAsDataToDisk:">id</string>
-						<string key="saveDataToDisk:">id</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="actionInfosByName">
-						<object class="IBActionInfo" key="loadDataFromDisk:">
-							<string key="name">loadDataFromDisk:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="loadLastDataFromDisk:">
-							<string key="name">loadLastDataFromDisk:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="saveAsDataToDisk:">
-							<string key="name">saveAsDataToDisk:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="saveDataToDisk:">
-							<string key="name">saveDataToDisk:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="controller">PluginManagerController</string>
-						<string key="pluginsTreeController">NSTreeController</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="controller">
-							<string key="name">controller</string>
-							<string key="candidateClassName">PluginManagerController</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="pluginsTreeController">
-							<string key="name">pluginsTreeController</string>
-							<string key="candidateClassName">NSTreeController</string>
-						</object>
-					</dictionary>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/SaveManager.h</string>
-					</object>
-				</object>
-			</array>
-		</object>
+		<object class="IBClassDescriber" key="IBDocument.Classes"/>
 		<int key="IBDocument.localizationMode">0</int>
 		<string key="IBDocument.TargetRuntimeIdentifier">IBCocoaFramework</string>
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
@@ -6864,8 +6442,8 @@
 			<string key="NSSwitch">{15, 15}</string>
 			<string key="NSToolbarCustomizeToolbarItemImage">{32, 32}</string>
 			<string key="NSToolbarPrint">{32, 32}</string>
-			<string key="NSToolbarShowColorsItemImage">{32, 32}</string>
-			<string key="NSToolbarShowFontsItemImage">{32, 32}</string>
+			<string key="NSToolbarShowColors">{32, 32}</string>
+			<string key="NSToolbarShowFonts">{32, 32}</string>
 		</dictionary>
 	</data>
 </archive>

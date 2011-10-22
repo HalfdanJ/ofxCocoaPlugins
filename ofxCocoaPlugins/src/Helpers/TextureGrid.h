@@ -9,12 +9,12 @@ public:
     
     
     coordWarping * warper1, *warper2;
-    void drawTextureGrid(ofTexture * tex, ofxPoint2f * polygon, ofxPoint2f * textureCorners, int gridSize){
-        ofxPoint2f ref[4];
-        ref[0] = ofxPoint2f(0.0,0.0);
-        ref[1] = ofxPoint2f(1.0,0.0);
-        ref[2] = ofxPoint2f(1.0,1.0);
-        ref[3] = ofxPoint2f(0.0,1.0);
+    void drawTextureGrid(ofTexture * tex, ofVec2f * polygon, ofVec2f * textureCorners, int gridSize){
+        ofVec2f ref[4];
+        ref[0] = ofVec2f(0.0,0.0);
+        ref[1] = ofVec2f(1.0,0.0);
+        ref[2] = ofVec2f(1.0,1.0);
+        ref[3] = ofVec2f(0.0,1.0);
         
         warper1 = new coordWarping();
         warper1->calculateMatrix(ref, polygon);

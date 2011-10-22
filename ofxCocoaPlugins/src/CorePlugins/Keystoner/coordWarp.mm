@@ -12,7 +12,7 @@ coordWarping::~coordWarping(){
 }
 
 //---------------------------
-void coordWarping::calculateMatrix(ofxPoint2f src[4], ofxPoint2f dst[4]){
+void coordWarping::calculateMatrix(ofVec2f src[4], ofVec2f dst[4]){
 	cvSetZero(translate);
 	cvSetZero(itranslate);
 	
@@ -31,16 +31,16 @@ void coordWarping::calculateMatrix(ofxPoint2f src[4], ofxPoint2f dst[4]){
 }
 
 
-ofxPoint2f coordWarping::transform(ofxPoint2f p){
+ofVec2f coordWarping::transform(ofVec2f p){
 	return transform(p.x,p.y);
 }
-ofxPoint2f coordWarping::inversetransform(ofxPoint2f p){
+ofVec2f coordWarping::inversetransform(ofVec2f p){
 	return inversetransform(p.x,p.y);	
 }
 
 //---------------------------		
-ofxPoint2f coordWarping::transform(float xIn, float yIn){
-	ofxPoint2f out;
+ofVec2f coordWarping::transform(float xIn, float yIn){
+	ofVec2f out;
 	float *data = translate->data.fl;
 	
 	float a = data[0];
@@ -61,8 +61,8 @@ ofxPoint2f coordWarping::transform(float xIn, float yIn){
 	delete data;
 }	
 
-ofxPoint2f coordWarping::inversetransform(float xIn, float yIn){
-	ofxPoint2f out;
+ofVec2f coordWarping::inversetransform(float xIn, float yIn){
+	ofVec2f out;
 	float *data = itranslate->data.fl;
 	
 	float a = data[0];

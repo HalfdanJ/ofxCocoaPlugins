@@ -1,5 +1,5 @@
 #pragma once
-#import "GLee.h"
+#include "GL/glew.h"
 
 #import <Cocoa/Cocoa.h>
 #import <QuartzCore/QuartzCore.h>
@@ -9,6 +9,7 @@
 #include "SaveManager.h"
 #include "OutputViewManager.h"
 
+#define IGNORE_NIL_TYPE
 #include "ofxOsc.h"
 
 @class ofPlugin;

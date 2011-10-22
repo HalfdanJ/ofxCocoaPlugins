@@ -3,7 +3,7 @@
 
 #include "ofxOpenCv.h"
 #include "ofGraphics.h"
-#include "ofxVectorMath.h"
+#include "ofVectorMath.h"
 
 
 class Warp
@@ -21,8 +21,8 @@ public:
 	float*					MatrixCalculate();
 	void					MatrixMultiply();
 	
-	ofxPoint2f				convertPoint(ofxPoint2f point);
-	ofxPoint2f			corners[4];
+	ofVec2f				convertPoint(ofVec2f point);
+	ofVec2f			corners[4];
 
 private:
 	// CORNERS

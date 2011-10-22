@@ -3,7 +3,7 @@
 #include "Plugin.h"
 
 
-#include "ofxVectorMath.h"
+#include "ofVectorMath.h"
 #include "ofxCvMain.h"
 #include "Filter.h"
 
@@ -15,9 +15,9 @@
 {
 @public
 	long unsigned int pid;
-	ofxPoint2f * centroid;
-	ofxPoint2f * lastcentroid;
-	ofxVec2f   * centroidV;
+	ofVec2f * centroid;
+	ofVec2f * lastcentroid;
+	ofVec2f   * centroidV;
 	
 	ofxPoint3f * centroidFiltered;
     
@@ -30,7 +30,7 @@
 }
 @property (assign) NSMutableArray * blobs;
 
--(ofxPoint2f) getLowestPoint;
+-(ofVec2f) getLowestPoint;
 -(ofxPoint3f) centroidFiltered;
 -(void) dealloc;
 
@@ -49,7 +49,7 @@
 	ofxCvBlob * blob;
 	ofxCvBlob * originalblob;
 	ofxCvBlob * surfaceBlob;
-	ofxPoint2f * low;
+	ofVec2f * low;
 	int segment;
 	
 	int avgDepth;
@@ -76,7 +76,7 @@
 -(ofRectangle) boundingRect;
 -(BOOL) hole;
 
--(ofxPoint2f) getLowestPoint;
+-(ofVec2f) getLowestPoint;
 
 
 

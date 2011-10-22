@@ -1,9 +1,7 @@
 #pragma once
 
+#include "GL/glew.h"
 
-
-
-#import "GLee.h"
 #include "ofMain.h"
 
 

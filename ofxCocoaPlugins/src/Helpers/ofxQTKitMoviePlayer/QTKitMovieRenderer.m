@@ -176,6 +176,8 @@ typedef struct OpenGLTextureCoordinates OpenGLTextureCoordinates;
 	
 	//return YES;
     });
+    
+    return YES;
 }
 
 - (void) dealloc
@@ -387,7 +389,7 @@ typedef struct OpenGLTextureCoordinates OpenGLTextureCoordinates;
 
 - (float) volume
 {
-	[_movie volume];
+	return [_movie volume];
 }
 
 - (void) setPosition:(CGFloat) position

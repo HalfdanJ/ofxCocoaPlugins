@@ -14,6 +14,15 @@
 		DDA70010144F1CEE00F81C9E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DDA7000E144F1CEE00F81C9E /* InfoPlist.strings */; };
 		DDA70012144F1CEE00F81C9E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DDA70011144F1CEE00F81C9E /* main.m */; };
 		DDA70019144F1CEE00F81C9E /* ExampleAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DDA70018144F1CEE00F81C9E /* ExampleAppDelegate.m */; };
+		DDF64E43145046CB007B0C0A /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDF64E42145046CB007B0C0A /* QTKit.framework */; };
+		DDF64E45145046EC007B0C0A /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDF64E44145046EC007B0C0A /* AppKit.framework */; };
+		DDF64E4D145046F9007B0C0A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDF64E46145046F9007B0C0A /* Foundation.framework */; };
+		DDF64E4E145046F9007B0C0A /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDF64E47145046F9007B0C0A /* Carbon.framework */; };
+		DDF64E4F145046F9007B0C0A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDF64E48145046F9007B0C0A /* SystemConfiguration.framework */; };
+		DDF64E50145046F9007B0C0A /* CoreMIDI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDF64E49145046F9007B0C0A /* CoreMIDI.framework */; };
+		DDF64E51145046F9007B0C0A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDF64E4A145046F9007B0C0A /* QuartzCore.framework */; };
+		DDF64E52145046F9007B0C0A /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDF64E4B145046F9007B0C0A /* IOKit.framework */; };
+		DDF64E53145046F9007B0C0A /* ScriptingBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDF64E4C145046F9007B0C0A /* ScriptingBridge.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +63,15 @@
 		DDA70013144F1CEE00F81C9E /* Example-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Example-Prefix.pch"; sourceTree = "<group>"; };
 		DDA70017144F1CEE00F81C9E /* ExampleAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExampleAppDelegate.h; sourceTree = "<group>"; };
 		DDA70018144F1CEE00F81C9E /* ExampleAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExampleAppDelegate.m; sourceTree = "<group>"; };
+		DDF64E42145046CB007B0C0A /* QTKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QTKit.framework; path = ../../../../../System/Library/Frameworks/QTKit.framework; sourceTree = "<group>"; };
+		DDF64E44145046EC007B0C0A /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = ../../../../../System/Library/Frameworks/AppKit.framework; sourceTree = "<group>"; };
+		DDF64E46145046F9007B0C0A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = ../../../../../System/Library/Frameworks/Foundation.framework; sourceTree = "<group>"; };
+		DDF64E47145046F9007B0C0A /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = ../../../../../System/Library/Frameworks/Carbon.framework; sourceTree = "<group>"; };
+		DDF64E48145046F9007B0C0A /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = ../../../../../System/Library/Frameworks/SystemConfiguration.framework; sourceTree = "<group>"; };
+		DDF64E49145046F9007B0C0A /* CoreMIDI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMIDI.framework; path = ../../../../../System/Library/Frameworks/CoreMIDI.framework; sourceTree = "<group>"; };
+		DDF64E4A145046F9007B0C0A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = ../../../../../System/Library/Frameworks/QuartzCore.framework; sourceTree = "<group>"; };
+		DDF64E4B145046F9007B0C0A /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = ../../../../../System/Library/Frameworks/IOKit.framework; sourceTree = "<group>"; };
+		DDF64E4C145046F9007B0C0A /* ScriptingBridge.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScriptingBridge.framework; path = SDKs/MacOSX10.6.sdk/System/Library/Frameworks/ScriptingBridge.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +81,15 @@
 			files = (
 				DDA70006144F1CEE00F81C9E /* Cocoa.framework in Frameworks */,
 				DD9EA90D144F32A000E313C0 /* ofxCocoaPlugins.framework in Frameworks */,
+				DDF64E43145046CB007B0C0A /* QTKit.framework in Frameworks */,
+				DDF64E45145046EC007B0C0A /* AppKit.framework in Frameworks */,
+				DDF64E4D145046F9007B0C0A /* Foundation.framework in Frameworks */,
+				DDF64E4E145046F9007B0C0A /* Carbon.framework in Frameworks */,
+				DDF64E4F145046F9007B0C0A /* SystemConfiguration.framework in Frameworks */,
+				DDF64E50145046F9007B0C0A /* CoreMIDI.framework in Frameworks */,
+				DDF64E51145046F9007B0C0A /* QuartzCore.framework in Frameworks */,
+				DDF64E52145046F9007B0C0A /* IOKit.framework in Frameworks */,
+				DDF64E53145046F9007B0C0A /* ScriptingBridge.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -88,6 +115,15 @@
 		DDA70004144F1CEE00F81C9E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DDF64E46145046F9007B0C0A /* Foundation.framework */,
+				DDF64E47145046F9007B0C0A /* Carbon.framework */,
+				DDF64E48145046F9007B0C0A /* SystemConfiguration.framework */,
+				DDF64E49145046F9007B0C0A /* CoreMIDI.framework */,
+				DDF64E4A145046F9007B0C0A /* QuartzCore.framework */,
+				DDF64E4B145046F9007B0C0A /* IOKit.framework */,
+				DDF64E4C145046F9007B0C0A /* ScriptingBridge.framework */,
+				DDF64E44145046EC007B0C0A /* AppKit.framework */,
+				DDF64E42145046CB007B0C0A /* QTKit.framework */,
 				DDA70005144F1CEE00F81C9E /* Cocoa.framework */,
 				DDA70007144F1CEE00F81C9E /* Other Frameworks */,
 			);
@@ -282,6 +318,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../build/Debug\"",
+					"\"$(DEVELOPER_DIR)/SDKs/MacOSX10.6.sdk/System/Library/Frameworks\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Example/Example-Prefix.pch";
@@ -297,6 +334,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../build/Debug\"",
+					"\"$(DEVELOPER_DIR)/SDKs/MacOSX10.6.sdk/System/Library/Frameworks\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Example/Example-Prefix.pch";

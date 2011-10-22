@@ -39,8 +39,8 @@
 -(void) drawGridSimple:(BOOL)simple;
 -(void) apply;
 -(void) applyWithWidth:(float)width height:(float)height;
--(ofxPoint2f) convertToProjection:(ofxPoint2f)p;
--(ofxPoint2f) convertFromProjection:(ofxPoint2f)p;
+-(ofVec2f) convertToProjection:(ofVec2f)p;
+-(ofVec2f) convertFromProjection:(ofVec2f)p;
 
 -(IBAction) flipX;
 -(IBAction) flipY;

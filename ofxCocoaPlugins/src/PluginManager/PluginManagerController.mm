@@ -1,6 +1,6 @@
 #import "PluginManagerController.h"
 #include "Plugin.h"
-#include "PluginIncludes.h"
+//#include "PluginIncludes.h"
 
 #include "AppController.h"
 #include "PluginListMeterCell.h"
@@ -30,7 +30,7 @@ extern ofAppBaseWindow * window;
 		setupAppCalled = NO;
 		previews = YES;
 		
-		NSBundle *bundle = [NSBundle mainBundle];
+		//NSBundle *bundle = [NSBundle mainBundle];
 		//ofSetDataPathRoot([[[[bundle bundlePath] stringByDeletingLastPathComponent] stringByAppendingString:@"/data/"] cStringUsingEncoding:NSUTF8StringEncoding]);
         ofSetDataPathRoot("../../../data/");
         
@@ -352,7 +352,7 @@ extern ofAppBaseWindow * window;
 	
 	[self didChangeValueForKey:@"fps"];
 	
-	window->setFrameRate([[drawingInformation valueForKey:@"fps"] doubleValue]);
+	ofSetFrameRate([[drawingInformation valueForKey:@"fps"] doubleValue]);
 	[drawingInformation setValue:[drawingInformation valueForKey:@"timeInterval"] forKey:@"lastTime"] ;
 	
 	startFrameTime = ofGetElapsedTimeMillis();

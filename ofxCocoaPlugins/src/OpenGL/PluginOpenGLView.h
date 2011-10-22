@@ -1,10 +1,7 @@
-#pragma once
-
-#import "GLee.h"
-#include "ofMain.h"
+//#import "ofConstants.h"
 
 #import <Cocoa/Cocoa.h>
-#import <QuartzCore/QuartzCore.h>
+#import <QuartzCore/CVDisplayLink.h>
 
 @class OutputViewStats;
 @class PluginManagerController;
