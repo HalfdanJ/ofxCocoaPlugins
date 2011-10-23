@@ -1,4 +1,5 @@
 //Based on QTCoreVideo101 example by apple
+
 #import "ofAppCocoaWindow.h"
 #import "ofMain.h"
 
@@ -11,10 +12,9 @@
 #import "PluginManagerController.h"
 #import "OutputViewStats.h"
 
-//#include "ofAppRunner.h"
+#include "ofAppRunner.h"
 
 
-extern ofPtr<ofAppBaseWindow> window;
 
 
 //
@@ -43,8 +43,8 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 									  CVOptionFlags *flagsOut, void *displayLinkContext)
 {
 	CVReturn result = [(PluginOpenGLView *)displayLinkContext getFrameForTime:((now->videoTime*1.0)/now->videoTimeScale) displayTime:outputTime];
-//    CVReturn result = [(PluginOpenGLView *)displayLinkContext getFrameForTime:outputTime];
-
+    //    CVReturn result = [(PluginOpenGLView *)displayLinkContext getFrameForTime:outputTime];
+    
 	return result;
 }
 
@@ -98,18 +98,18 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 - (void)prepareOpenGL
 {
 	GLint swapInterval = 1;
-	 
-	 // really nice perspective calculations
-	 glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
-	 
-	 // turn on sphere map automatic texture coordinate generation
-	 // http://www.opengl.org/sdk/docs/man/xhtml/glTexGen.xml
-	 glTexGeni(GL_S, GL_TEXTURE_GEN_MODE, GL_SPHERE_MAP);
-	 glTexGeni(GL_T, GL_TEXTURE_GEN_MODE, GL_SPHERE_MAP);
-	 
-	 // set up the GL contexts swap interval -- passing 1 means that
-	 // the buffers are swapped only during the vertical retrace of the monitor
-	 [[self openGLContext] setValues:&swapInterval forParameter:NSOpenGLCPSwapInterval];
+    
+    // really nice perspective calculations
+    glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
+    
+    // turn on sphere map automatic texture coordinate generation
+    // http://www.opengl.org/sdk/docs/man/xhtml/glTexGen.xml
+    glTexGeni(GL_S, GL_TEXTURE_GEN_MODE, GL_SPHERE_MAP);
+    glTexGeni(GL_T, GL_TEXTURE_GEN_MODE, GL_SPHERE_MAP);
+    
+    // set up the GL contexts swap interval -- passing 1 means that
+    // the buffers are swapped only during the vertical retrace of the monitor
+    [[self openGLContext] setValues:&swapInterval forParameter:NSOpenGLCPSwapInterval];
 	
 	//[self setOpenGLContext:[controller getSharedContext:(CGLPixelFormatObj)[[self pixelFormat] CGLPixelFormatObj]]];
 	
@@ -120,24 +120,24 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
         NSOpenGLPFASampleBuffers, 1,
         NSOpenGLPFASamples, 4,
         
-//        
-////		NSOpenGLPFAWindow,
-////		NSOpenGLPFAAccelerated,
-////		NSOpenGLPFADoubleBuffer,
-//		NSOpenGLPFAPixelBuffer,
-//		NSOpenGLPFASampleBuffers, (NSOpenGLPixelFormatAttribute)4,
-//		NSOpenGLPFASamples, (NSOpenGLPixelFormatAttribute)4,
-//        
-//        kCGLPFAColorSize, 24,
-//		kCGLPFADepthSize, 16,
-//        
-//        NSOpenGLPFADoubleBuffer,
-//        NSOpenGLPFAAccelerated,
-//        NSOpenGLPFADepthSize, 24,
-//        NSOpenGLPFAStencilSize, 8,
-//        NSOpenGLPFASingleRenderer,
-//        NSOpenGLPFAScreenMask, CGDisplayIDToOpenGLDisplayMask(kCGDirectMainDisplay),
-//        NSOpenGLPFANoRecovery,
+        //        
+        ////		NSOpenGLPFAWindow,
+        ////		NSOpenGLPFAAccelerated,
+        ////		NSOpenGLPFADoubleBuffer,
+        //		NSOpenGLPFAPixelBuffer,
+        //		NSOpenGLPFASampleBuffers, (NSOpenGLPixelFormatAttribute)4,
+        //		NSOpenGLPFASamples, (NSOpenGLPixelFormatAttribute)4,
+        //        
+        //        kCGLPFAColorSize, 24,
+        //		kCGLPFADepthSize, 16,
+        //        
+        //        NSOpenGLPFADoubleBuffer,
+        //        NSOpenGLPFAAccelerated,
+        //        NSOpenGLPFADepthSize, 24,
+        //        NSOpenGLPFAStencilSize, 8,
+        //        NSOpenGLPFASingleRenderer,
+        //        NSOpenGLPFAScreenMask, CGDisplayIDToOpenGLDisplayMask(kCGDirectMainDisplay),
+        //        NSOpenGLPFANoRecovery,
         
         
         kCGLPFAAccelerated,
@@ -145,7 +145,7 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 		kCGLPFADoubleBuffer,
 		kCGLPFAColorSize, 24,
 		kCGLPFADepthSize, 16,
-
+        
         
         
 		(NSOpenGLPixelFormatAttribute)nil
@@ -174,6 +174,10 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 			NSLog(@"ERROR could not create displayLink");
 		}
 	}
+    
+    
+    //    ofSetCurrentRenderer(ofPtr<ofBaseRenderer>(new ofGLRenderer(false)));
+    
 }
 
 //
@@ -212,14 +216,17 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 	
 	// make the GL context the current context
 	[[self openGLContext] makeCurrentContext];
-
+    
 	
 	// draw here	
 	if([controller isPluginsInited]){	
 		if(![controller isSetupCalled] || [controller willDraw:drawingInformation]){
+            if(![controller isSetupCalled]){                
+                ofAppCocoaWindow window;
+                ofSetupOpenGL(&window, 0, 0, 0);
+            }
+            
             ofBackground(0, 0, 0);
-//			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
 			
 			glMatrixMode(GL_TEXTURE);
 			glLoadIdentity();
@@ -245,6 +252,7 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
             ofSetWindowShape([self frame].size.width, [self frame].size.height);
 			
 			if(![controller isSetupCalled]){
+                
 				[controller callSetup];
 			}	
 			
@@ -256,13 +264,14 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 			[[self openGLContext] flushBuffer];
 #else
 			glFlush();
-        //    [[self openGLContext] flushBuffer];
-
+            //    [[self openGLContext] flushBuffer];
+            
 			[statsView addHistory:[drawingInformation valueForKey:@"fps"]];
 #endif
 		}
 	} else {
-		ofBackground(0, 0, 0);
+		glClearColor(0,0,0,255);
+		glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		glFlush();
 	}	
 	
@@ -335,7 +344,7 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 
 - (void)windowChangedScreen:(NSNotification*)inNotification
 {
-
+    
     NSWindow *window = [inNotification object];
 	[self updateDisplayIDWithWindow:window];
 }

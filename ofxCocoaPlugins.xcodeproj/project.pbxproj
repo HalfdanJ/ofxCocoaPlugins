@@ -125,7 +125,7 @@
 		DD0A35731452F32700CC89E5 /* ofxVectorMath.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35691452F32700CC89E5 /* ofxVectorMath.h */; };
 		DDA7002D144F1E6700F81C9E /* ofxCocoaPlugins.h in Headers */ = {isa = PBXBuildFile; fileRef = DDA7FFE8144F1C3800F81C9E /* ofxCocoaPlugins.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DDA7FFE6144F1C3800F81C9E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DDA7FFE4144F1C3800F81C9E /* InfoPlist.strings */; };
-		DDA7FFEA144F1C3800F81C9E /* ofxCocoaPlugins.m in Sources */ = {isa = PBXBuildFile; fileRef = DDA7FFE9144F1C3800F81C9E /* ofxCocoaPlugins.m */; };
+		DDA7FFEA144F1C3800F81C9E /* ofxCocoaPlugins.mm in Sources */ = {isa = PBXBuildFile; fileRef = DDA7FFE9144F1C3800F81C9E /* ofxCocoaPlugins.mm */; };
 		DDE4C8831451A91200EECFF4 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDE4C8761451A91200EECFF4 /* CoreVideo.framework */; };
 		DDE4C8841451A91200EECFF4 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDE4C8771451A91200EECFF4 /* AppKit.framework */; };
 		DDE4C8851451A91200EECFF4 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDE4C8781451A91200EECFF4 /* Cocoa.framework */; };
@@ -397,7 +397,7 @@
 		DDA7FFE5144F1C3800F81C9E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		DDA7FFE7144F1C3800F81C9E /* ofxCocoaPlugins-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ofxCocoaPlugins-Prefix.pch"; sourceTree = "<group>"; };
 		DDA7FFE8144F1C3800F81C9E /* ofxCocoaPlugins.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxCocoaPlugins.h; sourceTree = "<group>"; };
-		DDA7FFE9144F1C3800F81C9E /* ofxCocoaPlugins.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ofxCocoaPlugins.m; sourceTree = "<group>"; };
+		DDA7FFE9144F1C3800F81C9E /* ofxCocoaPlugins.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ofxCocoaPlugins.mm; sourceTree = "<group>"; };
 		DDE4C8761451A91200EECFF4 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		DDE4C8771451A91200EECFF4 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = ../../../../System/Library/Frameworks/AppKit.framework; sourceTree = "<group>"; };
 		DDE4C8781451A91200EECFF4 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = ../../../../System/Library/Frameworks/Cocoa.framework; sourceTree = "<group>"; };
@@ -934,7 +934,7 @@
 				DDE4C9121451DBF700EECFF4 /* PluginManager */,
 				DDE4C8F91451DBD900EECFF4 /* Views */,
 				DDA7FFE8144F1C3800F81C9E /* ofxCocoaPlugins.h */,
-				DDA7FFE9144F1C3800F81C9E /* ofxCocoaPlugins.m */,
+				DDA7FFE9144F1C3800F81C9E /* ofxCocoaPlugins.mm */,
 				DDA7FFE2144F1C3800F81C9E /* Supporting Files */,
 			);
 			path = ofxCocoaPlugins;
@@ -1526,7 +1526,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DDA7FFEA144F1C3800F81C9E /* ofxCocoaPlugins.m in Sources */,
+				DDA7FFEA144F1C3800F81C9E /* ofxCocoaPlugins.mm in Sources */,
 				DDE4C8D81451AF1500EECFF4 /* BeamSync.m in Sources */,
 				DDE4C8DC1451AF1500EECFF4 /* PluginOpenGLView.mm in Sources */,
 				DDE4C9071451DBD900EECFF4 /* LoadProgressIndicator.m in Sources */,
