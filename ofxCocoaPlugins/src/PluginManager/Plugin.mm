@@ -1,6 +1,7 @@
 
 #include "Plugin.h"
-#import "PluginOpenGLControl.h"
+#import "PluginOpenGLControlView.h"
+#import "PluginManagerController.h"
 #import "QLabController.h"
 
 @implementation ofPlugin

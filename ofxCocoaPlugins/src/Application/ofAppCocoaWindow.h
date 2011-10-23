@@ -30,6 +30,9 @@ public:
 	virtual ofPoint		getWindowPosition();
 	virtual ofPoint		getWindowSize();
 	virtual ofPoint		getScreenSize();
+    int		getWidth();
+    int		getHeight();
+
 	
 	virtual void		setFrameRate(float targetRate);
 	virtual void		setWindowTitle(string title);

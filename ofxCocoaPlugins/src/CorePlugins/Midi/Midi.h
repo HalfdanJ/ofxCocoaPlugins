@@ -63,7 +63,7 @@ struct MTCTime {
 @property (assign) NSMutableArray * midiBindings;
 @property (assign) NSMutableArray * midiData;
 
-@property (readwrite) NSString * mtcTimeString;
+@property (assign, readwrite) NSString * mtcTimeString;
 
 -(IBAction) selectMidiInterface:(id)sender;
 -(IBAction) printMidiMappingsList:(id)sender;

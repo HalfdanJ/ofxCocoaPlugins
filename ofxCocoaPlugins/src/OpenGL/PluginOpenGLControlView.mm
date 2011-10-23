@@ -2,19 +2,9 @@
 #import "ofAppCocoaWindow.h"
 #import "ofMain.h"
 
-//#import "PluginOpenGLView.h"
-//#import <OpenGL/gl.h>
-//#import <OpenGL/OpenGL.h>
-//#import <OpenGL/glext.h>
-//#import <OpenGL/glu.h>
-
-#import "PluginOpenGLControl.h"
-
-#include "ofAppRunner.h"
-
-//extern ofAppBaseWindow * window;
-
-//#import "Plugin.h"
+#import "PluginOpenGLControlView.h"
+#import "PluginManagerController.h"
+#import "Plugin.h"
 
 
 @implementation PluginOpenGLControlView

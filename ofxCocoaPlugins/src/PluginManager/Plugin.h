@@ -1,9 +1,7 @@
 #pragma once
-#include "GL/glew.h"
+#include "ofMain.h"
 
 #import <Cocoa/Cocoa.h>
-#include "PluginManagerController.h"
-//#include "SharedContextLayer.h"
 
 #define Prop(p) [properties objectForKey:(p)] 
 #define PropF(p) [Prop( (p) ) floatValue]
@@ -16,8 +14,7 @@
 //#define Surf(p,s) ((ProjectionSurfacesObject*)[GetPlugin(ProjectionSurfaces) getProjectionSurfaceByName:p surface:s])
 //#define ApplySurface(p,s) ([GetPlugin(ProjectionSurfaces) apply:p surface:s])
 
-#include "ofMain.h"
-#include "PluginProperty.h"
+//#include "PluginProperty.h"
 
 #include "NumberProperty.h"
 #include "BoolProperty.h"
@@ -59,7 +56,7 @@ extern PluginManagerController * globalController;
 
 @property (retain, readwrite) NSString *name;
 @property (retain, readwrite) NSNumber *enabled;
-@property (readwrite) PluginOpenGLControlView * controlGlView;
+@property (assign, readwrite) PluginOpenGLControlView * controlGlView;
 //@property (readwrite) CAOpenGLLayer *controlLayer;
 
 @property (assign, readwrite) NSView * view;

@@ -1,9 +1,4 @@
-//
-//  ofxCocoaPlugins.m
-//  ofxCocoaPlugins
-//
-//  Created by Jonas Jongejan on 10/19/11.
-//
+#import "PluginManagerController.h"
 
 #import "ofxCocoaPlugins.h"
 #import <AppKit/AppKit.h>
@@ -24,5 +19,18 @@
     
     return self;
 }
+
+- (void) addHeader:(NSString*)header{
+    [(PluginManagerController*)pluginManagerController addHeader:header];
+
+}
+- (void) addPlugin:(ofPlugin*)plugin{
+	[(PluginManagerController*)pluginManagerController addPlugin:plugin];
+}
+
+- (void)loadPlugins{
+    [(PluginManagerController*)pluginManagerController finishedDefinePlugins];
+}
+
 
 @end

@@ -1,13 +1,9 @@
-//
-//  NumberProperty.m
-//  loadnloop
-//
-//  Created by LoadNLoop on 24/03/10.
-//  Copyright 2010 __MyCompanyName__. All rights reserved.
-//
-
+#import "PluginManagerController.h"
 #import "NumberProperty.h"
 #import "QLabController.h"
+
+#import <ScriptingBridge/ScriptingBridge.h>
+
 
 @implementation NumberProperty
 @synthesize minValue, maxValue, midiSmoothing;

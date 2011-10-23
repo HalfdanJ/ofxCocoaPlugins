@@ -1,7 +1,6 @@
 //
-//  PluginOpenGLLayer.h
-//
-//  Created by Jonas Jongejan on 19/11/09.
+// PluginOpenglControlView is the view that can be embedded in a plugin nib file for opengl view in the interface. 
+// The view has second priority after the main opengl view
 //
 
 #pragma once 
@@ -23,7 +22,6 @@ extern PluginManagerController * globalController;
     
     CVDisplayLinkRef displayLink; //display link for managing rendering thread
 	CGDirectDisplayID    viewDisplayID;
-
 }
 
 @property (retain) PluginManagerController * controller;
@@ -35,14 +33,3 @@ extern PluginManagerController * globalController;
 @end
 
 
-@interface PluginOpenGLControl : NSOpenGLView {
-	NSMutableDictionary * drawingInformation;
-    ofPlugin * plugin;
-
-}
-@property (assign, readwrite) ofPlugin * plugin;
-
-
--(void) draw;
-
-@end

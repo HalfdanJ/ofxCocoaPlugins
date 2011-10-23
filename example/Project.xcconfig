@@ -1,0 +1,5 @@
+//THE PATH TO THE ROOT OF OUR OF PATH RELATIVE TO THIS PROJECT.
+//THIS NEEDS TO BE DEFINED BEFORE CoreOF.xcconfig IS INCLUDED
+
+OFX_PATH = ../
+#include "../ofxCocoaPlugins/ConfigInclude.xcconfig"

@@ -1,11 +1,7 @@
-#include "GL/glew.h"
 
 #import <Cocoa/Cocoa.h>
-#import <ScriptingBridge/ScriptingBridge.h>
 
 #include "PluginProperty.h"
-
-#include "PluginManagerController.h"
 
 @class PluginManagerController;
 extern PluginManagerController * globalController;

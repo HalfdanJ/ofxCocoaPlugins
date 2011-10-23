@@ -1,13 +1,8 @@
-//
-//  BoolProperty.mm
-//  loadnloop
-//
-//  Created by LoadNLoop on 31/03/10.
-//  Copyright 2010 __MyCompanyName__. All rights reserved.
-//
+#include "GL/glew.h"
 
 #import "BoolProperty.h"
 #import "QlabController.h"
+#import "PluginManagerController.h"
 
 @implementation BoolProperty
 //Creates only one slider that they all use.. The way you do it apparently

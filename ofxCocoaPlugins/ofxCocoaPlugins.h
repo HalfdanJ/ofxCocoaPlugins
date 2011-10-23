@@ -8,10 +8,16 @@
 
 #import <Foundation/Foundation.h>
 
+@class ofPlugin;
+
 @interface ofxCocoaPlugins : NSObject{
     NSObject * appDelegate;
+    IBOutlet NSObject * pluginManagerController;
+
 }
 
 - (id)initWithAppDelegate:(id)appDelegate;
-
+- (void) addHeader:(NSString*)header;
+- (void) addPlugin:(ofPlugin*)plugin;
+- (void) loadPlugins;
 @end

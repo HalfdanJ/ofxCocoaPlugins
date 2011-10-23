@@ -5,7 +5,9 @@
 #include "AppController.h"
 #include "PluginListMeterCell.h"
 #import "BeamSync.h"
-#include "PluginOpenGLControl.h"
+#include "PluginOpenGLControlView.h"
+#include "MainWindow.h"
+
 
 PluginManagerController * globalController;
 
@@ -71,13 +73,22 @@ extern ofAppBaseWindow * window;
 	//[pluginTitleView setFillColor:[NSColor colorWithPatternImage:hazardImage]];
 	[pluginTitleView setFillColor:[NSColor colorWithDeviceWhite:0.0 alpha:0.3]];
 	
+}
+
+//
+//------
+//Getting called when all plugins have been defined
+//
+
+- (void) finishedDefinePlugins{
+    
 	[self willChangeValueForKey:@"plugins"];
 	[testApp setupPlugins];
 	[self didChangeValueForKey:@"plugins"];
 	
 	//Call's all the initial init code. It's not the same as setup, that comes later when OpenGL is up and running
 	[self initPlugins];
-
+    
 	
 	//Properties cells setup
 	PluginListMeterCell *infoCell = [[PluginListMeterCell alloc] init];

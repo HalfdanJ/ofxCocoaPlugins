@@ -1,0 +1,13 @@
+//THE PATH TO THE ROOT OF OUR OF PATH RELATIVE TO THIS PROJECT.
+//THIS NEEDS TO BE DEFINED BEFORE CoreOF.xcconfig IS INCLUDED
+OF_PATH = $(OFX_PATH)ofxCocoaPlugins/libs/openFrameworks
+
+//THIS HAS ALL THE HEADER AND LIBS FOR OF CORE
+#include "libs/openFrameworks/libs/openFrameworksCompiled/project/osx/CoreOF.xcconfig"
+
+LIB_FMODEX = "" //fmodex lib already linked once
+
+OTHER_LDFLAGS = $(OF_CORE_LIBS) 
+HEADER_SEARCH_PATHS = $(OF_CORE_HEADERS)
+
+GCC_PREFIX_HEADER = $(SYSTEM_LIBRARY_DIR)/Frameworks/Carbon.framework/Headers/Carbon.h

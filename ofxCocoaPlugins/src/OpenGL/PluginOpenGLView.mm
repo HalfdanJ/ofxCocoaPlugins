@@ -8,7 +8,7 @@
 #import "PluginManagerController.h"
 #import "OutputViewStats.h"
 
-
+static ofAppCocoaWindow * window;
 //
 //----------------
 //
@@ -210,17 +210,19 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 		if(![controller isSetupCalled] || [controller willDraw:drawingInformation]){
             if(![controller isSetupCalled]){             
                 //Create the openframeworks context
-                ofAppCocoaWindow window;
-                ofSetupOpenGL(&window, 0, 0, 0);
+//                window = new ofAppCocoaWindow();
+                ofSetupOpenGL(ofPtr<ofAppBaseWindow>(new ofAppCocoaWindow()), 0, 0, 0);
+                ofSetBackgroundAuto(false);
             }
+            
+
             
             //Tell openframeworks the size of the window
             ofSetWindowShape([self frame].size.width, [self frame].size.height);
-
             
             //Reset the drawingarea
             ofBackground(0, 0, 0);
-			
+            
 			glMatrixMode(GL_TEXTURE);
 			glLoadIdentity();
 			
@@ -244,7 +246,7 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
             if(![controller isSetupCalled]){
 				[controller callSetup];
 			}	
-			
+            
             //The drawing from the plugins 
 			[controller callDraw:drawingInformation];
 			
@@ -260,7 +262,7 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 	} else {
 		glClearColor(0,0,0,255);
 		glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-		glFlush();
+      	glFlush();
 	}	
 	
 	[[controller openglLock] unlock];	

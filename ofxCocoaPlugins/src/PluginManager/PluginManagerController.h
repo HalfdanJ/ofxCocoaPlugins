@@ -4,8 +4,6 @@
 #import <Cocoa/Cocoa.h>
 #import <QuartzCore/QuartzCore.h>
 
-#include "PluginOpenGLView.h"
-#include "MainWindow.h"
 #include "SaveManager.h"
 #include "OutputViewManager.h"
 
@@ -18,8 +16,7 @@
 
 @interface PluginManagerController : NSObject <NSWindowDelegate>{
 	IBOutlet AppController * testApp;
-//	IBOutlet NSView * outputView;
-	IBOutlet MainWindow * mainWindow;
+	IBOutlet NSWindow * mainWindow;
 	IBOutlet NSView * pluginControllerView;
 	IBOutlet NSView * pluginPropertiesView;
 	IBOutlet NSView * statsAreaView;
@@ -99,6 +96,7 @@
 -(IBAction)changePlugin:(id)sender;
 
 - (void) initPlugins;
+- (void) finishedDefinePlugins;
 - (id) init;
 
 - (void)addHeader:(NSString *)header;

@@ -162,6 +162,9 @@ ofPoint	ofAppCocoaWindow::getWindowSize() {
 	return ofPoint(windowW, windowH,0);
 }
 
+int		ofAppCocoaWindow::getWidth(){ return windowW; }
+int		ofAppCocoaWindow::getHeight(){ return windowH; }
+
 ofPoint	ofAppCocoaWindow::getScreenSize() {
 	return screenSize;
 }

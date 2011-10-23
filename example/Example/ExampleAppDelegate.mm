@@ -6,6 +6,8 @@
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
+#import "ExamplePlugin.h"
+
 #import "ExampleAppDelegate.h"
 
 @implementation ExampleAppDelegate
@@ -15,6 +17,9 @@
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
     ocp = [[ofxCocoaPlugins alloc] initWithAppDelegate:self];
+    [ocp addHeader:@"MyPlugins"];
+    [ocp addPlugin:[[ExamplePlugin alloc] init]];
+    [ocp loadPlugins];
 }
 
 @end
