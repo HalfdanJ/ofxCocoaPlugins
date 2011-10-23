@@ -1,19 +1,9 @@
-//
-//  BeamSync.h
-//  Example
-//
-//  Created by Se Min Skygge on 18/05/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
-//
+// This class can enable and disable beamsync. 
+// Disabling beamsync improves the opengl performance alot often
 
 #import <Foundation/Foundation.h>
 
-
-@interface BeamSync : NSObject {
-@private
-    
-}
-
+@interface BeamSync : NSObject 
 +(void) enable;
 +(void) disable;
 @end

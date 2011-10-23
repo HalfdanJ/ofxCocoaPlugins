@@ -1,15 +1,6 @@
 
 #include "ofAppCocoaWindow.h"
 
-//#include "ofMain.h"
-//#include <AppKit/AppKit.h>
-
-static ofAppCocoaWindow * ofWindowPtr;
-
-/*ofAppCocoaWindow* appWindow() {
-    return ofWindowPtr;
-}*/
-
 /******** Constructor ************/
 
 ofAppCocoaWindow::ofAppCocoaWindow() {
@@ -44,15 +35,8 @@ ofAppCocoaWindow::ofAppCocoaWindow() {
 
 	nonFullScreenX = 0 ;
 	nonFullScreenY = 0;
-	
-	windowString = "cocoa openFrameworks";
-	
-	bFSAA = false;
 }
 
-void ofAppCocoaWindow::setUseFSAA(bool useFSAA) {
-	bFSAA = useFSAA;
-}
 
 /******** Initialization methods ************/
 
@@ -69,45 +53,8 @@ void ofAppCocoaWindow::setupOpenGL(int w, int h, int screenMode) {
 }
 
 
-void ofAppCocoaWindow::initializeWindow() {
-
-}
-
-
-void  ofAppCocoaWindow::runAppViaInfiniteLoop(ofBaseApp * appPtr) {
-	
-	ofWindowPtr = this;
-	
-	ofGetAppPtr()->mouseX = 0;
-	ofGetAppPtr()->mouseY = 0;
-
-
- //   return NSApplicationMain(argc, (const char **)argv);
-
-	//NSApplicationMain(0,  NULL);
-
-}
-
-void ofAppCocoaWindow::setup( )
-{
-	//OFSAptrForCocoa->setup();
-}
-
-void ofAppCocoaWindow::update(){	
-	ofGetAppPtr()->update();
-}
-
-void ofAppCocoaWindow::render(int width, int height){
-	
-}
-
 
 void ofAppCocoaWindow::keyPressed(int key){
-	if(key == OF_KEY_ESC){
-//		OF_EXIT_APP(0);
-		ofSetFullscreen(false);
-	}
-	
 	ofGetAppPtr()->keyPressed(key);
 }
 
@@ -169,10 +116,6 @@ ofPoint	ofAppCocoaWindow::getScreenSize() {
 	return screenSize;
 }
 
-int	ofAppCocoaWindow::getWindowMode() {
-	return windowMode;
-}
-
 float ofAppCocoaWindow::getFrameRate() {
 	return (float)frameRate;
 }
@@ -186,32 +129,5 @@ void ofAppCocoaWindow::setFrameRate(float targetRate) {
 int	ofAppCocoaWindow::getFrameNum() {
 	return nFrameCount;
 }
-
-void ofAppCocoaWindow::setWindowTitle(string title) {
-//	[[[NSApplication sharedApplication] mainWindow] setTitle:[NSString stringWithCString:title.c_str()]];
-}
-
-
-void ofAppCocoaWindow::setFullscreen(bool fullscreen) {
-	
-	if(fullscreen) windowMode		= OF_FULLSCREEN;
-	else windowMode					= OF_WINDOW;
-	
-	bNewScreenMode					= true;
-}
-
-void ofAppCocoaWindow::toggleFullscreen() {
-	if(windowMode == OF_FULLSCREEN) setFullscreen(false);
-	else setFullscreen(true);
-}
-
-
-void ofAppCocoaWindow::enableSetupScreen(){
-	bEnableSetupScreen = true;
-};
-
-void ofAppCocoaWindow::disableSetupScreen(){
-	bEnableSetupScreen = false;
-};
 
 

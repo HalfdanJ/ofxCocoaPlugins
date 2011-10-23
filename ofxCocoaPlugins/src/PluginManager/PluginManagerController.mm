@@ -1,8 +1,6 @@
 #import "PluginManagerController.h"
 #include "Plugin.h"
-//#include "PluginIncludes.h"
 
-#include "AppController.h"
 #include "PluginListMeterCell.h"
 #import "BeamSync.h"
 #include "PluginOpenGLControlView.h"
@@ -63,7 +61,6 @@ extern ofAppBaseWindow * window;
 	[[[[[NSApp mainMenu] itemAtIndex:0] submenu] itemWithTag:2] setTitle:[NSString stringWithFormat:@"Hide %@",appName]];
 	[[[[[NSApp mainMenu] itemAtIndex:0] submenu] itemWithTag:3] setTitle:[NSString stringWithFormat:@"Quit %@",appName]];
 	
-	[testApp setupApp];
 	setupAppCalled = YES;
 	
 	//Setup outputviews
@@ -83,7 +80,6 @@ extern ofAppBaseWindow * window;
 - (void) finishedDefinePlugins{
     
 	[self willChangeValueForKey:@"plugins"];
-	[testApp setupPlugins];
 	[self didChangeValueForKey:@"plugins"];
 	
 	//Call's all the initial init code. It's not the same as setup, that comes later when OpenGL is up and running

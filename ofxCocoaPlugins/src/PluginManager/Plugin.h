@@ -14,8 +14,6 @@
 //#define Surf(p,s) ((ProjectionSurfacesObject*)[GetPlugin(ProjectionSurfaces) getProjectionSurfaceByName:p surface:s])
 //#define ApplySurface(p,s) ([GetPlugin(ProjectionSurfaces) apply:p surface:s])
 
-//#include "PluginProperty.h"
-
 #include "NumberProperty.h"
 #include "BoolProperty.h"
 
@@ -25,6 +23,10 @@ extern PluginManagerController * globalController;
 
 @interface ofPlugin : NSObject 
 {
+    NSMutableDictionary * properties;
+	NSMutableDictionary * customProperties;
+
+@private
     IBOutlet NSView * view;
 	IBOutlet PluginOpenGLControlView * controlGlView;
 
@@ -43,9 +45,7 @@ extern PluginManagerController * globalController;
 	NSArray * children;
 	NSNumber * canDisable;
 	
-	NSMutableDictionary * properties;
 	NSMutableDictionary * powerMeterDictionary;
-	NSMutableDictionary * customProperties;
 
 	float controlMouseX;
 	float controlMouseY;
@@ -56,23 +56,27 @@ extern PluginManagerController * globalController;
 
 @property (retain, readwrite) NSString *name;
 @property (retain, readwrite) NSNumber *enabled;
-@property (assign, readwrite) PluginOpenGLControlView * controlGlView;
-//@property (readwrite) CAOpenGLLayer *controlLayer;
 
+@property (assign, readwrite) PluginOpenGLControlView * controlGlView;
 @property (assign, readwrite) NSView * view;
+
 @property (readwrite) float updateCpuUsage;
 @property (readwrite) float drawCpuUsage;
 @property (readwrite) int updateCpuTime;
 @property (readwrite) int drawCpuTime;
 @property (readwrite) BOOL initPluginCalled;
 @property (readwrite) BOOL setupCalled;
+
 @property (retain) 	NSMutableDictionary * properties;
 @property (retain) 	NSMutableDictionary * customProperties;
 @property (retain) 	NSMutableDictionary * powerMeterDictionary;
+
 @property (retain) NSImage * icon;
+
 @property (readwrite) float controlMouseX;
 @property (readwrite) float controlMouseY;
 @property (readwrite) int controlMouseFlags;
+
 @property (retain, readwrite) NSNumber * midiChannel;
 
 - (void) initPlugin; //The function which the different plugin can put their init code in

@@ -301,8 +301,6 @@
 		DDE4CA9D1451E23800EECFF4 /* PYMIDIVirtualSource.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4CA2F1451E23700EECFF4 /* PYMIDIVirtualSource.h */; };
 		DDE4CA9E1451E23800EECFF4 /* PYMIDIVirtualSource.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE4CA301451E23700EECFF4 /* PYMIDIVirtualSource.m */; };
 		DDE4CAA31451E32700EECFF4 /* CoreMIDI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDE4CAA21451E32700EECFF4 /* CoreMIDI.framework */; };
-		DDE4CAAA1451E8B700EECFF4 /* AppController.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4CAA81451E8B600EECFF4 /* AppController.h */; };
-		DDE4CAAB1451E8B700EECFF4 /* AppController.mm in Sources */ = {isa = PBXBuildFile; fileRef = DDE4CAA91451E8B600EECFF4 /* AppController.mm */; };
 		DDE4D5CF1451F1F100EECFF4 /* libfmodex.dylib in Copy Files */ = {isa = PBXBuildFile; fileRef = DDE4D5CE1451F1F100EECFF4 /* libfmodex.dylib */; };
 		DDE4D5D71451F3AF00EECFF4 /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DDE4D5D61451F3AF00EECFF4 /* openFrameworksDebug.a */; };
 		DDF6500314504B20007B0C0A /* Project.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = DDF6500214504B20007B0C0A /* Project.xcconfig */; };
@@ -640,8 +638,6 @@
 		DDE4CA2F1451E23700EECFF4 /* PYMIDIVirtualSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PYMIDIVirtualSource.h; sourceTree = "<group>"; };
 		DDE4CA301451E23700EECFF4 /* PYMIDIVirtualSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PYMIDIVirtualSource.m; sourceTree = "<group>"; };
 		DDE4CAA21451E32700EECFF4 /* CoreMIDI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMIDI.framework; path = ../../../../System/Library/Frameworks/CoreMIDI.framework; sourceTree = "<group>"; };
-		DDE4CAA81451E8B600EECFF4 /* AppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppController.h; sourceTree = "<group>"; };
-		DDE4CAA91451E8B600EECFF4 /* AppController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AppController.mm; sourceTree = "<group>"; };
 		DDE4D5CE1451F1F100EECFF4 /* libfmodex.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libfmodex.dylib; path = ofxCocoaPlugins/libs/openframeworks/libs/fmodex/lib/osx/libfmodex.dylib; sourceTree = "<group>"; };
 		DDE4D5D61451F3AF00EECFF4 /* openFrameworksDebug.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = openFrameworksDebug.a; path = ofxCocoaPlugins/libs/openframeworks/libs/openFrameworksCompiled/lib/osx/openFrameworksDebug.a; sourceTree = "<group>"; };
 		DDE4D5D81451F3B400EECFF4 /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ofxCocoaPlugins/libs/openframeworks/libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = "<group>"; };
@@ -1243,8 +1239,6 @@
 		DDE4C8B71451AEFD00EECFF4 /* Application */ = {
 			isa = PBXGroup;
 			children = (
-				DDE4CAA81451E8B600EECFF4 /* AppController.h */,
-				DDE4CAA91451E8B600EECFF4 /* AppController.mm */,
 				DDE4C8B81451AEFD00EECFF4 /* Application.xib */,
 				DDE4C8BD1451AEFD00EECFF4 /* OutputPanel.xib */,
 				DDE4C9801451E02000EECFF4 /* MainWindow.h */,
@@ -1679,7 +1673,6 @@
 				DDE4CA991451E23800EECFF4 /* PYMIDIVirtualDestination.h in Headers */,
 				DDE4CA9B1451E23800EECFF4 /* PYMIDIVirtualEndpoint.h in Headers */,
 				DDE4CA9D1451E23800EECFF4 /* PYMIDIVirtualSource.h in Headers */,
-				DDE4CAAA1451E8B700EECFF4 /* AppController.h in Headers */,
 				DD0A33A01452F29C00CC89E5 /* CorePluginsIncludes.h in Headers */,
 				DD0A33A11452F29C00CC89E5 /* coordWarp.h in Headers */,
 				DD0A33A31452F29C00CC89E5 /* KeystoneProjector.h in Headers */,
@@ -1921,7 +1914,6 @@
 				DDE4CA9A1451E23800EECFF4 /* PYMIDIVirtualDestination.m in Sources */,
 				DDE4CA9C1451E23800EECFF4 /* PYMIDIVirtualEndpoint.m in Sources */,
 				DDE4CA9E1451E23800EECFF4 /* PYMIDIVirtualSource.m in Sources */,
-				DDE4CAAB1451E8B700EECFF4 /* AppController.mm in Sources */,
 				DD0A33A21452F29C00CC89E5 /* coordWarp.mm in Sources */,
 				DD0A33A41452F29C00CC89E5 /* KeystoneProjector.mm in Sources */,
 				DD0A33A61452F29C00CC89E5 /* Keystoner.mm in Sources */,

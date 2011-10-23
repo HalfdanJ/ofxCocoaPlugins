@@ -1,5 +1,3 @@
-//#import "ofConstants.h"
-
 #import <Cocoa/Cocoa.h>
 #import <QuartzCore/CVDisplayLink.h>
 

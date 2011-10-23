@@ -4,6 +4,7 @@
 #import "PluginManagerController.h"
 #import "QLabController.h"
 
+
 @implementation ofPlugin
 @synthesize  name, enabled, view,  updateCpuTime,  drawCpuTime, initPluginCalled, setupCalled, properties, customProperties, powerMeterDictionary,  controlMouseX, controlMouseY, controlMouseFlags, icon, midiChannel, controlGlView;
 

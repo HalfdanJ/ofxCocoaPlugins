@@ -1,9 +1,3 @@
-//
-//  MainWindow.m
-//
-//  Created by Jonas Jongejan on 26/02/10.
-//
-
 #import "MainWindow.h"
 #import <QuartzCore/QuartzCore.h>
 #import "LoadProgressIndicator.h"

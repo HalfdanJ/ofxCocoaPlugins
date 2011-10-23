@@ -1,16 +1,7 @@
-//
-//  OutputViewManager.m
-//  simpleExample
-//
-//  Created by LoadNLoop on 19/03/10.
-//  Copyright 2010 __MyCompanyName__. All rights reserved.
-//
-
-
-
+#include "GL/glew.h"
 
 #import "OutputViewManager.h"
-#include "PluginOpenGLView.h"
+#import "OutputPanelController.h"
 #include "PluginManagerController.h"
 
 #include <IOKit/IOKitLib.h>
@@ -22,8 +13,7 @@
 #import "BeamSync.h"
 
 
-static void KeyArrayCallback(const void *key, const void *value, void
-							 *context) { CFArrayAppendValue((CFMutableArrayRef)context, key);  }
+static void KeyArrayCallback(const void *key, const void *value, void *context) { CFArrayAppendValue((CFMutableArrayRef)context, key);  }
 
 //Code to get the names of the displays
 CFStringRef CopyLocalDisplayName(CGDirectDisplayID display)
@@ -38,7 +28,6 @@ CFStringRef CopyLocalDisplayName(CGDirectDisplayID display)
     if ( displayPort == MACH_PORT_NULL )
         return NULL;  /* No physical device to get a name from */
     dict = IOCreateDisplayInfoDictionary(displayPort, 0);
-	//NSDictionary *deviceFullDescription = (NSDictionary *) IODisplayCreateInfoDictionary(displayPort, kNilOptions);
     names = (CFDictionaryRef) CFDictionaryGetValue( dict, CFSTR(kDisplayProductName) );
 	
     /* Extract all the  display name locale keys */
@@ -57,7 +46,6 @@ CFStringRef CopyLocalDisplayName(CGDirectDisplayID display)
         CFRetain( localName );
     }
 	CFRelease(langKey);
-//    CFRelease(orderLangKeys);
     CFRelease(dict);
     return localName;
 }
@@ -359,6 +347,10 @@ CFStringRef CopyLocalDisplayName(CGDirectDisplayID display)
 //
 //------
 //
+//
+//------
+//
+
 
 
 @implementation PluginOutputWindowDelegate
@@ -369,6 +361,10 @@ CFStringRef CopyLocalDisplayName(CGDirectDisplayID display)
 	}
     return self;
 }
+
+//
+//------
+//
 
 - (NSSize)windowWillResize:(NSWindow *)window toSize: (NSSize)proposedFrameSize
 {

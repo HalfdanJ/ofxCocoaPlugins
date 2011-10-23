@@ -1,8 +1,4 @@
-//
-//  SaveManager.mm
-//
-//  Created by Jonas Jongejan on 18/03/10.
-//
+#include "GL/glew.h"
 
 #import "SaveManager.h"
 #include "ofMain.h"
@@ -29,7 +25,7 @@
 
 - (IBAction) saveAsDataToDisk:(id)sender{
     NSUserDefaults * userDefaults = [NSUserDefaults standardUserDefaults];
-
+    
 	NSSavePanel *sp;
 	int runResult;
 	
@@ -54,7 +50,7 @@
 		
 		archiver = [[NSKeyedArchiver alloc] initForWritingWithMutableData:data];
 		[archiver setOutputFormat: NSPropertyListXMLFormat_v1_0];
-				
+        
 		[archiver encodeObject:[pluginsTreeController selectionIndexPath] forKey:@"SelectionPath"];
 		
 		NSDictionary * group;
@@ -64,7 +60,7 @@
                 [plugin willSave];
 				[archiver encodeObject:[plugin enabled] forKey:[NSString stringWithFormat:@"%@Enabled", [plugin name]]];
 				[archiver encodeObject:[plugin properties] forKey:[NSString stringWithFormat:@"%@Properties", [plugin name]]];
-
+                
 				[archiver encodeObject:[plugin customProperties] forKey:[NSString stringWithFormat:@"%@CustomProperties", [plugin name]]];
 				
 			}
@@ -127,11 +123,11 @@
 					
 					//Make a temporary dictionary of the propterties
 					NSMutableDictionary * tempDict = [[_unarchiver decodeObjectForKey:[NSString stringWithFormat:@"%@Properties", [plugin name]]] retain];
-				
+                    
 					[plugin willChangeValueForKey:@"properties"];
 					NSString * key;
 					for(key in [tempDict allKeys]){
-
+                        
 						//Go through all the properties in the temporary dictionary, and replace the ones in the real plugin
 						PluginProperty *  prop = [[plugin properties] objectForKey:key];
 						PluginProperty *  loadedProp = [tempDict objectForKey:key];
@@ -149,25 +145,25 @@
 					//Make a temporary dictionary of the custom propterties
 					NSMutableDictionary * tempDict2 = [_unarchiver decodeObjectForKey:[NSString stringWithFormat:@"%@CustomProperties", [plugin name]]];				
 					[plugin willChangeValueForKey:@"customProperties"];
-                  //  NSLog(@"Custom properties %@",tempDict2);
+                    //  NSLog(@"Custom properties %@",tempDict2);
 					for(key in [tempDict2 allKeys]){
 						//Go through all the properties in the temporary dictionary, and replace the ones in the real plugin
-					//	id  prop = [[plugin customProperties] objectForKey:key];
-					//	if(prop != nil){						
-//                        NSLog(@"Key %@",key);
-							[[plugin customProperties] setObject:[tempDict2 objectForKey:key] forKey:key];
-					//	}
+                        //	id  prop = [[plugin customProperties] objectForKey:key];
+                        //	if(prop != nil){						
+                        //                        NSLog(@"Key %@",key);
+                        [[plugin customProperties] setObject:[tempDict2 objectForKey:key] forKey:key];
+                        //	}
 					}
 					[plugin didChangeValueForKey:@"customProperties"];
                     [plugin customPropertiesLoaded];
-
+                    
 					[tempDict release];		
 				}
 			}
-		 
+            
 			[_unarchiver finishDecoding];
 			[_unarchiver release];
-
+            
 		}	
 		[data release];
 	}

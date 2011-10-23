@@ -1,7 +1,6 @@
 #pragma once
 
 #include "ofAppBaseWindow.h"
-//#include "AppController.h"
 #include "ofBaseApp.h"
 #include "ofAppRunner.h"
 
@@ -11,15 +10,8 @@ public:
 	
 	ofAppCocoaWindow();
 	virtual ~ofAppCocoaWindow(){};
-	
-	virtual void		setUseFSAA(bool bUseFSAA);
-	
+		
 	virtual void		setupOpenGL(int w, int h, int screenMode);
-	virtual void		initializeWindow();
-	virtual void		runAppViaInfiniteLoop(ofBaseApp * appPtr);
-	
-	virtual void		hideCursor() {};
-	virtual void		showCursor() {};
 	
 	virtual void		setWindowPosition(int x, int y);
 	virtual void		setWindowShape(int w, int h);
@@ -30,36 +22,16 @@ public:
 	virtual ofPoint		getWindowPosition();
 	virtual ofPoint		getWindowSize();
 	virtual ofPoint		getScreenSize();
-    int		getWidth();
-    int		getHeight();
+    virtual int         getWidth();
+    virtual int         getHeight();
 
-	
 	virtual void		setFrameRate(float targetRate);
-	virtual void		setWindowTitle(string title);
-	
-	virtual int			getWindowMode();
-	
-	virtual void		setFullscreen(bool fullscreen);
-	virtual void		toggleFullscreen();
-	
-	virtual void		enableSetupScreen();
-	virtual void		disableSetupScreen();
 	
 	virtual void		keyPressed(int key);
 	virtual void		mousePressed(float x, float y, int button);
 	virtual void		mouseMoved(float x, float y);
 	virtual void		mouseDragged(float x, float y, int button);
 	virtual void		mouseReleased(int button);
-	
-    
-	void setup(); //added
-	void update();
-	void render(int width, int height);
-	
-	//void timerLoop();
-
-	string				windowString;
-	bool				bFSAA;
 	
 	// cache these, they're not gonne change during duration of app
 	ofPoint				screenSize;
@@ -97,10 +69,6 @@ public:
 	double			frameRateGoal;
 	int 			nonFullScreenX;
 	int 			nonFullScreenY;
-	
-	//AppController * windowController;
-	
-
 };
 
 

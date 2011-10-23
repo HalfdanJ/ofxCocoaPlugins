@@ -1,9 +1,3 @@
-//
-//  OutputViewPanel.m
-//
-//  Created by Jonas Jongejan on 23/09/10.
-//
-
 #import "OutputPanelController.h"
 
 

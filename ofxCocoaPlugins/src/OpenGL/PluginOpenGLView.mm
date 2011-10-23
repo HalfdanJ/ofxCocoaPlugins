@@ -8,7 +8,6 @@
 #import "PluginManagerController.h"
 #import "OutputViewStats.h"
 
-static ofAppCocoaWindow * window;
 //
 //----------------
 //

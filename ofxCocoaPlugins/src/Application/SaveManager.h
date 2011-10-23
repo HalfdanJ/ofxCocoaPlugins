@@ -1,9 +1,8 @@
 #pragma once
-#include "GL/glew.h"
-
 #import <Cocoa/Cocoa.h>
 
 @class PluginManagerController;
+
 @interface SaveManager : NSObject {
 	IBOutlet PluginManagerController * controller;
 	IBOutlet NSTreeController * pluginsTreeController;
@@ -14,6 +13,7 @@
 
 	NSString * dataPath;
 }
+
 @property (retain) NSString * dataPath;
 
 - (IBAction) saveDataToDisk:(id)sender;

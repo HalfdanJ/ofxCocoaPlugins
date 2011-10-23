@@ -1,10 +1,4 @@
-//
-//  BeamSync.m
-//  Example
-//
-//  Created by Se Min Skygge on 18/05/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
-//
+#import "BeamSync.h"
 
 
 extern void CGSSetDebugOptions(int);
@@ -18,25 +12,7 @@ typedef enum {
 
 
 
-#import "BeamSync.h"
-
-
 @implementation BeamSync
-
-- (id)init
-{
-    self = [super init];
-    if (self) {
-        // Initialization code here.
-    }
-    
-    return self;
-}
-
-- (void)dealloc
-{
-    [super dealloc];
-}
 
 +(void) disable{
     //Disable beam sync

@@ -1,17 +1,18 @@
+#include "GL/glew.h"
+
 #import "PluginProperty.h"
+#import "PluginManagerController.h"
 
 #include "Midi.h"
 
 
-static NSString *MidiControllerContext = @"org.recoil.midi.controller";
+static NSString *MidiControllerContext = @"org.ofx.midi.controller";
 
 @implementation PluginProperty
 @synthesize value, defaultValue, controlCell ,controlType, midiChannel, midiNumber, name, pluginName, forcedMidiNumber;
 
 -(id) init{
 	if([super init]){
-		graphDebugging = NO;
-		//	midiProperties = [[NSMutableDictionary dictionary] retain];
 		binded = NO;
 		forcedMidiNumber = NO;
 	}
@@ -26,59 +27,22 @@ static NSString *MidiControllerContext = @"org.recoil.midi.controller";
 	[name release];
 	[super dealloc];
 }
-/*
- +(PluginProperty*)boolProperty:(BOOL)defValue {
- static PluginProperty * prop = nil;
- prop = [[PluginProperty alloc] init];
- [prop setType:BOOL_PROPERTY];
- [prop setValue:[NSNumber numberWithFloat:defValue]];
- [prop setDefaultValue: [NSNumber numberWithFloat:defValue]];
- 
- return prop;
- 
- }
- 
- +(PluginProperty*)stringProperty:(NSString*)defValue{
- static PluginProperty * prop = nil;
- prop = [[PluginProperty alloc] init];
- [prop setType:STRING_PROPERTY];
- [prop setValue:[NSString stringWithString:defValue]];
- [prop setDefaultValue: [NSString stringWithString:defValue]];
- 
- return prop;
- 
- 
- }
- */
+
+
 -(const char *) objCType{
 	return [value objCType];
 }
 
 -(NSString *) description{
-	//return [value description];
 	return @"PluginProptery";
 }
 
 
-- (id)copyWithZone:(NSZone*)zone
-{	
+- (id)copyWithZone:(NSZone*)zone{	
 	return [self retain];
 }
 
 
--(NSNumber *) graph{
-	return [NSNumber numberWithBool:graphDebugging];
-}
-
--(void) setGraph:(NSNumber *)b{
-	graphDebugging = [b boolValue];
-/*	
-	if(graphDebugging){
-		[globalGraphDebugger addProperty:self];
-	} else {
-		[globalGraphDebugger removeProperty:self];		
-	}*/
-}
 
 
 -(void) encodeWithCoder:(NSCoder *)coder{
@@ -87,7 +51,6 @@ static NSString *MidiControllerContext = @"org.recoil.midi.controller";
 	[coder encodeInt:[self controlType] forKey:@"controlType"];
 	[coder encodeObject:midiChannel forKey:@"midiChannel"];
 	[coder encodeObject:midiNumber forKey:@"midiNumber"];
-	//	NSLog(@"Encode controlType %i",[self controlType]);
 }
 
 -(id) initWithCoder:(NSCoder *)coder{
@@ -96,8 +59,6 @@ static NSString *MidiControllerContext = @"org.recoil.midi.controller";
 	[self setControlType: [coder decodeIntForKey:@"controlType"]];
 	[self setMidiChannel:[coder decodeObjectForKey:@"midiChannel"]];
 	[self setMidiNumber:[coder decodeObjectForKey:@"midiNumber"]];
-	
-	//	NSLog(@"Decode controlType %i",[self controlType]);	
 	
 	return self;
 }
@@ -108,17 +69,13 @@ static NSString *MidiControllerContext = @"org.recoil.midi.controller";
 		binded = YES;
 
 		[[[GetPlugin(Midi) midiData] objectAtIndex:[midiChannel intValue]] addObserver:self forKeyPath:[midiNumber stringValue] options:0 context:MidiControllerContext];
-		
-		//	[[GetPlugin(Midi) midiBindings] addObject:midiProperties];
 	}
 }
 -(void) unbindMidi{
 	if(binded){		
 		[[[GetPlugin(Midi) midiData] objectAtIndex:[midiChannel intValue]] removeObserver:self forKeyPath:[midiNumber stringValue]];
-//		[[[GetPlugin(Midi) midiData] objectForKey:midiChannel] removeObserver:self forKeyPath:midiNumber];
 		binded = NO;
 	}	
-	//[[GetPlugin(Midi) midiBindings] removeObject:midiProperties];
 }
 
 -(void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context{

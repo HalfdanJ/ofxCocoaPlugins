@@ -11,12 +11,11 @@
 #include "ofxOsc.h"
 
 @class ofPlugin;
-@class AppController;
 @class QLabController;
+@class MainWindow;
 
 @interface PluginManagerController : NSObject <NSWindowDelegate>{
-	IBOutlet AppController * testApp;
-	IBOutlet NSWindow * mainWindow;
+	IBOutlet MainWindow * mainWindow;
 	IBOutlet NSView * pluginControllerView;
 	IBOutlet NSView * pluginPropertiesView;
 	IBOutlet NSView * statsAreaView;

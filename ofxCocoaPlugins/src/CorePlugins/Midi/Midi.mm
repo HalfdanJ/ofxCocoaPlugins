@@ -9,6 +9,7 @@
 
 #include "Midi.h"
 #include "PYMIDI.h"
+#import "PluginManagerController.h"
 
 @implementation Midi
 @synthesize boundControls, midiBindings, midiData, mtcTimeString;

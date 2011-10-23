@@ -1,12 +1,8 @@
 #pragma once
-#include "GL/glew.h"
 
 #import <Cocoa/Cocoa.h>
-#import "PluginOpenGLView.h"
-#import "OutputPanelController.h"
 
-
-
+@class PluginOpenGLView;
 @class PluginManagerController;
 @class PluginOutputWindowDelegate;
 

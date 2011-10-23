@@ -1,7 +1,4 @@
-
 #pragma once
-#include "GL/glew.h"
-
 #import <Cocoa/Cocoa.h>
 
 #define NUMBER_PROPERTY 1
@@ -10,22 +7,13 @@
 #define BOOL_PROPERTY 4
 
 
-
-
-//@class GraphDebugger;
-//extern GraphDebugger * globalGraphDebugger;
-
 @interface PluginProperty : NSObject  <NSCoding, NSCopying> {
 	id value;
 	id defaultValue;
-//	int type;
 	int controlType;
-	BOOL graphDebugging;
 	NSString * name;
 	NSString * pluginName;
 	NSCell * controlCell;
-	
-//	NSMutableDictionary * midiProperties;
 	
 	NSNumber * midiChannel;
 	NSNumber * midiNumber;
@@ -40,7 +28,6 @@
 @property (readwrite) int controlType;
 @property (readonly) BOOL forcedMidiNumber;
 
-@property (retain, readwrite) NSNumber * graph;
 @property (retain) NSCell * controlCell;
 @property (retain)	NSNumber * midiChannel;
 @property (retain)	NSNumber * midiNumber;
@@ -56,11 +43,6 @@
 -(void) sendQlabNonVerbose;
 
 -(void) setManualMidiNumber:(NSNumber*)number;
-
-//-(void) sendQlabScriptName:(NSString*)description channel:(int)channel control:(int)control value:(int)value fade:(bool)fade;
-//+(PluginProperty*)boolProperty:(BOOL)defValue;
-//+(PluginProperty*)stringProperty:(NSString*)defValue;
-
 
 
 @end
