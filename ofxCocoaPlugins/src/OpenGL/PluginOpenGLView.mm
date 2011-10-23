@@ -4,17 +4,9 @@
 #import "ofMain.h"
 
 #import "PluginOpenGLView.h"
-#import <OpenGL/gl.h>
-#import <OpenGL/OpenGL.h>
-#import <OpenGL/glext.h>
-#import <OpenGL/glu.h>
 
 #import "PluginManagerController.h"
 #import "OutputViewStats.h"
-
-#include "ofAppRunner.h"
-
-
 
 
 //
@@ -43,8 +35,7 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 									  CVOptionFlags *flagsOut, void *displayLinkContext)
 {
 	CVReturn result = [(PluginOpenGLView *)displayLinkContext getFrameForTime:((now->videoTime*1.0)/now->videoTimeScale) displayTime:outputTime];
-    //    CVReturn result = [(PluginOpenGLView *)displayLinkContext getFrameForTime:outputTime];
-    
+   
 	return result;
 }
 
@@ -57,14 +48,17 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 {
 	[self setOpenGLContext:[controller getSharedContext:(CGLPixelFormatObj)[[self pixelFormat] CGLPixelFormatObj]]];
 	
+    //Create a new statsview (containing framerate)
 	statsView = [[[OutputViewStats alloc]initWithFrame:NSMakeRect(10, [[controller statsAreaView] frame].size.height - 40- 30*[self viewNumber],  [[controller statsAreaView] frame].size.width-20, 30) outputView:self] retain];
 	[statsView setAutoresizingMask:NSViewMinYMargin | NSViewWidthSizable];
 	[[controller statsAreaView] addSubview:statsView];
 	
+    //Create a timer for updating the statsview
 	NSTimer * timer = [NSTimer timerWithTimeInterval:(120.0f/60.0f) target:self selector:@selector(updateStats) userInfo:nil repeats:YES];
 	[[NSRunLoop currentRunLoop] addTimer:timer forMode:NSDefaultRunLoopMode];
 	[[NSRunLoop currentRunLoop] addTimer:timer forMode:NSEventTrackingRunLoopMode]; // ensure timer fires during resize
 	
+    //Create a empty drawing information dictionary (is going to contain frame information send to the plugins when drawing)
 	[self setDrawingInformation:[NSMutableDictionary dictionaryWithCapacity:6]];
 	
 	backingWidth = 0;
@@ -91,10 +85,9 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 
 //
 //----------------
-//
+// Set up the OpenGL environs
 
 
-// set up the OpenGL environs
 - (void)prepareOpenGL
 {
 	GLint swapInterval = 1;
@@ -107,11 +100,11 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
     glTexGeni(GL_S, GL_TEXTURE_GEN_MODE, GL_SPHERE_MAP);
     glTexGeni(GL_T, GL_TEXTURE_GEN_MODE, GL_SPHERE_MAP);
     
+    glEnable(GL_MULTISAMPLE);
+    
     // set up the GL contexts swap interval -- passing 1 means that
     // the buffers are swapped only during the vertical retrace of the monitor
     [[self openGLContext] setValues:&swapInterval forParameter:NSOpenGLCPSwapInterval];
-	
-	//[self setOpenGLContext:[controller getSharedContext:(CGLPixelFormatObj)[[self pixelFormat] CGLPixelFormatObj]]];
 	
 	
 	NSOpenGLPixelFormatAttribute attrs[] =
@@ -151,16 +144,13 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 		(NSOpenGLPixelFormatAttribute)nil
 	};
 	
-	NSOpenGLPixelFormat * pixelFormat = [[NSOpenGLPixelFormat alloc] initWithAttributes:attrs];
-	
+	NSOpenGLPixelFormat * pixelFormat = [[NSOpenGLPixelFormat alloc] initWithAttributes:attrs];	
 	[self setPixelFormat:pixelFormat];
 	
-	glEnable(GL_MULTISAMPLE);
     
     
     // create display link for the main display
-	if (NULL == displayLink) {
-		
+	if (NULL == displayLink) {		
 		CVDisplayLinkCreateWithCGDisplay(kCGDirectMainDisplay, &displayLink);
 		if (NULL != displayLink) {
 			// set the current display of a display link.
@@ -174,15 +164,11 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 			NSLog(@"ERROR could not create displayLink");
 		}
 	}
-    
-    
-    //    ofSetCurrentRenderer(ofPtr<ofBaseRenderer>(new ofGLRenderer(false)));
-    
 }
 
 //
 //----------------
-//
+// Called every time the window changes size
 
 - (void)reshape
 {
@@ -202,30 +188,37 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 	
 	viewWidth = viewBounds.width;
 	viewHeight = viewBounds.height;
+    
 	[[controller openglLock] unlock];
 }
 
 
 //
 //----------------
+// DrawRect is called in every frame. Here is the actual drawing done
 //
 
 -(void) drawRect:(NSRect)dirtyRect{
-	[[controller openglLock] lock]; // prevent drawing from another thread if we're drawing already
-	
+    // prevent drawing from another thread if we're drawing already
+	[[controller openglLock] lock]; 
 	
 	// make the GL context the current context
 	[[self openGLContext] makeCurrentContext];
     
-	
 	// draw here	
 	if([controller isPluginsInited]){	
 		if(![controller isSetupCalled] || [controller willDraw:drawingInformation]){
-            if(![controller isSetupCalled]){                
+            if(![controller isSetupCalled]){             
+                //Create the openframeworks context
                 ofAppCocoaWindow window;
                 ofSetupOpenGL(&window, 0, 0, 0);
             }
             
+            //Tell openframeworks the size of the window
+            ofSetWindowShape([self frame].size.width, [self frame].size.height);
+
+            
+            //Reset the drawingarea
             ofBackground(0, 0, 0);
 			
 			glMatrixMode(GL_TEXTURE);
@@ -233,8 +226,6 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 			
 			glMatrixMode(GL_MODELVIEW);
 			glLoadIdentity();
-			
-			
 			
 			glTranslated(-1, 1, 0.0);			
 			glScaled(2, -2, 1.0);
@@ -246,28 +237,25 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 				glTranslated(0, -1, 0);
 			}			
 			
-			//			
+
 			glPushMatrix();
 			
-            ofSetWindowShape([self frame].size.width, [self frame].size.height);
-			
-			if(![controller isSetupCalled]){
-                
+			//Call the setup code if its the first time
+            if(![controller isSetupCalled]){
 				[controller callSetup];
 			}	
 			
+            //The drawing from the plugins 
 			[controller callDraw:drawingInformation];
 			
 			glPopMatrix();
-			//#define VARIANT3
-#ifdef VARIANT3
-			[[self openGLContext] flushBuffer];
-#else
+
+            //Flush the buffer to draw to screen
 			glFlush();
-            //    [[self openGLContext] flushBuffer];
+            //[[self openGLContext] flushBuffer];
             
+            //Add the framerate to the statsview
 			[statsView addHistory:[drawingInformation valueForKey:@"fps"]];
-#endif
 		}
 	} else {
 		glClearColor(0,0,0,255);
@@ -291,6 +279,7 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 {
 	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
 	
+    //Create the drawingInformation dictionary with all the timing information
 	[drawingInformation setValue:[NSNumber numberWithDouble:timeInterval] forKey:@"timeInterval"];
 	[drawingInformation setValue:[NSNumber numberWithDouble:outputTime->videoTime] forKey:@"outputTime.videoTime"];
 	[drawingInformation setValue:[NSNumber numberWithInt:viewNumber] forKey:@"outputViewNumber"];
