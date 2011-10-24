@@ -48,7 +48,7 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 	[self setOpenGLContext:[controller getSharedContext:(CGLPixelFormatObj)[[self pixelFormat] CGLPixelFormatObj]]];
 	
     //Create a new statsview (containing framerate)
-	statsView = [[[OutputViewStats alloc]initWithFrame:NSMakeRect(10, [[controller statsAreaView] frame].size.height - 40- 30*[self viewNumber],  [[controller statsAreaView] frame].size.width-20, 30) outputView:self] retain];
+	statsView = [[[OutputViewStats alloc]initWithFrame:NSMakeRect(10, [[controller statsAreaView] frame].size.height - 60- 30*[self viewNumber],  [[controller statsAreaView] frame].size.width-20, 30) outputView:self] retain];
 	[statsView setAutoresizingMask:NSViewMinYMargin | NSViewWidthSizable];
 	[[controller statsAreaView] addSubview:statsView];
 	
@@ -305,7 +305,6 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 
 -(void)updateStats{
 	[statsView setFps:[drawingInformation valueForKey:@"fps"]];
-	[statsView reloadGraph];
 }
 
 
@@ -315,16 +314,21 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 
 
 - (void) updateDisplayIDWithWindow:(NSWindow*)window
-{			
+{		
+    [[controller openglLock] lock]; 
+
     CGDirectDisplayID displayID = (CGDirectDisplayID)[[[[window screen] deviceDescription] objectForKey:@"NSScreenNumber"] intValue];
 	
     if  ((displayID != 0) && (viewDisplayID != displayID) && [[self window] screen] == [window screen]) {		
         if (NULL != displayLink) {
 			NSLog(@"New DisplayID %i on outputview %i",displayID,viewNumber);
-            CVDisplayLinkSetCurrentCGDisplay(displayLink, displayID);
+       //     CVDisplayLinkSetCurrentCGDisplay(displayLink, displayID); 
         }
         viewDisplayID = displayID;
     }	
+    
+    [[controller openglLock] unlock]; 
+
 }
 
 

@@ -12,6 +12,7 @@ PluginManagerController * globalController;
 extern ofAppBaseWindow * window;
 
 @implementation PluginManagerController 
+@synthesize preferencesButton;
 
 @synthesize saveManager, statsAreaView, sharedOpenglContext, openglLock, fps, plugins, viewManager, qlabController;
 @synthesize quitWithoutAsking;
@@ -63,8 +64,6 @@ extern ofAppBaseWindow * window;
 	
 	setupAppCalled = YES;
 	
-	//Setup outputviews
-	[viewManager setupScreen];
 	
 	//NSImage * hazardImage = [NSImage imageNamed:@"hazard stripes small.psd"];	
 	//[pluginTitleView setFillColor:[NSColor colorWithPatternImage:hazardImage]];
@@ -78,6 +77,10 @@ extern ofAppBaseWindow * window;
 //
 
 - (void) finishedDefinePlugins{
+    
+    //Setup outputviews
+	[viewManager setupScreen];
+
     
 	[self willChangeValueForKey:@"plugins"];
 	[self didChangeValueForKey:@"plugins"];
@@ -114,8 +117,13 @@ extern ofAppBaseWindow * window;
 	NSLog(@"------ Init plugins: ------");	
 
 	[mainWindow setLoadStatusText:[NSString stringWithFormat:@"Initing plugins 1/%d",[self countOfPlugins]]];
-
+    
+    generalPreferences = [[GeneralPreferences alloc] init];
+    [generalPreferences initPlugin];
+    [generalPreferences loadPluginNibFile];
+    
 	dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        
         //[[self openglLock] lock]; 
 
 		//	dispatch_async(dispatch_get_main_queue(), ^{
@@ -467,6 +475,10 @@ extern ofAppBaseWindow * window;
 
 
 -(IBAction)changePlugin:(id)sender{
+    if([[self preferencesButton] state]){
+        [[self preferencesButton] setState:NO];
+    }
+    
 	[openglLock lock];
 	if([[self selectedPlugin] view] != nil){		
         [[[self selectedPlugin] view] setFrame:[pluginControllerView bounds]];
@@ -498,6 +510,18 @@ extern ofAppBaseWindow * window;
 	}
     
 	[openglLock unlock];
+
+}
+
+- (IBAction)togglePreferences:(id)sender {
+    [pluginsTreeController setSelectionIndexPaths:[NSArray array]];
+    [sender setState:1];
+    
+    [[generalPreferences view] setFrame:[pluginControllerView bounds]];
+    [pluginControllerView replaceSubview:[[pluginControllerView subviews] objectAtIndex:0] with:[generalPreferences view]];    
+    generalPreferences.controlGlView.plugin = generalPreferences;
+    
+    
 
 }
 

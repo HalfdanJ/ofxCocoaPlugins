@@ -6,6 +6,7 @@
 
 #include "SaveManager.h"
 #include "OutputViewManager.h"
+#import "GeneralPreferences.h"
 
 #define IGNORE_NIL_TYPE
 #include "ofxOsc.h"
@@ -38,6 +39,7 @@
 	IBOutlet SaveManager * saveManager;
 	IBOutlet OutputViewManager * viewManager;
 	IBOutlet QLabController * qlabController;
+    NSButton *preferencesButton;
 	
 	//Properties variables
 	NSSliderCell * sliderCell;
@@ -72,6 +74,7 @@
     
     BOOL propertiesShown;
 
+    GeneralPreferences * generalPreferences;
 }	
 
 @property (retain) SaveManager * saveManager;
@@ -83,6 +86,7 @@
 @property (retain, readonly) OutputViewManager * viewManager;
 @property (readwrite) BOOL quitWithoutAsking;
 @property (readonly) QLabController * qlabController;
+@property (assign) IBOutlet NSButton *preferencesButton;
 
 // @property (retain ) NSMutableArray *currentProperties;
 
@@ -93,6 +97,7 @@
 -(IBAction) pressToggleParametersButton:(id)sender;
 //-(IBAction) pressGraphViewButton:(id)sender;
 -(IBAction)changePlugin:(id)sender;
+- (IBAction)togglePreferences:(id)sender;
 
 - (void) initPlugins;
 - (void) finishedDefinePlugins;

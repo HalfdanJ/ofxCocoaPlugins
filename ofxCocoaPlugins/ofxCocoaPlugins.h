@@ -13,7 +13,7 @@
 - (void) addHeader:(NSString*)header;
 - (void) addPlugin:(ofPlugin*)plugin;
 
-//Set the number of opengl outputviews. Default 1
+//Set the number of opengl outputviews. Default = 1
 - (void) setNumberOutputviews:(int)views;
 
 //Call this when you have added all plugins

@@ -185,6 +185,9 @@
 		DD0A368A145443DA00CC89E5 /* ConfigInclude.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = DD0A3689145443D900CC89E5 /* ConfigInclude.xcconfig */; };
 		DDA7FFE6144F1C3800F81C9E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DDA7FFE4144F1C3800F81C9E /* InfoPlist.strings */; };
 		DDA7FFEA144F1C3800F81C9E /* ofxCocoaPlugins.mm in Sources */ = {isa = PBXBuildFile; fileRef = DDA7FFE9144F1C3800F81C9E /* ofxCocoaPlugins.mm */; };
+		DDC266AF1454BC020016BA7B /* GeneralPreferences.h in Headers */ = {isa = PBXBuildFile; fileRef = DDC266AC1454BC020016BA7B /* GeneralPreferences.h */; };
+		DDC266B01454BC020016BA7B /* GeneralPreferences.mm in Sources */ = {isa = PBXBuildFile; fileRef = DDC266AD1454BC020016BA7B /* GeneralPreferences.mm */; };
+		DDC266B11454BC020016BA7B /* GeneralPreferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDC266AE1454BC020016BA7B /* GeneralPreferences.xib */; };
 		DDE4C8831451A91200EECFF4 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDE4C8761451A91200EECFF4 /* CoreVideo.framework */; };
 		DDE4C8841451A91200EECFF4 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDE4C8771451A91200EECFF4 /* AppKit.framework */; };
 		DDE4C8851451A91200EECFF4 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDE4C8781451A91200EECFF4 /* Cocoa.framework */; };
@@ -209,8 +212,6 @@
 		DDE4C9071451DBD900EECFF4 /* LoadProgressIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE4C8FB1451DBD900EECFF4 /* LoadProgressIndicator.m */; };
 		DDE4C9081451DBD900EECFF4 /* OutputViewStats.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C8FC1451DBD900EECFF4 /* OutputViewStats.h */; };
 		DDE4C9091451DBD900EECFF4 /* OutputViewStats.mm in Sources */ = {isa = PBXBuildFile; fileRef = DDE4C8FD1451DBD900EECFF4 /* OutputViewStats.mm */; };
-		DDE4C90A1451DBD900EECFF4 /* PluginControlView.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C8FE1451DBD900EECFF4 /* PluginControlView.h */; };
-		DDE4C90B1451DBD900EECFF4 /* PluginControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE4C8FF1451DBD900EECFF4 /* PluginControlView.m */; };
 		DDE4C90C1451DBD900EECFF4 /* PluginEnabledCell.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C9001451DBD900EECFF4 /* PluginEnabledCell.h */; };
 		DDE4C90D1451DBD900EECFF4 /* PluginEnabledCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE4C9011451DBD900EECFF4 /* PluginEnabledCell.m */; };
 		DDE4C90E1451DBD900EECFF4 /* PluginListMeterCell.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C9021451DBD900EECFF4 /* PluginListMeterCell.h */; };
@@ -522,6 +523,9 @@
 		DDA7FFE7144F1C3800F81C9E /* ofxCocoaPlugins-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ofxCocoaPlugins-Prefix.pch"; sourceTree = "<group>"; };
 		DDA7FFE8144F1C3800F81C9E /* ofxCocoaPlugins.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxCocoaPlugins.h; sourceTree = "<group>"; };
 		DDA7FFE9144F1C3800F81C9E /* ofxCocoaPlugins.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ofxCocoaPlugins.mm; sourceTree = "<group>"; };
+		DDC266AC1454BC020016BA7B /* GeneralPreferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeneralPreferences.h; sourceTree = "<group>"; };
+		DDC266AD1454BC020016BA7B /* GeneralPreferences.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GeneralPreferences.mm; sourceTree = "<group>"; };
+		DDC266AE1454BC020016BA7B /* GeneralPreferences.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GeneralPreferences.xib; sourceTree = "<group>"; };
 		DDE4C8761451A91200EECFF4 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		DDE4C8771451A91200EECFF4 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = ../../../../System/Library/Frameworks/AppKit.framework; sourceTree = "<group>"; };
 		DDE4C8781451A91200EECFF4 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = ../../../../System/Library/Frameworks/Cocoa.framework; sourceTree = "<group>"; };
@@ -546,8 +550,6 @@
 		DDE4C8FB1451DBD900EECFF4 /* LoadProgressIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadProgressIndicator.m; sourceTree = "<group>"; };
 		DDE4C8FC1451DBD900EECFF4 /* OutputViewStats.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OutputViewStats.h; sourceTree = "<group>"; };
 		DDE4C8FD1451DBD900EECFF4 /* OutputViewStats.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = OutputViewStats.mm; sourceTree = "<group>"; };
-		DDE4C8FE1451DBD900EECFF4 /* PluginControlView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PluginControlView.h; sourceTree = "<group>"; };
-		DDE4C8FF1451DBD900EECFF4 /* PluginControlView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PluginControlView.m; sourceTree = "<group>"; };
 		DDE4C9001451DBD900EECFF4 /* PluginEnabledCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PluginEnabledCell.h; sourceTree = "<group>"; };
 		DDE4C9011451DBD900EECFF4 /* PluginEnabledCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PluginEnabledCell.m; sourceTree = "<group>"; };
 		DDE4C9021451DBD900EECFF4 /* PluginListMeterCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PluginListMeterCell.h; sourceTree = "<group>"; };
@@ -1236,6 +1238,16 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		DDC266A91454BBE90016BA7B /* GeneralPreferences */ = {
+			isa = PBXGroup;
+			children = (
+				DDC266AC1454BC020016BA7B /* GeneralPreferences.h */,
+				DDC266AD1454BC020016BA7B /* GeneralPreferences.mm */,
+				DDC266AE1454BC020016BA7B /* GeneralPreferences.xib */,
+			);
+			path = GeneralPreferences;
+			sourceTree = "<group>";
+		};
 		DDE4C8B71451AEFD00EECFF4 /* Application */ = {
 			isa = PBXGroup;
 			children = (
@@ -1277,8 +1289,6 @@
 				DDE4C8FB1451DBD900EECFF4 /* LoadProgressIndicator.m */,
 				DDE4C8FC1451DBD900EECFF4 /* OutputViewStats.h */,
 				DDE4C8FD1451DBD900EECFF4 /* OutputViewStats.mm */,
-				DDE4C8FE1451DBD900EECFF4 /* PluginControlView.h */,
-				DDE4C8FF1451DBD900EECFF4 /* PluginControlView.m */,
 				DDE4C9001451DBD900EECFF4 /* PluginEnabledCell.h */,
 				DDE4C9011451DBD900EECFF4 /* PluginEnabledCell.m */,
 				DDE4C9021451DBD900EECFF4 /* PluginListMeterCell.h */,
@@ -1440,6 +1450,7 @@
 			isa = PBXGroup;
 			children = (
 				DD0A334A1452F29C00CC89E5 /* CorePluginsIncludes.h */,
+				DDC266A91454BBE90016BA7B /* GeneralPreferences */,
 				DD0A334B1452F29C00CC89E5 /* Keystoner */,
 				DD0A33641452F29C00CC89E5 /* VideoPlayer */,
 				DDE4CA151451E23700EECFF4 /* Midi */,
@@ -1625,7 +1636,6 @@
 				DDE4C8DB1451AF1500EECFF4 /* PluginOpenGLView.h in Headers */,
 				DDE4C9061451DBD900EECFF4 /* LoadProgressIndicator.h in Headers */,
 				DDE4C9081451DBD900EECFF4 /* OutputViewStats.h in Headers */,
-				DDE4C90A1451DBD900EECFF4 /* PluginControlView.h in Headers */,
 				DDE4C90C1451DBD900EECFF4 /* PluginEnabledCell.h in Headers */,
 				DDE4C90E1451DBD900EECFF4 /* PluginListMeterCell.h in Headers */,
 				DDE4C9101451DBD900EECFF4 /* PropertiesValueCell.h in Headers */,
@@ -1771,6 +1781,7 @@
 				DD0A35721452F32700CC89E5 /* ofxVec4f.h in Headers */,
 				DD0A35731452F32700CC89E5 /* ofxVectorMath.h in Headers */,
 				DD0A368514543B7900CC89E5 /* ofQtUtils.h in Headers */,
+				DDC266AF1454BC020016BA7B /* GeneralPreferences.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1849,6 +1860,7 @@
 				DD0A33A71452F29C00CC89E5 /* Keystoner.xib in Resources */,
 				DD0A33BA1452F29C00CC89E5 /* VideoPlayer.xib in Resources */,
 				DD0A368A145443DA00CC89E5 /* ConfigInclude.xcconfig in Resources */,
+				DDC266B11454BC020016BA7B /* GeneralPreferences.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1881,7 +1893,6 @@
 				DDE4C8DC1451AF1500EECFF4 /* PluginOpenGLView.mm in Sources */,
 				DDE4C9071451DBD900EECFF4 /* LoadProgressIndicator.m in Sources */,
 				DDE4C9091451DBD900EECFF4 /* OutputViewStats.mm in Sources */,
-				DDE4C90B1451DBD900EECFF4 /* PluginControlView.m in Sources */,
 				DDE4C90D1451DBD900EECFF4 /* PluginEnabledCell.m in Sources */,
 				DDE4C90F1451DBD900EECFF4 /* PluginListMeterCell.m in Sources */,
 				DDE4C9111451DBD900EECFF4 /* PropertiesValueCell.m in Sources */,
@@ -1923,6 +1934,7 @@
 				DD0A33AF1452F29C00CC89E5 /* TrackingView.mm in Sources */,
 				DD0A33B11452F29C00CC89E5 /* Warp.mm in Sources */,
 				DD0A33B91452F29C00CC89E5 /* VideoPlayer.mm in Sources */,
+				DDC266B01454BC020016BA7B /* GeneralPreferences.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
