@@ -1,8 +1,6 @@
 #pragma once
 
 #include "Plugin.h"
-#import "PluginManagerController.h"
-#import "PluginOpenGLView.h"
 #import "KeystoneProjector.h"
 
 @interface KeystonerOutputview : NSObject {

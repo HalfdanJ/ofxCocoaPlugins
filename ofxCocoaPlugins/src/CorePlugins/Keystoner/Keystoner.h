@@ -20,7 +20,6 @@
 #include "Plugin.h"
 
 #include "KeystonerOutputview.h"
-#include "TrackingLayer.h"
 #import "KeystoneSurface.h"
 
 
@@ -29,6 +28,7 @@
 //    
 //    [GetPlugin(Keystoner)  popSurface]; } }}
 
+@class TrackingLayer;
 
 @interface Keystoner : ofPlugin {
 	IBOutlet NSSegmentedControl * outputViewPicker;

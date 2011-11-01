@@ -8,6 +8,7 @@
 
 #import "TrackingLayer.h"
 #import "Keystoner.h"
+#import <QuartzCore/QuartzCore.h>
 
 @implementation TrackingLayer
 @synthesize scale, aspect, visible, handlePositionHolder, dataTarget, dragCorner;

@@ -7,28 +7,33 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		DD0A33A01452F29C00CC89E5 /* CorePluginsIncludes.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A334A1452F29C00CC89E5 /* CorePluginsIncludes.h */; };
-		DD0A33A11452F29C00CC89E5 /* coordWarp.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A334C1452F29C00CC89E5 /* coordWarp.h */; };
+		3D962EF7145FF0230008C326 /* QuickTime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D962EF6145FF0230008C326 /* QuickTime.framework */; };
+		3D962EF9145FF0320008C326 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D962EF8145FF0320008C326 /* QuartzCore.framework */; };
+		3D962EFB145FF0680008C326 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D962EFA145FF0680008C326 /* AppKit.framework */; };
+		3D962EFD145FF0790008C326 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D962EFC145FF0790008C326 /* Cocoa.framework */; };
+		3D962EFF145FF0820008C326 /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D962EFE145FF0820008C326 /* QTKit.framework */; };
+		DD0A33A01452F29C00CC89E5 /* CorePluginsIncludes.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A334A1452F29C00CC89E5 /* CorePluginsIncludes.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DD0A33A11452F29C00CC89E5 /* coordWarp.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A334C1452F29C00CC89E5 /* coordWarp.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DD0A33A21452F29C00CC89E5 /* coordWarp.mm in Sources */ = {isa = PBXBuildFile; fileRef = DD0A334D1452F29C00CC89E5 /* coordWarp.mm */; };
-		DD0A33A31452F29C00CC89E5 /* KeystoneProjector.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A334E1452F29C00CC89E5 /* KeystoneProjector.h */; };
+		DD0A33A31452F29C00CC89E5 /* KeystoneProjector.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A334E1452F29C00CC89E5 /* KeystoneProjector.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DD0A33A41452F29C00CC89E5 /* KeystoneProjector.mm in Sources */ = {isa = PBXBuildFile; fileRef = DD0A334F1452F29C00CC89E5 /* KeystoneProjector.mm */; };
-		DD0A33A51452F29C00CC89E5 /* Keystoner.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33501452F29C00CC89E5 /* Keystoner.h */; };
+		DD0A33A51452F29C00CC89E5 /* Keystoner.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33501452F29C00CC89E5 /* Keystoner.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DD0A33A61452F29C00CC89E5 /* Keystoner.mm in Sources */ = {isa = PBXBuildFile; fileRef = DD0A33511452F29C00CC89E5 /* Keystoner.mm */; };
 		DD0A33A71452F29C00CC89E5 /* Keystoner.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD0A33521452F29C00CC89E5 /* Keystoner.xib */; };
-		DD0A33A81452F29C00CC89E5 /* KeystonerOutputview.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33531452F29C00CC89E5 /* KeystonerOutputview.h */; };
+		DD0A33A81452F29C00CC89E5 /* KeystonerOutputview.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33531452F29C00CC89E5 /* KeystonerOutputview.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DD0A33A91452F29C00CC89E5 /* KeystonerOutputview.mm in Sources */ = {isa = PBXBuildFile; fileRef = DD0A33541452F29C00CC89E5 /* KeystonerOutputview.mm */; };
-		DD0A33AA1452F29C00CC89E5 /* KeystoneSurface.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33551452F29C00CC89E5 /* KeystoneSurface.h */; };
+		DD0A33AA1452F29C00CC89E5 /* KeystoneSurface.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33551452F29C00CC89E5 /* KeystoneSurface.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DD0A33AB1452F29C00CC89E5 /* KeystoneSurface.mm in Sources */ = {isa = PBXBuildFile; fileRef = DD0A33561452F29C00CC89E5 /* KeystoneSurface.mm */; };
 		DD0A33AC1452F29C00CC89E5 /* TrackingLayer.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33571452F29C00CC89E5 /* TrackingLayer.h */; };
 		DD0A33AD1452F29C00CC89E5 /* TrackingLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = DD0A33581452F29C00CC89E5 /* TrackingLayer.mm */; };
 		DD0A33AE1452F29C00CC89E5 /* TrackingView.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33591452F29C00CC89E5 /* TrackingView.h */; };
 		DD0A33AF1452F29C00CC89E5 /* TrackingView.mm in Sources */ = {isa = PBXBuildFile; fileRef = DD0A335A1452F29C00CC89E5 /* TrackingView.mm */; };
-		DD0A33B01452F29C00CC89E5 /* Warp.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A335B1452F29C00CC89E5 /* Warp.h */; };
+		DD0A33B01452F29C00CC89E5 /* Warp.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A335B1452F29C00CC89E5 /* Warp.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DD0A33B11452F29C00CC89E5 /* Warp.mm in Sources */ = {isa = PBXBuildFile; fileRef = DD0A335C1452F29C00CC89E5 /* Warp.mm */; };
 		DD0A33B81452F29C00CC89E5 /* VideoPlayer.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33651452F29C00CC89E5 /* VideoPlayer.h */; };
 		DD0A33B91452F29C00CC89E5 /* VideoPlayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = DD0A33661452F29C00CC89E5 /* VideoPlayer.mm */; };
 		DD0A33BA1452F29C00CC89E5 /* VideoPlayer.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD0A33671452F29C00CC89E5 /* VideoPlayer.xib */; };
-		DD0A349C1452F2CE00CC89E5 /* cv.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33C11452F2CC00CC89E5 /* cv.h */; };
+		DD0A349C1452F2CE00CC89E5 /* cv.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33C11452F2CC00CC89E5 /* cv.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		DD0A349D1452F2CE00CC89E5 /* cv.hpp in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33C21452F2CC00CC89E5 /* cv.hpp */; };
 		DD0A349E1452F2CE00CC89E5 /* cvaux.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33C31452F2CC00CC89E5 /* cvaux.h */; };
 		DD0A349F1452F2CE00CC89E5 /* cvaux.hpp in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33C41452F2CC00CC89E5 /* cvaux.hpp */; };
@@ -42,7 +47,7 @@
 		DD0A34A71452F2CE00CC89E5 /* calib3d.hpp in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33CE1452F2CC00CC89E5 /* calib3d.hpp */; };
 		DD0A34A81452F2CE00CC89E5 /* contrib.hpp in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33D01452F2CC00CC89E5 /* contrib.hpp */; };
 		DD0A34A91452F2CE00CC89E5 /* core.hpp in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33D21452F2CC00CC89E5 /* core.hpp */; };
-		DD0A34AA1452F2CE00CC89E5 /* core_c.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33D31452F2CC00CC89E5 /* core_c.h */; };
+		DD0A34AA1452F2CE00CC89E5 /* core_c.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33D31452F2CC00CC89E5 /* core_c.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		DD0A34AB1452F2CE00CC89E5 /* eigen.hpp in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33D41452F2CC00CC89E5 /* eigen.hpp */; };
 		DD0A34AC1452F2CE00CC89E5 /* internal.hpp in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33D51452F2CC00CC89E5 /* internal.hpp */; };
 		DD0A34AD1452F2CE00CC89E5 /* mat.hpp in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33D61452F2CC00CC89E5 /* mat.hpp */; };
@@ -95,17 +100,17 @@
 		DD0A34DC1452F2CE00CC89E5 /* background_segm.hpp in Headers */ = {isa = PBXBuildFile; fileRef = DD0A340E1452F2CC00CC89E5 /* background_segm.hpp */; };
 		DD0A34DD1452F2CE00CC89E5 /* tracking.hpp in Headers */ = {isa = PBXBuildFile; fileRef = DD0A340F1452F2CC00CC89E5 /* tracking.hpp */; };
 		DD0A351B1452F2CE00CC89E5 /* opencv.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD0A34551452F2CC00CC89E5 /* opencv.a */; };
-		DD0A354C1452F2CF00CC89E5 /* ofxCvBlob.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A34891452F2CD00CC89E5 /* ofxCvBlob.h */; };
-		DD0A354E1452F2CF00CC89E5 /* ofxCvColorImage.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A348B1452F2CD00CC89E5 /* ofxCvColorImage.h */; };
-		DD0A354F1452F2CF00CC89E5 /* ofxCvConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A348C1452F2CD00CC89E5 /* ofxCvConstants.h */; };
-		DD0A35511452F2CF00CC89E5 /* ofxCvContourFinder.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A348E1452F2CD00CC89E5 /* ofxCvContourFinder.h */; };
-		DD0A35531452F2CF00CC89E5 /* ofxCvFloatImage.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A34901452F2CD00CC89E5 /* ofxCvFloatImage.h */; };
-		DD0A35551452F2CF00CC89E5 /* ofxCvGrayscaleImage.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A34921452F2CD00CC89E5 /* ofxCvGrayscaleImage.h */; };
-		DD0A35571452F2CF00CC89E5 /* ofxCvHaarFinder.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A34941452F2CD00CC89E5 /* ofxCvHaarFinder.h */; };
-		DD0A35591452F2CF00CC89E5 /* ofxCvImage.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A34961452F2CD00CC89E5 /* ofxCvImage.h */; };
-		DD0A355A1452F2CF00CC89E5 /* ofxCvMain.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A34971452F2CD00CC89E5 /* ofxCvMain.h */; };
-		DD0A355C1452F2CF00CC89E5 /* ofxCvShortImage.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A34991452F2CD00CC89E5 /* ofxCvShortImage.h */; };
-		DD0A355D1452F2CF00CC89E5 /* ofxOpenCv.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A349A1452F2CD00CC89E5 /* ofxOpenCv.h */; };
+		DD0A354C1452F2CF00CC89E5 /* ofxCvBlob.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A34891452F2CD00CC89E5 /* ofxCvBlob.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		DD0A354E1452F2CF00CC89E5 /* ofxCvColorImage.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A348B1452F2CD00CC89E5 /* ofxCvColorImage.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		DD0A354F1452F2CF00CC89E5 /* ofxCvConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A348C1452F2CD00CC89E5 /* ofxCvConstants.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		DD0A35511452F2CF00CC89E5 /* ofxCvContourFinder.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A348E1452F2CD00CC89E5 /* ofxCvContourFinder.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		DD0A35531452F2CF00CC89E5 /* ofxCvFloatImage.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A34901452F2CD00CC89E5 /* ofxCvFloatImage.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		DD0A35551452F2CF00CC89E5 /* ofxCvGrayscaleImage.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A34921452F2CD00CC89E5 /* ofxCvGrayscaleImage.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		DD0A35571452F2CF00CC89E5 /* ofxCvHaarFinder.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A34941452F2CD00CC89E5 /* ofxCvHaarFinder.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		DD0A35591452F2CF00CC89E5 /* ofxCvImage.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A34961452F2CD00CC89E5 /* ofxCvImage.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		DD0A355A1452F2CF00CC89E5 /* ofxCvMain.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A34971452F2CD00CC89E5 /* ofxCvMain.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		DD0A355C1452F2CF00CC89E5 /* ofxCvShortImage.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A34991452F2CD00CC89E5 /* ofxCvShortImage.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		DD0A355D1452F2CF00CC89E5 /* ofxOpenCv.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A349A1452F2CD00CC89E5 /* ofxOpenCv.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		DD0A356A1452F32700CC89E5 /* ofxMatrix3x3.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35601452F32700CC89E5 /* ofxMatrix3x3.h */; };
 		DD0A356B1452F32700CC89E5 /* ofxMatrix4x4.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35611452F32700CC89E5 /* ofxMatrix4x4.h */; };
 		DD0A356C1452F32700CC89E5 /* ofxPoint2f.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35621452F32700CC89E5 /* ofxPoint2f.h */; };
@@ -189,8 +194,6 @@
 		DDC266B01454BC020016BA7B /* GeneralPreferences.mm in Sources */ = {isa = PBXBuildFile; fileRef = DDC266AD1454BC020016BA7B /* GeneralPreferences.mm */; };
 		DDC266B11454BC020016BA7B /* GeneralPreferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDC266AE1454BC020016BA7B /* GeneralPreferences.xib */; };
 		DDE4C8831451A91200EECFF4 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDE4C8761451A91200EECFF4 /* CoreVideo.framework */; };
-		DDE4C8841451A91200EECFF4 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDE4C8771451A91200EECFF4 /* AppKit.framework */; };
-		DDE4C8851451A91200EECFF4 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDE4C8781451A91200EECFF4 /* Cocoa.framework */; };
 		DDE4C8861451A91200EECFF4 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDE4C8791451A91200EECFF4 /* IOKit.framework */; };
 		DDE4C8871451A91200EECFF4 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDE4C87A1451A91200EECFF4 /* AGL.framework */; };
 		DDE4C8881451A91200EECFF4 /* ApplicationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDE4C87B1451A91200EECFF4 /* ApplicationServices.framework */; };
@@ -272,34 +275,32 @@
 		DDE4C9AC1451E04500EECFF4 /* TextureGrid.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C9A11451E04500EECFF4 /* TextureGrid.h */; };
 		DDE4C9AF1451E05100EECFF4 /* PluginOpenGLControlView.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C9AD1451E05100EECFF4 /* PluginOpenGLControlView.h */; };
 		DDE4C9B01451E05100EECFF4 /* PluginOpenGLControlView.mm in Sources */ = {isa = PBXBuildFile; fileRef = DDE4C9AE1451E05100EECFF4 /* PluginOpenGLControlView.mm */; };
-		DDE4C9B21451E12E00EECFF4 /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDE4C9B11451E12E00EECFF4 /* QTKit.framework */; };
-		DDE4C9B41451E14100EECFF4 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDE4C9B31451E14100EECFF4 /* QuartzCore.framework */; };
 		DDE4C9B61451E15F00EECFF4 /* ScriptingBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDE4C9B51451E15F00EECFF4 /* ScriptingBridge.framework */; };
-		DDE4CA851451E23800EECFF4 /* Midi.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4CA161451E23700EECFF4 /* Midi.h */; };
+		DDE4CA851451E23800EECFF4 /* Midi.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4CA161451E23700EECFF4 /* Midi.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DDE4CA861451E23800EECFF4 /* Midi.mm in Sources */ = {isa = PBXBuildFile; fileRef = DDE4CA171451E23700EECFF4 /* Midi.mm */; };
 		DDE4CA871451E23800EECFF4 /* Midi.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDE4CA181451E23700EECFF4 /* Midi.xib */; };
-		DDE4CA881451E23800EECFF4 /* PYMIDI.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4CA1A1451E23700EECFF4 /* PYMIDI.h */; };
-		DDE4CA891451E23800EECFF4 /* PYMIDIEndpoint.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4CA1B1451E23700EECFF4 /* PYMIDIEndpoint.h */; };
+		DDE4CA881451E23800EECFF4 /* PYMIDI.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4CA1A1451E23700EECFF4 /* PYMIDI.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DDE4CA891451E23800EECFF4 /* PYMIDIEndpoint.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4CA1B1451E23700EECFF4 /* PYMIDIEndpoint.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DDE4CA8A1451E23800EECFF4 /* PYMIDIEndpoint.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE4CA1C1451E23700EECFF4 /* PYMIDIEndpoint.m */; };
-		DDE4CA8B1451E23800EECFF4 /* PYMIDIEndpointDescriptor.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4CA1D1451E23700EECFF4 /* PYMIDIEndpointDescriptor.h */; };
+		DDE4CA8B1451E23800EECFF4 /* PYMIDIEndpointDescriptor.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4CA1D1451E23700EECFF4 /* PYMIDIEndpointDescriptor.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DDE4CA8C1451E23800EECFF4 /* PYMIDIEndpointDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE4CA1E1451E23700EECFF4 /* PYMIDIEndpointDescriptor.m */; };
-		DDE4CA8D1451E23800EECFF4 /* PYMIDIEndpointSet.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4CA1F1451E23700EECFF4 /* PYMIDIEndpointSet.h */; };
+		DDE4CA8D1451E23800EECFF4 /* PYMIDIEndpointSet.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4CA1F1451E23700EECFF4 /* PYMIDIEndpointSet.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DDE4CA8E1451E23800EECFF4 /* PYMIDIEndpointSet.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE4CA201451E23700EECFF4 /* PYMIDIEndpointSet.m */; };
-		DDE4CA8F1451E23800EECFF4 /* PYMIDIManager.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4CA211451E23700EECFF4 /* PYMIDIManager.h */; };
+		DDE4CA8F1451E23800EECFF4 /* PYMIDIManager.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4CA211451E23700EECFF4 /* PYMIDIManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DDE4CA901451E23800EECFF4 /* PYMIDIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE4CA221451E23700EECFF4 /* PYMIDIManager.m */; };
-		DDE4CA911451E23800EECFF4 /* PYMIDIRealDestination.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4CA231451E23700EECFF4 /* PYMIDIRealDestination.h */; };
+		DDE4CA911451E23800EECFF4 /* PYMIDIRealDestination.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4CA231451E23700EECFF4 /* PYMIDIRealDestination.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DDE4CA921451E23800EECFF4 /* PYMIDIRealDestination.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE4CA241451E23700EECFF4 /* PYMIDIRealDestination.m */; };
-		DDE4CA931451E23800EECFF4 /* PYMIDIRealEndpoint.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4CA251451E23700EECFF4 /* PYMIDIRealEndpoint.h */; };
+		DDE4CA931451E23800EECFF4 /* PYMIDIRealEndpoint.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4CA251451E23700EECFF4 /* PYMIDIRealEndpoint.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DDE4CA941451E23800EECFF4 /* PYMIDIRealEndpoint.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE4CA261451E23700EECFF4 /* PYMIDIRealEndpoint.m */; };
-		DDE4CA951451E23800EECFF4 /* PYMIDIRealSource.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4CA271451E23700EECFF4 /* PYMIDIRealSource.h */; };
+		DDE4CA951451E23800EECFF4 /* PYMIDIRealSource.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4CA271451E23700EECFF4 /* PYMIDIRealSource.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DDE4CA961451E23800EECFF4 /* PYMIDIRealSource.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE4CA281451E23700EECFF4 /* PYMIDIRealSource.m */; };
-		DDE4CA971451E23800EECFF4 /* PYMIDIUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4CA291451E23700EECFF4 /* PYMIDIUtils.h */; };
+		DDE4CA971451E23800EECFF4 /* PYMIDIUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4CA291451E23700EECFF4 /* PYMIDIUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DDE4CA981451E23800EECFF4 /* PYMIDIUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE4CA2A1451E23700EECFF4 /* PYMIDIUtils.m */; };
-		DDE4CA991451E23800EECFF4 /* PYMIDIVirtualDestination.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4CA2B1451E23700EECFF4 /* PYMIDIVirtualDestination.h */; };
+		DDE4CA991451E23800EECFF4 /* PYMIDIVirtualDestination.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4CA2B1451E23700EECFF4 /* PYMIDIVirtualDestination.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DDE4CA9A1451E23800EECFF4 /* PYMIDIVirtualDestination.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE4CA2C1451E23700EECFF4 /* PYMIDIVirtualDestination.m */; };
-		DDE4CA9B1451E23800EECFF4 /* PYMIDIVirtualEndpoint.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4CA2D1451E23700EECFF4 /* PYMIDIVirtualEndpoint.h */; };
+		DDE4CA9B1451E23800EECFF4 /* PYMIDIVirtualEndpoint.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4CA2D1451E23700EECFF4 /* PYMIDIVirtualEndpoint.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DDE4CA9C1451E23800EECFF4 /* PYMIDIVirtualEndpoint.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE4CA2E1451E23700EECFF4 /* PYMIDIVirtualEndpoint.m */; };
-		DDE4CA9D1451E23800EECFF4 /* PYMIDIVirtualSource.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4CA2F1451E23700EECFF4 /* PYMIDIVirtualSource.h */; };
+		DDE4CA9D1451E23800EECFF4 /* PYMIDIVirtualSource.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4CA2F1451E23700EECFF4 /* PYMIDIVirtualSource.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DDE4CA9E1451E23800EECFF4 /* PYMIDIVirtualSource.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE4CA301451E23700EECFF4 /* PYMIDIVirtualSource.m */; };
 		DDE4CAA31451E32700EECFF4 /* CoreMIDI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDE4CAA21451E32700EECFF4 /* CoreMIDI.framework */; };
 		DDE4D5CF1451F1F100EECFF4 /* libfmodex.dylib in Copy Files */ = {isa = PBXBuildFile; fileRef = DDE4D5CE1451F1F100EECFF4 /* libfmodex.dylib */; };
@@ -334,6 +335,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3D962EF6145FF0230008C326 /* QuickTime.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickTime.framework; path = System/Library/Frameworks/QuickTime.framework; sourceTree = SDKROOT; };
+		3D962EF8145FF0320008C326 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		3D962EFA145FF0680008C326 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		3D962EFC145FF0790008C326 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		3D962EFE145FF0820008C326 /* QTKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QTKit.framework; path = System/Library/Frameworks/QTKit.framework; sourceTree = SDKROOT; };
 		DD0A334A1452F29C00CC89E5 /* CorePluginsIncludes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CorePluginsIncludes.h; sourceTree = "<group>"; };
 		DD0A334C1452F29C00CC89E5 /* coordWarp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = coordWarp.h; sourceTree = "<group>"; };
 		DD0A334D1452F29C00CC89E5 /* coordWarp.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = coordWarp.mm; sourceTree = "<group>"; };
@@ -527,8 +533,6 @@
 		DDC266AD1454BC020016BA7B /* GeneralPreferences.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GeneralPreferences.mm; sourceTree = "<group>"; };
 		DDC266AE1454BC020016BA7B /* GeneralPreferences.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GeneralPreferences.xib; sourceTree = "<group>"; };
 		DDE4C8761451A91200EECFF4 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
-		DDE4C8771451A91200EECFF4 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = ../../../../System/Library/Frameworks/AppKit.framework; sourceTree = "<group>"; };
-		DDE4C8781451A91200EECFF4 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = ../../../../System/Library/Frameworks/Cocoa.framework; sourceTree = "<group>"; };
 		DDE4C8791451A91200EECFF4 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = ../../../../System/Library/Frameworks/IOKit.framework; sourceTree = "<group>"; };
 		DDE4C87A1451A91200EECFF4 /* AGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGL.framework; path = ../../../../System/Library/Frameworks/AGL.framework; sourceTree = "<group>"; };
 		DDE4C87B1451A91200EECFF4 /* ApplicationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ApplicationServices.framework; path = ../../../../System/Library/Frameworks/ApplicationServices.framework; sourceTree = "<group>"; };
@@ -538,7 +542,7 @@
 		DDE4C87F1451A91200EECFF4 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = ../../../../System/Library/Frameworks/CoreFoundation.framework; sourceTree = "<group>"; };
 		DDE4C8801451A91200EECFF4 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = ../../../../System/Library/Frameworks/CoreServices.framework; sourceTree = "<group>"; };
 		DDE4C8811451A91200EECFF4 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = ../../../../System/Library/Frameworks/OpenGL.framework; sourceTree = "<group>"; };
-		DDE4C8821451A91200EECFF4 /* QuickTime.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickTime.framework; path = ../../../../System/Library/Frameworks/QuickTime.framework; sourceTree = "<group>"; };
+		DDE4C8821451A91200EECFF4 /* QuickTime.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickTime.framework; path = /Users/livingroom/Development/Code/ofxCocoaPlugins/../../../../System/Library/Frameworks/QuickTime.framework; sourceTree = "<absolute>"; };
 		DDE4C8B81451AEFD00EECFF4 /* Application.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Application.xib; sourceTree = "<group>"; };
 		DDE4C8BD1451AEFD00EECFF4 /* OutputPanel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OutputPanel.xib; sourceTree = "<group>"; };
 		DDE4C8D11451AF1500EECFF4 /* BeamSync.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeamSync.h; sourceTree = "<group>"; };
@@ -610,8 +614,6 @@
 		DDE4C9A11451E04500EECFF4 /* TextureGrid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextureGrid.h; sourceTree = "<group>"; };
 		DDE4C9AD1451E05100EECFF4 /* PluginOpenGLControlView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PluginOpenGLControlView.h; sourceTree = "<group>"; };
 		DDE4C9AE1451E05100EECFF4 /* PluginOpenGLControlView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PluginOpenGLControlView.mm; sourceTree = "<group>"; };
-		DDE4C9B11451E12E00EECFF4 /* QTKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QTKit.framework; path = ../../../../System/Library/Frameworks/QTKit.framework; sourceTree = "<group>"; };
-		DDE4C9B31451E14100EECFF4 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = ../../../../System/Library/Frameworks/QuartzCore.framework; sourceTree = "<group>"; };
 		DDE4C9B51451E15F00EECFF4 /* ScriptingBridge.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScriptingBridge.framework; path = System/Library/Frameworks/ScriptingBridge.framework; sourceTree = SDKROOT; };
 		DDE4CA161451E23700EECFF4 /* Midi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Midi.h; sourceTree = "<group>"; };
 		DDE4CA171451E23700EECFF4 /* Midi.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Midi.mm; sourceTree = "<group>"; };
@@ -654,8 +656,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				DDE4C8831451A91200EECFF4 /* CoreVideo.framework in Frameworks */,
-				DDE4C8841451A91200EECFF4 /* AppKit.framework in Frameworks */,
-				DDE4C8851451A91200EECFF4 /* Cocoa.framework in Frameworks */,
 				DDE4C8861451A91200EECFF4 /* IOKit.framework in Frameworks */,
 				DDE4C8871451A91200EECFF4 /* AGL.framework in Frameworks */,
 				DDE4C8881451A91200EECFF4 /* ApplicationServices.framework in Frameworks */,
@@ -668,12 +668,15 @@
 				DDE4C88F1451A91300EECFF4 /* QuickTime.framework in Frameworks */,
 				DDE4C8EA1451C97300EECFF4 /* GLUT.framework in Frameworks */,
 				DDE4C9721451DC1500EECFF4 /* osc.a in Frameworks */,
-				DDE4C9B21451E12E00EECFF4 /* QTKit.framework in Frameworks */,
-				DDE4C9B41451E14100EECFF4 /* QuartzCore.framework in Frameworks */,
 				DDE4C9B61451E15F00EECFF4 /* ScriptingBridge.framework in Frameworks */,
 				DDE4CAA31451E32700EECFF4 /* CoreMIDI.framework in Frameworks */,
 				DDE4D5D71451F3AF00EECFF4 /* openFrameworksDebug.a in Frameworks */,
 				DD0A351B1452F2CE00CC89E5 /* opencv.a in Frameworks */,
+				3D962EF7145FF0230008C326 /* QuickTime.framework in Frameworks */,
+				3D962EF9145FF0320008C326 /* QuartzCore.framework in Frameworks */,
+				3D962EFB145FF0680008C326 /* AppKit.framework in Frameworks */,
+				3D962EFD145FF0790008C326 /* Cocoa.framework in Frameworks */,
+				3D962EFF145FF0820008C326 /* QTKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1184,12 +1187,8 @@
 			children = (
 				DDE4CAA21451E32700EECFF4 /* CoreMIDI.framework */,
 				DDE4C9B51451E15F00EECFF4 /* ScriptingBridge.framework */,
-				DDE4C9B31451E14100EECFF4 /* QuartzCore.framework */,
-				DDE4C9B11451E12E00EECFF4 /* QTKit.framework */,
 				DDE4C8E91451C97300EECFF4 /* GLUT.framework */,
 				DDE4C8761451A91200EECFF4 /* CoreVideo.framework */,
-				DDE4C8771451A91200EECFF4 /* AppKit.framework */,
-				DDE4C8781451A91200EECFF4 /* Cocoa.framework */,
 				DDE4C8791451A91200EECFF4 /* IOKit.framework */,
 				DDE4C87A1451A91200EECFF4 /* AGL.framework */,
 				DDE4C87B1451A91200EECFF4 /* ApplicationServices.framework */,
@@ -1200,6 +1199,11 @@
 				DDE4C8801451A91200EECFF4 /* CoreServices.framework */,
 				DDE4C8811451A91200EECFF4 /* OpenGL.framework */,
 				DDE4C8821451A91200EECFF4 /* QuickTime.framework */,
+				3D962EFE145FF0820008C326 /* QTKit.framework */,
+				3D962EFC145FF0790008C326 /* Cocoa.framework */,
+				3D962EFA145FF0680008C326 /* AppKit.framework */,
+				3D962EF8145FF0320008C326 /* QuartzCore.framework */,
+				3D962EF6145FF0230008C326 /* QuickTime.framework */,
 				DDA7FFDD144F1C3800F81C9E /* Other Frameworks */,
 			);
 			name = Frameworks;
@@ -1560,6 +1564,26 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DD0A33B01452F29C00CC89E5 /* Warp.h in Headers */,
+				DD0A33A11452F29C00CC89E5 /* coordWarp.h in Headers */,
+				DDE4CA891451E23800EECFF4 /* PYMIDIEndpoint.h in Headers */,
+				DDE4CA8B1451E23800EECFF4 /* PYMIDIEndpointDescriptor.h in Headers */,
+				DDE4CA8D1451E23800EECFF4 /* PYMIDIEndpointSet.h in Headers */,
+				DDE4CA8F1451E23800EECFF4 /* PYMIDIManager.h in Headers */,
+				DDE4CA911451E23800EECFF4 /* PYMIDIRealDestination.h in Headers */,
+				DDE4CA931451E23800EECFF4 /* PYMIDIRealEndpoint.h in Headers */,
+				DDE4CA951451E23800EECFF4 /* PYMIDIRealSource.h in Headers */,
+				DDE4CA971451E23800EECFF4 /* PYMIDIUtils.h in Headers */,
+				DDE4CA991451E23800EECFF4 /* PYMIDIVirtualDestination.h in Headers */,
+				DDE4CA9B1451E23800EECFF4 /* PYMIDIVirtualEndpoint.h in Headers */,
+				DDE4CA9D1451E23800EECFF4 /* PYMIDIVirtualSource.h in Headers */,
+				DDE4CA881451E23800EECFF4 /* PYMIDI.h in Headers */,
+				DDE4CA851451E23800EECFF4 /* Midi.h in Headers */,
+				DD0A33A01452F29C00CC89E5 /* CorePluginsIncludes.h in Headers */,
+				DD0A33A81452F29C00CC89E5 /* KeystonerOutputview.h in Headers */,
+				DD0A33A31452F29C00CC89E5 /* KeystoneProjector.h in Headers */,
+				DD0A33AA1452F29C00CC89E5 /* KeystoneSurface.h in Headers */,
+				DD0A33A51452F29C00CC89E5 /* Keystoner.h in Headers */,
 				DDE4C9291451DBF700EECFF4 /* NumberProperty.h in Headers */,
 				DDE4C9271451DBF700EECFF4 /* BoolProperty.h in Headers */,
 				DDE4C9251451DBF700EECFF4 /* PluginProperty.h in Headers */,
@@ -1631,6 +1655,19 @@
 				DD0A368314543B7900CC89E5 /* ofQuickTimePlayer.h in Headers */,
 				DD0A368514543B7900CC89E5 /* ofQtUtils.h in Headers */,
 				DDF6500A14504DCA007B0C0A /* ofxThread.h in Headers */,
+				DD0A34AA1452F2CE00CC89E5 /* core_c.h in Headers */,
+				DD0A349C1452F2CE00CC89E5 /* cv.h in Headers */,
+				DD0A354C1452F2CF00CC89E5 /* ofxCvBlob.h in Headers */,
+				DD0A354E1452F2CF00CC89E5 /* ofxCvColorImage.h in Headers */,
+				DD0A354F1452F2CF00CC89E5 /* ofxCvConstants.h in Headers */,
+				DD0A35511452F2CF00CC89E5 /* ofxCvContourFinder.h in Headers */,
+				DD0A35531452F2CF00CC89E5 /* ofxCvFloatImage.h in Headers */,
+				DD0A35551452F2CF00CC89E5 /* ofxCvGrayscaleImage.h in Headers */,
+				DD0A35571452F2CF00CC89E5 /* ofxCvHaarFinder.h in Headers */,
+				DD0A35591452F2CF00CC89E5 /* ofxCvImage.h in Headers */,
+				DD0A355A1452F2CF00CC89E5 /* ofxCvMain.h in Headers */,
+				DD0A355C1452F2CF00CC89E5 /* ofxCvShortImage.h in Headers */,
+				DD0A355D1452F2CF00CC89E5 /* ofxOpenCv.h in Headers */,
 				DDE4C9231451DBF700EECFF4 /* PluginManagerController.h in Headers */,
 				DDE4C8D71451AF1500EECFF4 /* BeamSync.h in Headers */,
 				DDE4C8DB1451AF1500EECFF4 /* PluginOpenGLView.h in Headers */,
@@ -1670,30 +1707,9 @@
 				DDE4C9A41451E04500EECFF4 /* QTKitMovieRenderer.h in Headers */,
 				DDE4C9AC1451E04500EECFF4 /* TextureGrid.h in Headers */,
 				DDE4C9AF1451E05100EECFF4 /* PluginOpenGLControlView.h in Headers */,
-				DDE4CA851451E23800EECFF4 /* Midi.h in Headers */,
-				DDE4CA881451E23800EECFF4 /* PYMIDI.h in Headers */,
-				DDE4CA891451E23800EECFF4 /* PYMIDIEndpoint.h in Headers */,
-				DDE4CA8B1451E23800EECFF4 /* PYMIDIEndpointDescriptor.h in Headers */,
-				DDE4CA8D1451E23800EECFF4 /* PYMIDIEndpointSet.h in Headers */,
-				DDE4CA8F1451E23800EECFF4 /* PYMIDIManager.h in Headers */,
-				DDE4CA911451E23800EECFF4 /* PYMIDIRealDestination.h in Headers */,
-				DDE4CA931451E23800EECFF4 /* PYMIDIRealEndpoint.h in Headers */,
-				DDE4CA951451E23800EECFF4 /* PYMIDIRealSource.h in Headers */,
-				DDE4CA971451E23800EECFF4 /* PYMIDIUtils.h in Headers */,
-				DDE4CA991451E23800EECFF4 /* PYMIDIVirtualDestination.h in Headers */,
-				DDE4CA9B1451E23800EECFF4 /* PYMIDIVirtualEndpoint.h in Headers */,
-				DDE4CA9D1451E23800EECFF4 /* PYMIDIVirtualSource.h in Headers */,
-				DD0A33A01452F29C00CC89E5 /* CorePluginsIncludes.h in Headers */,
-				DD0A33A11452F29C00CC89E5 /* coordWarp.h in Headers */,
-				DD0A33A31452F29C00CC89E5 /* KeystoneProjector.h in Headers */,
-				DD0A33A51452F29C00CC89E5 /* Keystoner.h in Headers */,
-				DD0A33A81452F29C00CC89E5 /* KeystonerOutputview.h in Headers */,
-				DD0A33AA1452F29C00CC89E5 /* KeystoneSurface.h in Headers */,
 				DD0A33AC1452F29C00CC89E5 /* TrackingLayer.h in Headers */,
 				DD0A33AE1452F29C00CC89E5 /* TrackingView.h in Headers */,
-				DD0A33B01452F29C00CC89E5 /* Warp.h in Headers */,
 				DD0A33B81452F29C00CC89E5 /* VideoPlayer.h in Headers */,
-				DD0A349C1452F2CE00CC89E5 /* cv.h in Headers */,
 				DD0A349D1452F2CE00CC89E5 /* cv.hpp in Headers */,
 				DD0A349E1452F2CE00CC89E5 /* cvaux.h in Headers */,
 				DD0A349F1452F2CE00CC89E5 /* cvaux.hpp in Headers */,
@@ -1707,7 +1723,6 @@
 				DD0A34A71452F2CE00CC89E5 /* calib3d.hpp in Headers */,
 				DD0A34A81452F2CE00CC89E5 /* contrib.hpp in Headers */,
 				DD0A34A91452F2CE00CC89E5 /* core.hpp in Headers */,
-				DD0A34AA1452F2CE00CC89E5 /* core_c.h in Headers */,
 				DD0A34AB1452F2CE00CC89E5 /* eigen.hpp in Headers */,
 				DD0A34AC1452F2CE00CC89E5 /* internal.hpp in Headers */,
 				DD0A34AD1452F2CE00CC89E5 /* mat.hpp in Headers */,
@@ -1759,17 +1774,6 @@
 				DD0A34DB1452F2CE00CC89E5 /* opencv.hpp in Headers */,
 				DD0A34DC1452F2CE00CC89E5 /* background_segm.hpp in Headers */,
 				DD0A34DD1452F2CE00CC89E5 /* tracking.hpp in Headers */,
-				DD0A354C1452F2CF00CC89E5 /* ofxCvBlob.h in Headers */,
-				DD0A354E1452F2CF00CC89E5 /* ofxCvColorImage.h in Headers */,
-				DD0A354F1452F2CF00CC89E5 /* ofxCvConstants.h in Headers */,
-				DD0A35511452F2CF00CC89E5 /* ofxCvContourFinder.h in Headers */,
-				DD0A35531452F2CF00CC89E5 /* ofxCvFloatImage.h in Headers */,
-				DD0A35551452F2CF00CC89E5 /* ofxCvGrayscaleImage.h in Headers */,
-				DD0A35571452F2CF00CC89E5 /* ofxCvHaarFinder.h in Headers */,
-				DD0A35591452F2CF00CC89E5 /* ofxCvImage.h in Headers */,
-				DD0A355A1452F2CF00CC89E5 /* ofxCvMain.h in Headers */,
-				DD0A355C1452F2CF00CC89E5 /* ofxCvShortImage.h in Headers */,
-				DD0A355D1452F2CF00CC89E5 /* ofxOpenCv.h in Headers */,
 				DD0A356A1452F32700CC89E5 /* ofxMatrix3x3.h in Headers */,
 				DD0A356B1452F32700CC89E5 /* ofxMatrix4x4.h in Headers */,
 				DD0A356C1452F32700CC89E5 /* ofxPoint2f.h in Headers */,
@@ -2036,6 +2040,7 @@
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Carbon.framework/Headers/Carbon.h";
+				GCC_VERSION = "";
 				HEADER_SEARCH_PATHS = (
 					"$(OF_CORE_HEADERS)",
 					"ofxCocoaPlugins/src/CorePlugins/**",
@@ -2145,6 +2150,7 @@
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Carbon.framework/Headers/Carbon.h";
+				GCC_VERSION = "";
 				HEADER_SEARCH_PATHS = (
 					"$(OF_CORE_HEADERS)",
 					"ofxCocoaPlugins/src/CorePlugins/**",

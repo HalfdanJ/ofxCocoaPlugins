@@ -1,4 +1,6 @@
 #import "Keystoner.h"
+#import "PluginManagerController.h"
+#include "TrackingLayer.h"
 
 
 @implementation Keystoner

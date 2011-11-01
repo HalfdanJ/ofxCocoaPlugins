@@ -1,4 +1,6 @@
+#import "CorePluginsIncludes.h"
 #import <Foundation/Foundation.h>
+
 
 @class ofPlugin;
 
