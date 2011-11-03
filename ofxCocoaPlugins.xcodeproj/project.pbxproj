@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3D2FC2291462EC7C0028BC01 /* README in Resources */ = {isa = PBXBuildFile; fileRef = 3D2FC2281462EC7C0028BC01 /* README */; };
 		DD0A33A01452F29C00CC89E5 /* CorePluginsIncludes.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A334A1452F29C00CC89E5 /* CorePluginsIncludes.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DD0A33A11452F29C00CC89E5 /* coordWarp.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A334C1452F29C00CC89E5 /* coordWarp.h */; };
 		DD0A33A21452F29C00CC89E5 /* coordWarp.mm in Sources */ = {isa = PBXBuildFile; fileRef = DD0A334D1452F29C00CC89E5 /* coordWarp.mm */; };
@@ -334,6 +335,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3D2FC2281462EC7C0028BC01 /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
 		DD0A334A1452F29C00CC89E5 /* CorePluginsIncludes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CorePluginsIncludes.h; sourceTree = "<group>"; };
 		DD0A334C1452F29C00CC89E5 /* coordWarp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = coordWarp.h; sourceTree = "<group>"; };
 		DD0A334D1452F29C00CC89E5 /* coordWarp.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = coordWarp.mm; sourceTree = "<group>"; };
@@ -1161,6 +1163,7 @@
 				DD0A358A14543B7800CC89E5 /* openFrameworksHeaders */,
 				DDE4D5CE1451F1F100EECFF4 /* libfmodex.dylib */,
 				DDF6500214504B20007B0C0A /* Project.xcconfig */,
+				3D2FC2281462EC7C0028BC01 /* README */,
 				DD0A3689145443D900CC89E5 /* ConfigInclude.xcconfig */,
 				DDF6500414504B62007B0C0A /* CoreOF.xcconfig */,
 				DDE4D5D31451F37F00EECFF4 /* libs */,
@@ -1861,6 +1864,7 @@
 				DD0A33BA1452F29C00CC89E5 /* VideoPlayer.xib in Resources */,
 				DD0A368A145443DA00CC89E5 /* ConfigInclude.xcconfig in Resources */,
 				DDC266B11454BC020016BA7B /* GeneralPreferences.xib in Resources */,
+				3D2FC2291462EC7C0028BC01 /* README in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1963,6 +1967,7 @@
 				GCC_C_LANGUAGE_STANDARD = "compiler-default";
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_ENABLE_OBJC_GC = required;
 				GCC_ENABLE_SSE3_EXTENSIONS = YES;
 				GCC_ENABLE_SUPPLEMENTAL_SSE3_INSTRUCTIONS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -2000,6 +2005,7 @@
 				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_C_LANGUAGE_STANDARD = "compiler-default";
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_ENABLE_OBJC_GC = required;
 				GCC_ENABLE_SSE3_EXTENSIONS = YES;
 				GCC_ENABLE_SUPPLEMENTAL_SSE3_INSTRUCTIONS = YES;
 				GCC_OPTIMIZATION_LEVEL = 3;

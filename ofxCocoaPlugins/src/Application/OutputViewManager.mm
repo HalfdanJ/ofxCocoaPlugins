@@ -55,7 +55,7 @@ CFStringRef CopyLocalDisplayName(CGDirectDisplayID display)
 //
 
 @implementation OutputViewManager
-@synthesize numberOutputViews, glViews;
+@synthesize  glViews;
 
 
 -(id) init{
@@ -183,6 +183,10 @@ CFStringRef CopyLocalDisplayName(CGDirectDisplayID display)
 	} else {
 		numberOutputViews = n;
 	}
+}
+
+-(int)numberOutputViews{
+    return numberOutputViews;
 }
 
 //

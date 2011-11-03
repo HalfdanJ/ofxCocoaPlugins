@@ -93,13 +93,13 @@
 
 @property (retain, readonly) NSMutableArray * outputViews;
 @property (retain, readwrite) NSIndexSet * selectedOutputviewIndexSet;
-@property (readwrite) int selectedOutputview;
+@property (readwrite, nonatomic) int selectedOutputview;
 
 @property (retain, readwrite) NSIndexSet * selectedProjectorIndexSet;
-@property (readwrite) int selectedProjector;
+@property (readwrite, nonatomic) int selectedProjector;
 
 @property (retain, readwrite) NSIndexSet * selectedSurfaceIndexSet;
-@property (readwrite) int selectedSurface;
+@property (readwrite, nonatomic) int selectedSurface;
 @property (retain, readonly) NSArray * surfaces;
 
 @property (readonly) ofTrueTypeFont * font;

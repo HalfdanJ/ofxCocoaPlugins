@@ -11,16 +11,10 @@
 	if([self init]){
 		outputViews = [[NSMutableArray array] retain];
 		willDraw = YES;
-		surfaces = [_surfaces retain];
+		surfaces = [NSArray arrayWithArray:_surfaces];
+        
+        [self setSelectedOutputview:0];
 		
-		PluginOpenGLView * outputView;
-		int i=0;
-		for(outputView in [[globalController viewManager] glViews]){
-			KeystonerOutputview * newView = [[KeystonerOutputview alloc]initWithSurfaces:surfaces];
-			[newView setViewNumber:i];
-			[outputViews addObject:newView];
-			i++;
-		}
 		
 		[self addObserver:self forKeyPath:@"customProperties" options:nil context:@"customProperties"];
 		[self addObserver:self forKeyPath:@"selectedSurfaceIndexSet" options:nil context:@"outputView"];
@@ -302,8 +296,8 @@
 }
 
 -(void) setup{	
-    sleep(5);
-
+    // sleep(5);
+    
 	selectedSurfaceCorner = -1;
 	hoveredSurfaceCorner = -1;
 	zoomLevel = 0.7;
@@ -319,8 +313,22 @@
 }
 
 -(void)awakeFromNib{
+    {
+        PluginOpenGLView * outputView;
+        int i=0;
+        for(outputView in [[globalController viewManager] glViews]){
+            KeystonerOutputview * newView = [[KeystonerOutputview alloc] initWithSurfaces:surfaces];
+            [newView setViewNumber:i];
+            [outputViews addObject:newView];
+            i++;
+        }
+    }
+    
+    [self setSelectedOutputview:0];
+    
 	[outputViewPicker setSegmentCount:[[globalController viewManager] numberOutputViews]];
-	
+    NSLog(@"Number output view: %i",[[globalController viewManager] numberOutputViews]);
+    
 	int i=0;
 	KeystonerOutputview * outputView;
 	for(outputView in outputViews){
@@ -660,7 +668,11 @@
 }
 
 -(void) setSelectedOutputviewIndexSet:(NSIndexSet *)s{
-	[self setSelectedOutputview:[s firstIndex]];
+    if([s count] == 0) {
+        [self setSelectedOutputview:0];        
+    } else {
+        [self setSelectedOutputview:[s firstIndex]];
+    }
 }
 
 
@@ -680,8 +692,12 @@
 	return [NSIndexSet indexSetWithIndex:selectedProjector];
 }
 
--(void) setSelectedProjectorIndexSet:(NSIndexSet *)s{
-	[self setSelectedProjector:[s firstIndex]];
+-(void) setSelectedProjectorIndexSet:(NSIndexSet *)s{  
+    if([s count] == 0) {
+        [self setSelectedProjector:0];
+    } else {
+        [self setSelectedProjector:[s firstIndex]];
+    }
 }
 
 -(IBAction) setViewMode:(id)sender{
@@ -700,7 +716,11 @@
 }
 
 -(void) setSelectedSurfaceIndexSet:(NSIndexSet *)s{
-	[self setSelectedSurface:[s firstIndex]];
+    if([s count] == 0) {
+        [self setSelectedSurface:0];
+    } else {
+        [self setSelectedSurface:[s firstIndex]];
+    }
 }
 
 -(KeystoneSurface*) getSurface:(NSString*)_name viewNumber:(int)number projectorNumber:(int)projectorNumber{
