@@ -19,16 +19,18 @@
 */
 #include "Plugin.h"
 
-#include "KeystonerOutputview.h"
+/*#include "KeystonerOutputview.h"
 #include "TrackingLayer.h"
 #import "KeystoneSurface.h"
-
+*/
 
 //{int appliedProjector=-1;for(KeystoneProjector*proj in [[[GetPlugin(Keystoner) outputViews] objectAtIndex:ViewNumber] projectors]){ appliedProjector++; if(appliedProjector > 0)[GetPlugin(Keystoner)  popSurface]; {if([Surface(s,p) visible]) { [GetPlugin(Keystoner)  applySurface:s projectorNumber:p viewNumber:ViewNumber];
 //    
 //    
 //    [GetPlugin(Keystoner)  popSurface]; } }}
-
+@class KeystonerOutputview;
+@class TrackingLayer;
+@class KeystoneSurface;
 
 @interface Keystoner : ofPlugin {
 	IBOutlet NSSegmentedControl * outputViewPicker;

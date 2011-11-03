@@ -19,6 +19,7 @@
     ocp = [[ofxCocoaPlugins alloc] initWithAppDelegate:self];
     [ocp addHeader:@"MyPlugins"];
     [ocp addPlugin:[[ExamplePlugin alloc] init]];
+    [ocp addPlugin:[[Midi alloc] init]];
     [ocp loadPlugins];
 }
 

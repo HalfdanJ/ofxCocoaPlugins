@@ -1,5 +1,8 @@
 #import "Keystoner.h"
 
+#include "KeystonerOutputview.h"
+#include "TrackingLayer.h"
+#import "KeystoneSurface.h"
 
 @implementation Keystoner
 @synthesize outputViews,  selectedOutputview, selectedSurface, selectedProjector, surfaces, font, recoilLogo, trackingLayer;

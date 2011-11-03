@@ -7,12 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		DD0A33A01452F29C00CC89E5 /* CorePluginsIncludes.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A334A1452F29C00CC89E5 /* CorePluginsIncludes.h */; };
+		DD0A33A01452F29C00CC89E5 /* CorePluginsIncludes.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A334A1452F29C00CC89E5 /* CorePluginsIncludes.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DD0A33A11452F29C00CC89E5 /* coordWarp.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A334C1452F29C00CC89E5 /* coordWarp.h */; };
 		DD0A33A21452F29C00CC89E5 /* coordWarp.mm in Sources */ = {isa = PBXBuildFile; fileRef = DD0A334D1452F29C00CC89E5 /* coordWarp.mm */; };
 		DD0A33A31452F29C00CC89E5 /* KeystoneProjector.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A334E1452F29C00CC89E5 /* KeystoneProjector.h */; };
 		DD0A33A41452F29C00CC89E5 /* KeystoneProjector.mm in Sources */ = {isa = PBXBuildFile; fileRef = DD0A334F1452F29C00CC89E5 /* KeystoneProjector.mm */; };
-		DD0A33A51452F29C00CC89E5 /* Keystoner.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33501452F29C00CC89E5 /* Keystoner.h */; };
+		DD0A33A51452F29C00CC89E5 /* Keystoner.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33501452F29C00CC89E5 /* Keystoner.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DD0A33A61452F29C00CC89E5 /* Keystoner.mm in Sources */ = {isa = PBXBuildFile; fileRef = DD0A33511452F29C00CC89E5 /* Keystoner.mm */; };
 		DD0A33A71452F29C00CC89E5 /* Keystoner.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD0A33521452F29C00CC89E5 /* Keystoner.xib */; };
 		DD0A33A81452F29C00CC89E5 /* KeystonerOutputview.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33531452F29C00CC89E5 /* KeystonerOutputview.h */; };
@@ -275,31 +275,31 @@
 		DDE4C9B21451E12E00EECFF4 /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDE4C9B11451E12E00EECFF4 /* QTKit.framework */; };
 		DDE4C9B41451E14100EECFF4 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDE4C9B31451E14100EECFF4 /* QuartzCore.framework */; };
 		DDE4C9B61451E15F00EECFF4 /* ScriptingBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDE4C9B51451E15F00EECFF4 /* ScriptingBridge.framework */; };
-		DDE4CA851451E23800EECFF4 /* Midi.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4CA161451E23700EECFF4 /* Midi.h */; };
+		DDE4CA851451E23800EECFF4 /* Midi.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4CA161451E23700EECFF4 /* Midi.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DDE4CA861451E23800EECFF4 /* Midi.mm in Sources */ = {isa = PBXBuildFile; fileRef = DDE4CA171451E23700EECFF4 /* Midi.mm */; };
 		DDE4CA871451E23800EECFF4 /* Midi.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDE4CA181451E23700EECFF4 /* Midi.xib */; };
-		DDE4CA881451E23800EECFF4 /* PYMIDI.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4CA1A1451E23700EECFF4 /* PYMIDI.h */; };
-		DDE4CA891451E23800EECFF4 /* PYMIDIEndpoint.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4CA1B1451E23700EECFF4 /* PYMIDIEndpoint.h */; };
+		DDE4CA881451E23800EECFF4 /* PYMIDI.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4CA1A1451E23700EECFF4 /* PYMIDI.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DDE4CA891451E23800EECFF4 /* PYMIDIEndpoint.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4CA1B1451E23700EECFF4 /* PYMIDIEndpoint.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DDE4CA8A1451E23800EECFF4 /* PYMIDIEndpoint.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE4CA1C1451E23700EECFF4 /* PYMIDIEndpoint.m */; };
-		DDE4CA8B1451E23800EECFF4 /* PYMIDIEndpointDescriptor.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4CA1D1451E23700EECFF4 /* PYMIDIEndpointDescriptor.h */; };
+		DDE4CA8B1451E23800EECFF4 /* PYMIDIEndpointDescriptor.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4CA1D1451E23700EECFF4 /* PYMIDIEndpointDescriptor.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DDE4CA8C1451E23800EECFF4 /* PYMIDIEndpointDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE4CA1E1451E23700EECFF4 /* PYMIDIEndpointDescriptor.m */; };
-		DDE4CA8D1451E23800EECFF4 /* PYMIDIEndpointSet.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4CA1F1451E23700EECFF4 /* PYMIDIEndpointSet.h */; };
+		DDE4CA8D1451E23800EECFF4 /* PYMIDIEndpointSet.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4CA1F1451E23700EECFF4 /* PYMIDIEndpointSet.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DDE4CA8E1451E23800EECFF4 /* PYMIDIEndpointSet.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE4CA201451E23700EECFF4 /* PYMIDIEndpointSet.m */; };
-		DDE4CA8F1451E23800EECFF4 /* PYMIDIManager.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4CA211451E23700EECFF4 /* PYMIDIManager.h */; };
+		DDE4CA8F1451E23800EECFF4 /* PYMIDIManager.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4CA211451E23700EECFF4 /* PYMIDIManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DDE4CA901451E23800EECFF4 /* PYMIDIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE4CA221451E23700EECFF4 /* PYMIDIManager.m */; };
-		DDE4CA911451E23800EECFF4 /* PYMIDIRealDestination.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4CA231451E23700EECFF4 /* PYMIDIRealDestination.h */; };
+		DDE4CA911451E23800EECFF4 /* PYMIDIRealDestination.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4CA231451E23700EECFF4 /* PYMIDIRealDestination.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DDE4CA921451E23800EECFF4 /* PYMIDIRealDestination.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE4CA241451E23700EECFF4 /* PYMIDIRealDestination.m */; };
-		DDE4CA931451E23800EECFF4 /* PYMIDIRealEndpoint.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4CA251451E23700EECFF4 /* PYMIDIRealEndpoint.h */; };
+		DDE4CA931451E23800EECFF4 /* PYMIDIRealEndpoint.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4CA251451E23700EECFF4 /* PYMIDIRealEndpoint.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DDE4CA941451E23800EECFF4 /* PYMIDIRealEndpoint.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE4CA261451E23700EECFF4 /* PYMIDIRealEndpoint.m */; };
-		DDE4CA951451E23800EECFF4 /* PYMIDIRealSource.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4CA271451E23700EECFF4 /* PYMIDIRealSource.h */; };
+		DDE4CA951451E23800EECFF4 /* PYMIDIRealSource.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4CA271451E23700EECFF4 /* PYMIDIRealSource.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DDE4CA961451E23800EECFF4 /* PYMIDIRealSource.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE4CA281451E23700EECFF4 /* PYMIDIRealSource.m */; };
-		DDE4CA971451E23800EECFF4 /* PYMIDIUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4CA291451E23700EECFF4 /* PYMIDIUtils.h */; };
+		DDE4CA971451E23800EECFF4 /* PYMIDIUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4CA291451E23700EECFF4 /* PYMIDIUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DDE4CA981451E23800EECFF4 /* PYMIDIUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE4CA2A1451E23700EECFF4 /* PYMIDIUtils.m */; };
-		DDE4CA991451E23800EECFF4 /* PYMIDIVirtualDestination.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4CA2B1451E23700EECFF4 /* PYMIDIVirtualDestination.h */; };
+		DDE4CA991451E23800EECFF4 /* PYMIDIVirtualDestination.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4CA2B1451E23700EECFF4 /* PYMIDIVirtualDestination.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DDE4CA9A1451E23800EECFF4 /* PYMIDIVirtualDestination.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE4CA2C1451E23700EECFF4 /* PYMIDIVirtualDestination.m */; };
-		DDE4CA9B1451E23800EECFF4 /* PYMIDIVirtualEndpoint.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4CA2D1451E23700EECFF4 /* PYMIDIVirtualEndpoint.h */; };
+		DDE4CA9B1451E23800EECFF4 /* PYMIDIVirtualEndpoint.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4CA2D1451E23700EECFF4 /* PYMIDIVirtualEndpoint.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DDE4CA9C1451E23800EECFF4 /* PYMIDIVirtualEndpoint.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE4CA2E1451E23700EECFF4 /* PYMIDIVirtualEndpoint.m */; };
-		DDE4CA9D1451E23800EECFF4 /* PYMIDIVirtualSource.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4CA2F1451E23700EECFF4 /* PYMIDIVirtualSource.h */; };
+		DDE4CA9D1451E23800EECFF4 /* PYMIDIVirtualSource.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4CA2F1451E23700EECFF4 /* PYMIDIVirtualSource.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DDE4CA9E1451E23800EECFF4 /* PYMIDIVirtualSource.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE4CA301451E23700EECFF4 /* PYMIDIVirtualSource.m */; };
 		DDE4CAA31451E32700EECFF4 /* CoreMIDI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDE4CAA21451E32700EECFF4 /* CoreMIDI.framework */; };
 		DDE4D5CF1451F1F100EECFF4 /* libfmodex.dylib in Copy Files */ = {isa = PBXBuildFile; fileRef = DDE4D5CE1451F1F100EECFF4 /* libfmodex.dylib */; };
@@ -1560,6 +1560,21 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DDE4CA881451E23800EECFF4 /* PYMIDI.h in Headers */,
+				DDE4CA891451E23800EECFF4 /* PYMIDIEndpoint.h in Headers */,
+				DDE4CA8B1451E23800EECFF4 /* PYMIDIEndpointDescriptor.h in Headers */,
+				DDE4CA8D1451E23800EECFF4 /* PYMIDIEndpointSet.h in Headers */,
+				DDE4CA8F1451E23800EECFF4 /* PYMIDIManager.h in Headers */,
+				DDE4CA911451E23800EECFF4 /* PYMIDIRealDestination.h in Headers */,
+				DDE4CA931451E23800EECFF4 /* PYMIDIRealEndpoint.h in Headers */,
+				DDE4CA951451E23800EECFF4 /* PYMIDIRealSource.h in Headers */,
+				DDE4CA971451E23800EECFF4 /* PYMIDIUtils.h in Headers */,
+				DDE4CA991451E23800EECFF4 /* PYMIDIVirtualDestination.h in Headers */,
+				DDE4CA9B1451E23800EECFF4 /* PYMIDIVirtualEndpoint.h in Headers */,
+				DDE4CA9D1451E23800EECFF4 /* PYMIDIVirtualSource.h in Headers */,
+				DDE4CA851451E23800EECFF4 /* Midi.h in Headers */,
+				DD0A33A51452F29C00CC89E5 /* Keystoner.h in Headers */,
+				DD0A33A01452F29C00CC89E5 /* CorePluginsIncludes.h in Headers */,
 				DDE4C9291451DBF700EECFF4 /* NumberProperty.h in Headers */,
 				DDE4C9271451DBF700EECFF4 /* BoolProperty.h in Headers */,
 				DDE4C9251451DBF700EECFF4 /* PluginProperty.h in Headers */,
@@ -1670,23 +1685,8 @@
 				DDE4C9A41451E04500EECFF4 /* QTKitMovieRenderer.h in Headers */,
 				DDE4C9AC1451E04500EECFF4 /* TextureGrid.h in Headers */,
 				DDE4C9AF1451E05100EECFF4 /* PluginOpenGLControlView.h in Headers */,
-				DDE4CA851451E23800EECFF4 /* Midi.h in Headers */,
-				DDE4CA881451E23800EECFF4 /* PYMIDI.h in Headers */,
-				DDE4CA891451E23800EECFF4 /* PYMIDIEndpoint.h in Headers */,
-				DDE4CA8B1451E23800EECFF4 /* PYMIDIEndpointDescriptor.h in Headers */,
-				DDE4CA8D1451E23800EECFF4 /* PYMIDIEndpointSet.h in Headers */,
-				DDE4CA8F1451E23800EECFF4 /* PYMIDIManager.h in Headers */,
-				DDE4CA911451E23800EECFF4 /* PYMIDIRealDestination.h in Headers */,
-				DDE4CA931451E23800EECFF4 /* PYMIDIRealEndpoint.h in Headers */,
-				DDE4CA951451E23800EECFF4 /* PYMIDIRealSource.h in Headers */,
-				DDE4CA971451E23800EECFF4 /* PYMIDIUtils.h in Headers */,
-				DDE4CA991451E23800EECFF4 /* PYMIDIVirtualDestination.h in Headers */,
-				DDE4CA9B1451E23800EECFF4 /* PYMIDIVirtualEndpoint.h in Headers */,
-				DDE4CA9D1451E23800EECFF4 /* PYMIDIVirtualSource.h in Headers */,
-				DD0A33A01452F29C00CC89E5 /* CorePluginsIncludes.h in Headers */,
 				DD0A33A11452F29C00CC89E5 /* coordWarp.h in Headers */,
 				DD0A33A31452F29C00CC89E5 /* KeystoneProjector.h in Headers */,
-				DD0A33A51452F29C00CC89E5 /* Keystoner.h in Headers */,
 				DD0A33A81452F29C00CC89E5 /* KeystonerOutputview.h in Headers */,
 				DD0A33AA1452F29C00CC89E5 /* KeystoneSurface.h in Headers */,
 				DD0A33AC1452F29C00CC89E5 /* TrackingLayer.h in Headers */,
