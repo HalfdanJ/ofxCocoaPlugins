@@ -10,4 +10,10 @@ LIB_FMODEX = "" //fmodex lib already linked once
 OTHER_LDFLAGS = $(OF_CORE_LIBS) 
 HEADER_SEARCH_PATHS = $(OF_CORE_HEADERS) ofxCocoaPlugins/src/CorePlugins/** $(OF_PATH)/addons/ofxOpenCv/src $(OF_PATH)/addons/ofxOpenCv/libs/opencv/include $(OF_PATH)/addons/ofxOpenCv/libs/opencv/include/opencv  $(OF_PATH)/libs
 
+GCC_ENABLE_SSE3_EXTENSIONS = YES
+GCC_ENABLE_SUPPLEMENTAL_SSE3_INSTRUCTIONS = YES
+GCC_INLINES_ARE_PRIVATE_EXTERN = NO
+GCC_C_LANGUAGE_STANDARD = compiler-default
+
+
 GCC_PREFIX_HEADER = $(SYSTEM_LIBRARY_DIR)/Frameworks/Carbon.framework/Headers/Carbon.h
