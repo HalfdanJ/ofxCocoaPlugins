@@ -46,7 +46,7 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
         NSOpenGLPFASampleBuffers, (NSOpenGLPixelFormatAttribute)4,
         NSOpenGLPFASamples, (NSOpenGLPixelFormatAttribute)8,
         NSOpenGLPFADepthSize, 32,
-
+        
         
         
 		(NSOpenGLPixelFormatAttribute)nil
@@ -246,11 +246,12 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 -(void) mouseMoved:(NSEvent *)theEvent{
 	NSPoint curPoint = [self convertPoint:[theEvent locationInWindow] fromView:nil];
 	curPoint.y = [self frame].size.height - curPoint.y;
+    [[controller openglLock] lock]; // prevent modifications while updating from DisplayLink
 	[[self plugin] setControlMouseFlags:[theEvent modifierFlags]]; 
 	[[self plugin] setControlMouseX: curPoint.x]; 
 	[[self plugin] setControlMouseY: curPoint.y];	
 	[[self plugin] controlMouseMoved:curPoint.x y:curPoint.y];
-	
+	[[controller openglLock] unlock];	
 }
 
 //
@@ -262,10 +263,12 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 	NSPoint curPoint = [self convertPoint:[theEvent locationInWindow] fromView:nil];
 	curPoint.y = [self frame].size.height - curPoint.y;
 	
+    [[controller openglLock] lock]; // prevent modifications while updating from DisplayLink
 	[[self plugin] setControlMouseFlags:[theEvent modifierFlags]]; 
 	[[self plugin] setControlMouseX:curPoint.x]; 
 	[[self plugin] setControlMouseY:curPoint.y];
 	[[self plugin] controlMousePressed:curPoint.x y:curPoint.y button:0];
+	[[controller openglLock] unlock];	
 }
 
 //
@@ -275,7 +278,9 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 - (void)mouseUp:(NSEvent *)theEvent {
 	NSPoint curPoint = [self convertPoint:[theEvent locationInWindow] fromView:nil];
 	curPoint.y = [self frame].size.height - curPoint.y;
+    [[controller openglLock] lock]; // prevent modifications while updating from DisplayLink
 	[[self plugin] controlMouseReleased:curPoint.x y:curPoint.y];
+    [[controller openglLock] unlock];	
 }
 
 //
@@ -285,11 +290,12 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 - (void)mouseDragged:(NSEvent *)theEvent {
 	NSPoint curPoint = [self convertPoint:[theEvent locationInWindow] fromView:nil];
 	curPoint.y = [self frame].size.height - curPoint.y;
+    [[controller openglLock] lock]; // prevent modifications while updating from DisplayLink
 	[[self plugin] setControlMouseFlags:[theEvent modifierFlags]]; 
 	[[self plugin] setControlMouseX: curPoint.x]; 
 	[[self plugin] setControlMouseY: curPoint.y];	
 	[[self plugin] controlMouseDragged:curPoint.x y:curPoint.y button:0];
-    
+    [[controller openglLock] unlock];	    
 }
 
 //
@@ -299,7 +305,9 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 - (void)mouseExited:(NSEvent *)theEvent{
     NSPoint curPoint = [self convertPoint:[theEvent locationInWindow] fromView:nil];
 	curPoint.y = [self frame].size.height - curPoint.y;
+    [[controller openglLock] lock]; // prevent modifications while updating from DisplayLink
 	[[self plugin] controlMouseReleased:curPoint.x y:curPoint.y];
+	[[controller openglLock] unlock];	
 }
 
 //
@@ -307,7 +315,9 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 //
 
 -(void) scrollWheel:(NSEvent *)theEvent{
+    [[controller openglLock] lock]; // prevent modifications while updating from DisplayLink
 	[[self plugin] controlMouseScrolled:theEvent];
+	[[controller openglLock] unlock];	
 }
 
 //
@@ -317,12 +327,16 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 -(void) keyDown:(NSEvent *)theEvent {
     ;
 	unsigned short keyCode = [theEvent keyCode];
+    [[controller openglLock] lock]; // prevent modifications while updating from DisplayLink
 	[[self plugin] controlKeyPressed:keyCode modifier:[theEvent modifierFlags]];
+	[[controller openglLock] unlock];	
 }
 
 -(void) keyUp:(NSEvent *)theEvent{
 	unsigned short keyCode = [theEvent keyCode];
+    [[controller openglLock] lock]; // prevent modifications while updating from DisplayLink
 	[[self plugin] controlKeyReleased:keyCode modifier:[theEvent modifierFlags]];;
+	[[controller openglLock] unlock];	
 }
 
 @end
