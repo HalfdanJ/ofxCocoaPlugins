@@ -908,7 +908,7 @@
 																			<string key="NSFrameSize">{552, 205}</string>
 																			<reference key="NSSuperview" ref="56426648"/>
 																			<reference key="NSWindow"/>
-																			<reference key="NSNextKeyView" ref="713565026"/>
+																			<reference key="NSNextKeyView" ref="337731750"/>
 																			<int key="NSViewLayerContentsRedrawPolicy">2</int>
 																			<bool key="NSEnabled">YES</bool>
 																			<object class="NSTableHeaderView" key="NSHeaderView" id="878935289">
@@ -1251,7 +1251,7 @@
 																					<reference key="NSTableView" ref="156568582"/>
 																				</object>
 																				<object class="NSTableColumn" id="912808608">
-																					<double key="NSWidth">19</double>
+																					<double key="NSWidth">52</double>
 																					<double key="NSMinWidth">10</double>
 																					<double key="NSMaxWidth">3.4028234663852886e+38</double>
 																					<object class="NSTableHeaderCell" key="NSHeaderCell">
@@ -1351,7 +1351,7 @@
 															<string key="NSFrameSize">{552, 222}</string>
 															<reference key="NSSuperview" ref="197331361"/>
 															<reference key="NSWindow"/>
-															<reference key="NSNextKeyView" ref="337731750"/>
+															<reference key="NSNextKeyView" ref="56426648"/>
 															<int key="NSViewLayerContentsRedrawPolicy">2</int>
 															<int key="NSsFlags">133680</int>
 															<reference key="NSVScroller" ref="577278233"/>
@@ -1432,7 +1432,6 @@
 																	<string key="NSFrame">{{531, 0}, {15, 257}}</string>
 																	<reference key="NSSuperview" ref="362889845"/>
 																	<reference key="NSWindow"/>
-																	<reference key="NSNextKeyView"/>
 																	<reference key="NSTarget" ref="362889845"/>
 																	<string key="NSAction">_doScroller:</string>
 																	<double key="NSCurValue">1</double>
