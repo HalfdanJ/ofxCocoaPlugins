@@ -51,7 +51,7 @@
 				lastFramesVideo = -1;
 				[chapterSelector removeAllItems];
 				[chapterSelector addItemWithTitle:@" - No Chapters - "];
-				[((NumberProperty*) Prop(@"chapter")) setMaxValue:[NSNumber numberWithInt:0]];
+				[((NumberProperty*) Prop(@"chapter")) setMaxValue:0];
 				[Prop(@"chapter") setIntValue:0];
 				
 			});			
@@ -71,11 +71,11 @@
 						for(NSDictionary * dict in [mov chapters]){
 							[chapterSelector addItemWithTitle:[dict valueForKey:QTMovieChapterName]];
 						}
-						[((NumberProperty*) Prop(@"chapter")) setMaxValue:[NSNumber numberWithInt:[mov chapterCount]-1]];
+						[((NumberProperty*) Prop(@"chapter")) setMaxValue:[mov chapterCount]-1];
 						[Prop(@"chapter") setIntValue:0];
 					} else {
 						[chapterSelector addItemWithTitle:@" - No Chapters - "];
-						[((NumberProperty*) Prop(@"chapter")) setMaxValue:[NSNumber numberWithInt:0]];
+						[((NumberProperty*) Prop(@"chapter")) setMaxValue:0];
 						[Prop(@"chapter") setIntValue:0];
 					}				
 				}

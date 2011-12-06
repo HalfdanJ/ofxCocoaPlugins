@@ -18,8 +18,6 @@
 }
 
 -(void) dealloc{
-	[minValue release];
-	[maxValue release];
 	[super dealloc];
 }
 
@@ -33,8 +31,8 @@
 	[prop setValue:[NSNumber numberWithFloat:defValue]];
 	[prop setDefaultValue: [NSNumber numberWithFloat:defValue]];
 	
-	[prop setMinValue: [NSNumber numberWithFloat:min]];
-	[prop setMaxValue: [NSNumber numberWithFloat:max]];
+	[prop setMinValue: min];
+	[prop setMaxValue: max];
 	
 	[prop setControlCell:[NumberProperty sliderCell]];	
 	[prop setControlType:1];
@@ -52,7 +50,7 @@
 -(void) update{
 	if(valueSetFromMidi && midiSmoothing > 0 && midiGoal != [self floatValue]){
 		if(lastMidiTime != nil && -[lastMidiTime timeIntervalSinceNow] < 6){
-			if(fabs(midiGoal-[self floatValue]) < ([[self maxValue] floatValue]-[[self minValue] floatValue])*0.001){
+			if(fabs(midiGoal-[self floatValue]) < ([self maxValue]-[self minValue])*0.001){
 				[self setFloatValue:midiGoal];
 			} else {
 				float f = [self floatValue] + (midiGoal - [self floatValue])*(1-midiSmoothing);
@@ -112,8 +110,8 @@
 
 -(NSCell *) controlCell{
 	//	NSLog(@"Get controlcell with val %@",value);
-	[(NSSliderCell*)controlCell setMinValue:[[self minValue] floatValue] ];
-	[(NSSliderCell*)controlCell setMaxValue:[[self maxValue] floatValue] ];		
+	[(NSSliderCell*)controlCell setMinValue:[self minValue] ];
+	[(NSSliderCell*)controlCell setMaxValue:[self maxValue] ];		
 	
 	
 	return controlCell;
@@ -122,8 +120,8 @@
 
 -(void) encodeWithCoder:(NSCoder *)coder{
 	[super encodeWithCoder:coder];
-	[coder encodeObject:[self minValue] forKey:@"minVal"];
-	[coder encodeObject:[self maxValue] forKey:@"maxVal"];
+	[coder encodeObject:[NSNumber numberWithDouble:[self minValue]] forKey:@"minVal"];
+	[coder encodeObject:[NSNumber numberWithDouble:[self maxValue]] forKey:@"maxVal"];
 	
 }
 
@@ -134,8 +132,8 @@
 	if(controlType == 1)
 		[self setControlCell:[NumberProperty sliderCell]];	
 	
-	[self setMinValue: [coder decodeObjectForKey:@"minVal"]];
-	[self setMaxValue: [coder decodeObjectForKey:@"maxVal"]];
+	[self setMinValue: [[coder decodeObjectForKey:@"minVal"] doubleValue]];
+	[self setMaxValue: [[coder decodeObjectForKey:@"maxVal"] doubleValue]];
 	
 	return self;
 	
@@ -147,7 +145,7 @@
 
 -(void) midiEvent:(int) _value{
 	float v = _value/127.0;
-	float endV = [[self minValue] floatValue] + ( [[self maxValue] floatValue] -  [[self minValue] floatValue])*v;
+	float endV = [self minValue]  + ( [self maxValue] -  [self minValue])*v;
 	if(midiSmoothing > 0){
 		midiGoal = endV;
 		//cout<<"Got midi"<<midiGoal<<endl; 
@@ -161,8 +159,8 @@
 
 -(NSNumber*)midiValue{
 	float v = [self floatValue];
-	v -= [[self minValue] floatValue];
-	v /= ( [[self maxValue] floatValue] -  [[self minValue] floatValue]);
+	v -= [self minValue] ;
+	v /= ( [self maxValue]  -  [self minValue] );
 	v *= 127.0;
 	v = ceil(v);
 	return [NSNumber numberWithInt:v];
