@@ -27,6 +27,8 @@
 		[self addProperty:[BoolProperty boolPropertyWithDefaultvalue:0] named:@"Enabled"];
 		[self bind:@"boolEnabled" toObject:properties withKeyPath:@"Enabled.value" options:nil];
 		[self addObserver:self forKeyPath:@"boolEnabled" options:nil context:@"boolEnabled"];
+        [self addObserver:self forKeyPath:@"customProperties" options:nil context:@"customProperties"];
+
 	}	
 	return self;	
 }
