@@ -14,7 +14,7 @@ extern ofAppBaseWindow * window;
 @implementation PluginManagerController 
 @synthesize preferencesButton;
 
-@synthesize saveManager, statsAreaView, sharedOpenglContext, openglLock, fps, plugins, viewManager, qlabController;
+@synthesize saveManager, statsAreaView, sharedOpenglContext, openglLock, fps, plugins, viewManager, qlabController, lastViewDrawn;
 @synthesize quitWithoutAsking;
 
 #pragma mark Startup
@@ -36,7 +36,7 @@ extern ofAppBaseWindow * window;
         ofSetDataPathRoot("../../../data/");
         
 		//Lock used by OpenGL
-		openglLock = [NSRecursiveLock new];
+		openglLock = [[NSRecursiveLock alloc] init];
 		
 		oscReceiver = new ofxOscReceiver();
 		oscReceiver->setup(1111);

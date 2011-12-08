@@ -305,7 +305,6 @@
 		glTranslated(-([self softedgePart]-1)*([[self aspect] floatValue])/[self softedgeTotalParts], 0, 0);
 	} 
 
-
 }
 
 -(void) setCornerPositions:(NSMutableArray *)a{

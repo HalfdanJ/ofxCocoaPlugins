@@ -199,7 +199,11 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 
 -(void) drawRect:(NSRect)dirtyRect{
     // prevent drawing from another thread if we're drawing already
+    // cout << "1 OUTPUT DRAW WAIT " << [controller openglLock] << endl;
+
 	[[controller openglLock] lock]; 
+    
+    // cout << "1 OUTPUT DRAW BEGIN " << [controller openglLock] << endl;
 	
 	// make the GL context the current context
 	[[self openGLContext] makeCurrentContext];
@@ -245,7 +249,7 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
             if(![controller isSetupCalled]){
 				[controller callSetup];
 			}	
-            
+
             //The drawing from the plugins 
 			[controller callDraw:drawingInformation];
 			
@@ -264,6 +268,9 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
       	glFlush();
 	}	
 	
+    // cout << "1 OUTPUT DRAW END" << [controller openglLock] << endl;
+
+        [globalController setLastViewDrawn:[self viewNumber]]; // let the controlView in
 	[[controller openglLock] unlock];	
 }
 
@@ -282,6 +289,7 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 	
     //Create the drawingInformation dictionary with all the timing information
 	[drawingInformation setValue:[NSNumber numberWithDouble:timeInterval] forKey:@"timeInterval"];
+	[drawingInformation setValue:[NSNumber numberWithDouble:outputTime->videoTime] forKey:@"outputTime.videoTime"];
 	[drawingInformation setValue:[NSNumber numberWithDouble:outputTime->videoTime] forKey:@"outputTime.videoTime"];
 	[drawingInformation setValue:[NSNumber numberWithInt:viewNumber] forKey:@"outputViewNumber"];
 	dispatch_async(dispatch_get_main_queue(), ^{
@@ -322,7 +330,7 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
     if  ((displayID != 0) && (viewDisplayID != displayID) && [[self window] screen] == [window screen]) {		
         if (NULL != displayLink) {
 			NSLog(@"New DisplayID %i on outputview %i",displayID,viewNumber);
-       //     CVDisplayLinkSetCurrentCGDisplay(displayLink, displayID); 
+            CVDisplayLinkSetCurrentCGDisplay(displayLink, displayID); 
         }
         viewDisplayID = displayID;
     }	

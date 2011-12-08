@@ -64,6 +64,8 @@
 	CFTimeInterval lastTime;	
 	long startFrameTime;		
 	float fps;
+    
+    char lastViewDrawn;
 	
 	ofxOscReceiver * oscReceiver;
 
@@ -85,6 +87,7 @@
 @property (assign) NSMutableArray * plugins;
 @property (retain, readonly) OutputViewManager * viewManager;
 @property (readwrite) BOOL quitWithoutAsking;
+@property (readwrite) char lastViewDrawn;
 @property (readonly) QLabController * qlabController;
 @property (assign) IBOutlet NSButton *preferencesButton;
 

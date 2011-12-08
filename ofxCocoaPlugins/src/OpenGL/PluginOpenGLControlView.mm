@@ -100,7 +100,7 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
     // the buffers are swapped only during the vertical retrace of the monitor
     [[self openGLContext] setValues:&swapInterval forParameter:NSOpenGLCPSwapInterval];
 	
-	//[self setOpenGLContext:[controller getSharedContext:(CGLPixelFormatObj)[[self pixelFormat] CGLPixelFormatObj]]];
+	//[self setOpenGLContext:[globalController getSharedContext:(CGLPixelFormatObj)[[self pixelFormat] CGLPixelFormatObj]]];
 	
 	
     
@@ -130,45 +130,56 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 
 -(void) draw{
     
-	[[controller openglLock] lock]; // prevent drawing from another thread if we're drawing already
-	
-    [[self openGLContext] makeCurrentContext];
+    // cout << "   2 CONTROL DRAW WAIT " << [globalController openglLock] << endl;
     
-	glViewport(0, 0, [self frame].size.width , [self frame].size.height);
-	if(![plugin setupCalled]){
-        glClearColor(0.0, 0.0, 0.0, 0.0);
-        glClear(GL_COLOR_BUFFER_BIT);
+    if([globalController lastViewDrawn] != 'c' || [[globalController viewManager] numberOutputViews] == 0){ // only draw if there's been an outputview before;
         
-        if([[globalController viewManager] numberOutputViews] == 0){
-            [plugin setup];
-            [plugin setSetupCalled:YES];
+        [[globalController openglLock] lock]; // prevent drawing from another thread if we're drawing already
+        
+        // cout << "   2 CONTROL DRAW BEGIN " << [globalController openglLock] << endl;
+        
+        [[self openGLContext] makeCurrentContext];
+        
+        glViewport(0, 0, [self frame].size.width , [self frame].size.height);
+        if(![plugin setupCalled]){
+            glClearColor(0.0, 0.0, 0.0, 0.0);
+            glClear(GL_COLOR_BUFFER_BIT);
+            
+            if([[globalController viewManager] numberOutputViews] == 0){
+                [plugin setup];
+                [plugin setSetupCalled:YES];
+            }
+        } else {		
+            
+            glClearColor(0.0, 0.0, 0.0, 0.0);
+            glClear(GL_COLOR_BUFFER_BIT);
+            glMatrixMode(GL_MODELVIEW);       
+            
+            glPushMatrix();
+            glTranslated(-1, 1, 0);
+            glScaled(2.0/[self frame].size.width, -2.0/[self frame].size.height, 1);
+            
+            ofPoint tmpSize = ofGetWindowSize();
+            
+            ofSetWindowShape([self frame].size.width, [self frame].size.height);
+            
+            ofSetupScreen();
+            
+            [plugin controlDraw:drawingInformation];
+            
+            ofSetWindowShape(tmpSize.x, tmpSize.y);
+            
+            glPopMatrix();		
         }
-	} else {		
         
-        glClearColor(0.0, 0.0, 0.0, 0.0);
-        glClear(GL_COLOR_BUFFER_BIT);
-		glMatrixMode(GL_MODELVIEW);       
+        [[self openGLContext] flushBuffer];
         
-		glPushMatrix();
-		glTranslated(-1, 1, 0);
-		glScaled(2.0/[self frame].size.width, -2.0/[self frame].size.height, 1);
+        // cout << "   2 CONTROL DRAW END " << [globalController openglLock] << endl;
         
-        ofPoint tmpSize = ofGetWindowSize();
-		
-        ofSetWindowShape([self frame].size.width, [self frame].size.height);
-		
-		ofSetupScreen();
-		
-		[plugin controlDraw:drawingInformation];
-		
-        ofSetWindowShape(tmpSize.x, tmpSize.y);
-		
-		glPopMatrix();		
-	}
-	
-    [[self openGLContext] flushBuffer];
-	
-	[[controller openglLock] unlock];	
+        [globalController setLastViewDrawn:'c'];
+        
+        [[globalController openglLock] unlock];	
+    }
 }
 
 //
@@ -178,17 +189,17 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 
 - (void)reshape
 {
-	[[controller openglLock] lock];
-	
-	[[self openGLContext] makeCurrentContext];
-	
-	CGLLockContext((CGLContextObj)[[self openGLContext] CGLContextObj]);
-	
-	[[self openGLContext] update];
-	
-	CGLUnlockContext((CGLContextObj)[[self openGLContext] CGLContextObj]);
-	
-	[[controller openglLock] unlock];
+    [[globalController openglLock] lock];
+    
+    [[self openGLContext] makeCurrentContext];
+    
+    CGLLockContext((CGLContextObj)[[self openGLContext] CGLContextObj]);
+    
+    [[self openGLContext] update];
+    
+    CGLUnlockContext((CGLContextObj)[[self openGLContext] CGLContextObj]);
+    
+    [[globalController openglLock] unlock];
 }
 
 
@@ -197,14 +208,14 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 //
 
 -(void) setBackingWidth:(int) width height:(int)height{
-	GLint dim[2] = {width, height};
-	CGLContextObj  ctx = (CGLContextObj) [[self openGLContext] CGLContextObj];
-	CGLSetParameter(ctx, kCGLCPSurfaceBackingSize, dim);
-	CGLEnable (ctx, kCGLCESurfaceBackingSize);	
-	
-	backingWidth = width;
-	backingHeight = height;
-	
+    GLint dim[2] = {width, height};
+    CGLContextObj  ctx = (CGLContextObj) [[self openGLContext] CGLContextObj];
+    CGLSetParameter(ctx, kCGLCPSurfaceBackingSize, dim);
+    CGLEnable (ctx, kCGLCESurfaceBackingSize);	
+    
+    backingWidth = width;
+    backingHeight = height;
+    
 }
 
 
@@ -217,15 +228,15 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 
 - (CVReturn)getFrameForTime:(CFTimeInterval)timeInterval displayTime:(const CVTimeStamp *)outputTime
 {
-	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-	
+    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+    
     if([self plugin] == [globalController selectedPlugin]){
         [drawingInformation setValue:[NSNumber numberWithDouble:timeInterval] forKey:@"timeInterval"];
         [self draw];
     }
     [pool release];
-	
-	return kCVReturnSuccess;
+    
+    return kCVReturnSuccess;
 }
 
 
@@ -236,7 +247,7 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 //
 
 -(BOOL) acceptsFirstResponder{
-	return YES;
+    return YES;
 }
 
 //
@@ -244,14 +255,14 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 //
 
 -(void) mouseMoved:(NSEvent *)theEvent{
-	NSPoint curPoint = [self convertPoint:[theEvent locationInWindow] fromView:nil];
-	curPoint.y = [self frame].size.height - curPoint.y;
-    [[controller openglLock] lock]; // prevent modifications while updating from DisplayLink
-	[[self plugin] setControlMouseFlags:[theEvent modifierFlags]]; 
-	[[self plugin] setControlMouseX: curPoint.x]; 
-	[[self plugin] setControlMouseY: curPoint.y];	
-	[[self plugin] controlMouseMoved:curPoint.x y:curPoint.y];
-	[[controller openglLock] unlock];	
+    NSPoint curPoint = [self convertPoint:[theEvent locationInWindow] fromView:nil];
+    curPoint.y = [self frame].size.height - curPoint.y;
+    [[globalController openglLock] lock]; // prevent modifications while updating from DisplayLink
+    [[self plugin] setControlMouseFlags:[theEvent modifierFlags]]; 
+    [[self plugin] setControlMouseX: curPoint.x]; 
+    [[self plugin] setControlMouseY: curPoint.y];	
+    [[self plugin] controlMouseMoved:curPoint.x y:curPoint.y];
+    [[globalController openglLock] unlock];	
 }
 
 //
@@ -259,16 +270,16 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 //
 
 - (void)mouseDown:(NSEvent *)theEvent {
-	[[self window] makeFirstResponder:self];
-	NSPoint curPoint = [self convertPoint:[theEvent locationInWindow] fromView:nil];
-	curPoint.y = [self frame].size.height - curPoint.y;
-	
-    [[controller openglLock] lock]; // prevent modifications while updating from DisplayLink
-	[[self plugin] setControlMouseFlags:[theEvent modifierFlags]]; 
-	[[self plugin] setControlMouseX:curPoint.x]; 
-	[[self plugin] setControlMouseY:curPoint.y];
-	[[self plugin] controlMousePressed:curPoint.x y:curPoint.y button:0];
-	[[controller openglLock] unlock];	
+    [[self window] makeFirstResponder:self];
+    NSPoint curPoint = [self convertPoint:[theEvent locationInWindow] fromView:nil];
+    curPoint.y = [self frame].size.height - curPoint.y;
+    
+    [[globalController openglLock] lock]; // prevent modifications while updating from DisplayLink
+    [[self plugin] setControlMouseFlags:[theEvent modifierFlags]]; 
+    [[self plugin] setControlMouseX:curPoint.x]; 
+    [[self plugin] setControlMouseY:curPoint.y];
+    [[self plugin] controlMousePressed:curPoint.x y:curPoint.y button:0];
+    [[globalController openglLock] unlock];	
 }
 
 //
@@ -276,11 +287,11 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 //
 
 - (void)mouseUp:(NSEvent *)theEvent {
-	NSPoint curPoint = [self convertPoint:[theEvent locationInWindow] fromView:nil];
-	curPoint.y = [self frame].size.height - curPoint.y;
-    [[controller openglLock] lock]; // prevent modifications while updating from DisplayLink
-	[[self plugin] controlMouseReleased:curPoint.x y:curPoint.y];
-    [[controller openglLock] unlock];	
+    NSPoint curPoint = [self convertPoint:[theEvent locationInWindow] fromView:nil];
+    curPoint.y = [self frame].size.height - curPoint.y;
+    [[globalController openglLock] lock]; // prevent modifications while updating from DisplayLink
+    [[self plugin] controlMouseReleased:curPoint.x y:curPoint.y];
+    [[globalController openglLock] unlock];	
 }
 
 //
@@ -288,14 +299,14 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 //
 
 - (void)mouseDragged:(NSEvent *)theEvent {
-	NSPoint curPoint = [self convertPoint:[theEvent locationInWindow] fromView:nil];
-	curPoint.y = [self frame].size.height - curPoint.y;
-    [[controller openglLock] lock]; // prevent modifications while updating from DisplayLink
-	[[self plugin] setControlMouseFlags:[theEvent modifierFlags]]; 
-	[[self plugin] setControlMouseX: curPoint.x]; 
-	[[self plugin] setControlMouseY: curPoint.y];	
-	[[self plugin] controlMouseDragged:curPoint.x y:curPoint.y button:0];
-    [[controller openglLock] unlock];	    
+    NSPoint curPoint = [self convertPoint:[theEvent locationInWindow] fromView:nil];
+    curPoint.y = [self frame].size.height - curPoint.y;
+    [[globalController openglLock] lock]; // prevent modifications while updating from DisplayLink
+    [[self plugin] setControlMouseFlags:[theEvent modifierFlags]]; 
+    [[self plugin] setControlMouseX: curPoint.x]; 
+    [[self plugin] setControlMouseY: curPoint.y];	
+    [[self plugin] controlMouseDragged:curPoint.x y:curPoint.y button:0];
+    [[globalController openglLock] unlock];	    
 }
 
 //
@@ -304,10 +315,10 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 
 - (void)mouseExited:(NSEvent *)theEvent{
     NSPoint curPoint = [self convertPoint:[theEvent locationInWindow] fromView:nil];
-	curPoint.y = [self frame].size.height - curPoint.y;
-    [[controller openglLock] lock]; // prevent modifications while updating from DisplayLink
-	[[self plugin] controlMouseReleased:curPoint.x y:curPoint.y];
-	[[controller openglLock] unlock];	
+    curPoint.y = [self frame].size.height - curPoint.y;
+    [[globalController openglLock] lock]; // prevent modifications while updating from DisplayLink
+    [[self plugin] controlMouseReleased:curPoint.x y:curPoint.y];
+    [[globalController openglLock] unlock];	
 }
 
 //
@@ -315,9 +326,9 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 //
 
 -(void) scrollWheel:(NSEvent *)theEvent{
-    [[controller openglLock] lock]; // prevent modifications while updating from DisplayLink
-	[[self plugin] controlMouseScrolled:theEvent];
-	[[controller openglLock] unlock];	
+    [[globalController openglLock] lock]; // prevent modifications while updating from DisplayLink
+    [[self plugin] controlMouseScrolled:theEvent];
+    [[globalController openglLock] unlock];	
 }
 
 //
@@ -326,17 +337,17 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 
 -(void) keyDown:(NSEvent *)theEvent {
     ;
-	unsigned short keyCode = [theEvent keyCode];
-    [[controller openglLock] lock]; // prevent modifications while updating from DisplayLink
-	[[self plugin] controlKeyPressed:keyCode modifier:[theEvent modifierFlags]];
-	[[controller openglLock] unlock];	
+    unsigned short keyCode = [theEvent keyCode];
+    [[globalController openglLock] lock]; // prevent modifications while updating from DisplayLink
+    [[self plugin] controlKeyPressed:keyCode modifier:[theEvent modifierFlags]];
+    [[globalController openglLock] unlock];	
 }
 
 -(void) keyUp:(NSEvent *)theEvent{
-	unsigned short keyCode = [theEvent keyCode];
-    [[controller openglLock] lock]; // prevent modifications while updating from DisplayLink
-	[[self plugin] controlKeyReleased:keyCode modifier:[theEvent modifierFlags]];;
-	[[controller openglLock] unlock];	
+    unsigned short keyCode = [theEvent keyCode];
+    [[globalController openglLock] lock]; // prevent modifications while updating from DisplayLink
+    [[self plugin] controlKeyReleased:keyCode modifier:[theEvent modifierFlags]];;
+    [[globalController openglLock] unlock];	
 }
 
 @end
