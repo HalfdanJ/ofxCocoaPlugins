@@ -1,7 +1,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-#include "PluginProperty.h"
+#import <ofxCocoaPlugins/PluginProperty.h>
 
 @class PluginManagerController;
 extern PluginManagerController * globalController;

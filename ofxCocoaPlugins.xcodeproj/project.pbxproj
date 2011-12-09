@@ -118,71 +118,71 @@
 		DD0A35721452F32700CC89E5 /* ofxVec4f.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35681452F32700CC89E5 /* ofxVec4f.h */; };
 		DD0A35731452F32700CC89E5 /* ofxVectorMath.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35691452F32700CC89E5 /* ofxVectorMath.h */; };
 		DD0A35871454386B00CC89E5 /* ofxCocoaPlugins.h in Headers */ = {isa = PBXBuildFile; fileRef = DDA7FFE8144F1C3800F81C9E /* ofxCocoaPlugins.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DD0A361014543B7900CC89E5 /* of3dUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A359814543B7800CC89E5 /* of3dUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DD0A361214543B7900CC89E5 /* ofCamera.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A359A14543B7800CC89E5 /* ofCamera.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DD0A361414543B7900CC89E5 /* ofEasyCam.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A359C14543B7800CC89E5 /* ofEasyCam.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DD0A361614543B7900CC89E5 /* ofMesh.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A359E14543B7800CC89E5 /* ofMesh.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DD0A361814543B7900CC89E5 /* ofNode.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35A014543B7800CC89E5 /* ofNode.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DD0A361914543B7900CC89E5 /* ofAppBaseWindow.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35A114543B7800CC89E5 /* ofAppBaseWindow.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DD0A361B14543B7900CC89E5 /* ofAppGlutWindow.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35A314543B7800CC89E5 /* ofAppGlutWindow.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DD0A361D14543B7900CC89E5 /* ofAppRunner.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35A514543B7800CC89E5 /* ofAppRunner.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DD0A361E14543B7900CC89E5 /* ofBaseApp.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35A614543B7800CC89E5 /* ofBaseApp.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DD0A362014543B7900CC89E5 /* ofArduino.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35A814543B7800CC89E5 /* ofArduino.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DD0A362214543B7900CC89E5 /* ofSerial.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35AA14543B7800CC89E5 /* ofSerial.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DD0A362414543B7900CC89E5 /* ofEvents.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35AC14543B7800CC89E5 /* ofEvents.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DD0A362514543B7900CC89E5 /* ofEventUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35AD14543B7800CC89E5 /* ofEventUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DD0A362714543B7900CC89E5 /* ofFbo.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35AF14543B7800CC89E5 /* ofFbo.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DD0A362914543B7900CC89E5 /* ofGLRenderer.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35B114543B7800CC89E5 /* ofGLRenderer.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DD0A362A14543B7900CC89E5 /* ofGLUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35B214543B7800CC89E5 /* ofGLUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DD0A362C14543B7900CC89E5 /* ofLight.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35B414543B7800CC89E5 /* ofLight.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DD0A362E14543B7900CC89E5 /* ofMaterial.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35B614543B7800CC89E5 /* ofMaterial.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DD0A363014543B7900CC89E5 /* ofShader.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35B814543B7800CC89E5 /* ofShader.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DD0A363214543B7900CC89E5 /* ofTexture.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35BA14543B7800CC89E5 /* ofTexture.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DD0A363414543B7900CC89E5 /* ofVbo.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35BC14543B7800CC89E5 /* ofVbo.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DD0A363614543B7900CC89E5 /* ofVboMesh.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35BE14543B7800CC89E5 /* ofVboMesh.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DD0A363814543B7900CC89E5 /* ofPath.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35C014543B7800CC89E5 /* ofPath.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DD0A363A14543B7900CC89E5 /* ofPolyline.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35C214543B7800CC89E5 /* ofPolyline.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DD0A363B14543B7900CC89E5 /* ofRendererCollection.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35C314543B7800CC89E5 /* ofRendererCollection.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DD0A363D14543B7900CC89E5 /* ofCairoRenderer.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35C514543B7800CC89E5 /* ofCairoRenderer.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DD0A363F14543B7900CC89E5 /* ofBitmapFont.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35C714543B7800CC89E5 /* ofBitmapFont.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DD0A364114543B7900CC89E5 /* ofGraphics.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35C914543B7800CC89E5 /* ofGraphics.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DD0A364314543B7900CC89E5 /* ofImage.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35CB14543B7800CC89E5 /* ofImage.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DD0A364514543B7900CC89E5 /* ofPixels.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35CD14543B7800CC89E5 /* ofPixels.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DD0A364714543B7900CC89E5 /* ofTessellator.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35CF14543B7800CC89E5 /* ofTessellator.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DD0A364914543B7900CC89E5 /* ofTrueTypeFont.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35D114543B7800CC89E5 /* ofTrueTypeFont.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DD0A364B14543B7900CC89E5 /* ofBaseSoundPlayer.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35D314543B7800CC89E5 /* ofBaseSoundPlayer.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DD0A364D14543B7900CC89E5 /* ofFmodSoundPlayer.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35D514543B7800CC89E5 /* ofFmodSoundPlayer.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DD0A364F14543B7900CC89E5 /* ofSoundPlayer.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35D714543B7800CC89E5 /* ofSoundPlayer.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DD0A365114543B7900CC89E5 /* ofRtAudioSoundStream.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35D914543B7800CC89E5 /* ofRtAudioSoundStream.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DD0A365214543B7900CC89E5 /* ofBaseSoundStream.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35DA14543B7800CC89E5 /* ofBaseSoundStream.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DD0A365414543B7900CC89E5 /* ofSoundStream.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35DC14543B7800CC89E5 /* ofSoundStream.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DD0A365614543B7900CC89E5 /* ofMath.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35DE14543B7800CC89E5 /* ofMath.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DD0A365814543B7900CC89E5 /* ofMatrix3x3.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35E014543B7800CC89E5 /* ofMatrix3x3.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DD0A365A14543B7900CC89E5 /* ofMatrix4x4.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35E214543B7800CC89E5 /* ofMatrix4x4.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DD0A365C14543B7900CC89E5 /* ofQuaternion.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35E414543B7800CC89E5 /* ofQuaternion.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DD0A365E14543B7900CC89E5 /* ofVec2f.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35E614543B7800CC89E5 /* ofVec2f.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DD0A365F14543B7900CC89E5 /* ofVec3f.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35E714543B7800CC89E5 /* ofVec3f.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DD0A366114543B7900CC89E5 /* ofVec4f.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35E914543B7800CC89E5 /* ofVec4f.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DD0A366214543B7900CC89E5 /* ofVectorMath.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35EA14543B7800CC89E5 /* ofVectorMath.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DD0A366414543B7900CC89E5 /* ofBaseTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35EC14543B7800CC89E5 /* ofBaseTypes.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DD0A366614543B7900CC89E5 /* ofColor.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35EE14543B7800CC89E5 /* ofColor.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DD0A366814543B7900CC89E5 /* ofPoint.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35F014543B7800CC89E5 /* ofPoint.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DD0A366A14543B7900CC89E5 /* ofRectangle.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35F214543B7800CC89E5 /* ofRectangle.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DD0A366B14543B7900CC89E5 /* ofTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35F314543B7800CC89E5 /* ofTypes.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DD0A366C14543B7900CC89E5 /* ofConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35F414543B7800CC89E5 /* ofConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DD0A366E14543B7900CC89E5 /* ofFileUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35F614543B7800CC89E5 /* ofFileUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DD0A367014543B7900CC89E5 /* ofLog.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35F814543B7800CC89E5 /* ofLog.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DD0A367114543B7900CC89E5 /* ofNoise.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35F914543B7800CC89E5 /* ofNoise.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DD0A367314543B7900CC89E5 /* ofSystemUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35FB14543B7800CC89E5 /* ofSystemUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DD0A367514543B7900CC89E5 /* ofThread.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35FD14543B7800CC89E5 /* ofThread.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DD0A367714543B7900CC89E5 /* ofURLFileLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35FF14543B7800CC89E5 /* ofURLFileLoader.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DD0A367914543B7900CC89E5 /* ofUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A360114543B7800CC89E5 /* ofUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DD0A367B14543B7900CC89E5 /* ofVideoGrabber.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A360314543B7800CC89E5 /* ofVideoGrabber.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DD0A367D14543B7900CC89E5 /* ofVideoPlayer.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A360514543B7800CC89E5 /* ofVideoPlayer.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DD0A368114543B7900CC89E5 /* ofQuickTimeGrabber.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A360914543B7800CC89E5 /* ofQuickTimeGrabber.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DD0A368314543B7900CC89E5 /* ofQuickTimePlayer.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A360B14543B7800CC89E5 /* ofQuickTimePlayer.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DD0A368514543B7900CC89E5 /* ofQtUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A360D14543B7800CC89E5 /* ofQtUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DD0A368614543B8800CC89E5 /* ofMain.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A358B14543B7800CC89E5 /* ofMain.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DD0A361014543B7900CC89E5 /* of3dUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A359814543B7800CC89E5 /* of3dUtils.h */; settings = {ATTRIBUTES = (); }; };
+		DD0A361214543B7900CC89E5 /* ofCamera.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A359A14543B7800CC89E5 /* ofCamera.h */; settings = {ATTRIBUTES = (); }; };
+		DD0A361414543B7900CC89E5 /* ofEasyCam.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A359C14543B7800CC89E5 /* ofEasyCam.h */; settings = {ATTRIBUTES = (); }; };
+		DD0A361614543B7900CC89E5 /* ofMesh.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A359E14543B7800CC89E5 /* ofMesh.h */; settings = {ATTRIBUTES = (); }; };
+		DD0A361814543B7900CC89E5 /* ofNode.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35A014543B7800CC89E5 /* ofNode.h */; settings = {ATTRIBUTES = (); }; };
+		DD0A361914543B7900CC89E5 /* ofAppBaseWindow.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35A114543B7800CC89E5 /* ofAppBaseWindow.h */; settings = {ATTRIBUTES = (); }; };
+		DD0A361B14543B7900CC89E5 /* ofAppGlutWindow.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35A314543B7800CC89E5 /* ofAppGlutWindow.h */; settings = {ATTRIBUTES = (); }; };
+		DD0A361D14543B7900CC89E5 /* ofAppRunner.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35A514543B7800CC89E5 /* ofAppRunner.h */; settings = {ATTRIBUTES = (); }; };
+		DD0A361E14543B7900CC89E5 /* ofBaseApp.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35A614543B7800CC89E5 /* ofBaseApp.h */; settings = {ATTRIBUTES = (); }; };
+		DD0A362014543B7900CC89E5 /* ofArduino.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35A814543B7800CC89E5 /* ofArduino.h */; settings = {ATTRIBUTES = (); }; };
+		DD0A362214543B7900CC89E5 /* ofSerial.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35AA14543B7800CC89E5 /* ofSerial.h */; settings = {ATTRIBUTES = (); }; };
+		DD0A362414543B7900CC89E5 /* ofEvents.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35AC14543B7800CC89E5 /* ofEvents.h */; settings = {ATTRIBUTES = (); }; };
+		DD0A362514543B7900CC89E5 /* ofEventUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35AD14543B7800CC89E5 /* ofEventUtils.h */; settings = {ATTRIBUTES = (); }; };
+		DD0A362714543B7900CC89E5 /* ofFbo.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35AF14543B7800CC89E5 /* ofFbo.h */; settings = {ATTRIBUTES = (); }; };
+		DD0A362914543B7900CC89E5 /* ofGLRenderer.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35B114543B7800CC89E5 /* ofGLRenderer.h */; settings = {ATTRIBUTES = (); }; };
+		DD0A362A14543B7900CC89E5 /* ofGLUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35B214543B7800CC89E5 /* ofGLUtils.h */; settings = {ATTRIBUTES = (); }; };
+		DD0A362C14543B7900CC89E5 /* ofLight.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35B414543B7800CC89E5 /* ofLight.h */; settings = {ATTRIBUTES = (); }; };
+		DD0A362E14543B7900CC89E5 /* ofMaterial.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35B614543B7800CC89E5 /* ofMaterial.h */; settings = {ATTRIBUTES = (); }; };
+		DD0A363014543B7900CC89E5 /* ofShader.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35B814543B7800CC89E5 /* ofShader.h */; settings = {ATTRIBUTES = (); }; };
+		DD0A363214543B7900CC89E5 /* ofTexture.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35BA14543B7800CC89E5 /* ofTexture.h */; settings = {ATTRIBUTES = (); }; };
+		DD0A363414543B7900CC89E5 /* ofVbo.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35BC14543B7800CC89E5 /* ofVbo.h */; settings = {ATTRIBUTES = (); }; };
+		DD0A363614543B7900CC89E5 /* ofVboMesh.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35BE14543B7800CC89E5 /* ofVboMesh.h */; settings = {ATTRIBUTES = (); }; };
+		DD0A363814543B7900CC89E5 /* ofPath.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35C014543B7800CC89E5 /* ofPath.h */; settings = {ATTRIBUTES = (); }; };
+		DD0A363A14543B7900CC89E5 /* ofPolyline.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35C214543B7800CC89E5 /* ofPolyline.h */; settings = {ATTRIBUTES = (); }; };
+		DD0A363B14543B7900CC89E5 /* ofRendererCollection.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35C314543B7800CC89E5 /* ofRendererCollection.h */; settings = {ATTRIBUTES = (); }; };
+		DD0A363D14543B7900CC89E5 /* ofCairoRenderer.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35C514543B7800CC89E5 /* ofCairoRenderer.h */; settings = {ATTRIBUTES = (); }; };
+		DD0A363F14543B7900CC89E5 /* ofBitmapFont.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35C714543B7800CC89E5 /* ofBitmapFont.h */; settings = {ATTRIBUTES = (); }; };
+		DD0A364114543B7900CC89E5 /* ofGraphics.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35C914543B7800CC89E5 /* ofGraphics.h */; settings = {ATTRIBUTES = (); }; };
+		DD0A364314543B7900CC89E5 /* ofImage.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35CB14543B7800CC89E5 /* ofImage.h */; settings = {ATTRIBUTES = (); }; };
+		DD0A364514543B7900CC89E5 /* ofPixels.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35CD14543B7800CC89E5 /* ofPixels.h */; settings = {ATTRIBUTES = (); }; };
+		DD0A364714543B7900CC89E5 /* ofTessellator.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35CF14543B7800CC89E5 /* ofTessellator.h */; settings = {ATTRIBUTES = (); }; };
+		DD0A364914543B7900CC89E5 /* ofTrueTypeFont.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35D114543B7800CC89E5 /* ofTrueTypeFont.h */; settings = {ATTRIBUTES = (); }; };
+		DD0A364B14543B7900CC89E5 /* ofBaseSoundPlayer.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35D314543B7800CC89E5 /* ofBaseSoundPlayer.h */; settings = {ATTRIBUTES = (); }; };
+		DD0A364D14543B7900CC89E5 /* ofFmodSoundPlayer.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35D514543B7800CC89E5 /* ofFmodSoundPlayer.h */; settings = {ATTRIBUTES = (); }; };
+		DD0A364F14543B7900CC89E5 /* ofSoundPlayer.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35D714543B7800CC89E5 /* ofSoundPlayer.h */; settings = {ATTRIBUTES = (); }; };
+		DD0A365114543B7900CC89E5 /* ofRtAudioSoundStream.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35D914543B7800CC89E5 /* ofRtAudioSoundStream.h */; settings = {ATTRIBUTES = (); }; };
+		DD0A365214543B7900CC89E5 /* ofBaseSoundStream.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35DA14543B7800CC89E5 /* ofBaseSoundStream.h */; settings = {ATTRIBUTES = (); }; };
+		DD0A365414543B7900CC89E5 /* ofSoundStream.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35DC14543B7800CC89E5 /* ofSoundStream.h */; settings = {ATTRIBUTES = (); }; };
+		DD0A365614543B7900CC89E5 /* ofMath.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35DE14543B7800CC89E5 /* ofMath.h */; settings = {ATTRIBUTES = (); }; };
+		DD0A365814543B7900CC89E5 /* ofMatrix3x3.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35E014543B7800CC89E5 /* ofMatrix3x3.h */; settings = {ATTRIBUTES = (); }; };
+		DD0A365A14543B7900CC89E5 /* ofMatrix4x4.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35E214543B7800CC89E5 /* ofMatrix4x4.h */; settings = {ATTRIBUTES = (); }; };
+		DD0A365C14543B7900CC89E5 /* ofQuaternion.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35E414543B7800CC89E5 /* ofQuaternion.h */; settings = {ATTRIBUTES = (); }; };
+		DD0A365E14543B7900CC89E5 /* ofVec2f.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35E614543B7800CC89E5 /* ofVec2f.h */; settings = {ATTRIBUTES = (); }; };
+		DD0A365F14543B7900CC89E5 /* ofVec3f.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35E714543B7800CC89E5 /* ofVec3f.h */; settings = {ATTRIBUTES = (); }; };
+		DD0A366114543B7900CC89E5 /* ofVec4f.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35E914543B7800CC89E5 /* ofVec4f.h */; settings = {ATTRIBUTES = (); }; };
+		DD0A366214543B7900CC89E5 /* ofVectorMath.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35EA14543B7800CC89E5 /* ofVectorMath.h */; settings = {ATTRIBUTES = (); }; };
+		DD0A366414543B7900CC89E5 /* ofBaseTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35EC14543B7800CC89E5 /* ofBaseTypes.h */; settings = {ATTRIBUTES = (); }; };
+		DD0A366614543B7900CC89E5 /* ofColor.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35EE14543B7800CC89E5 /* ofColor.h */; settings = {ATTRIBUTES = (); }; };
+		DD0A366814543B7900CC89E5 /* ofPoint.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35F014543B7800CC89E5 /* ofPoint.h */; settings = {ATTRIBUTES = (); }; };
+		DD0A366A14543B7900CC89E5 /* ofRectangle.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35F214543B7800CC89E5 /* ofRectangle.h */; settings = {ATTRIBUTES = (); }; };
+		DD0A366B14543B7900CC89E5 /* ofTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35F314543B7800CC89E5 /* ofTypes.h */; settings = {ATTRIBUTES = (); }; };
+		DD0A366C14543B7900CC89E5 /* ofConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35F414543B7800CC89E5 /* ofConstants.h */; settings = {ATTRIBUTES = (); }; };
+		DD0A366E14543B7900CC89E5 /* ofFileUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35F614543B7800CC89E5 /* ofFileUtils.h */; settings = {ATTRIBUTES = (); }; };
+		DD0A367014543B7900CC89E5 /* ofLog.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35F814543B7800CC89E5 /* ofLog.h */; settings = {ATTRIBUTES = (); }; };
+		DD0A367114543B7900CC89E5 /* ofNoise.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35F914543B7800CC89E5 /* ofNoise.h */; settings = {ATTRIBUTES = (); }; };
+		DD0A367314543B7900CC89E5 /* ofSystemUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35FB14543B7800CC89E5 /* ofSystemUtils.h */; settings = {ATTRIBUTES = (); }; };
+		DD0A367514543B7900CC89E5 /* ofThread.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35FD14543B7800CC89E5 /* ofThread.h */; settings = {ATTRIBUTES = (); }; };
+		DD0A367714543B7900CC89E5 /* ofURLFileLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35FF14543B7800CC89E5 /* ofURLFileLoader.h */; settings = {ATTRIBUTES = (); }; };
+		DD0A367914543B7900CC89E5 /* ofUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A360114543B7800CC89E5 /* ofUtils.h */; settings = {ATTRIBUTES = (); }; };
+		DD0A367B14543B7900CC89E5 /* ofVideoGrabber.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A360314543B7800CC89E5 /* ofVideoGrabber.h */; settings = {ATTRIBUTES = (); }; };
+		DD0A367D14543B7900CC89E5 /* ofVideoPlayer.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A360514543B7800CC89E5 /* ofVideoPlayer.h */; settings = {ATTRIBUTES = (); }; };
+		DD0A368114543B7900CC89E5 /* ofQuickTimeGrabber.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A360914543B7800CC89E5 /* ofQuickTimeGrabber.h */; settings = {ATTRIBUTES = (); }; };
+		DD0A368314543B7900CC89E5 /* ofQuickTimePlayer.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A360B14543B7800CC89E5 /* ofQuickTimePlayer.h */; settings = {ATTRIBUTES = (); }; };
+		DD0A368514543B7900CC89E5 /* ofQtUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A360D14543B7800CC89E5 /* ofQtUtils.h */; settings = {ATTRIBUTES = (); }; };
+		DD0A368614543B8800CC89E5 /* ofMain.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A358B14543B7800CC89E5 /* ofMain.h */; settings = {ATTRIBUTES = (); }; };
 		DD0A368A145443DA00CC89E5 /* ConfigInclude.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = DD0A3689145443D900CC89E5 /* ConfigInclude.xcconfig */; };
 		DDA7FFE6144F1C3800F81C9E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DDA7FFE4144F1C3800F81C9E /* InfoPlist.strings */; };
 		DDA7FFEA144F1C3800F81C9E /* ofxCocoaPlugins.mm in Sources */ = {isa = PBXBuildFile; fileRef = DDA7FFE9144F1C3800F81C9E /* ofxCocoaPlugins.mm */; };
@@ -221,7 +221,7 @@
 		DDE4C9111451DBD900EECFF4 /* PropertiesValueCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE4C9051451DBD900EECFF4 /* PropertiesValueCell.m */; };
 		DDE4C9211451DBF700EECFF4 /* Plugin.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C9131451DBF700EECFF4 /* Plugin.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DDE4C9221451DBF700EECFF4 /* Plugin.mm in Sources */ = {isa = PBXBuildFile; fileRef = DDE4C9141451DBF700EECFF4 /* Plugin.mm */; };
-		DDE4C9231451DBF700EECFF4 /* PluginManagerController.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C9151451DBF700EECFF4 /* PluginManagerController.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		DDE4C9231451DBF700EECFF4 /* PluginManagerController.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C9151451DBF700EECFF4 /* PluginManagerController.h */; settings = {ATTRIBUTES = (); }; };
 		DDE4C9241451DBF700EECFF4 /* PluginManagerController.mm in Sources */ = {isa = PBXBuildFile; fileRef = DDE4C9161451DBF700EECFF4 /* PluginManagerController.mm */; };
 		DDE4C9251451DBF700EECFF4 /* PluginProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C9171451DBF700EECFF4 /* PluginProperty.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DDE4C9261451DBF700EECFF4 /* PluginProperty.mm in Sources */ = {isa = PBXBuildFile; fileRef = DDE4C9181451DBF700EECFF4 /* PluginProperty.mm */; };
@@ -279,28 +279,28 @@
 		DDE4CA851451E23800EECFF4 /* Midi.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4CA161451E23700EECFF4 /* Midi.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DDE4CA861451E23800EECFF4 /* Midi.mm in Sources */ = {isa = PBXBuildFile; fileRef = DDE4CA171451E23700EECFF4 /* Midi.mm */; };
 		DDE4CA871451E23800EECFF4 /* Midi.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDE4CA181451E23700EECFF4 /* Midi.xib */; };
-		DDE4CA881451E23800EECFF4 /* PYMIDI.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4CA1A1451E23700EECFF4 /* PYMIDI.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DDE4CA891451E23800EECFF4 /* PYMIDIEndpoint.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4CA1B1451E23700EECFF4 /* PYMIDIEndpoint.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DDE4CA881451E23800EECFF4 /* PYMIDI.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4CA1A1451E23700EECFF4 /* PYMIDI.h */; settings = {ATTRIBUTES = (); }; };
+		DDE4CA891451E23800EECFF4 /* PYMIDIEndpoint.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4CA1B1451E23700EECFF4 /* PYMIDIEndpoint.h */; settings = {ATTRIBUTES = (); }; };
 		DDE4CA8A1451E23800EECFF4 /* PYMIDIEndpoint.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE4CA1C1451E23700EECFF4 /* PYMIDIEndpoint.m */; };
-		DDE4CA8B1451E23800EECFF4 /* PYMIDIEndpointDescriptor.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4CA1D1451E23700EECFF4 /* PYMIDIEndpointDescriptor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DDE4CA8B1451E23800EECFF4 /* PYMIDIEndpointDescriptor.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4CA1D1451E23700EECFF4 /* PYMIDIEndpointDescriptor.h */; settings = {ATTRIBUTES = (); }; };
 		DDE4CA8C1451E23800EECFF4 /* PYMIDIEndpointDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE4CA1E1451E23700EECFF4 /* PYMIDIEndpointDescriptor.m */; };
-		DDE4CA8D1451E23800EECFF4 /* PYMIDIEndpointSet.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4CA1F1451E23700EECFF4 /* PYMIDIEndpointSet.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DDE4CA8D1451E23800EECFF4 /* PYMIDIEndpointSet.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4CA1F1451E23700EECFF4 /* PYMIDIEndpointSet.h */; settings = {ATTRIBUTES = (); }; };
 		DDE4CA8E1451E23800EECFF4 /* PYMIDIEndpointSet.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE4CA201451E23700EECFF4 /* PYMIDIEndpointSet.m */; };
-		DDE4CA8F1451E23800EECFF4 /* PYMIDIManager.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4CA211451E23700EECFF4 /* PYMIDIManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DDE4CA8F1451E23800EECFF4 /* PYMIDIManager.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4CA211451E23700EECFF4 /* PYMIDIManager.h */; settings = {ATTRIBUTES = (); }; };
 		DDE4CA901451E23800EECFF4 /* PYMIDIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE4CA221451E23700EECFF4 /* PYMIDIManager.m */; };
-		DDE4CA911451E23800EECFF4 /* PYMIDIRealDestination.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4CA231451E23700EECFF4 /* PYMIDIRealDestination.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DDE4CA911451E23800EECFF4 /* PYMIDIRealDestination.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4CA231451E23700EECFF4 /* PYMIDIRealDestination.h */; settings = {ATTRIBUTES = (); }; };
 		DDE4CA921451E23800EECFF4 /* PYMIDIRealDestination.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE4CA241451E23700EECFF4 /* PYMIDIRealDestination.m */; };
-		DDE4CA931451E23800EECFF4 /* PYMIDIRealEndpoint.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4CA251451E23700EECFF4 /* PYMIDIRealEndpoint.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DDE4CA931451E23800EECFF4 /* PYMIDIRealEndpoint.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4CA251451E23700EECFF4 /* PYMIDIRealEndpoint.h */; settings = {ATTRIBUTES = (); }; };
 		DDE4CA941451E23800EECFF4 /* PYMIDIRealEndpoint.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE4CA261451E23700EECFF4 /* PYMIDIRealEndpoint.m */; };
-		DDE4CA951451E23800EECFF4 /* PYMIDIRealSource.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4CA271451E23700EECFF4 /* PYMIDIRealSource.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DDE4CA951451E23800EECFF4 /* PYMIDIRealSource.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4CA271451E23700EECFF4 /* PYMIDIRealSource.h */; settings = {ATTRIBUTES = (); }; };
 		DDE4CA961451E23800EECFF4 /* PYMIDIRealSource.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE4CA281451E23700EECFF4 /* PYMIDIRealSource.m */; };
-		DDE4CA971451E23800EECFF4 /* PYMIDIUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4CA291451E23700EECFF4 /* PYMIDIUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DDE4CA971451E23800EECFF4 /* PYMIDIUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4CA291451E23700EECFF4 /* PYMIDIUtils.h */; settings = {ATTRIBUTES = (); }; };
 		DDE4CA981451E23800EECFF4 /* PYMIDIUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE4CA2A1451E23700EECFF4 /* PYMIDIUtils.m */; };
-		DDE4CA991451E23800EECFF4 /* PYMIDIVirtualDestination.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4CA2B1451E23700EECFF4 /* PYMIDIVirtualDestination.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DDE4CA991451E23800EECFF4 /* PYMIDIVirtualDestination.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4CA2B1451E23700EECFF4 /* PYMIDIVirtualDestination.h */; settings = {ATTRIBUTES = (); }; };
 		DDE4CA9A1451E23800EECFF4 /* PYMIDIVirtualDestination.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE4CA2C1451E23700EECFF4 /* PYMIDIVirtualDestination.m */; };
-		DDE4CA9B1451E23800EECFF4 /* PYMIDIVirtualEndpoint.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4CA2D1451E23700EECFF4 /* PYMIDIVirtualEndpoint.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DDE4CA9B1451E23800EECFF4 /* PYMIDIVirtualEndpoint.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4CA2D1451E23700EECFF4 /* PYMIDIVirtualEndpoint.h */; settings = {ATTRIBUTES = (); }; };
 		DDE4CA9C1451E23800EECFF4 /* PYMIDIVirtualEndpoint.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE4CA2E1451E23700EECFF4 /* PYMIDIVirtualEndpoint.m */; };
-		DDE4CA9D1451E23800EECFF4 /* PYMIDIVirtualSource.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4CA2F1451E23700EECFF4 /* PYMIDIVirtualSource.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DDE4CA9D1451E23800EECFF4 /* PYMIDIVirtualSource.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4CA2F1451E23700EECFF4 /* PYMIDIVirtualSource.h */; settings = {ATTRIBUTES = (); }; };
 		DDE4CA9E1451E23800EECFF4 /* PYMIDIVirtualSource.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE4CA301451E23700EECFF4 /* PYMIDIVirtualSource.m */; };
 		DDE4CAA31451E32700EECFF4 /* CoreMIDI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDE4CAA21451E32700EECFF4 /* CoreMIDI.framework */; };
 		DDE4D5CF1451F1F100EECFF4 /* libfmodex.dylib in Copy Files */ = {isa = PBXBuildFile; fileRef = DDE4D5CE1451F1F100EECFF4 /* libfmodex.dylib */; };
@@ -1563,6 +1563,16 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DDE4CA851451E23800EECFF4 /* Midi.h in Headers */,
+				DD0A33A51452F29C00CC89E5 /* Keystoner.h in Headers */,
+				DD0A33A01452F29C00CC89E5 /* CorePluginsIncludes.h in Headers */,
+				DDE4C9291451DBF700EECFF4 /* NumberProperty.h in Headers */,
+				DDE4C9271451DBF700EECFF4 /* BoolProperty.h in Headers */,
+				DDE4C9251451DBF700EECFF4 /* PluginProperty.h in Headers */,
+				DDE4C9211451DBF700EECFF4 /* Plugin.h in Headers */,
+				DD0A35871454386B00CC89E5 /* ofxCocoaPlugins.h in Headers */,
+				DDF6500A14504DCA007B0C0A /* ofxThread.h in Headers */,
+				DDE4C9231451DBF700EECFF4 /* PluginManagerController.h in Headers */,
 				DDE4CA881451E23800EECFF4 /* PYMIDI.h in Headers */,
 				DDE4CA891451E23800EECFF4 /* PYMIDIEndpoint.h in Headers */,
 				DDE4CA8B1451E23800EECFF4 /* PYMIDIEndpointDescriptor.h in Headers */,
@@ -1575,14 +1585,6 @@
 				DDE4CA991451E23800EECFF4 /* PYMIDIVirtualDestination.h in Headers */,
 				DDE4CA9B1451E23800EECFF4 /* PYMIDIVirtualEndpoint.h in Headers */,
 				DDE4CA9D1451E23800EECFF4 /* PYMIDIVirtualSource.h in Headers */,
-				DDE4CA851451E23800EECFF4 /* Midi.h in Headers */,
-				DD0A33A51452F29C00CC89E5 /* Keystoner.h in Headers */,
-				DD0A33A01452F29C00CC89E5 /* CorePluginsIncludes.h in Headers */,
-				DDE4C9291451DBF700EECFF4 /* NumberProperty.h in Headers */,
-				DDE4C9271451DBF700EECFF4 /* BoolProperty.h in Headers */,
-				DDE4C9251451DBF700EECFF4 /* PluginProperty.h in Headers */,
-				DDE4C9211451DBF700EECFF4 /* Plugin.h in Headers */,
-				DD0A35871454386B00CC89E5 /* ofxCocoaPlugins.h in Headers */,
 				DD0A368614543B8800CC89E5 /* ofMain.h in Headers */,
 				DD0A361014543B7900CC89E5 /* of3dUtils.h in Headers */,
 				DD0A361214543B7900CC89E5 /* ofCamera.h in Headers */,
@@ -1648,8 +1650,6 @@
 				DD0A368114543B7900CC89E5 /* ofQuickTimeGrabber.h in Headers */,
 				DD0A368314543B7900CC89E5 /* ofQuickTimePlayer.h in Headers */,
 				DD0A368514543B7900CC89E5 /* ofQtUtils.h in Headers */,
-				DDF6500A14504DCA007B0C0A /* ofxThread.h in Headers */,
-				DDE4C9231451DBF700EECFF4 /* PluginManagerController.h in Headers */,
 				DDE4C8D71451AF1500EECFF4 /* BeamSync.h in Headers */,
 				DDE4C8DB1451AF1500EECFF4 /* PluginOpenGLView.h in Headers */,
 				DDE4C9061451DBD900EECFF4 /* LoadProgressIndicator.h in Headers */,
@@ -2042,13 +2042,6 @@
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Carbon.framework/Headers/Carbon.h";
-				HEADER_SEARCH_PATHS = (
-					"$(OF_CORE_HEADERS)",
-					"ofxCocoaPlugins/src/CorePlugins/**",
-					"$(OF_PATH)/addons/ofxOpenCv/src",
-					"$(OF_PATH)/addons/ofxOpenCv/libs/opencv/include",
-					"$(OF_PATH)/addons/ofxOpenCv/libs/opencv/include/opencv",
-				);
 				INFOPLIST_FILE = "ofxCocoaPlugins/ofxCocoaPlugins-Info.plist";
 				INSTALL_PATH = "@executable_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = (
@@ -2151,13 +2144,6 @@
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Carbon.framework/Headers/Carbon.h";
-				HEADER_SEARCH_PATHS = (
-					"$(OF_CORE_HEADERS)",
-					"ofxCocoaPlugins/src/CorePlugins/**",
-					"$(OF_PATH)/addons/ofxOpenCv/src",
-					"$(OF_PATH)/addons/ofxOpenCv/libs/opencv/include",
-					"$(OF_PATH)/addons/ofxOpenCv/libs/opencv/include/opencv",
-				);
 				INFOPLIST_FILE = "ofxCocoaPlugins/ofxCocoaPlugins-Info.plist";
 				INSTALL_PATH = "@executable_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = (

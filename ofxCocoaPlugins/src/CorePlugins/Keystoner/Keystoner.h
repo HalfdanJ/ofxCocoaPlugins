@@ -17,7 +17,7 @@
 {int appliedProjector=-1;for(KeystoneProjector*proj in [[[GetPlugin(Keystoner) outputViews] objectAtIndex:ViewNumber] projectors]){ appliedProjector++; if(appliedProjector > 0)[GetPlugin(Keystoner)  popSurface]; {if([Surface(s,p) visible]) { [GetPlugin(Keystoner)  applySurface:s projectorNumber:p viewNumber:ViewNumber];
 	[GetPlugin(Keystoner)  popSurface]; } }}}
 */
-#include "Plugin.h"
+#import <ofxCocoaPlugins/Plugin.h>
 
 /*#include "KeystonerOutputview.h"
 #include "TrackingLayer.h"

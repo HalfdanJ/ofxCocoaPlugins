@@ -1,5 +1,5 @@
 #pragma once
-#include "ofMain.h"
+#import "ofMain.h"
 
 #import <Cocoa/Cocoa.h>
 
@@ -14,8 +14,8 @@
 //#define Surf(p,s) ((ProjectionSurfacesObject*)[GetPlugin(ProjectionSurfaces) getProjectionSurfaceByName:p surface:s])
 //#define ApplySurface(p,s) ([GetPlugin(ProjectionSurfaces) apply:p surface:s])
 
-#include "NumberProperty.h"
-#include "BoolProperty.h"
+#import <ofxCocoaPlugins/NumberProperty.h>
+#import <ofxCocoaPlugins/BoolProperty.h>
 
 @class PluginManagerController, PluginOpenGLControlView;
 

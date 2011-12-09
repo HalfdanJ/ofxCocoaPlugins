@@ -2,9 +2,11 @@
 #pragma once
 
 
-#include "Plugin.h"
+#import <ofxCocoaPlugins/Plugin.h>
 
-#include "PYMIDI.h"
+//#import "PYMIDI.h"
+
+@class PYMIDIManager, PYMIDIVirtualSource, PYMIDIVirtualDestination, PYMIDIVirtualEndpoint;
 
 struct MTCTime {
     int frames;
