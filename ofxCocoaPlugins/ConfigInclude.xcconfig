@@ -3,7 +3,8 @@
 OF_PATH = $(OFX_PATH)ofxCocoaPlugins/libs/openFrameworks
 
 //THIS HAS ALL THE HEADER AND LIBS FOR OF CORE
-HEADER_OF = "$(OF_PATH)/libs/openFrameworks/**"
+HEADER_OF = "$(OFX_PATH)build/Debug/openframeworksHeaders"
+//HEADER_OF = "$(OF_PATH)/libs/openFrameworks/"
 HEADER_FREETYPE = "$(OF_PATH)/libs/freetype/include"
 HEADER_FREETYPE2 = "$(OF_PATH)/libs/freetype/include/freetype2"
 HEADER_POCO = "$(OF_PATH)/libs/poco/include"
@@ -34,11 +35,8 @@ LIB_CAIRO3 = "$(OF_PATH)/libs/cairo/lib/osx/pixman-1.a"
 OF_CORE_LIBS = $(LIB_GLEW) $(LIB_TESS) $(LIB_POCOFOUNDATION) $(LIB_CAIRO1) $(LIB_CAIRO2) $(LIB_CAIRO3)   //$(LIB_FMODEX) $(LIB_POCONET) $(LIB_POCOXML) $(LIB_POCOUTIL)  $(LIB_RTAUDIO)
 OF_CORE_HEADERS = //$(HEADER_OF)  $(HEADER_FREETYPE) $(HEADER_FREETYPE2)  $(HEADER_FREEIMAGE)  $(HEADER_RTAUDIO)
 
-USER_HEADER_SEARCH_PATHS = $(HEADER_OF) $(HEADER_GLEW) $(HEADER_TESS2) $(HEADER_POCO) $(HEADER_CAIRO) $(HEADER_FMODEX)
+USER_HEADER_SEARCH_PATHS =  $(HEADER_OF) $(HEADER_GLEW) $(HEADER_TESS2) $(HEADER_POCO) $(HEADER_CAIRO) $(HEADER_FMODEX)//$ 
 
-
-
-LIB_FMODEX = "" //fmodex lib already linked once
 
 OTHER_LDFLAGS = $(OF_CORE_LIBS) 
 HEADER_SEARCH_PATHS = $(OF_CORE_HEADERS) //$(SOURCE_ROOT)/ofxCocoaPlugins/src/CorePlugins/* $(OF_PATH)/addons/ofxOpenCv/src $(OF_PATH)/addons/ofxOpenCv/libs/opencv/include $(OF_PATH)/addons/ofxOpenCv/libs/opencv/include/opencv  $(OF_PATH)/libs

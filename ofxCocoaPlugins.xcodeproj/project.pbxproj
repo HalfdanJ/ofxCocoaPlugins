@@ -8,6 +8,72 @@
 
 /* Begin PBXBuildFile section */
 		3D2FC2291462EC7C0028BC01 /* README in Resources */ = {isa = PBXBuildFile; fileRef = 3D2FC2281462EC7C0028BC01 /* README */; };
+		3D3B7920149224AF00743828 /* ofEvents.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A35AC14543B7800CC89E5 /* ofEvents.h */; };
+		3D3B7921149224B300743828 /* ofEventUtils.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A35AD14543B7800CC89E5 /* ofEventUtils.h */; };
+		3D3B7922149224C700743828 /* ofMain.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A358B14543B7800CC89E5 /* ofMain.h */; };
+		3D3B7923149224C900743828 /* of3dUtils.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A359814543B7800CC89E5 /* of3dUtils.h */; };
+		3D3B7924149224CA00743828 /* ofCamera.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A359A14543B7800CC89E5 /* ofCamera.h */; };
+		3D3B7925149224CC00743828 /* ofEasyCam.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A359C14543B7800CC89E5 /* ofEasyCam.h */; };
+		3D3B7926149224CE00743828 /* ofMesh.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A359E14543B7800CC89E5 /* ofMesh.h */; };
+		3D3B7927149224D000743828 /* ofNode.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A35A014543B7800CC89E5 /* ofNode.h */; };
+		3D3B7928149224D200743828 /* ofAppBaseWindow.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A35A114543B7800CC89E5 /* ofAppBaseWindow.h */; };
+		3D3B7929149224D400743828 /* ofAppGlutWindow.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A35A314543B7800CC89E5 /* ofAppGlutWindow.h */; };
+		3D3B792A149224D500743828 /* ofAppRunner.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A35A514543B7800CC89E5 /* ofAppRunner.h */; };
+		3D3B792B149224D700743828 /* ofBaseApp.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A35A614543B7800CC89E5 /* ofBaseApp.h */; };
+		3D3B792C149224DA00743828 /* ofArduino.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A35A814543B7800CC89E5 /* ofArduino.h */; };
+		3D3B792D149224DC00743828 /* ofSerial.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A35AA14543B7800CC89E5 /* ofSerial.h */; };
+		3D3B792E149224E000743828 /* ofFbo.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A35AF14543B7800CC89E5 /* ofFbo.h */; };
+		3D3B792F149224E100743828 /* ofGLRenderer.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A35B114543B7800CC89E5 /* ofGLRenderer.h */; };
+		3D3B7930149224E200743828 /* ofGLUtils.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A35B214543B7800CC89E5 /* ofGLUtils.h */; };
+		3D3B7931149224E400743828 /* ofLight.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A35B414543B7800CC89E5 /* ofLight.h */; };
+		3D3B7932149224E500743828 /* ofMaterial.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A35B614543B7800CC89E5 /* ofMaterial.h */; };
+		3D3B7933149224E600743828 /* ofShader.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A35B814543B7800CC89E5 /* ofShader.h */; };
+		3D3B7934149224E700743828 /* ofTexture.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A35BA14543B7800CC89E5 /* ofTexture.h */; };
+		3D3B7935149224E800743828 /* ofVbo.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A35BC14543B7800CC89E5 /* ofVbo.h */; };
+		3D3B7936149224E900743828 /* ofVboMesh.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A35BE14543B7800CC89E5 /* ofVboMesh.h */; };
+		3D3B79371492250200743828 /* ofPath.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A35C014543B7800CC89E5 /* ofPath.h */; };
+		3D3B79381492250200743828 /* ofPolyline.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A35C214543B7800CC89E5 /* ofPolyline.h */; };
+		3D3B79391492250200743828 /* ofRendererCollection.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A35C314543B7800CC89E5 /* ofRendererCollection.h */; };
+		3D3B793A1492250200743828 /* ofCairoRenderer.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A35C514543B7800CC89E5 /* ofCairoRenderer.h */; };
+		3D3B793B1492250200743828 /* ofBitmapFont.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A35C714543B7800CC89E5 /* ofBitmapFont.h */; };
+		3D3B793C1492250200743828 /* ofGraphics.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A35C914543B7800CC89E5 /* ofGraphics.h */; };
+		3D3B793D1492250200743828 /* ofImage.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A35CB14543B7800CC89E5 /* ofImage.h */; };
+		3D3B793E1492250200743828 /* ofPixels.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A35CD14543B7800CC89E5 /* ofPixels.h */; };
+		3D3B793F1492250200743828 /* ofTessellator.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A35CF14543B7800CC89E5 /* ofTessellator.h */; };
+		3D3B79401492250200743828 /* ofTrueTypeFont.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A35D114543B7800CC89E5 /* ofTrueTypeFont.h */; };
+		3D3B79411492250200743828 /* ofBaseSoundPlayer.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A35D314543B7800CC89E5 /* ofBaseSoundPlayer.h */; };
+		3D3B79421492250200743828 /* ofFmodSoundPlayer.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A35D514543B7800CC89E5 /* ofFmodSoundPlayer.h */; };
+		3D3B79431492250200743828 /* ofSoundPlayer.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A35D714543B7800CC89E5 /* ofSoundPlayer.h */; };
+		3D3B79441492250200743828 /* ofRtAudioSoundStream.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A35D914543B7800CC89E5 /* ofRtAudioSoundStream.h */; };
+		3D3B79451492250200743828 /* ofBaseSoundStream.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A35DA14543B7800CC89E5 /* ofBaseSoundStream.h */; };
+		3D3B79461492250200743828 /* ofSoundStream.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A35DC14543B7800CC89E5 /* ofSoundStream.h */; };
+		3D3B79471492250200743828 /* ofMath.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A35DE14543B7800CC89E5 /* ofMath.h */; };
+		3D3B79481492250200743828 /* ofMatrix3x3.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A35E014543B7800CC89E5 /* ofMatrix3x3.h */; };
+		3D3B79491492250200743828 /* ofMatrix4x4.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A35E214543B7800CC89E5 /* ofMatrix4x4.h */; };
+		3D3B794A1492250200743828 /* ofQuaternion.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A35E414543B7800CC89E5 /* ofQuaternion.h */; };
+		3D3B794B1492250200743828 /* ofVec2f.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A35E614543B7800CC89E5 /* ofVec2f.h */; };
+		3D3B794C1492250200743828 /* ofVec3f.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A35E714543B7800CC89E5 /* ofVec3f.h */; };
+		3D3B794D1492250200743828 /* ofVec4f.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A35E914543B7800CC89E5 /* ofVec4f.h */; };
+		3D3B794E1492250200743828 /* ofVectorMath.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A35EA14543B7800CC89E5 /* ofVectorMath.h */; };
+		3D3B794F1492250200743828 /* ofBaseTypes.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A35EC14543B7800CC89E5 /* ofBaseTypes.h */; };
+		3D3B79501492250200743828 /* ofColor.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A35EE14543B7800CC89E5 /* ofColor.h */; };
+		3D3B79511492250200743828 /* ofPoint.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A35F014543B7800CC89E5 /* ofPoint.h */; };
+		3D3B79521492250200743828 /* ofRectangle.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A35F214543B7800CC89E5 /* ofRectangle.h */; };
+		3D3B79531492250200743828 /* ofTypes.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A35F314543B7800CC89E5 /* ofTypes.h */; };
+		3D3B79541492250200743828 /* ofConstants.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A35F414543B7800CC89E5 /* ofConstants.h */; };
+		3D3B79551492250200743828 /* ofFileUtils.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A35F614543B7800CC89E5 /* ofFileUtils.h */; };
+		3D3B79561492250200743828 /* ofLog.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A35F814543B7800CC89E5 /* ofLog.h */; };
+		3D3B79571492250200743828 /* ofNoise.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A35F914543B7800CC89E5 /* ofNoise.h */; };
+		3D3B79581492250200743828 /* ofSystemUtils.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A35FB14543B7800CC89E5 /* ofSystemUtils.h */; };
+		3D3B79591492250200743828 /* ofThread.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A35FD14543B7800CC89E5 /* ofThread.h */; };
+		3D3B795A1492250200743828 /* ofURLFileLoader.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A35FF14543B7800CC89E5 /* ofURLFileLoader.h */; };
+		3D3B795B1492250200743828 /* ofUtils.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A360114543B7800CC89E5 /* ofUtils.h */; };
+		3D3B795C1492250200743828 /* ofVideoGrabber.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A360314543B7800CC89E5 /* ofVideoGrabber.h */; };
+		3D3B795D1492250200743828 /* ofVideoPlayer.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A360514543B7800CC89E5 /* ofVideoPlayer.h */; };
+		3D3B795E1492250200743828 /* ofQtUtils.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A360714543B7800CC89E5 /* ofQtUtils.h */; };
+		3D3B795F1492250200743828 /* ofQuickTimeGrabber.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A360914543B7800CC89E5 /* ofQuickTimeGrabber.h */; };
+		3D3B79601492250200743828 /* ofQuickTimePlayer.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A360B14543B7800CC89E5 /* ofQuickTimePlayer.h */; };
+		3D3B79611492250200743828 /* ofQtUtils.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A360D14543B7800CC89E5 /* ofQtUtils.h */; };
 		DD0A33A01452F29C00CC89E5 /* CorePluginsIncludes.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A334A1452F29C00CC89E5 /* CorePluginsIncludes.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DD0A33A11452F29C00CC89E5 /* coordWarp.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A334C1452F29C00CC89E5 /* coordWarp.h */; };
 		DD0A33A21452F29C00CC89E5 /* coordWarp.mm in Sources */ = {isa = PBXBuildFile; fileRef = DD0A334D1452F29C00CC89E5 /* coordWarp.mm */; };
@@ -266,7 +332,7 @@
 		DDE4C9911451E02000EECFF4 /* OutputViewManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = DDE4C9871451E02000EECFF4 /* OutputViewManager.mm */; };
 		DDE4C9921451E02000EECFF4 /* SaveManager.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C9881451E02000EECFF4 /* SaveManager.h */; };
 		DDE4C9931451E02000EECFF4 /* SaveManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = DDE4C9891451E02000EECFF4 /* SaveManager.mm */; };
-		DDE4C9A21451E04500EECFF4 /* CustomGraphics.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C9951451E04500EECFF4 /* CustomGraphics.h */; };
+		DDE4C9A21451E04500EECFF4 /* CustomGraphics.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C9951451E04500EECFF4 /* CustomGraphics.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DDE4C9A31451E04500EECFF4 /* Filter.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C9961451E04500EECFF4 /* Filter.h */; };
 		DDE4C9A41451E04500EECFF4 /* QTKitMovieRenderer.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C9981451E04500EECFF4 /* QTKitMovieRenderer.h */; };
 		DDE4C9A51451E04500EECFF4 /* QTKitMovieRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE4C9991451E04500EECFF4 /* QTKitMovieRenderer.m */; };
@@ -321,6 +387,81 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		3D3B7907149223D800743828 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = openframeworksHeaders;
+			dstSubfolderSpec = 16;
+			files = (
+				3D3B79371492250200743828 /* ofPath.h in CopyFiles */,
+				3D3B79381492250200743828 /* ofPolyline.h in CopyFiles */,
+				3D3B79391492250200743828 /* ofRendererCollection.h in CopyFiles */,
+				3D3B793A1492250200743828 /* ofCairoRenderer.h in CopyFiles */,
+				3D3B793B1492250200743828 /* ofBitmapFont.h in CopyFiles */,
+				3D3B793C1492250200743828 /* ofGraphics.h in CopyFiles */,
+				3D3B793D1492250200743828 /* ofImage.h in CopyFiles */,
+				3D3B793E1492250200743828 /* ofPixels.h in CopyFiles */,
+				3D3B793F1492250200743828 /* ofTessellator.h in CopyFiles */,
+				3D3B79401492250200743828 /* ofTrueTypeFont.h in CopyFiles */,
+				3D3B79411492250200743828 /* ofBaseSoundPlayer.h in CopyFiles */,
+				3D3B79421492250200743828 /* ofFmodSoundPlayer.h in CopyFiles */,
+				3D3B79431492250200743828 /* ofSoundPlayer.h in CopyFiles */,
+				3D3B79441492250200743828 /* ofRtAudioSoundStream.h in CopyFiles */,
+				3D3B79451492250200743828 /* ofBaseSoundStream.h in CopyFiles */,
+				3D3B79461492250200743828 /* ofSoundStream.h in CopyFiles */,
+				3D3B79471492250200743828 /* ofMath.h in CopyFiles */,
+				3D3B79481492250200743828 /* ofMatrix3x3.h in CopyFiles */,
+				3D3B79491492250200743828 /* ofMatrix4x4.h in CopyFiles */,
+				3D3B794A1492250200743828 /* ofQuaternion.h in CopyFiles */,
+				3D3B794B1492250200743828 /* ofVec2f.h in CopyFiles */,
+				3D3B794C1492250200743828 /* ofVec3f.h in CopyFiles */,
+				3D3B794D1492250200743828 /* ofVec4f.h in CopyFiles */,
+				3D3B794E1492250200743828 /* ofVectorMath.h in CopyFiles */,
+				3D3B794F1492250200743828 /* ofBaseTypes.h in CopyFiles */,
+				3D3B79501492250200743828 /* ofColor.h in CopyFiles */,
+				3D3B79511492250200743828 /* ofPoint.h in CopyFiles */,
+				3D3B79521492250200743828 /* ofRectangle.h in CopyFiles */,
+				3D3B79531492250200743828 /* ofTypes.h in CopyFiles */,
+				3D3B79541492250200743828 /* ofConstants.h in CopyFiles */,
+				3D3B79551492250200743828 /* ofFileUtils.h in CopyFiles */,
+				3D3B79561492250200743828 /* ofLog.h in CopyFiles */,
+				3D3B79571492250200743828 /* ofNoise.h in CopyFiles */,
+				3D3B79581492250200743828 /* ofSystemUtils.h in CopyFiles */,
+				3D3B79591492250200743828 /* ofThread.h in CopyFiles */,
+				3D3B795A1492250200743828 /* ofURLFileLoader.h in CopyFiles */,
+				3D3B795B1492250200743828 /* ofUtils.h in CopyFiles */,
+				3D3B795C1492250200743828 /* ofVideoGrabber.h in CopyFiles */,
+				3D3B795D1492250200743828 /* ofVideoPlayer.h in CopyFiles */,
+				3D3B795E1492250200743828 /* ofQtUtils.h in CopyFiles */,
+				3D3B795F1492250200743828 /* ofQuickTimeGrabber.h in CopyFiles */,
+				3D3B79601492250200743828 /* ofQuickTimePlayer.h in CopyFiles */,
+				3D3B79611492250200743828 /* ofQtUtils.h in CopyFiles */,
+				3D3B792A149224D500743828 /* ofAppRunner.h in CopyFiles */,
+				3D3B7930149224E200743828 /* ofGLUtils.h in CopyFiles */,
+				3D3B792E149224E000743828 /* ofFbo.h in CopyFiles */,
+				3D3B792F149224E100743828 /* ofGLRenderer.h in CopyFiles */,
+				3D3B7936149224E900743828 /* ofVboMesh.h in CopyFiles */,
+				3D3B7935149224E800743828 /* ofVbo.h in CopyFiles */,
+				3D3B7933149224E600743828 /* ofShader.h in CopyFiles */,
+				3D3B7934149224E700743828 /* ofTexture.h in CopyFiles */,
+				3D3B7929149224D400743828 /* ofAppGlutWindow.h in CopyFiles */,
+				3D3B7932149224E500743828 /* ofMaterial.h in CopyFiles */,
+				3D3B7931149224E400743828 /* ofLight.h in CopyFiles */,
+				3D3B7925149224CC00743828 /* ofEasyCam.h in CopyFiles */,
+				3D3B7921149224B300743828 /* ofEventUtils.h in CopyFiles */,
+				3D3B792C149224DA00743828 /* ofArduino.h in CopyFiles */,
+				3D3B792D149224DC00743828 /* ofSerial.h in CopyFiles */,
+				3D3B7928149224D200743828 /* ofAppBaseWindow.h in CopyFiles */,
+				3D3B792B149224D700743828 /* ofBaseApp.h in CopyFiles */,
+				3D3B7927149224D000743828 /* ofNode.h in CopyFiles */,
+				3D3B7926149224CE00743828 /* ofMesh.h in CopyFiles */,
+				3D3B7920149224AF00743828 /* ofEvents.h in CopyFiles */,
+				3D3B7923149224C900743828 /* of3dUtils.h in CopyFiles */,
+				3D3B7924149224CA00743828 /* ofCamera.h in CopyFiles */,
+				3D3B7922149224C700743828 /* ofMain.h in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		DDE4CABA1451EA6100EECFF4 /* Copy Files */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1563,6 +1704,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DDE4C9A21451E04500EECFF4 /* CustomGraphics.h in Headers */,
 				DDE4CA851451E23800EECFF4 /* Midi.h in Headers */,
 				DD0A33A51452F29C00CC89E5 /* Keystoner.h in Headers */,
 				DD0A33A01452F29C00CC89E5 /* CorePluginsIncludes.h in Headers */,
@@ -1683,7 +1825,6 @@
 				DDE4C98E1451E02000EECFF4 /* OutputPanelController.h in Headers */,
 				DDE4C9901451E02000EECFF4 /* OutputViewManager.h in Headers */,
 				DDE4C9921451E02000EECFF4 /* SaveManager.h in Headers */,
-				DDE4C9A21451E04500EECFF4 /* CustomGraphics.h in Headers */,
 				DDE4C9A31451E04500EECFF4 /* Filter.h in Headers */,
 				DDE4C9A41451E04500EECFF4 /* QTKitMovieRenderer.h in Headers */,
 				DDE4C9AC1451E04500EECFF4 /* TextureGrid.h in Headers */,
@@ -1801,6 +1942,7 @@
 				DDE4CABA1451EA6100EECFF4 /* Copy Files */,
 				DDE4D5CD1451EE8700EECFF4 /* Run Script (fmodex library) */,
 				DDA7FFD5144F1C3800F81C9E /* Headers */,
+				3D3B7907149223D800743828 /* CopyFiles */,
 			);
 			buildRules = (
 			);
