@@ -24,6 +24,9 @@ public:
 	ofVec2f				convertPoint(ofVec2f point);
 	ofVec2f			corners[4];
 
+    GLfloat					gl_matrix_4x4[16];
+	CvMat*					cv_translate_3x3;
+
 private:
 	// CORNERS
 	float					w;
@@ -33,10 +36,9 @@ private:
 	CvPoint2D32f			cvdst[4];
 
 	// MATRIX STUFF
-	GLfloat					gl_matrix_4x4[16];
-	CvMat*					cv_translate_3x3;
 	CvMat*					cv_srcmatrix_4x2;
 	CvMat*					cv_dstmatrix_4x2;
+    
 };
 
 #endif

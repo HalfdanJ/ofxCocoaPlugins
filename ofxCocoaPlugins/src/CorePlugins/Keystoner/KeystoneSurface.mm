@@ -4,7 +4,7 @@
 
 
 @implementation KeystoneSurface
-@synthesize name, visible, aspect, minAspectValue, maxAspectValue, cornerPositions, viewNumber, projectorNumber,softedgePart, softedgeTotalParts;
+@synthesize name, visible, aspect, minAspectValue, maxAspectValue, cornerPositions, viewNumber, projectorNumber,softedgePart, softedgeTotalParts, warp;
 
 -(id) init{
 	if([super init]){

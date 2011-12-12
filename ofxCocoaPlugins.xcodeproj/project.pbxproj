@@ -75,114 +75,114 @@
 		3D3B79601492250200743828 /* ofQuickTimePlayer.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A360B14543B7800CC89E5 /* ofQuickTimePlayer.h */; };
 		3D3B79611492250200743828 /* ofQtUtils.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A360D14543B7800CC89E5 /* ofQtUtils.h */; };
 		DD0A33A01452F29C00CC89E5 /* CorePluginsIncludes.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A334A1452F29C00CC89E5 /* CorePluginsIncludes.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DD0A33A11452F29C00CC89E5 /* coordWarp.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A334C1452F29C00CC89E5 /* coordWarp.h */; };
+		DD0A33A11452F29C00CC89E5 /* coordWarp.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A334C1452F29C00CC89E5 /* coordWarp.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DD0A33A21452F29C00CC89E5 /* coordWarp.mm in Sources */ = {isa = PBXBuildFile; fileRef = DD0A334D1452F29C00CC89E5 /* coordWarp.mm */; };
-		DD0A33A31452F29C00CC89E5 /* KeystoneProjector.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A334E1452F29C00CC89E5 /* KeystoneProjector.h */; };
+		DD0A33A31452F29C00CC89E5 /* KeystoneProjector.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A334E1452F29C00CC89E5 /* KeystoneProjector.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DD0A33A41452F29C00CC89E5 /* KeystoneProjector.mm in Sources */ = {isa = PBXBuildFile; fileRef = DD0A334F1452F29C00CC89E5 /* KeystoneProjector.mm */; };
 		DD0A33A51452F29C00CC89E5 /* Keystoner.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33501452F29C00CC89E5 /* Keystoner.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DD0A33A61452F29C00CC89E5 /* Keystoner.mm in Sources */ = {isa = PBXBuildFile; fileRef = DD0A33511452F29C00CC89E5 /* Keystoner.mm */; };
 		DD0A33A71452F29C00CC89E5 /* Keystoner.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD0A33521452F29C00CC89E5 /* Keystoner.xib */; };
-		DD0A33A81452F29C00CC89E5 /* KeystonerOutputview.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33531452F29C00CC89E5 /* KeystonerOutputview.h */; };
+		DD0A33A81452F29C00CC89E5 /* KeystonerOutputview.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33531452F29C00CC89E5 /* KeystonerOutputview.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DD0A33A91452F29C00CC89E5 /* KeystonerOutputview.mm in Sources */ = {isa = PBXBuildFile; fileRef = DD0A33541452F29C00CC89E5 /* KeystonerOutputview.mm */; };
-		DD0A33AA1452F29C00CC89E5 /* KeystoneSurface.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33551452F29C00CC89E5 /* KeystoneSurface.h */; };
+		DD0A33AA1452F29C00CC89E5 /* KeystoneSurface.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33551452F29C00CC89E5 /* KeystoneSurface.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DD0A33AB1452F29C00CC89E5 /* KeystoneSurface.mm in Sources */ = {isa = PBXBuildFile; fileRef = DD0A33561452F29C00CC89E5 /* KeystoneSurface.mm */; };
-		DD0A33AC1452F29C00CC89E5 /* TrackingLayer.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33571452F29C00CC89E5 /* TrackingLayer.h */; };
+		DD0A33AC1452F29C00CC89E5 /* TrackingLayer.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33571452F29C00CC89E5 /* TrackingLayer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DD0A33AD1452F29C00CC89E5 /* TrackingLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = DD0A33581452F29C00CC89E5 /* TrackingLayer.mm */; };
-		DD0A33AE1452F29C00CC89E5 /* TrackingView.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33591452F29C00CC89E5 /* TrackingView.h */; };
+		DD0A33AE1452F29C00CC89E5 /* TrackingView.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33591452F29C00CC89E5 /* TrackingView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DD0A33AF1452F29C00CC89E5 /* TrackingView.mm in Sources */ = {isa = PBXBuildFile; fileRef = DD0A335A1452F29C00CC89E5 /* TrackingView.mm */; };
-		DD0A33B01452F29C00CC89E5 /* Warp.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A335B1452F29C00CC89E5 /* Warp.h */; };
+		DD0A33B01452F29C00CC89E5 /* Warp.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A335B1452F29C00CC89E5 /* Warp.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DD0A33B11452F29C00CC89E5 /* Warp.mm in Sources */ = {isa = PBXBuildFile; fileRef = DD0A335C1452F29C00CC89E5 /* Warp.mm */; };
-		DD0A33B81452F29C00CC89E5 /* VideoPlayer.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33651452F29C00CC89E5 /* VideoPlayer.h */; };
+		DD0A33B81452F29C00CC89E5 /* VideoPlayer.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33651452F29C00CC89E5 /* VideoPlayer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DD0A33B91452F29C00CC89E5 /* VideoPlayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = DD0A33661452F29C00CC89E5 /* VideoPlayer.mm */; };
 		DD0A33BA1452F29C00CC89E5 /* VideoPlayer.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD0A33671452F29C00CC89E5 /* VideoPlayer.xib */; };
-		DD0A349C1452F2CE00CC89E5 /* cv.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33C11452F2CC00CC89E5 /* cv.h */; };
-		DD0A349D1452F2CE00CC89E5 /* cv.hpp in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33C21452F2CC00CC89E5 /* cv.hpp */; };
-		DD0A349E1452F2CE00CC89E5 /* cvaux.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33C31452F2CC00CC89E5 /* cvaux.h */; };
-		DD0A349F1452F2CE00CC89E5 /* cvaux.hpp in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33C41452F2CC00CC89E5 /* cvaux.hpp */; };
-		DD0A34A01452F2CE00CC89E5 /* cvwimage.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33C51452F2CC00CC89E5 /* cvwimage.h */; };
-		DD0A34A11452F2CE00CC89E5 /* cxcore.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33C61452F2CC00CC89E5 /* cxcore.h */; };
-		DD0A34A21452F2CE00CC89E5 /* cxcore.hpp in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33C71452F2CC00CC89E5 /* cxcore.hpp */; };
-		DD0A34A31452F2CE00CC89E5 /* cxeigen.hpp in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33C81452F2CC00CC89E5 /* cxeigen.hpp */; };
-		DD0A34A41452F2CE00CC89E5 /* cxmisc.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33C91452F2CC00CC89E5 /* cxmisc.h */; };
-		DD0A34A51452F2CE00CC89E5 /* highgui.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33CA1452F2CC00CC89E5 /* highgui.h */; };
-		DD0A34A61452F2CE00CC89E5 /* ml.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33CB1452F2CC00CC89E5 /* ml.h */; };
-		DD0A34A71452F2CE00CC89E5 /* calib3d.hpp in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33CE1452F2CC00CC89E5 /* calib3d.hpp */; };
-		DD0A34A81452F2CE00CC89E5 /* contrib.hpp in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33D01452F2CC00CC89E5 /* contrib.hpp */; };
-		DD0A34A91452F2CE00CC89E5 /* core.hpp in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33D21452F2CC00CC89E5 /* core.hpp */; };
-		DD0A34AA1452F2CE00CC89E5 /* core_c.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33D31452F2CC00CC89E5 /* core_c.h */; };
-		DD0A34AB1452F2CE00CC89E5 /* eigen.hpp in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33D41452F2CC00CC89E5 /* eigen.hpp */; };
-		DD0A34AC1452F2CE00CC89E5 /* internal.hpp in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33D51452F2CC00CC89E5 /* internal.hpp */; };
-		DD0A34AD1452F2CE00CC89E5 /* mat.hpp in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33D61452F2CC00CC89E5 /* mat.hpp */; };
-		DD0A34AE1452F2CE00CC89E5 /* operations.hpp in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33D71452F2CC00CC89E5 /* operations.hpp */; };
-		DD0A34AF1452F2CE00CC89E5 /* types_c.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33D81452F2CC00CC89E5 /* types_c.h */; };
-		DD0A34B01452F2CE00CC89E5 /* version.hpp in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33D91452F2CC00CC89E5 /* version.hpp */; };
-		DD0A34B11452F2CE00CC89E5 /* wimage.hpp in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33DA1452F2CC00CC89E5 /* wimage.hpp */; };
-		DD0A34B21452F2CE00CC89E5 /* features2d.hpp in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33DC1452F2CC00CC89E5 /* features2d.hpp */; };
-		DD0A34B31452F2CE00CC89E5 /* all_indices.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33DE1452F2CC00CC89E5 /* all_indices.h */; };
-		DD0A34B41452F2CE00CC89E5 /* allocator.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33DF1452F2CC00CC89E5 /* allocator.h */; };
-		DD0A34B51452F2CE00CC89E5 /* autotuned_index.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33E01452F2CC00CC89E5 /* autotuned_index.h */; };
-		DD0A34B61452F2CE00CC89E5 /* composite_index.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33E11452F2CC00CC89E5 /* composite_index.h */; };
-		DD0A34B71452F2CE00CC89E5 /* dist.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33E21452F2CC00CC89E5 /* dist.h */; };
-		DD0A34B81452F2CE00CC89E5 /* flann.hpp in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33E31452F2CC00CC89E5 /* flann.hpp */; };
-		DD0A34B91452F2CE00CC89E5 /* flann_base.hpp in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33E41452F2CC00CC89E5 /* flann_base.hpp */; };
-		DD0A34BA1452F2CE00CC89E5 /* general.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33E51452F2CC00CC89E5 /* general.h */; };
-		DD0A34BB1452F2CE00CC89E5 /* ground_truth.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33E61452F2CC00CC89E5 /* ground_truth.h */; };
-		DD0A34BC1452F2CE00CC89E5 /* hdf5.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33E71452F2CC00CC89E5 /* hdf5.h */; };
-		DD0A34BD1452F2CE00CC89E5 /* heap.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33E81452F2CC00CC89E5 /* heap.h */; };
-		DD0A34BE1452F2CE00CC89E5 /* index_testing.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33E91452F2CC00CC89E5 /* index_testing.h */; };
-		DD0A34BF1452F2CE00CC89E5 /* kdtree_index.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33EA1452F2CC00CC89E5 /* kdtree_index.h */; };
-		DD0A34C01452F2CE00CC89E5 /* kmeans_index.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33EB1452F2CC00CC89E5 /* kmeans_index.h */; };
-		DD0A34C11452F2CE00CC89E5 /* linear_index.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33EC1452F2CC00CC89E5 /* linear_index.h */; };
-		DD0A34C21452F2CE00CC89E5 /* logger.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33ED1452F2CC00CC89E5 /* logger.h */; };
-		DD0A34C31452F2CE00CC89E5 /* matrix.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33EE1452F2CC00CC89E5 /* matrix.h */; };
-		DD0A34C41452F2CE00CC89E5 /* nn_index.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33EF1452F2CC00CC89E5 /* nn_index.h */; };
-		DD0A34C51452F2CE00CC89E5 /* object_factory.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33F01452F2CC00CC89E5 /* object_factory.h */; };
-		DD0A34C61452F2CE00CC89E5 /* random.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33F11452F2CC00CC89E5 /* random.h */; };
-		DD0A34C71452F2CE00CC89E5 /* result_set.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33F21452F2CC00CC89E5 /* result_set.h */; };
-		DD0A34C81452F2CE00CC89E5 /* sampling.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33F31452F2CC00CC89E5 /* sampling.h */; };
-		DD0A34C91452F2CE00CC89E5 /* saving.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33F41452F2CC00CC89E5 /* saving.h */; };
-		DD0A34CA1452F2CE00CC89E5 /* simplex_downhill.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33F51452F2CC00CC89E5 /* simplex_downhill.h */; };
-		DD0A34CB1452F2CE00CC89E5 /* timer.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33F61452F2CC00CC89E5 /* timer.h */; };
-		DD0A34CC1452F2CE00CC89E5 /* devmem2d.hpp in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33F81452F2CC00CC89E5 /* devmem2d.hpp */; };
-		DD0A34CD1452F2CE00CC89E5 /* gpu.hpp in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33F91452F2CC00CC89E5 /* gpu.hpp */; };
-		DD0A34CE1452F2CE00CC89E5 /* matrix_operations.hpp in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33FA1452F2CC00CC89E5 /* matrix_operations.hpp */; };
-		DD0A34CF1452F2CE00CC89E5 /* stream_accessor.hpp in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33FB1452F2CC00CC89E5 /* stream_accessor.hpp */; };
-		DD0A34D01452F2CE00CC89E5 /* highgui.hpp in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33FD1452F2CC00CC89E5 /* highgui.hpp */; };
-		DD0A34D11452F2CE00CC89E5 /* highgui_c.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33FE1452F2CC00CC89E5 /* highgui_c.h */; };
-		DD0A34D21452F2CE00CC89E5 /* imgproc.hpp in Headers */ = {isa = PBXBuildFile; fileRef = DD0A34001452F2CC00CC89E5 /* imgproc.hpp */; };
-		DD0A34D31452F2CE00CC89E5 /* imgproc_c.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A34011452F2CC00CC89E5 /* imgproc_c.h */; };
-		DD0A34D41452F2CE00CC89E5 /* types_c.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A34021452F2CC00CC89E5 /* types_c.h */; };
-		DD0A34D51452F2CE00CC89E5 /* blobtrack.hpp in Headers */ = {isa = PBXBuildFile; fileRef = DD0A34041452F2CC00CC89E5 /* blobtrack.hpp */; };
-		DD0A34D61452F2CE00CC89E5 /* compat.hpp in Headers */ = {isa = PBXBuildFile; fileRef = DD0A34051452F2CC00CC89E5 /* compat.hpp */; };
-		DD0A34D71452F2CE00CC89E5 /* legacy.hpp in Headers */ = {isa = PBXBuildFile; fileRef = DD0A34061452F2CC00CC89E5 /* legacy.hpp */; };
-		DD0A34D81452F2CE00CC89E5 /* streams.hpp in Headers */ = {isa = PBXBuildFile; fileRef = DD0A34071452F2CC00CC89E5 /* streams.hpp */; };
-		DD0A34D91452F2CE00CC89E5 /* ml.hpp in Headers */ = {isa = PBXBuildFile; fileRef = DD0A34091452F2CC00CC89E5 /* ml.hpp */; };
-		DD0A34DA1452F2CE00CC89E5 /* objdetect.hpp in Headers */ = {isa = PBXBuildFile; fileRef = DD0A340B1452F2CC00CC89E5 /* objdetect.hpp */; };
-		DD0A34DB1452F2CE00CC89E5 /* opencv.hpp in Headers */ = {isa = PBXBuildFile; fileRef = DD0A340C1452F2CC00CC89E5 /* opencv.hpp */; };
-		DD0A34DC1452F2CE00CC89E5 /* background_segm.hpp in Headers */ = {isa = PBXBuildFile; fileRef = DD0A340E1452F2CC00CC89E5 /* background_segm.hpp */; };
-		DD0A34DD1452F2CE00CC89E5 /* tracking.hpp in Headers */ = {isa = PBXBuildFile; fileRef = DD0A340F1452F2CC00CC89E5 /* tracking.hpp */; };
+		DD0A349C1452F2CE00CC89E5 /* cv.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33C11452F2CC00CC89E5 /* cv.h */; settings = {ATTRIBUTES = (); }; };
+		DD0A349D1452F2CE00CC89E5 /* cv.hpp in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33C21452F2CC00CC89E5 /* cv.hpp */; settings = {ATTRIBUTES = (); }; };
+		DD0A349E1452F2CE00CC89E5 /* cvaux.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33C31452F2CC00CC89E5 /* cvaux.h */; settings = {ATTRIBUTES = (); }; };
+		DD0A349F1452F2CE00CC89E5 /* cvaux.hpp in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33C41452F2CC00CC89E5 /* cvaux.hpp */; settings = {ATTRIBUTES = (); }; };
+		DD0A34A01452F2CE00CC89E5 /* cvwimage.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33C51452F2CC00CC89E5 /* cvwimage.h */; settings = {ATTRIBUTES = (); }; };
+		DD0A34A11452F2CE00CC89E5 /* cxcore.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33C61452F2CC00CC89E5 /* cxcore.h */; settings = {ATTRIBUTES = (); }; };
+		DD0A34A21452F2CE00CC89E5 /* cxcore.hpp in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33C71452F2CC00CC89E5 /* cxcore.hpp */; settings = {ATTRIBUTES = (); }; };
+		DD0A34A31452F2CE00CC89E5 /* cxeigen.hpp in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33C81452F2CC00CC89E5 /* cxeigen.hpp */; settings = {ATTRIBUTES = (); }; };
+		DD0A34A41452F2CE00CC89E5 /* cxmisc.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33C91452F2CC00CC89E5 /* cxmisc.h */; settings = {ATTRIBUTES = (); }; };
+		DD0A34A51452F2CE00CC89E5 /* highgui.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33CA1452F2CC00CC89E5 /* highgui.h */; settings = {ATTRIBUTES = (); }; };
+		DD0A34A61452F2CE00CC89E5 /* ml.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33CB1452F2CC00CC89E5 /* ml.h */; settings = {ATTRIBUTES = (); }; };
+		DD0A34A71452F2CE00CC89E5 /* calib3d.hpp in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33CE1452F2CC00CC89E5 /* calib3d.hpp */; settings = {ATTRIBUTES = (); }; };
+		DD0A34A81452F2CE00CC89E5 /* contrib.hpp in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33D01452F2CC00CC89E5 /* contrib.hpp */; settings = {ATTRIBUTES = (); }; };
+		DD0A34A91452F2CE00CC89E5 /* core.hpp in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33D21452F2CC00CC89E5 /* core.hpp */; settings = {ATTRIBUTES = (); }; };
+		DD0A34AA1452F2CE00CC89E5 /* core_c.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33D31452F2CC00CC89E5 /* core_c.h */; settings = {ATTRIBUTES = (); }; };
+		DD0A34AB1452F2CE00CC89E5 /* eigen.hpp in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33D41452F2CC00CC89E5 /* eigen.hpp */; settings = {ATTRIBUTES = (); }; };
+		DD0A34AC1452F2CE00CC89E5 /* internal.hpp in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33D51452F2CC00CC89E5 /* internal.hpp */; settings = {ATTRIBUTES = (); }; };
+		DD0A34AD1452F2CE00CC89E5 /* mat.hpp in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33D61452F2CC00CC89E5 /* mat.hpp */; settings = {ATTRIBUTES = (); }; };
+		DD0A34AE1452F2CE00CC89E5 /* operations.hpp in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33D71452F2CC00CC89E5 /* operations.hpp */; settings = {ATTRIBUTES = (); }; };
+		DD0A34AF1452F2CE00CC89E5 /* types_c.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33D81452F2CC00CC89E5 /* types_c.h */; settings = {ATTRIBUTES = (); }; };
+		DD0A34B01452F2CE00CC89E5 /* version.hpp in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33D91452F2CC00CC89E5 /* version.hpp */; settings = {ATTRIBUTES = (); }; };
+		DD0A34B11452F2CE00CC89E5 /* wimage.hpp in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33DA1452F2CC00CC89E5 /* wimage.hpp */; settings = {ATTRIBUTES = (); }; };
+		DD0A34B21452F2CE00CC89E5 /* features2d.hpp in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33DC1452F2CC00CC89E5 /* features2d.hpp */; settings = {ATTRIBUTES = (); }; };
+		DD0A34B31452F2CE00CC89E5 /* all_indices.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33DE1452F2CC00CC89E5 /* all_indices.h */; settings = {ATTRIBUTES = (); }; };
+		DD0A34B41452F2CE00CC89E5 /* allocator.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33DF1452F2CC00CC89E5 /* allocator.h */; settings = {ATTRIBUTES = (); }; };
+		DD0A34B51452F2CE00CC89E5 /* autotuned_index.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33E01452F2CC00CC89E5 /* autotuned_index.h */; settings = {ATTRIBUTES = (); }; };
+		DD0A34B61452F2CE00CC89E5 /* composite_index.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33E11452F2CC00CC89E5 /* composite_index.h */; settings = {ATTRIBUTES = (); }; };
+		DD0A34B71452F2CE00CC89E5 /* dist.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33E21452F2CC00CC89E5 /* dist.h */; settings = {ATTRIBUTES = (); }; };
+		DD0A34B81452F2CE00CC89E5 /* flann.hpp in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33E31452F2CC00CC89E5 /* flann.hpp */; settings = {ATTRIBUTES = (); }; };
+		DD0A34B91452F2CE00CC89E5 /* flann_base.hpp in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33E41452F2CC00CC89E5 /* flann_base.hpp */; settings = {ATTRIBUTES = (); }; };
+		DD0A34BA1452F2CE00CC89E5 /* general.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33E51452F2CC00CC89E5 /* general.h */; settings = {ATTRIBUTES = (); }; };
+		DD0A34BB1452F2CE00CC89E5 /* ground_truth.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33E61452F2CC00CC89E5 /* ground_truth.h */; settings = {ATTRIBUTES = (); }; };
+		DD0A34BC1452F2CE00CC89E5 /* hdf5.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33E71452F2CC00CC89E5 /* hdf5.h */; settings = {ATTRIBUTES = (); }; };
+		DD0A34BD1452F2CE00CC89E5 /* heap.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33E81452F2CC00CC89E5 /* heap.h */; settings = {ATTRIBUTES = (); }; };
+		DD0A34BE1452F2CE00CC89E5 /* index_testing.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33E91452F2CC00CC89E5 /* index_testing.h */; settings = {ATTRIBUTES = (); }; };
+		DD0A34BF1452F2CE00CC89E5 /* kdtree_index.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33EA1452F2CC00CC89E5 /* kdtree_index.h */; settings = {ATTRIBUTES = (); }; };
+		DD0A34C01452F2CE00CC89E5 /* kmeans_index.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33EB1452F2CC00CC89E5 /* kmeans_index.h */; settings = {ATTRIBUTES = (); }; };
+		DD0A34C11452F2CE00CC89E5 /* linear_index.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33EC1452F2CC00CC89E5 /* linear_index.h */; settings = {ATTRIBUTES = (); }; };
+		DD0A34C21452F2CE00CC89E5 /* logger.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33ED1452F2CC00CC89E5 /* logger.h */; settings = {ATTRIBUTES = (); }; };
+		DD0A34C31452F2CE00CC89E5 /* matrix.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33EE1452F2CC00CC89E5 /* matrix.h */; settings = {ATTRIBUTES = (); }; };
+		DD0A34C41452F2CE00CC89E5 /* nn_index.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33EF1452F2CC00CC89E5 /* nn_index.h */; settings = {ATTRIBUTES = (); }; };
+		DD0A34C51452F2CE00CC89E5 /* object_factory.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33F01452F2CC00CC89E5 /* object_factory.h */; settings = {ATTRIBUTES = (); }; };
+		DD0A34C61452F2CE00CC89E5 /* random.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33F11452F2CC00CC89E5 /* random.h */; settings = {ATTRIBUTES = (); }; };
+		DD0A34C71452F2CE00CC89E5 /* result_set.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33F21452F2CC00CC89E5 /* result_set.h */; settings = {ATTRIBUTES = (); }; };
+		DD0A34C81452F2CE00CC89E5 /* sampling.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33F31452F2CC00CC89E5 /* sampling.h */; settings = {ATTRIBUTES = (); }; };
+		DD0A34C91452F2CE00CC89E5 /* saving.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33F41452F2CC00CC89E5 /* saving.h */; settings = {ATTRIBUTES = (); }; };
+		DD0A34CA1452F2CE00CC89E5 /* simplex_downhill.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33F51452F2CC00CC89E5 /* simplex_downhill.h */; settings = {ATTRIBUTES = (); }; };
+		DD0A34CB1452F2CE00CC89E5 /* timer.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33F61452F2CC00CC89E5 /* timer.h */; settings = {ATTRIBUTES = (); }; };
+		DD0A34CC1452F2CE00CC89E5 /* devmem2d.hpp in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33F81452F2CC00CC89E5 /* devmem2d.hpp */; settings = {ATTRIBUTES = (); }; };
+		DD0A34CD1452F2CE00CC89E5 /* gpu.hpp in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33F91452F2CC00CC89E5 /* gpu.hpp */; settings = {ATTRIBUTES = (); }; };
+		DD0A34CE1452F2CE00CC89E5 /* matrix_operations.hpp in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33FA1452F2CC00CC89E5 /* matrix_operations.hpp */; settings = {ATTRIBUTES = (); }; };
+		DD0A34CF1452F2CE00CC89E5 /* stream_accessor.hpp in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33FB1452F2CC00CC89E5 /* stream_accessor.hpp */; settings = {ATTRIBUTES = (); }; };
+		DD0A34D01452F2CE00CC89E5 /* highgui.hpp in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33FD1452F2CC00CC89E5 /* highgui.hpp */; settings = {ATTRIBUTES = (); }; };
+		DD0A34D11452F2CE00CC89E5 /* highgui_c.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33FE1452F2CC00CC89E5 /* highgui_c.h */; settings = {ATTRIBUTES = (); }; };
+		DD0A34D21452F2CE00CC89E5 /* imgproc.hpp in Headers */ = {isa = PBXBuildFile; fileRef = DD0A34001452F2CC00CC89E5 /* imgproc.hpp */; settings = {ATTRIBUTES = (); }; };
+		DD0A34D31452F2CE00CC89E5 /* imgproc_c.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A34011452F2CC00CC89E5 /* imgproc_c.h */; settings = {ATTRIBUTES = (); }; };
+		DD0A34D41452F2CE00CC89E5 /* types_c.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A34021452F2CC00CC89E5 /* types_c.h */; settings = {ATTRIBUTES = (); }; };
+		DD0A34D51452F2CE00CC89E5 /* blobtrack.hpp in Headers */ = {isa = PBXBuildFile; fileRef = DD0A34041452F2CC00CC89E5 /* blobtrack.hpp */; settings = {ATTRIBUTES = (); }; };
+		DD0A34D61452F2CE00CC89E5 /* compat.hpp in Headers */ = {isa = PBXBuildFile; fileRef = DD0A34051452F2CC00CC89E5 /* compat.hpp */; settings = {ATTRIBUTES = (); }; };
+		DD0A34D71452F2CE00CC89E5 /* legacy.hpp in Headers */ = {isa = PBXBuildFile; fileRef = DD0A34061452F2CC00CC89E5 /* legacy.hpp */; settings = {ATTRIBUTES = (); }; };
+		DD0A34D81452F2CE00CC89E5 /* streams.hpp in Headers */ = {isa = PBXBuildFile; fileRef = DD0A34071452F2CC00CC89E5 /* streams.hpp */; settings = {ATTRIBUTES = (); }; };
+		DD0A34D91452F2CE00CC89E5 /* ml.hpp in Headers */ = {isa = PBXBuildFile; fileRef = DD0A34091452F2CC00CC89E5 /* ml.hpp */; settings = {ATTRIBUTES = (); }; };
+		DD0A34DA1452F2CE00CC89E5 /* objdetect.hpp in Headers */ = {isa = PBXBuildFile; fileRef = DD0A340B1452F2CC00CC89E5 /* objdetect.hpp */; settings = {ATTRIBUTES = (); }; };
+		DD0A34DB1452F2CE00CC89E5 /* opencv.hpp in Headers */ = {isa = PBXBuildFile; fileRef = DD0A340C1452F2CC00CC89E5 /* opencv.hpp */; settings = {ATTRIBUTES = (); }; };
+		DD0A34DC1452F2CE00CC89E5 /* background_segm.hpp in Headers */ = {isa = PBXBuildFile; fileRef = DD0A340E1452F2CC00CC89E5 /* background_segm.hpp */; settings = {ATTRIBUTES = (); }; };
+		DD0A34DD1452F2CE00CC89E5 /* tracking.hpp in Headers */ = {isa = PBXBuildFile; fileRef = DD0A340F1452F2CC00CC89E5 /* tracking.hpp */; settings = {ATTRIBUTES = (); }; };
 		DD0A351B1452F2CE00CC89E5 /* opencv.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD0A34551452F2CC00CC89E5 /* opencv.a */; };
-		DD0A354C1452F2CF00CC89E5 /* ofxCvBlob.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A34891452F2CD00CC89E5 /* ofxCvBlob.h */; };
-		DD0A354E1452F2CF00CC89E5 /* ofxCvColorImage.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A348B1452F2CD00CC89E5 /* ofxCvColorImage.h */; };
-		DD0A354F1452F2CF00CC89E5 /* ofxCvConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A348C1452F2CD00CC89E5 /* ofxCvConstants.h */; };
-		DD0A35511452F2CF00CC89E5 /* ofxCvContourFinder.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A348E1452F2CD00CC89E5 /* ofxCvContourFinder.h */; };
-		DD0A35531452F2CF00CC89E5 /* ofxCvFloatImage.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A34901452F2CD00CC89E5 /* ofxCvFloatImage.h */; };
-		DD0A35551452F2CF00CC89E5 /* ofxCvGrayscaleImage.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A34921452F2CD00CC89E5 /* ofxCvGrayscaleImage.h */; };
-		DD0A35571452F2CF00CC89E5 /* ofxCvHaarFinder.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A34941452F2CD00CC89E5 /* ofxCvHaarFinder.h */; };
-		DD0A35591452F2CF00CC89E5 /* ofxCvImage.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A34961452F2CD00CC89E5 /* ofxCvImage.h */; };
-		DD0A355A1452F2CF00CC89E5 /* ofxCvMain.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A34971452F2CD00CC89E5 /* ofxCvMain.h */; };
-		DD0A355C1452F2CF00CC89E5 /* ofxCvShortImage.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A34991452F2CD00CC89E5 /* ofxCvShortImage.h */; };
-		DD0A355D1452F2CF00CC89E5 /* ofxOpenCv.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A349A1452F2CD00CC89E5 /* ofxOpenCv.h */; };
-		DD0A356A1452F32700CC89E5 /* ofxMatrix3x3.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35601452F32700CC89E5 /* ofxMatrix3x3.h */; };
-		DD0A356B1452F32700CC89E5 /* ofxMatrix4x4.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35611452F32700CC89E5 /* ofxMatrix4x4.h */; };
-		DD0A356C1452F32700CC89E5 /* ofxPoint2f.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35621452F32700CC89E5 /* ofxPoint2f.h */; };
-		DD0A356D1452F32700CC89E5 /* ofxPoint3f.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35631452F32700CC89E5 /* ofxPoint3f.h */; };
-		DD0A356E1452F32700CC89E5 /* ofxPoint4f.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35641452F32700CC89E5 /* ofxPoint4f.h */; };
-		DD0A356F1452F32700CC89E5 /* ofxQuaternion.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35651452F32700CC89E5 /* ofxQuaternion.h */; };
-		DD0A35701452F32700CC89E5 /* ofxVec2f.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35661452F32700CC89E5 /* ofxVec2f.h */; };
-		DD0A35711452F32700CC89E5 /* ofxVec3f.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35671452F32700CC89E5 /* ofxVec3f.h */; };
-		DD0A35721452F32700CC89E5 /* ofxVec4f.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35681452F32700CC89E5 /* ofxVec4f.h */; };
-		DD0A35731452F32700CC89E5 /* ofxVectorMath.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35691452F32700CC89E5 /* ofxVectorMath.h */; };
+		DD0A354C1452F2CF00CC89E5 /* ofxCvBlob.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A34891452F2CD00CC89E5 /* ofxCvBlob.h */; settings = {ATTRIBUTES = (); }; };
+		DD0A354E1452F2CF00CC89E5 /* ofxCvColorImage.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A348B1452F2CD00CC89E5 /* ofxCvColorImage.h */; settings = {ATTRIBUTES = (); }; };
+		DD0A354F1452F2CF00CC89E5 /* ofxCvConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A348C1452F2CD00CC89E5 /* ofxCvConstants.h */; settings = {ATTRIBUTES = (); }; };
+		DD0A35511452F2CF00CC89E5 /* ofxCvContourFinder.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A348E1452F2CD00CC89E5 /* ofxCvContourFinder.h */; settings = {ATTRIBUTES = (); }; };
+		DD0A35531452F2CF00CC89E5 /* ofxCvFloatImage.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A34901452F2CD00CC89E5 /* ofxCvFloatImage.h */; settings = {ATTRIBUTES = (); }; };
+		DD0A35551452F2CF00CC89E5 /* ofxCvGrayscaleImage.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A34921452F2CD00CC89E5 /* ofxCvGrayscaleImage.h */; settings = {ATTRIBUTES = (); }; };
+		DD0A35571452F2CF00CC89E5 /* ofxCvHaarFinder.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A34941452F2CD00CC89E5 /* ofxCvHaarFinder.h */; settings = {ATTRIBUTES = (); }; };
+		DD0A35591452F2CF00CC89E5 /* ofxCvImage.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A34961452F2CD00CC89E5 /* ofxCvImage.h */; settings = {ATTRIBUTES = (); }; };
+		DD0A355A1452F2CF00CC89E5 /* ofxCvMain.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A34971452F2CD00CC89E5 /* ofxCvMain.h */; settings = {ATTRIBUTES = (); }; };
+		DD0A355C1452F2CF00CC89E5 /* ofxCvShortImage.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A34991452F2CD00CC89E5 /* ofxCvShortImage.h */; settings = {ATTRIBUTES = (); }; };
+		DD0A355D1452F2CF00CC89E5 /* ofxOpenCv.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A349A1452F2CD00CC89E5 /* ofxOpenCv.h */; settings = {ATTRIBUTES = (); }; };
+		DD0A356A1452F32700CC89E5 /* ofxMatrix3x3.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35601452F32700CC89E5 /* ofxMatrix3x3.h */; settings = {ATTRIBUTES = (); }; };
+		DD0A356B1452F32700CC89E5 /* ofxMatrix4x4.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35611452F32700CC89E5 /* ofxMatrix4x4.h */; settings = {ATTRIBUTES = (); }; };
+		DD0A356C1452F32700CC89E5 /* ofxPoint2f.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35621452F32700CC89E5 /* ofxPoint2f.h */; settings = {ATTRIBUTES = (); }; };
+		DD0A356D1452F32700CC89E5 /* ofxPoint3f.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35631452F32700CC89E5 /* ofxPoint3f.h */; settings = {ATTRIBUTES = (); }; };
+		DD0A356E1452F32700CC89E5 /* ofxPoint4f.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35641452F32700CC89E5 /* ofxPoint4f.h */; settings = {ATTRIBUTES = (); }; };
+		DD0A356F1452F32700CC89E5 /* ofxQuaternion.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35651452F32700CC89E5 /* ofxQuaternion.h */; settings = {ATTRIBUTES = (); }; };
+		DD0A35701452F32700CC89E5 /* ofxVec2f.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35661452F32700CC89E5 /* ofxVec2f.h */; settings = {ATTRIBUTES = (); }; };
+		DD0A35711452F32700CC89E5 /* ofxVec3f.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35671452F32700CC89E5 /* ofxVec3f.h */; settings = {ATTRIBUTES = (); }; };
+		DD0A35721452F32700CC89E5 /* ofxVec4f.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35681452F32700CC89E5 /* ofxVec4f.h */; settings = {ATTRIBUTES = (); }; };
+		DD0A35731452F32700CC89E5 /* ofxVectorMath.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35691452F32700CC89E5 /* ofxVectorMath.h */; settings = {ATTRIBUTES = (); }; };
 		DD0A35871454386B00CC89E5 /* ofxCocoaPlugins.h in Headers */ = {isa = PBXBuildFile; fileRef = DDA7FFE8144F1C3800F81C9E /* ofxCocoaPlugins.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DD0A361014543B7900CC89E5 /* of3dUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A359814543B7800CC89E5 /* of3dUtils.h */; settings = {ATTRIBUTES = (); }; };
 		DD0A361214543B7900CC89E5 /* ofCamera.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A359A14543B7800CC89E5 /* ofCamera.h */; settings = {ATTRIBUTES = (); }; };
@@ -252,7 +252,7 @@
 		DD0A368A145443DA00CC89E5 /* ConfigInclude.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = DD0A3689145443D900CC89E5 /* ConfigInclude.xcconfig */; };
 		DDA7FFE6144F1C3800F81C9E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DDA7FFE4144F1C3800F81C9E /* InfoPlist.strings */; };
 		DDA7FFEA144F1C3800F81C9E /* ofxCocoaPlugins.mm in Sources */ = {isa = PBXBuildFile; fileRef = DDA7FFE9144F1C3800F81C9E /* ofxCocoaPlugins.mm */; };
-		DDC266AF1454BC020016BA7B /* GeneralPreferences.h in Headers */ = {isa = PBXBuildFile; fileRef = DDC266AC1454BC020016BA7B /* GeneralPreferences.h */; };
+		DDC266AF1454BC020016BA7B /* GeneralPreferences.h in Headers */ = {isa = PBXBuildFile; fileRef = DDC266AC1454BC020016BA7B /* GeneralPreferences.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DDC266B01454BC020016BA7B /* GeneralPreferences.mm in Sources */ = {isa = PBXBuildFile; fileRef = DDC266AD1454BC020016BA7B /* GeneralPreferences.mm */; };
 		DDC266B11454BC020016BA7B /* GeneralPreferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDC266AE1454BC020016BA7B /* GeneralPreferences.xib */; };
 		DDE4C8831451A91200EECFF4 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDE4C8761451A91200EECFF4 /* CoreVideo.framework */; };
@@ -270,24 +270,24 @@
 		DDE4C88F1451A91300EECFF4 /* QuickTime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDE4C8821451A91200EECFF4 /* QuickTime.framework */; };
 		DDE4C8C41451AEFD00EECFF4 /* Application.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDE4C8B81451AEFD00EECFF4 /* Application.xib */; };
 		DDE4C8C91451AEFD00EECFF4 /* OutputPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDE4C8BD1451AEFD00EECFF4 /* OutputPanel.xib */; };
-		DDE4C8D71451AF1500EECFF4 /* BeamSync.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C8D11451AF1500EECFF4 /* BeamSync.h */; };
+		DDE4C8D71451AF1500EECFF4 /* BeamSync.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C8D11451AF1500EECFF4 /* BeamSync.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DDE4C8D81451AF1500EECFF4 /* BeamSync.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE4C8D21451AF1500EECFF4 /* BeamSync.m */; };
-		DDE4C8DB1451AF1500EECFF4 /* PluginOpenGLView.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C8D51451AF1500EECFF4 /* PluginOpenGLView.h */; };
+		DDE4C8DB1451AF1500EECFF4 /* PluginOpenGLView.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C8D51451AF1500EECFF4 /* PluginOpenGLView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DDE4C8DC1451AF1500EECFF4 /* PluginOpenGLView.mm in Sources */ = {isa = PBXBuildFile; fileRef = DDE4C8D61451AF1500EECFF4 /* PluginOpenGLView.mm */; };
 		DDE4C8EA1451C97300EECFF4 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDE4C8E91451C97300EECFF4 /* GLUT.framework */; };
-		DDE4C9061451DBD900EECFF4 /* LoadProgressIndicator.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C8FA1451DBD900EECFF4 /* LoadProgressIndicator.h */; };
+		DDE4C9061451DBD900EECFF4 /* LoadProgressIndicator.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C8FA1451DBD900EECFF4 /* LoadProgressIndicator.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DDE4C9071451DBD900EECFF4 /* LoadProgressIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE4C8FB1451DBD900EECFF4 /* LoadProgressIndicator.m */; };
-		DDE4C9081451DBD900EECFF4 /* OutputViewStats.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C8FC1451DBD900EECFF4 /* OutputViewStats.h */; };
+		DDE4C9081451DBD900EECFF4 /* OutputViewStats.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C8FC1451DBD900EECFF4 /* OutputViewStats.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DDE4C9091451DBD900EECFF4 /* OutputViewStats.mm in Sources */ = {isa = PBXBuildFile; fileRef = DDE4C8FD1451DBD900EECFF4 /* OutputViewStats.mm */; };
-		DDE4C90C1451DBD900EECFF4 /* PluginEnabledCell.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C9001451DBD900EECFF4 /* PluginEnabledCell.h */; };
+		DDE4C90C1451DBD900EECFF4 /* PluginEnabledCell.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C9001451DBD900EECFF4 /* PluginEnabledCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DDE4C90D1451DBD900EECFF4 /* PluginEnabledCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE4C9011451DBD900EECFF4 /* PluginEnabledCell.m */; };
-		DDE4C90E1451DBD900EECFF4 /* PluginListMeterCell.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C9021451DBD900EECFF4 /* PluginListMeterCell.h */; };
+		DDE4C90E1451DBD900EECFF4 /* PluginListMeterCell.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C9021451DBD900EECFF4 /* PluginListMeterCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DDE4C90F1451DBD900EECFF4 /* PluginListMeterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE4C9031451DBD900EECFF4 /* PluginListMeterCell.m */; };
-		DDE4C9101451DBD900EECFF4 /* PropertiesValueCell.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C9041451DBD900EECFF4 /* PropertiesValueCell.h */; };
+		DDE4C9101451DBD900EECFF4 /* PropertiesValueCell.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C9041451DBD900EECFF4 /* PropertiesValueCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DDE4C9111451DBD900EECFF4 /* PropertiesValueCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE4C9051451DBD900EECFF4 /* PropertiesValueCell.m */; };
 		DDE4C9211451DBF700EECFF4 /* Plugin.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C9131451DBF700EECFF4 /* Plugin.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DDE4C9221451DBF700EECFF4 /* Plugin.mm in Sources */ = {isa = PBXBuildFile; fileRef = DDE4C9141451DBF700EECFF4 /* Plugin.mm */; };
-		DDE4C9231451DBF700EECFF4 /* PluginManagerController.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C9151451DBF700EECFF4 /* PluginManagerController.h */; settings = {ATTRIBUTES = (); }; };
+		DDE4C9231451DBF700EECFF4 /* PluginManagerController.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C9151451DBF700EECFF4 /* PluginManagerController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DDE4C9241451DBF700EECFF4 /* PluginManagerController.mm in Sources */ = {isa = PBXBuildFile; fileRef = DDE4C9161451DBF700EECFF4 /* PluginManagerController.mm */; };
 		DDE4C9251451DBF700EECFF4 /* PluginProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C9171451DBF700EECFF4 /* PluginProperty.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DDE4C9261451DBF700EECFF4 /* PluginProperty.mm in Sources */ = {isa = PBXBuildFile; fileRef = DDE4C9181451DBF700EECFF4 /* PluginProperty.mm */; };
@@ -295,49 +295,49 @@
 		DDE4C9281451DBF700EECFF4 /* BoolProperty.mm in Sources */ = {isa = PBXBuildFile; fileRef = DDE4C91B1451DBF700EECFF4 /* BoolProperty.mm */; };
 		DDE4C9291451DBF700EECFF4 /* NumberProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C91C1451DBF700EECFF4 /* NumberProperty.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DDE4C92A1451DBF700EECFF4 /* NumberProperty.mm in Sources */ = {isa = PBXBuildFile; fileRef = DDE4C91D1451DBF700EECFF4 /* NumberProperty.mm */; };
-		DDE4C92B1451DBF700EECFF4 /* Qlab.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C91E1451DBF700EECFF4 /* Qlab.h */; };
-		DDE4C92C1451DBF700EECFF4 /* QLabController.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C91F1451DBF700EECFF4 /* QLabController.h */; };
+		DDE4C92B1451DBF700EECFF4 /* Qlab.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C91E1451DBF700EECFF4 /* Qlab.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DDE4C92C1451DBF700EECFF4 /* QLabController.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C91F1451DBF700EECFF4 /* QLabController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DDE4C92D1451DBF700EECFF4 /* QLabController.mm in Sources */ = {isa = PBXBuildFile; fileRef = DDE4C9201451DBF700EECFF4 /* QLabController.mm */; };
-		DDE4C9601451DC1500EECFF4 /* IpEndpointName.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C9341451DC1500EECFF4 /* IpEndpointName.h */; };
-		DDE4C9611451DC1500EECFF4 /* NetworkingUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C9351451DC1500EECFF4 /* NetworkingUtils.h */; };
-		DDE4C9621451DC1500EECFF4 /* PacketListener.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C9361451DC1500EECFF4 /* PacketListener.h */; };
-		DDE4C9631451DC1500EECFF4 /* TimerListener.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C9371451DC1500EECFF4 /* TimerListener.h */; };
-		DDE4C9641451DC1500EECFF4 /* UdpSocket.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C9381451DC1500EECFF4 /* UdpSocket.h */; };
-		DDE4C9651451DC1500EECFF4 /* MessageMappingOscPacketListener.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C93A1451DC1500EECFF4 /* MessageMappingOscPacketListener.h */; };
-		DDE4C9661451DC1500EECFF4 /* OscException.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C93B1451DC1500EECFF4 /* OscException.h */; };
-		DDE4C9671451DC1500EECFF4 /* OscHostEndianness.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C93C1451DC1500EECFF4 /* OscHostEndianness.h */; };
-		DDE4C9681451DC1500EECFF4 /* OscOutboundPacketStream.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C93D1451DC1500EECFF4 /* OscOutboundPacketStream.h */; };
-		DDE4C9691451DC1500EECFF4 /* OscPacketListener.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C93E1451DC1500EECFF4 /* OscPacketListener.h */; };
-		DDE4C96A1451DC1500EECFF4 /* OscPrintReceivedElements.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C93F1451DC1500EECFF4 /* OscPrintReceivedElements.h */; };
-		DDE4C96B1451DC1500EECFF4 /* OscReceivedElements.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C9401451DC1500EECFF4 /* OscReceivedElements.h */; };
-		DDE4C96C1451DC1500EECFF4 /* OscTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C9411451DC1500EECFF4 /* OscTypes.h */; };
+		DDE4C9601451DC1500EECFF4 /* IpEndpointName.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C9341451DC1500EECFF4 /* IpEndpointName.h */; settings = {ATTRIBUTES = (); }; };
+		DDE4C9611451DC1500EECFF4 /* NetworkingUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C9351451DC1500EECFF4 /* NetworkingUtils.h */; settings = {ATTRIBUTES = (); }; };
+		DDE4C9621451DC1500EECFF4 /* PacketListener.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C9361451DC1500EECFF4 /* PacketListener.h */; settings = {ATTRIBUTES = (); }; };
+		DDE4C9631451DC1500EECFF4 /* TimerListener.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C9371451DC1500EECFF4 /* TimerListener.h */; settings = {ATTRIBUTES = (); }; };
+		DDE4C9641451DC1500EECFF4 /* UdpSocket.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C9381451DC1500EECFF4 /* UdpSocket.h */; settings = {ATTRIBUTES = (); }; };
+		DDE4C9651451DC1500EECFF4 /* MessageMappingOscPacketListener.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C93A1451DC1500EECFF4 /* MessageMappingOscPacketListener.h */; settings = {ATTRIBUTES = (); }; };
+		DDE4C9661451DC1500EECFF4 /* OscException.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C93B1451DC1500EECFF4 /* OscException.h */; settings = {ATTRIBUTES = (); }; };
+		DDE4C9671451DC1500EECFF4 /* OscHostEndianness.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C93C1451DC1500EECFF4 /* OscHostEndianness.h */; settings = {ATTRIBUTES = (); }; };
+		DDE4C9681451DC1500EECFF4 /* OscOutboundPacketStream.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C93D1451DC1500EECFF4 /* OscOutboundPacketStream.h */; settings = {ATTRIBUTES = (); }; };
+		DDE4C9691451DC1500EECFF4 /* OscPacketListener.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C93E1451DC1500EECFF4 /* OscPacketListener.h */; settings = {ATTRIBUTES = (); }; };
+		DDE4C96A1451DC1500EECFF4 /* OscPrintReceivedElements.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C93F1451DC1500EECFF4 /* OscPrintReceivedElements.h */; settings = {ATTRIBUTES = (); }; };
+		DDE4C96B1451DC1500EECFF4 /* OscReceivedElements.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C9401451DC1500EECFF4 /* OscReceivedElements.h */; settings = {ATTRIBUTES = (); }; };
+		DDE4C96C1451DC1500EECFF4 /* OscTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C9411451DC1500EECFF4 /* OscTypes.h */; settings = {ATTRIBUTES = (); }; };
 		DDE4C9721451DC1500EECFF4 /* osc.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DDE4C94E1451DC1500EECFF4 /* osc.a */; };
-		DDE4C9761451DC1500EECFF4 /* ofxOsc.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C9551451DC1500EECFF4 /* ofxOsc.h */; };
-		DDE4C9771451DC1500EECFF4 /* ofxOscArg.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C9561451DC1500EECFF4 /* ofxOscArg.h */; };
+		DDE4C9761451DC1500EECFF4 /* ofxOsc.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C9551451DC1500EECFF4 /* ofxOsc.h */; settings = {ATTRIBUTES = (); }; };
+		DDE4C9771451DC1500EECFF4 /* ofxOscArg.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C9561451DC1500EECFF4 /* ofxOscArg.h */; settings = {ATTRIBUTES = (); }; };
 		DDE4C9781451DC1500EECFF4 /* ofxOscBundle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DDE4C9571451DC1500EECFF4 /* ofxOscBundle.cpp */; };
-		DDE4C9791451DC1500EECFF4 /* ofxOscBundle.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C9581451DC1500EECFF4 /* ofxOscBundle.h */; };
+		DDE4C9791451DC1500EECFF4 /* ofxOscBundle.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C9581451DC1500EECFF4 /* ofxOscBundle.h */; settings = {ATTRIBUTES = (); }; };
 		DDE4C97A1451DC1500EECFF4 /* ofxOscMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DDE4C9591451DC1500EECFF4 /* ofxOscMessage.cpp */; };
-		DDE4C97B1451DC1500EECFF4 /* ofxOscMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C95A1451DC1500EECFF4 /* ofxOscMessage.h */; };
+		DDE4C97B1451DC1500EECFF4 /* ofxOscMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C95A1451DC1500EECFF4 /* ofxOscMessage.h */; settings = {ATTRIBUTES = (); }; };
 		DDE4C97C1451DC1500EECFF4 /* ofxOscReceiver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DDE4C95B1451DC1500EECFF4 /* ofxOscReceiver.cpp */; };
-		DDE4C97D1451DC1500EECFF4 /* ofxOscReceiver.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C95C1451DC1500EECFF4 /* ofxOscReceiver.h */; };
+		DDE4C97D1451DC1500EECFF4 /* ofxOscReceiver.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C95C1451DC1500EECFF4 /* ofxOscReceiver.h */; settings = {ATTRIBUTES = (); }; };
 		DDE4C97E1451DC1500EECFF4 /* ofxOscSender.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DDE4C95D1451DC1500EECFF4 /* ofxOscSender.cpp */; };
-		DDE4C97F1451DC1500EECFF4 /* ofxOscSender.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C95E1451DC1500EECFF4 /* ofxOscSender.h */; };
-		DDE4C98A1451E02000EECFF4 /* MainWindow.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C9801451E02000EECFF4 /* MainWindow.h */; };
+		DDE4C97F1451DC1500EECFF4 /* ofxOscSender.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C95E1451DC1500EECFF4 /* ofxOscSender.h */; settings = {ATTRIBUTES = (); }; };
+		DDE4C98A1451E02000EECFF4 /* MainWindow.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C9801451E02000EECFF4 /* MainWindow.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DDE4C98B1451E02000EECFF4 /* MainWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE4C9811451E02000EECFF4 /* MainWindow.m */; };
-		DDE4C98C1451E02000EECFF4 /* ofAppCocoaWindow.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C9821451E02000EECFF4 /* ofAppCocoaWindow.h */; };
+		DDE4C98C1451E02000EECFF4 /* ofAppCocoaWindow.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C9821451E02000EECFF4 /* ofAppCocoaWindow.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DDE4C98D1451E02000EECFF4 /* ofAppCocoaWindow.mm in Sources */ = {isa = PBXBuildFile; fileRef = DDE4C9831451E02000EECFF4 /* ofAppCocoaWindow.mm */; };
-		DDE4C98E1451E02000EECFF4 /* OutputPanelController.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C9841451E02000EECFF4 /* OutputPanelController.h */; };
+		DDE4C98E1451E02000EECFF4 /* OutputPanelController.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C9841451E02000EECFF4 /* OutputPanelController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DDE4C98F1451E02000EECFF4 /* OutputPanelController.mm in Sources */ = {isa = PBXBuildFile; fileRef = DDE4C9851451E02000EECFF4 /* OutputPanelController.mm */; };
-		DDE4C9901451E02000EECFF4 /* OutputViewManager.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C9861451E02000EECFF4 /* OutputViewManager.h */; };
+		DDE4C9901451E02000EECFF4 /* OutputViewManager.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C9861451E02000EECFF4 /* OutputViewManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DDE4C9911451E02000EECFF4 /* OutputViewManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = DDE4C9871451E02000EECFF4 /* OutputViewManager.mm */; };
-		DDE4C9921451E02000EECFF4 /* SaveManager.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C9881451E02000EECFF4 /* SaveManager.h */; };
+		DDE4C9921451E02000EECFF4 /* SaveManager.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C9881451E02000EECFF4 /* SaveManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DDE4C9931451E02000EECFF4 /* SaveManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = DDE4C9891451E02000EECFF4 /* SaveManager.mm */; };
 		DDE4C9A21451E04500EECFF4 /* CustomGraphics.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C9951451E04500EECFF4 /* CustomGraphics.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DDE4C9A31451E04500EECFF4 /* Filter.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C9961451E04500EECFF4 /* Filter.h */; };
-		DDE4C9A41451E04500EECFF4 /* QTKitMovieRenderer.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C9981451E04500EECFF4 /* QTKitMovieRenderer.h */; };
+		DDE4C9A31451E04500EECFF4 /* Filter.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C9961451E04500EECFF4 /* Filter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DDE4C9A41451E04500EECFF4 /* QTKitMovieRenderer.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C9981451E04500EECFF4 /* QTKitMovieRenderer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DDE4C9A51451E04500EECFF4 /* QTKitMovieRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE4C9991451E04500EECFF4 /* QTKitMovieRenderer.m */; };
-		DDE4C9AC1451E04500EECFF4 /* TextureGrid.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C9A11451E04500EECFF4 /* TextureGrid.h */; };
-		DDE4C9AF1451E05100EECFF4 /* PluginOpenGLControlView.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C9AD1451E05100EECFF4 /* PluginOpenGLControlView.h */; };
+		DDE4C9AC1451E04500EECFF4 /* TextureGrid.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C9A11451E04500EECFF4 /* TextureGrid.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DDE4C9AF1451E05100EECFF4 /* PluginOpenGLControlView.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C9AD1451E05100EECFF4 /* PluginOpenGLControlView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DDE4C9B01451E05100EECFF4 /* PluginOpenGLControlView.mm in Sources */ = {isa = PBXBuildFile; fileRef = DDE4C9AE1451E05100EECFF4 /* PluginOpenGLControlView.mm */; };
 		DDE4C9B21451E12E00EECFF4 /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDE4C9B11451E12E00EECFF4 /* QTKit.framework */; };
 		DDE4C9B41451E14100EECFF4 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDE4C9B31451E14100EECFF4 /* QuartzCore.framework */; };
@@ -345,35 +345,35 @@
 		DDE4CA851451E23800EECFF4 /* Midi.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4CA161451E23700EECFF4 /* Midi.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DDE4CA861451E23800EECFF4 /* Midi.mm in Sources */ = {isa = PBXBuildFile; fileRef = DDE4CA171451E23700EECFF4 /* Midi.mm */; };
 		DDE4CA871451E23800EECFF4 /* Midi.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDE4CA181451E23700EECFF4 /* Midi.xib */; };
-		DDE4CA881451E23800EECFF4 /* PYMIDI.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4CA1A1451E23700EECFF4 /* PYMIDI.h */; settings = {ATTRIBUTES = (); }; };
-		DDE4CA891451E23800EECFF4 /* PYMIDIEndpoint.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4CA1B1451E23700EECFF4 /* PYMIDIEndpoint.h */; settings = {ATTRIBUTES = (); }; };
+		DDE4CA881451E23800EECFF4 /* PYMIDI.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4CA1A1451E23700EECFF4 /* PYMIDI.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DDE4CA891451E23800EECFF4 /* PYMIDIEndpoint.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4CA1B1451E23700EECFF4 /* PYMIDIEndpoint.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DDE4CA8A1451E23800EECFF4 /* PYMIDIEndpoint.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE4CA1C1451E23700EECFF4 /* PYMIDIEndpoint.m */; };
-		DDE4CA8B1451E23800EECFF4 /* PYMIDIEndpointDescriptor.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4CA1D1451E23700EECFF4 /* PYMIDIEndpointDescriptor.h */; settings = {ATTRIBUTES = (); }; };
+		DDE4CA8B1451E23800EECFF4 /* PYMIDIEndpointDescriptor.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4CA1D1451E23700EECFF4 /* PYMIDIEndpointDescriptor.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DDE4CA8C1451E23800EECFF4 /* PYMIDIEndpointDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE4CA1E1451E23700EECFF4 /* PYMIDIEndpointDescriptor.m */; };
-		DDE4CA8D1451E23800EECFF4 /* PYMIDIEndpointSet.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4CA1F1451E23700EECFF4 /* PYMIDIEndpointSet.h */; settings = {ATTRIBUTES = (); }; };
+		DDE4CA8D1451E23800EECFF4 /* PYMIDIEndpointSet.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4CA1F1451E23700EECFF4 /* PYMIDIEndpointSet.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DDE4CA8E1451E23800EECFF4 /* PYMIDIEndpointSet.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE4CA201451E23700EECFF4 /* PYMIDIEndpointSet.m */; };
-		DDE4CA8F1451E23800EECFF4 /* PYMIDIManager.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4CA211451E23700EECFF4 /* PYMIDIManager.h */; settings = {ATTRIBUTES = (); }; };
+		DDE4CA8F1451E23800EECFF4 /* PYMIDIManager.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4CA211451E23700EECFF4 /* PYMIDIManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DDE4CA901451E23800EECFF4 /* PYMIDIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE4CA221451E23700EECFF4 /* PYMIDIManager.m */; };
-		DDE4CA911451E23800EECFF4 /* PYMIDIRealDestination.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4CA231451E23700EECFF4 /* PYMIDIRealDestination.h */; settings = {ATTRIBUTES = (); }; };
+		DDE4CA911451E23800EECFF4 /* PYMIDIRealDestination.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4CA231451E23700EECFF4 /* PYMIDIRealDestination.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DDE4CA921451E23800EECFF4 /* PYMIDIRealDestination.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE4CA241451E23700EECFF4 /* PYMIDIRealDestination.m */; };
-		DDE4CA931451E23800EECFF4 /* PYMIDIRealEndpoint.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4CA251451E23700EECFF4 /* PYMIDIRealEndpoint.h */; settings = {ATTRIBUTES = (); }; };
+		DDE4CA931451E23800EECFF4 /* PYMIDIRealEndpoint.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4CA251451E23700EECFF4 /* PYMIDIRealEndpoint.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DDE4CA941451E23800EECFF4 /* PYMIDIRealEndpoint.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE4CA261451E23700EECFF4 /* PYMIDIRealEndpoint.m */; };
-		DDE4CA951451E23800EECFF4 /* PYMIDIRealSource.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4CA271451E23700EECFF4 /* PYMIDIRealSource.h */; settings = {ATTRIBUTES = (); }; };
+		DDE4CA951451E23800EECFF4 /* PYMIDIRealSource.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4CA271451E23700EECFF4 /* PYMIDIRealSource.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DDE4CA961451E23800EECFF4 /* PYMIDIRealSource.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE4CA281451E23700EECFF4 /* PYMIDIRealSource.m */; };
-		DDE4CA971451E23800EECFF4 /* PYMIDIUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4CA291451E23700EECFF4 /* PYMIDIUtils.h */; settings = {ATTRIBUTES = (); }; };
+		DDE4CA971451E23800EECFF4 /* PYMIDIUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4CA291451E23700EECFF4 /* PYMIDIUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DDE4CA981451E23800EECFF4 /* PYMIDIUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE4CA2A1451E23700EECFF4 /* PYMIDIUtils.m */; };
-		DDE4CA991451E23800EECFF4 /* PYMIDIVirtualDestination.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4CA2B1451E23700EECFF4 /* PYMIDIVirtualDestination.h */; settings = {ATTRIBUTES = (); }; };
+		DDE4CA991451E23800EECFF4 /* PYMIDIVirtualDestination.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4CA2B1451E23700EECFF4 /* PYMIDIVirtualDestination.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DDE4CA9A1451E23800EECFF4 /* PYMIDIVirtualDestination.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE4CA2C1451E23700EECFF4 /* PYMIDIVirtualDestination.m */; };
-		DDE4CA9B1451E23800EECFF4 /* PYMIDIVirtualEndpoint.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4CA2D1451E23700EECFF4 /* PYMIDIVirtualEndpoint.h */; settings = {ATTRIBUTES = (); }; };
+		DDE4CA9B1451E23800EECFF4 /* PYMIDIVirtualEndpoint.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4CA2D1451E23700EECFF4 /* PYMIDIVirtualEndpoint.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DDE4CA9C1451E23800EECFF4 /* PYMIDIVirtualEndpoint.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE4CA2E1451E23700EECFF4 /* PYMIDIVirtualEndpoint.m */; };
-		DDE4CA9D1451E23800EECFF4 /* PYMIDIVirtualSource.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4CA2F1451E23700EECFF4 /* PYMIDIVirtualSource.h */; settings = {ATTRIBUTES = (); }; };
+		DDE4CA9D1451E23800EECFF4 /* PYMIDIVirtualSource.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4CA2F1451E23700EECFF4 /* PYMIDIVirtualSource.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DDE4CA9E1451E23800EECFF4 /* PYMIDIVirtualSource.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE4CA301451E23700EECFF4 /* PYMIDIVirtualSource.m */; };
 		DDE4CAA31451E32700EECFF4 /* CoreMIDI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDE4CAA21451E32700EECFF4 /* CoreMIDI.framework */; };
 		DDE4D5CF1451F1F100EECFF4 /* libfmodex.dylib in Copy Files */ = {isa = PBXBuildFile; fileRef = DDE4D5CE1451F1F100EECFF4 /* libfmodex.dylib */; };
 		DDE4D5D71451F3AF00EECFF4 /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DDE4D5D61451F3AF00EECFF4 /* openFrameworksDebug.a */; };
 		DDF6500314504B20007B0C0A /* Project.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = DDF6500214504B20007B0C0A /* Project.xcconfig */; };
 		DDF6500514504B62007B0C0A /* CoreOF.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = DDF6500414504B62007B0C0A /* CoreOF.xcconfig */; };
-		DDF6500A14504DCA007B0C0A /* ofxThread.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF6500914504DCA007B0C0A /* ofxThread.h */; };
+		DDF6500A14504DCA007B0C0A /* ofxThread.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF6500914504DCA007B0C0A /* ofxThread.h */; settings = {ATTRIBUTES = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1707,13 +1707,15 @@
 				DDE4C9A21451E04500EECFF4 /* CustomGraphics.h in Headers */,
 				DDE4CA851451E23800EECFF4 /* Midi.h in Headers */,
 				DD0A33A51452F29C00CC89E5 /* Keystoner.h in Headers */,
+				DD0A33A31452F29C00CC89E5 /* KeystoneProjector.h in Headers */,
+				DD0A33A81452F29C00CC89E5 /* KeystonerOutputview.h in Headers */,
+				DD0A33AA1452F29C00CC89E5 /* KeystoneSurface.h in Headers */,
 				DD0A33A01452F29C00CC89E5 /* CorePluginsIncludes.h in Headers */,
 				DDE4C9291451DBF700EECFF4 /* NumberProperty.h in Headers */,
 				DDE4C9271451DBF700EECFF4 /* BoolProperty.h in Headers */,
 				DDE4C9251451DBF700EECFF4 /* PluginProperty.h in Headers */,
 				DDE4C9211451DBF700EECFF4 /* Plugin.h in Headers */,
 				DD0A35871454386B00CC89E5 /* ofxCocoaPlugins.h in Headers */,
-				DDF6500A14504DCA007B0C0A /* ofxThread.h in Headers */,
 				DDE4C9231451DBF700EECFF4 /* PluginManagerController.h in Headers */,
 				DDE4CA881451E23800EECFF4 /* PYMIDI.h in Headers */,
 				DDE4CA891451E23800EECFF4 /* PYMIDIEndpoint.h in Headers */,
@@ -1727,6 +1729,30 @@
 				DDE4CA991451E23800EECFF4 /* PYMIDIVirtualDestination.h in Headers */,
 				DDE4CA9B1451E23800EECFF4 /* PYMIDIVirtualEndpoint.h in Headers */,
 				DDE4CA9D1451E23800EECFF4 /* PYMIDIVirtualSource.h in Headers */,
+				DDE4C8D71451AF1500EECFF4 /* BeamSync.h in Headers */,
+				DDE4C8DB1451AF1500EECFF4 /* PluginOpenGLView.h in Headers */,
+				DDE4C9061451DBD900EECFF4 /* LoadProgressIndicator.h in Headers */,
+				DDE4C9081451DBD900EECFF4 /* OutputViewStats.h in Headers */,
+				DDE4C90C1451DBD900EECFF4 /* PluginEnabledCell.h in Headers */,
+				DDE4C90E1451DBD900EECFF4 /* PluginListMeterCell.h in Headers */,
+				DDE4C9101451DBD900EECFF4 /* PropertiesValueCell.h in Headers */,
+				DDE4C92B1451DBF700EECFF4 /* Qlab.h in Headers */,
+				DDE4C92C1451DBF700EECFF4 /* QLabController.h in Headers */,
+				DDE4C98A1451E02000EECFF4 /* MainWindow.h in Headers */,
+				DDE4C98C1451E02000EECFF4 /* ofAppCocoaWindow.h in Headers */,
+				DDE4C98E1451E02000EECFF4 /* OutputPanelController.h in Headers */,
+				DDE4C9901451E02000EECFF4 /* OutputViewManager.h in Headers */,
+				DDE4C9921451E02000EECFF4 /* SaveManager.h in Headers */,
+				DDE4C9A31451E04500EECFF4 /* Filter.h in Headers */,
+				DDE4C9A41451E04500EECFF4 /* QTKitMovieRenderer.h in Headers */,
+				DDE4C9AC1451E04500EECFF4 /* TextureGrid.h in Headers */,
+				DDE4C9AF1451E05100EECFF4 /* PluginOpenGLControlView.h in Headers */,
+				DD0A33A11452F29C00CC89E5 /* coordWarp.h in Headers */,
+				DD0A33AC1452F29C00CC89E5 /* TrackingLayer.h in Headers */,
+				DD0A33AE1452F29C00CC89E5 /* TrackingView.h in Headers */,
+				DD0A33B01452F29C00CC89E5 /* Warp.h in Headers */,
+				DD0A33B81452F29C00CC89E5 /* VideoPlayer.h in Headers */,
+				DDC266AF1454BC020016BA7B /* GeneralPreferences.h in Headers */,
 				DD0A368614543B8800CC89E5 /* ofMain.h in Headers */,
 				DD0A361014543B7900CC89E5 /* of3dUtils.h in Headers */,
 				DD0A361214543B7900CC89E5 /* ofCamera.h in Headers */,
@@ -1734,6 +1760,26 @@
 				DD0A361614543B7900CC89E5 /* ofMesh.h in Headers */,
 				DD0A361814543B7900CC89E5 /* ofNode.h in Headers */,
 				DD0A361914543B7900CC89E5 /* ofAppBaseWindow.h in Headers */,
+				DDF6500A14504DCA007B0C0A /* ofxThread.h in Headers */,
+				DDE4C9601451DC1500EECFF4 /* IpEndpointName.h in Headers */,
+				DDE4C9611451DC1500EECFF4 /* NetworkingUtils.h in Headers */,
+				DDE4C9621451DC1500EECFF4 /* PacketListener.h in Headers */,
+				DDE4C9631451DC1500EECFF4 /* TimerListener.h in Headers */,
+				DDE4C9641451DC1500EECFF4 /* UdpSocket.h in Headers */,
+				DDE4C9651451DC1500EECFF4 /* MessageMappingOscPacketListener.h in Headers */,
+				DDE4C9661451DC1500EECFF4 /* OscException.h in Headers */,
+				DDE4C9671451DC1500EECFF4 /* OscHostEndianness.h in Headers */,
+				DDE4C9681451DC1500EECFF4 /* OscOutboundPacketStream.h in Headers */,
+				DDE4C9691451DC1500EECFF4 /* OscPacketListener.h in Headers */,
+				DDE4C96A1451DC1500EECFF4 /* OscPrintReceivedElements.h in Headers */,
+				DDE4C96B1451DC1500EECFF4 /* OscReceivedElements.h in Headers */,
+				DDE4C96C1451DC1500EECFF4 /* OscTypes.h in Headers */,
+				DDE4C9761451DC1500EECFF4 /* ofxOsc.h in Headers */,
+				DDE4C9771451DC1500EECFF4 /* ofxOscArg.h in Headers */,
+				DDE4C9791451DC1500EECFF4 /* ofxOscBundle.h in Headers */,
+				DDE4C97B1451DC1500EECFF4 /* ofxOscMessage.h in Headers */,
+				DDE4C97D1451DC1500EECFF4 /* ofxOscReceiver.h in Headers */,
+				DDE4C97F1451DC1500EECFF4 /* ofxOscSender.h in Headers */,
 				DD0A361B14543B7900CC89E5 /* ofAppGlutWindow.h in Headers */,
 				DD0A361D14543B7900CC89E5 /* ofAppRunner.h in Headers */,
 				DD0A361E14543B7900CC89E5 /* ofBaseApp.h in Headers */,
@@ -1781,62 +1827,6 @@
 				DD0A366B14543B7900CC89E5 /* ofTypes.h in Headers */,
 				DD0A366C14543B7900CC89E5 /* ofConstants.h in Headers */,
 				DD0A366E14543B7900CC89E5 /* ofFileUtils.h in Headers */,
-				DD0A367014543B7900CC89E5 /* ofLog.h in Headers */,
-				DD0A367114543B7900CC89E5 /* ofNoise.h in Headers */,
-				DD0A367314543B7900CC89E5 /* ofSystemUtils.h in Headers */,
-				DD0A367514543B7900CC89E5 /* ofThread.h in Headers */,
-				DD0A367714543B7900CC89E5 /* ofURLFileLoader.h in Headers */,
-				DD0A367914543B7900CC89E5 /* ofUtils.h in Headers */,
-				DD0A367B14543B7900CC89E5 /* ofVideoGrabber.h in Headers */,
-				DD0A367D14543B7900CC89E5 /* ofVideoPlayer.h in Headers */,
-				DD0A368114543B7900CC89E5 /* ofQuickTimeGrabber.h in Headers */,
-				DD0A368314543B7900CC89E5 /* ofQuickTimePlayer.h in Headers */,
-				DD0A368514543B7900CC89E5 /* ofQtUtils.h in Headers */,
-				DDE4C8D71451AF1500EECFF4 /* BeamSync.h in Headers */,
-				DDE4C8DB1451AF1500EECFF4 /* PluginOpenGLView.h in Headers */,
-				DDE4C9061451DBD900EECFF4 /* LoadProgressIndicator.h in Headers */,
-				DDE4C9081451DBD900EECFF4 /* OutputViewStats.h in Headers */,
-				DDE4C90C1451DBD900EECFF4 /* PluginEnabledCell.h in Headers */,
-				DDE4C90E1451DBD900EECFF4 /* PluginListMeterCell.h in Headers */,
-				DDE4C9101451DBD900EECFF4 /* PropertiesValueCell.h in Headers */,
-				DDE4C92B1451DBF700EECFF4 /* Qlab.h in Headers */,
-				DDE4C92C1451DBF700EECFF4 /* QLabController.h in Headers */,
-				DDE4C9601451DC1500EECFF4 /* IpEndpointName.h in Headers */,
-				DDE4C9611451DC1500EECFF4 /* NetworkingUtils.h in Headers */,
-				DDE4C9621451DC1500EECFF4 /* PacketListener.h in Headers */,
-				DDE4C9631451DC1500EECFF4 /* TimerListener.h in Headers */,
-				DDE4C9641451DC1500EECFF4 /* UdpSocket.h in Headers */,
-				DDE4C9651451DC1500EECFF4 /* MessageMappingOscPacketListener.h in Headers */,
-				DDE4C9661451DC1500EECFF4 /* OscException.h in Headers */,
-				DDE4C9671451DC1500EECFF4 /* OscHostEndianness.h in Headers */,
-				DDE4C9681451DC1500EECFF4 /* OscOutboundPacketStream.h in Headers */,
-				DDE4C9691451DC1500EECFF4 /* OscPacketListener.h in Headers */,
-				DDE4C96A1451DC1500EECFF4 /* OscPrintReceivedElements.h in Headers */,
-				DDE4C96B1451DC1500EECFF4 /* OscReceivedElements.h in Headers */,
-				DDE4C96C1451DC1500EECFF4 /* OscTypes.h in Headers */,
-				DDE4C9761451DC1500EECFF4 /* ofxOsc.h in Headers */,
-				DDE4C9771451DC1500EECFF4 /* ofxOscArg.h in Headers */,
-				DDE4C9791451DC1500EECFF4 /* ofxOscBundle.h in Headers */,
-				DDE4C97B1451DC1500EECFF4 /* ofxOscMessage.h in Headers */,
-				DDE4C97D1451DC1500EECFF4 /* ofxOscReceiver.h in Headers */,
-				DDE4C97F1451DC1500EECFF4 /* ofxOscSender.h in Headers */,
-				DDE4C98A1451E02000EECFF4 /* MainWindow.h in Headers */,
-				DDE4C98C1451E02000EECFF4 /* ofAppCocoaWindow.h in Headers */,
-				DDE4C98E1451E02000EECFF4 /* OutputPanelController.h in Headers */,
-				DDE4C9901451E02000EECFF4 /* OutputViewManager.h in Headers */,
-				DDE4C9921451E02000EECFF4 /* SaveManager.h in Headers */,
-				DDE4C9A31451E04500EECFF4 /* Filter.h in Headers */,
-				DDE4C9A41451E04500EECFF4 /* QTKitMovieRenderer.h in Headers */,
-				DDE4C9AC1451E04500EECFF4 /* TextureGrid.h in Headers */,
-				DDE4C9AF1451E05100EECFF4 /* PluginOpenGLControlView.h in Headers */,
-				DD0A33A11452F29C00CC89E5 /* coordWarp.h in Headers */,
-				DD0A33A31452F29C00CC89E5 /* KeystoneProjector.h in Headers */,
-				DD0A33A81452F29C00CC89E5 /* KeystonerOutputview.h in Headers */,
-				DD0A33AA1452F29C00CC89E5 /* KeystoneSurface.h in Headers */,
-				DD0A33AC1452F29C00CC89E5 /* TrackingLayer.h in Headers */,
-				DD0A33AE1452F29C00CC89E5 /* TrackingView.h in Headers */,
-				DD0A33B01452F29C00CC89E5 /* Warp.h in Headers */,
-				DD0A33B81452F29C00CC89E5 /* VideoPlayer.h in Headers */,
 				DD0A349C1452F2CE00CC89E5 /* cv.h in Headers */,
 				DD0A349D1452F2CE00CC89E5 /* cv.hpp in Headers */,
 				DD0A349E1452F2CE00CC89E5 /* cvaux.h in Headers */,
@@ -1925,7 +1915,17 @@
 				DD0A35721452F32700CC89E5 /* ofxVec4f.h in Headers */,
 				DD0A35731452F32700CC89E5 /* ofxVectorMath.h in Headers */,
 				DD0A368514543B7900CC89E5 /* ofQtUtils.h in Headers */,
-				DDC266AF1454BC020016BA7B /* GeneralPreferences.h in Headers */,
+				DD0A368514543B7900CC89E5 /* ofQtUtils.h in Headers */,
+				DD0A367014543B7900CC89E5 /* ofLog.h in Headers */,
+				DD0A367114543B7900CC89E5 /* ofNoise.h in Headers */,
+				DD0A367314543B7900CC89E5 /* ofSystemUtils.h in Headers */,
+				DD0A367514543B7900CC89E5 /* ofThread.h in Headers */,
+				DD0A367714543B7900CC89E5 /* ofURLFileLoader.h in Headers */,
+				DD0A367914543B7900CC89E5 /* ofUtils.h in Headers */,
+				DD0A367B14543B7900CC89E5 /* ofVideoGrabber.h in Headers */,
+				DD0A367D14543B7900CC89E5 /* ofVideoPlayer.h in Headers */,
+				DD0A368114543B7900CC89E5 /* ofQuickTimeGrabber.h in Headers */,
+				DD0A368314543B7900CC89E5 /* ofQuickTimePlayer.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

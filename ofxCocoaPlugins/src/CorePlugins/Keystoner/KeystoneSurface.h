@@ -32,6 +32,7 @@
 @property (readwrite) int projectorNumber;
 @property (readwrite) int softedgePart;
 @property (readwrite) int softedgeTotalParts;
+@property (readonly) Warp * warp;
 
 -(void) resetCorners;
 -(void) recalculate;

@@ -23,6 +23,7 @@ Warp::~Warp()
 	cvReleaseMat(&cv_translate_3x3);
 	cvReleaseMat(&cv_srcmatrix_4x2);
 	cvReleaseMat(&cv_dstmatrix_4x2);
+    
 }
 
 void
@@ -102,35 +103,66 @@ Warp::MatrixCalculate()
 	cvSetData( cv_srcmatrix_4x2, cvsrc, sizeof(CvPoint2D32f));
 	cvSetData( cv_dstmatrix_4x2, cvdst, sizeof(CvPoint2D32f));
 	
-
 	cvFindHomography(cv_srcmatrix_4x2, cv_dstmatrix_4x2, cv_translate_3x3);
 	
 	float *matrix = cv_translate_3x3->data.fl;
-	gl_matrix_4x4[0]		= matrix[0];
-	gl_matrix_4x4[1]		= matrix[3];
-	gl_matrix_4x4[2]		= 0;
-	gl_matrix_4x4[3]		= matrix[6];
+	
+    cout << "--------------------------------------------" << endl << endl;
+    
+    cout << matrix[0] << ", \t" << matrix[1] << ", \t" << matrix[2] << endl;
+    cout << matrix[3] << ", \t" << matrix[4] << ", \t" << matrix[5] << endl;
+    cout << matrix[6] << ", \t" << matrix[7] << ", \t" << matrix[8] << endl << endl;
+    
+    cout << "--------------------------------------------" << endl << endl;
 
+    
+    //we need to copy these values
+    //from the 3x3 2D openCV matrix which is row ordered
+    //
+    // ie:   [0][1][2] x
+    //       [3][4][5] y
+    //       [6][7][8] w
+    
+    //to openGL's 4x4 3D column ordered matrix
+    //        x  y  z  w   
+    // ie:   [0][3][ ][6]
+    //       [1][4][ ][7]
+    //               [ ][ ][ ][ ]
+    //       [2][5][ ][9]
+    //       
+    
+    gl_matrix_4x4[0]		= matrix[0];
 	gl_matrix_4x4[4]		= matrix[1];
-	gl_matrix_4x4[5]		= matrix[4];
-	gl_matrix_4x4[6]		= 0;
-	gl_matrix_4x4[7]		= matrix[7];
-
-	gl_matrix_4x4[8]		= 0;
-	gl_matrix_4x4[9]		= 0;
-	gl_matrix_4x4[10]		= 0;
-	gl_matrix_4x4[11]		= 0;
-
 	gl_matrix_4x4[12]		= matrix[2];
-	gl_matrix_4x4[13]		= matrix[5];
-	gl_matrix_4x4[14]		= 0;
-	gl_matrix_4x4[15]		= matrix[8];
 
+	gl_matrix_4x4[1]		= matrix[3];
+	gl_matrix_4x4[5]		= matrix[4];
+	gl_matrix_4x4[13]		= matrix[5];
+	
+    gl_matrix_4x4[3]		= matrix[6];
+    gl_matrix_4x4[7]		= matrix[7];
+    gl_matrix_4x4[15]		= matrix[8];
+
+    
+    gl_matrix_4x4[2]		= 0;
+    gl_matrix_4x4[6]		= 0;
+    gl_matrix_4x4[8]		= 0;
+    gl_matrix_4x4[9]		= 0;
+    gl_matrix_4x4[10]		= 1;
+    gl_matrix_4x4[11]		= 0;
+    gl_matrix_4x4[14]		= 0;
+
+    cout << gl_matrix_4x4[0] << ", \t" << gl_matrix_4x4[1] << ", \t" << gl_matrix_4x4[2] << ", \t" << gl_matrix_4x4[3] << endl;
+    cout << gl_matrix_4x4[4] << ", \t" << gl_matrix_4x4[5] << ", \t" << gl_matrix_4x4[6] << ", \t" << gl_matrix_4x4[7] << endl;
+    cout << gl_matrix_4x4[8] << ", \t" << gl_matrix_4x4[9] << ", \t" << gl_matrix_4x4[10] << ", \t" << gl_matrix_4x4[11] << endl;
+    cout << gl_matrix_4x4[12] << ", \t" << gl_matrix_4x4[13] << ", \t" << gl_matrix_4x4[14] << ", \t" << gl_matrix_4x4[15] << endl << endl;
+    
+    cout << "============================================" << endl<< endl;
+    
 	return gl_matrix_4x4;
 }
 
-void
-Warp::MatrixMultiply()
+void Warp::MatrixMultiply()
 {
 	glMultMatrixf(gl_matrix_4x4);
 }
