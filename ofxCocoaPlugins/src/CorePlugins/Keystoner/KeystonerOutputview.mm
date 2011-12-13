@@ -1,5 +1,6 @@
 #import "KeystonerOutputview.h"
 #import "KeystoneSurface.h"
+#import "OutputViewManager.h"
 
 extern NSArray * arrayOfSurfaceNames;
 

@@ -5,7 +5,7 @@
 #import "PluginOpenGLControlView.h"
 #import "PluginManagerController.h"
 #import "Plugin.h"
-
+#import "OutputViewManager.h"
 
 @implementation PluginOpenGLControlView
 @synthesize controller, drawingInformation, plugin;

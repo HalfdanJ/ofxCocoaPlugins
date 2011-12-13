@@ -5,7 +5,8 @@
 #import "BeamSync.h"
 #include "PluginOpenGLControlView.h"
 #include "MainWindow.h"
-
+#import "SaveManager.h"
+#import "GeneralPreferences.h"
 
 PluginManagerController * globalController;
 

@@ -15,7 +15,8 @@ HEADER_TESS2 = "$(OF_PATH)/libs/tess2/include"
 HEADER_CAIRO = "$(OF_PATH)/libs/cairo/include/cairo"
 HEADER_RTAUDIO = "$(OF_PATH)/libs/rtaudio/include"
 HEADER_PYMIDI = "$(OFX_PATH)ofxCocoaPlugins/src/CorePlugins/Midi/pymidi"
-HEADER_OPENCV = "$(OF_PATH)/addons/ofxOpenCv/libs/opencv/include"
+HEADER_OPENCV = "$(OF_PATH)/addons/ofxOpenCv/libs/opencv/include/" "$(OF_PATH)/addons/ofxOpenCv/libs/opencv/include/opencv" "$(OF_PATH)/addons/ofxOpenCv/src" 
+HEADER_OSC = "$(OF_PATH)/addons/ofxOsc/libs/oscpack/include/ip" "$(OF_PATH)/addons/ofxOsc/libs/oscpack/include/osc" "$(OF_PATH)/addons/ofxOsc/src" 
 
 LIB_FMODEX = "$(OF_PATH)/libs/fmodex/lib/osx/libfmodex.dylib"
 LIB_GLUT = "$(OF_PATH)/libs/glut/lib/osx/GLUT.framework/Versions/A/GLUT"
@@ -32,11 +33,12 @@ LIB_CAIRO1 = "$(OF_PATH)/libs/cairo/lib/osx/cairo-script-interpreter.a"
 LIB_CAIRO2 = "$(OF_PATH)/libs/cairo/lib/osx/cairo.a"
 LIB_CAIRO3 = "$(OF_PATH)/libs/cairo/lib/osx/pixman-1.a"
 LIB_OPENCV = "$(OF_PATH)/addons/ofxOpenCv/libs/opencv/lib/osx/opencv.a"
+LIB_OSC = "$(OF_PATH)/addons/ofxOsc/libs/oscpack/lib/osx/osc.a"
 
-OF_CORE_LIBS = $(LIB_GLEW) $(LIB_TESS) $(LIB_POCOFOUNDATION) $(LIB_CAIRO1) $(LIB_CAIRO2) $(LIB_CAIRO3) $(LIB_OPENCV)  //$(LIB_FMODEX) $(LIB_POCONET) $(LIB_POCOXML) $(LIB_POCOUTIL)  $(LIB_RTAUDIO)
+OF_CORE_LIBS = $(LIB_GLEW) $(LIB_TESS) $(LIB_POCOFOUNDATION) $(LIB_CAIRO1) $(LIB_CAIRO2) $(LIB_CAIRO3) $(LIB_OPENCV) $(LIB_OSC)  //$(LIB_FMODEX) $(LIB_POCONET) $(LIB_POCOXML) $(LIB_POCOUTIL)  $(LIB_RTAUDIO)
 OF_CORE_HEADERS = //$(HEADER_OF)  $(HEADER_FREETYPE) $(HEADER_FREETYPE2)  $(HEADER_FREEIMAGE)  $(HEADER_RTAUDIO)
 
-USER_HEADER_SEARCH_PATHS =  $(HEADER_OF) $(HEADER_GLEW) $(HEADER_TESS2) $(HEADER_POCO) $(HEADER_CAIRO) $(HEADER_FMODEX) $(HEADER_OPENCV) //$ 
+USER_HEADER_SEARCH_PATHS =  $(HEADER_OF) $(HEADER_GLEW) $(HEADER_TESS2) $(HEADER_POCO) $(HEADER_CAIRO) $(HEADER_FMODEX) $(HEADER_OPENCV) $(HEADER_OSC) //$ 
 
 
 OTHER_LDFLAGS = $(OF_CORE_LIBS) 

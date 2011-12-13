@@ -2,7 +2,7 @@
 #import <Cocoa/Cocoa.h>
 
 
-@interface LoadProgressIndicator : NSView {
+@interface LoadProgressIndicator : NSProgressIndicator {
 	double doubleValue;
 	NSView * progressView;
 }

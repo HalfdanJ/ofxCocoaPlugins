@@ -136,7 +136,7 @@ typedef struct OpenGLTextureCoordinates OpenGLTextureCoordinates;
 		
 		OSStatus err = QTPixelBufferContextCreate(kCFAllocatorDefault, (CFDictionaryRef)ctxAttributes, &_visualContext);
 		if(err){
-			NSLog(@"error %i creating OpenGLTextureContext", err);
+			NSLog(@"error %ld creating OpenGLTextureContext", err);
 			//return NO;
 		}
 		
@@ -147,7 +147,7 @@ typedef struct OpenGLTextureCoordinates OpenGLTextureCoordinates;
 											 CGLGetCurrentContext(), CGLGetPixelFormat(CGLGetCurrentContext()), 
 											 (CFDictionaryRef)ctxAttributes, &_textureCache);
 			if(err){
-				NSLog(@"error %i creating CVOpenGLTextureCacheCreate", err);
+				NSLog(@"error %ld creating CVOpenGLTextureCacheCreate", err);
 				//return NO;
 			}
 		}
@@ -158,7 +158,7 @@ typedef struct OpenGLTextureCoordinates OpenGLTextureCoordinates;
 													CGLGetCurrentContext(), CGLGetPixelFormat(CGLGetCurrentContext()),
 													(CFDictionaryRef)NULL, &_visualContext);	
 		if(err){
-			NSLog(@"error %i creating QTOpenGLTextureContextCreate", err);
+			NSLog(@"error %ld creating QTOpenGLTextureContextCreate", err);
 			//return NO;
 		}
 	}

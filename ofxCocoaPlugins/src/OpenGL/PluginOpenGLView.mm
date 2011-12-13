@@ -7,6 +7,7 @@
 
 #import "PluginManagerController.h"
 #import "OutputViewStats.h"
+#import "OutputViewManager.h"
 
 //
 //----------------
@@ -270,7 +271,7 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 	
     // cout << "1 OUTPUT DRAW END" << [controller openglLock] << endl;
 
-        [globalController setLastViewDrawn:[self viewNumber]]; // let the controlView in
+    [controller setLastViewDrawn:[self viewNumber]]; // let the controlView in
 	[[controller openglLock] unlock];	
 }
 
@@ -388,7 +389,7 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 	[[self window] setFrame:windowRect display:YES animate:YES];
 	
 	free(displays);
-	NSLog(@"		Select display %ld for outputView %i",[sender indexOfSelectedItem]-1, viewNumber);
+	NSLog(@"		Select display %d for outputView %i",[sender indexOfSelectedItem]-1, viewNumber);
 }
 
 

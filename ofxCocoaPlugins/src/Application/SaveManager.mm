@@ -108,7 +108,7 @@
 
 - (IBAction) loadLastDataFromDisk:(id)sender{
 	if([self dataPath] != nil){
-		data = [[NSData alloc] initWithContentsOfFile:[self dataPath]];
+		data = [[NSMutableData alloc] initWithContentsOfFile:[self dataPath]];
 		if(data != nil){
 			NSLog(@"Load file: %@",[self dataPath]);
 			NSKeyedUnarchiver * _unarchiver = [[NSKeyedUnarchiver alloc] initForReadingWithData:data];

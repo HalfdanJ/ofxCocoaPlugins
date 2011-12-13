@@ -3,10 +3,7 @@
 
 #import <Cocoa/Cocoa.h>
 #import <QuartzCore/QuartzCore.h>
-
-#include "SaveManager.h"
-#include "OutputViewManager.h"
-#import "GeneralPreferences.h"
+#import <ofxCocoaPlugins/OutputViewManager.h>
 
 #define IGNORE_NIL_TYPE
 #include "ofxOsc.h"
@@ -14,6 +11,8 @@
 @class ofPlugin;
 @class QLabController;
 @class MainWindow;
+@class SaveManager;
+@class GeneralPreferences;
 
 @interface PluginManagerController : NSObject <NSWindowDelegate>{
 	IBOutlet MainWindow * mainWindow;

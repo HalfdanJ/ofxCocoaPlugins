@@ -42,7 +42,7 @@ static void midiReadProc (const MIDIPacketList* packetList, void* createRefCon, 
     descriptor = [PYMIDIEndpointDescriptor descriptorWithName:newName uniqueID:newUniqueID];
     
     [self release];
-    return [[manager realSourceWithDescriptor:descriptor] retain];
+    return (PYMIDIRealSource*)[[manager realSourceWithDescriptor:descriptor] retain];
 }
 
 

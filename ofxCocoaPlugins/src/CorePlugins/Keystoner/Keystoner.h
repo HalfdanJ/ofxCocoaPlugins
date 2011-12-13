@@ -3,7 +3,8 @@
 
 #define Surface(s,p) ([GetPlugin(Keystoner) getSurface:s viewNumber:ViewNumber projectorNumber:p])
 
-#define Aspect(s,p) ([[Surface(s,p) aspect] floatValue])
+//#define Aspect(s,p) ([[Surface(s,p) aspect] floatValue])
+#define Aspect(s,p) ([[Surface(s,p) valueForKey:@"aspect"] floatValue])
 
 //#define ApplySurface(s,p) if([Surface(s,p) visible]) { [Surface(s,p) apply];
 #define ApplySurfaceForProjector(s,p) {if([Surface(s,p) visible]) { [GetPlugin(Keystoner)  applySurface:s projectorNumber:p viewNumber:ViewNumber];

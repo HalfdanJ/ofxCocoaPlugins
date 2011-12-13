@@ -16,8 +16,10 @@
 
 #import <ofxCocoaPlugins/NumberProperty.h>
 #import <ofxCocoaPlugins/BoolProperty.h>
+#import <ofxCocoaPlugins/PluginManagerController.h>
 
-@class PluginManagerController, PluginOpenGLControlView;
+
+@class PluginOpenGLControlView;
 
 extern PluginManagerController * globalController;
 

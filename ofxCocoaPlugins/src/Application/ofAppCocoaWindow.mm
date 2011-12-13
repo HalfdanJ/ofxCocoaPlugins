@@ -19,7 +19,7 @@ ofAppCocoaWindow::ofAppCocoaWindow() {
 	nFrameCount				= 0;
 	windowMode				= 0;
 	bNewScreenMode			= false;
-	timeNow, timeThen, fps	= 0.0f;
+	fps                     = 0.0f;
 	nFramesForFPS			= 2;
 	nFrameCount				= 0;
 	buttonInUse				= 0;

@@ -118,7 +118,7 @@
 			NSRange prefixRange = [beginsTest rangeOfString:searchString options:(0)];
 			
 			if(prefixRange.length > 0){
-				NSLog(@"Cue %@ prefix length: %lu  searchstring length: %i",[cue qName], prefixRange.length, length);
+				NSLog(@"Cue %@ prefix length: %u  searchstring length: %i",[cue qName], prefixRange.length, length);
 				
 				[self setMidiChannel:[[proptery midiChannel] intValue] number:[[proptery midiNumber] intValue] forCue:cue];
 				//[cue set
@@ -192,7 +192,7 @@
 	}
 	
 	
-	NSLog(@"Make new cue: %i	multiple selection: %i   Number selection: %lu",makeNewCue,multipleSelection,[selectedCues count]);
+	NSLog(@"Make new cue: %i	multiple selection: %i   Number selection: %u",makeNewCue,multipleSelection,[selectedCues count]);
 	
 	
 	//Nu går vi igennem alle cues, og populater propertyCues, og ser om vi kan udfylde this, next og prev
@@ -203,7 +203,7 @@
 		
 		NSString *beginsTest = cueName;
 		NSRange prefixRange = [beginsTest rangeOfString:searchString options:(0)];		
-		NSLog(@"Search length: %lu for cue %@", prefixRange.length, cueName);
+		NSLog(@"Search length: %u for cue %@", prefixRange.length, cueName);
 		
 		if(prefixRange.length > 0){
 			//Det er en property cue
