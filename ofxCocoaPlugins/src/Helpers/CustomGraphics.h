@@ -2,7 +2,7 @@
 #include "ofMain.h"
 #include "ofVectorMath.h"
 
-void of2DArrow(ofVec2f begin, ofVec2f end, float headSize){
+static void of2DArrow(ofVec2f begin, ofVec2f end, float headSize){
     // Compute the vector along the arrow direction
     ofVec2f v = begin-end;
     v.normalize();
