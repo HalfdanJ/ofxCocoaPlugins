@@ -3,6 +3,7 @@
 #include "KeystonerOutputview.h"
 #include "TrackingLayer.h"
 #import "KeystoneSurface.h"
+#import "KeystonePerspective.h"
 #import "OutputViewManager.h"
 
 
@@ -14,9 +15,14 @@
 		outputViews = [[NSMutableArray array] retain];
 		willDraw = YES;
 		surfaces = [NSArray arrayWithArray:_surfaces];
+                
+        perspectives = [NSMutableDictionary dictionary];
+        
+        for(NSString* surfaceName in surfaces){
+            [perspectives setObject:[KeystonePerspective perspectiveWithSurfaceName:surfaceName] forKey:surfaceName];
+        }
         
         [self setSelectedOutputview:0];
-		
 		
 		[self addObserver:self forKeyPath:@"customProperties" options:nil context:@"customProperties"];
 		[self addObserver:self forKeyPath:@"selectedSurfaceIndexSet" options:nil context:@"outputView"];
@@ -135,9 +141,17 @@
 		
 		appliedSurface = nil;
 	} 
-	
-	
+		
 }
+
+-(void)applyPerspective{
+    [[perspectives objectForKey:[appliedSurface name]] apply];
+}
+
+-(void)popPerspective{
+    [[perspectives objectForKey:[appliedSurface name]] pop];
+}
+
 
 -(void) draw:(NSDictionary *)drawingInformation{
     ofEnableAlphaBlending();
@@ -201,6 +215,15 @@
 		[keystoneSaveableInformation addObject:viewProjectors];
 		
 	}
+    
+    NSMutableDictionary * perspectiveSaveDict = [NSMutableDictionary dictionary];
+    
+    for(NSString * perspectiveKey in perspectives){
+        KeystonePerspective * perspective = [perspectives objectForKey:perspectiveKey];
+        [perspectiveSaveDict setValue:[perspective saveData] forKey:perspectiveKey];
+    }
+    
+    [props setValue:perspectiveSaveDict forKey:@"perspectives"];
 	
 	return props;
 }
@@ -263,6 +286,16 @@
 			viewi++;
 			
 		}
+        
+        NSDictionary * perspectiveSaveDict = [customProperties objectForKey:@"perspectives"];
+
+        for(NSString * perspectiveKey in perspectives){
+            KeystonePerspective * perspective = [perspectives objectForKey:perspectiveKey];
+            NSDictionary * saveDict = [perspectiveSaveDict objectForKey:perspectiveKey];
+            if(saveDict != nil){
+                [perspective setSaveData:saveDict];
+            }
+        }        
 		
 		[self updateProjectorButtons];
 		

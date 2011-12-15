@@ -74,6 +74,8 @@
 		3D3B795F1492250200743828 /* ofQuickTimeGrabber.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A360914543B7800CC89E5 /* ofQuickTimeGrabber.h */; };
 		3D3B79601492250200743828 /* ofQuickTimePlayer.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A360B14543B7800CC89E5 /* ofQuickTimePlayer.h */; };
 		3D3B79611492250200743828 /* ofQtUtils.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A360D14543B7800CC89E5 /* ofQtUtils.h */; };
+		7FB6BAA41499F75000FE24C9 /* KeystonePerspective.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FB6BAA21499F75000FE24C9 /* KeystonePerspective.h */; };
+		7FB6BAA51499F75000FE24C9 /* KeystonePerspective.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7FB6BAA31499F75000FE24C9 /* KeystonePerspective.mm */; };
 		DD0A33A01452F29C00CC89E5 /* CorePluginsIncludes.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A334A1452F29C00CC89E5 /* CorePluginsIncludes.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DD0A33A11452F29C00CC89E5 /* coordWarp.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A334C1452F29C00CC89E5 /* coordWarp.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DD0A33A21452F29C00CC89E5 /* coordWarp.mm in Sources */ = {isa = PBXBuildFile; fileRef = DD0A334D1452F29C00CC89E5 /* coordWarp.mm */; };
@@ -477,6 +479,8 @@
 
 /* Begin PBXFileReference section */
 		3D2FC2281462EC7C0028BC01 /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
+		7FB6BAA21499F75000FE24C9 /* KeystonePerspective.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeystonePerspective.h; sourceTree = "<group>"; };
+		7FB6BAA31499F75000FE24C9 /* KeystonePerspective.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = KeystonePerspective.mm; sourceTree = "<group>"; };
 		DD0A334A1452F29C00CC89E5 /* CorePluginsIncludes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CorePluginsIncludes.h; sourceTree = "<group>"; };
 		DD0A334C1452F29C00CC89E5 /* coordWarp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = coordWarp.h; sourceTree = "<group>"; };
 		DD0A334D1452F29C00CC89E5 /* coordWarp.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = coordWarp.mm; sourceTree = "<group>"; };
@@ -843,6 +847,8 @@
 				DD0A335A1452F29C00CC89E5 /* TrackingView.mm */,
 				DD0A335B1452F29C00CC89E5 /* Warp.h */,
 				DD0A335C1452F29C00CC89E5 /* Warp.mm */,
+				7FB6BAA21499F75000FE24C9 /* KeystonePerspective.h */,
+				7FB6BAA31499F75000FE24C9 /* KeystonePerspective.mm */,
 			);
 			path = Keystoner;
 			sourceTree = "<group>";
@@ -1926,6 +1932,7 @@
 				DD0A367D14543B7900CC89E5 /* ofVideoPlayer.h in Headers */,
 				DD0A368114543B7900CC89E5 /* ofQuickTimeGrabber.h in Headers */,
 				DD0A368314543B7900CC89E5 /* ofQuickTimePlayer.h in Headers */,
+				7FB6BAA41499F75000FE24C9 /* KeystonePerspective.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2081,6 +2088,7 @@
 				DD0A33B11452F29C00CC89E5 /* Warp.mm in Sources */,
 				DD0A33B91452F29C00CC89E5 /* VideoPlayer.mm in Sources */,
 				DDC266B01454BC020016BA7B /* GeneralPreferences.mm in Sources */,
+				7FB6BAA51499F75000FE24C9 /* KeystonePerspective.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

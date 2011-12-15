@@ -87,17 +87,17 @@ Warp::MatrixCalculate()
 {	
 	cvsrc[0].x = 0;
 	cvsrc[0].y = 0;
-	cvsrc[1].x = w;
+	cvsrc[1].x = 1;
 	cvsrc[1].y = 0;
-	cvsrc[2].x = w;
-	cvsrc[2].y = h;
+	cvsrc[2].x = 1;
+	cvsrc[2].y = h/w;
 	cvsrc[3].x = 0;
-	cvsrc[3].y = h;
+	cvsrc[3].y = h/w;
 
 	for(int i = 0; i < 4; i++){
 		
-		cvdst[i].x = corners[i].x * w;
-		cvdst[i].y = corners[i].y * h;
+		cvdst[i].x = corners[i].x;
+		cvdst[i].y = corners[i].y;
 	}
 
 	cvSetData( cv_srcmatrix_4x2, cvsrc, sizeof(CvPoint2D32f));

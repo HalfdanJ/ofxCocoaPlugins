@@ -10,6 +10,8 @@
 #define ApplySurfaceForProjector(s,p) {if([Surface(s,p) visible]) { [GetPlugin(Keystoner)  applySurface:s projectorNumber:p viewNumber:ViewNumber];
 #define PopSurfaceForProjector() [GetPlugin(Keystoner)  popSurface]; }}
 
+#define PopPerspective() [GetPlugin(Keystoner) popPerspective]; }}
+
 #define ApplySurface(s) {int appliedProjector=-1;for(KeystoneProjector*proj in [[[GetPlugin(Keystoner) outputViews] objectAtIndex:ViewNumber] projectors]){ appliedProjector++; if(appliedProjector > 0)[GetPlugin(Keystoner)  popSurface]; ApplySurfaceForProjector(s,appliedProjector)
 
 #define PopSurface() PopSurfaceForProjector() }}
@@ -31,6 +33,7 @@
 //    [GetPlugin(Keystoner)  popSurface]; } }}
 @class KeystonerOutputview;
 @class TrackingLayer;
+@class KeystonePerspective;
 @class KeystoneSurface;
 
 @interface Keystoner : ofPlugin {
@@ -51,6 +54,8 @@
 
 	TrackingLayer * trackingLayer;
 	
+    NSMutableDictionary * perspectives;
+    
 	NSMutableArray * outputViews;
 	NSArray * surfaces;
 	int selectedOutputview;
@@ -90,6 +95,11 @@
 -(void) applySurface:(KeystoneSurface*)surface;
 
 -(void) popSurface;
+
+-(void) applyPerspective;
+-(void) popPerspective;
+
+
 @property (retain, readonly) TrackingLayer * trackingLayer;
 
 @property (retain, readonly) NSMutableArray * outputViews;
