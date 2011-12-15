@@ -152,6 +152,13 @@
     [[perspectives objectForKey:[appliedSurface name]] pop];
 }
 
+-(KeystonePerspective*) getPerspectiveForSurface:(NSString*)surfaceName {
+    return [perspectives objectForKey:surfaceName];
+}
+
+-(KeystonePerspective*) getAppliedPerspective:(NSString*)surfaceName {
+    return [self getPerspectiveForSurface:[appliedSurface name]];
+}
 
 -(void) draw:(NSDictionary *)drawingInformation{
     ofEnableAlphaBlending();

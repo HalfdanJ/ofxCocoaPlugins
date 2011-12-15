@@ -11,7 +11,7 @@
 #import "Keystoner.h"
 
 @implementation KeystonePerspective
-@synthesize applied, surfaceName;
+@synthesize applied, surfaceName, viewPoint, scale;
 
 +(KeystonePerspective *) perspectiveWithSurfaceName:(NSString *)surfaceName {
 
@@ -31,18 +31,24 @@
     
 }
 
+- (id)init {
+    self = [super init];
+    if (self) {
+        viewPoint = ofVec3f(0,0,0);
+        scale = 1.0; // 0-1 fades from orthographic to perspective, but 1.0-2 fades from perspective to flat
+    }
+    return self;
+}
+
 -(KeystonePerspective *)initWithSurfaceName:(NSString*)_surfaceName{
     if([self init]){
         surfaceName = _surfaceName;
-        viewPoint.x = viewPoint.y = viewPoint.z = 0.0;
-        scale = 1.0; // 0-1 fades from orthographic to perspective, but 1.0-2 fades from perspective to flat
     }
     return self;
 }
 
 
 -(KeystonePerspective *)initWithSurface:(id)surface{
-
     [self initWithSurfaceName:[surface name]];
     return self;
 }
@@ -60,7 +66,7 @@
                         
             float x = viewPoint.x;
             float y = viewPoint.y;
-            float z = fmaxf(0.0001,viewPoint.z);
+            float z = fminf(0.0001,viewPoint.z);
             
             float zFactor = 1.0;
             
@@ -111,6 +117,7 @@
     viewPoint.x = [[dict valueForKey:@"viewPointX"] floatValue];
     viewPoint.y = [[dict valueForKey:@"viewPointY"] floatValue];
     viewPoint.z = [[dict valueForKey:@"viewPointZ"] floatValue];
+    scale = [[dict valueForKey:@"scale"] floatValue];
 }
 
 -(NSDictionary *)saveData{
@@ -118,6 +125,7 @@
                            [NSNumber numberWithFloat:viewPoint.x], @"viewPointX",
                            [NSNumber numberWithFloat:viewPoint.y], @"viewPointY",
                            [NSNumber numberWithFloat:viewPoint.z], @"viewPointZ",
+                           [NSNumber numberWithFloat:scale], @"scale",
                            nil];
     return dict;
 }

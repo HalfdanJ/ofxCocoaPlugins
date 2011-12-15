@@ -24,12 +24,14 @@
 }
 
 @property (assign) BOOL applied;
+@property (assign) float scale;
+@property (assign) ofVec3f viewPoint;
 @property (readonly) NSString* surfaceName;
 
 +(KeystonePerspective*) perspectiveWithSurface:(KeystoneSurface*)surface;
 +(KeystonePerspective*) perspectiveWithSurfaceName:(NSString*)surfaceName;
 -(KeystonePerspective*) initWithSurface:(KeystoneSurface*)surface;
--(KeystonePerspective*)initWithSurfaceName:(NSString*)_surfaceName;
+-(KeystonePerspective*) initWithSurfaceName:(NSString*)_surfaceName;
 
 -(void) apply;
 -(void) pop;
