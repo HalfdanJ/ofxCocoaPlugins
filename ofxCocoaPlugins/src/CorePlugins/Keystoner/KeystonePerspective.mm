@@ -66,7 +66,7 @@
                         
             float x = viewPoint.x;
             float y = viewPoint.y;
-            float z = fminf(0.0001,viewPoint.z);
+            float z = fminf(-0.0001,viewPoint.z);
             
             float zFactor = 1.0;
             
