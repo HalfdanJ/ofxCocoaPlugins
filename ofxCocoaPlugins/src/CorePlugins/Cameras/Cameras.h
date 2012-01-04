@@ -1,9 +1,8 @@
 #pragma once
 
+#import <ofxCocoaPlugins/Plugin.h>
+#import <ofxCocoaPlugins/Camera.h>
 
-#include "Plugin.h"
-#include "Camera.h"
-#include "Libdc1394Grabber.h"
 
 #define GetCamera(i) [GetPlugin(Cameras) getCamera:i]
 
@@ -16,8 +15,7 @@
 	//All the instances
 	NSMutableDictionary * cameraInstances;
 	
-	//Just to list the iidc cameras in the first place
-	Libdc1394Grabber * iidcCamera;
+
 }
 
 @property (readonly) int numberCameras;

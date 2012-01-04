@@ -7,8 +7,8 @@
 //
 
 #import "Camera.h"
-
-//#import <BWToolkitFramework/BWToolkitFramework.h>
+#include "NormalCameraInstance.h"
+#include "IIDCCameraInstance.h"
 
 
 @implementation Camera
@@ -19,48 +19,49 @@
 	if([self init]){	
 		cameraInstancesRef = [dict retain];
 		
+        //Bind cameraTypeController
 		cameraTypesController = [[[NSDictionaryController alloc] init] retain];
 		[cameraTypesController bind:@"contentDictionary" toObject:self withKeyPath:@"cameraInstancesRef" options:nil];
 		
+        //Bind cameraInstanceController to the appropriate instances of the controllers 
 		cameraInstancesController = [[[NSArrayController alloc] init] retain];
-		[cameraInstancesController bind:@"contentArray" toObject:cameraTypesController withKeyPath:@"selection.value" options:nil];
-		
+		[cameraInstancesController bind:@"contentArray" toObject:cameraTypesController withKeyPath:@"selection.value.controller.instances" options:nil];
+        
+        //If a new camera is selected, the updateChosenCamera should be called
 		[cameraInstancesController addObserver:self forKeyPath:@"selection" options:nil context:@"cameraSelection"];
-		[self updateChoosedCamera];
+        
+		//No camera selected from start
+        cameraInstance = nil;
+        
+        //Kickstart
+        [self updateChosenCamera];
 	} 
 	return self;
 }
 
 -(void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context{
 	if([(NSString*)context isEqualToString:@"cameraSelection"]){
-		[self updateChoosedCamera];
+		[self updateChosenCamera];
 	}
 }
 
--(void) updateChoosedCamera{
-	//NSLog(@"updateChoosedCamera");
+-(void) updateChosenCamera{
+	//NSLog(@"updateChosenCamera");
 	if(cameraInstance != nil){
-		[cameraInstance setObject:[NSNumber numberWithInt:[[cameraInstance objectForKey:@"referenceCount"]intValue]-1] forKey:@"referenceCount"];
-		if([[cameraInstance objectForKey:@"referenceCount"]intValue] <= 0){
-			//Release the camera
-		//	[[cameraInstance objectForKey:@"object"] close];
-	 
-		}
-		//	[[cameraInstance objectForKey:@"object"] release];
+        cameraInstance.referenceCount = cameraInstance.referenceCount - 1;
 	}
 	
 	cameraInstance = [[cameraInstancesController selectedObjects] lastObject] ;
 	if(cameraInstance != nil){
-		[cameraInstance setObject:[NSNumber numberWithInt:[[cameraInstance objectForKey:@"referenceCount"]intValue]+1] forKey:@"referenceCount"];
+        cameraInstance.referenceCount = cameraInstance.referenceCount + 1;	
 		
-		
-		if([cameraInstance objectForKey:@"object"]== nil){
+		/*if([cameraInstance objectForKey:@"object"]== nil){
 			NSLog(@"New camera instance");
 			if([[[[cameraInstancesController selectedObjects] lastObject] objectForKey:@"type"] isEqualToString:@"iidc"]){
 				IIDCCameraInstance * cameraObject =  [[IIDCCameraInstance alloc]initWithGuid:[[[cameraInstancesController selectedObjects] lastObject] objectForKey:@"guid"]];
 				[cameraObject setCameraInstances:cameraInstancesRef];
-			//	NSLog(@"Camera instance ref: %@", cameraInstancesRef);
-
+                //	NSLog(@"Camera instance ref: %@", cameraInstancesRef);
+                
 				[cameraInstance setObject:cameraObject forKey:@"object"];
 			} else if([[[[cameraInstancesController selectedObjects] lastObject] objectForKey:@"type"] isEqualToString:@"normal"]){
 				NormalCameraInstance * cameraObject =  [[NormalCameraInstance alloc]initWithGuid:[[[cameraInstancesController selectedObjects] lastObject] objectForKey:@"guid"] named:[[[cameraInstancesController selectedObjects] lastObject] objectForKey:@"desc"] ];
@@ -71,14 +72,18 @@
 			} else {
 				NSLog(@"Error: Camera type not defined");	
 			}
-		} 
+		} */
 		
-		NSView * newView =    [[cameraInstance objectForKey:@"object"] makeViewInRect:NSMakeRect(0, 0, [subview bounds].size.width, [subview bounds].size.height)];
+		NSView * newView =    [cameraInstance  makeViewInRect:NSMakeRect(0, 0, [subview bounds].size.width, [subview bounds].size.height)];
+        if(newView != nil){
 		[subview setSubviews:[NSArray arrayWithObject:newView]];
+        } else {
+            [subview setSubviews:[NSArray array]];	
+        }
 		
 	} else {
 		[subview setSubviews:[NSArray array]];	
-	}
+	}    
 }
 
 -(void)setup{
@@ -86,14 +91,14 @@
 }
 
 -(void)update{
-//	if(cameraInstance != nil){
-//		[[cameraInstance objectForKey:@"object"] update];
-//	 }
+    //	if(cameraInstance != nil){
+    //		[[cameraInstance objectForKey:@"object"] update];
+    //	 }
 }
 
 -(void) draw:(NSRect)rect{
 	if(cameraInstance != nil){
-		[[cameraInstance objectForKey:@"object"] drawCamera:rect];
+		[cameraInstance drawCamera:rect];
 	}
 }
 
@@ -105,7 +110,7 @@
 	[nameTextField setStringValue:@"No Name"];
 	[nameTextField setEditable:NO];	[nameTextField setBordered:NO];	[nameTextField setBackgroundColor:[NSColor colorWithCalibratedHue:0 saturation:0 brightness:0 alpha:0]]; 
 	[nameTextField setTextColor:[NSColor whiteColor]];
-	[nameTextField bind:@"value" toObject:cameraInstancesController withKeyPath:@"selection.object.name" options:nil];
+	[nameTextField bind:@"value" toObject:cameraInstancesController withKeyPath:@"selection.name" options:nil];
 	[view addSubview:nameTextField];
 	
 	NSTextField * statusTextField = [[NSTextField alloc] initWithFrame:NSMakeRect(129, 456, 140, 17)];
@@ -113,14 +118,14 @@
 	[statusTextField setEditable:NO];	[statusTextField setBordered:NO];	[statusTextField setBackgroundColor:[NSColor colorWithCalibratedHue:0 saturation:0 brightness:0 alpha:0]]; 
 	[statusTextField setTextColor:[NSColor whiteColor]];
 	[statusTextField setAlignment:NSRightTextAlignment];
-	[statusTextField bind:@"value" toObject:cameraInstancesController withKeyPath:@"selection.object.status" options:nil];
+	[statusTextField bind:@"value" toObject:cameraInstancesController withKeyPath:@"selection.status" options:nil];
 	[view addSubview:statusTextField];
 	
 	NSButton * enableButton = [[NSButton alloc] initWithFrame:NSMakeRect(278, 455, 18, 18)];
 	[enableButton setBezelStyle: NSTexturedSquareBezelStyle];
 	[enableButton setButtonType: NSSwitchButton];
-	[enableButton bind:@"value" toObject:cameraInstancesController withKeyPath:@"selection.object.enabled" options:nil];
-
+	[enableButton bind:@"value" toObject:cameraInstancesController withKeyPath:@"selection.enabled" options:nil];
+    
 	[view addSubview:enableButton];
 	
 	
@@ -149,7 +154,7 @@
 	
 	subview = [[[NSView alloc] initWithFrame:NSMakeRect(0, 0, rect.size.width, rect.size.height)] retain];
 	if(cameraInstance != nil){
-		NSView * newView =    [[cameraInstance objectForKey:@"object"] makeViewInRect:NSMakeRect(0, 0, [subview bounds].size.width, [subview bounds].size.height)];
+		NSView * newView =    [cameraInstance makeViewInRect:NSMakeRect(0, 0, [subview bounds].size.width, [subview bounds].size.height)];
 		[subview addSubview:newView];
 	}
 	[view addSubview:subview];
@@ -160,7 +165,7 @@
 -(BOOL) isFrameNew{
 	if(cameraInstance != nil){
 		//NSLog(@"Bool: %i",[[cameraInstance objectForKey:@"object"] isFrameNew]);
-		return [[cameraInstance objectForKey:@"object"] isFrameNew];
+		return [cameraInstance isFrameNew];
 	}
 	return NO;
 }

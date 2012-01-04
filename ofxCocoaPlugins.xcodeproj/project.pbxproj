@@ -74,6 +74,59 @@
 		3D3B795F1492250200743828 /* ofQuickTimeGrabber.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A360914543B7800CC89E5 /* ofQuickTimeGrabber.h */; };
 		3D3B79601492250200743828 /* ofQuickTimePlayer.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A360B14543B7800CC89E5 /* ofQuickTimePlayer.h */; };
 		3D3B79611492250200743828 /* ofQtUtils.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A360D14543B7800CC89E5 /* ofQtUtils.h */; };
+		3D9AD7F114B45F3700DB3187 /* Camera.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D9AD7BF14B45F3700DB3187 /* Camera.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3D9AD7F214B45F3700DB3187 /* Camera.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3D9AD7C014B45F3700DB3187 /* Camera.mm */; };
+		3D9AD7F314B45F3700DB3187 /* CameraInstance.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D9AD7C114B45F3700DB3187 /* CameraInstance.h */; };
+		3D9AD7F414B45F3700DB3187 /* CameraInstance.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3D9AD7C214B45F3700DB3187 /* CameraInstance.mm */; };
+		3D9AD7F514B45F3700DB3187 /* Cameras.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D9AD7C314B45F3700DB3187 /* Cameras.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3D9AD7F614B45F3700DB3187 /* Cameras.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3D9AD7C414B45F3700DB3187 /* Cameras.mm */; };
+		3D9AD7F714B45F3700DB3187 /* Cameras.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D9AD7C514B45F3700DB3187 /* Cameras.xib */; };
+		3D9AD7F814B45F3700DB3187 /* IIDCCameraInstance.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D9AD7C614B45F3700DB3187 /* IIDCCameraInstance.h */; settings = {ATTRIBUTES = (); }; };
+		3D9AD7F914B45F3700DB3187 /* IIDCCameraInstance.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3D9AD7C714B45F3700DB3187 /* IIDCCameraInstance.mm */; };
+		3D9AD7FA14B45F3700DB3187 /* Libdc1394Grabber.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9AD7CA14B45F3700DB3187 /* Libdc1394Grabber.cpp */; };
+		3D9AD7FB14B45F3700DB3187 /* Libdc1394Grabber.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D9AD7CB14B45F3700DB3187 /* Libdc1394Grabber.h */; };
+		3D9AD7FC14B45F3700DB3187 /* Libdc1394GrabberFeatureHelper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9AD7CC14B45F3700DB3187 /* Libdc1394GrabberFeatureHelper.cpp */; };
+		3D9AD7FD14B45F3700DB3187 /* Libdc1394GrabberFeatureHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D9AD7CD14B45F3700DB3187 /* Libdc1394GrabberFeatureHelper.h */; };
+		3D9AD7FE14B45F3700DB3187 /* Libdc1394GrabberFramerateHelper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9AD7CE14B45F3700DB3187 /* Libdc1394GrabberFramerateHelper.cpp */; };
+		3D9AD7FF14B45F3700DB3187 /* Libdc1394GrabberFramerateHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D9AD7CF14B45F3700DB3187 /* Libdc1394GrabberFramerateHelper.h */; };
+		3D9AD80014B45F3700DB3187 /* Libdc1394GrabberUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9AD7D014B45F3700DB3187 /* Libdc1394GrabberUtils.cpp */; };
+		3D9AD80114B45F3700DB3187 /* Libdc1394GrabberUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D9AD7D114B45F3700DB3187 /* Libdc1394GrabberUtils.h */; };
+		3D9AD80214B45F3700DB3187 /* Libdc1394GrabberVideoFormatHelper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9AD7D214B45F3700DB3187 /* Libdc1394GrabberVideoFormatHelper.cpp */; };
+		3D9AD80314B45F3700DB3187 /* Libdc1394GrabberVideoFormatHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D9AD7D314B45F3700DB3187 /* Libdc1394GrabberVideoFormatHelper.h */; };
+		3D9AD80414B45F3700DB3187 /* NormalCameraInstance.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D9AD7D414B45F3700DB3187 /* NormalCameraInstance.h */; settings = {ATTRIBUTES = (); }; };
+		3D9AD80514B45F3700DB3187 /* NormalCameraInstance.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3D9AD7D514B45F3700DB3187 /* NormalCameraInstance.mm */; };
+		3D9AD80614B45F3700DB3187 /* ofxVideoGrabberFeature.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9AD7D614B45F3700DB3187 /* ofxVideoGrabberFeature.cpp */; };
+		3D9AD80714B45F3700DB3187 /* ofxVideoGrabberFeature.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D9AD7D714B45F3700DB3187 /* ofxVideoGrabberFeature.h */; };
+		3D9AD80814B45F3700DB3187 /* ofxVideoGrabberSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D9AD7D814B45F3700DB3187 /* ofxVideoGrabberSDK.h */; };
+		3D9AD80914B45F3700DB3187 /* camera.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D9AD7DC14B45F3700DB3187 /* camera.h */; };
+		3D9AD80A14B45F3700DB3187 /* capture.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D9AD7DD14B45F3700DB3187 /* capture.h */; };
+		3D9AD80B14B45F3700DB3187 /* control.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D9AD7DE14B45F3700DB3187 /* control.h */; };
+		3D9AD80C14B45F3700DB3187 /* conversions.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D9AD7DF14B45F3700DB3187 /* conversions.h */; };
+		3D9AD80D14B45F3700DB3187 /* dc1394.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D9AD7E014B45F3700DB3187 /* dc1394.h */; };
+		3D9AD80E14B45F3700DB3187 /* format7.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D9AD7E114B45F3700DB3187 /* format7.h */; };
+		3D9AD80F14B45F3700DB3187 /* iso.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D9AD7E214B45F3700DB3187 /* iso.h */; };
+		3D9AD81014B45F3700DB3187 /* log.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D9AD7E314B45F3700DB3187 /* log.h */; };
+		3D9AD81114B45F3700DB3187 /* capture.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D9AD7E514B45F3700DB3187 /* capture.h */; };
+		3D9AD81214B45F3700DB3187 /* register.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D9AD7E614B45F3700DB3187 /* register.h */; };
+		3D9AD81314B45F3700DB3187 /* types.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D9AD7E714B45F3700DB3187 /* types.h */; };
+		3D9AD81414B45F3700DB3187 /* utils.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D9AD7E814B45F3700DB3187 /* utils.h */; };
+		3D9AD81514B45F3700DB3187 /* avt.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D9AD7EA14B45F3700DB3187 /* avt.h */; };
+		3D9AD81614B45F3700DB3187 /* basler.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D9AD7EB14B45F3700DB3187 /* basler.h */; };
+		3D9AD81714B45F3700DB3187 /* basler_sff.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D9AD7EC14B45F3700DB3187 /* basler_sff.h */; };
+		3D9AD81814B45F3700DB3187 /* pixelink.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D9AD7ED14B45F3700DB3187 /* pixelink.h */; };
+		3D9AD81914B45F3700DB3187 /* video.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D9AD7EE14B45F3700DB3187 /* video.h */; };
+		3D9AD81A14B45F3700DB3187 /* libdc1394.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D9AD7F014B45F3700DB3187 /* libdc1394.a */; };
+		3DAFD3C514B4685E004D0D50 /* AVTCameraInstance.h in Headers */ = {isa = PBXBuildFile; fileRef = 3DAFD3C314B4685D004D0D50 /* AVTCameraInstance.h */; };
+		3DAFD3C614B4685E004D0D50 /* AVTCameraInstance.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3DAFD3C414B4685D004D0D50 /* AVTCameraInstance.mm */; };
+		3DAFD3C914B46A2F004D0D50 /* libImagelib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAFD3C714B46A2E004D0D50 /* libImagelib.a */; };
+		3DAFD3CA14B46A2F004D0D50 /* libPvAPI.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAFD3C814B46A2E004D0D50 /* libPvAPI.a */; };
+		3DAFD3CF14B46A61004D0D50 /* ImageLib.h in Headers */ = {isa = PBXBuildFile; fileRef = 3DAFD3CC14B46A61004D0D50 /* ImageLib.h */; };
+		3DAFD3D014B46A61004D0D50 /* PvApi.h in Headers */ = {isa = PBXBuildFile; fileRef = 3DAFD3CD14B46A61004D0D50 /* PvApi.h */; };
+		3DAFD3D114B46A61004D0D50 /* PvRegIo.h in Headers */ = {isa = PBXBuildFile; fileRef = 3DAFD3CE14B46A61004D0D50 /* PvRegIo.h */; };
+		3DAFD3D514B46FC5004D0D50 /* CamerasController.h in Headers */ = {isa = PBXBuildFile; fileRef = 3DAFD3D314B46FC5004D0D50 /* CamerasController.h */; };
+		3DAFD3D614B46FC5004D0D50 /* CamerasController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3DAFD3D414B46FC5004D0D50 /* CamerasController.mm */; };
+		3DAFD3DA14B470F9004D0D50 /* AVTCamerasController.h in Headers */ = {isa = PBXBuildFile; fileRef = 3DAFD3D814B470F9004D0D50 /* AVTCamerasController.h */; };
+		3DAFD3DB14B470F9004D0D50 /* AVTCamerasController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3DAFD3D914B470F9004D0D50 /* AVTCamerasController.mm */; };
 		7FB6BAA41499F75000FE24C9 /* KeystonePerspective.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FB6BAA21499F75000FE24C9 /* KeystonePerspective.h */; };
 		7FB6BAA51499F75000FE24C9 /* KeystonePerspective.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7FB6BAA31499F75000FE24C9 /* KeystonePerspective.mm */; };
 		DD0A33A01452F29C00CC89E5 /* CorePluginsIncludes.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A334A1452F29C00CC89E5 /* CorePluginsIncludes.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -479,6 +532,59 @@
 
 /* Begin PBXFileReference section */
 		3D2FC2281462EC7C0028BC01 /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
+		3D9AD7BF14B45F3700DB3187 /* Camera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Camera.h; sourceTree = "<group>"; };
+		3D9AD7C014B45F3700DB3187 /* Camera.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Camera.mm; sourceTree = "<group>"; };
+		3D9AD7C114B45F3700DB3187 /* CameraInstance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraInstance.h; sourceTree = "<group>"; };
+		3D9AD7C214B45F3700DB3187 /* CameraInstance.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CameraInstance.mm; sourceTree = "<group>"; };
+		3D9AD7C314B45F3700DB3187 /* Cameras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cameras.h; sourceTree = "<group>"; };
+		3D9AD7C414B45F3700DB3187 /* Cameras.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Cameras.mm; sourceTree = "<group>"; };
+		3D9AD7C514B45F3700DB3187 /* Cameras.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Cameras.xib; sourceTree = "<group>"; };
+		3D9AD7C614B45F3700DB3187 /* IIDCCameraInstance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IIDCCameraInstance.h; sourceTree = "<group>"; };
+		3D9AD7C714B45F3700DB3187 /* IIDCCameraInstance.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = IIDCCameraInstance.mm; sourceTree = "<group>"; };
+		3D9AD7CA14B45F3700DB3187 /* Libdc1394Grabber.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Libdc1394Grabber.cpp; sourceTree = "<group>"; };
+		3D9AD7CB14B45F3700DB3187 /* Libdc1394Grabber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Libdc1394Grabber.h; sourceTree = "<group>"; };
+		3D9AD7CC14B45F3700DB3187 /* Libdc1394GrabberFeatureHelper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Libdc1394GrabberFeatureHelper.cpp; sourceTree = "<group>"; };
+		3D9AD7CD14B45F3700DB3187 /* Libdc1394GrabberFeatureHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Libdc1394GrabberFeatureHelper.h; sourceTree = "<group>"; };
+		3D9AD7CE14B45F3700DB3187 /* Libdc1394GrabberFramerateHelper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Libdc1394GrabberFramerateHelper.cpp; sourceTree = "<group>"; };
+		3D9AD7CF14B45F3700DB3187 /* Libdc1394GrabberFramerateHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Libdc1394GrabberFramerateHelper.h; sourceTree = "<group>"; };
+		3D9AD7D014B45F3700DB3187 /* Libdc1394GrabberUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Libdc1394GrabberUtils.cpp; sourceTree = "<group>"; };
+		3D9AD7D114B45F3700DB3187 /* Libdc1394GrabberUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Libdc1394GrabberUtils.h; sourceTree = "<group>"; };
+		3D9AD7D214B45F3700DB3187 /* Libdc1394GrabberVideoFormatHelper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Libdc1394GrabberVideoFormatHelper.cpp; sourceTree = "<group>"; };
+		3D9AD7D314B45F3700DB3187 /* Libdc1394GrabberVideoFormatHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Libdc1394GrabberVideoFormatHelper.h; sourceTree = "<group>"; };
+		3D9AD7D414B45F3700DB3187 /* NormalCameraInstance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NormalCameraInstance.h; path = ofxVideoGrabber/NormalCameraInstance.h; sourceTree = "<group>"; };
+		3D9AD7D514B45F3700DB3187 /* NormalCameraInstance.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = NormalCameraInstance.mm; path = ofxVideoGrabber/NormalCameraInstance.mm; sourceTree = "<group>"; };
+		3D9AD7D614B45F3700DB3187 /* ofxVideoGrabberFeature.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxVideoGrabberFeature.cpp; sourceTree = "<group>"; };
+		3D9AD7D714B45F3700DB3187 /* ofxVideoGrabberFeature.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxVideoGrabberFeature.h; sourceTree = "<group>"; };
+		3D9AD7D814B45F3700DB3187 /* ofxVideoGrabberSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxVideoGrabberSDK.h; sourceTree = "<group>"; };
+		3D9AD7DC14B45F3700DB3187 /* camera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = camera.h; sourceTree = "<group>"; };
+		3D9AD7DD14B45F3700DB3187 /* capture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = capture.h; sourceTree = "<group>"; };
+		3D9AD7DE14B45F3700DB3187 /* control.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = control.h; sourceTree = "<group>"; };
+		3D9AD7DF14B45F3700DB3187 /* conversions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = conversions.h; sourceTree = "<group>"; };
+		3D9AD7E014B45F3700DB3187 /* dc1394.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dc1394.h; sourceTree = "<group>"; };
+		3D9AD7E114B45F3700DB3187 /* format7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = format7.h; sourceTree = "<group>"; };
+		3D9AD7E214B45F3700DB3187 /* iso.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iso.h; sourceTree = "<group>"; };
+		3D9AD7E314B45F3700DB3187 /* log.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = log.h; sourceTree = "<group>"; };
+		3D9AD7E514B45F3700DB3187 /* capture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = capture.h; sourceTree = "<group>"; };
+		3D9AD7E614B45F3700DB3187 /* register.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = register.h; sourceTree = "<group>"; };
+		3D9AD7E714B45F3700DB3187 /* types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = types.h; sourceTree = "<group>"; };
+		3D9AD7E814B45F3700DB3187 /* utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = utils.h; sourceTree = "<group>"; };
+		3D9AD7EA14B45F3700DB3187 /* avt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = avt.h; sourceTree = "<group>"; };
+		3D9AD7EB14B45F3700DB3187 /* basler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = basler.h; sourceTree = "<group>"; };
+		3D9AD7EC14B45F3700DB3187 /* basler_sff.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = basler_sff.h; sourceTree = "<group>"; };
+		3D9AD7ED14B45F3700DB3187 /* pixelink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pixelink.h; sourceTree = "<group>"; };
+		3D9AD7EE14B45F3700DB3187 /* video.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = video.h; sourceTree = "<group>"; };
+		3D9AD7F014B45F3700DB3187 /* libdc1394.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libdc1394.a; sourceTree = "<group>"; };
+		3DAFD3C314B4685D004D0D50 /* AVTCameraInstance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVTCameraInstance.h; sourceTree = "<group>"; };
+		3DAFD3C414B4685D004D0D50 /* AVTCameraInstance.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AVTCameraInstance.mm; sourceTree = "<group>"; };
+		3DAFD3C714B46A2E004D0D50 /* libImagelib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libImagelib.a; path = "ofxCocoaPlugins/libs/PvAPI/lib-pc/x86/4.2/libImagelib.a"; sourceTree = "<group>"; };
+		3DAFD3C814B46A2E004D0D50 /* libPvAPI.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPvAPI.a; path = "ofxCocoaPlugins/libs/PvAPI/lib-pc/x86/4.2/libPvAPI.a"; sourceTree = "<group>"; };
+		3DAFD3CC14B46A61004D0D50 /* ImageLib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ImageLib.h; path = "ofxCocoaPlugins/libs/PvAPI/inc-pc/ImageLib.h"; sourceTree = "<group>"; };
+		3DAFD3CD14B46A61004D0D50 /* PvApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PvApi.h; path = "ofxCocoaPlugins/libs/PvAPI/inc-pc/PvApi.h"; sourceTree = "<group>"; };
+		3DAFD3CE14B46A61004D0D50 /* PvRegIo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PvRegIo.h; path = "ofxCocoaPlugins/libs/PvAPI/inc-pc/PvRegIo.h"; sourceTree = "<group>"; };
+		3DAFD3D314B46FC5004D0D50 /* CamerasController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CamerasController.h; sourceTree = "<group>"; };
+		3DAFD3D414B46FC5004D0D50 /* CamerasController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CamerasController.mm; sourceTree = "<group>"; };
+		3DAFD3D814B470F9004D0D50 /* AVTCamerasController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVTCamerasController.h; sourceTree = "<group>"; };
+		3DAFD3D914B470F9004D0D50 /* AVTCamerasController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AVTCamerasController.mm; sourceTree = "<group>"; };
 		7FB6BAA21499F75000FE24C9 /* KeystonePerspective.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeystonePerspective.h; sourceTree = "<group>"; };
 		7FB6BAA31499F75000FE24C9 /* KeystonePerspective.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = KeystonePerspective.mm; sourceTree = "<group>"; };
 		DD0A334A1452F29C00CC89E5 /* CorePluginsIncludes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CorePluginsIncludes.h; sourceTree = "<group>"; };
@@ -821,12 +927,163 @@
 				DDE4CAA31451E32700EECFF4 /* CoreMIDI.framework in Frameworks */,
 				DDE4D5D71451F3AF00EECFF4 /* openFrameworksDebug.a in Frameworks */,
 				DD0A351B1452F2CE00CC89E5 /* opencv.a in Frameworks */,
+				3D9AD81A14B45F3700DB3187 /* libdc1394.a in Frameworks */,
+				3DAFD3C914B46A2F004D0D50 /* libImagelib.a in Frameworks */,
+				3DAFD3CA14B46A2F004D0D50 /* libPvAPI.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3D9AD7BE14B45F3700DB3187 /* Cameras */ = {
+			isa = PBXGroup;
+			children = (
+				3D9AD7C314B45F3700DB3187 /* Cameras.h */,
+				3D9AD7C414B45F3700DB3187 /* Cameras.mm */,
+				3D9AD7BF14B45F3700DB3187 /* Camera.h */,
+				3D9AD7C014B45F3700DB3187 /* Camera.mm */,
+				3D9AD7C514B45F3700DB3187 /* Cameras.xib */,
+				3D9AD7C114B45F3700DB3187 /* CameraInstance.h */,
+				3D9AD7C214B45F3700DB3187 /* CameraInstance.mm */,
+				3DAFD3D314B46FC5004D0D50 /* CamerasController.h */,
+				3DAFD3D414B46FC5004D0D50 /* CamerasController.mm */,
+				3DAFD3D714B470D4004D0D50 /* Camera Controllers */,
+				3DAFD3D214B46EDC004D0D50 /* Camera Instances */,
+				3D9AD7C814B45F3700DB3187 /* ofxVideoGrabber */,
+			);
+			path = Cameras;
+			sourceTree = "<group>";
+		};
+		3D9AD7C814B45F3700DB3187 /* ofxVideoGrabber */ = {
+			isa = PBXGroup;
+			children = (
+				3D9AD7C914B45F3700DB3187 /* Libdc1394Grabber */,
+				3D9AD7D614B45F3700DB3187 /* ofxVideoGrabberFeature.cpp */,
+				3D9AD7D714B45F3700DB3187 /* ofxVideoGrabberFeature.h */,
+				3D9AD7D814B45F3700DB3187 /* ofxVideoGrabberSDK.h */,
+				3D9AD7D914B45F3700DB3187 /* osx */,
+			);
+			path = ofxVideoGrabber;
+			sourceTree = "<group>";
+		};
+		3D9AD7C914B45F3700DB3187 /* Libdc1394Grabber */ = {
+			isa = PBXGroup;
+			children = (
+				3D9AD7CA14B45F3700DB3187 /* Libdc1394Grabber.cpp */,
+				3D9AD7CB14B45F3700DB3187 /* Libdc1394Grabber.h */,
+				3D9AD7CC14B45F3700DB3187 /* Libdc1394GrabberFeatureHelper.cpp */,
+				3D9AD7CD14B45F3700DB3187 /* Libdc1394GrabberFeatureHelper.h */,
+				3D9AD7CE14B45F3700DB3187 /* Libdc1394GrabberFramerateHelper.cpp */,
+				3D9AD7CF14B45F3700DB3187 /* Libdc1394GrabberFramerateHelper.h */,
+				3D9AD7D014B45F3700DB3187 /* Libdc1394GrabberUtils.cpp */,
+				3D9AD7D114B45F3700DB3187 /* Libdc1394GrabberUtils.h */,
+				3D9AD7D214B45F3700DB3187 /* Libdc1394GrabberVideoFormatHelper.cpp */,
+				3D9AD7D314B45F3700DB3187 /* Libdc1394GrabberVideoFormatHelper.h */,
+			);
+			path = Libdc1394Grabber;
+			sourceTree = "<group>";
+		};
+		3D9AD7D914B45F3700DB3187 /* osx */ = {
+			isa = PBXGroup;
+			children = (
+				3D9AD7DA14B45F3700DB3187 /* include */,
+				3D9AD7EF14B45F3700DB3187 /* lib */,
+			);
+			path = osx;
+			sourceTree = "<group>";
+		};
+		3D9AD7DA14B45F3700DB3187 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				3D9AD7DB14B45F3700DB3187 /* dc1394 */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		3D9AD7DB14B45F3700DB3187 /* dc1394 */ = {
+			isa = PBXGroup;
+			children = (
+				3D9AD7DC14B45F3700DB3187 /* camera.h */,
+				3D9AD7DD14B45F3700DB3187 /* capture.h */,
+				3D9AD7DE14B45F3700DB3187 /* control.h */,
+				3D9AD7DF14B45F3700DB3187 /* conversions.h */,
+				3D9AD7E014B45F3700DB3187 /* dc1394.h */,
+				3D9AD7E114B45F3700DB3187 /* format7.h */,
+				3D9AD7E214B45F3700DB3187 /* iso.h */,
+				3D9AD7E314B45F3700DB3187 /* log.h */,
+				3D9AD7E414B45F3700DB3187 /* macosx */,
+				3D9AD7E614B45F3700DB3187 /* register.h */,
+				3D9AD7E714B45F3700DB3187 /* types.h */,
+				3D9AD7E814B45F3700DB3187 /* utils.h */,
+				3D9AD7E914B45F3700DB3187 /* vendor */,
+				3D9AD7EE14B45F3700DB3187 /* video.h */,
+			);
+			path = dc1394;
+			sourceTree = "<group>";
+		};
+		3D9AD7E414B45F3700DB3187 /* macosx */ = {
+			isa = PBXGroup;
+			children = (
+				3D9AD7E514B45F3700DB3187 /* capture.h */,
+			);
+			path = macosx;
+			sourceTree = "<group>";
+		};
+		3D9AD7E914B45F3700DB3187 /* vendor */ = {
+			isa = PBXGroup;
+			children = (
+				3D9AD7EA14B45F3700DB3187 /* avt.h */,
+				3D9AD7EB14B45F3700DB3187 /* basler.h */,
+				3D9AD7EC14B45F3700DB3187 /* basler_sff.h */,
+				3D9AD7ED14B45F3700DB3187 /* pixelink.h */,
+			);
+			path = vendor;
+			sourceTree = "<group>";
+		};
+		3D9AD7EF14B45F3700DB3187 /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				3D9AD7F014B45F3700DB3187 /* libdc1394.a */,
+			);
+			path = lib;
+			sourceTree = "<group>";
+		};
+		3DAFD3CB14B46A51004D0D50 /* PvAPI */ = {
+			isa = PBXGroup;
+			children = (
+				3DAFD3CC14B46A61004D0D50 /* ImageLib.h */,
+				3DAFD3CD14B46A61004D0D50 /* PvApi.h */,
+				3DAFD3CE14B46A61004D0D50 /* PvRegIo.h */,
+				3DAFD3C714B46A2E004D0D50 /* libImagelib.a */,
+				3DAFD3C814B46A2E004D0D50 /* libPvAPI.a */,
+				DDE4D5CE1451F1F100EECFF4 /* libfmodex.dylib */,
+			);
+			name = PvAPI;
+			sourceTree = "<group>";
+		};
+		3DAFD3D214B46EDC004D0D50 /* Camera Instances */ = {
+			isa = PBXGroup;
+			children = (
+				3D9AD7D414B45F3700DB3187 /* NormalCameraInstance.h */,
+				3D9AD7D514B45F3700DB3187 /* NormalCameraInstance.mm */,
+				3D9AD7C614B45F3700DB3187 /* IIDCCameraInstance.h */,
+				3D9AD7C714B45F3700DB3187 /* IIDCCameraInstance.mm */,
+				3DAFD3C314B4685D004D0D50 /* AVTCameraInstance.h */,
+				3DAFD3C414B4685D004D0D50 /* AVTCameraInstance.mm */,
+			);
+			name = "Camera Instances";
+			sourceTree = "<group>";
+		};
+		3DAFD3D714B470D4004D0D50 /* Camera Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				3DAFD3D814B470F9004D0D50 /* AVTCamerasController.h */,
+				3DAFD3D914B470F9004D0D50 /* AVTCamerasController.mm */,
+			);
+			name = "Camera Controllers";
+			sourceTree = "<group>";
+		};
 		DD0A334B1452F29C00CC89E5 /* Keystoner */ = {
 			isa = PBXGroup;
 			children = (
@@ -1308,7 +1565,6 @@
 			isa = PBXGroup;
 			children = (
 				DD0A358A14543B7800CC89E5 /* openFrameworksHeaders */,
-				DDE4D5CE1451F1F100EECFF4 /* libfmodex.dylib */,
 				DDF6500214504B20007B0C0A /* Project.xcconfig */,
 				3D2FC2281462EC7C0028BC01 /* README */,
 				DD0A3689145443D900CC89E5 /* ConfigInclude.xcconfig */,
@@ -1600,6 +1856,7 @@
 			isa = PBXGroup;
 			children = (
 				DD0A334A1452F29C00CC89E5 /* CorePluginsIncludes.h */,
+				3D9AD7BE14B45F3700DB3187 /* Cameras */,
 				DDC266A91454BBE90016BA7B /* GeneralPreferences */,
 				DD0A334B1452F29C00CC89E5 /* Keystoner */,
 				DD0A33641452F29C00CC89E5 /* VideoPlayer */,
@@ -1653,6 +1910,7 @@
 		DDE4D5D31451F37F00EECFF4 /* libs */ = {
 			isa = PBXGroup;
 			children = (
+				3DAFD3CB14B46A51004D0D50 /* PvAPI */,
 				DDE4D5D51451F38D00EECFF4 /* openframeworks */,
 			);
 			name = libs;
@@ -1710,6 +1968,8 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3D9AD7F114B45F3700DB3187 /* Camera.h in Headers */,
+				3D9AD7F514B45F3700DB3187 /* Cameras.h in Headers */,
 				DDE4C9A21451E04500EECFF4 /* CustomGraphics.h in Headers */,
 				DDE4CA851451E23800EECFF4 /* Midi.h in Headers */,
 				DD0A33A51452F29C00CC89E5 /* Keystoner.h in Headers */,
@@ -1759,6 +2019,8 @@
 				DD0A33B01452F29C00CC89E5 /* Warp.h in Headers */,
 				DD0A33B81452F29C00CC89E5 /* VideoPlayer.h in Headers */,
 				DDC266AF1454BC020016BA7B /* GeneralPreferences.h in Headers */,
+				3D9AD7F814B45F3700DB3187 /* IIDCCameraInstance.h in Headers */,
+				3D9AD80414B45F3700DB3187 /* NormalCameraInstance.h in Headers */,
 				DD0A354C1452F2CF00CC89E5 /* ofxCvBlob.h in Headers */,
 				DD0A354E1452F2CF00CC89E5 /* ofxCvColorImage.h in Headers */,
 				DD0A354F1452F2CF00CC89E5 /* ofxCvConstants.h in Headers */,
@@ -1933,6 +2195,37 @@
 				DD0A368114543B7900CC89E5 /* ofQuickTimeGrabber.h in Headers */,
 				DD0A368314543B7900CC89E5 /* ofQuickTimePlayer.h in Headers */,
 				7FB6BAA41499F75000FE24C9 /* KeystonePerspective.h in Headers */,
+				3D9AD7F314B45F3700DB3187 /* CameraInstance.h in Headers */,
+				3D9AD7FB14B45F3700DB3187 /* Libdc1394Grabber.h in Headers */,
+				3D9AD7FD14B45F3700DB3187 /* Libdc1394GrabberFeatureHelper.h in Headers */,
+				3D9AD7FF14B45F3700DB3187 /* Libdc1394GrabberFramerateHelper.h in Headers */,
+				3D9AD80114B45F3700DB3187 /* Libdc1394GrabberUtils.h in Headers */,
+				3D9AD80314B45F3700DB3187 /* Libdc1394GrabberVideoFormatHelper.h in Headers */,
+				3D9AD80714B45F3700DB3187 /* ofxVideoGrabberFeature.h in Headers */,
+				3D9AD80814B45F3700DB3187 /* ofxVideoGrabberSDK.h in Headers */,
+				3D9AD80914B45F3700DB3187 /* camera.h in Headers */,
+				3D9AD80A14B45F3700DB3187 /* capture.h in Headers */,
+				3D9AD80B14B45F3700DB3187 /* control.h in Headers */,
+				3D9AD80C14B45F3700DB3187 /* conversions.h in Headers */,
+				3D9AD80D14B45F3700DB3187 /* dc1394.h in Headers */,
+				3D9AD80E14B45F3700DB3187 /* format7.h in Headers */,
+				3D9AD80F14B45F3700DB3187 /* iso.h in Headers */,
+				3D9AD81014B45F3700DB3187 /* log.h in Headers */,
+				3D9AD81114B45F3700DB3187 /* capture.h in Headers */,
+				3D9AD81214B45F3700DB3187 /* register.h in Headers */,
+				3D9AD81314B45F3700DB3187 /* types.h in Headers */,
+				3D9AD81414B45F3700DB3187 /* utils.h in Headers */,
+				3D9AD81514B45F3700DB3187 /* avt.h in Headers */,
+				3D9AD81614B45F3700DB3187 /* basler.h in Headers */,
+				3D9AD81714B45F3700DB3187 /* basler_sff.h in Headers */,
+				3D9AD81814B45F3700DB3187 /* pixelink.h in Headers */,
+				3D9AD81914B45F3700DB3187 /* video.h in Headers */,
+				3DAFD3C514B4685E004D0D50 /* AVTCameraInstance.h in Headers */,
+				3DAFD3CF14B46A61004D0D50 /* ImageLib.h in Headers */,
+				3DAFD3D014B46A61004D0D50 /* PvApi.h in Headers */,
+				3DAFD3D114B46A61004D0D50 /* PvRegIo.h in Headers */,
+				3DAFD3D514B46FC5004D0D50 /* CamerasController.h in Headers */,
+				3DAFD3DA14B470F9004D0D50 /* AVTCamerasController.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2014,6 +2307,7 @@
 				DD0A368A145443DA00CC89E5 /* ConfigInclude.xcconfig in Resources */,
 				DDC266B11454BC020016BA7B /* GeneralPreferences.xib in Resources */,
 				3D2FC2291462EC7C0028BC01 /* README in Resources */,
+				3D9AD7F714B45F3700DB3187 /* Cameras.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2089,6 +2383,20 @@
 				DD0A33B91452F29C00CC89E5 /* VideoPlayer.mm in Sources */,
 				DDC266B01454BC020016BA7B /* GeneralPreferences.mm in Sources */,
 				7FB6BAA51499F75000FE24C9 /* KeystonePerspective.mm in Sources */,
+				3D9AD7F214B45F3700DB3187 /* Camera.mm in Sources */,
+				3D9AD7F414B45F3700DB3187 /* CameraInstance.mm in Sources */,
+				3D9AD7F614B45F3700DB3187 /* Cameras.mm in Sources */,
+				3D9AD7F914B45F3700DB3187 /* IIDCCameraInstance.mm in Sources */,
+				3D9AD7FA14B45F3700DB3187 /* Libdc1394Grabber.cpp in Sources */,
+				3D9AD7FC14B45F3700DB3187 /* Libdc1394GrabberFeatureHelper.cpp in Sources */,
+				3D9AD7FE14B45F3700DB3187 /* Libdc1394GrabberFramerateHelper.cpp in Sources */,
+				3D9AD80014B45F3700DB3187 /* Libdc1394GrabberUtils.cpp in Sources */,
+				3D9AD80214B45F3700DB3187 /* Libdc1394GrabberVideoFormatHelper.cpp in Sources */,
+				3D9AD80514B45F3700DB3187 /* NormalCameraInstance.mm in Sources */,
+				3D9AD80614B45F3700DB3187 /* ofxVideoGrabberFeature.cpp in Sources */,
+				3DAFD3C614B4685E004D0D50 /* AVTCameraInstance.mm in Sources */,
+				3DAFD3D614B46FC5004D0D50 /* CamerasController.mm in Sources */,
+				3DAFD3DB14B470F9004D0D50 /* AVTCamerasController.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2274,6 +2582,7 @@
 					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/addons/ofxOpenCv/libs/opencv/lib/osx\"",
 					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/addons/ofxOpenCv/libs/opencv/lib/vs2010\"",
 					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/addons/ofxOpenCv/libs/opencv/lib/win_cb\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/PvAPI/lib-pc/x86/4.2\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = framework;
@@ -2376,6 +2685,7 @@
 					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/addons/ofxOpenCv/libs/opencv/lib/osx\"",
 					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/addons/ofxOpenCv/libs/opencv/lib/vs2010\"",
 					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/addons/ofxOpenCv/libs/opencv/lib/win_cb\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/PvAPI/lib-pc/x86/4.2\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = framework;

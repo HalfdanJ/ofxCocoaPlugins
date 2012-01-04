@@ -1,27 +1,21 @@
 #pragma once
 
-#include "Plugin.h"
-#include "IIDCCameraInstance.h"
-#include "NormalCameraInstance.h"
+#import <ofxCocoaPlugins/Plugin.h>
 
+@class CameraInstance;
 @interface Camera : NSObject {
 	NSDictionaryController * cameraTypesController;
 	NSArrayController * cameraInstancesController;
 	
 	NSMutableDictionary * cameraInstancesRef;
 	
-	NSMutableDictionary * cameraInstance;
+	CameraInstance * cameraInstance;
 	
 	NSView * subview;
-	
-	
-	
-	
-
 }
 
 @property (retain) NSMutableDictionary * cameraInstancesRef;
-@property (retain) NSMutableDictionary * cameraInstance;
+@property (retain) CameraInstance * cameraInstance;
 
 @property (retain) NSDictionaryController * cameraTypesController;
 
@@ -30,7 +24,7 @@
 -(id)initWithCameraInstances:(NSMutableDictionary*)dict;
 -(NSView*) makeViewInRect:(NSRect)rect;
 
--(void) updateChoosedCamera;
+-(void) updateChosenCamera;
 
 -(void)setup;
 -(void)update;

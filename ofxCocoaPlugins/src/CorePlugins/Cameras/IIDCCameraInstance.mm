@@ -391,7 +391,7 @@
 -(void) videoGrabberInit{
 	
 	camIsIniting = YES;
-	isClosing = NO;
+	camIsClosing = NO;
 	
 	if(camInited){
 		NSLog(@"Restart camera");
@@ -447,9 +447,9 @@
 	// camInited = videoGrabber->init(640, 480, VID_FORMAT_GREYSCALE, VID_FORMAT_GREYSCALE, 30, true);
 	tex->allocate(width,height,GL_RGB);
 	
-	if(camInited)
+	/*if(camInited)
 		camWasInited = camInited;
-	
+	*/
 	if(camInited){		
 		[self setStatus:@"OK"];
 		

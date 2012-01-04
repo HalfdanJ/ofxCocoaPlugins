@@ -5,8 +5,9 @@
 @interface CameraInstance : NSObject {
 	BOOL camInited;
 	BOOL camIsIniting;
-	BOOL camWasInited;
-	BOOL isClosing;
+	BOOL camIsClosing;
+    BOOL camIsConnected;
+    int referenceCount;
 	
 	NSString * name;
 	NSString * status;
@@ -30,10 +31,21 @@
 @property (readwrite) unsigned char* pixels;
 @property (retain) 	NSMutableDictionary * cameraInstances;
 
+@property (readwrite) BOOL camInited;
+@property (readwrite) BOOL camIsIniting;
+@property (readwrite) BOOL camIsClosing;
+@property (readwrite) BOOL camIsConnected;
+@property (readwrite) int referenceCount;
+
+//Connect to the camera, and start streaming
+-(void) initCam;
+
+//Close the connection to the camera (make sure you can connect again)
+-(void) close;
+
 - (void)update;
 - (void)videoGrabberInit;
 -(NSView*) makeViewInRect:(NSRect)rect;
--(void) close;
 -(void) drawCamera:(NSRect)rect;
 -(void) loadSettingsDict:(NSMutableDictionary*)dict;
 -(void) addPropertiesToSave:(NSMutableDictionary*)dict;

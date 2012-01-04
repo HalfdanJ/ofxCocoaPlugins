@@ -1,7 +1,9 @@
 
 
 #import "Cameras.h"
-
+#include "NormalCameraInstance.h"
+#include "IIDCCameraInstance.h"
+#include "AVTCamerasController.h"
 
 @implementation Cameras
 @synthesize numberCameras, cameras, cameraInstances;
@@ -14,14 +16,24 @@
 		//Dictionary over types of cameras including instances 
 		cameraInstances = [[NSMutableDictionary dictionary] retain];
 		
-		//Normal cameras
+		/*
+        //Normal cameras
 		[cameraInstances setObject:[NormalCameraInstance deviceList] forKey:@"Normal Cameras"];
+		*/
+        
+        //AVT cameras
+        NSDictionary * avt = [NSDictionary dictionaryWithObjectsAndKeys:[[AVTCamerasController alloc] init], @"controller", nil];
+		[cameraInstances setObject:avt forKey:@"AVT Cameras"];
+
 		
-		
+        /*
 		//Create an array of dc1394 cameras (for example point grey cameras)
 		NSArray * iidc = [NSArray array]; 
 		NSMutableArray * iidcTmp = [NSMutableArray array]; 
 		
+        
+        //Just to list the iidc cameras in the first place
+        Libdc1394Grabber * iidcCamera;
 		iidcCamera = new Libdc1394Grabber();
 		iidcCamera->enumerateDevices();
 		for (uint32_t index = 0; index < iidcCamera->cameraList->num; index++) {
@@ -46,8 +58,7 @@
 
 		//Set the iidc or dc1394 cameras
 		[cameraInstances setObject:iidc forKey:@"IIDC Cameras"];
-
-		
+         */
 		
 		
 		//Create the camera holders
@@ -59,16 +70,19 @@
 		cameras = [[NSArray arrayWithArray:_cameras] retain];
 		
 
-		
-		
-		[self addObserver:self forKeyPath:@"customProperties" options:nil context:@"customProperties"];		
+    
+	//	[self addObserver:self forKeyPath:@"customProperties" options:nil context:@"customProperties"];		
 		
 	}
 	return self;
 }
 
+-(BOOL)autoresizeControlview{
+    return YES;
+}
+
 -(void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context{
-	if([(NSString*)context isEqualToString:@"customProperties"]){			
+	/*if([(NSString*)context isEqualToString:@"customProperties"]){			
 		Camera * cam;
 		NSLog(@"%@ %lu",customProperties,[[customProperties objectForKey:@"cameras"] count]);
 		int i=0;
@@ -84,9 +98,9 @@
 			}
 			i++;			
 		}		
-	}
+	}*/
 }
-
+/*
 -(NSMutableDictionary *) customProperties{
 	//Read the settings of the selected cameras
 	
@@ -113,7 +127,7 @@
 	[dict setObject:camerasArray forKey:@"cameras"];
 	return dict;
 }
-
+*/
 
 -(void) awakeFromNib{
 	[super awakeFromNib];
@@ -140,9 +154,15 @@
 	Camera * cam;
 	int i=0;
 	for(cam in cameras){
-		[[self view] addSubview:[cam makeViewInRect:NSMakeRect(width*i, 0, width, height - 223) ]];
+        NSView * view = [cam makeViewInRect:NSMakeRect(width*i, 0, width, height - 223) ];
+        [view setAutoresizingMask:NSViewMinYMargin];		
+        [[self view] addSubview:view];
 		i++;
 	}
+    
+    //Resize opengl view and gray bar
+    [[[[self view] subviews] objectAtIndex:0] setFrameSize:NSMakeSize(width*i, height)];
+    [[[[self view] subviews] objectAtIndex:1] setFrameSize:NSMakeSize(width*i, height)];
 	
 	
 	
@@ -161,7 +181,7 @@
 	}
 	
 	//Call update on the instance, if its referenceCount is greater then 0 (= there is a camera link attached to it)
-	NSArray * values = [cameraInstances allValues];	
+/*	NSArray * values = [cameraInstances allValues];	
 	NSArray * _cameras;
 	for(_cameras in values){
 		NSMutableDictionary * camDict;
@@ -171,7 +191,7 @@
 			}
 		}
 	}
-	
+	*/
 	
 }
 
@@ -196,5 +216,14 @@
 
 -(Camera*) getCamera:(int)n{
 	return [cameras objectAtIndex:n];
+}
+
+-(void)applicationWillTerminate:(NSNotification *)note{
+    NSLog(@"Close cameras");
+
+	for(NSDictionary * controller in [cameraInstances allValues]){
+        [[controller objectForKey:@"controller"] closeCameras];
+	}
+    
 }
 @end

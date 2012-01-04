@@ -2,8 +2,9 @@
 #define __LIB_DC1394_GRABBER_H
 
 
-#include "ofConstants.h"
-#include "ofAppRunner.h"
+/*#include "ofConstants.h"
+#include "ofAppRunner.h"*/
+#include "ofMain.h"
 #include "ofxThread.h"
 
 #include <dc1394/dc1394.h>
