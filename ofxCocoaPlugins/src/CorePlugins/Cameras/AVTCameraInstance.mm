@@ -2,6 +2,7 @@
 
 @implementation AVTCameraInstance
 @synthesize uid;
+@synthesize modelName, ip, exposure, gain;
 
 void FrameDoneCB(tPvFrame* pFrame)
 { 
@@ -64,16 +65,16 @@ void FrameDoneCB(tPvFrame* pFrame)
             if(frame->Format == ePvFmtMono8){
                 tex->allocate(width, height, GL_LUMINANCE);
                 
-                delete pixels;
+              /*  delete pixels;
                 pixels = new unsigned char[width * height];
-                memset(pixels, 0, width*height);
+                memset(pixels, 0, width*height);*/
             }        
         }
         
         //Copy data
-        memcpy(pixels,frame->ImageBuffer,frame->ImageBufferSize);
+        //memcpy(pixels,frame->ImageBuffer,frame->ImageBufferSize);
         if(frame->Format == ePvFmtMono8){
-            tex->loadData(pixels, width, height, GL_LUMINANCE);
+            tex->loadData((unsigned char*)frame->ImageBuffer, width, height, GL_LUMINANCE);
         }
         
         
@@ -99,6 +100,7 @@ void FrameDoneCB(tPvFrame* pFrame)
                     {
                         //create a thread to display camera stats. 
                         [self setCamInited:YES];
+                        [self readCameraSettings];
                     }
                     else
                     {
@@ -128,7 +130,7 @@ void FrameDoneCB(tPvFrame* pFrame)
             
            
             //requeue frame
-            if(GCamera.Frames[0].Status != ePvErrCancelled && !GCamera.Abort && ![self camIsClosing]){
+            if(frame->Status == ePvErrSuccess && !GCamera.Abort && ![self camIsClosing]){
                 PvCaptureQueueFrame(GCamera.Handle, frame, NULL);
             }
 
@@ -295,5 +297,123 @@ void FrameDoneCB(tPvFrame* pFrame)
 		printf("Driver stream stopped.\n");
 }
 
+
+#pragma mark View
+-(NSView *) makeViewInRect:(NSRect)rect{
+    int x1 = 17;
+    int x2 = 103;
+    
+    int y = 376;
+    
+	NSView * view = [[NSView alloc]initWithFrame:rect];
+	
+	NSTextField * textField = [[NSTextField alloc] initWithFrame:NSMakeRect(x1, y, 84, 17)];
+	[textField setStringValue:@"Model:"];
+	[textField setEditable:NO];	[textField setBordered:NO];	[textField setBackgroundColor:[NSColor colorWithCalibratedHue:0 saturation:0 brightness:0 alpha:0]];	
+	[textField setAlignment:NSRightTextAlignment];
+	[view addSubview:textField];
+    
+    textField = [[NSTextField alloc] initWithFrame:NSMakeRect(x2, y, 84, 17)];
+	[textField setStringValue:@""];
+
+	[textField setEditable:NO];	[textField setBordered:NO];	[textField setBackgroundColor:[NSColor colorWithCalibratedHue:0 saturation:0 brightness:0 alpha:0]];	
+	[textField setAlignment:NSLeftTextAlignment];
+    [textField bind:@"value" toObject:self withKeyPath:@"modelName" options:nil];
+	[view addSubview:textField];
+
+    y -= 16;
+    
+    textField = [[NSTextField alloc] initWithFrame:NSMakeRect(x1, y, 84, 17)];
+	[textField setStringValue:@"IP:"];
+	[textField setEditable:NO];	[textField setBordered:NO];	[textField setBackgroundColor:[NSColor colorWithCalibratedHue:0 saturation:0 brightness:0 alpha:0]];	
+	[textField setAlignment:NSRightTextAlignment];
+	[view addSubview:textField];
+    
+    textField = [[NSTextField alloc] initWithFrame:NSMakeRect(x2, y, 84, 17)];
+	[textField setStringValue:@""];
+    
+	[textField setEditable:NO];	[textField setBordered:NO];	[textField setBackgroundColor:[NSColor colorWithCalibratedHue:0 saturation:0 brightness:0 alpha:0]];	
+	[textField setAlignment:NSLeftTextAlignment];
+    [textField bind:@"value" toObject:self withKeyPath:@"ip" options:nil];
+	[view addSubview:textField];
+
+    y -= 20;
+    
+    for(int i=0;i<2;i++){
+		NSTextField * textField = [[NSTextField alloc] initWithFrame:NSMakeRect(17, y-25*i, 84, 17)];
+		[textField setEditable:NO];	[textField setBordered:NO];	[textField setBackgroundColor:[NSColor colorWithCalibratedHue:0 saturation:0 brightness:0 alpha:0]];	
+		[textField setAlignment:NSRightTextAlignment];
+		[view addSubview:textField];
+		
+		NSSlider * slider = [[NSSlider alloc] initWithFrame:NSMakeRect(103, y-5-25*i, 180, 26)];
+		[view addSubview:slider];
+		
+		switch (i) {
+			case 0:
+				[textField setStringValue:@"Exposure:"];
+				[slider setMinValue:0];
+				[slider setMaxValue:1500];
+				[slider bind:@"value" toObject:self withKeyPath:@"exposure" options:nil];
+				break;
+			case 1:
+				[textField setStringValue:@"Gain:"];
+				[slider setMinValue:0];
+				[slider setMaxValue:20];
+				[slider bind:@"value" toObject:self withKeyPath:@"gain" options:nil];
+				
+				break;
+
+			default:
+				break;
+		}
+	}
+	
+
+    
+    
+    return view;
+}
+
+#pragma mark Camera settings
+
+
+
+-(void) readCameraSettings{
+    char lValue[128];
+    if(PvAttrStringGet(GCamera.Handle,"DeviceModelName",lValue,128,NULL) == ePvErrSuccess)
+    {
+        [self setModelName:[NSString stringWithCString:lValue encoding:NSUTF8StringEncoding]];
+    }
+    
+    if(PvAttrStringGet(GCamera.Handle,"DeviceIPAddress",lValue,128,NULL) == ePvErrSuccess)
+    {
+        [self setIp:[NSString stringWithCString:lValue encoding:NSUTF8StringEncoding]];
+    }
+    
+    tPvUint32 uintValue;    
+    if(PvAttrUint32Get(GCamera.Handle,"ExposureValue",&uintValue) == ePvErrSuccess){
+        [self willChangeValueForKey:@"exposure"];
+        exposure = uintValue;
+        [self didChangeValueForKey:@"exposure"];
+
+    }
+
+    if(PvAttrUint32Get(GCamera.Handle,"GainValue",&uintValue) == ePvErrSuccess){
+        [self willChangeValueForKey:@"exposure"];
+        gain = uintValue;
+        [self didChangeValueForKey:@"gain"];
+    }
+}
+
+-(void)setGain:(int)_gain{
+    gain = _gain;
+    PvAttrUint32Set(GCamera.Handle, "GainValue", gain);
+}
+
+-(void)setExposure:(int)_exp{
+    exposure = _exp;
+    PvAttrUint32Set(GCamera.Handle, "ExposureValue", gain);
+    PvAttrEnumSet(GCamera.Handle, "ExposureMode", "Manual");
+}
 
 @end

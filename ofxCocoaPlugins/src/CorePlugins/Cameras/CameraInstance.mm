@@ -46,6 +46,21 @@
     camIsConnected = _camIsConnected;
     
     if(!camIsConnected){
+        if([self camInited]){
+            [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                NSString *question = @"Camera unplugged!";
+                NSAlert *alert = [[NSAlert alloc] init];
+                [alert setAlertStyle:NSWarningAlertStyle];
+                [alert setMessageText:@"Error!"];
+                [alert setInformativeText:question];
+                //    [alert addButtonWithTitle:cancelButton];
+                
+                [alert runModal];
+                [alert release];
+                alert = nil;
+            }];
+        }
+        
         [self setCamInited:NO];
         [self setCamIsIniting:NO];
         [self setCamIsClosing:NO];

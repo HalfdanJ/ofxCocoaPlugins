@@ -30,9 +30,20 @@ typedef struct
     int circleIndex;
     int processIndex;
     int lastProcessedFramecount;
+    
+    NSString * modelName;
+        NSString * ip;
+    
+    int exposure;
+    int gain;
 }
 
 @property (readwrite) unsigned long uid;
+
+@property (readwrite,retain) NSString * modelName;
+@property (readwrite,retain) NSString * ip;
+@property (readwrite) int exposure;
+@property (readwrite) int gain;
 
 -(BOOL) openCamera;
 -(void) closeCamera;
@@ -40,4 +51,6 @@ typedef struct
 -(void) stopStreamCamera;
 
 -(void) spawnThread;
+
+-(void) readCameraSettings;
 @end

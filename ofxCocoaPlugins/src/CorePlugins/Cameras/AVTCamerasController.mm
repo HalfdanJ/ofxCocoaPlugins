@@ -98,7 +98,9 @@ void static  CameraEventCB(void* context,
     for(AVTCameraInstance * instance in [self instances]){
         if([instance uid] == uid){
             //Found existing instance, just update status
+           
             [instance setCamIsConnected:NO];
+
             break;
         }
     }
