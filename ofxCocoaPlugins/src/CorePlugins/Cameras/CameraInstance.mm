@@ -105,6 +105,8 @@
 
 -(void) drawCamera:(NSRect)rect{
 	tex->draw(rect.origin.x, rect.origin.y, rect.size.width, rect.size.height);
+   // ofSetColor(255,255,255);
+   // ofRect(rect.origin.x, rect.origin.y, rect.size.width, rect.size.height);
 }
 -(void) loadSettingsDict:(NSMutableDictionary*)dict{}
 -(void) addPropertiesToSave:(NSMutableDictionary*)dict{}

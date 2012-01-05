@@ -48,6 +48,39 @@ void FrameDoneCB(tPvFrame* pFrame)
     }
 }
 
+-(void)update{
+    tPvFrame * frame = &GCamera.Frames[processIndex];
+    [lock lock];
+    if([self camInited] && frame->Status == ePvErrSuccess && lastProcessedFramecount != frame->FrameCount && processIndex != circleIndex){
+        lastProcessedFramecount = processIndex;
+        
+        //Process!
+        
+        //New size image
+        if(width != frame->Width || height != frame->Height){
+
+            width = frame->Width;
+            height = frame->Height;
+            if(frame->Format == ePvFmtMono8){
+                tex->allocate(width, height, GL_LUMINANCE);
+                
+                delete pixels;
+                pixels = new unsigned char[width * height];
+                memset(pixels, 0, width*height);
+            }        
+        }
+        
+        //Copy data
+        memcpy(pixels,frame->ImageBuffer,frame->ImageBufferSize);
+        if(frame->Format == ePvFmtMono8){
+            tex->loadData(pixels, width, height, GL_LUMINANCE);
+        }
+        
+        
+    }
+    [lock unlock];
+}
+
 #pragma mark Thread
 -(void) threadedFunction{
     while(![self camIsClosing] && [self camIsConnected]){
@@ -55,12 +88,13 @@ void FrameDoneCB(tPvFrame* pFrame)
             if(!GCamera.UID && !GCamera.Abort)
             {
                 GCamera.UID = [self uid];    
-                
+                [self setStatus:@"Opening camera..."];
                 if([self openCamera])
                 {
                     printf("Camera %lu opened\n",[self uid]);   
                     
                     // start streaming from the camera
+                    [self setStatus:@"Starting stream..."];
                     if([self startStreamCamera])
                     {
                         //create a thread to display camera stats. 
@@ -84,12 +118,25 @@ void FrameDoneCB(tPvFrame* pFrame)
         }
         
         if([self camInited]){
-            PvCaptureWaitForFrameDone(GCamera.Handle, &(GCamera.Frames[0]), 2000);
+            tPvFrame * frame = &GCamera.Frames[circleIndex];
+
+            PvCaptureWaitForFrameDone(GCamera.Handle, frame, 2000);
             
+            
+            [lock lock];
+            processIndex = circleIndex;
+            
+           
             //requeue frame
             if(GCamera.Frames[0].Status != ePvErrCancelled && !GCamera.Abort && ![self camIsClosing]){
-                PvCaptureQueueFrame(GCamera.Handle, &(GCamera.Frames[0]), NULL);
+                PvCaptureQueueFrame(GCamera.Handle, frame, NULL);
             }
+
+            circleIndex++;
+            if(circleIndex==FRAMESCOUNT)
+                circleIndex = 0;    
+            [lock unlock];
+
         }
     }
     
@@ -194,6 +241,7 @@ void FrameDoneCB(tPvFrame* pFrame)
     
     // queue frames with FrameDoneCB callback function. Each frame can use a unique callback function
 	// or, as in this case, the same callback function.
+    circleIndex = 0;
 	for(int i=0;i<FRAMESCOUNT && !failed;i++)
 	{           
 		if((errCode = PvCaptureQueueFrame(GCamera.Handle,&(GCamera.Frames[i]),FrameDoneCB)) != ePvErrSuccess)

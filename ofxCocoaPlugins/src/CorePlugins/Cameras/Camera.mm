@@ -91,9 +91,9 @@
 }
 
 -(void)update{
-    //	if(cameraInstance != nil){
-    //		[[cameraInstance objectForKey:@"object"] update];
-    //	 }
+    if(cameraInstance != nil){
+    	[cameraInstance update];
+    }
 }
 
 -(void) draw:(NSRect)rect{

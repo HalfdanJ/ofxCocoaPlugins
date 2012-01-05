@@ -161,17 +161,17 @@
 	}
     
     //Resize opengl view and gray bar
-    [[[[self view] subviews] objectAtIndex:0] setFrameSize:NSMakeSize(width*i, height)];
+    [[[[self view] subviews] objectAtIndex:0] setFrameSize:NSMakeSize(width*i, 225)];
     [[[[self view] subviews] objectAtIndex:1] setFrameSize:NSMakeSize(width*i, height)];
 	
 	
 	
 }
 
--(BOOL)willDraw:(NSMutableDictionary *)drawingInformation{
+/*-(BOOL)willDraw:(NSMutableDictionary *)drawingInformation{
 	return NO;
 }
-
+*/
 -(void) update:(NSDictionary *)drawingInformation{
 	Camera * cam;
 	int i=0;
@@ -205,13 +205,17 @@
 }
 
 -(void) controlDraw:(NSDictionary *)drawingInformation{
-	ofBackground(0, 0, 0);
+	//ofBackground(0, 0, 0);
 	Camera * cam;
 	int i=0;
 	for(cam in cameras){
 		[cam draw:NSMakeRect(300*i, 0, 300, 225)];
 		i++;
 	}
+/*    ofFill();
+    ofSetColor(255,255,0);
+    ofRect(0,0,300,ofGetHeight());
+    cout<<ofGetWidth()<<"  "<<ofGetHeight()<<endl;*/
 }
 
 -(Camera*) getCamera:(int)n{

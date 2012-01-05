@@ -6,7 +6,7 @@
 #import "PvApi.h"
 
 
-#define FRAMESCOUNT 1
+#define FRAMESCOUNT 3
 
 
 typedef struct 
@@ -26,6 +26,10 @@ typedef struct
     
     NSThread * thread;
     NSRecursiveLock * lock;
+    
+    int circleIndex;
+    int processIndex;
+    int lastProcessedFramecount;
 }
 
 @property (readwrite) unsigned long uid;
