@@ -1,9 +1,16 @@
 //THE PATH TO THE ROOT OF OUR OF PATH RELATIVE TO THIS PROJECT.
 //THIS NEEDS TO BE DEFINED BEFORE CoreOF.xcconfig IS INCLUDED
-OF_PATH = ofxCocoaPlugins/libs/openFrameworks
+OFX_PATH = $(SOURCE_ROOT)/
+OF_PATH = $(OFX_PATH)ofxCocoaPlugins/libs/openFrameworks
 
 //THIS HAS ALL THE HEADER AND LIBS FOR OF CORE
 #include "ofxCocoaPlugins/libs/openFrameworks/libs/openFrameworksCompiled/project/osx/CoreOF.xcconfig"
 
+HEADER_OPENCV = "$(OF_PATH)/addons/ofxOpenCv/libs/opencv/include/" "$(OF_PATH)/addons/ofxOpenCv/libs/opencv/include/opencv" "$(OF_PATH)/addons/ofxOpenCv/src" 
+
+
+
 OTHER_LDFLAGS = $(OF_CORE_LIBS) 
 HEADER_SEARCH_PATHS = $(OF_CORE_HEADERS)
+
+USER_HEADER_SEARCH_PATHS = $(HEADER_OPENCV)
