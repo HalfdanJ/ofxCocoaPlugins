@@ -51,4 +51,7 @@
 -(void) drawCamera:(NSRect)rect;
 -(void) loadSettingsDict:(NSMutableDictionary*)dict;
 -(void) addPropertiesToSave:(NSMutableDictionary*)dict;
+
+//Aspect of the image
+-(float) aspect;
 @end

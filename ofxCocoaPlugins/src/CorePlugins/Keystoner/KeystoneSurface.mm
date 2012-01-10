@@ -288,7 +288,7 @@
 		
 	} glPopMatrix();
 	//ofPopStyle();
-	
+	ofFill();
 }
 -(void) apply{
 	[self applyWithWidth:1.0 height:1.0];	

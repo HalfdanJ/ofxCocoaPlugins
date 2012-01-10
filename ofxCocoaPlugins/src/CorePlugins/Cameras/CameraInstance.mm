@@ -123,6 +123,10 @@
    // ofSetColor(255,255,255);
    // ofRect(rect.origin.x, rect.origin.y, rect.size.width, rect.size.height);
 }
+
+-(float)aspect{
+    return (float)width/height;
+}
 -(void) loadSettingsDict:(NSMutableDictionary*)dict{}
 -(void) addPropertiesToSave:(NSMutableDictionary*)dict{}
 - (void)update{}

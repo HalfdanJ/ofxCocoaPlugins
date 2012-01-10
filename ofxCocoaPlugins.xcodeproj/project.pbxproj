@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3D24851814BC671900AC6F95 /* CameraCalibration.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D24851514BC671900AC6F95 /* CameraCalibration.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3D24851914BC671900AC6F95 /* CameraCalibration.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3D24851614BC671900AC6F95 /* CameraCalibration.mm */; };
+		3D24851A14BC671900AC6F95 /* CameraCalibration.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D24851714BC671900AC6F95 /* CameraCalibration.xib */; };
+		3D24851D14BC6DBA00AC6F95 /* CameraCalibrationObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D24851B14BC6DBA00AC6F95 /* CameraCalibrationObject.h */; };
+		3D24851E14BC6DBA00AC6F95 /* CameraCalibrationObject.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3D24851C14BC6DBA00AC6F95 /* CameraCalibrationObject.mm */; };
 		3D2FC2291462EC7C0028BC01 /* README in Resources */ = {isa = PBXBuildFile; fileRef = 3D2FC2281462EC7C0028BC01 /* README */; };
 		3D3B7920149224AF00743828 /* ofEvents.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A35AC14543B7800CC89E5 /* ofEvents.h */; };
 		3D3B7921149224B300743828 /* ofEventUtils.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A35AD14543B7800CC89E5 /* ofEventUtils.h */; };
@@ -548,6 +553,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3D24851514BC671900AC6F95 /* CameraCalibration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraCalibration.h; sourceTree = "<group>"; };
+		3D24851614BC671900AC6F95 /* CameraCalibration.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CameraCalibration.mm; sourceTree = "<group>"; };
+		3D24851714BC671900AC6F95 /* CameraCalibration.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CameraCalibration.xib; sourceTree = "<group>"; };
+		3D24851B14BC6DBA00AC6F95 /* CameraCalibrationObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraCalibrationObject.h; sourceTree = "<group>"; };
+		3D24851C14BC6DBA00AC6F95 /* CameraCalibrationObject.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CameraCalibrationObject.mm; sourceTree = "<group>"; };
 		3D2FC2281462EC7C0028BC01 /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
 		3D9951A914B5EDEC007F1E96 /* BlobClasses2d.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlobClasses2d.h; sourceTree = "<group>"; };
 		3D9951AA14B5EDEC007F1E96 /* BlobClasses2d.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = BlobClasses2d.mm; sourceTree = "<group>"; };
@@ -964,6 +974,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3D24851414BC671900AC6F95 /* CameraCalibration */ = {
+			isa = PBXGroup;
+			children = (
+				3D24851514BC671900AC6F95 /* CameraCalibration.h */,
+				3D24851614BC671900AC6F95 /* CameraCalibration.mm */,
+				3D24851B14BC6DBA00AC6F95 /* CameraCalibrationObject.h */,
+				3D24851C14BC6DBA00AC6F95 /* CameraCalibrationObject.mm */,
+				3D24851714BC671900AC6F95 /* CameraCalibration.xib */,
+			);
+			path = CameraCalibration;
+			sourceTree = "<group>";
+		};
 		3D9951A814B5EDEB007F1E96 /* BlobTracker2d */ = {
 			isa = PBXGroup;
 			children = (
@@ -1902,6 +1924,7 @@
 			isa = PBXGroup;
 			children = (
 				DD0A334A1452F29C00CC89E5 /* CorePluginsIncludes.h */,
+				3D24851414BC671900AC6F95 /* CameraCalibration */,
 				3D9951A814B5EDEB007F1E96 /* BlobTracker2d */,
 				3D9AD7BE14B45F3700DB3187 /* Cameras */,
 				DDC266A91454BBE90016BA7B /* GeneralPreferences */,
@@ -2015,6 +2038,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3D24851814BC671900AC6F95 /* CameraCalibration.h in Headers */,
 				3D9951B514B5EDEC007F1E96 /* BlobTracker2d.h in Headers */,
 				3D9951B314B5EDEC007F1E96 /* BlobClasses2d.h in Headers */,
 				3D9951B814B5EDEC007F1E96 /* BlobTrackerInstance2d.h in Headers */,
@@ -2277,6 +2301,7 @@
 				3DAFD3D514B46FC5004D0D50 /* CamerasController.h in Headers */,
 				3DAFD3DA14B470F9004D0D50 /* AVTCamerasController.h in Headers */,
 				3D9951BC14B5EDEC007F1E96 /* ofxQtVideoSaver.h in Headers */,
+				3D24851D14BC6DBA00AC6F95 /* CameraCalibrationObject.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2361,6 +2386,7 @@
 				3D9AD7F714B45F3700DB3187 /* Cameras.xib in Resources */,
 				3D9951B714B5EDEC007F1E96 /* BlobTracker2d.xib in Resources */,
 				3D9951BA14B5EDEC007F1E96 /* BlobTrackerInstance2d.xib in Resources */,
+				3D24851A14BC671900AC6F95 /* CameraCalibration.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2461,6 +2487,8 @@
 				3D9951B614B5EDEC007F1E96 /* BlobTracker2d.mm in Sources */,
 				3D9951B914B5EDEC007F1E96 /* BlobTrackerInstance2d.mm in Sources */,
 				3D9951BB14B5EDEC007F1E96 /* ofxQtVideoSaver.cpp in Sources */,
+				3D24851914BC671900AC6F95 /* CameraCalibration.mm in Sources */,
+				3D24851E14BC6DBA00AC6F95 /* CameraCalibrationObject.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
