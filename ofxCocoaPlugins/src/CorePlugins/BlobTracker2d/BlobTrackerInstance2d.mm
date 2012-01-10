@@ -60,7 +60,6 @@
     
     grayImageBlured->allocate(cw,ch);
 	grayImage->allocate(cw,ch);
-	grayBg->allocate(cw,ch);
 	grayDiff->allocate(cw,ch);	
     
     threadGrayDiff->allocate(cw,ch);
@@ -77,6 +76,12 @@
     }
     rgbTmpPixels = new unsigned char[cw * ch*3];
 	memset(rgbTmpPixels, 0, cw*ch*3);
+    
+    
+  //  if(loadBackgroundNow){
+        loadBackgroundNow= NO;
+        [self loadBackground];	
+   // }
 
 }
 
@@ -118,6 +123,8 @@
     pixels = nil;
     rgbTmpPixels = nil;
     [self setWidth:640 height:480];
+    grayBg->allocate(640,480);
+
 }
 
 
@@ -125,10 +132,7 @@
     BOOL update = YES;
     
     if(live){       
-        if(loadBackgroundNow){
-            loadBackgroundNow= NO;
-            [self loadBackground];	
-        }
+        
 #ifdef USE_KINECT_2D_TRACKER
         if([self isKinect]){
             KinectInstance * kinect = cameraInstance;
@@ -145,6 +149,7 @@
             
         }
         if(update){
+            
 #ifdef USE_KINECT_2D_TRACKER
             if([self isKinect]){
                 if(cw != 640 || ch != 480){
@@ -169,6 +174,7 @@
                     grayImage->setFromPixels([cam pixels], [cam width], [cam height]);
                 }
             }
+
             
             //Blur
             *grayImageBlured = *grayImage;            
@@ -604,9 +610,12 @@
     NSString * basePath = [[NSString stringWithFormat:@"~/Pictures/Background/blobTracker%iBackground.png",trackerNumber] stringByExpandingTildeInPath];
     
 	ofImage loadImg;
+    grayBg->allocate(cw,ch);
 	if (loadImg.loadImage([basePath cStringUsingEncoding:NSUTF8StringEncoding])) {
-		grayBg->setFromPixels(loadImg.getPixels(), loadImg.getWidth(), loadImg.getHeight());
-        grayBg->draw(0, 0,0,0);
+        if(cw == loadImg.getWidth() && ch == loadImg.getHeight()){
+            grayBg->setFromPixels(loadImg.getPixels(), loadImg.getWidth(), loadImg.getHeight());
+            grayBg->draw(0, 0,0,0);
+        }
 		//		return true;
 	} else {
 		//		return false;
