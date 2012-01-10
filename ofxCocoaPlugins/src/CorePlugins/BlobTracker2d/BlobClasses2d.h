@@ -1,9 +1,8 @@
 #pragma once
 
-#include "Plugin.h"
-#include "ofxOpenCv.h"
-#include "ofVectorMath.h"
-#import "Keystoner.h"
+#include <ofxCocoaPlugins/Plugin.h>
+#import "ofxOpenCv.h"
+#import <ofxCocoaPlugins/coordWarp.h>
 
 @interface PersistentBlob2d : NSObject
 {

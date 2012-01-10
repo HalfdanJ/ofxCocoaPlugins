@@ -30,6 +30,8 @@
 @property (readwrite) ofTexture * tex;
 @property (readwrite) unsigned char* pixels;
 @property (retain) 	NSMutableDictionary * cameraInstances;
+@property (readonly) int width;
+@property (readonly) int height;
 
 @property (readwrite) BOOL camInited;
 @property (readwrite) BOOL camIsIniting;

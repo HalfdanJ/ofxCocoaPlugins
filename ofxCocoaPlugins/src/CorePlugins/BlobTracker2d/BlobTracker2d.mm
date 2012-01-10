@@ -1,11 +1,17 @@
 #import "BlobTracker2d.h"
+#import "Keystoner.h"
+#import "Cameras.h"
+#ifdef USE_KINECT_2D_TRACKER
 #import "Kinect.h"
+#endif
 
 @implementation BlobTracker2d
 
 -(void)initPlugin{
     instances = [NSMutableArray array];
     int i=0;
+
+#ifdef USE_KINECT_2D_TRACKER
     for(KinectInstance * kinect in [GetPlugin(Kinect) instances]){
         BlobTrackerInstance2d * newInstance = [[BlobTrackerInstance2d alloc] init];
         [newInstance setCameraInstance:kinect];
@@ -14,6 +20,17 @@
         i++;
         
         [self addProperty:[BoolProperty boolPropertyWithDefaultvalue:NO] named:[NSString stringWithFormat:@"grab%i", i]];
+    }
+#endif
+    for(Camera * cam in [GetPlugin(Cameras) cameras]){
+        BlobTrackerInstance2d * newInstance = [[BlobTrackerInstance2d alloc] init];
+        [newInstance setCameraInstance:cam];
+        [newInstance setTrackerNumber:i];
+        [instances addObject:newInstance];
+        i++;
+        
+        [self addProperty:[BoolProperty boolPropertyWithDefaultvalue:NO] named:[NSString stringWithFormat:@"grab%i", i]];
+        
     }
     
 }
@@ -33,12 +50,7 @@
 -(void)awakeFromNib{
     [super awakeFromNib];
     
-    
     int number = [instances count];
-    
-    
-    
-    
     int i=0;
     for(BlobTrackerInstance2d * instance in instances){
         [NSBundle loadNibNamed:@"BlobTrackerInstance2d"  owner:instance];
@@ -58,7 +70,7 @@
 }
 
 -(void)customPropertiesLoaded{		
-    NSLog(@"Set Custom Properties: %@ %lu",customProperties,[[customProperties objectForKey:@"instances"] count]);
+    NSLog(@"Set Custom Properties: %@ %u",customProperties,[[customProperties objectForKey:@"instances"] count]);
     int i=0;
     for(BlobTrackerInstance2d * instance in instances){
         if([[customProperties objectForKey:@"instances"] count] > i){
@@ -67,7 +79,6 @@
         }
         i++;
     }
-    
 }
 
 -(void)willSave{	
@@ -79,9 +90,6 @@
         [props setObject:[instance properties] forKey:@"properties"];
         
         [camerasArray addObject:props];
-		
-		
-		
 	}
 	
 	[customProperties setObject:camerasArray forKey:@"instances"];
@@ -120,14 +128,12 @@
 
     glPushMatrix();{
         for(BlobTrackerInstance2d * instance in instances){
-           // [[instance view] setNeedsDisplay:YES];
-
             ofFill();
             ofSetColor(0,0,0);
-        //    ofRect(0,0,controlWidth,controlHeight);
             
             ofSetColor(255,255,255);
             [instance drawInput:NSMakeRect(0,0,blockWidth, blockHeight)];
+            
             [instance drawSurfaceMask:NSMakeRect(0,0,blockWidth, blockHeight)];
             
             [instance drawBackground:NSMakeRect(blockWidth,0,blockWidth, blockHeight)];

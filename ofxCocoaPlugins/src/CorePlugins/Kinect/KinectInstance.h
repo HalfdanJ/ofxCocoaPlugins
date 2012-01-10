@@ -3,6 +3,7 @@
 #include "Plugin.h"
 
 #include "ofxOpenNI.h"
+
 #import "Keystoner.h"
 
 @class Kinect;

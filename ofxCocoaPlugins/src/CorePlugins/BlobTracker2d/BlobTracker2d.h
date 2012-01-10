@@ -1,15 +1,16 @@
 #pragma once
 
-#include "Plugin.h"
+#include <ofxCocoaPlugins/Plugin.h>
+#import <ofxCocoaPlugins/BlobTrackerInstance2d.h>
 
-#import "BlobTrackerInstance2d.h"
+//To use the kinect aswell as camera source
+//#define USE_KINECT_2D_TRACKER
 
 @interface BlobTracker2d : ofPlugin {
     NSMutableArray * instances;    
     
     int controlHeight;
-    int controlWidth; 
-    
+    int controlWidth;     
 }
 
 -(BlobTrackerInstance2d*) getInstance:(int) num;

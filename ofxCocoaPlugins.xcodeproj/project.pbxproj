@@ -74,6 +74,23 @@
 		3D3B795F1492250200743828 /* ofQuickTimeGrabber.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A360914543B7800CC89E5 /* ofQuickTimeGrabber.h */; };
 		3D3B79601492250200743828 /* ofQuickTimePlayer.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A360B14543B7800CC89E5 /* ofQuickTimePlayer.h */; };
 		3D3B79611492250200743828 /* ofQtUtils.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A360D14543B7800CC89E5 /* ofQtUtils.h */; };
+		3D9951B314B5EDEC007F1E96 /* BlobClasses2d.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D9951A914B5EDEC007F1E96 /* BlobClasses2d.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3D9951B414B5EDEC007F1E96 /* BlobClasses2d.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3D9951AA14B5EDEC007F1E96 /* BlobClasses2d.mm */; };
+		3D9951B514B5EDEC007F1E96 /* BlobTracker2d.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D9951AB14B5EDEC007F1E96 /* BlobTracker2d.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3D9951B614B5EDEC007F1E96 /* BlobTracker2d.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3D9951AC14B5EDEC007F1E96 /* BlobTracker2d.mm */; };
+		3D9951B714B5EDEC007F1E96 /* BlobTracker2d.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D9951AD14B5EDEC007F1E96 /* BlobTracker2d.xib */; };
+		3D9951B814B5EDEC007F1E96 /* BlobTrackerInstance2d.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D9951AE14B5EDEC007F1E96 /* BlobTrackerInstance2d.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3D9951B914B5EDEC007F1E96 /* BlobTrackerInstance2d.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3D9951AF14B5EDEC007F1E96 /* BlobTrackerInstance2d.mm */; };
+		3D9951BA14B5EDEC007F1E96 /* BlobTrackerInstance2d.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D9951B014B5EDEC007F1E96 /* BlobTrackerInstance2d.xib */; };
+		3D9951BB14B5EDEC007F1E96 /* ofxQtVideoSaver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9951B114B5EDEC007F1E96 /* ofxQtVideoSaver.cpp */; };
+		3D9951BC14B5EDEC007F1E96 /* ofxQtVideoSaver.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D9951B214B5EDEC007F1E96 /* ofxQtVideoSaver.h */; };
+		3D9951BE14B60648007F1E96 /* ofxCvColorImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DD0A348A1452F2CD00CC89E5 /* ofxCvColorImage.cpp */; };
+		3D9951BF14B6064B007F1E96 /* ofxCvContourFinder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DD0A348D1452F2CD00CC89E5 /* ofxCvContourFinder.cpp */; };
+		3D9951C014B60651007F1E96 /* ofxCvFloatImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DD0A348F1452F2CD00CC89E5 /* ofxCvFloatImage.cpp */; };
+		3D9951C114B60654007F1E96 /* ofxCvGrayscaleImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DD0A34911452F2CD00CC89E5 /* ofxCvGrayscaleImage.cpp */; };
+		3D9951C214B60665007F1E96 /* ofxCvHaarFinder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DD0A34931452F2CD00CC89E5 /* ofxCvHaarFinder.cpp */; };
+		3D9951C314B60674007F1E96 /* ofxCvImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DD0A34951452F2CD00CC89E5 /* ofxCvImage.cpp */; };
+		3D9951C414B60678007F1E96 /* ofxCvShortImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DD0A34981452F2CD00CC89E5 /* ofxCvShortImage.cpp */; };
 		3D9AD7F114B45F3700DB3187 /* Camera.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D9AD7BF14B45F3700DB3187 /* Camera.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3D9AD7F214B45F3700DB3187 /* Camera.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3D9AD7C014B45F3700DB3187 /* Camera.mm */; };
 		3D9AD7F314B45F3700DB3187 /* CameraInstance.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D9AD7C114B45F3700DB3187 /* CameraInstance.h */; };
@@ -116,6 +133,7 @@
 		3D9AD81814B45F3700DB3187 /* pixelink.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D9AD7ED14B45F3700DB3187 /* pixelink.h */; };
 		3D9AD81914B45F3700DB3187 /* video.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D9AD7EE14B45F3700DB3187 /* video.h */; };
 		3D9AD81A14B45F3700DB3187 /* libdc1394.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D9AD7F014B45F3700DB3187 /* libdc1394.a */; };
+		3D9B4D7D14BC4D7300225E4A /* libfmodex.dylib in Copy Files */ = {isa = PBXBuildFile; fileRef = 3D9B4D7C14BC4D7300225E4A /* libfmodex.dylib */; };
 		3DAFD3C514B4685E004D0D50 /* AVTCameraInstance.h in Headers */ = {isa = PBXBuildFile; fileRef = 3DAFD3C314B4685D004D0D50 /* AVTCameraInstance.h */; };
 		3DAFD3C614B4685E004D0D50 /* AVTCameraInstance.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3DAFD3C414B4685D004D0D50 /* AVTCameraInstance.mm */; };
 		3DAFD3C914B46A2F004D0D50 /* libImagelib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAFD3C714B46A2E004D0D50 /* libImagelib.a */; };
@@ -424,7 +442,6 @@
 		DDE4CA9D1451E23800EECFF4 /* PYMIDIVirtualSource.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4CA2F1451E23700EECFF4 /* PYMIDIVirtualSource.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DDE4CA9E1451E23800EECFF4 /* PYMIDIVirtualSource.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE4CA301451E23700EECFF4 /* PYMIDIVirtualSource.m */; };
 		DDE4CAA31451E32700EECFF4 /* CoreMIDI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDE4CAA21451E32700EECFF4 /* CoreMIDI.framework */; };
-		DDE4D5CF1451F1F100EECFF4 /* libfmodex.dylib in Copy Files */ = {isa = PBXBuildFile; fileRef = DDE4D5CE1451F1F100EECFF4 /* libfmodex.dylib */; };
 		DDE4D5D71451F3AF00EECFF4 /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DDE4D5D61451F3AF00EECFF4 /* openFrameworksDebug.a */; };
 		DDF6500314504B20007B0C0A /* Project.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = DDF6500214504B20007B0C0A /* Project.xcconfig */; };
 		DDF6500514504B62007B0C0A /* CoreOF.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = DDF6500414504B62007B0C0A /* CoreOF.xcconfig */; };
@@ -521,9 +538,9 @@
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
-			dstSubfolderSpec = 10;
+			dstSubfolderSpec = 7;
 			files = (
-				DDE4D5CF1451F1F100EECFF4 /* libfmodex.dylib in Copy Files */,
+				3D9B4D7D14BC4D7300225E4A /* libfmodex.dylib in Copy Files */,
 			);
 			name = "Copy Files";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -532,6 +549,16 @@
 
 /* Begin PBXFileReference section */
 		3D2FC2281462EC7C0028BC01 /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
+		3D9951A914B5EDEC007F1E96 /* BlobClasses2d.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlobClasses2d.h; sourceTree = "<group>"; };
+		3D9951AA14B5EDEC007F1E96 /* BlobClasses2d.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = BlobClasses2d.mm; sourceTree = "<group>"; };
+		3D9951AB14B5EDEC007F1E96 /* BlobTracker2d.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlobTracker2d.h; sourceTree = "<group>"; };
+		3D9951AC14B5EDEC007F1E96 /* BlobTracker2d.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = BlobTracker2d.mm; sourceTree = "<group>"; };
+		3D9951AD14B5EDEC007F1E96 /* BlobTracker2d.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BlobTracker2d.xib; sourceTree = "<group>"; };
+		3D9951AE14B5EDEC007F1E96 /* BlobTrackerInstance2d.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlobTrackerInstance2d.h; sourceTree = "<group>"; };
+		3D9951AF14B5EDEC007F1E96 /* BlobTrackerInstance2d.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = BlobTrackerInstance2d.mm; sourceTree = "<group>"; };
+		3D9951B014B5EDEC007F1E96 /* BlobTrackerInstance2d.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BlobTrackerInstance2d.xib; sourceTree = "<group>"; };
+		3D9951B114B5EDEC007F1E96 /* ofxQtVideoSaver.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxQtVideoSaver.cpp; sourceTree = "<group>"; };
+		3D9951B214B5EDEC007F1E96 /* ofxQtVideoSaver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxQtVideoSaver.h; sourceTree = "<group>"; };
 		3D9AD7BF14B45F3700DB3187 /* Camera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Camera.h; sourceTree = "<group>"; };
 		3D9AD7C014B45F3700DB3187 /* Camera.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Camera.mm; sourceTree = "<group>"; };
 		3D9AD7C114B45F3700DB3187 /* CameraInstance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraInstance.h; sourceTree = "<group>"; };
@@ -574,6 +601,7 @@
 		3D9AD7ED14B45F3700DB3187 /* pixelink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pixelink.h; sourceTree = "<group>"; };
 		3D9AD7EE14B45F3700DB3187 /* video.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = video.h; sourceTree = "<group>"; };
 		3D9AD7F014B45F3700DB3187 /* libdc1394.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libdc1394.a; sourceTree = "<group>"; };
+		3D9B4D7C14BC4D7300225E4A /* libfmodex.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libfmodex.dylib; path = ofxCocoaPlugins/libs/openframeworks/libs/fmodex/lib/osx/libfmodex.dylib; sourceTree = "<group>"; };
 		3DAFD3C314B4685D004D0D50 /* AVTCameraInstance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVTCameraInstance.h; sourceTree = "<group>"; };
 		3DAFD3C414B4685D004D0D50 /* AVTCameraInstance.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AVTCameraInstance.mm; sourceTree = "<group>"; };
 		3DAFD3C714B46A2E004D0D50 /* libImagelib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libImagelib.a; path = "ofxCocoaPlugins/libs/PvAPI/lib-pc/x86/4.2/libImagelib.a"; sourceTree = "<group>"; };
@@ -925,8 +953,8 @@
 				DDE4C9B41451E14100EECFF4 /* QuartzCore.framework in Frameworks */,
 				DDE4C9B61451E15F00EECFF4 /* ScriptingBridge.framework in Frameworks */,
 				DDE4CAA31451E32700EECFF4 /* CoreMIDI.framework in Frameworks */,
-				DDE4D5D71451F3AF00EECFF4 /* openFrameworksDebug.a in Frameworks */,
 				DD0A351B1452F2CE00CC89E5 /* opencv.a in Frameworks */,
+				DDE4D5D71451F3AF00EECFF4 /* openFrameworksDebug.a in Frameworks */,
 				3D9AD81A14B45F3700DB3187 /* libdc1394.a in Frameworks */,
 				3DAFD3C914B46A2F004D0D50 /* libImagelib.a in Frameworks */,
 				3DAFD3CA14B46A2F004D0D50 /* libPvAPI.a in Frameworks */,
@@ -936,6 +964,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3D9951A814B5EDEB007F1E96 /* BlobTracker2d */ = {
+			isa = PBXGroup;
+			children = (
+				3D9951AB14B5EDEC007F1E96 /* BlobTracker2d.h */,
+				3D9951AC14B5EDEC007F1E96 /* BlobTracker2d.mm */,
+				3D9951AD14B5EDEC007F1E96 /* BlobTracker2d.xib */,
+				3D9951AE14B5EDEC007F1E96 /* BlobTrackerInstance2d.h */,
+				3D9951AF14B5EDEC007F1E96 /* BlobTrackerInstance2d.mm */,
+				3D9951B014B5EDEC007F1E96 /* BlobTrackerInstance2d.xib */,
+				3D9951A914B5EDEC007F1E96 /* BlobClasses2d.h */,
+				3D9951AA14B5EDEC007F1E96 /* BlobClasses2d.mm */,
+				3D9951B114B5EDEC007F1E96 /* ofxQtVideoSaver.cpp */,
+				3D9951B214B5EDEC007F1E96 /* ofxQtVideoSaver.h */,
+			);
+			path = BlobTracker2d;
+			sourceTree = "<group>";
+		};
 		3D9AD7BE14B45F3700DB3187 /* Cameras */ = {
 			isa = PBXGroup;
 			children = (
@@ -1564,6 +1609,7 @@
 		DDA7FFCC144F1C3800F81C9E = {
 			isa = PBXGroup;
 			children = (
+				3D9B4D7C14BC4D7300225E4A /* libfmodex.dylib */,
 				DD0A358A14543B7800CC89E5 /* openFrameworksHeaders */,
 				DDF6500214504B20007B0C0A /* Project.xcconfig */,
 				3D2FC2281462EC7C0028BC01 /* README */,
@@ -1856,6 +1902,7 @@
 			isa = PBXGroup;
 			children = (
 				DD0A334A1452F29C00CC89E5 /* CorePluginsIncludes.h */,
+				3D9951A814B5EDEB007F1E96 /* BlobTracker2d */,
 				3D9AD7BE14B45F3700DB3187 /* Cameras */,
 				DDC266A91454BBE90016BA7B /* GeneralPreferences */,
 				DD0A334B1452F29C00CC89E5 /* Keystoner */,
@@ -1968,6 +2015,9 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3D9951B514B5EDEC007F1E96 /* BlobTracker2d.h in Headers */,
+				3D9951B314B5EDEC007F1E96 /* BlobClasses2d.h in Headers */,
+				3D9951B814B5EDEC007F1E96 /* BlobTrackerInstance2d.h in Headers */,
 				3D9AD7F114B45F3700DB3187 /* Camera.h in Headers */,
 				3D9AD7F514B45F3700DB3187 /* Cameras.h in Headers */,
 				DDE4C9A21451E04500EECFF4 /* CustomGraphics.h in Headers */,
@@ -2226,6 +2276,7 @@
 				3DAFD3D114B46A61004D0D50 /* PvRegIo.h in Headers */,
 				3DAFD3D514B46FC5004D0D50 /* CamerasController.h in Headers */,
 				3DAFD3DA14B470F9004D0D50 /* AVTCamerasController.h in Headers */,
+				3D9951BC14B5EDEC007F1E96 /* ofxQtVideoSaver.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2239,10 +2290,10 @@
 				DDA7FFD3144F1C3800F81C9E /* Sources */,
 				DDA7FFD6144F1C3800F81C9E /* Resources */,
 				DDA7FFD4144F1C3800F81C9E /* Frameworks */,
-				DDE4CABA1451EA6100EECFF4 /* Copy Files */,
-				DDE4D5CD1451EE8700EECFF4 /* Run Script (fmodex library) */,
 				DDA7FFD5144F1C3800F81C9E /* Headers */,
 				3D3B7907149223D800743828 /* CopyFiles */,
+				DDE4CABA1451EA6100EECFF4 /* Copy Files */,
+				DDE4D5CD1451EE8700EECFF4 /* Run Script (fmodex library) */,
 			);
 			buildRules = (
 			);
@@ -2308,6 +2359,8 @@
 				DDC266B11454BC020016BA7B /* GeneralPreferences.xib in Resources */,
 				3D2FC2291462EC7C0028BC01 /* README in Resources */,
 				3D9AD7F714B45F3700DB3187 /* Cameras.xib in Resources */,
+				3D9951B714B5EDEC007F1E96 /* BlobTracker2d.xib in Resources */,
+				3D9951BA14B5EDEC007F1E96 /* BlobTrackerInstance2d.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2326,7 +2379,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "install_name_tool -change ./libfmodex.dylib @executable_path/../Frameworks/ofxCocoaPlugins.framework/Versions/Current/Frameworks/libfmodex.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.framework/ofxCocoaPlugins\" ;\n";
+			shellScript = "install_name_tool -change ./libfmodex.dylib @executable_path/../Frameworks/ofxCocoaPlugins.framework/Resources/libfmodex.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.framework/ofxCocoaPlugins\" ;";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -2335,6 +2388,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3D9951BE14B60648007F1E96 /* ofxCvColorImage.cpp in Sources */,
+				3D9951BF14B6064B007F1E96 /* ofxCvContourFinder.cpp in Sources */,
+				3D9951C014B60651007F1E96 /* ofxCvFloatImage.cpp in Sources */,
+				3D9951C114B60654007F1E96 /* ofxCvGrayscaleImage.cpp in Sources */,
+				3D9951C214B60665007F1E96 /* ofxCvHaarFinder.cpp in Sources */,
+				3D9951C314B60674007F1E96 /* ofxCvImage.cpp in Sources */,
+				3D9951C414B60678007F1E96 /* ofxCvShortImage.cpp in Sources */,
 				DDA7FFEA144F1C3800F81C9E /* ofxCocoaPlugins.mm in Sources */,
 				DDE4C8D81451AF1500EECFF4 /* BeamSync.m in Sources */,
 				DDE4C8DC1451AF1500EECFF4 /* PluginOpenGLView.mm in Sources */,
@@ -2397,6 +2457,10 @@
 				3DAFD3C614B4685E004D0D50 /* AVTCameraInstance.mm in Sources */,
 				3DAFD3D614B46FC5004D0D50 /* CamerasController.mm in Sources */,
 				3DAFD3DB14B470F9004D0D50 /* AVTCamerasController.mm in Sources */,
+				3D9951B414B5EDEC007F1E96 /* BlobClasses2d.mm in Sources */,
+				3D9951B614B5EDEC007F1E96 /* BlobTracker2d.mm in Sources */,
+				3D9951B914B5EDEC007F1E96 /* BlobTrackerInstance2d.mm in Sources */,
+				3D9951BB14B5EDEC007F1E96 /* ofxQtVideoSaver.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -65,21 +65,23 @@ void FrameDoneCB(tPvFrame* pFrame)
             if(frame->Format == ePvFmtMono8){
                 tex->allocate(width, height, GL_LUMINANCE);
                 
-              /*  delete pixels;
+                delete pixels;
                 pixels = new unsigned char[width * height];
-                memset(pixels, 0, width*height);*/
+                memset(pixels, 0, width*height);
             }        
         }
         
         //Copy data
-        //memcpy(pixels,frame->ImageBuffer,frame->ImageBufferSize);
+        memcpy(pixels,frame->ImageBuffer,frame->ImageBufferSize);
+
         if(frame->Format == ePvFmtMono8){
-            tex->loadData((unsigned char*)frame->ImageBuffer, width, height, GL_LUMINANCE);
+            tex->loadData((unsigned char*)pixels, width, height, GL_LUMINANCE);
         }
         
         
-    }
+    } 
     [lock unlock];
+
 }
 
 #pragma mark Thread
@@ -137,6 +139,8 @@ void FrameDoneCB(tPvFrame* pFrame)
             circleIndex++;
             if(circleIndex==FRAMESCOUNT)
                 circleIndex = 0;    
+            
+           
             [lock unlock];
 
         }

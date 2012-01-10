@@ -7,7 +7,18 @@
 //
 
 #import "BlobTrackerInstance2d.h"
+
+#import "QTKitMovieRenderer.h"
+#import "ofxQtVideoSaver.h"
+#import "Keystoner.h"
+#import "KeystoneSurface.h"
+#import "ofxOpenCv.h"
+#import "CameraInstance.h"
+
+#ifdef USE_KINECT_2D_TRACKER
 #import "KinectInstance.h"
+#endif
+
 
 @implementation BlobTrackerInstance2d
 @synthesize view, name, properties, cameraInstance, trackerNumber, grayDiff, grayBg, learnBackgroundButton, active;
@@ -16,8 +27,6 @@
 {
     self = [super init];
     if (self) {
-        cw = 640;
-		ch = 480;
 		
 		thread = [[NSThread alloc] initWithTarget:self
 										 selector:@selector(performBlobTracking:)
@@ -45,17 +54,9 @@
     [super dealloc];
 }
 
--(void) setup{
-    live = YES;
-    
-    grayImage = new ofxCvGrayscaleImage();
-	grayImageBlured = new ofxCvGrayscaleImage();		
-	//grayBgMask = new ofxCvGrayscaleImage();		
-	grayBg = new ofxCvGrayscaleImage();
-	grayDiff = new ofxCvGrayscaleImage();
-    
-    threadGrayDiff = new ofxCvGrayscaleImage();
-	threadGrayImage = new ofxCvGrayscaleImage();
+-(void) setWidth:(int)w height:(int)h{
+    cw = w;
+    ch = h;
     
     grayImageBlured->allocate(cw,ch);
 	grayImage->allocate(cw,ch);
@@ -65,7 +66,35 @@
     threadGrayDiff->allocate(cw,ch);
 	threadGrayImage->allocate(cw,ch);
     
+    if(pixels != nil){
+        delete pixels;
+    }
+    pixels = new unsigned char[cw * ch];
+	memset(pixels, 0, cw*ch);
+    
+    if(rgbTmpPixels != nil){
+        delete rgbTmpPixels;
+    }
+    rgbTmpPixels = new unsigned char[cw * ch*3];
+	memset(rgbTmpPixels, 0, cw*ch*3);
+
+}
+
+-(void) setup{
+    live = YES;
+    
+    grayImage = new ofxCvGrayscaleImage;
+	grayImageBlured = new ofxCvGrayscaleImage;		
+	//grayBgMask = new ofxCvGrayscaleImage();		
+	grayBg = new ofxCvGrayscaleImage;
+	grayDiff = new ofxCvGrayscaleImage;
+    
+    threadGrayDiff = new ofxCvGrayscaleImage;
+	threadGrayImage = new ofxCvGrayscaleImage;
+   
     contourFinder = new ofxCvContourFinder();
+    
+    
     
     [thread start];
     
@@ -81,15 +110,14 @@
 	[self updateMovieList];
 	millisSinceLastMovieEvent = 0;
     
-    pixels = new unsigned char[cw * ch];
-	memset(pixels, 0, cw*ch);
-    rgbTmpPixels = new unsigned char[cw * ch*3];
-	memset(rgbTmpPixels, 0, cw*ch*3);
     
     saver = new ofxQtVideoSaver();
 	saver->setCodecQualityLevel(OF_QT_SAVER_CODEC_QUALITY_NORMAL);
 	recording = NO;
     
+    pixels = nil;
+    rgbTmpPixels = nil;
+    [self setWidth:640 height:480];
 }
 
 
@@ -101,18 +129,44 @@
             loadBackgroundNow= NO;
             [self loadBackground];	
         }
+#ifdef USE_KINECT_2D_TRACKER
         if([self isKinect]){
             KinectInstance * kinect = cameraInstance;
             if(![kinect kinectConnected]){
                 update = NO;
             }
+        } else 
+#endif
+        {
+            CameraInstance * cam = [cameraInstance cameraInstance];
+            if(![cam camInited]){
+                update = NO;
+            }
+            
         }
         if(update){
+#ifdef USE_KINECT_2D_TRACKER
             if([self isKinect]){
+                if(cw != 640 || ch != 480){
+                    [self setWidth:640 height:480];
+                }
+                
                 KinectInstance * kinect = cameraInstance;
                 if([kinect kinectConnected]){
                     [kinect getIRGenerator]->generateTexture();
                     grayImage->setFromPixels([kinect getIRGenerator]->image_pixels, 640, 480);
+                }
+            } else 
+#endif            
+            {
+                CameraInstance * cam = [cameraInstance cameraInstance];
+                if([cam camInited]){
+                    if([cam width] != cw || [cam height] != ch){
+                        //New size
+                        [self setWidth:[cam width] height:[cam height]];
+                    }
+                    
+                    grayImage->setFromPixels([cam pixels], [cam width], [cam height]);
                 }
             }
             
@@ -233,10 +287,13 @@
             for(int i=0;i<contourFinder->nBlobs;i++){
                 ofxCvBlob * blob = &contourFinder->blobs[i];
                 Blob2d * blobObj = [[[Blob2d alloc] initWithBlob:blob] autorelease];
+                
+#ifdef USE_KINECT_2D_TRACKER
                 if([self isKinect]){
                     KinectInstance * kinect = cameraInstance;
                     [blobObj setCoordWarp:[kinect coordWarper]];
                 }
+#endif
                 
                 [blobObj setCameraId:trackerNumber];
                 //  [blobObj lensCorrect];
@@ -264,10 +321,13 @@
             float shortestDist = 0;
             int bestId = -1;
             KeystoneSurface * surface;
+            
+#ifdef USE_KINECT_2D_TRACKER
             if([self isKinect]){
                 KinectInstance * kinect = cameraInstance;
                 surface = [kinect surface];
             }
+#endif
             
             ofVec2f centroid = ofVec2f([blob centroid].x, [blob centroid].y);
             //				ofVec2f floorCentroid = [GetPlugin(ProjectionSurfaces) convertPoint:centroid fromProjection:"Front" surface:"Floor"];
@@ -348,9 +408,15 @@
 -(void)setCameraInstance:(id)_cameraInstance{
     cameraInstance = _cameraInstance;
     
+#ifdef USE_KINECT_2D_TRACKER
     if([self isKinect]){
         KinectInstance * kinect = cameraInstance;
         name = [NSString stringWithFormat:@"Kinect %i",[kinect kinectNumber]];
+    } else 
+#endif
+    {
+        CameraInstance * cam = [cameraInstance cameraInstance];
+        name = [NSString stringWithFormat:@"Camera %@",[cam name]];
     }
 }
 
@@ -401,10 +467,11 @@
         
 		for(Blob2d * b in [blob blobs]){
 			glBegin(GL_LINE_STRIP);
-            for(int i=0;i<[b nPts];i++){
-				ofVec2f p = [b pts][i];
+            vector<ofPoint> pts = [b pts];
+            for(int i=0;i<pts.size();i++){
+				ofVec2f p = pts[i];
 				//				p = [GetPlugin(ProjectionSurfaces) convertPoint:[b pts][i] fromProjection:"Front" surface:"Floor"];
-
+                
                 if(!warp)
                 	p = [b originalblob]->pts[i];
 				glVertex2f(rect.origin.x+p.x*rect.size.width, rect.origin.y+p.y*rect.size.height);
@@ -421,12 +488,19 @@
 
 -(void) drawSurfaceMask:(NSRect)rect{
     BOOL doDraw = YES;
+#ifdef USE_KINECT_2D_TRACKER
     if([self isKinect]){
         KinectInstance * kinect = cameraInstance;
         if(![kinect kinectConnected])
             doDraw = NO;
+    } else 
+#endif
+    {
+        CameraInstance * cam = [cameraInstance cameraInstance];
+        if(![cam camInited]){
+            doDraw = NO;
+        }
     }
-    
     if(doDraw){
         ofPoint points[4];
         [self getSurfaceMaskCorners:points clamped:YES];
@@ -462,40 +536,44 @@
 
 -(void) getSurfaceMaskCorners:(ofPoint*)points clamped:(BOOL)clamp{
     if(live){
-    ofPoint corners[4];
-    ofPoint realCorners[4];
-    
-    float dist[4];
-    for(int i=0;i<4;i++){
-        dist[i] = -1;
-    }
-    if([self isKinect]){
-        realCorners[0] = ofPoint(0,0);
-        realCorners[1] = ofPoint(640,0);
-        realCorners[2] = ofPoint(640,480);
-        realCorners[3] = ofPoint(0,480);
+        ofPoint corners[4];
+        ofPoint realCorners[4];
         
-        KinectInstance * kinect = cameraInstance;
-        corners[0] = [kinect surfaceCorner:0];
-        corners[1] = [kinect surfaceCorner:1];
-        corners[2] = [kinect surfaceCorner:3];
-        corners[3] = [kinect surfaceCorner:2];
+        float dist[4];
         for(int i=0;i<4;i++){
-            if(clamp){
-                corners[i].x = ofClamp(corners[i].x,0,640);
-                corners[i].y = ofClamp(corners[i].y,0,480);
-            }
+            dist[i] = -1;
         }
-        for(int i=0;i<4;i++){
-            for(int j=0;j<4;j++){
-                float d = ofDistSquared(corners[j].x, corners[j].y, realCorners[i].x, realCorners[i].y);
-                if(dist[i] == -1 || dist[i] > d){
-                    dist[i] = d;
-                    points[i] = corners[j];
+        
+#ifdef USE_KINECT_2D_TRACKER
+        
+        if([self isKinect]){
+            realCorners[0] = ofPoint(0,0);
+            realCorners[1] = ofPoint(640,0);
+            realCorners[2] = ofPoint(640,480);
+            realCorners[3] = ofPoint(0,480);
+            
+            KinectInstance * kinect = cameraInstance;
+            corners[0] = [kinect surfaceCorner:0];
+            corners[1] = [kinect surfaceCorner:1];
+            corners[2] = [kinect surfaceCorner:3];
+            corners[3] = [kinect surfaceCorner:2];
+            for(int i=0;i<4;i++){
+                if(clamp){
+                    corners[i].x = ofClamp(corners[i].x,0,640);
+                    corners[i].y = ofClamp(corners[i].y,0,480);
                 }
             }
-        }
-    } 
+            for(int i=0;i<4;i++){
+                for(int j=0;j<4;j++){
+                    float d = ofDistSquared(corners[j].x, corners[j].y, realCorners[i].x, realCorners[i].y);
+                    if(dist[i] == -1 || dist[i] > d){
+                        dist[i] = d;
+                        points[i] = corners[j];
+                    }
+                }
+            }
+        } 
+#endif
     } else {
         for(int i=0;i<4;i++){
             points[i] = ofPoint(recordingSurfaceCorners[i]);
@@ -504,8 +582,10 @@
 }
 
 -(BOOL) isKinect{
+#ifdef USE_KINECT_2D_TRACKER
     if([cameraInstance isKindOfClass:[KinectInstance class]])
         return YES;  
+#endif
     return NO;
 }
 
@@ -516,7 +596,7 @@
     NSLog(@"basePath %@",basePath);
 	ofImage saveImg;
 	saveImg.allocate(grayBg->getWidth(), grayBg->getHeight(), OF_IMAGE_GRAYSCALE);
-	saveImg.setFromPixels(grayBg->getPixels(), grayBg->getWidth(), grayBg->getHeight(), false);
+	saveImg.setFromPixels(grayBg->getPixels(), grayBg->getWidth(), grayBg->getHeight(), OF_IMAGE_GRAYSCALE);
 	saveImg.saveImage([basePath cStringUsingEncoding:NSUTF8StringEncoding]);	
 }
 
@@ -698,35 +778,35 @@
     
     [data writeToFile:[NSString stringWithFormat:@"%@/%@",path,_name] atomically:YES];	
     [archiver release];
-
+    
     [[NSWorkspace sharedWorkspace] setIcon:[NSImage imageNamed:@"icon"] forFile:[NSString stringWithFormat:@"%@/%@",path,_name] options:0];
-
-
+    
+    
 }
 
 
 - (void) loadRecordinMetadataFromDisk:(NSString*)path name:(NSString*)_name{
 	NSData*	data = [[NSData alloc] initWithContentsOfFile:[NSString stringWithFormat:@"%@/%@",path,_name]];
-		if(data != nil){
-			NSLog(@"Load file: %@",[NSString stringWithFormat:@"%@/%@",path,_name]);
-			NSKeyedUnarchiver * _unarchiver = [[NSKeyedUnarchiver alloc] initForReadingWithData:data];
-			NSLog(@"Recording from %@",[_unarchiver decodeObjectForKey:@"time"]);
-
-            NSArray * array = [_unarchiver decodeObjectForKey:@"corners"];
-            NSLog(@"Array: %@",array);
-            for(int i=0;i<4;i++){
-                recordingSurfaceCorners[i] = ofPoint([[array objectAtIndex:i*2] floatValue], [[array objectAtIndex:i*2+1] floatValue]);
-            }
-            
-			[_unarchiver finishDecoding];
-			[_unarchiver release];
-            
-		}	
-		[data release];
+    if(data != nil){
+        NSLog(@"Load file: %@",[NSString stringWithFormat:@"%@/%@",path,_name]);
+        NSKeyedUnarchiver * _unarchiver = [[NSKeyedUnarchiver alloc] initForReadingWithData:data];
+        NSLog(@"Recording from %@",[_unarchiver decodeObjectForKey:@"time"]);
+        
+        NSArray * array = [_unarchiver decodeObjectForKey:@"corners"];
+        NSLog(@"Array: %@",array);
+        for(int i=0;i<4;i++){
+            recordingSurfaceCorners[i] = ofPoint([[array objectAtIndex:i*2] floatValue], [[array objectAtIndex:i*2+1] floatValue]);
+        }
+        
+        [_unarchiver finishDecoding];
+        [_unarchiver release];
+        
+    }	
+    [data release];
 }
 
 -(BOOL) drawDebug{
     return [drawDebugButton state];   
-
+    
 }
 @end

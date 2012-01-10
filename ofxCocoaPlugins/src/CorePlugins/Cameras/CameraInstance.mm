@@ -11,7 +11,7 @@
 
 @implementation CameraInstance
 
-@synthesize name, status, tex, pixels, enabled, cameraInstances, camIsConnected, camIsClosing, camInited, camIsIniting, referenceCount;
+@synthesize name, status, tex, pixels, enabled, cameraInstances, camIsConnected, camIsClosing, camInited, camIsIniting, referenceCount, width, height;
 
 -(id) init{
 	if([super init]){

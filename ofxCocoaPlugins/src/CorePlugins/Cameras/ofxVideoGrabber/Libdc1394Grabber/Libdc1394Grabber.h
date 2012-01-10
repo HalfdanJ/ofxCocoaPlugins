@@ -5,7 +5,6 @@
 /*#include "ofConstants.h"
 #include "ofAppRunner.h"*/
 #include "ofMain.h"
-#include "ofxThread.h"
 
 #include <dc1394/dc1394.h>
 
@@ -14,7 +13,7 @@
 #include "ofxVideoGrabberSDK.h"
 
 
-class Libdc1394Grabber : public ofxVideoGrabberSDK, public ofxThread
+class Libdc1394Grabber : public ofxVideoGrabberSDK, public ofThread
 {
 public:
 	

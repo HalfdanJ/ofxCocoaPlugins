@@ -1,4 +1,5 @@
 #import "BlobClasses2d.h"
+#import "Keystoner.h"
 
 
 @implementation PersistentBlob2d

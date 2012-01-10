@@ -1,13 +1,12 @@
 #pragma once
 
-#include "Plugin.h"
-#include "ofxOpenCv.h"
-#include "BlobClasses2d.h"
-#include "Keystoner.h"
+#include <ofxCocoaPlugins/Plugin.h>
+#include <ofxCocoaPlugins/BlobClasses2d.h>
 
-#include "ofxQtVideoSaver.h"
-//#include "videoplayerWrapper.h"
-#include "QTKitMovieRenderer.h"
+#import "ofxOpenCv.h"
+
+class ofxQtVideoSaver;
+@class QTKitMovieRenderer;
 
 @interface BlobTrackerInstance2d : NSObject {    
     NSView *view;
@@ -16,7 +15,7 @@
     IBOutlet NSSlider * blurSlider;
 	IBOutlet NSSlider * thresholdSlider;
 	IBOutlet NSButton * activeButton;
-	 NSButton * learnBackgroundButton;
+    NSButton * learnBackgroundButton;
     IBOutlet NSButton * drawDebugButton;
 	IBOutlet NSSlider * persistentSlider;
 

@@ -11,5 +11,8 @@ extern PluginManagerController * globalController;
 	
 
 }
+
+@property (readwrite) BOOL boolValue;
+
 +(BoolProperty*)boolPropertyWithDefaultvalue:(BOOL)defValue;
 @end
