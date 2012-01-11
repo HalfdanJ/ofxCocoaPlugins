@@ -1,3 +1,5 @@
+#ifdef KINECT
+
 #pragma once
 
 #include "Plugin.h"
@@ -64,3 +66,5 @@ struct Dancer {
 
 
 @end
+
+#endif

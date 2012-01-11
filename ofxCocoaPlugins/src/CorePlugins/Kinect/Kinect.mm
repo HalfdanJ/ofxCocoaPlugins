@@ -1,3 +1,5 @@
+#ifdef KINECT
+
 #import "Kinect.h"
 
 #include <algorithm>
@@ -1543,3 +1545,4 @@
 
 
 @end
+#endif

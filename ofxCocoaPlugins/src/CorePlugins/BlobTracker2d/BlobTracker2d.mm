@@ -1,6 +1,8 @@
 #import "BlobTracker2d.h"
 #import "Keystoner.h"
 #import "Cameras.h"
+#import <ofxCocoaPlugins/CameraCalibration.h>
+#import "KeystoneSurface.h"
 #ifdef USE_KINECT_2D_TRACKER
 #import "Kinect.h"
 #endif
@@ -26,6 +28,7 @@
         BlobTrackerInstance2d * newInstance = [[BlobTrackerInstance2d alloc] init];
         [newInstance setCameraInstance:cam];
         [newInstance setTrackerNumber:i];
+        [newInstance setCalibrator:[GetPlugin(CameraCalibration) calibrationForCamera:cam surface:@"Floor"]];
         [instances addObject:newInstance];
         i++;
         
@@ -114,6 +117,13 @@
                 [instance drawBlobs:NSMakeRect(0,0,[[surface aspect] floatValue], 1) warped:YES];
                 [GetPlugin(Keystoner) popSurface];            
 
+            }
+            if(![instance isKinect] && [instance drawDebug] ){
+                KeystoneSurface * surface = [[instance calibrator] surface];
+                [GetPlugin(Keystoner) applySurface:surface];            
+                [instance drawBlobs:NSMakeRect(0,0,[[surface aspect] floatValue], 1) warped:YES];
+                [GetPlugin(Keystoner) popSurface];            
+                
             }
 
         }        

@@ -10,7 +10,7 @@
 		3D24851814BC671900AC6F95 /* CameraCalibration.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D24851514BC671900AC6F95 /* CameraCalibration.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3D24851914BC671900AC6F95 /* CameraCalibration.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3D24851614BC671900AC6F95 /* CameraCalibration.mm */; };
 		3D24851A14BC671900AC6F95 /* CameraCalibration.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D24851714BC671900AC6F95 /* CameraCalibration.xib */; };
-		3D24851D14BC6DBA00AC6F95 /* CameraCalibrationObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D24851B14BC6DBA00AC6F95 /* CameraCalibrationObject.h */; };
+		3D24851D14BC6DBA00AC6F95 /* CameraCalibrationObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D24851B14BC6DBA00AC6F95 /* CameraCalibrationObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3D24851E14BC6DBA00AC6F95 /* CameraCalibrationObject.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3D24851C14BC6DBA00AC6F95 /* CameraCalibrationObject.mm */; };
 		3D2FC2291462EC7C0028BC01 /* README in Resources */ = {isa = PBXBuildFile; fileRef = 3D2FC2281462EC7C0028BC01 /* README */; };
 		3D3B7920149224AF00743828 /* ofEvents.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A35AC14543B7800CC89E5 /* ofEvents.h */; };
@@ -139,6 +139,13 @@
 		3D9AD81914B45F3700DB3187 /* video.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D9AD7EE14B45F3700DB3187 /* video.h */; };
 		3D9AD81A14B45F3700DB3187 /* libdc1394.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D9AD7F014B45F3700DB3187 /* libdc1394.a */; };
 		3D9B4D7D14BC4D7300225E4A /* libfmodex.dylib in Copy Files */ = {isa = PBXBuildFile; fileRef = 3D9B4D7C14BC4D7300225E4A /* libfmodex.dylib */; };
+		3D9D180B14BD952000DD2093 /* handle.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D9D180A14BD952000DD2093 /* handle.png */; };
+		3D9D181314BD95A600DD2093 /* handle.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D9D180D14BD95A600DD2093 /* handle.png */; };
+		3D9D181414BD95A600DD2093 /* Kinect.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D9D180E14BD95A600DD2093 /* Kinect.h */; };
+		3D9D181514BD95A600DD2093 /* Kinect.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3D9D180F14BD95A600DD2093 /* Kinect.mm */; };
+		3D9D181614BD95A600DD2093 /* Kinect.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D9D181014BD95A600DD2093 /* Kinect.xib */; };
+		3D9D181714BD95A600DD2093 /* KinectInstance.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D9D181114BD95A600DD2093 /* KinectInstance.h */; };
+		3D9D181814BD95A600DD2093 /* KinectInstance.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3D9D181214BD95A600DD2093 /* KinectInstance.mm */; };
 		3DAFD3C514B4685E004D0D50 /* AVTCameraInstance.h in Headers */ = {isa = PBXBuildFile; fileRef = 3DAFD3C314B4685D004D0D50 /* AVTCameraInstance.h */; };
 		3DAFD3C614B4685E004D0D50 /* AVTCameraInstance.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3DAFD3C414B4685D004D0D50 /* AVTCameraInstance.mm */; };
 		3DAFD3C914B46A2F004D0D50 /* libImagelib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAFD3C714B46A2E004D0D50 /* libImagelib.a */; };
@@ -612,6 +619,13 @@
 		3D9AD7EE14B45F3700DB3187 /* video.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = video.h; sourceTree = "<group>"; };
 		3D9AD7F014B45F3700DB3187 /* libdc1394.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libdc1394.a; sourceTree = "<group>"; };
 		3D9B4D7C14BC4D7300225E4A /* libfmodex.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libfmodex.dylib; path = ofxCocoaPlugins/libs/openframeworks/libs/fmodex/lib/osx/libfmodex.dylib; sourceTree = "<group>"; };
+		3D9D180A14BD952000DD2093 /* handle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = handle.png; path = ofxCocoaPlugins/src/CorePlugins/Kinect/handle.png; sourceTree = SOURCE_ROOT; };
+		3D9D180D14BD95A600DD2093 /* handle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = handle.png; sourceTree = "<group>"; };
+		3D9D180E14BD95A600DD2093 /* Kinect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Kinect.h; sourceTree = "<group>"; };
+		3D9D180F14BD95A600DD2093 /* Kinect.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Kinect.mm; sourceTree = "<group>"; };
+		3D9D181014BD95A600DD2093 /* Kinect.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Kinect.xib; sourceTree = "<group>"; };
+		3D9D181114BD95A600DD2093 /* KinectInstance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KinectInstance.h; sourceTree = "<group>"; };
+		3D9D181214BD95A600DD2093 /* KinectInstance.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = KinectInstance.mm; sourceTree = "<group>"; };
 		3DAFD3C314B4685D004D0D50 /* AVTCameraInstance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVTCameraInstance.h; sourceTree = "<group>"; };
 		3DAFD3C414B4685D004D0D50 /* AVTCameraInstance.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AVTCameraInstance.mm; sourceTree = "<group>"; };
 		3DAFD3C714B46A2E004D0D50 /* libImagelib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libImagelib.a; path = "ofxCocoaPlugins/libs/PvAPI/lib-pc/x86/4.2/libImagelib.a"; sourceTree = "<group>"; };
@@ -977,6 +991,7 @@
 		3D24851414BC671900AC6F95 /* CameraCalibration */ = {
 			isa = PBXGroup;
 			children = (
+				3D9D180A14BD952000DD2093 /* handle.png */,
 				3D24851514BC671900AC6F95 /* CameraCalibration.h */,
 				3D24851614BC671900AC6F95 /* CameraCalibration.mm */,
 				3D24851B14BC6DBA00AC6F95 /* CameraCalibrationObject.h */,
@@ -1114,6 +1129,19 @@
 				3D9AD7F014B45F3700DB3187 /* libdc1394.a */,
 			);
 			path = lib;
+			sourceTree = "<group>";
+		};
+		3D9D180C14BD95A600DD2093 /* Kinect */ = {
+			isa = PBXGroup;
+			children = (
+				3D9D180D14BD95A600DD2093 /* handle.png */,
+				3D9D180E14BD95A600DD2093 /* Kinect.h */,
+				3D9D180F14BD95A600DD2093 /* Kinect.mm */,
+				3D9D181014BD95A600DD2093 /* Kinect.xib */,
+				3D9D181114BD95A600DD2093 /* KinectInstance.h */,
+				3D9D181214BD95A600DD2093 /* KinectInstance.mm */,
+			);
+			path = Kinect;
 			sourceTree = "<group>";
 		};
 		3DAFD3CB14B46A51004D0D50 /* PvAPI */ = {
@@ -1923,6 +1951,7 @@
 		DDE4C9B71451E23700EECFF4 /* CorePlugins */ = {
 			isa = PBXGroup;
 			children = (
+				3D9D180C14BD95A600DD2093 /* Kinect */,
 				DD0A334A1452F29C00CC89E5 /* CorePluginsIncludes.h */,
 				3D24851414BC671900AC6F95 /* CameraCalibration */,
 				3D9951A814B5EDEB007F1E96 /* BlobTracker2d */,
@@ -2039,6 +2068,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3D24851814BC671900AC6F95 /* CameraCalibration.h in Headers */,
+				3D24851D14BC6DBA00AC6F95 /* CameraCalibrationObject.h in Headers */,
 				3D9951B514B5EDEC007F1E96 /* BlobTracker2d.h in Headers */,
 				3D9951B314B5EDEC007F1E96 /* BlobClasses2d.h in Headers */,
 				3D9951B814B5EDEC007F1E96 /* BlobTrackerInstance2d.h in Headers */,
@@ -2301,7 +2331,8 @@
 				3DAFD3D514B46FC5004D0D50 /* CamerasController.h in Headers */,
 				3DAFD3DA14B470F9004D0D50 /* AVTCamerasController.h in Headers */,
 				3D9951BC14B5EDEC007F1E96 /* ofxQtVideoSaver.h in Headers */,
-				3D24851D14BC6DBA00AC6F95 /* CameraCalibrationObject.h in Headers */,
+				3D9D181414BD95A600DD2093 /* Kinect.h in Headers */,
+				3D9D181714BD95A600DD2093 /* KinectInstance.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2387,6 +2418,9 @@
 				3D9951B714B5EDEC007F1E96 /* BlobTracker2d.xib in Resources */,
 				3D9951BA14B5EDEC007F1E96 /* BlobTrackerInstance2d.xib in Resources */,
 				3D24851A14BC671900AC6F95 /* CameraCalibration.xib in Resources */,
+				3D9D180B14BD952000DD2093 /* handle.png in Resources */,
+				3D9D181314BD95A600DD2093 /* handle.png in Resources */,
+				3D9D181614BD95A600DD2093 /* Kinect.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2489,6 +2523,8 @@
 				3D9951BB14B5EDEC007F1E96 /* ofxQtVideoSaver.cpp in Sources */,
 				3D24851914BC671900AC6F95 /* CameraCalibration.mm in Sources */,
 				3D24851E14BC6DBA00AC6F95 /* CameraCalibrationObject.mm in Sources */,
+				3D9D181514BD95A600DD2093 /* Kinect.mm in Sources */,
+				3D9D181814BD95A600DD2093 /* KinectInstance.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

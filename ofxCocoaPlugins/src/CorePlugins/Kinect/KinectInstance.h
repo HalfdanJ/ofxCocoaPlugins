@@ -1,3 +1,5 @@
+#ifdef KINECT
+
 #pragma once
 
 #include "Plugin.h"
@@ -104,3 +106,5 @@
 
 
 @end
+
+#endif

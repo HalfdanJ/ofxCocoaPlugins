@@ -170,6 +170,8 @@
 	return NO;
 }
 
-
+-(NSString *)description{
+    return [cameraInstance name];
+}
 
 @end

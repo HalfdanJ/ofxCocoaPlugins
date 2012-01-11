@@ -2,6 +2,7 @@
 
 #include <ofxCocoaPlugins/Plugin.h>
 #include <ofxCocoaPlugins/BlobClasses2d.h>
+#import <ofxCocoaPlugins/CameraCalibration.h>
 
 #import "ofxOpenCv.h"
 
@@ -70,6 +71,8 @@ class ofxQtVideoSaver;
     IBOutlet NSButton *recordButton;
     
     ofPoint recordingSurfaceCorners[4];
+    
+    CameraCalibrationObject * calibrator;
 }
 @property (assign) IBOutlet NSView *view;
 @property (readonly) NSString * name;
@@ -82,6 +85,7 @@ class ofxQtVideoSaver;
 @property (readwrite) BOOL active;
 
 @property (readwrite) int trackerNumber;
+@property (readwrite, retain) CameraCalibrationObject * calibrator;
 
 - (IBAction)setMovieFile:(id)sender;
 - (IBAction)toggleRecord:(id)sender;

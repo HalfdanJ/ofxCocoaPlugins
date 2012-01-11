@@ -1,3 +1,5 @@
+#ifdef KINECT
+
 //
 //  KinectObject.m
 //  SeMinSkygge
@@ -493,3 +495,5 @@
 
 
 @end
+
+#endif

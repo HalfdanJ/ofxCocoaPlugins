@@ -21,7 +21,7 @@
 
 
 @implementation BlobTrackerInstance2d
-@synthesize view, name, properties, cameraInstance, trackerNumber, grayDiff, grayBg, learnBackgroundButton, active;
+@synthesize view, name, properties, cameraInstance, trackerNumber, grayDiff, grayBg, learnBackgroundButton, active, calibrator;
 
 - (id)init
 {
@@ -298,9 +298,11 @@
                 if([self isKinect]){
                     KinectInstance * kinect = cameraInstance;
                     [blobObj setCoordWarp:[kinect coordWarper]];
-                }
+                } else 
 #endif
-                
+                {
+                    [blobObj setCoordWarp:[calibrator coordWarper]];
+                }
                 [blobObj setCameraId:trackerNumber];
                 //  [blobObj lensCorrect];
                 [blobObj normalize:cw height:ch];
@@ -332,9 +334,11 @@
             if([self isKinect]){
                 KinectInstance * kinect = cameraInstance;
                 surface = [kinect surface];
-            }
+            } else
 #endif
-            
+            {
+                surface = [calibrator surface];
+            }
             ofVec2f centroid = ofVec2f([blob centroid].x, [blob centroid].y);
             //				ofVec2f floorCentroid = [GetPlugin(ProjectionSurfaces) convertPoint:centroid fromProjection:"Front" surface:"Floor"];
             ofVec2f floorCentroid = [surface convertFromProjection:centroid];

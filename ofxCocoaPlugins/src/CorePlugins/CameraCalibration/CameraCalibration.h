@@ -1,25 +1,33 @@
 #pragma once
 #import <ofxCocoaPlugins/Plugin.h>
 #import <ofxCocoaPlugins/Cameras.h>
+#import <ofxCocoaPlugins/CameraCalibrationObject.h>
 
-@class CameraCalibrationObject;
 @interface CameraCalibration : ofPlugin {
     int controlWidth;
     int controlHeight;
     
     NSArrayController * camerasArrayController;
-    NSArrayController * surfacesArrayController;
+    NSDictionaryController * surfacesArrayController;
     
     NSMutableDictionary * calibrationObjects;
     CameraCalibrationObject * selectedCalibrationObject;
     
     BOOL changingSurface;
+    BOOL drawDebug;
+    
+    ofImage * handleImage;   
+    float mouseLastX,mouseLastY;
+    int draggedPoint;
+
 }
 
 @property (readonly) NSArrayController * camerasArrayController;
 @property (readonly) NSArrayController * surfacesArrayController;
-@property (readonly) CameraCalibrationObject * selectedCalibrationObject;
+@property (readwrite) CameraCalibrationObject * selectedCalibrationObject;
 @property (readwrite) BOOL changingSurface;
+@property (readwrite) BOOL drawDebug;
+@property (readonly) NSMutableDictionary * calibrationObjects;
 
 -(CameraCalibrationObject *) calibrationForCamera:(Camera*)camera surface:(NSString*)surface;
 @end
