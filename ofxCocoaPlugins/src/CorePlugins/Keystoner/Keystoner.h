@@ -38,6 +38,7 @@
 @class TrackingLayer;
 @class KeystonePerspective;
 @class KeystoneSurface;
+@class KeystoneProjector;
 
 @interface Keystoner : ofPlugin {
 	IBOutlet NSSegmentedControl * outputViewPicker;

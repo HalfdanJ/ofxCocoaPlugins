@@ -668,6 +668,9 @@
     return nil;
 }
 
+-(int) numPBlobs{
+    return [persistentBlobs count];
+}
 
 
 -(void) updateMovieList{    

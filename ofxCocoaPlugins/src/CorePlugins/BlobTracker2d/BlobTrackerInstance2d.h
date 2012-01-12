@@ -110,6 +110,7 @@ class ofxQtVideoSaver;
 -(void) update:(NSDictionary *)drawingInformation;
 
 -(PersistentBlob2d*) getPBlob:(int)num;
+-(int) numPBlobs;
 
 -(void) updateMovieList;
 @end
