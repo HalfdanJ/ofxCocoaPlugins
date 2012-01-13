@@ -20,6 +20,8 @@
 	
 	int softedgePart;
 	int softedgeTotalParts;
+    
+    float handleOffset;
 }
 
 @property (retain) NSString * name;
@@ -32,6 +34,7 @@
 @property (readwrite) int projectorNumber;
 @property (readwrite) int softedgePart;
 @property (readwrite) int softedgeTotalParts;
+@property (readwrite) float handleOffset;
 @property (readonly) Warp * warp;
 
 -(void) resetCorners;
@@ -42,7 +45,7 @@
 -(void) applyWithWidth:(float)width height:(float)height;
 -(ofVec2f) convertToProjection:(ofVec2f)p;
 -(ofVec2f) convertFromProjection:(ofVec2f)p;
-
+-(void) setHandleOffsetWithoutRecalculation:(float)_offset;
 -(IBAction) flipX;
 -(IBAction) flipY;
 

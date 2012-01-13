@@ -28,7 +28,7 @@ extern NSArray * arrayOfSurfaceNames;
 
 -(void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context{
 	if([(NSString*)context isEqualToString:@"size"]){
-		[self setSizeRep:[NSString stringWithFormat:@"Outputview screen resolution: %dx%d", (int)size.width,(int) size.height]];
+		[self setSizeRep:[NSString stringWithFormat:@"%dx%d", (int)size.width,(int) size.height]];
 		[self setAspect:(size.width/ size.height)];
 	}
 }

@@ -210,6 +210,7 @@
 				NSMutableDictionary * infoDict = [NSMutableDictionary dictionary];
 				[infoDict setObject:[surface cornerPositions] forKey:@"cornerPositions"];
 				[infoDict setObject:[surface aspect] forKey:@"aspect"];		
+                [infoDict setObject:[NSNumber numberWithFloat:[surface handleOffset]] forKey:@"handleOffset"];		
 				[infoDict setObject:[NSNumber numberWithBool:[surface visible]] forKey:@"visible"];					
 				[infoDict setObject:[NSNumber numberWithInt:[surface softedgePart]] forKey:@"softedgePart"];					
 				[infoDict setObject:[NSNumber numberWithInt:[surface softedgeTotalParts]] forKey:@"softedgeTotalParts"];					
@@ -267,6 +268,7 @@
 					for(KeystoneSurface * surface in [newProj surfaces]){
 						NSMutableDictionary * infoDict  = [surfArray objectAtIndex:surfi];
 						[surface setAspect:[infoDict objectForKey:@"aspect"]];
+                        [surface setHandleOffsetWithoutRecalculation:[[infoDict objectForKey:@"handleOffset"] floatValue]];
 						[surface setCornerPositions:[infoDict objectForKey:@"cornerPositions"]];
 						[surface setVisible:[[infoDict objectForKey:@"visible"] boolValue]];
 						[surface setSoftedgePart:[[infoDict objectForKey:@"softedgePart"] intValue]];

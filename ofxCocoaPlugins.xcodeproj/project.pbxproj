@@ -2576,6 +2576,11 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = (
+					"-headerpad_max_install_names",
+					"$(OF_CORE_LIBS)",
+					"$(LIB_OPENCV)",
+				);
 				SDKROOT = macosx10.6;
 			};
 			name = Debug;
@@ -2610,6 +2615,11 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = (
+					"-headerpad_max_install_names",
+					"$(OF_CORE_LIBS)",
+					"$(LIB_OPENCV)",
+				);
 				SDKROOT = macosx10.6;
 			};
 			name = Release;

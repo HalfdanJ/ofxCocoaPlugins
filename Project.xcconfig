@@ -10,7 +10,7 @@ HEADER_OPENCV = "$(OF_PATH)/addons/ofxOpenCv/libs/opencv/include/" "$(OF_PATH)/a
 
 
 
-OTHER_LDFLAGS = $(OF_CORE_LIBS) $(LIB_OPENCV) 
+OTHER_LDFLAGS = $(OF_CORE_LIBS) $(LIB_OPENCV)  -headerpad_max_install_names
 HEADER_SEARCH_PATHS = $(OF_CORE_HEADERS)
 
 USER_HEADER_SEARCH_PATHS = $(HEADER_OPENCV)

@@ -4,7 +4,7 @@
 
 
 @implementation KeystoneSurface
-@synthesize name, visible, aspect, minAspectValue, maxAspectValue, cornerPositions, viewNumber, projectorNumber,softedgePart, softedgeTotalParts, warp;
+@synthesize name, visible, aspect, minAspectValue, maxAspectValue, cornerPositions, viewNumber, projectorNumber,softedgePart, softedgeTotalParts, warp, handleOffset;
 
 -(id) init{
 	if([super init]){
@@ -15,6 +15,7 @@
 		[self setVisible:YES];
 		[self setSoftedgePart:1];
 		[self setSoftedgeTotalParts:1];
+        [self setHandleOffsetWithoutRecalculation:1.0];
 		
 		[self resetCorners];
 		
@@ -81,6 +82,49 @@
 	[self setCornerPositions:[NSMutableArray arrayWithObjects:[cornerPos objectAtIndex:3],[cornerPos objectAtIndex:2], [cornerPos objectAtIndex:1], [cornerPos objectAtIndex:0],nil]]; 
 }
 
+-(void) setHandleOffsetWithoutRecalculation:(float)_offset{
+    [self willChangeValueForKey:@"handleOffset"];
+    handleOffset = _offset;
+    [self didChangeValueForKey:@"handleOffset"];
+    
+}
+-(void)setHandleOffset:(float)_handleOffset{
+    handleOffset = _handleOffset;
+    
+    /*//Move handles
+    float asp = [[self aspect] floatValue];
+    ofVec2f center = ofVec2f(asp*0.5, 0.5);
+    for(int i=0;i<4;i++){
+        float x = [[[cornerPositions objectAtIndex:i] valueForKey:@"x"] floatValue];
+        float y = [[[cornerPositions objectAtIndex:i] valueForKey:@"y"] floatValue];
+        
+        ofVec2f dir;
+        switch (i) {
+            case 0:
+                dir = center*ofVec2f(-1,-1);
+                break;
+            case 1:
+                dir = center*ofVec2f(1,-1);
+                break;
+            case 2:
+                dir = center*ofVec2f(1,1);
+                break;
+            case 3:
+                dir = center*ofVec2f(-1,1);
+                break;
+                
+            default:
+                break;
+        }
+        
+        ofVec2f p = coordWarp->inversetransform((center+dir).x, (center+dir).y);
+            
+        cout<<"Set "<<i<<": "<<p.x<<" . "<<p.y<<"   was: "<<x<<" . "<<y<<"   ("<<(center+dir).x<<" . "<<(center+dir).y<<")"<<endl;
+    }*/
+    
+    
+}
+
 -(void) drawGrid{
 	[self drawGridSimple:NO];
 }
@@ -137,10 +181,22 @@
 		if(drawBorder){
 			
 			ofNoFill();
-			ofSetLineWidth(2);
+			ofSetLineWidth(1);
 			
 			ofSetColor(64, 128, 220,255*a);
 			ofRect(0, 0, 1*[aspect floatValue], 1);
+            
+            if(handleOffset != 1.0){
+                glPushMatrix();
+                glTranslated([[self aspect] floatValue]*0.5, 0.5,0);
+                glScaled(handleOffset,handleOffset,1.0);
+                glTranslated(-[[self aspect] floatValue]*0.5, -0.5,0);
+                
+                ofSetColor(220, 128, 64,255*a);
+                ofRect(0, 0, 1*[aspect floatValue], 1);
+                
+                glPopMatrix();
+            }
 			
 			if(softedgeTotalParts > 1){
 				ofSetColor(64, 128, 220,255*a);
@@ -156,7 +212,7 @@
 			
 		} else {
 			
-			//white sides
+			/*//white sides
 			ofLine([aspect floatValue], 0, [aspect floatValue], 1);
 			ofLine(0, 0, 0, 1);
 			
@@ -174,7 +230,7 @@
 			ofLine([aspect floatValue], 0, [aspect floatValue], 0.05);
 			
 			ofLine([aspect floatValue], 1, [aspect floatValue]-0.05, 1.0);
-			ofLine([aspect floatValue], 1, [aspect floatValue], 0.95);
+			ofLine([aspect floatValue], 1, [aspect floatValue], 0.95);*/
 			
 		}
 		
@@ -299,6 +355,12 @@
 	glScaled(width, height, 1.0);
 	warp->MatrixMultiply();
 	glScaled(setW, setH, 1.0);
+    
+    { //Handle offset
+        glTranslated([[self aspect] floatValue]*0.5, 0.5,0);
+        glScaled(1.0/handleOffset,1.0/handleOffset,1.0);
+        glTranslated(-[[self aspect] floatValue]*0.5, -0.5,0);
+    }
 	if([self softedgeTotalParts] > 1){
 		glScaled([self softedgeTotalParts], 1, 1.0);
 		
