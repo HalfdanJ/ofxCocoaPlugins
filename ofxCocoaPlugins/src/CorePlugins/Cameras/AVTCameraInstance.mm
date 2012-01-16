@@ -273,12 +273,12 @@ void FrameDoneCB(tPvFrame* pFrame)
     //Set Bytes per second
     //Height x Width x FrameRate x Bytes per Pixel
     //
-/*    if((PvAttrUint32Set(GCamera.Handle,"StreamBytesPerSecond",10*968*1200) != ePvErrSuccess))
+    if((PvAttrUint32Set(GCamera.Handle,"StreamBytesPerSecond",100*968*1200) != ePvErrSuccess))
 	{		
 		printf("CameraStart: failed to set camera Bytes per second\n");
 		return false;
 	}	
-*/
+
 	// set the camera in freerun trigger, continuous mode, and start camera receiving triggers
 	if((PvAttrEnumSet(GCamera.Handle,"FrameStartTriggerMode","Freerun") != ePvErrSuccess) ||
        (PvAttrEnumSet(GCamera.Handle,"AcquisitionMode","Continuous") != ePvErrSuccess) ||
