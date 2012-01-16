@@ -123,17 +123,26 @@ void FrameDoneCB(tPvFrame* pFrame)
         
         if([self camInited]){
             tPvFrame * frame = &GCamera.Frames[circleIndex];
-
+           // cout<<"Wait for frame "<<circleIndex<<endl;
             PvCaptureWaitForFrameDone(GCamera.Handle, frame, 2000);
-            
+            //cout<<"Wait for frame "<<circleIndex<<" DONE "<<endl;            
             
             [lock lock];
-            processIndex = circleIndex;
             
            
             //requeue frame
-            if(frame->Status == ePvErrSuccess && !GCamera.Abort && ![self camIsClosing]){
+//            if(frame->Status == ePvErrSuccess && !GCamera.Abort && ![self camIsClosing]){
+            if(frame->Status == ePvErrSuccess){
+                processIndex = circleIndex;
+            } else {
+                cout<<"Data loss"<<endl;
+            }
+            
+            if(!GCamera.Abort && ![self camIsClosing]){
+            //    cout<<"Capture Queue "<<circleIndex<<"  "<<endl;            
                 PvCaptureQueueFrame(GCamera.Handle, frame, NULL);
+            } else {
+                cout<<"Abort "<<circleIndex<<"bor "<<endl;            
             }
 
             circleIndex++;
@@ -233,6 +242,7 @@ void FrameDoneCB(tPvFrame* pFrame)
 	// Use PvUint32Set(handle, "PacketSize", MaxAllowablePacketSize) instead. See network card properties
 	// for max allowable PacketSize/MTU/JumboFrameSize. 
 	if((errCode = PvCaptureAdjustPacketSize(GCamera.Handle,8228)) != ePvErrSuccess)
+//    	if((errCode = PvCaptureAdjustPacketSize(GCamera.Handle,140)) != ePvErrSuccess)
 	{
 		printf("CameraStart: PvCaptureAdjustPacketSize err: %u\n", errCode);
 		return false;
@@ -260,6 +270,15 @@ void FrameDoneCB(tPvFrame* pFrame)
 	if (failed)
 		return false;
     
+    //Set Bytes per second
+    //Height x Width x FrameRate x Bytes per Pixel
+    //
+/*    if((PvAttrUint32Set(GCamera.Handle,"StreamBytesPerSecond",10*968*1200) != ePvErrSuccess))
+	{		
+		printf("CameraStart: failed to set camera Bytes per second\n");
+		return false;
+	}	
+*/
 	// set the camera in freerun trigger, continuous mode, and start camera receiving triggers
 	if((PvAttrEnumSet(GCamera.Handle,"FrameStartTriggerMode","Freerun") != ePvErrSuccess) ||
        (PvAttrEnumSet(GCamera.Handle,"AcquisitionMode","Continuous") != ePvErrSuccess) ||

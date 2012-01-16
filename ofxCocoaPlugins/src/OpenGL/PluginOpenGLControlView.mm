@@ -37,15 +37,17 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
     NSOpenGLPixelFormatAttribute attrs[] =
 	{
         
-        NSOpenGLPFAScreenMask, openGLDisplayMask,
         NSOpenGLPFAWindow,
-        NSOpenGLPFAAccelerated,
-        NSOpenGLPFAPixelBuffer,
+        NSOpenGLPFANoRecovery,
+        NSOpenGLPFASampleBuffers, 1,
+        NSOpenGLPFASamples, 4,
         NSOpenGLPFADoubleBuffer,
-        NSOpenGLPFAMultisample,
-        NSOpenGLPFASampleBuffers, (NSOpenGLPixelFormatAttribute)4,
-        NSOpenGLPFASamples, (NSOpenGLPixelFormatAttribute)8,
-        NSOpenGLPFADepthSize, 32,
+        NSOpenGLPFAColorSize, 24,
+        NSOpenGLPFAAlphaSize, 8,
+        NSOpenGLPFADepthSize, 24,
+        
+        NSOpenGLPFAAccelerated,
+
         
         
         

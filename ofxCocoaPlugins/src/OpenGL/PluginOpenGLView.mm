@@ -71,6 +71,45 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 //
 
 
+- (id) initWithFrame: (NSRect) frame
+{
+    self = [super initWithFrame:frame];
+    if(self){
+        NSOpenGLPixelFormatAttribute attribs[] = {
+            NSOpenGLPFAWindow,
+            NSOpenGLPFANoRecovery,
+            NSOpenGLPFASampleBuffers, 1,
+            NSOpenGLPFASamples, 6,
+            NSOpenGLPFADoubleBuffer,
+            NSOpenGLPFAColorSize, 24,
+            NSOpenGLPFAAlphaSize, 8,
+            NSOpenGLPFADepthSize, 24,
+            
+            NSOpenGLPFAAccelerated,
+            0
+        };
+        
+        NSOpenGLPixelFormat *fmt = [[NSOpenGLPixelFormat alloc]
+                                    initWithAttributes:attribs];
+        
+        
+        if (!fmt)
+            NSLog(@"No OpenGL pixel format");
+        
+        
+        [self setPixelFormat:fmt];
+        
+        
+    }
+    return self;
+    
+}
+
+//
+//------
+//
+
+
 - (void)dealloc
 {
 	// it is critical to dispose of the display link
@@ -87,67 +126,10 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 //----------------
 // Set up the OpenGL environs
 
-
-- (void)prepareOpenGL
-{
-	GLint swapInterval = 1;
-    
-    // really nice perspective calculations
-    glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
-    
-    // turn on sphere map automatic texture coordinate generation
-    // http://www.opengl.org/sdk/docs/man/xhtml/glTexGen.xml
-    glTexGeni(GL_S, GL_TEXTURE_GEN_MODE, GL_SPHERE_MAP);
-    glTexGeni(GL_T, GL_TEXTURE_GEN_MODE, GL_SPHERE_MAP);
-    
-    glEnable(GL_MULTISAMPLE);
-    
-    // set up the GL contexts swap interval -- passing 1 means that
-    // the buffers are swapped only during the vertical retrace of the monitor
-    [[self openGLContext] setValues:&swapInterval forParameter:NSOpenGLCPSwapInterval];
-	
-	
-	NSOpenGLPixelFormatAttribute attrs[] =
-	{
-        NSOpenGLPFASupersample,
-        NSOpenGLPFASampleBuffers, 1,
-        NSOpenGLPFASamples, 4,
-        
-        //        
-        ////		NSOpenGLPFAWindow,
-        ////		NSOpenGLPFAAccelerated,
-        ////		NSOpenGLPFADoubleBuffer,
-        //		NSOpenGLPFAPixelBuffer,
-        //		NSOpenGLPFASampleBuffers, (NSOpenGLPixelFormatAttribute)4,
-        //		NSOpenGLPFASamples, (NSOpenGLPixelFormatAttribute)4,
-        //        
-        //        kCGLPFAColorSize, 24,
-        //		kCGLPFADepthSize, 16,
-        //        
-        //        NSOpenGLPFADoubleBuffer,
-        //        NSOpenGLPFAAccelerated,
-        //        NSOpenGLPFADepthSize, 24,
-        //        NSOpenGLPFAStencilSize, 8,
-        //        NSOpenGLPFASingleRenderer,
-        //        NSOpenGLPFAScreenMask, CGDisplayIDToOpenGLDisplayMask(kCGDirectMainDisplay),
-        //        NSOpenGLPFANoRecovery,
-        
-        
-        kCGLPFAAccelerated,
-		kCGLPFANoRecovery,
-		kCGLPFADoubleBuffer,
-		kCGLPFAColorSize, 24,
-		kCGLPFADepthSize, 16,
-        
-        
-        
-		(NSOpenGLPixelFormatAttribute)nil
-	};
-	
-	NSOpenGLPixelFormat * pixelFormat = [[NSOpenGLPixelFormat alloc] initWithAttributes:attrs];	
-	[self setPixelFormat:pixelFormat];
-	
-    
+-(void)prepareOpenGL{
+   // GLint swapInt = 1;
+   // [[self openGLContext] setValues:&swapInt forParameter:NSOpenGLCPSwapInterval]; 
+   // 
     
     // create display link for the main display
 	if (NULL == displayLink) {		
@@ -164,6 +146,7 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 			NSLog(@"ERROR could not create displayLink");
 		}
 	}
+    
 }
 
 //
@@ -199,6 +182,7 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 //
 
 -(void) drawRect:(NSRect)dirtyRect{
+    
     // prevent drawing from another thread if we're drawing already
     // cout << "1 OUTPUT DRAW WAIT " << [controller openglLock] << endl;
 
@@ -210,6 +194,7 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 	[[self openGLContext] makeCurrentContext];
     
 	// draw here	
+    
 	if([controller isPluginsInited]){	
 		if(![controller isSetupCalled] || [controller willDraw:drawingInformation]){
             if(![controller isSetupCalled]){             
@@ -253,26 +238,27 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 
             //The drawing from the plugins 
 			[controller callDraw:drawingInformation];
-			
+      		
 			glPopMatrix();
 
             //Flush the buffer to draw to screen
-			glFlush();
-            //[[self openGLContext] flushBuffer];
+			//glFlush();
+            [[self openGLContext] flushBuffer];
             
             //Add the framerate to the statsview
 			[statsView addHistory:[drawingInformation valueForKey:@"fps"]];
 		}
 	} else {
-		glClearColor(0,0,0,255);
+		glClearColor(244,0,0,255);
 		glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-      	glFlush();
+        [[self openGLContext] flushBuffer];
 	}	
-	
-    // cout << "1 OUTPUT DRAW END" << [controller openglLock] << endl;
-
+    
+    
     [controller setLastViewDrawn:[self viewNumber]]; // let the controlView in
 	[[controller openglLock] unlock];	
+
+
 }
 
 

@@ -1152,7 +1152,6 @@
 				3DAFD3CE14B46A61004D0D50 /* PvRegIo.h */,
 				3DAFD3C714B46A2E004D0D50 /* libImagelib.a */,
 				3DAFD3C814B46A2E004D0D50 /* libPvAPI.a */,
-				DDE4D5CE1451F1F100EECFF4 /* libfmodex.dylib */,
 			);
 			name = PvAPI;
 			sourceTree = "<group>";
@@ -2009,6 +2008,7 @@
 		DDE4D5D31451F37F00EECFF4 /* libs */ = {
 			isa = PBXGroup;
 			children = (
+				DDE4D5CE1451F1F100EECFF4 /* libfmodex.dylib */,
 				3DAFD3CB14B46A51004D0D50 /* PvAPI */,
 				DDE4D5D51451F38D00EECFF4 /* openframeworks */,
 			);
