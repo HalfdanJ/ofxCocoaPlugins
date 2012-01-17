@@ -157,6 +157,8 @@
 		3DAFD3D614B46FC5004D0D50 /* CamerasController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3DAFD3D414B46FC5004D0D50 /* CamerasController.mm */; };
 		3DAFD3DA14B470F9004D0D50 /* AVTCamerasController.h in Headers */ = {isa = PBXBuildFile; fileRef = 3DAFD3D814B470F9004D0D50 /* AVTCamerasController.h */; };
 		3DAFD3DB14B470F9004D0D50 /* AVTCamerasController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3DAFD3D914B470F9004D0D50 /* AVTCamerasController.mm */; };
+		3DCAC6A214C47B5B0022F715 /* ofCvCameraCalibration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3DCAC6A114C47B5B0022F715 /* ofCvCameraCalibration.cpp */; };
+		3DCAC6A414C47B680022F715 /* ofCvCameraCalibration.h in Headers */ = {isa = PBXBuildFile; fileRef = 3DCAC6A314C47B680022F715 /* ofCvCameraCalibration.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7FB6BAA41499F75000FE24C9 /* KeystonePerspective.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FB6BAA21499F75000FE24C9 /* KeystonePerspective.h */; };
 		7FB6BAA51499F75000FE24C9 /* KeystonePerspective.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7FB6BAA31499F75000FE24C9 /* KeystonePerspective.mm */; };
 		DD0A33A01452F29C00CC89E5 /* CorePluginsIncludes.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A334A1452F29C00CC89E5 /* CorePluginsIncludes.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -621,11 +623,11 @@
 		3D9B4D7C14BC4D7300225E4A /* libfmodex.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libfmodex.dylib; path = ofxCocoaPlugins/libs/openframeworks/libs/fmodex/lib/osx/libfmodex.dylib; sourceTree = "<group>"; };
 		3D9D180A14BD952000DD2093 /* handle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = handle.png; path = ofxCocoaPlugins/src/CorePlugins/Kinect/handle.png; sourceTree = SOURCE_ROOT; };
 		3D9D180D14BD95A600DD2093 /* handle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = handle.png; sourceTree = "<group>"; };
-		3D9D180E14BD95A600DD2093 /* Kinect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Kinect.h; sourceTree = "<group>"; };
-		3D9D180F14BD95A600DD2093 /* Kinect.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Kinect.mm; sourceTree = "<group>"; };
+		3D9D180E14BD95A600DD2093 /* Kinect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = Kinect.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		3D9D180F14BD95A600DD2093 /* Kinect.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; lineEnding = 0; path = Kinect.mm; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		3D9D181014BD95A600DD2093 /* Kinect.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Kinect.xib; sourceTree = "<group>"; };
 		3D9D181114BD95A600DD2093 /* KinectInstance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KinectInstance.h; sourceTree = "<group>"; };
-		3D9D181214BD95A600DD2093 /* KinectInstance.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = KinectInstance.mm; sourceTree = "<group>"; };
+		3D9D181214BD95A600DD2093 /* KinectInstance.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; lineEnding = 0; path = KinectInstance.mm; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		3DAFD3C314B4685D004D0D50 /* AVTCameraInstance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVTCameraInstance.h; sourceTree = "<group>"; };
 		3DAFD3C414B4685D004D0D50 /* AVTCameraInstance.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AVTCameraInstance.mm; sourceTree = "<group>"; };
 		3DAFD3C714B46A2E004D0D50 /* libImagelib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libImagelib.a; path = "ofxCocoaPlugins/libs/PvAPI/lib-pc/x86/4.2/libImagelib.a"; sourceTree = "<group>"; };
@@ -637,6 +639,8 @@
 		3DAFD3D414B46FC5004D0D50 /* CamerasController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CamerasController.mm; sourceTree = "<group>"; };
 		3DAFD3D814B470F9004D0D50 /* AVTCamerasController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVTCamerasController.h; sourceTree = "<group>"; };
 		3DAFD3D914B470F9004D0D50 /* AVTCamerasController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AVTCamerasController.mm; sourceTree = "<group>"; };
+		3DCAC6A114C47B5B0022F715 /* ofCvCameraCalibration.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = ofCvCameraCalibration.cpp; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.cpp; };
+		3DCAC6A314C47B680022F715 /* ofCvCameraCalibration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = ofCvCameraCalibration.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		7FB6BAA21499F75000FE24C9 /* KeystonePerspective.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeystonePerspective.h; sourceTree = "<group>"; };
 		7FB6BAA31499F75000FE24C9 /* KeystonePerspective.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = KeystonePerspective.mm; sourceTree = "<group>"; };
 		DD0A334A1452F29C00CC89E5 /* CorePluginsIncludes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CorePluginsIncludes.h; sourceTree = "<group>"; };
@@ -747,12 +751,12 @@
 		DD0A349A1452F2CD00CC89E5 /* ofxOpenCv.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxOpenCv.h; sourceTree = "<group>"; };
 		DD0A35601452F32700CC89E5 /* ofxMatrix3x3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxMatrix3x3.h; sourceTree = "<group>"; };
 		DD0A35611452F32700CC89E5 /* ofxMatrix4x4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxMatrix4x4.h; sourceTree = "<group>"; };
-		DD0A35621452F32700CC89E5 /* ofxPoint2f.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxPoint2f.h; sourceTree = "<group>"; };
+		DD0A35621452F32700CC89E5 /* ofxPoint2f.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = ofxPoint2f.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		DD0A35631452F32700CC89E5 /* ofxPoint3f.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxPoint3f.h; sourceTree = "<group>"; };
 		DD0A35641452F32700CC89E5 /* ofxPoint4f.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxPoint4f.h; sourceTree = "<group>"; };
 		DD0A35651452F32700CC89E5 /* ofxQuaternion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxQuaternion.h; sourceTree = "<group>"; };
-		DD0A35661452F32700CC89E5 /* ofxVec2f.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxVec2f.h; sourceTree = "<group>"; };
-		DD0A35671452F32700CC89E5 /* ofxVec3f.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxVec3f.h; sourceTree = "<group>"; };
+		DD0A35661452F32700CC89E5 /* ofxVec2f.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = ofxVec2f.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		DD0A35671452F32700CC89E5 /* ofxVec3f.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = ofxVec3f.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		DD0A35681452F32700CC89E5 /* ofxVec4f.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxVec4f.h; sourceTree = "<group>"; };
 		DD0A35691452F32700CC89E5 /* ofxVectorMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxVectorMath.h; sourceTree = "<group>"; };
 		DD0A358B14543B7800CC89E5 /* ofMain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofMain.h; sourceTree = "<group>"; };
@@ -997,6 +1001,8 @@
 				3D24851B14BC6DBA00AC6F95 /* CameraCalibrationObject.h */,
 				3D24851C14BC6DBA00AC6F95 /* CameraCalibrationObject.mm */,
 				3D24851714BC671900AC6F95 /* CameraCalibration.xib */,
+				3DCAC6A314C47B680022F715 /* ofCvCameraCalibration.h */,
+				3DCAC6A114C47B5B0022F715 /* ofCvCameraCalibration.cpp */,
 			);
 			path = CameraCalibration;
 			sourceTree = "<group>";
@@ -2067,6 +2073,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3DCAC6A414C47B680022F715 /* ofCvCameraCalibration.h in Headers */,
 				3D24851814BC671900AC6F95 /* CameraCalibration.h in Headers */,
 				3D24851D14BC6DBA00AC6F95 /* CameraCalibrationObject.h in Headers */,
 				3D9951B514B5EDEC007F1E96 /* BlobTracker2d.h in Headers */,
@@ -2525,6 +2532,7 @@
 				3D24851E14BC6DBA00AC6F95 /* CameraCalibrationObject.mm in Sources */,
 				3D9D181514BD95A600DD2093 /* Kinect.mm in Sources */,
 				3D9D181814BD95A600DD2093 /* KinectInstance.mm in Sources */,
+				3DCAC6A214C47B5B0022F715 /* ofCvCameraCalibration.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

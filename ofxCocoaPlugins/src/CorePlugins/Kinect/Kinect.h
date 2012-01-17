@@ -34,8 +34,8 @@ struct Dancer {
     NSMutableArray * instances;
     NSMutableArray * availableDevices;
     
-    ofxVec3f camCoord;
-    ofxVec3f eyeCoord;
+    ofVec3f camCoord;
+    ofVec3f eyeCoord;
 
     float mouseLastX,mouseLastY;
     int draggedPoint;

@@ -1,6 +1,7 @@
 #pragma once
 
 #import <ofxCocoaPlugins/Plugin.h>
+#include "ofxCvMain.h"
 
 @class CameraInstance;
 @interface Camera : NSObject {
@@ -32,5 +33,7 @@
 -(BOOL) isFrameNew;
 
 -(void) draw:(NSRect)rect;
-
+-(ofxCvGrayscaleImage*) cvImage;
+-(int) width;
+-(int) height;
 @end

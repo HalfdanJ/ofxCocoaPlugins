@@ -2,6 +2,13 @@
 #import <ofxCocoaPlugins/Plugin.h>
 #import <ofxCocoaPlugins/Cameras.h>
 #import <ofxCocoaPlugins/coordWarp.h>
+#import <ofxCocoaPlugins/ofCvCameraCalibration.h>
+
+enum calibrationStates {
+    CALIBRATION_VIRGIN,
+    CALIBRATION_ADDEDIMAGES,
+    CALIBRATION_CALIBRATED
+};
 
 @class KeystoneSurface;
 @interface CameraCalibrationObject : NSObject{
@@ -13,13 +20,24 @@
     ofVec2f camHandles[4];
     
     coordWarping * coordWarper;
-
+    
+    //Lens calibration
+    BOOL isCalibrated;
+    ofCvCameraCalibration * cameraCalibrator;
+    calibrationStates calibrationState;
+    BOOL addImage;
+    
+    NSString * lensStatus;
+    
 }
 
 @property (readonly) Camera * camera;
 @property (readonly) KeystoneSurface * surface;
 @property (readwrite) BOOL active;
 @property (readonly) coordWarping * coordWarper;
+
+@property (readwrite) BOOL isCalibrated;
+@property (retain, readwrite) NSString * lensStatus;
 
 -(id) initWithCamera:(Camera*)camera surface:(KeystoneSurface*)surface;
 
@@ -43,4 +61,11 @@
 -(ofVec2f) cameraToSurface:(ofVec2f)p;
 -(ofVec2f) surfaceCorner:(int)n;
 
+-(void) resetLensCalibration;
+-(void) addImageLensCalibration;
+-(void) calibrateLensCalibration;
+
+-(void) newFrame;
+
 @end
+

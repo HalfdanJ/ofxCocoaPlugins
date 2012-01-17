@@ -159,23 +159,71 @@
 								<int key="NSvFlags">274</int>
 								<object class="NSMutableArray" key="NSSubviews">
 									<bool key="EncodedWithXMLCoder">YES</bool>
-									<object class="NSButton" id="111213367">
+									<object class="NSButton" id="449233044">
 										<reference key="NSNextResponder" ref="1034302849"/>
 										<int key="NSvFlags">268</int>
-										<string key="NSFrame">{{12, 63}, {151, 32}}</string>
+										<string key="NSFrame">{{12, 63}, {108, 32}}</string>
+										<reference key="NSSuperview" ref="1034302849"/>
+										<reference key="NSWindow"/>
+										<reference key="NSNextKeyView" ref="962742454"/>
+										<string key="NSReuseIdentifierKey">_NS:687</string>
+										<bool key="NSEnabled">YES</bool>
+										<object class="NSButtonCell" key="NSCell" id="790952166">
+											<int key="NSCellFlags">67239424</int>
+											<int key="NSCellFlags2">134217728</int>
+											<string key="NSContents">Reset Lens</string>
+											<reference key="NSSupport" ref="1064802437"/>
+											<string key="NSCellIdentifier">_NS:687</string>
+											<reference key="NSControlView" ref="449233044"/>
+											<int key="NSButtonFlags">-2038284033</int>
+											<int key="NSButtonFlags2">129</int>
+											<string key="NSAlternateContents"/>
+											<string key="NSKeyEquivalent"/>
+											<int key="NSPeriodicDelay">200</int>
+											<int key="NSPeriodicInterval">25</int>
+										</object>
+									</object>
+									<object class="NSButton" id="962742454">
+										<reference key="NSNextResponder" ref="1034302849"/>
+										<int key="NSvFlags">268</int>
+										<string key="NSFrame">{{12, 34}, {108, 32}}</string>
+										<reference key="NSSuperview" ref="1034302849"/>
+										<reference key="NSWindow"/>
+										<reference key="NSNextKeyView" ref="156360093"/>
+										<string key="NSReuseIdentifierKey">_NS:687</string>
+										<bool key="NSEnabled">YES</bool>
+										<object class="NSButtonCell" key="NSCell" id="389360026">
+											<int key="NSCellFlags">67239424</int>
+											<int key="NSCellFlags2">134217728</int>
+											<string key="NSContents">Add image</string>
+											<reference key="NSSupport" ref="1064802437"/>
+											<string key="NSCellIdentifier">_NS:687</string>
+											<reference key="NSControlView" ref="962742454"/>
+											<int key="NSButtonFlags">-2038284033</int>
+											<int key="NSButtonFlags2">129</int>
+											<string key="NSAlternateContents"/>
+											<string key="NSKeyEquivalent"/>
+											<int key="NSPeriodicDelay">200</int>
+											<int key="NSPeriodicInterval">25</int>
+										</object>
+									</object>
+									<object class="NSButton" id="156360093">
+										<reference key="NSNextResponder" ref="1034302849"/>
+										<int key="NSvFlags">268</int>
+										<string key="NSFrame">{{12, 2}, {97, 32}}</string>
 										<reference key="NSSuperview" ref="1034302849"/>
 										<reference key="NSWindow"/>
 										<reference key="NSNextKeyView" ref="567868328"/>
 										<string key="NSReuseIdentifierKey">_NS:687</string>
 										<bool key="NSEnabled">YES</bool>
-										<object class="NSButtonCell" key="NSCell" id="386112098">
+										<object class="NSButtonCell" key="NSCell" id="416224436">
 											<int key="NSCellFlags">67239424</int>
 											<int key="NSCellFlags2">134217728</int>
-											<string key="NSContents">Active</string>
+											<string key="NSContents">Calibrate</string>
 											<reference key="NSSupport" ref="1064802437"/>
 											<string key="NSCellIdentifier">_NS:687</string>
-											<reference key="NSControlView" ref="111213367"/>
-											<int key="NSButtonFlags">914505983</int>
+											<reference key="NSControlView" ref="156360093"/>
+											<int key="NSButtonFlags">-2038284033</int>
 											<int key="NSButtonFlags2">129</int>
 											<string key="NSAlternateContents"/>
 											<string key="NSKeyEquivalent"/>
@@ -187,7 +235,7 @@
 								<string key="NSFrame">{{1, 1}, {175, 103}}</string>
 								<reference key="NSSuperview" ref="180607208"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView" ref="111213367"/>
+								<reference key="NSNextKeyView" ref="449233044"/>
 								<string key="NSReuseIdentifierKey">_NS:21</string>
 							</object>
 						</object>
@@ -590,22 +638,6 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBBindingConnection" key="connection">
-						<string key="label">value: self.selectedCalibrationObject.active</string>
-						<reference key="source" ref="111213367"/>
-						<reference key="destination" ref="1001"/>
-						<object class="NSNibBindingConnector" key="connector">
-							<reference key="NSSource" ref="111213367"/>
-							<reference key="NSDestination" ref="1001"/>
-							<string key="NSLabel">value: self.selectedCalibrationObject.active</string>
-							<string key="NSBinding">value</string>
-							<string key="NSKeyPath">self.selectedCalibrationObject.active</string>
-							<int key="NSNibBindingConnectorVersion">2</int>
-						</object>
-					</object>
-					<int key="connectionID">426</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBBindingConnection" key="connection">
 						<string key="label">value: self.changingSurface</string>
 						<reference key="source" ref="567868328"/>
 						<reference key="destination" ref="1001"/>
@@ -675,6 +707,66 @@
 						</object>
 					</object>
 					<int key="connectionID">445</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBBindingConnection" key="connection">
+						<string key="label">target: self.selectedCalibrationObject</string>
+						<reference key="source" ref="449233044"/>
+						<reference key="destination" ref="1001"/>
+						<object class="NSNibBindingConnector" key="connector">
+							<reference key="NSSource" ref="449233044"/>
+							<reference key="NSDestination" ref="1001"/>
+							<string key="NSLabel">target: self.selectedCalibrationObject</string>
+							<string key="NSBinding">target</string>
+							<string key="NSKeyPath">self.selectedCalibrationObject</string>
+							<object class="NSDictionary" key="NSOptions">
+								<string key="NS.key.0">NSSelectorName</string>
+								<string key="NS.object.0">resetLensCalibration</string>
+							</object>
+							<int key="NSNibBindingConnectorVersion">2</int>
+						</object>
+					</object>
+					<int key="connectionID">449</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBBindingConnection" key="connection">
+						<string key="label">target: self.selectedCalibrationObject</string>
+						<reference key="source" ref="962742454"/>
+						<reference key="destination" ref="1001"/>
+						<object class="NSNibBindingConnector" key="connector">
+							<reference key="NSSource" ref="962742454"/>
+							<reference key="NSDestination" ref="1001"/>
+							<string key="NSLabel">target: self.selectedCalibrationObject</string>
+							<string key="NSBinding">target</string>
+							<string key="NSKeyPath">self.selectedCalibrationObject</string>
+							<object class="NSDictionary" key="NSOptions">
+								<string key="NS.key.0">NSSelectorName</string>
+								<string key="NS.object.0">addImageLensCalibration</string>
+							</object>
+							<int key="NSNibBindingConnectorVersion">2</int>
+						</object>
+					</object>
+					<int key="connectionID">457</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBBindingConnection" key="connection">
+						<string key="label">target: self.selectedCalibrationObject</string>
+						<reference key="source" ref="156360093"/>
+						<reference key="destination" ref="1001"/>
+						<object class="NSNibBindingConnector" key="connector">
+							<reference key="NSSource" ref="156360093"/>
+							<reference key="NSDestination" ref="1001"/>
+							<string key="NSLabel">target: self.selectedCalibrationObject</string>
+							<string key="NSBinding">target</string>
+							<string key="NSKeyPath">self.selectedCalibrationObject</string>
+							<object class="NSDictionary" key="NSOptions">
+								<string key="NS.key.0">NSSelectorName</string>
+								<string key="NS.object.0">calibrateLensCalibration</string>
+							</object>
+							<int key="NSNibBindingConnectorVersion">2</int>
+						</object>
+					</object>
+					<int key="connectionID">458</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -867,23 +959,11 @@
 						<reference key="object" ref="180607208"/>
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<reference ref="111213367"/>
+							<reference ref="449233044"/>
+							<reference ref="962742454"/>
+							<reference ref="156360093"/>
 						</object>
 						<reference key="parent" ref="1005"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">352</int>
-						<reference key="object" ref="111213367"/>
-						<object class="NSMutableArray" key="children">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<reference ref="386112098"/>
-						</object>
-						<reference key="parent" ref="180607208"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">353</int>
-						<reference key="object" ref="386112098"/>
-						<reference key="parent" ref="111213367"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">376</int>
@@ -941,6 +1021,48 @@
 						<reference key="object" ref="527998373"/>
 						<reference key="parent" ref="749523713"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">446</int>
+						<reference key="object" ref="449233044"/>
+						<object class="NSMutableArray" key="children">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<reference ref="790952166"/>
+						</object>
+						<reference key="parent" ref="180607208"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">447</int>
+						<reference key="object" ref="790952166"/>
+						<reference key="parent" ref="449233044"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">450</int>
+						<reference key="object" ref="962742454"/>
+						<object class="NSMutableArray" key="children">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<reference ref="389360026"/>
+						</object>
+						<reference key="parent" ref="180607208"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">451</int>
+						<reference key="object" ref="389360026"/>
+						<reference key="parent" ref="962742454"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">453</int>
+						<reference key="object" ref="156360093"/>
+						<object class="NSMutableArray" key="children">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<reference ref="416224436"/>
+						</object>
+						<reference key="parent" ref="180607208"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">454</int>
+						<reference key="object" ref="416224436"/>
+						<reference key="parent" ref="156360093"/>
+					</object>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="flattenedProperties">
@@ -969,8 +1091,6 @@
 					<string>349.IBPluginDependency</string>
 					<string>350.IBPluginDependency</string>
 					<string>351.IBPluginDependency</string>
-					<string>352.IBPluginDependency</string>
-					<string>353.IBPluginDependency</string>
 					<string>354.IBPluginDependency</string>
 					<string>376.IBPluginDependency</string>
 					<string>377.IBPluginDependency</string>
@@ -980,10 +1100,20 @@
 					<string>430.IBPluginDependency</string>
 					<string>442.IBPluginDependency</string>
 					<string>443.IBPluginDependency</string>
+					<string>446.IBPluginDependency</string>
+					<string>447.IBPluginDependency</string>
+					<string>450.IBPluginDependency</string>
+					<string>451.IBPluginDependency</string>
+					<string>453.IBPluginDependency</string>
+					<string>454.IBPluginDependency</string>
 					<string>55.IBPluginDependency</string>
 				</object>
 				<object class="NSMutableArray" key="dict.values">
 					<bool key="EncodedWithXMLCoder">YES</bool>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -1032,7 +1162,7 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">445</int>
+			<int key="maxID">458</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">

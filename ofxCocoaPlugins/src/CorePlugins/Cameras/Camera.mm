@@ -174,4 +174,13 @@
     return [cameraInstance name];
 }
 
+-(ofxCvGrayscaleImage*) cvImage{
+    return [cameraInstance cvImage];
+}
+-(int) width{
+    return [cameraInstance width];
+}
+-(int) height{
+    return [cameraInstance height];
+}
 @end

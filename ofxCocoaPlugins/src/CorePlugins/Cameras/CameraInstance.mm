@@ -11,7 +11,7 @@
 
 @implementation CameraInstance
 
-@synthesize name, status, tex, pixels, enabled, cameraInstances, camIsConnected, camIsClosing, camInited, camIsIniting, referenceCount, width, height;
+@synthesize name, status, tex, pixels, enabled, cameraInstances, camIsConnected, camIsClosing, camInited, camIsIniting, referenceCount, width, height, frameNum;
 
 -(id) init{
 	if([super init]){
@@ -127,6 +127,22 @@
 -(float)aspect{
     return (float)width/height;
 }
+
+
+-(ofxCvGrayscaleImage *)cvImage{
+    if(cvFrameNum != frameNum){
+        cvFrameNum = frameNum;
+        
+        if(cvImage == nil || cvImage->width != width || cvImage->height != height){
+            cvImage = new ofxCvGrayscaleImage();
+            cvImage->allocate(width, height);
+        }
+        
+        cvImage->setFromPixels(pixels, width, height);
+    }
+    return cvImage;
+}
+
 -(void) loadSettingsDict:(NSMutableDictionary*)dict{}
 -(void) addPropertiesToSave:(NSMutableDictionary*)dict{}
 - (void)update{}

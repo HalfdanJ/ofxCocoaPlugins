@@ -25,9 +25,9 @@
     float scale, scalex;
 
 
-    ofxPoint2f projPointCache[4];
-	ofxPoint2f point2Cache[4];
-	ofxPoint3f point3Cache[3];
+    ofVec2f projPointCache[4];
+	ofVec2f point2Cache[4];
+	ofVec3f point3Cache[3];
     
     ofxQuaternion rotationQuaternion;
     
@@ -72,22 +72,22 @@
 -(void) setup;
 -(void) update:(NSDictionary *)drawingInformation;
 
--(ofxPoint2f) point2:(int)point;
--(ofxPoint3f) point3:(int)point;
--(ofxPoint2f) projPoint:(int)point;
+-(ofVec2f) point2:(int)point;
+-(ofVec3f) point3:(int)point;
+-(ofVec2f) projPoint:(int)point;
 
--(void) setPoint3:(int) point coord:(ofxPoint3f)coord;
--(void) setPoint2:(int) point coord:(ofxPoint2f)coord;
--(void) setProjPoint:(int) point coord:(ofxPoint2f)coord;
--(ofxPoint2f) surfaceCorner:(int)n;
+-(void) setPoint3:(int) point coord:(ofVec3f)coord;
+-(void) setPoint2:(int) point coord:(ofVec2f)coord;
+-(void) setProjPoint:(int) point coord:(ofVec2f)coord;
+-(ofVec2f) surfaceCorner:(int)n;
 
--(ofxPoint3f) convertKinectToWorld:(ofxPoint3f)p;
--(ofxPoint3f) convertWorldToKinect:(ofxPoint3f)p;
--(ofxPoint3f) convertWorldToProjection:(ofxPoint3f) p;
--(ofxPoint3f) convertWorldToSurface:(ofxPoint3f) p;
--(ofxPoint3f) convertSurfaceToWorld:(ofxPoint3f) p;
+-(ofVec3f) convertKinectToWorld:(ofVec3f)p;
+-(ofVec3f) convertWorldToKinect:(ofVec3f)p;
+-(ofVec3f) convertWorldToProjection:(ofVec3f) p;
+-(ofVec3f) convertWorldToSurface:(ofVec3f) p;
+-(ofVec3f) convertSurfaceToWorld:(ofVec3f) p;
 
--(vector<ofxPoint3f>) getPointsInBoxXMin:(float)xMin xMax:(float)xMax yMin:(float)yMin yMax:(float)yMax zMin:(float)zMin zMax:(float)zMax res:(int)res;
+-(vector<ofVec3f>) getPointsInBoxXMin:(float)xMin xMax:(float)xMax yMin:(float)yMin yMax:(float)yMax zMin:(float)zMin zMax:(float)zMax res:(int)res;
 
 -(void) calculateMatrix;
 

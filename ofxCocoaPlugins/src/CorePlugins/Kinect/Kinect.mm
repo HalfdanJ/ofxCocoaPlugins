@@ -85,8 +85,8 @@
         [self addProperty:[BoolProperty boolPropertyWithDefaultvalue:1.0] named:[NSString stringWithFormat:@"kinect%iEnabled",i]];
     }
     
-    camCoord = ofxVec3f(0,0,-5);
-    eyeCoord = ofxVec3f(0,0,0);
+    camCoord = ofVec3f(0,0,-5);
+    eyeCoord = ofVec3f(0,0,0);
     
     draggedPoint = -1;
     
@@ -106,17 +106,17 @@
             
             for(int i=0;i<4;i++){
                 [kinect setPoint2:i coord:
-                 ofxPoint2f([[dict objectForKey:[NSString stringWithFormat:@"point%ia",i]] floatValue],
+                 ofVec2f([[dict objectForKey:[NSString stringWithFormat:@"point%ia",i]] floatValue],
                             [[dict objectForKey:[NSString stringWithFormat:@"point%ib",i]] floatValue] )];
                 
                 [kinect setProjPoint:i coord:
-                 ofxPoint2f([[dict objectForKey:[NSString stringWithFormat:@"projPoint%ix",i]] floatValue],
+                 ofVec2f([[dict objectForKey:[NSString stringWithFormat:@"projPoint%ix",i]] floatValue],
                             [[dict objectForKey:[NSString stringWithFormat:@"projPoint%iy",i]] floatValue] )];
             }
             
             for(int i=0;i<3;i++){
                 [kinect setPoint3:i coord:
-                 ofxPoint3f([[dict objectForKey:[NSString stringWithFormat:@"point%ix",i]] floatValue],
+                 ofVec3f([[dict objectForKey:[NSString stringWithFormat:@"point%ix",i]] floatValue],
                             [[dict objectForKey:[NSString stringWithFormat:@"point%iy",i]] floatValue],
                             [[dict objectForKey:[NSString stringWithFormat:@"point%iz",i]] floatValue] )];
                 
@@ -463,14 +463,14 @@
             [GetPlugin(Keystoner) applySurface:[kinect surface]];
             ofFill();
             
-            ofxPoint2f corners[4];
+            ofVec2f corners[4];
             /* 
-             corners[0] = [kinect convertSurfaceToWorld:ofxPoint3f(0,0,0)];
-             corners[1] = [kinect convertSurfaceToWorld:ofxPoint3f([kinect surfaceAspect],0,0)];
-             corners[2] = [kinect convertSurfaceToWorld:ofxPoint3f([kinect surfaceAspect],1,0)];
-             corners[3] = [kinect convertSurfaceToWorld:ofxPoint3f(0,1,0)];        
+             corners[0] = [kinect convertSurfaceToWorld:ofVec3f(0,0,0)];
+             corners[1] = [kinect convertSurfaceToWorld:ofVec3f([kinect surfaceAspect],0,0)];
+             corners[2] = [kinect convertSurfaceToWorld:ofVec3f([kinect surfaceAspect],1,0)];
+             corners[3] = [kinect convertSurfaceToWorld:ofVec3f(0,1,0)];        
              for(int i=0;i<4;i++){
-             corners[i] = [kinect convertWorldToKinect:ofxPoint3f(corners[i])];
+             corners[i] = [kinect convertWorldToKinect:ofVec3f(corners[i])];
              }*/
             
             for(int i=0;i<4;i++){
@@ -488,22 +488,22 @@
             glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR );
             glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR );
             */
-//                      texCoords[0] = ofxPoint2f(0.0,0.0);
-//            texCoords[1] = ofxPoint2f(640,0.0);
-//            texCoords[2] = ofxPoint2f(640,480);
-//            texCoords[3] = ofxPoint2f(0.0,480);
+//                      texCoords[0] = ofVec2f(0.0,0.0);
+//            texCoords[1] = ofVec2f(640,0.0);
+//            texCoords[2] = ofVec2f(640,480);
+//            texCoords[3] = ofVec2f(0.0,480);
 //            
                      
 
          
             if([warpCalibration state]){                
                 
-                ofxPoint2f poly[4];
+                ofVec2f poly[4];
                 
-                poly[0] = ofxPoint2f(0.0,0.0);
-                poly[1] = ofxPoint2f([kinect surfaceAspect],0.0);
-                poly[2] = ofxPoint2f([kinect surfaceAspect],1.0);
-                poly[3] = ofxPoint2f(0.0,1.0);
+                poly[0] = ofVec2f(0.0,0.0);
+                poly[1] = ofVec2f([kinect surfaceAspect],0.0);
+                poly[2] = ofVec2f([kinect surfaceAspect],1.0);
+                poly[3] = ofVec2f(0.0,1.0);
                 
 
                 TextureGrid texGrid;
@@ -524,7 +524,7 @@
             
             //        [[self surface] apply];
             
-            ofxPoint2f projHandles[4];	
+            ofVec2f projHandles[4];	
             projHandles[0] = [kinect projPoint:0];
             projHandles[1] = [kinect projPoint:1];
             projHandles[2] = [kinect projPoint:2];
@@ -555,7 +555,7 @@
     /*
      
      for(PersistentBlob * b in persistentBlobs){
-     ofxPoint3f p = [b centroidFiltered];
+     ofVec3f p = [b centroidFiltered];
      
      ofSetLineWidth(1);
      ofFill();
@@ -571,9 +571,9 @@
      
      }
      
-     ofxPoint3f kinect = [self convertWorldToSurface:ofxPoint3f(0,0,0)];
+     ofVec3f kinect = [self convertWorldToSurface:ofVec3f(0,0,0)];
      
-     ofxPoint3f lfoot, rfoot, lhand, rhand;
+     ofVec3f lfoot, rfoot, lhand, rhand;
      if(users.getTrackedUsers().size() > 0){
      ofxTrackedUser * user = users.getTrackedUser(0);
      lfoot = [self convertWorldToSurface:user->left_lower_leg.worldEnd];
@@ -584,7 +584,7 @@
      }
      
      {
-     ofxPoint3f border0,border1, border2, border3;
+     ofVec3f border0,border1, border2, border3;
      xn::DepthMetaData dmd;
      depth.getXnDepthGenerator().GetMetaData(dmd);
      
@@ -601,10 +601,10 @@
      
      XnPoint3D pOut[3];				
      depth.getXnDepthGenerator().ConvertProjectiveToRealWorld(3, pIn, pOut);
-     border0 = [self convertWorldToSurface:ofxPoint3f(0,0,0)];
-     border1 = [self convertWorldToSurface:ofxPoint3f(pOut[0].X, pOut[0].Y, pOut[0].Z)];;
-     border2 = [self convertWorldToSurface:ofxPoint3f(pOut[1].X, pOut[1].Y, pOut[1].Z)];
-     border3 = [self convertWorldToSurface:ofxPoint3f(pOut[2].X, pOut[2].Y, pOut[2].Z)];
+     border0 = [self convertWorldToSurface:ofVec3f(0,0,0)];
+     border1 = [self convertWorldToSurface:ofVec3f(pOut[0].X, pOut[0].Y, pOut[0].Z)];;
+     border2 = [self convertWorldToSurface:ofVec3f(pOut[1].X, pOut[1].Y, pOut[1].Z)];
+     border3 = [self convertWorldToSurface:ofVec3f(pOut[2].X, pOut[2].Y, pOut[2].Z)];
      
      ofSetColor(255, 0, 0);
      glBegin(GL_LINE_STRIP);
@@ -660,14 +660,14 @@
      glPushMatrix();
      [GetPlugin(Keystoner) applySurface:[self surface]];
      
-     ofxPoint3f corners[4];
-     corners[0] = [self convertSurfaceToWorld:ofxPoint3f(0,0,0)];
-     corners[1] = [self convertSurfaceToWorld:ofxPoint3f(1,0,0)];
-     corners[2] = [self convertSurfaceToWorld:ofxPoint3f(1,1,0)];
-     corners[3] = [self convertSurfaceToWorld:ofxPoint3f(0,1,0)];
+     ofVec3f corners[4];
+     corners[0] = [self convertSurfaceToWorld:ofVec3f(0,0,0)];
+     corners[1] = [self convertSurfaceToWorld:ofVec3f(1,0,0)];
+     corners[2] = [self convertSurfaceToWorld:ofVec3f(1,1,0)];
+     corners[3] = [self convertSurfaceToWorld:ofVec3f(0,1,0)];
      
      for(int i=0;i<4;i++){
-     corners[i] = [self convertWorldToKinect:ofxPoint3f(corners[i])];
+     corners[i] = [self convertWorldToKinect:ofVec3f(corners[i])];
      }
      
      ir.generateTexture();
@@ -700,9 +700,9 @@
 		ofEnableAlphaBlending();
         bool calib2d = [kinect calibration2d];
         
-        ofxPoint3f points[3];
-        ofxPoint2f handles[4];
-        ofxPoint2f projHandles[4];
+        ofVec3f points[3];
+        ofVec2f handles[4];
+        ofVec2f projHandles[4];
         
         
         projHandles[0] = [kinect projPoint:0]; //The calibration markers on the surface
@@ -799,7 +799,7 @@
                     ofSetColor(0,255, 0,15);
                     glBegin(GL_QUADS);
                     for(int i=0;i<4;i++){
-                        ofxPoint2f p = [kinect surfaceCorner:i];
+                        ofVec2f p = [kinect surfaceCorner:i];
                         glVertex2f(p.x*0.5,p.y*0.5);
                     }
                     glEnd();
@@ -807,10 +807,10 @@
                     ofSetColor(0,255, 0,30);
                     glBegin(GL_LINE_STRIP);
                     for(int i=0;i<4;i++){
-                        ofxPoint2f p = [kinect surfaceCorner:i];
+                        ofVec2f p = [kinect surfaceCorner:i];
                         glVertex2f(p.x*0.5,p.y*0.5);
                     }
-                    ofxPoint2f p = [kinect surfaceCorner:0];
+                    ofVec2f p = [kinect surfaceCorner:0];
                     glVertex2f(p.x*0.5,p.y*0.5);
                     glEnd();
                     
@@ -964,10 +964,10 @@
             glPushMatrix();{
                 glScaled(640,640, 640);
                 glTranslated(0.5,0.5,0);
-                ofxVec3f v = eyeCoord-camCoord;
-                float a1 = ofxVec2f(0, 1).angle(ofxVec2f(eyeCoord.x, eyeCoord.z)-ofxVec2f(camCoord.x, camCoord.z));    
-                v.rotate(a1, ofxVec3f(0,1,0));    
-                float a2 = ofxVec2f(1, 0).angle(ofxVec2f(v.z,v.y));
+                ofVec3f v = eyeCoord-camCoord;
+                float a1 = ofVec2f(0, 1).angle(ofVec2f(eyeCoord.x, eyeCoord.z)-ofVec2f(camCoord.x, camCoord.z));    
+                v.rotate(a1, ofVec3f(0,1,0));    
+                float a2 = ofVec2f(1, 0).angle(ofVec2f(v.z,v.y));
                 glRotated(a2, 1, 0, 0);
                 glRotated(a1, 0, 1, 0);
                 glTranslated(camCoord.x, camCoord.y,camCoord.z);
@@ -978,14 +978,14 @@
                     
                     //Surface
                     
-                    ofxPoint3f corners[4];
-                    corners[0] = [kinect convertSurfaceToWorld:ofxPoint3f(0,0,0)];
-                    corners[1] = [kinect convertSurfaceToWorld:ofxPoint3f([kinect surfaceAspect],0,0)];
-                    corners[2] = [kinect convertSurfaceToWorld:ofxPoint3f([kinect surfaceAspect],1,0)];
-                    corners[3] = [kinect convertSurfaceToWorld:ofxPoint3f(0,1,0)];
+                    ofVec3f corners[4];
+                    corners[0] = [kinect convertSurfaceToWorld:ofVec3f(0,0,0)];
+                    corners[1] = [kinect convertSurfaceToWorld:ofVec3f([kinect surfaceAspect],0,0)];
+                    corners[2] = [kinect convertSurfaceToWorld:ofVec3f([kinect surfaceAspect],1,0)];
+                    corners[3] = [kinect convertSurfaceToWorld:ofVec3f(0,1,0)];
                     
                     for(int i=0;i<4;i++){
-                        corners[i] = [kinect convertWorldToKinect:ofxPoint3f(corners[i])];
+                        corners[i] = [kinect convertWorldToKinect:ofVec3f(corners[i])];
                     }
                     
                     [kinect getIRGenerator]->generateTexture();
@@ -1015,9 +1015,9 @@
                     }glPopMatrix();
                     
                     //Kinect
-                    ofxPoint3f p1 = [kinect convertWorldToSurface:points[0]];		
-                    ofxPoint3f p2 = [kinect convertWorldToSurface:points[1]];		
-                    ofxPoint3f p3 = [kinect convertWorldToSurface:points[2]];	
+                    ofVec3f p1 = [kinect convertWorldToSurface:points[0]];		
+                    ofVec3f p2 = [kinect convertWorldToSurface:points[1]];		
+                    ofVec3f p3 = [kinect convertWorldToSurface:points[2]];	
                     
                     
                     XnPoint3D pIn[5];
@@ -1039,10 +1039,10 @@
                     XnPoint3D pOut[5];				
                     [kinect getDepthGenerator]->getXnDepthGenerator().ConvertProjectiveToRealWorld(5, pIn, pOut);
                     
-                    ofxPoint3f border[6];
-                    border[0] = [kinect convertWorldToSurface:ofxPoint3f(0,0,0)];
+                    ofVec3f border[6];
+                    border[0] = [kinect convertWorldToSurface:ofVec3f(0,0,0)];
                     for(int i=0;i<5;i++){
-                        border[i+1] = [kinect convertWorldToSurface:ofxPoint3f(pOut[i].X, pOut[i].Y, pOut[i].Z)];;
+                        border[i+1] = [kinect convertWorldToSurface:ofVec3f(pOut[i].X, pOut[i].Y, pOut[i].Z)];;
                     }
                     
                     ofSetColor(100, 100, 100,80);
@@ -1092,7 +1092,7 @@
                                     if(pIn.Z != 0){                               
                                         
                                         [pointKinect getDepthGenerator]->getXnDepthGenerator().ConvertProjectiveToRealWorld(1, &pIn, &pOut);
-                                        ofxPoint3f p = [pointKinect convertWorldToSurface:ofxPoint3f(pOut.X, pOut.Y, pOut.Z)];;
+                                        ofVec3f p = [pointKinect convertWorldToSurface:ofVec3f(pOut.X, pOut.Y, pOut.Z)];;
                                         
                                         if(p.x >  0 && p.x < [kinect surfaceAspect] && p.y > 0 && p.y < 1 && p.z > 0){
                                             if(pointKinect != kinect){
@@ -1275,7 +1275,7 @@
              for(b in [blob blobs]){
              glBegin(GL_LINE_STRIP);
              for(int i=0;i<[b nPts];i++){
-             ofxVec2f p = [b pts][i];
+             ofVec2f p = [b pts][i];
              //				p = [GetPlugin(ProjectionSurfaces) convertPoint:[b pts][i] fromProjection:"Front" surface:"Floor"];
              p = [b originalblob]->pts[i];
              glVertex2f(320*p.x, 240*p.y);
@@ -1400,7 +1400,7 @@
     if([openglTabView indexOfTabViewItem:[openglTabView selectedTabViewItem]] == 1){
         
         float deltaY = -[theEvent deltaY]*0.02;
-        ofxVec3f v = camCoord - eyeCoord;
+        ofVec3f v = camCoord - eyeCoord;
         camCoord = eyeCoord + v + v.normalized()*deltaY;
     }
 }
@@ -1411,7 +1411,7 @@
     if([openglTabView indexOfTabViewItem:[openglTabView selectedTabViewItem]] == 0){
         
         if(draggedPoint != -1){
-            ofxPoint2f mouse = ofPoint(2*x/640.0,2*y/480.0);
+            ofVec2f mouse = ofPoint(2*x/640.0,2*y/480.0);
             
             if(draggedPoint <= 3){
                 if([instance calibration2d]){
@@ -1429,7 +1429,7 @@
                     
                     if(pIn.Z != 0){
                         [instance getDepthGenerator]->getXnDepthGenerator().ConvertProjectiveToRealWorld(1, &pIn, &pOut);
-                        ofxPoint3f coord = ofxPoint3f(pOut.X, pOut.Y, pOut.Z);
+                        ofVec3f coord = ofVec3f(pOut.X, pOut.Y, pOut.Z);
                         [instance setPoint3:draggedPoint coord:coord];
                         [instance setPoint2:draggedPoint coord:mouse];
                     }
@@ -1453,8 +1453,8 @@
                 [instance setProjPoint:draggedPoint-4 coord:mouse];
                 
                 if(draggedPoint-4 <= 1){
-                    ofxVec2f v = [instance projPoint:1] - [instance projPoint:0];
-                    v = ofxVec2f(-v.y,v.x)*1.0/aspect;
+                    ofVec2f v = [instance projPoint:1] - [instance projPoint:0];
+                    v = ofVec2f(-v.y,v.x)*1.0/aspect;
                     
                     [instance setProjPoint:2 coord:[instance projPoint:0]+v];
                 }
@@ -1462,9 +1462,9 @@
         }
         [instance calculateMatrix];
     } else if([openglTabView indexOfTabViewItem:[openglTabView selectedTabViewItem]] == 1){
-        ofxVec3f v = camCoord - eyeCoord;
-        v.rotate(-(x - mouseLastX)*0.2, ofxVec3f(0,1,0));
-        v.rotate((y - mouseLastY)*0.2, ofxVec3f(-v.z,0,v.x));
+        ofVec3f v = camCoord - eyeCoord;
+        v.rotate(-(x - mouseLastX)*0.2, ofVec3f(0,1,0));
+        v.rotate((y - mouseLastY)*0.2, ofVec3f(-v.z,0,v.x));
         
         camCoord = eyeCoord + v;
         mouseLastX = x; mouseLastY = y;
@@ -1476,7 +1476,7 @@
     if([instance kinectConnected]){
         if([openglTabView indexOfTabViewItem:[openglTabView selectedTabViewItem]] == 0){
             
-            ofxPoint2f mouse = ofPoint(2*x/640,2*y/480);
+            ofVec2f mouse = ofPoint(2*x/640,2*y/480);
             draggedPoint = -1;
             if(mouse.y <= 1){
                 if([instance calibration2d]){

@@ -46,7 +46,7 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
         NSOpenGLPFAAlphaSize, 8,
         NSOpenGLPFADepthSize, 24,
         
-        NSOpenGLPFAAccelerated,
+//        NSOpenGLPFAAccelerated,
 
         
         

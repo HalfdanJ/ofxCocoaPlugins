@@ -52,7 +52,7 @@
 -(CVReturn)getFrameForTime:(CFTimeInterval)timeInterval displayTime:(const CVTimeStamp *)outputTime;
 -(void) updateDisplayIDWithWindow:(NSWindow*)window;
 
--(void) setDisplayNumber:(id)sender;
+-(IBAction) setDisplayNumber:(id)sender;
 
 -(void) setBackingWidth:(int) width height:(int)height;
 -(void)updateStats;

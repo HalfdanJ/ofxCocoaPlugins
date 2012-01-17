@@ -68,6 +68,15 @@
 
 
 -(void)update:(NSDictionary *)drawingInformation{
+    for(NSString * surfaceKey in calibrationObjects){
+        NSArray * ourArr = [calibrationObjects objectForKey:surfaceKey];
+        
+        for(CameraCalibrationObject * obj in ourArr){
+            if([[[obj camera] cameraInstance] camInited]){
+                [obj newFrame];
+            }
+        }
+    }
 }
 
 //
@@ -75,10 +84,37 @@
 //
 
 -(void)draw:(NSDictionary *)drawingInformation{
-    if([self drawDebug]){
-        CameraCalibrationObject* selectedCalib = [self selectedCalibrationObject];
-        KeystoneSurface * surface = [selectedCalib surface];
-        CameraInstance * camInstance = [[selectedCalib camera] cameraInstance];
+    CameraCalibrationObject* selectedCalib = [self selectedCalibrationObject];
+    KeystoneSurface * surface = [selectedCalib surface];
+    CameraInstance * camInstance = [[selectedCalib camera] cameraInstance];
+
+    if([self changingSurface]){
+        glPushMatrix();
+        [GetPlugin(Keystoner) applySurface:surface];
+        
+        //Draw handles
+        {
+            float hw = 0.05;
+            float hh = hw;
+            
+            ofSetColor(150, 255, 150);
+            handleImage->draw([selectedCalib projHandle:0].x-hw*0.5,[selectedCalib projHandle:0].y - hh*0.5, hw, hh);
+            
+            ofSetColor(255, 150, 150);
+            handleImage->draw([selectedCalib projHandle:1].x-hw*0.5,[selectedCalib projHandle:1].y - hh*0.5, hw, hh);
+            
+            ofSetColor(150, 150, 255);
+            handleImage->draw([selectedCalib projHandle:2].x-hw*0.5,[selectedCalib projHandle:2].y - hh*0.5, hw, hh);
+            
+            ofSetColor(255, 255, 100);
+            handleImage->draw([selectedCalib projHandle:3].x-hw*0.5,[selectedCalib projHandle:3].y - hh*0.5, hw, hh);         
+            
+        }
+        
+
+        [GetPlugin(Keystoner) popSurface];
+        glPopMatrix();
+    } else if([self drawDebug]){
         
         if([camInstance camInited]){
             glPushMatrix();
@@ -86,6 +122,7 @@
             ofFill();
             
             {
+                glPushMatrix();
                 //The surface corners
                 ofVec2f poly[4];                
                 poly[0] = ofVec2f(0.0,0.0);
@@ -103,6 +140,7 @@
                 ofSetColor(255,255,255);
                 TextureGrid texGrid;
                 texGrid.drawTextureGrid([camInstance tex],  poly, corners, 10);
+                glPopMatrix();
             }
             
             //Draw handles
@@ -114,6 +152,7 @@
                 handleImage->draw([selectedCalib projHandle:0].x-hw*0.5,[selectedCalib projHandle:0].y - hh*0.5, hw, hh);
                 
                 ofSetColor(255, 150, 150);
+                ofRect([selectedCalib projHandle:0].x-hw*0.5,[selectedCalib projHandle:0].y - hh*0.5, hw, hh);
                 handleImage->draw([selectedCalib projHandle:1].x-hw*0.5,[selectedCalib projHandle:1].y - hh*0.5, hw, hh);
                 
                 ofSetColor(150, 150, 255);
@@ -139,7 +178,7 @@
 
             
             [GetPlugin(Keystoner) popSurface];
-
+            glPopMatrix();
         }
     }
 }

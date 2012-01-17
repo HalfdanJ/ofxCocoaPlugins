@@ -2,7 +2,6 @@
 
 #include "Plugin.h"
 
-
 @interface CamerasController : NSObject {
     NSMutableArray * _instances;
 }

@@ -77,6 +77,7 @@ void FrameDoneCB(tPvFrame* pFrame)
         if(frame->Format == ePvFmtMono8){
             tex->loadData((unsigned char*)pixels, width, height, GL_LUMINANCE);
         }
+        frameNum ++;
         
         
     } 

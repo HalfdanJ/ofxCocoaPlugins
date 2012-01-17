@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Plugin.h"
+#include "ofxCvMain.h"
 
 @interface CameraInstance : NSObject {
 	BOOL camInited;
@@ -19,10 +20,14 @@
 	int myframes;
 	float myfps,frameRate;
 	ofTexture * tex;
+    long long frameNum;
 	
 	NSMutableDictionary * cameraInstances;
 
 	BOOL enabled;
+    
+    ofxCvGrayscaleImage * cvImage;
+    long long cvFrameNum;
 }
 @property (readwrite) BOOL enabled;
 @property (retain) NSString * name;
@@ -38,6 +43,7 @@
 @property (readwrite) BOOL camIsClosing;
 @property (readwrite) BOOL camIsConnected;
 @property (readwrite) int referenceCount;
+@property (readonly) long long frameNum;
 
 //Connect to the camera, and start streaming
 -(void) initCam;
@@ -51,6 +57,7 @@
 -(void) drawCamera:(NSRect)rect;
 -(void) loadSettingsDict:(NSMutableDictionary*)dict;
 -(void) addPropertiesToSave:(NSMutableDictionary*)dict;
+-(ofxCvGrayscaleImage*) cvImage;
 
 //Aspect of the image
 -(float) aspect;

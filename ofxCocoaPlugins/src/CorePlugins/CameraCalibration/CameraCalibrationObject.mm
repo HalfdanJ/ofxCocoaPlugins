@@ -2,9 +2,10 @@
 #import "CameraCalibrationObject.h"
 #import "KeystoneSurface.h"
 #import "Keystoner.h"
+#import "ofxCvMain.h"
 
 @implementation CameraCalibrationObject
-@synthesize camera, surface, active, coordWarper;
+@synthesize camera, surface, active, coordWarper, isCalibrated, lensStatus;
 
 
 -(id) initWithCamera:(Camera*)_camera surface:(KeystoneSurface*)_surface{
@@ -13,8 +14,11 @@
         camera = _camera;
         surface = _surface;
         
+        isCalibrated = NO;
+        
         [self resetCamHandles];
         [self resetProjHandles];
+        [self resetLensCalibration];
     }
     return self;
 }
@@ -118,6 +122,48 @@
     coordWarper->calculateMatrix(dst, src);
 }
 
+#pragma mark Lens calibration
+
+-(void)resetLensCalibration{
+    calibrationState = CALIBRATION_VIRGIN;
+    [self setLensStatus:@"No calibration"];
+    
+      
+}
+
+-(void)addImageLensCalibration{
+    addImage = YES;
+    [self setLensStatus:@"Waiting for image"];
+}
+
+-(void)calibrateLensCalibration{
+    calibrationState = CALIBRATION_CALIBRATED;
+    [self setLensStatus:@"Calibrating"];
+
+}
+
+-(void)newFrame{
+    if(addImage){
+        addImage = NO;
+        
+        if(cameraCalibrator == nil){
+            cameraCalibrator = new ofCvCameraCalibration();
+            CvSize csize = cvSize( [camera width], [camera height] );
+            cameraCalibrator->allocate(csize, 7,7);
+        }
+        //Add lens calib image
+        calibrationState = CALIBRATION_ADDEDIMAGES;
+        ofxCvGrayscaleImage * img = [camera  cvImage];
+        if(cameraCalibrator->addImage(img->getCvImage())){
+            [self setLensStatus:@"Image captured"];
+		} else {
+            [self setLensStatus:@"No checkboard found"];
+        }
+		
+        NSLog(@"%@",lensStatus);
+
+    }
+}
 
 #pragma mark Conversion
 
