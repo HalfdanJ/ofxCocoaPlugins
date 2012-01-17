@@ -33,6 +33,8 @@ extern PluginManagerController * globalController;
 -(int) intValue;
 -(BOOL) boolValue;
 
+-(void) setMinValue:(double)minValue maxValue:(double)maxValue;
+
 -(void) clearSmoothing;
 
 @end

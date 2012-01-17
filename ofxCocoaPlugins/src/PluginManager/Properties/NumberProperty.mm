@@ -176,6 +176,9 @@
 	[[globalController qlabController] startQlabTransaction:self fadingAllowed:NO verbose:NO];	
 }
 
-
+-(void) setMinValue:(double)_minValue maxValue:(double)_maxValue{
+    [self setMinValue:_minValue];
+    [self setMaxValue:_maxValue];
+}
 
 @end

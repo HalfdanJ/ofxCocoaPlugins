@@ -8,6 +8,9 @@
 #define PropB(p) [Prop( (p) ) boolValue]
 #define PropI(p) [Prop( (p) ) intValue]
 
+#define STRINGIFY(s) [NSString stringWithFormat:@"%s",#s]
+#define CachePropF(p) float p = PropF(STRINGIFY(p));
+
 #define ViewNumber [[drawingInformation valueForKey:@"outputViewNumber"] intValue]
 #define GetPlugin(p) ((p*)[globalController getPlugin:[p class]])
 //#define tracker(t) (TrackerObject*)[GetPlugin(Tracking) trackerNumber:t]
