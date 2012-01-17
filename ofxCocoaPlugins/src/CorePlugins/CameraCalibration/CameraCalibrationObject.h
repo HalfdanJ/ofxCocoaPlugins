@@ -3,6 +3,7 @@
 #import <ofxCocoaPlugins/Cameras.h>
 #import <ofxCocoaPlugins/coordWarp.h>
 #import <ofxCocoaPlugins/ofCvCameraCalibration.h>
+#import "ofxCvMain.h"
 
 enum calibrationStates {
     CALIBRATION_VIRGIN,
@@ -23,9 +24,12 @@ enum calibrationStates {
     
     //Lens calibration
     BOOL isCalibrated;
+    BOOL hasUndistortedImage;
     ofCvCameraCalibration * cameraCalibrator;
     calibrationStates calibrationState;
     BOOL addImage;
+    ofxCvGrayscaleImage * undistortedImage;
+    ofxCvGrayscaleImage * originalImage;
     
     NSString * lensStatus;
     
@@ -38,6 +42,7 @@ enum calibrationStates {
 
 @property (readwrite) BOOL isCalibrated;
 @property (retain, readwrite) NSString * lensStatus;
+@property (readwrite) ofCvCameraCalibration * cameraCalibrator;
 
 -(id) initWithCamera:(Camera*)camera surface:(KeystoneSurface*)surface;
 
@@ -64,6 +69,7 @@ enum calibrationStates {
 -(void) resetLensCalibration;
 -(void) addImageLensCalibration;
 -(void) calibrateLensCalibration;
+-(ofxCvGrayscaleImage*) getUndistortedImage;
 
 -(void) newFrame;
 

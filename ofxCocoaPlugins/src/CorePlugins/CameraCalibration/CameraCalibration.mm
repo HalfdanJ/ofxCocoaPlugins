@@ -6,7 +6,7 @@
 #include "TextureGrid.h"
 
 @implementation CameraCalibration
-@synthesize surfacesArrayController, camerasArrayController, selectedCalibrationObject, changingSurface, calibrationObjects, drawDebug;
+@synthesize surfacesArrayController, camerasArrayController, selectedCalibrationObject, changingSurface, calibrationObjects, drawDebug, drawUndistorted;
 
 - (id)init{
     self = [super init];
@@ -40,11 +40,13 @@
         
         [calibrationObjects setObject:surfaceCams forKey:surface];
     }
-
+    
     [surfacesArrayController bind:@"contentDictionary" toObject:self withKeyPath:@"self.calibrationObjects" options:nil];
     
     [self bind:@"selectedCalibrationObject" toObject:camerasArrayController withKeyPath:@"selection.self" options:nil];
 }
+
+
 
 //
 //----------------
@@ -87,7 +89,7 @@
     CameraCalibrationObject* selectedCalib = [self selectedCalibrationObject];
     KeystoneSurface * surface = [selectedCalib surface];
     CameraInstance * camInstance = [[selectedCalib camera] cameraInstance];
-
+    
     if([self changingSurface]){
         glPushMatrix();
         [GetPlugin(Keystoner) applySurface:surface];
@@ -111,7 +113,7 @@
             
         }
         
-
+        
         [GetPlugin(Keystoner) popSurface];
         glPopMatrix();
     } else if([self drawDebug]){
@@ -160,7 +162,7 @@
                 
                 ofSetColor(255, 255, 100);
                 handleImage->draw([selectedCalib projHandle:3].x-hw*0.5,[selectedCalib projHandle:3].y - hh*0.5, hw, hh);         
-            
+                
             }
             
             //Draw border
@@ -175,7 +177,7 @@
                 glEnd();
                 glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
             }
-
+            
             
             [GetPlugin(Keystoner) popSurface];
             glPopMatrix();
@@ -246,7 +248,14 @@
         } else {
             glScaled(controlWidth, controlWidth/camAspect,1);           
         }
-        [[selectedCalib camera] draw:NSMakeRect(0, 0, 1, 1)];
+        if(![selectedCalib isCalibrated] || [self drawUndistorted]){
+            [[selectedCalib camera] draw:NSMakeRect(0, 0, 1, 1)];
+        } else {
+            ofxCvGrayscaleImage * img = [selectedCalib getUndistortedImage];
+            if(img != nil){
+                img->draw(0,0,1,1);
+            }
+        }
         
         //Draw handles
         {
@@ -305,7 +314,27 @@
                     
                     ofVec2f camPoint = ofVec2f([[dict objectForKey:[NSString stringWithFormat:@"camHandle%ix",i]] floatValue],[[dict objectForKey:[NSString stringWithFormat:@"camHandle%iy",i]] floatValue] );
                     [obj setCamHandle:i to:camPoint];                    
-                }               
+                }     
+                
+                if([dict objectForKey:@"camIntrinsics8"] != nil){
+                    [obj setIsCalibrated:YES];
+                    [obj setLensStatus:@"Loaded calibration"];
+ 
+                    
+                    ofCvCameraCalibration * cameraCalibrator = new ofCvCameraCalibration();
+                    CvSize csize = cvSize( [[dict objectForKey:@"width"] intValue], [[dict objectForKey:@"height"] intValue] );
+                    cameraCalibrator->allocate(csize, 7,7);
+                    [obj setCameraCalibrator:cameraCalibrator];
+                    
+                    for(int i=0;i<4;i++){
+                        [obj cameraCalibrator]->distortionCoeffs[i] = [[dict objectForKey:[NSString stringWithFormat:@"distortionCoeffs%i",i]] floatValue];
+                    }
+                    for(int i=0;i<9;i++){
+
+                        [obj cameraCalibrator]->camIntrinsics[i] = [[dict objectForKey:[NSString stringWithFormat:@"camIntrinsics%i",i]] floatValue];
+                    }
+                }
+                
             }
             u++;
         }
@@ -339,6 +368,25 @@
                           forKey:[NSString stringWithFormat:@"camHandle%iy",i]];    
             }
             
+            //Lens stuff
+            if([obj isCalibrated]){
+                [props setObject:[NSNumber numberWithInt:[[obj camera] width]] 
+                          forKey:@"width"];    
+                [props setObject:[NSNumber numberWithInt:[[obj camera] height]] 
+                          forKey:@"height"];    
+
+                for(int i=0;i<4;i++){
+                    [props setObject:[NSNumber numberWithFloat:[obj cameraCalibrator]->distortionCoeffs[i]] 
+                              forKey:[NSString stringWithFormat:@"distortionCoeffs%i",i]];    
+                }
+                for(int i=0;i<9;i++){
+
+                    [props setObject:[NSNumber numberWithFloat:[obj cameraCalibrator]->camIntrinsics[i]] 
+                              forKey:[NSString stringWithFormat:@"camIntrinsics%i",i]];    
+                    
+                }
+            }
+            
             
             [saveArr addObject:props];
         }
@@ -360,18 +408,18 @@
         
         NSLog(@"Sel %@",[calibrationObjects objectForKey:key]);
         //        [self willChangeValueForKey:@"selectedCalibrationObject"];
-/*        NSLog(@" %@ %@", [[camerasArrayController selection] valueForKey:@"self"], [[surfacesArrayController selection] valueForKey:@"self"]);
-        int camIndex = [camerasArrayController selectionIndex];
-        int surfIndex = [surfacesArrayController selectionIndex];
-        
-        if(surfIndex >= 0 && surfIndex < 100 && camIndex >= 0 && camIndex <= 100){
-            NSString * surface = [[surfacesArrayController arrangedObjects] objectAtIndex:surfIndex];
-            CameraCalibrationObject * obj = [[calibrationObjects objectForKey:surface] objectAtIndex:camIndex];
-            
-            
-            [self setSelectedCalibrationObject:obj];
-        }
-        //        [self didChangeValueForKey:@"selectedCalibrationObject"];*/
+        /*        NSLog(@" %@ %@", [[camerasArrayController selection] valueForKey:@"self"], [[surfacesArrayController selection] valueForKey:@"self"]);
+         int camIndex = [camerasArrayController selectionIndex];
+         int surfIndex = [surfacesArrayController selectionIndex];
+         
+         if(surfIndex >= 0 && surfIndex < 100 && camIndex >= 0 && camIndex <= 100){
+         NSString * surface = [[surfacesArrayController arrangedObjects] objectAtIndex:surfIndex];
+         CameraCalibrationObject * obj = [[calibrationObjects objectForKey:surface] objectAtIndex:camIndex];
+         
+         
+         [self setSelectedCalibrationObject:obj];
+         }
+         //        [self didChangeValueForKey:@"selectedCalibrationObject"];*/
     }
     
 }

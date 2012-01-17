@@ -50,13 +50,12 @@ void FrameDoneCB(tPvFrame* pFrame)
 }
 
 -(void)update{
-    tPvFrame * frame = &GCamera.Frames[processIndex];
     [lock lock];
+    tPvFrame * frame = &GCamera.Frames[processIndex];
     if([self camInited] && frame->Status == ePvErrSuccess && lastProcessedFramecount != frame->FrameCount && processIndex != circleIndex){
         lastProcessedFramecount = processIndex;
         
         //Process!
-        
         //New size image
         if(width != frame->Width || height != frame->Height){
 
@@ -72,8 +71,8 @@ void FrameDoneCB(tPvFrame* pFrame)
         }
         
         //Copy data
+        
         memcpy(pixels,frame->ImageBuffer,frame->ImageBufferSize);
-
         if(frame->Format == ePvFmtMono8){
             tex->loadData((unsigned char*)pixels, width, height, GL_LUMINANCE);
         }

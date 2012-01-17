@@ -15,6 +15,7 @@
     
     BOOL changingSurface;
     BOOL drawDebug;
+    BOOL drawUndistorted;
     
     ofImage * handleImage;   
     float mouseLastX,mouseLastY;
@@ -27,6 +28,8 @@
 @property (readwrite) CameraCalibrationObject * selectedCalibrationObject;
 @property (readwrite) BOOL changingSurface;
 @property (readwrite) BOOL drawDebug;
+@property (readwrite) BOOL drawUndistorted;
+
 @property (readonly) NSMutableDictionary * calibrationObjects;
 
 -(CameraCalibrationObject *) calibrationForCamera:(Camera*)camera surface:(NSString*)surface;

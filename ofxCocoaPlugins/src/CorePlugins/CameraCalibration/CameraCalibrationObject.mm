@@ -2,10 +2,9 @@
 #import "CameraCalibrationObject.h"
 #import "KeystoneSurface.h"
 #import "Keystoner.h"
-#import "ofxCvMain.h"
 
 @implementation CameraCalibrationObject
-@synthesize camera, surface, active, coordWarper, isCalibrated, lensStatus;
+@synthesize camera, surface, active, coordWarper, isCalibrated, lensStatus, cameraCalibrator;
 
 
 -(id) initWithCamera:(Camera*)_camera surface:(KeystoneSurface*)_surface{
@@ -102,7 +101,7 @@
     coordWarper = new coordWarping();        
     ofVec2f src[4];
     ofVec2f dst[4];    
-        
+    
     src[0].x = [self projHandle:0].x;
     src[0].y = [self projHandle:0].y;
     src[1].x = [self projHandle:1].x;
@@ -128,21 +127,29 @@
     calibrationState = CALIBRATION_VIRGIN;
     [self setLensStatus:@"No calibration"];
     
-      
+    
 }
 
 -(void)addImageLensCalibration{
     addImage = YES;
-    [self setLensStatus:@"Waiting for image"];
+    [self setLensStatus:@"Calculating..."];
 }
 
 -(void)calibrateLensCalibration{
     calibrationState = CALIBRATION_CALIBRATED;
-    [self setLensStatus:@"Calibrating"];
+    [self setLensStatus:@"Calibrating..."];
+    
+    cameraCalibrator->calibrate();
+    cameraCalibrator->undistort();
 
+    [self setLensStatus:@"Calibrated!"];
+    [self setIsCalibrated:YES];
 }
 
 -(void)newFrame{
+    originalImage = [camera cvImage];
+    hasUndistortedImage = NO;
+    
     if(addImage){
         addImage = NO;
         
@@ -153,16 +160,49 @@
         }
         //Add lens calib image
         calibrationState = CALIBRATION_ADDEDIMAGES;
-        ofxCvGrayscaleImage * img = [camera  cvImage];
-        if(cameraCalibrator->addImage(img->getCvImage())){
-            [self setLensStatus:@"Image captured"];
+        ofxCvGrayscaleImage * img = new ofxCvGrayscaleImage();
+        img->allocate( [camera width], [camera height]);
+                *img = *originalImage;       
+
+       if(cameraCalibrator->addImage(img->getCvImage())){
+            [self setLensStatus:[NSString stringWithFormat:@"Image %i captured",cameraCalibrator->colorImages.size()]];
 		} else {
             [self setLensStatus:@"No checkboard found"];
         }
-		
-        NSLog(@"%@",lensStatus);
 
+       // ofSleepMillis(4000);
+        delete img;
+        NSLog(@"%@",lensStatus);
+        
     }
+}
+
+-(ofxCvGrayscaleImage*) getUndistortedImage{
+    if(originalImage == nil){
+        return nil;
+    }
+    if([self isCalibrated]){
+		if (!hasUndistortedImage) {
+            if(undistortedImage == nil){
+                undistortedImage = new ofxCvGrayscaleImage();
+                undistortedImage->allocate([camera width], [camera height]);
+            }
+            *undistortedImage = *originalImage;
+		//	cvCvtColor( originalImage->getCvImage(), undistortedImage->getCvImage(), CV_RGB2GRAY );
+			undistortedImage->flagImageChanged();
+			undistortedImage->undistort( cameraCalibrator->distortionCoeffs[0], 
+                                        cameraCalibrator->distortionCoeffs[1],
+                                        cameraCalibrator->distortionCoeffs[2], 
+                                        cameraCalibrator->distortionCoeffs[3],
+                                        cameraCalibrator->camIntrinsics[0], 
+                                        cameraCalibrator->camIntrinsics[4],
+                                        cameraCalibrator->camIntrinsics[2], 
+                                        cameraCalibrator->camIntrinsics[5] );   
+			hasUndistortedImage = YES;
+		}
+        return undistortedImage;
+	}
+	return originalImage;
 }
 
 #pragma mark Conversion
@@ -193,6 +233,6 @@
             return nil;
             break;
     }  
-
+    
 }
 @end
