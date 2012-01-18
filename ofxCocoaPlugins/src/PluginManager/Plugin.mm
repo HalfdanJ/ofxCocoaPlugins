@@ -149,6 +149,17 @@
 	}	
 }
 
+-(NumberProperty*) addPropF:(NSString*)_name {
+    NumberProperty * p = [NumberProperty sliderPropertyWithDefaultvalue:0.0 minValue:0.0 maxValue:1.0];
+    [self addProperty:p named:_name];
+    return p;
+}
+-(BoolProperty*) addPropB:(NSString*)_name {
+    BoolProperty * p = [BoolProperty boolPropertyWithDefaultvalue:NO];
+    [self addProperty:p named:_name];
+    return p;
+}
+
 -(void) assignMidiChannel:(int) channel{
 	[self setMidiChannel:[NSNumber numberWithInt:channel]];
 

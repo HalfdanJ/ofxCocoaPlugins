@@ -112,6 +112,9 @@ extern PluginManagerController * globalController;
 - (BOOL) willDraw:(NSMutableDictionary*)drawingInformation;
 
 - (void) addProperty:(PluginProperty*)p named:(NSString*)name;
+- (NumberProperty*) addPropF:(NSString*)name;
+- (BoolProperty*) addPropB:(NSString*)name;
+
 - (void) assignMidiChannel:(int) channel;
 
 - (IBAction) qlabAll:(id)sender;
