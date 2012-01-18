@@ -1,8 +1,8 @@
 #pragma once
 
-#import "Plugin.h"
-#include "coordWarp.h"
-#include "Warp.h"
+#import <ofxCocoaPlugins/Plugin.h>
+#import <ofxCocoaPlugins/coordWarp.h>
+#import <ofxCocoaPlugins/Warp.h>
 
 @interface KeystoneSurface : NSObject {
 	NSString * name;
