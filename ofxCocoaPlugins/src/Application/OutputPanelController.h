@@ -1,7 +1,7 @@
 #pragma once
 
 #import <Cocoa/Cocoa.h>
-#import "PluginOpenGLView.h"
+#import <ofxCocoaPlugins/PluginOpenGLView.h>
 
 //OutputPanelController creates the output opengl views from nib
 @interface OutputPanelController : NSObject {

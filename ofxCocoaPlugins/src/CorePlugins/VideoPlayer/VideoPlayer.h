@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Plugin.h"
+#import <ofxCocoaPlugins/Plugin.h>
 #import <netinet/in.h>
 #import <sys/socket.h>
 #import <SystemConfiguration/SystemConfiguration.h>

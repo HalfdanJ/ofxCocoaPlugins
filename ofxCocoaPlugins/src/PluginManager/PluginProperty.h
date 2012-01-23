@@ -32,7 +32,7 @@
 @property (retain) NSCell * controlCell;
 @property (retain)	NSNumber * midiChannel;
 @property (retain)	NSNumber * midiNumber;
-@property (readwrite) NSString * midiLabel;
+@property (readwrite, retain) NSString * midiLabel;
 
 -(void) update;
 -(void) midiEvent:(int) value;

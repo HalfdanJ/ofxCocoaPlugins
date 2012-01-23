@@ -103,8 +103,9 @@
 -(void) setValue:(NSNumber*)n{
 	value = n;
 	valueSetFromMidi = NO;
-    if(binded)
+    if(binded){
         [self setMidiLabel:[NSString stringWithFormat:@"%i", [[self midiValue] intValue]]];
+    }
 }
 
 -(NSCell *) controlCell{

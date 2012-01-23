@@ -91,7 +91,7 @@
 		[self addObserver:self forKeyPath:@"shownNextCueDict.updateStartvalue" options:nil context:@"endvalue"];
 		
 		thread = [[NSThread alloc] initWithTarget:self selector:@selector(blinkName) object:nil];
-	//	[thread start];
+        //	[thread start];
 	}
 	return self;
 }
@@ -130,9 +130,12 @@
 	
 }
 
--(void) startQlabTransaction:(PluginProperty *)proptery fadingAllowed:(BOOL)_fadeAllowed verbose:(BOOL)_verbose{
+-(void) startQlabTransaction:(PluginProperty *)proptery fadingAllowed:(BOOL)_fadeAllowed verbose:(BOOL)_verbose{    
 	verbose = _verbose;
 	fadeAllowed = _fadeAllowed;
+    
+    
+        
 	
 	thisCue = nil;
 	prevCue = nil;
@@ -144,6 +147,14 @@
 	multipleSelection = NO;
 	
 	[self setLinkedProperty:proptery];
+    
+    if(!verbose){
+
+        [self setShownThisCueDict:[self newCue]];
+        if([linkedProperty midiNumber] && [linkedProperty midiChannel])
+			[self go:self];
+        return;
+    }
 	
 	QLabApplication *qLab = [SBApplication applicationWithBundleIdentifier:@"com.figure53.Qlab.2"]; 
 	NSArray *workspaces = [qLab workspaces];
@@ -161,12 +172,12 @@
 	NSMutableArray * selectedCues = [NSMutableArray arrayWithArray:[workspace selected]];
 	NSMutableArray * selectedPropertyCues = [NSMutableArray array];
 	
-	for(int i=0;i<[selectedCues count];i++){
-		for(QLabCue * subCue in [[selectedCues objectAtIndex:i] cues]){
-			if(![selectedCues containsObject:subCue])
-				[selectedCues addObject:subCue];
-		}
-	}
+        for(int i=0;i<[selectedCues count];i++){
+            for(QLabCue * subCue in [[selectedCues objectAtIndex:i] cues]){
+                if(![selectedCues containsObject:subCue])
+                    [selectedCues addObject:subCue];
+            }
+        }
 	
 	//Er der en eller flere af dem der er denne property?
 	for(QLabCue * cue in selectedCues){
@@ -295,7 +306,7 @@
 	
 	
 	if(verbose){
-	//	blinkRunning = YES;
+        //	blinkRunning = YES;
 		[panel makeKeyAndOrderFront:self];
 	} else {
 		if([linkedProperty midiNumber] && [linkedProperty midiChannel])
@@ -473,7 +484,7 @@
 -(NSDictionary*) getCueInfo:(QLabCue*)cue{
 	NSMutableDictionary * dict = [NSMutableDictionary dictionary];
 	
-	NSString* path = [[NSBundle mainBundle] pathForResource:@"SendToQlab" ofType:@"scpt"];
+	NSString* path = [[NSBundle bundleForClass:[self class]] pathForResource:@"SendToQlab" ofType:@"scpt"];
 	if (path != nil)
 	{
 		NSURL* url = [NSURL fileURLWithPath:path];
@@ -529,7 +540,7 @@
 
 
 -(void) setMidiChannel:(int)channel number:(int)number forCue:(QLabCue*)cue{
-	NSString* path = [[NSBundle mainBundle] pathForResource:@"SendToQlab" ofType:@"scpt"];
+	NSString* path = [[NSBundle bundleForClass:[self class]] pathForResource:@"SendToQlab" ofType:@"scpt"];
 	if (path != nil)
 	{
 		NSURL* url = [NSURL fileURLWithPath:path];

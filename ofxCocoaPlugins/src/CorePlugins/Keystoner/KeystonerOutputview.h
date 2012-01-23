@@ -1,9 +1,9 @@
 #pragma once
 
-#include "Plugin.h"
-#import "PluginManagerController.h"
-#import "PluginOpenGLView.h"
-#import "KeystoneProjector.h"
+#import <ofxCocoaPlugins/Plugin.h>
+#import <ofxCocoaPlugins/PluginManagerController.h>
+#import <ofxCocoaPlugins/PluginOpenGLView.h>
+#import <ofxCocoaPlugins/KeystoneProjector.h>
 
 @interface KeystonerOutputview : NSObject {
 	int viewNumber;

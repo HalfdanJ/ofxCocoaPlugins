@@ -1,6 +1,6 @@
-#include "Plugin.h"
-#include "PluginProperty.h"
-#include "QLab.h"
+#include <ofxCocoaPlugins/Plugin.h>
+#include <ofxCocoaPlugins/PluginProperty.h>
+#include <ofxCocoaPlugins/QLab.h>
 
 @interface CueObject : NSObject
 {

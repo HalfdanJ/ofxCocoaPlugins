@@ -1,6 +1,6 @@
 #pragma once
 
-#import "Plugin.h"
+#import <ofxCocoaPlugins/Plugin.h>
 
 @interface KeystoneProjector : NSObject {
 	NSMutableArray * surfaces;
