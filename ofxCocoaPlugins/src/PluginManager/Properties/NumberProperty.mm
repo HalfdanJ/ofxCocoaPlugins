@@ -101,12 +101,11 @@
 }
 
 -(void) setValue:(NSNumber*)n{
-	[self willChangeValueForKey:@"value"];
 	value = n;
-	[self didChangeValueForKey:@"value"];
 	valueSetFromMidi = NO;
+    if(binded)
+        [self setMidiLabel:[NSString stringWithFormat:@"%i", [[self midiValue] intValue]]];
 }
-
 
 -(NSCell *) controlCell{
 	//	NSLog(@"Get controlcell with val %@",value);
@@ -154,6 +153,7 @@
 	} else {
 		[self setFloatValue:endV];
 	}
+    [super midiEvent:_value];
 
 }
 

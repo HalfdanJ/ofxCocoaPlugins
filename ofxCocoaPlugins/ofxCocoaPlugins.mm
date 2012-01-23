@@ -34,6 +34,11 @@
 	[(PluginManagerController*)pluginManagerController addPlugin:plugin];
 }
 
+- (void) addPlugin:(ofPlugin*)plugin midiChannel:(int)channel{
+    [self addPlugin:plugin];
+    [plugin assignMidiChannel:channel];
+}
+
 - (void)loadPlugins{
     [(PluginManagerController*)pluginManagerController finishedDefinePlugins];
 }

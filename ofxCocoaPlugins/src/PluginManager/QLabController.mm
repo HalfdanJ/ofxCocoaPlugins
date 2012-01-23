@@ -594,7 +594,7 @@
 
 
 -(void) updateCue:(CueObject*)cue{	
-	NSString* path = [[NSBundle mainBundle] pathForResource:@"SendToQlab" ofType:@"scpt"];
+	NSString* path = [[NSBundle bundleForClass:[self class]] pathForResource:@"SendToQlab" ofType:@"scpt"];
 	if (path != nil)
 	{
 		NSURL* url = [NSURL fileURLWithPath:path];

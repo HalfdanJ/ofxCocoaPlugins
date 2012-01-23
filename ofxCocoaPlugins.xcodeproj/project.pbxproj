@@ -96,6 +96,10 @@
 		3D9951C214B60665007F1E96 /* ofxCvHaarFinder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DD0A34931452F2CD00CC89E5 /* ofxCvHaarFinder.cpp */; };
 		3D9951C314B60674007F1E96 /* ofxCvImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DD0A34951452F2CD00CC89E5 /* ofxCvImage.cpp */; };
 		3D9951C414B60678007F1E96 /* ofxCvShortImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DD0A34981452F2CD00CC89E5 /* ofxCvShortImage.cpp */; };
+		3D9A8C6414CD5DBD00531AAF /* icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 3D9A8C5F14CD5DBD00531AAF /* icon.icns */; };
+		3D9A8C6514CD5DBD00531AAF /* SendToQlab.scpt in Resources */ = {isa = PBXBuildFile; fileRef = 3D9A8C6014CD5DBD00531AAF /* SendToQlab.scpt */; };
+		3D9A8C6614CD5DBD00531AAF /* Trebuchet MS.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3D9A8C6114CD5DBD00531AAF /* Trebuchet MS.ttf */; };
+		3D9A8C6714CD5DBD00531AAF /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = 3D9A8C6314CD5DBD00531AAF /* index.html */; };
 		3D9AD7F114B45F3700DB3187 /* Camera.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D9AD7BF14B45F3700DB3187 /* Camera.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3D9AD7F214B45F3700DB3187 /* Camera.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3D9AD7C014B45F3700DB3187 /* Camera.mm */; };
 		3D9AD7F314B45F3700DB3187 /* CameraInstance.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D9AD7C114B45F3700DB3187 /* CameraInstance.h */; };
@@ -578,6 +582,10 @@
 		3D9951B014B5EDEC007F1E96 /* BlobTrackerInstance2d.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BlobTrackerInstance2d.xib; sourceTree = "<group>"; };
 		3D9951B114B5EDEC007F1E96 /* ofxQtVideoSaver.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxQtVideoSaver.cpp; sourceTree = "<group>"; };
 		3D9951B214B5EDEC007F1E96 /* ofxQtVideoSaver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxQtVideoSaver.h; sourceTree = "<group>"; };
+		3D9A8C5F14CD5DBD00531AAF /* icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = icon.icns; sourceTree = "<group>"; };
+		3D9A8C6014CD5DBD00531AAF /* SendToQlab.scpt */ = {isa = PBXFileReference; lastKnownFileType = file; path = SendToQlab.scpt; sourceTree = "<group>"; };
+		3D9A8C6114CD5DBD00531AAF /* Trebuchet MS.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Trebuchet MS.ttf"; sourceTree = "<group>"; };
+		3D9A8C6314CD5DBD00531AAF /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
 		3D9AD7BF14B45F3700DB3187 /* Camera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Camera.h; sourceTree = "<group>"; };
 		3D9AD7C014B45F3700DB3187 /* Camera.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Camera.mm; sourceTree = "<group>"; };
 		3D9AD7C114B45F3700DB3187 /* CameraInstance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraInstance.h; sourceTree = "<group>"; };
@@ -1022,6 +1030,26 @@
 				3D9951B214B5EDEC007F1E96 /* ofxQtVideoSaver.h */,
 			);
 			path = BlobTracker2d;
+			sourceTree = "<group>";
+		};
+		3D9A8C5E14CD5DBD00531AAF /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				3D9A8C5F14CD5DBD00531AAF /* icon.icns */,
+				3D9A8C6014CD5DBD00531AAF /* SendToQlab.scpt */,
+				3D9A8C6114CD5DBD00531AAF /* Trebuchet MS.ttf */,
+				3D9A8C6214CD5DBD00531AAF /* Web */,
+			);
+			name = Resources;
+			path = ofxCocoaPlugins/src/Resources;
+			sourceTree = "<group>";
+		};
+		3D9A8C6214CD5DBD00531AAF /* Web */ = {
+			isa = PBXGroup;
+			children = (
+				3D9A8C6314CD5DBD00531AAF /* index.html */,
+			);
+			path = Web;
 			sourceTree = "<group>";
 		};
 		3D9AD7BE14B45F3700DB3187 /* Cameras */ = {
@@ -1664,6 +1692,7 @@
 		DDA7FFCC144F1C3800F81C9E = {
 			isa = PBXGroup;
 			children = (
+				3D9A8C5E14CD5DBD00531AAF /* Resources */,
 				3D9B4D7C14BC4D7300225E4A /* libfmodex.dylib */,
 				DD0A358A14543B7800CC89E5 /* openFrameworksHeaders */,
 				DDF6500214504B20007B0C0A /* Project.xcconfig */,
@@ -2428,6 +2457,10 @@
 				3D9D180B14BD952000DD2093 /* handle.png in Resources */,
 				3D9D181314BD95A600DD2093 /* handle.png in Resources */,
 				3D9D181614BD95A600DD2093 /* Kinect.xib in Resources */,
+				3D9A8C6414CD5DBD00531AAF /* icon.icns in Resources */,
+				3D9A8C6514CD5DBD00531AAF /* SendToQlab.scpt in Resources */,
+				3D9A8C6614CD5DBD00531AAF /* Trebuchet MS.ttf in Resources */,
+				3D9A8C6714CD5DBD00531AAF /* index.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

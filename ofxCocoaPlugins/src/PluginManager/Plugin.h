@@ -12,6 +12,7 @@
 #define CachePropF(p) float p = PropF(STRINGIFY(p));
 
 #define SetPropF(s, val) [Prop( (s) ) setFloatValue:val]
+#define SetPropB(s, val) [Prop( (s) ) setBoolValue:val]
 
 #define ViewNumber [[drawingInformation valueForKey:@"outputViewNumber"] intValue]
 #define GetPlugin(p) ((p*)[globalController getPlugin:[p class]])

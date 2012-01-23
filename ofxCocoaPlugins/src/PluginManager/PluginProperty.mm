@@ -9,12 +9,13 @@
 static NSString *MidiControllerContext = @"org.ofx.midi.controller";
 
 @implementation PluginProperty
-@synthesize value, defaultValue, controlCell ,controlType, midiChannel, midiNumber, name, pluginName, forcedMidiNumber;
+@synthesize value, defaultValue, controlCell ,controlType, midiChannel, midiNumber, name, pluginName, forcedMidiNumber, midiLabel;
 
 -(id) init{
 	if([super init]){
 		binded = NO;
 		forcedMidiNumber = NO;
+        [self setMidiLabel:@"-"];
 	}
 	return self;
 }
@@ -62,19 +63,24 @@ static NSString *MidiControllerContext = @"org.ofx.midi.controller";
 	
 	return self;
 }
--(void) midiEvent:(int) value{};
+-(void) midiEvent:(int) _value{
+    [self setMidiLabel:[NSString stringWithFormat:@"^ %i",_value]];
+};
 
 -(void) bindMidi{
 	if(midiChannel != nil && midiNumber != nil){		
 		binded = YES;
 
-		[[[GetPlugin(Midi) midiData] objectAtIndex:[midiChannel intValue]] addObserver:self forKeyPath:[midiNumber stringValue] options:0 context:MidiControllerContext];
+		[[[GetPlugin(Midi) midiData] objectAtIndex:[midiChannel intValue]] addObserver:self forKeyPath:[NSString stringWithFormat:@"cc%i",[midiNumber intValue]] options:0 context:MidiControllerContext];
+        
+        [self setMidiLabel:[NSString stringWithFormat:@"%i", [[self midiValue] intValue]]];
 	}
 }
 -(void) unbindMidi{
 	if(binded){		
-		[[[GetPlugin(Midi) midiData] objectAtIndex:[midiChannel intValue]] removeObserver:self forKeyPath:[midiNumber stringValue]];
+		[[[GetPlugin(Midi) midiData] objectAtIndex:[midiChannel intValue]] removeObserver:self forKeyPath:[NSString stringWithFormat:@"cc%i",[midiNumber intValue]]];
 		binded = NO;
+        [self setMidiLabel:@"-"];
 	}	
 }
 
@@ -104,7 +110,6 @@ static NSString *MidiControllerContext = @"org.ofx.midi.controller";
 }
 
 -(void) setMidiChannel:(NSNumber *)n{
-	[self willChangeValueForKey:@"midiChannel"];
 	if(midiChannel != nil && !binded){
 	} else {
 		if(binded){
@@ -121,7 +126,6 @@ static NSString *MidiControllerContext = @"org.ofx.midi.controller";
 	if(midiChannel != nil && !binded){
 		[self bindMidi];
 	} 
-	[self didChangeValueForKey:@"midiChannel"];
 }
 
 -(void) update{
@@ -129,7 +133,6 @@ static NSString *MidiControllerContext = @"org.ofx.midi.controller";
 
 
 -(void) setMidiNumber:(NSNumber *)n{
-	[self willChangeValueForKey:@"midiNumber"];
 	if(midiNumber != nil && !binded){
 	} else {
 		if(binded){
@@ -147,14 +150,13 @@ static NSString *MidiControllerContext = @"org.ofx.midi.controller";
 	if(midiNumber != nil && !binded){
 		[self bindMidi];
 	} 
-	[self didChangeValueForKey:@"midiNumber"];
 }
 
--(void) setManualMidiNumber:(NSNumber*)number{
+/*-(void) setManualMidiNumber:(NSNumber*)number{
 	forcedMidiNumber = YES;
 	[self setMidiNumber:number];
 	
-}
+}*/
 
 -(void) reset{
 	[self setValue:defaultValue];

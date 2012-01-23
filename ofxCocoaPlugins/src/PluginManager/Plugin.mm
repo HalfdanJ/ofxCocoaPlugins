@@ -28,7 +28,7 @@
 		[self bind:@"boolEnabled" toObject:properties withKeyPath:@"Enabled.value" options:nil];
 		[self addObserver:self forKeyPath:@"boolEnabled" options:nil context:@"boolEnabled"];
         [self addObserver:self forKeyPath:@"customProperties" options:nil context:@"customProperties"];
-
+        
 	}	
 	return self;	
 }
@@ -45,7 +45,7 @@
         controlGlView.controller = globalController;
 	}
 }
- 
+
 
 - (void) applicationWillTerminate: (NSNotification *)note{}
 
@@ -108,13 +108,13 @@
 }	
 
 /*-(id) initWithCoder:(NSCoder *)coder{
-	NSLog(@"Decode enabled: %i", [coder decodeBoolForKey:@"enabled"]);
-}
-
--(void) encodeWithCoder:(NSCoder *)coder{
-	NSLog(@"Encode plugin");
-	[coder encodeBool:[enabled boolValue] forKey:@"enabled"];
-}*/
+ NSLog(@"Decode enabled: %i", [coder decodeBoolForKey:@"enabled"]);
+ }
+ 
+ -(void) encodeWithCoder:(NSCoder *)coder{
+ NSLog(@"Encode plugin");
+ [coder encodeBool:[enabled boolValue] forKey:@"enabled"];
+ }*/
 
 -(void) setUpdateCpuUsage:(float)v{
 	[self willChangeValueForKey:@"powerMeterDictionary"];
@@ -162,7 +162,7 @@
 
 -(void) assignMidiChannel:(int) channel{
 	[self setMidiChannel:[NSNumber numberWithInt:channel]];
-
+    
 	for(NSString * aKey in properties){
 		[[properties valueForKey:aKey] setMidiChannel:[NSNumber numberWithInt:channel]];
 	}	
@@ -177,7 +177,7 @@
 	[alert setMessageText:@"Qlab alle properties?"];
 	[alert setInformativeText:@"Dette kan have stor effekt på qlab!"];
 	[alert setAlertStyle:NSWarningAlertStyle];
-//	[alert beginSheetModalForWindow:[NSApp mainWindow] modalDelegate:self didEndSelector:@selector(alertDidEnd:returnCode:contextInfo:) contextInfo:nil];
+    //	[alert beginSheetModalForWindow:[NSApp mainWindow] modalDelegate:self didEndSelector:@selector(alertDidEnd:returnCode:contextInfo:) contextInfo:nil];
 	
 	if ([alert runModal] == NSAlertFirstButtonReturn) {
 		NSLog(@"Go qlab");
@@ -219,8 +219,26 @@
 			}
 			for(PluginProperty * p in objects){
 				if(![p forcedMidiNumber]){
-					[p setMidiNumber:[NSNumber numberWithInt:i]];
-					i++;
+                    bool iFound = YES;
+                    while(iFound == YES){
+                        iFound = NO;
+                        for(NSDictionary * header in [globalController plugins]){                        
+                            
+                            for(ofPlugin * otherPlugin in [header valueForKey:@"children"]){
+                                for(PluginProperty * otherP in [[otherPlugin properties] allValues]){
+                                    if(otherP != p && [[otherP midiChannel] isEqualToNumber:[p midiChannel]] && [[otherP midiNumber] intValue] == i){
+                                        iFound = YES;
+                                        i++;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    
+                    if(!iFound){
+                        [p setMidiNumber:[NSNumber numberWithInt:i]];
+                    }
+                    i++;
 				}
 			}
 			[[globalController qlabController] updateQlabForPlugin:self];

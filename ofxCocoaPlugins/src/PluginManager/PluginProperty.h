@@ -19,6 +19,7 @@
 	NSNumber * midiNumber;
 	BOOL binded;
 	BOOL forcedMidiNumber;
+    NSString * midiLabel;
 }
 @property (retain) NSString * name;
 @property (retain) NSString * pluginName;
@@ -31,6 +32,7 @@
 @property (retain) NSCell * controlCell;
 @property (retain)	NSNumber * midiChannel;
 @property (retain)	NSNumber * midiNumber;
+@property (readwrite) NSString * midiLabel;
 
 -(void) update;
 -(void) midiEvent:(int) value;
@@ -42,7 +44,8 @@
 -(void) sendQlab;
 -(void) sendQlabNonVerbose;
 
--(void) setManualMidiNumber:(NSNumber*)number;
+// Deprecated
+// -(void) setManualMidiNumber:(NSNumber*)number; 
 
 
 @end

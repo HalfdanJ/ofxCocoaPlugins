@@ -13,6 +13,7 @@
 //Use these to add plugins and headers to the app
 - (void) addHeader:(NSString*)header;
 - (void) addPlugin:(ofPlugin*)plugin;
+- (void) addPlugin:(ofPlugin*)plugin midiChannel:(int)channel;
 
 //Set the number of opengl outputviews. Default = 1
 - (void) setNumberOutputviews:(int)views;

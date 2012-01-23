@@ -57,7 +57,9 @@
 			NSMutableDictionary * aChannel = [NSMutableDictionary dictionary];
 			
 			for (int j=0; j<128; j++) {
-				[aChannel setObject:[NSNumber numberWithInt:0] forKey:[NSString stringWithFormat:@"%i", j]];
+				[aChannel setObject:[NSNumber numberWithInt:0] forKey:[NSString stringWithFormat:@"cc%i", j]];
+                [aChannel setObject:[NSNumber numberWithInt:0] forKey:[NSString stringWithFormat:@"noteoff%i", j]];
+                [aChannel setObject:[NSNumber numberWithInt:0] forKey:[NSString stringWithFormat:@"noteon%i", j]];
 			}
 			
 			[midiData addObject:aChannel]; 
@@ -159,7 +161,7 @@
 
 -(void)update:(NSDictionary *)drawingInformation{
 
-    if(serial->available() > 0){
+    /*if(serial->available() > 0){
         int r = serial->readByte();
         if(r == 'a'){
             [self sendValue:1 forNote:1 onChannel:1];
@@ -167,7 +169,7 @@
             [self sendValue:2 forNote:1 onChannel:1];
         }
     }
-	
+	*/
 	//updateTimeInterval = timeInterval;
 	
 	//	NSMutableIndexSet * rowIndexesChanged = [[NSMutableIndexSet alloc] init];
@@ -236,12 +238,14 @@ BOOL isRealtimeByte (Byte b)	{ return b >= 0xF8; }
 				channel = packet->data[0+j] - 143;
 				number = packet->data[1+j];
 				value = packet->data[2+j];
+//                cout<<"Note on ch"<<channel<<"  num "<<number<<"  val "<<value<<endl;
 			}
 			if(packet->data[0+j] >= 128 && packet->data[0+j] <= 143){
 				noteOff = true;
 				channel = packet->data[0+j] - 127;
 				number = packet->data[1+j];
 				value = 0; //packet->data[2+j];
+//                cout<<"Note off ch"<<channel<<"  num "<<number<<"  val "<<value<<endl;
 			}
 			if(packet->data[0+j] >= 176 && packet->data[0+j] <= 191){
 				if(packet->data[2+j] < 128){
@@ -316,14 +320,19 @@ BOOL isRealtimeByte (Byte b)	{ return b >= 0xF8; }
 				//pthread_mutex_lock(&mutex);
 				
 				//int rowIndex = 0;
-				
-				NSMutableDictionary * dict = [NSMutableDictionary dictionary];
+                NSMutableDictionary * dict = [NSMutableDictionary dictionary];
 				[dict setObject:[NSNumber numberWithInt:channel] forKey:@"channel"];
 				[dict setObject:[NSNumber numberWithInt:number] forKey:@"number"];
 				[dict setObject:[NSNumber numberWithInt:value] forKey:@"value"];				
 				
 				if(channel >= 0 && number >= 0){
-					[[midiData objectAtIndex:channel] setObject:[NSNumber numberWithInt:value] forKey:[NSString stringWithFormat:@"%i", number]];
+                    if(controlChange){
+                        [[midiData objectAtIndex:channel] setObject:[NSNumber numberWithInt:value] forKey:[NSString stringWithFormat:@"cc%i", number]];
+                    } else if(noteOn){
+                        [[midiData objectAtIndex:channel] setObject:[NSNumber numberWithInt:value] forKey:[NSString stringWithFormat:@"noteon%i", number]];
+                    } else if(noteOff){
+                        [[midiData objectAtIndex:channel] setObject:[NSNumber numberWithInt:value] forKey:[NSString stringWithFormat:@"noteoff%i", number]];
+                    }
 				}
 				//				[[midiData objectForKey:[NSNumber numberWithInt:channel]] setObject:[NSNumber numberWithInt:value] forKey:[NSNumber numberWithInt:number]];
 				
