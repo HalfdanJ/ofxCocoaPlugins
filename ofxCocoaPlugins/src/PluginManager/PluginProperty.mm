@@ -64,7 +64,9 @@ static NSString *MidiControllerContext = @"org.ofx.midi.controller";
 	return self;
 }
 -(void) midiEvent:(int) _value{
-    [self setMidiLabel:[NSString stringWithFormat:@"^ %i",_value]];
+    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+        [self setMidiLabel:[NSString stringWithFormat:@"^ %i",_value]];
+    }];
 };
 
 -(void) bindMidi{
@@ -102,7 +104,10 @@ static NSString *MidiControllerContext = @"org.ofx.midi.controller";
 		if(midiChannel != nil && midiNumber != nil){
 			if([[(NSDictionary*)[object midiData]objectForKey:@"number"] intValue] == [midiNumber intValue]){			
 				if([[(NSDictionary*)[object midiData]objectForKey:@"channel"] intValue] == [midiChannel intValue]){
+                    //[[globalController openglLock] lock]; //Had some trouble with mutations during enumerations
+
 					[self midiEvent:[[(NSDictionary*)[object midiData] objectForKey:@"value"] intValue]];
+                 //   [[globalController openglLock] unlock]; 
 				}	
 			}
 		}

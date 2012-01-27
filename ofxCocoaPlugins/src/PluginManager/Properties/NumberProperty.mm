@@ -48,23 +48,24 @@
 }
 
 -(void) update{
-	if(valueSetFromMidi && midiSmoothing > 0 && midiGoal != [self floatValue]){
-		if(lastMidiTime != nil && -[lastMidiTime timeIntervalSinceNow] < 6){
-			if(fabs(midiGoal-[self floatValue]) < ([self maxValue]-[self minValue])*0.001){
-				[self setFloatValue:midiGoal];
-			} else {
-				float f = [self floatValue] + (midiGoal - [self floatValue])*(1-midiSmoothing);
-				[self setFloatValue:f];
-				valueSetFromMidi = YES;
-			}
-		} else {
-			[self setFloatValue:midiGoal];
-			valueSetFromMidi = YES;
-		}
-		
-		lastMidiTime = thisMidiTime;
-
-	} 
+        
+        if(valueSetFromMidi && midiSmoothing > 0 && midiGoal != [self floatValue]){
+            if(lastMidiTime != nil && -[lastMidiTime timeIntervalSinceNow] < 6){
+                if(fabs(midiGoal-[self floatValue]) < ([self maxValue]-[self minValue])*0.001){
+                    [self setFloatValue:midiGoal];
+                } else {
+                    float f = [self floatValue] + (midiGoal - [self floatValue])*(1-midiSmoothing);
+                    [self setFloatValue:f];
+                    valueSetFromMidi = YES;
+                }
+            } else {
+                [self setFloatValue:midiGoal];
+                valueSetFromMidi = YES;
+            }
+            
+            lastMidiTime = thisMidiTime;
+            
+        } 
 }
 
 
@@ -104,7 +105,10 @@
 	value = n;
 	valueSetFromMidi = NO;
     if(binded){
-        [self setMidiLabel:[NSString stringWithFormat:@"%i", [[self midiValue] intValue]]];
+        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+            
+            [self setMidiLabel:[NSString stringWithFormat:@"%i", [[self midiValue] intValue]]];
+        }];
     }
 }
 
@@ -155,7 +159,7 @@
 		[self setFloatValue:endV];
 	}
     [super midiEvent:_value];
-
+    
 }
 
 -(NSNumber*)midiValue{

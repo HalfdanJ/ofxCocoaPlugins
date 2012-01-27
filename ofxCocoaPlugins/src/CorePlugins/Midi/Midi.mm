@@ -227,7 +227,7 @@ BOOL isRealtimeByte (Byte b)	{ return b >= 0xF8; }
             
 			bool noteOn = false;
 			bool noteOff = false;
-			bool controlChange;
+			bool controlChange = false;
 			bool pitchbend = false;
 			int channel = -1;
 			int number = -1;
@@ -318,13 +318,14 @@ BOOL isRealtimeByte (Byte b)	{ return b >= 0xF8; }
 			if([self isEnabled]){
 				
 				//pthread_mutex_lock(&mutex);
-				
 				//int rowIndex = 0;
                 NSMutableDictionary * dict = [NSMutableDictionary dictionary];
 				[dict setObject:[NSNumber numberWithInt:channel] forKey:@"channel"];
 				[dict setObject:[NSNumber numberWithInt:number] forKey:@"number"];
 				[dict setObject:[NSNumber numberWithInt:value] forKey:@"value"];				
-				
+
+                [[globalController openglLock] lock]; //Had some trouble with mutations during enumerations
+
 				if(channel >= 0 && number >= 0){
                     if(controlChange){
                         [[midiData objectAtIndex:channel] setObject:[NSNumber numberWithInt:value] forKey:[NSString stringWithFormat:@"cc%i", number]];
@@ -334,6 +335,8 @@ BOOL isRealtimeByte (Byte b)	{ return b >= 0xF8; }
                         [[midiData objectAtIndex:channel] setObject:[NSNumber numberWithInt:value] forKey:[NSString stringWithFormat:@"noteoff%i", number]];
                     }
 				}
+                
+                [[globalController openglLock] unlock];
 				//				[[midiData objectForKey:[NSNumber numberWithInt:channel]] setObject:[NSNumber numberWithInt:value] forKey:[NSNumber numberWithInt:number]];
 				
 				//				[midiData setObject:[NSNumber numberWithInt:value] forKey:[NSString stringWithFormat:@"%i.%i", channel, number]];

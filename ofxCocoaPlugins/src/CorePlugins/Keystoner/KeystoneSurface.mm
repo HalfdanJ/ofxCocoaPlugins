@@ -393,6 +393,13 @@
 
 -(ofVec2f) convertFromProjection:(ofVec2f)p{
 	ofVec2f r = coordWarp->inversetransform(p.x, p.y);
+    
+    if(handleOffset != 1.0){
+        r += ofVec2f(-0.5,-0.5);
+        r /= 1.0/handleOffset;
+        r += ofVec2f(0.5,0.5);
+    }
+    
 	r.x *= [aspect floatValue];
 	//r.y = p.y;
 	return r;
