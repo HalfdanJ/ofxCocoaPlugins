@@ -532,8 +532,8 @@
 									<bool key="EncodedWithXMLCoder">YES</bool>
 									<object class="NSCustomView" id="769135588">
 										<reference key="NSNextResponder" ref="1068759883"/>
-										<int key="NSvFlags">274</int>
-										<string key="NSFrame">{{2, 4}, {774, 529}}</string>
+										<int key="NSvFlags">256</int>
+										<string key="NSFrame">{{2, 122}, {611, 411}}</string>
 										<reference key="NSSuperview" ref="1068759883"/>
 										<reference key="NSWindow"/>
 										<reference key="NSNextKeyView"/>

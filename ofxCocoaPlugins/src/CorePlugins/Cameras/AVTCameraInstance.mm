@@ -288,6 +288,19 @@ void FrameDoneCB(tPvFrame* pFrame)
 		return false;
 	}	
     
+    //Binning
+    if((PvAttrUint32Set(GCamera.Handle,"BinningX",2) != ePvErrSuccess))
+	{		
+		printf("CameraStart: failed to set binning x\n");
+		return false;
+	}	
+    if((PvAttrUint32Set(GCamera.Handle,"BinningY",2) != ePvErrSuccess))
+	{		
+		printf("CameraStart: failed to set binning y\n");
+		return false;
+	}	
+
+    
 	return true;
 }
 

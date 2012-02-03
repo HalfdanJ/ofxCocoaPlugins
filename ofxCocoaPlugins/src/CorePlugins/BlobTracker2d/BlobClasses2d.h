@@ -39,7 +39,7 @@
 }
 @property (readwrite) int cameraId;
 @property (readonly) ofxCvBlob * originalblob;
-@property (readonly) ofxCvBlob * floorblob;
+//@property (readonly) ofxCvBlob * floorblob;
 @property (readwrite) coordWarping * coordWarp;
 
 -(void) normalize:(int)w height:(int)h;

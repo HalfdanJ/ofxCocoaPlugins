@@ -79,6 +79,9 @@
 		3D3B795F1492250200743828 /* ofQuickTimeGrabber.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A360914543B7800CC89E5 /* ofQuickTimeGrabber.h */; };
 		3D3B79601492250200743828 /* ofQuickTimePlayer.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A360B14543B7800CC89E5 /* ofQuickTimePlayer.h */; };
 		3D3B79611492250200743828 /* ofQtUtils.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A360D14543B7800CC89E5 /* ofQtUtils.h */; };
+		3D70F2EA14DB02AE0036A80C /* libola.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D70F2E014DAFC700036A80C /* libola.dylib */; };
+		3D70F2EB14DB02AE0036A80C /* libolacommon.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D70F2E214DAFC7D0036A80C /* libolacommon.dylib */; };
+		3D70F2ED14DB031F0036A80C /* libprotobuf.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D70F2EC14DB031F0036A80C /* libprotobuf.dylib */; };
 		3D9951B314B5EDEC007F1E96 /* BlobClasses2d.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D9951A914B5EDEC007F1E96 /* BlobClasses2d.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3D9951B414B5EDEC007F1E96 /* BlobClasses2d.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3D9951AA14B5EDEC007F1E96 /* BlobClasses2d.mm */; };
 		3D9951B514B5EDEC007F1E96 /* BlobTracker2d.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D9951AB14B5EDEC007F1E96 /* BlobTracker2d.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -96,6 +99,9 @@
 		3D9951C214B60665007F1E96 /* ofxCvHaarFinder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DD0A34931452F2CD00CC89E5 /* ofxCvHaarFinder.cpp */; };
 		3D9951C314B60674007F1E96 /* ofxCvImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DD0A34951452F2CD00CC89E5 /* ofxCvImage.cpp */; };
 		3D9951C414B60678007F1E96 /* ofxCvShortImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DD0A34981452F2CD00CC89E5 /* ofxCvShortImage.cpp */; };
+		3D9A5E8514DAF3530002B855 /* OpenDMX.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D9A5E8214DAF3530002B855 /* OpenDMX.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3D9A5E8614DAF3530002B855 /* OpenDMX.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3D9A5E8314DAF3530002B855 /* OpenDMX.mm */; };
+		3D9A5E8714DAF3530002B855 /* OpenDMX.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D9A5E8414DAF3530002B855 /* OpenDMX.xib */; };
 		3D9A8C6414CD5DBD00531AAF /* icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 3D9A8C5F14CD5DBD00531AAF /* icon.icns */; };
 		3D9A8C6514CD5DBD00531AAF /* SendToQlab.scpt in Resources */ = {isa = PBXBuildFile; fileRef = 3D9A8C6014CD5DBD00531AAF /* SendToQlab.scpt */; };
 		3D9A8C6614CD5DBD00531AAF /* Trebuchet MS.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3D9A8C6114CD5DBD00531AAF /* Trebuchet MS.ttf */; };
@@ -572,6 +578,9 @@
 		3D24851B14BC6DBA00AC6F95 /* CameraCalibrationObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraCalibrationObject.h; sourceTree = "<group>"; };
 		3D24851C14BC6DBA00AC6F95 /* CameraCalibrationObject.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CameraCalibrationObject.mm; sourceTree = "<group>"; };
 		3D2FC2281462EC7C0028BC01 /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
+		3D70F2E014DAFC700036A80C /* libola.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libola.dylib; path = usr/local/lib/libola.dylib; sourceTree = SDKROOT; };
+		3D70F2E214DAFC7D0036A80C /* libolacommon.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libolacommon.dylib; path = usr/local/lib/libolacommon.dylib; sourceTree = SDKROOT; };
+		3D70F2EC14DB031F0036A80C /* libprotobuf.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libprotobuf.dylib; path = /Users/livingroom/Development/Code/Livingroom/ofxCocoaPlugins/../../../../../../opt/local/lib/libprotobuf.dylib; sourceTree = "<absolute>"; };
 		3D9951A914B5EDEC007F1E96 /* BlobClasses2d.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlobClasses2d.h; sourceTree = "<group>"; };
 		3D9951AA14B5EDEC007F1E96 /* BlobClasses2d.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = BlobClasses2d.mm; sourceTree = "<group>"; };
 		3D9951AB14B5EDEC007F1E96 /* BlobTracker2d.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlobTracker2d.h; sourceTree = "<group>"; };
@@ -582,6 +591,9 @@
 		3D9951B014B5EDEC007F1E96 /* BlobTrackerInstance2d.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BlobTrackerInstance2d.xib; sourceTree = "<group>"; };
 		3D9951B114B5EDEC007F1E96 /* ofxQtVideoSaver.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxQtVideoSaver.cpp; sourceTree = "<group>"; };
 		3D9951B214B5EDEC007F1E96 /* ofxQtVideoSaver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxQtVideoSaver.h; sourceTree = "<group>"; };
+		3D9A5E8214DAF3530002B855 /* OpenDMX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenDMX.h; sourceTree = "<group>"; };
+		3D9A5E8314DAF3530002B855 /* OpenDMX.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = OpenDMX.mm; sourceTree = "<group>"; };
+		3D9A5E8414DAF3530002B855 /* OpenDMX.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OpenDMX.xib; sourceTree = "<group>"; };
 		3D9A8C5F14CD5DBD00531AAF /* icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = icon.icns; sourceTree = "<group>"; };
 		3D9A8C6014CD5DBD00531AAF /* SendToQlab.scpt */ = {isa = PBXFileReference; lastKnownFileType = file; path = SendToQlab.scpt; sourceTree = "<group>"; };
 		3D9A8C6114CD5DBD00531AAF /* Trebuchet MS.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Trebuchet MS.ttf"; sourceTree = "<group>"; };
@@ -970,6 +982,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3D70F2EA14DB02AE0036A80C /* libola.dylib in Frameworks */,
+				3D70F2EB14DB02AE0036A80C /* libolacommon.dylib in Frameworks */,
+				3D70F2ED14DB031F0036A80C /* libprotobuf.dylib in Frameworks */,
 				DDE4C8831451A91200EECFF4 /* CoreVideo.framework in Frameworks */,
 				DDE4C8841451A91200EECFF4 /* AppKit.framework in Frameworks */,
 				DDE4C8851451A91200EECFF4 /* Cocoa.framework in Frameworks */,
@@ -1030,6 +1045,16 @@
 				3D9951B214B5EDEC007F1E96 /* ofxQtVideoSaver.h */,
 			);
 			path = BlobTracker2d;
+			sourceTree = "<group>";
+		};
+		3D9A5E8114DAF3430002B855 /* OpenDMX */ = {
+			isa = PBXGroup;
+			children = (
+				3D9A5E8214DAF3530002B855 /* OpenDMX.h */,
+				3D9A5E8314DAF3530002B855 /* OpenDMX.mm */,
+				3D9A5E8414DAF3530002B855 /* OpenDMX.xib */,
+			);
+			path = OpenDMX;
 			sourceTree = "<group>";
 		};
 		3D9A8C5E14CD5DBD00531AAF /* Resources */ = {
@@ -1692,6 +1717,9 @@
 		DDA7FFCC144F1C3800F81C9E = {
 			isa = PBXGroup;
 			children = (
+				3D70F2EC14DB031F0036A80C /* libprotobuf.dylib */,
+				3D70F2E214DAFC7D0036A80C /* libolacommon.dylib */,
+				3D70F2E014DAFC700036A80C /* libola.dylib */,
 				3D9A8C5E14CD5DBD00531AAF /* Resources */,
 				3D9B4D7C14BC4D7300225E4A /* libfmodex.dylib */,
 				DD0A358A14543B7800CC89E5 /* openFrameworksHeaders */,
@@ -1993,6 +2021,7 @@
 				DDC266A91454BBE90016BA7B /* GeneralPreferences */,
 				DD0A334B1452F29C00CC89E5 /* Keystoner */,
 				DD0A33641452F29C00CC89E5 /* VideoPlayer */,
+				3D9A5E8114DAF3430002B855 /* OpenDMX */,
 				DDE4CA151451E23700EECFF4 /* Midi */,
 			);
 			name = CorePlugins;
@@ -2102,6 +2131,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3D9A5E8514DAF3530002B855 /* OpenDMX.h in Headers */,
 				3DCAC6A414C47B680022F715 /* ofCvCameraCalibration.h in Headers */,
 				3D24851814BC671900AC6F95 /* CameraCalibration.h in Headers */,
 				3D24851D14BC6DBA00AC6F95 /* CameraCalibrationObject.h in Headers */,
@@ -2461,6 +2491,7 @@
 				3D9A8C6514CD5DBD00531AAF /* SendToQlab.scpt in Resources */,
 				3D9A8C6614CD5DBD00531AAF /* Trebuchet MS.ttf in Resources */,
 				3D9A8C6714CD5DBD00531AAF /* index.html in Resources */,
+				3D9A5E8714DAF3530002B855 /* OpenDMX.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2566,6 +2597,7 @@
 				3D9D181514BD95A600DD2093 /* Kinect.mm in Sources */,
 				3D9D181814BD95A600DD2093 /* KinectInstance.mm in Sources */,
 				3DCAC6A214C47B5B0022F715 /* ofCvCameraCalibration.cpp in Sources */,
+				3D9A5E8614DAF3530002B855 /* OpenDMX.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2762,6 +2794,9 @@
 					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/addons/ofxOpenCv/libs/opencv/lib/vs2010\"",
 					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/addons/ofxOpenCv/libs/opencv/lib/win_cb\"",
 					"\"$(SRCROOT)/ofxCocoaPlugins/libs/PvAPI/lib-pc/x86/4.2\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/src/CorePlugins/OpenDMX/ola\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/src/CorePlugins/OpenDMX\"",
+					/opt/local/lib,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = framework;
@@ -2865,6 +2900,9 @@
 					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/addons/ofxOpenCv/libs/opencv/lib/vs2010\"",
 					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/addons/ofxOpenCv/libs/opencv/lib/win_cb\"",
 					"\"$(SRCROOT)/ofxCocoaPlugins/libs/PvAPI/lib-pc/x86/4.2\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/src/CorePlugins/OpenDMX/ola\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/src/CorePlugins/OpenDMX\"",
+					/opt/local/lib,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = framework;

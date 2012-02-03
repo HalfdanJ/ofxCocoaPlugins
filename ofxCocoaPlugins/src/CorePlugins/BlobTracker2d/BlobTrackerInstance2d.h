@@ -73,6 +73,7 @@ class ofxQtVideoSaver;
     ofPoint recordingSurfaceCorners[4];
     
     CameraCalibrationObject * calibrator;
+    long long frameNum;
 }
 @property (assign) IBOutlet NSView *view;
 @property (readonly) NSString * name;

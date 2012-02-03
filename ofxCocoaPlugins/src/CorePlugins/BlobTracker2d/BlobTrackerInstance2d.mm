@@ -146,6 +146,10 @@
             if(![cam camInited]){
                 update = NO;
             }
+            if(frameNum == [cam frameNum]){
+                update = NO;
+            } 
+            frameNum = [cam frameNum];
             
         }
         if(update){
@@ -195,7 +199,7 @@
             //Difference
             grayDiff->absDiff(*grayBg, *grayImageBlured);
             
-            ofPoint maskPoints[4];
+            /*ofPoint maskPoints[4];
             [self getSurfaceMaskCorners:maskPoints clamped:NO];
             
             
@@ -215,6 +219,8 @@
             CvPoint _cp4[4] = {{0,480}, {0,0},{maskPoints[0].x,maskPoints[0].y},{maskPoints[3].x,maskPoints[3].y}};			
             cp = _cp4; 
             cvFillPoly(grayDiff->getCvImage(), &cp, &nPoints, 1, cvScalar(0));
+            */
+            
             grayDiff->flagImageChanged();
             
             grayDiff->threshold([[properties valueForKey:@"threshold"] intValue]);

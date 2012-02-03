@@ -202,6 +202,7 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 //                window = new ofAppCocoaWindow();
                 ofSetupOpenGL(ofPtr<ofAppBaseWindow>(new ofAppCocoaWindow()), 0, 0, 0);
                 ofSetBackgroundAuto(false);
+
             }
             
 
@@ -233,6 +234,7 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 			
 			//Call the setup code if its the first time
             if(![controller isSetupCalled]){
+
 				[controller callSetup];
 			}	
 

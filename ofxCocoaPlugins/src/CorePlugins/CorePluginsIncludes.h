@@ -5,4 +5,5 @@
 #import <ofxCocoaPlugins/Midi.h>
 #import <ofxCocoaPlugins/BlobTracker2d.h>
 #import <ofxCocoaPlugins/CameraCalibration.h>
+#import <ofxCocoaPlugins/OpenDMX.h>
 //#include "Kinect.h"

@@ -195,11 +195,11 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
     
     [[self openGLContext] makeCurrentContext];
     
-    CGLLockContext((CGLContextObj)[[self openGLContext] CGLContextObj]);
+   // CGLLockContext((CGLContextObj)[[self openGLContext] CGLContextObj]);
     
     [[self openGLContext] update];
     
-    CGLUnlockContext((CGLContextObj)[[self openGLContext] CGLContextObj]);
+  //  CGLUnlockContext((CGLContextObj)[[self openGLContext] CGLContextObj]);
     
     [[globalController openglLock] unlock];
 }
