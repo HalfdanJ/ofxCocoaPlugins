@@ -312,7 +312,7 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 
 - (void) updateDisplayIDWithWindow:(NSWindow*)window
 {		
-    [[controller openglLock] lock]; 
+    //[[controller openglLock] lock]; 
 
     CGDirectDisplayID displayID = (CGDirectDisplayID)[[[[window screen] deviceDescription] objectForKey:@"NSScreenNumber"] intValue];
 	
@@ -324,7 +324,7 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
         viewDisplayID = displayID;
     }	
     
-    [[controller openglLock] unlock]; 
+   // [[controller openglLock] unlock]; 
 
 }
 

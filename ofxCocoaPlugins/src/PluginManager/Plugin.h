@@ -10,6 +10,7 @@
 
 #define STRINGIFY(s) [NSString stringWithFormat:@"%s",#s]
 #define CachePropF(p) float p = PropF(STRINGIFY(p));
+#define CachePropI(p) int p = PropI(STRINGIFY(p));
 
 #define SetPropF(s, val) [Prop( (s) ) setFloatValue:val]
 #define SetPropB(s, val) [Prop( (s) ) setBoolValue:val]
@@ -34,6 +35,7 @@ extern PluginManagerController * globalController;
     NSMutableDictionary * properties;
 	NSMutableDictionary * customProperties;
 
+    
 @private
     IBOutlet NSView * view;
 	IBOutlet PluginOpenGLControlView * controlGlView;

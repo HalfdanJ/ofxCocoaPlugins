@@ -62,7 +62,8 @@ ola::DmxBuffer *buffer;
 
 -(void)update:(NSDictionary *)drawingInformation{
     unsigned int universe = 0;
-    if (!client->SendDmx(universe, *buffer)) {
+    
+    if (connected && !client->SendDmx(universe, *buffer)) {
         
     }
     
