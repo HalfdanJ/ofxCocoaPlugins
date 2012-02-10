@@ -81,6 +81,8 @@
 	//dispatch_async(dispatch_get_main_queue(), ^{
 	
 	//});
+    
+    [self addPropB:@"qlabGo"];
 	
 }
 
@@ -160,7 +162,10 @@
 }
 
 -(void)update:(NSDictionary *)drawingInformation{
-
+    if(PropB(@"qlabGo")){
+        [Prop(@"qlabGo") setBoolValue:NO];
+        [self sendGo:self];
+    }
     /*if(serial->available() > 0){
         int r = serial->readByte();
         if(r == 'a'){
@@ -337,117 +342,10 @@ BOOL isRealtimeByte (Byte b)	{ return b >= 0xF8; }
 				}
                 
                 [[globalController openglLock] unlock];
-				//				[[midiData objectForKey:[NSNumber numberWithInt:channel]] setObject:[NSNumber numberWithInt:value] forKey:[NSNumber numberWithInt:number]];
-				
-				//				[midiData setObject:[NSNumber numberWithInt:value] forKey:[NSString stringWithFormat:@"%i.%i", channel, number]];
-				
-				//				[self setMidiData:dict];
-				
-				//NSLog(@"%i %@", value, midiBindings);
-				
-				
-				
-				/* This caused a crash when receiving a midi packet sometimes! 
-				 
-				 [self willChangeValueForKey:@"midiData"];
-				 [midiData setObject:[NSNumber numberWithInt:channel] forKey:@"channel"];
-				 [midiData setObject:[NSNumber numberWithInt:number] forKey:@"number"];
-				 [midiData setObject:[NSNumber numberWithInt:value] forKey:@"value"];				
-				 [self didChangeValueForKey:@"midiData"];
-				 
-				 */
-				
-				//NSLog(@"%@",  midiData);
-				
-				/*for (dict in midiBindings){
-				 
-				 
-				 if ([[dict objectForKey:@"channel"] intValue] == channel) {
-				 if(controlChange){
-				 
-				 if ([[dict objectForKey:@"number"] intValue] == number) {
-				 NSLog(@"%i", value);
-				 PluginProperty * prop = (PluginProperty*) [[dict objectForKey:@"property"] intValue];
-				 NSLog(@"%f", [prop floatValue]);
-				 [prop midiEvent:value];
-				 
-				 }
-				 }
-				 }
-				 }*/
-				
-				
-				//pthread_mutex_unlock(&mutex);
+
 			}
 			
-			/*
-			 // handle plugin activation/deactivation
-			 if (number == 1) {
-			 
-			 ofPlugin * p;
-			 
-			 for (p in [globalController plugins]) {
-			 if ([p ] == channel) {
-			 if (value == 0) {
-			 [p setEnabled:[NSNumber numberWithInt:0]];
-			 } else {
-			 [p setEnabled:[NSNumber numberWithInt:1]];
-			 }
-			 }
-			 }
-			 
-			 } 
-			 
-			 else if (number == 2) {
-			 
-			 ofPlugin * p;
-			 
-			 for (p in [globalController viewItems]) {
-			 if ([p midiChannel] == channel) {
-			 [p setAlpha:[NSNumber numberWithFloat:(value/127.0)]];
-			 }
-			 }
-			 
-			 } else if (number == 3) {
-			 
-			 ofPlugin * p;
-			 
-			 for (p in [globalController viewItems]) {
-			 if ([p midiChannel] == channel) {
-			 [p setMask:[NSNumber numberWithFloat:(value/127.0)]];
-			 }
-			 }
-			 
-			 } else {
-			 
-			 id theBinding;
-			 
-			 pthread_mutex_lock(&mutex);
-			 
-			 int rowIndex = 0;
-			 
-			 for (theBinding in boundControls){
-			 if ([[theBinding channel] intValue] == channel) {
-			 if(controlChange){
-			 if ([[theBinding controller] intValue] == number) {
-			 NSLog(@"%i", value);
-			 [theBinding setSmoothingValue:[NSNumber numberWithInt:value] withTimeInterval: updateTimeInterval];
-			 NSInteger row = [[boundControlsController arrangedObjects] indexOfObject:theBinding];
-			 if (row != NSNotFound) {								
-			 [rowIndexesChanged addIndex:row];
-			 }
-			 }
-			 }
-			 }
-			 rowIndex++;
-			 }
-			 
-			 [self performSelectorOnMainThread:@selector(_reloadRows:) withObject:rowIndexesChanged waitUntilDone:NO modes:[NSArray arrayWithObject:NSRunLoopCommonModes]];
-			 
-			 pthread_mutex_unlock(&mutex);
-			 }
-			 
-			 }*/
+	
 		}	
 		packet = MIDIPacketNext (packet);
 	}
@@ -542,14 +440,44 @@ BOOL isRealtimeByte (Byte b)	{ return b >= 0xF8; }
 	Byte mdata[3] = {(143+_midiChannel), midiNote, midiValue};
 	packet = MIDIPacketListAdd(&packetlist, sizeof(packetlist),
 							   packet, 0, 3, mdata);
-	cout<<"Prepare midi send"<<packet<<"  "<<midiValue<<"   "<<midiNote<<"   "<<_midiChannel<<endl;
+//	cout<<"Prepare midi send"<<packet<<"  "<<midiValue<<"   "<<midiNote<<"   "<<_midiChannel<<endl;
 	if (endpoint) {
 		[sendEndpoint addSender:self];
 		[sendEndpoint processMIDIPacketList:&packetlist sender:self];
 		[sendEndpoint removeSender:self];
-		cout<<"Midi send"<<packet<<"  "<<midiValue<<"   "<<midiNote<<"   "<<_midiChannel<<endl;
+//		cout<<"Midi send"<<packet<<"  "<<midiValue<<"   "<<midiNote<<"   "<<_midiChannel<<endl;
 	}
 	
+}
+
+-(void)sendNoteOff:(int)midiNote onChannel:(int)_midiChannel{
+	
+	MIDIPacketList packetlist;
+	MIDIPacket     *packet     = MIDIPacketListInit(&packetlist);
+	Byte mdata[3] = {(127+_midiChannel), midiNote,0};
+	packet = MIDIPacketListAdd(&packetlist, sizeof(packetlist),
+							   packet, 0, 3, mdata);
+    //	cout<<"Prepare midi send"<<packet<<"  "<<midiValue<<"   "<<midiNote<<"   "<<_midiChannel<<endl;
+	if (endpoint) {
+		[sendEndpoint addSender:self];
+		[sendEndpoint processMIDIPacketList:&packetlist sender:self];
+		[sendEndpoint removeSender:self];
+        //		cout<<"Midi send"<<packet<<"  "<<midiValue<<"   "<<midiNote<<"   "<<_midiChannel<<endl;
+	}
+	
+}
+
+-(void)sendValue:(int)midiValue forCC:(int)cc onChannel:(int)_midiChannel{
+    MIDIPacketList packetlist;
+	MIDIPacket     *packet     = MIDIPacketListInit(&packetlist);
+	Byte mdata[3] = {(175+_midiChannel), cc, midiValue};
+	packet = MIDIPacketListAdd(&packetlist, sizeof(packetlist),
+							   packet, 0, 3, mdata);
+	if (endpoint) {
+		[sendEndpoint addSender:self];
+		[sendEndpoint processMIDIPacketList:&packetlist sender:self];
+		[sendEndpoint removeSender:self];
+	}
 }
 
 -(IBAction) sendGo:(id)sender{

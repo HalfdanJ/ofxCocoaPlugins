@@ -74,6 +74,8 @@ struct MTCTime {
 -(IBAction) testNoteOn:(id)sender;
 
 -(void)sendValue:(int)midiValue forNote:(int)midiNote onChannel:(int)midiChannel;
+-(void)sendNoteOff:(int)midiNote onChannel:(int)midiChannel;
+-(void)sendValue:(int)midiValue forCC:(int)cc onChannel:(int)midiChannel;
 
 -(void) buildMidiInterfacePopUp;
 -(void) midiSetupChanged;
