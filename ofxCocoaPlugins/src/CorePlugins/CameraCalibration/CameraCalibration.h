@@ -2,6 +2,7 @@
 #import <ofxCocoaPlugins/Plugin.h>
 #import <ofxCocoaPlugins/Cameras.h>
 #import <ofxCocoaPlugins/CameraCalibrationObject.h>
+#define ProjNumber 0
 
 @interface CameraCalibration : ofPlugin {
     int controlWidth;

@@ -15,7 +15,7 @@
 		outputViews = [[NSMutableArray array] retain];
 		willDraw = YES;
 		surfaces = [NSArray arrayWithArray:_surfaces];
-                
+        
         perspectives = [NSMutableDictionary dictionary];
         
         for(NSString* surfaceName in surfaces){
@@ -33,6 +33,9 @@
 
 -(void)initPlugin{
     [self addProperty:[NumberProperty sliderPropertyWithDefaultvalue:50 minValue:0 maxValue:300] named:@"softedgeSize"];
+    
+    [self addPropB:@"testImage"];
+    
 }
 
 -(void) applySurface:(NSString*)surfaceName projectorNumber:(int)projectorNumber viewNumber:(int)viewNumber{
@@ -141,7 +144,7 @@
 		
 		appliedSurface = nil;
 	} 
-		
+    
 }
 
 -(void)applyPerspective{
@@ -161,31 +164,56 @@
 }
 
 -(void) draw:(NSDictionary *)drawingInformation{
-    ofEnableAlphaBlending();
-	int viewNo = ViewNumber;
-	NSArray * projectors = [[[outputViewController arrangedObjects] objectAtIndex:viewNo] projectors];
-	KeystoneProjector * projector;
-	for(projector in projectors){
-		if([[[projector surfaces]objectAtIndex:[surfaceArrayController selectionIndex]] visible]){
-			[self applySurface:[[[projector surfaces]objectAtIndex:[surfaceArrayController selectionIndex]] name] projectorNumber:[projector projectorNumber] viewNumber:ViewNumber];
-			if([drawSettings selectedSegment] == 1){
-				KeystoneSurface * theSurface = [[projector surfaces]objectAtIndex:[surfaceArrayController selectionIndex]];
-				[theSurface drawGridSimple:([theSurface projectorNumber] == [projectorArrayController selectionIndex] && ViewNumber==[outputViewController selectionIndex])?NO:YES];
-			}
-			if([drawSettings selectedSegment] == 2){
-				ofSetColor(255, 255, 255);
-				ofFill();
-				ofRect(0,0,[[((KeystoneSurface*)[[projector surfaces]objectAtIndex:[surfaceArrayController selectionIndex]]) aspect] floatValue],1);
-			}
-			
-			[self popSurface];
-		}
-		
-		
-	}
-	
-	
-	willDraw = NO;
+    if(PropB(@"testImage")){
+        int viewNo = ViewNumber;
+        ofFill();
+        NSArray * projectors = [[[outputViewController arrangedObjects] objectAtIndex:viewNo] projectors];
+
+        int count = [projectors count];
+        int i=0;
+        KeystoneProjector * projector;
+        for(projector in projectors){
+            if(i==0){
+                ofSetColor(255,0,0);
+            }
+            if(i==1){
+                ofSetColor(0,255,0);
+            }
+            if(i==2){
+                ofSetColor(0,0,255);
+            }
+            ofRect(i*1.0/count,0,1.0/count,1);
+            i++;
+        }        
+    } else {
+        
+        ofEnableAlphaBlending();
+        int viewNo = ViewNumber;
+        NSArray * projectors = [[[outputViewController arrangedObjects] objectAtIndex:viewNo] projectors];
+        KeystoneProjector * projector;
+        for(projector in projectors){
+            if([[[projector surfaces]objectAtIndex:[surfaceArrayController selectionIndex]] visible]){
+                [self applySurface:[[[projector surfaces]objectAtIndex:[surfaceArrayController selectionIndex]] name] projectorNumber:[projector projectorNumber] viewNumber:ViewNumber];
+                if([drawSettings selectedSegment] == 1){
+                    KeystoneSurface * theSurface = [[projector surfaces]objectAtIndex:[surfaceArrayController selectionIndex]];
+                    [theSurface drawGridSimple:([theSurface projectorNumber] == [projectorArrayController selectionIndex] && ViewNumber==[outputViewController selectionIndex])?NO:YES];
+                }
+                if([drawSettings selectedSegment] == 2){
+                    ofSetColor(255, 255, 255);
+                    ofFill();
+                    ofRect(0,0,[[((KeystoneSurface*)[[projector surfaces]objectAtIndex:[surfaceArrayController selectionIndex]]) aspect] floatValue],1);
+                }
+                
+                [self popSurface];
+            }
+            
+            
+        }
+        
+        
+        willDraw = NO;
+        
+    }
 }	
 
 -(BOOL) willDraw:(NSMutableDictionary*)drawingInformation{
@@ -297,7 +325,7 @@
 		}
         
         NSDictionary * perspectiveSaveDict = [customProperties objectForKey:@"perspectives"];
-
+        
         for(NSString * perspectiveKey in perspectives){
             KeystonePerspective * perspective = [perspectives objectForKey:perspectiveKey];
             NSDictionary * saveDict = [perspectiveSaveDict objectForKey:perspectiveKey];

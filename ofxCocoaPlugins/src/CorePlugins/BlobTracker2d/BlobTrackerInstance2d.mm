@@ -199,30 +199,62 @@
             //Difference
             grayDiff->absDiff(*grayBg, *grayImageBlured);
             
-            /*ofPoint maskPoints[4];
+            ofPoint maskPoints[4];
             [self getSurfaceMaskCorners:maskPoints clamped:NO];
             
+            ofxCvGrayscaleImage mask;
+            mask.allocate(cw,ch);
+            mask.set(0);
             
             int nPoints = 4;
-            CvPoint _cp[4]= {{0,0}, {640,0},{maskPoints[1].x,maskPoints[1].y},{maskPoints[0].x,maskPoints[0].y}};			
+            CvPoint _cp[4] = {
+                {maskPoints[0].x,maskPoints[0].y}, 
+                {maskPoints[1].x,maskPoints[1].y},
+                {maskPoints[2].x,maskPoints[2].y},
+                {maskPoints[3].x,maskPoints[3].y}};		
+            
             CvPoint* cp = _cp; 
-            cvFillPoly(grayDiff->getCvImage(), &cp, &nPoints, 1, cvScalar(0,0,0,10));
+            cvFillPoly(mask.getCvImage(), &cp, &nPoints, 1, cvScalar(255));
             
-            CvPoint _cp2[4] = {{640,0}, {640,480},{maskPoints[2].x,maskPoints[2].y},{maskPoints[1].x,maskPoints[1].y}};			
-            cp = _cp2; 
-            cvFillPoly(grayDiff->getCvImage(), &cp, &nPoints, 1, cvScalar(0));
+            /*
+             Livingroom specific
+             */
             
-            CvPoint _cp3[4] = {{640,480}, {0,480},{maskPoints[3].x,maskPoints[3].y},{maskPoints[2].x,maskPoints[2].y}};			
-            cp = _cp3; 
-            cvFillPoly(grayDiff->getCvImage(), &cp, &nPoints, 1, cvScalar(0));
+           KeystoneSurface * triangle = [GetPlugin(Keystoner) getSurface:@"Triangle" viewNumber:0 projectorNumber:0];
+            if(triangle != nil){
+                ofPoint corners[3];    
+                
+                corners[0] = [triangle convertToProjection:ofVec2f(0,1)];
+                corners[1] = [triangle convertToProjection:ofVec2f(1,0)];                
+                corners[2] = [triangle convertToProjection:ofVec2f(1,1)];
+                
+                for(int i=0;i<3;i++){
+                    corners[i] = [[calibrator surface] convertFromProjection:corners[i]];
+                    corners[i] = [calibrator surfaceToCamera:corners[i]];
+                    corners[i] *= ofVec2f(cw,ch);
+                }
+                
+                
+                int nPoints = 3;
+                CvPoint _cp[3] = {
+                    {corners[0].x,corners[0].y}, 
+                    {corners[1].x,corners[1].y},
+                    {corners[2].x,corners[2].y}};		
+                
+                CvPoint* cp = _cp; 
+                cvFillPoly(mask.getCvImage(), &cp, &nPoints, 1, cvScalar(0));
+
+            }
             
-            CvPoint _cp4[4] = {{0,480}, {0,0},{maskPoints[0].x,maskPoints[0].y},{maskPoints[3].x,maskPoints[3].y}};			
-            cp = _cp4; 
-            cvFillPoly(grayDiff->getCvImage(), &cp, &nPoints, 1, cvScalar(0));
-            */
+            /*END*/
+             
             
-            grayDiff->flagImageChanged();
+            mask.flagImageChanged();
             
+            
+            
+            *grayDiff *= mask;
+                        
             grayDiff->threshold([[properties valueForKey:@"threshold"] intValue]);
             
         }
@@ -588,8 +620,38 @@
                     }
                 }
             }
-        } 
+        }  else 
 #endif
+        {
+            realCorners[0] = ofPoint(0,0);
+            realCorners[1] = ofPoint(cw,0);
+            realCorners[2] = ofPoint(cw,ch);
+            realCorners[3] = ofPoint(0,cw);
+            
+            
+            corners[0] = [calibrator surfaceCorner:0]*ofVec2f(cw,ch);
+            corners[1] = [calibrator surfaceCorner:1]*ofVec2f(cw,ch);
+            corners[2] = [calibrator surfaceCorner:2]*ofVec2f(cw,ch);
+            corners[3] = [calibrator surfaceCorner:3]*ofVec2f(cw,ch);
+            for(int i=0;i<4;i++){
+                if(clamp){
+                    corners[i].x = ofClamp(corners[i].x,0,cw);
+                    corners[i].y = ofClamp(corners[i].y,0,ch);
+                }
+            }
+            for(int i=0;i<4;i++){
+                /*for(int j=0;j<4;j++){
+                    float d = ofDistSquared(corners[j].x, corners[j].y, realCorners[i].x, realCorners[i].y);
+                    if(dist[i] == -1 || dist[i] > d){
+                        dist[i] = d;*/
+                        points[i] = corners[i];
+                       /* 
+                        cout<<points[i].x<<"  "<<points[i].y<<endl;
+                    }
+                }*/
+            }
+
+        }
     } else {
         for(int i=0;i<4;i++){
             points[i] = ofPoint(recordingSurfaceCorners[i]);

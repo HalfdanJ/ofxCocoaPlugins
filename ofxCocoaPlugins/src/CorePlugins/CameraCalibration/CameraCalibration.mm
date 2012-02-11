@@ -31,7 +31,7 @@
     
     for(NSString * surface in [keystoner surfaces]){
         NSMutableArray * surfaceCams = [NSMutableArray array];
-        KeystoneSurface * surfaceObj = [GetPlugin(Keystoner) getSurface:surface viewNumber:0 projectorNumber:0];
+        KeystoneSurface * surfaceObj = [GetPlugin(Keystoner) getSurface:surface viewNumber:0 projectorNumber:ProjNumber];
         
         
         for(Camera * cam in [cameras cameras]){
@@ -89,6 +89,9 @@
     CameraCalibrationObject* selectedCalib = [self selectedCalibrationObject];
     KeystoneSurface * surface = [selectedCalib surface];
     CameraInstance * camInstance = [[selectedCalib camera] cameraInstance];
+    
+    glPushMatrix();
+  //  glTranslated(ProjNumber*0.5,0,0);
     
     if([self changingSurface]){
         glPushMatrix();
@@ -183,6 +186,7 @@
             glPopMatrix();
         }
     }
+    glPopMatrix();
 }
 
 //

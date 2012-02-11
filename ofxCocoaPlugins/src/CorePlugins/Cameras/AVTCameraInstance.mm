@@ -61,6 +61,9 @@ void FrameDoneCB(tPvFrame* pFrame)
 
             width = frame->Width;
             height = frame->Height;
+            
+            cout<<"Camera size: "<<frame->Width <<" x "<<frame->Height<<endl;
+            
             if(frame->Format == ePvFmtMono8){
                 tex->allocate(width, height, GL_LUMINANCE);
                 
@@ -300,7 +303,9 @@ void FrameDoneCB(tPvFrame* pFrame)
 		return false;
 	}	
 
-    
+    PvAttrEnumSet(GCamera.Handle, "ExposureMode", "Manual");
+    PvAttrEnumSet(GCamera.Handle, "GainMode", "Manual");
+
 	return true;
 }
 
@@ -388,7 +393,7 @@ void FrameDoneCB(tPvFrame* pFrame)
 			case 0:
 				[textField setStringValue:@"Exposure:"];
 				[slider setMinValue:0];
-				[slider setMaxValue:1500];
+				[slider setMaxValue:30000];
 				[slider bind:@"value" toObject:self withKeyPath:@"exposure" options:nil];
 				break;
 			case 1:
@@ -435,7 +440,7 @@ void FrameDoneCB(tPvFrame* pFrame)
     }
 
     if(PvAttrUint32Get(GCamera.Handle,"GainValue",&uintValue) == ePvErrSuccess){
-        [self willChangeValueForKey:@"exposure"];
+        [self willChangeValueForKey:@"gain"];
         gain = uintValue;
         [self didChangeValueForKey:@"gain"];
     }
@@ -448,8 +453,7 @@ void FrameDoneCB(tPvFrame* pFrame)
 
 -(void)setExposure:(int)_exp{
     exposure = _exp;
-    PvAttrUint32Set(GCamera.Handle, "ExposureValue", gain);
-    PvAttrEnumSet(GCamera.Handle, "ExposureMode", "Manual");
+    PvAttrUint32Set(GCamera.Handle, "ExposureValue", exposure);
 }
 
 @end
