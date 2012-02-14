@@ -8,7 +8,7 @@ extern NSArray * arrayOfSurfaceNames;
 @synthesize viewNumber, size, sizeRep, projectors, aspect, name;
 
 -(id) initWithSurfaces:(NSArray*)surfaces{
-	if([self init]){
+	if(self = [self init]){
 		[self addObserver:self forKeyPath:@"size" options:nil context:@"size"];
 		KeystoneProjector * proj =  [[[KeystoneProjector alloc] initWithSurfaces:surfaces viewNumber:viewNumber projectorNumber:0] autorelease];
 		projectors = [[NSMutableArray arrayWithObject:proj] retain];

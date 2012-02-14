@@ -32,13 +32,13 @@ PYMIDIGetEndpointName (MIDIEndpointRef midiEndpointRef)
         result = MIDIEntityGetDevice (entityRef, &deviceRef);
         
         if (result == noErr) {
-            result = MIDIObjectGetStringProperty (deviceRef, kMIDIPropertyName, &deviceName);
+            MIDIObjectGetStringProperty (deviceRef, kMIDIPropertyName, &deviceName);
         }
     }
 
     // Get the endpoint name
     CFStringRef endpointName = nil;
-	result =  MIDIObjectGetStringProperty (midiEndpointRef, kMIDIPropertyName, &endpointName);
+	 MIDIObjectGetStringProperty (midiEndpointRef, kMIDIPropertyName, &endpointName);
 
 
     // Stick the two names together, handling all the cases where one or the other doesn't exist

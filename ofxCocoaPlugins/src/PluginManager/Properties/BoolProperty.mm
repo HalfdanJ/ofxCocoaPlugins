@@ -93,7 +93,7 @@
 }
 
 -(id) initWithCoder:(NSCoder *)coder{
-	[super initWithCoder:coder];
+	self = [super initWithCoder:coder];
 	
 	//	NSLog(@"Control type: %i",controlType);
 	if(controlType == 2)

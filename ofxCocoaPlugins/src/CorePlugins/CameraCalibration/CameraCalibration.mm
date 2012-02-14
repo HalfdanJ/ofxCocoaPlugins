@@ -99,20 +99,20 @@
         
         //Draw handles
         {
-            float hw = 0.05;
+            float hw = 0.02;
             float hh = hw;
             
-            ofSetColor(150, 255, 150);
-            handleImage->draw([selectedCalib projHandle:0].x-hw*0.5,[selectedCalib projHandle:0].y - hh*0.5, hw, hh);
+            ofSetColor(50, 255, 200);
+            ofEllipse([selectedCalib projHandle:0].x-hw*0.5,[selectedCalib projHandle:0].y - hh*0.5, hw, hh);
             
-            ofSetColor(255, 150, 150);
-            handleImage->draw([selectedCalib projHandle:1].x-hw*0.5,[selectedCalib projHandle:1].y - hh*0.5, hw, hh);
+            ofSetColor(255, 50, 50);
+            ofEllipse([selectedCalib projHandle:1].x-hw*0.5,[selectedCalib projHandle:1].y - hh*0.5, hw, hh);
             
-            ofSetColor(150, 150, 255);
-            handleImage->draw([selectedCalib projHandle:2].x-hw*0.5,[selectedCalib projHandle:2].y - hh*0.5, hw, hh);
+            ofSetColor(50, 50, 255);
+            ofEllipse([selectedCalib projHandle:2].x-hw*0.5,[selectedCalib projHandle:2].y - hh*0.5, hw, hh);
             
-            ofSetColor(255, 255, 100);
-            handleImage->draw([selectedCalib projHandle:3].x-hw*0.5,[selectedCalib projHandle:3].y - hh*0.5, hw, hh);         
+            ofSetColor(255, 255, 50);
+            ofEllipse([selectedCalib projHandle:3].x-hw*0.5,[selectedCalib projHandle:3].y - hh*0.5, hw, hh);         
             
         }
         
@@ -144,27 +144,27 @@
                 
                 ofSetColor(255,255,255);
                 TextureGrid texGrid;
-                texGrid.drawTextureGrid([camInstance tex],  poly, corners, 10);
+                texGrid.drawTextureGrid(&[selectedCalib getUndistortedImage]->getTextureReference(),  poly, corners, 10);
                 glPopMatrix();
             }
             
             //Draw handles
             {
-                float hw = 0.05;
+                float hw = 0.02;
                 float hh = hw;
                 
-                ofSetColor(150, 255, 150);
-                handleImage->draw([selectedCalib projHandle:0].x-hw*0.5,[selectedCalib projHandle:0].y - hh*0.5, hw, hh);
+                ofSetColor(50, 255, 50);
+                ofEllipse([selectedCalib projHandle:0].x-hw*0.5,[selectedCalib projHandle:0].y - hh*0.5, hw, hh);
                 
-                ofSetColor(255, 150, 150);
-                ofRect([selectedCalib projHandle:0].x-hw*0.5,[selectedCalib projHandle:0].y - hh*0.5, hw, hh);
-                handleImage->draw([selectedCalib projHandle:1].x-hw*0.5,[selectedCalib projHandle:1].y - hh*0.5, hw, hh);
+                ofSetColor(255, 50, 50);
+                ofEllipse([selectedCalib projHandle:0].x-hw*0.5,[selectedCalib projHandle:0].y - hh*0.5, hw, hh);
+                ofEllipse([selectedCalib projHandle:1].x-hw*0.5,[selectedCalib projHandle:1].y - hh*0.5, hw, hh);
                 
-                ofSetColor(150, 150, 255);
-                handleImage->draw([selectedCalib projHandle:2].x-hw*0.5,[selectedCalib projHandle:2].y - hh*0.5, hw, hh);
+                ofSetColor(50, 50, 255);
+                ofEllipse([selectedCalib projHandle:2].x-hw*0.5,[selectedCalib projHandle:2].y - hh*0.5, hw, hh);
                 
-                ofSetColor(255, 255, 100);
-                handleImage->draw([selectedCalib projHandle:3].x-hw*0.5,[selectedCalib projHandle:3].y - hh*0.5, hw, hh);         
+                ofSetColor(255, 255, 0);
+                ofEllipse([selectedCalib projHandle:3].x-hw*0.5,[selectedCalib projHandle:3].y - hh*0.5, hw, hh);         
                 
             }
             

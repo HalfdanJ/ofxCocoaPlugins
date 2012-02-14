@@ -3,13 +3,12 @@
 
 @implementation PluginListMeterCell
 
--(id) init{
-	if([super init]){
-		
-	}
-	return self;
+- (id)init {
+    self = [super init];
+    if (self) {
+    }
+    return self;
 }
-
 
 
 - (void)drawWithFrame:(NSRect)cellFrame inView:(NSView *)controlView

@@ -41,7 +41,7 @@
 }
 
 -(KeystonePerspective *)initWithSurfaceName:(NSString*)_surfaceName{
-    if([self init]){
+    if(self = [self init]){
         surfaceName = _surfaceName;
     }
     return self;
@@ -49,7 +49,7 @@
 
 
 -(KeystonePerspective *)initWithSurface:(id)surface{
-    [self initWithSurfaceName:[surface name]];
+    self = [self initWithSurfaceName:[surface name]];
     return self;
 }
 

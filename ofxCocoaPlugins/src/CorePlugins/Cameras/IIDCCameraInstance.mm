@@ -9,7 +9,7 @@
 @synthesize gamma,whitebalance1,whitebalance2,brightness, shutter,gain, guid, videoGrabber, videoModes, videoMode, videoColorCoding, videoColorCodings, videoFramerates, videoFramerate;
 
 -(id)initWithGuid:(NSString*)_guid{
-	if([self init]){
+	if(self = [self init]){
 		[self setName:@"PTGrey"];
 		[self setStatus:@"Initializing"];
 		

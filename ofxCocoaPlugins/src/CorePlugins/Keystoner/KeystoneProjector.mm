@@ -12,7 +12,7 @@
 }
 
 -(id) initWithSurfaces:(NSArray*)_surfaces viewNumber:(int)_viewNumber projectorNumber: (int)_projectorNumber{
-	if([self init]){
+	if(self = [self init]){
 
 		viewNumber = _viewNumber;
 		projectorNumber = _projectorNumber;

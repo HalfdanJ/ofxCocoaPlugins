@@ -7,7 +7,7 @@
 @synthesize fps;
 
 -(id) initWithFrame:(NSRect)frameRect outputView:(PluginOpenGLView*)view{
-	if([super initWithFrame:frameRect]){
+	if(self = [super initWithFrame:frameRect]){
 		
 		historyData = [[NSMutableArray arrayWithCapacity:numPoints] retain];
 		int i;

@@ -85,7 +85,7 @@
 
 
 -(id) init{
-	if([super init]){
+	if(self = [super init]){
 		[self addObserver:self forKeyPath:@"shownThisCueDict.actualEndvalue" options:nil context:@"endvalue"];
 		[self addObserver:self forKeyPath:@"shownThisCueDict.fade" options:nil context:@"fade"];
 		[self addObserver:self forKeyPath:@"shownNextCueDict.updateStartvalue" options:nil context:@"endvalue"];
@@ -173,6 +173,15 @@
 	NSMutableArray * selectedPropertyCues = [NSMutableArray array];
 	
         for(int i=0;i<[selectedCues count];i++){
+            QLabCue * cue = [selectedCues objectAtIndex:i];
+            NSString *beginsTest = [cue qName];
+            NSRange prefixRange = [beginsTest rangeOfString:searchString options:(0)];
+            
+            if(prefixRange.length > 0){
+                [selectedPropertyCues addObject:cue];
+                break;
+            }		
+            
             for(QLabCue * subCue in [[selectedCues objectAtIndex:i] cues]){
                 if(![selectedCues containsObject:subCue])
                     [selectedCues addObject:subCue];
@@ -180,14 +189,14 @@
         }
 	
 	//Er der en eller flere af dem der er denne property?
-	for(QLabCue * cue in selectedCues){
+	/*for(QLabCue * cue in selectedCues){
 		NSString *beginsTest = [cue qName];
 		NSRange prefixRange = [beginsTest rangeOfString:searchString options:(0)];
 		
 		if(prefixRange.length > 0){
 			[selectedPropertyCues addObject:cue];
 		}		
-	}
+	}*/
 	
 	//Hvis der bare er en property cue, så er det selectedPropertyCue
 	if([selectedPropertyCues count] == 1){
@@ -230,8 +239,9 @@
 					prevCue = nil;
 				}
 				
-			} else if((thisCue || (makeNewCue && indexFound)) && !nextCue){
+			} else if((thisCue || (makeNewCue   && indexFound)) && !nextCue){
 				nextCue = cue;
+                break;
 			}
 			
 			if(!indexFound){
@@ -246,8 +256,6 @@
 				if([[((QLabCue*)[selectedCues lastObject]) uniqueID] isEqualToString:[cue uniqueID]]){
 					indexFound = YES;
 				}
-			} else {
-				
 			}
 		}		
 	}

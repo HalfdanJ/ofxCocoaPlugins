@@ -174,8 +174,8 @@
                         //New size
                         [self setWidth:[cam width] height:[cam height]];
                     }
-                    
-                    grayImage->setFromPixels([cam pixels], [cam width], [cam height]);
+                    grayImage = [calibrator getUndistortedImage];
+//                    grayImage->setFromPixels([cam pixels], [cam width], [cam height]);
                 }
             }
 
@@ -197,7 +197,9 @@
             }  
             
             //Difference
-            grayDiff->absDiff(*grayBg, *grayImageBlured);
+            //grayDiff->absDiff(*grayBg, *grayImageBlured);
+            *grayDiff = *grayImageBlured;
+            *grayDiff -= *grayBg;
             
             ofPoint maskPoints[4];
             [self getSurfaceMaskCorners:maskPoints clamped:NO];
@@ -426,6 +428,7 @@
                     *bestBlob->centroid += blobCentroid;					
                 }
                 *bestBlob->centroid /= (float)[bestBlob->blobs count];
+                *bestBlob->feet = [bestBlob getLowestPoint];
             }
             
             if(!blobFound){
@@ -434,8 +437,10 @@
                 [newB->blobs addObject:blob];
                 *newB->centroid = centroid;
                 newB->pid = pidCounter++;
-                [persistentBlobs addObject:newB];		
-                
+                [persistentBlobs addObject:newB];	
+                if(newB->feet != nil)
+                    delete newB->feet;
+                newB->feet = new ofVec2f([newB getLowestPoint]);
                 //       [newestId setIntValue:pidCounter];
             }
         }		

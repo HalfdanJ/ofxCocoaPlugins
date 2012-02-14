@@ -27,7 +27,7 @@
 @property (retain) id value;
 @property (retain) id defaultValue;
 @property (readwrite) int controlType;
-@property (readonly) BOOL forcedMidiNumber;
+@property (readwrite) BOOL forcedMidiNumber;
 
 @property (retain) NSCell * controlCell;
 @property (retain)	NSNumber * midiChannel;

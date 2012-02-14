@@ -14,7 +14,7 @@
 @synthesize name, status, tex, pixels, enabled, cameraInstances, camIsConnected, camIsClosing, camInited, camIsIniting, referenceCount, width, height, frameNum;
 
 -(id) init{
-	if([super init]){
+	if(self = [super init]){
 		[self setCamInited:NO];
         [self setCamIsIniting:NO];
         [self setCamIsClosing:NO];

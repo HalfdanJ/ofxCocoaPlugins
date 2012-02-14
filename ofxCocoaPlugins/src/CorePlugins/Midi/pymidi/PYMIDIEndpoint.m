@@ -41,6 +41,7 @@
 
 - (id)init
 {
+    self = [super init];
     receivers       = [[NSMutableSet alloc] init];
     senders         = [[NSMutableSet alloc] init];
     // midiControllers = [[NSMutableSet alloc] init];

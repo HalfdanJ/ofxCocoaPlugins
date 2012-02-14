@@ -7,7 +7,7 @@
 @synthesize name, visible, aspect, minAspectValue, maxAspectValue, cornerPositions, viewNumber, projectorNumber,softedgePart, softedgeTotalParts, warp, handleOffset;
 
 -(id) init{
-	if([super init]){
+	if(self = [super init]){
 		
 		[self setMinAspectValue:0.1];
 		[self setMaxAspectValue:10];

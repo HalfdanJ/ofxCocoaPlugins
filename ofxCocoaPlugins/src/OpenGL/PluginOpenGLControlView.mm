@@ -23,13 +23,13 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 	[self addTrackingArea:area];
     CGDisplayCount maxDisplays = 32;
 	CGDirectDisplayID activeDspys[32];
-	CGDisplayErr theError;
+	//CGDisplayErr theError;
 	short i;
 	CGDisplayCount dspyCnt = 0;
     
  	CGOpenGLDisplayMask openGLDisplayMask = 0;
 	
-	theError = CGGetActiveDisplayList(maxDisplays, activeDspys, &dspyCnt);
+	CGGetActiveDisplayList(maxDisplays, activeDspys, &dspyCnt);
 	
     for (i = 0; i < dspyCnt; i++) {
         openGLDisplayMask |= CGDisplayIDToOpenGLDisplayMask(activeDspys[i]);
@@ -236,7 +236,7 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
         [drawingInformation setValue:[NSNumber numberWithDouble:timeInterval] forKey:@"timeInterval"];
         [self draw];
     }
-    [pool release];
+    [pool drain];
     
     return kCVReturnSuccess;
 }

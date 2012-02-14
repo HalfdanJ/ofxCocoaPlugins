@@ -289,7 +289,7 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 	
 	[self drawRect:NSZeroRect];
 	
-    [pool release];
+    [pool drain];
 	
 	return kCVReturnSuccess;
 }
@@ -347,9 +347,8 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 
 
 -(void) setDisplayNumber:(id)sender{
-	CGDisplayCount		dspCount = 0;
 	CGDirectDisplayID *displays = nil;
-	dspCount = (CGDisplayCount) [viewManager getDisplayList:&displays];
+	(CGDisplayCount) [viewManager getDisplayList:&displays];
 	
 	if([sender indexOfSelectedItem] == 0){
 		displayId = nil;

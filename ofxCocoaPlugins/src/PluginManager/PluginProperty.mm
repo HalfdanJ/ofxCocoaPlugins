@@ -12,7 +12,7 @@ static NSString *MidiControllerContext = @"org.ofx.midi.controller";
 @synthesize value, defaultValue, controlCell ,controlType, midiChannel, midiNumber, name, pluginName, forcedMidiNumber, midiLabel;
 
 -(id) init{
-	if([super init]){
+	if(self = [super init]){
 		binded = NO;
 		forcedMidiNumber = NO;
         [self setMidiLabel:@"-"];

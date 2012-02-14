@@ -83,7 +83,7 @@ void static  CameraEventCB(void* context,
         [self didChangeValueForKey:@"instances"];
     }
     
-    [pool release];
+    [pool drain];
     }
 
 }
@@ -105,7 +105,7 @@ void static  CameraEventCB(void* context,
         }
     }
     
-    [pool release];
+    [pool drain];
     }
 }
 

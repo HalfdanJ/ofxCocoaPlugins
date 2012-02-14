@@ -11,7 +11,7 @@
 @synthesize outputViews,  selectedOutputview, selectedSurface, selectedProjector, surfaces, font, recoilLogo, trackingLayer;
 
 -(id) initWithSurfaces:(NSArray*)_surfaces{
-	if([self init]){
+	if(self = [self init]){
 		outputViews = [[NSMutableArray array] retain];
 		willDraw = YES;
 		surfaces = [NSArray arrayWithArray:_surfaces];

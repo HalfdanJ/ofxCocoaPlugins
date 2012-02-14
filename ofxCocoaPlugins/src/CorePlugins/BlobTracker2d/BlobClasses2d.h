@@ -9,6 +9,7 @@
 @public
 	long unsigned int pid;
 	ofVec2f * centroid;
+    ofVec2f * feet;
 	ofVec2f * lastcentroid;
 	ofVec2f   * centroidV;
 	

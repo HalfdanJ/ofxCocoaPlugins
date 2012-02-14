@@ -6,7 +6,7 @@
 
 
 -(id) initWithFrame:(NSRect)frameRect{
-	[super initWithFrame:frameRect];
+	if(self = [super initWithFrame:frameRect]){
 	
 	
 	CALayer *outline = [[CALayer layer] retain]; 
@@ -48,6 +48,7 @@
 
 	[self setLayer:outline]; 
 	[self setWantsLayer:YES];
+    }
 	return self;
 	
 }

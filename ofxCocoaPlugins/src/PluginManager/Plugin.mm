@@ -9,7 +9,7 @@
 @synthesize  name, enabled, view,  updateCpuTime,  drawCpuTime, initPluginCalled, setupCalled, properties, customProperties, powerMeterDictionary,  controlMouseX, controlMouseY, controlMouseFlags, icon, midiChannel, controlGlView;
 
 -(id) init{
-	if([super init]){
+	if(self = [super init]){
 		[self setName:NSStringFromClass([self class])];
 		
 		

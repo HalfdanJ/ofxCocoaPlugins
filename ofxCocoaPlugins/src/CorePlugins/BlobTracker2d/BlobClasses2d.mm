@@ -5,7 +5,7 @@
 @implementation PersistentBlob2d
 @synthesize blobs;
 -(id) init{
-	if([super init]){
+	if(self = [super init]){
 		timeoutCounter = 0;
 		centroid = new ofVec2f;
 		lastcentroid = new ofVec2f;
@@ -45,7 +45,7 @@
 @synthesize cameraId, originalblob, coordWarp;
 
 -(id)initWithMouse:(ofPoint*)point{
-	if([super init]){
+	if(self = [super init]){
 		blob = new ofxCvBlob();
 		//floorblob = new ofxCvBlob();
 		
@@ -90,7 +90,7 @@
 }
 
 -(id)initWithBlob:(ofxCvBlob*)_blob{
-	if([super init]){
+	if(self = [super init]){
 		blob = new ofxCvBlob();
 	//	floorblob = new ofxCvBlob();
 		
@@ -127,6 +127,7 @@
 	blob->boundingRect.height /= (float)h; 
 	blob->boundingRect.x /= (float)w; 
 	blob->boundingRect.y /= (float)h; 
+    low = nil;
 	
 	originalblob->pts = blob->pts;
 	originalblob->area = blob->area;
@@ -156,7 +157,11 @@
 		blob->pts[i] = coordWarp->transform(blob->pts[i]);
 	}
 	blob->centroid = coordWarp->transform(blob->centroid);
-	
+    if(low != nil){
+        delete low;
+    }
+    low = new ofVec2f(coordWarp->transform([self getLowestPoint]));
+
 	
 	//Convert the blob to floor space, for better sizing 
 	/*for(int i=0;i<blob->nPts;i++){

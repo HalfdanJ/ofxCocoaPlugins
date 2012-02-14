@@ -324,7 +324,7 @@ typedef struct OpenGLTextureCoordinates OpenGLTextureCoordinates;
 	int x,y, bpr, width, height;
 	bpr = CVPixelBufferGetBytesPerRow(_latestPixelFrame);
 	width = movieSize.width;
-	height = movieSize.height;
+//	height = movieSize.height;
     
     if(format == GL_RGBA){    
 	for(y = 0; y < movieSize.height; y++){

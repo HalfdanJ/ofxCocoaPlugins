@@ -9,7 +9,7 @@
 @synthesize dataPath;
 
 -(id) init{
-	if([super init]){		
+	if(self = [super init]){		
 		NSUserDefaults * userDefaults = [NSUserDefaults standardUserDefaults];
 		[self setDataPath:[userDefaults valueForKey:@"SavePath"]];
 		

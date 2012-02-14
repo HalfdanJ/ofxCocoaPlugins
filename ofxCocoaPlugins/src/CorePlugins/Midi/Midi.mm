@@ -15,7 +15,7 @@
 @synthesize boundControls, midiBindings, midiData, mtcTimeString;
 
 -(id) init{
-	if([super init]){
+	if(self = [super init]){
 		//pthread_mutex_init(&mutex, NULL);
 		
 		showMidiConflictAlert = false;
@@ -261,7 +261,7 @@ BOOL isRealtimeByte (Byte b)	{ return b >= 0xF8; }
 				}
 			}
 			if(packet->data[0+j] >= 224 && packet->data[0+j] <= 239){
-				pitchbend = true;
+			//	pitchbend = true;
 				channel = packet->data[0+j] - 223;
 				value =  packet->data[1+j] + packet->data[2+j]*127;
 				pitchBends[channel-1] = value; 
@@ -438,7 +438,7 @@ BOOL isRealtimeByte (Byte b)	{ return b >= 0xF8; }
 	MIDIPacketList packetlist;
 	MIDIPacket     *packet     = MIDIPacketListInit(&packetlist);
 	Byte mdata[3] = {(143+_midiChannel), midiNote, midiValue};
-	packet = MIDIPacketListAdd(&packetlist, sizeof(packetlist),
+	MIDIPacketListAdd(&packetlist, sizeof(packetlist),
 							   packet, 0, 3, mdata);
 //	cout<<"Prepare midi send"<<packet<<"  "<<midiValue<<"   "<<midiNote<<"   "<<_midiChannel<<endl;
 	if (endpoint) {
@@ -455,7 +455,7 @@ BOOL isRealtimeByte (Byte b)	{ return b >= 0xF8; }
 	MIDIPacketList packetlist;
 	MIDIPacket     *packet     = MIDIPacketListInit(&packetlist);
 	Byte mdata[3] = {(127+_midiChannel), midiNote,0};
-	packet = MIDIPacketListAdd(&packetlist, sizeof(packetlist),
+	 MIDIPacketListAdd(&packetlist, sizeof(packetlist),
 							   packet, 0, 3, mdata);
     //	cout<<"Prepare midi send"<<packet<<"  "<<midiValue<<"   "<<midiNote<<"   "<<_midiChannel<<endl;
 	if (endpoint) {
@@ -471,7 +471,7 @@ BOOL isRealtimeByte (Byte b)	{ return b >= 0xF8; }
     MIDIPacketList packetlist;
 	MIDIPacket     *packet     = MIDIPacketListInit(&packetlist);
 	Byte mdata[3] = {(175+_midiChannel), cc, midiValue};
-	packet = MIDIPacketListAdd(&packetlist, sizeof(packetlist),
+	MIDIPacketListAdd(&packetlist, sizeof(packetlist),
 							   packet, 0, 3, mdata);
 	if (endpoint) {
 		[sendEndpoint addSender:self];
@@ -513,7 +513,7 @@ BOOL isRealtimeByte (Byte b)	{ return b >= 0xF8; }
 	// http://www.richmondsounddesign.com/docs/midi-show-control-specification.pdf
 	
 	Byte mdata[7] = {0xf0, 0x7f, [mscDeviceID intValue] , 0x02, 0x7F, 0x0A, 0xf7};
-	packet = MIDIPacketListAdd(&packetlist, sizeof(packetlist),
+	 MIDIPacketListAdd(&packetlist, sizeof(packetlist),
 							   packet, 0, 7, mdata);
 	
 	if (endpoint) {

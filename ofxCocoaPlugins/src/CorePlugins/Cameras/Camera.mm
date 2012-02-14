@@ -16,7 +16,7 @@
 
 
 -(id)initWithCameraInstances:(NSMutableDictionary*)dict{
-	if([self init]){	
+	if(self = [self init]){	
 		cameraInstancesRef = [dict retain];
 		
         //Bind cameraTypeController

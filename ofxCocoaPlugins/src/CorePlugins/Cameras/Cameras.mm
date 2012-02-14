@@ -10,7 +10,7 @@
 
 
 -(id)initWithNumberCameras:(int)numCameras{
-	if([self init]){
+	if(self = [self init]){
 		numberCameras = numCameras;
 		
 		//Dictionary over types of cameras including instances 

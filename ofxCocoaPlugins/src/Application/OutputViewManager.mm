@@ -28,8 +28,10 @@ CFStringRef CopyLocalDisplayName(CGDirectDisplayID display)
     if ( displayPort == MACH_PORT_NULL )
         return NULL;  /* No physical device to get a name from */
     dict = IOCreateDisplayInfoDictionary(displayPort, 0);
+    
     names = (CFDictionaryRef) CFDictionaryGetValue( dict, CFSTR(kDisplayProductName) );
-	
+    CFRelease(dict);
+
     /* Extract all the  display name locale keys */
     langKeys = CFArrayCreateMutable( kCFAllocatorDefault, 0,
 									&kCFTypeArrayCallBacks );
@@ -44,9 +46,14 @@ CFStringRef CopyLocalDisplayName(CGDirectDisplayID display)
         langKey = (CFStringRef)CFArrayGetValueAtIndex( orderLangKeys, 0 );
         localName = (CFStringRef)CFDictionaryGetValue( names, langKey );
         CFRetain( localName );
+
+//        CFRelease(langKey);
+
     }
-	CFRelease(langKey);
-    CFRelease(dict);
+    if(orderLangKeys)
+        CFRelease(orderLangKeys);
+
+    //
     return localName;
 }
 
@@ -59,7 +66,7 @@ CFStringRef CopyLocalDisplayName(CGDirectDisplayID display)
 
 
 -(id) init{
-	if([super init]){
+	if(self = [super init]){
 		setupScreensCalled = NO;
 		
 		glViews = [[[NSMutableArray alloc] init] retain];	
@@ -207,7 +214,7 @@ CFStringRef CopyLocalDisplayName(CGDirectDisplayID display)
 			PluginOpenGLView * view = [panelController glView];
 			if([view displayId] != 0){					
 				NSPanel * panel = [panelController panel];
-				NSScreen * screen;
+				NSScreen * screen = nil;
 				NSScreen * tmpScreen;
 				//Find the screen to fullscreen on
 				for(tmpScreen in [NSScreen screens]){
@@ -320,9 +327,9 @@ CFStringRef CopyLocalDisplayName(CGDirectDisplayID display)
 
 -(CGDisplayCount) getDisplayList:(CGDirectDisplayID **)displays{
 	CGDisplayCount		dspCount = 0;
-	CGError				err = CGDisplayNoErr;
+	//CGError				err = CGDisplayNoErr;
 	
-	err = CGGetActiveDisplayList(0, NULL, &dspCount);	
+	CGGetActiveDisplayList(0, NULL, &dspCount);	
 
 	if(*displays != nil)
 		free(*displays);
@@ -360,7 +367,7 @@ CFStringRef CopyLocalDisplayName(CGDirectDisplayID display)
 @implementation PluginOutputWindowDelegate
 
 - (id) initWithPluginOutputView:(PluginOpenGLView*)thePOV{
-	if ([super init]) {
+	if (self = [super init]) {
 		pov = thePOV;
 	}
     return self;
