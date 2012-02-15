@@ -9,7 +9,7 @@
 static NSString *MidiControllerContext = @"org.ofx.midi.controller";
 
 @implementation PluginProperty
-@synthesize value, defaultValue, controlCell ,controlType, midiChannel, midiNumber, name, pluginName, forcedMidiNumber, midiLabel;
+@synthesize value, defaultValue, controlCell ,controlType, midiChannel, midiNumber, name, pluginName, forcedMidiNumber, midiLabel, context;
 
 -(id) init{
 	if(self = [super init]){

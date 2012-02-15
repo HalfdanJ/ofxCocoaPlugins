@@ -20,6 +20,8 @@
 	BOOL binded;
 	BOOL forcedMidiNumber;
     NSString * midiLabel;
+    
+    id context;
 }
 @property (retain) NSString * name;
 @property (retain) NSString * pluginName;
@@ -33,6 +35,7 @@
 @property (retain)	NSNumber * midiChannel;
 @property (retain)	NSNumber * midiNumber;
 @property (readwrite, retain) NSString * midiLabel;
+@property (retain, readwrite) id context;
 
 -(void) update;
 -(void) midiEvent:(int) value;
