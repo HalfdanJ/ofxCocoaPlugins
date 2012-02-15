@@ -21,7 +21,7 @@
 
 
 @implementation BlobTrackerInstance2d
-@synthesize view, name, properties, cameraInstance, trackerNumber, grayDiff, grayBg, learnBackgroundButton, active, calibrator;
+@synthesize view, name, properties, cameraInstance, trackerNumber, grayDiff, grayBg, learnBackgroundButton, active, calibrator, maskLeft, maskRight, maskBottom, maskTop;
 
 - (id)init
 {
@@ -78,11 +78,11 @@
 	memset(rgbTmpPixels, 0, cw*ch*3);
     
     
-  //  if(loadBackgroundNow){
-        loadBackgroundNow= NO;
-        [self loadBackground];	
-   // }
-
+    //  if(loadBackgroundNow){
+    loadBackgroundNow= NO;
+    [self loadBackground];	
+    // }
+    
 }
 
 -(void) setup{
@@ -96,7 +96,7 @@
     
     threadGrayDiff = new ofxCvGrayscaleImage;
 	threadGrayImage = new ofxCvGrayscaleImage;
-   
+    
     contourFinder = new ofxCvContourFinder();
     
     
@@ -124,7 +124,7 @@
     rgbTmpPixels = nil;
     [self setWidth:640 height:480];
     grayBg->allocate(640,480);
-
+    
 }
 
 
@@ -175,10 +175,10 @@
                         [self setWidth:[cam width] height:[cam height]];
                     }
                     grayImage = [calibrator getUndistortedImage];
-//                    grayImage->setFromPixels([cam pixels], [cam width], [cam height]);
+                    //                    
                 }
             }
-
+            
             
             //Blur
             *grayImageBlured = *grayImage;            
@@ -218,11 +218,73 @@
             CvPoint* cp = _cp; 
             cvFillPoly(mask.getCvImage(), &cp, &nPoints, 1, cvScalar(255));
             
+            
+            //Mask
+            {
+               // cout<<maskLeft<<endl;
+                if(maskLeft){
+                    ofPoint p1 = [calibrator surfaceToCamera:ofVec2f(maskLeft,0)]*ofVec2f(cw,ch);
+                    ofPoint p2 = [calibrator surfaceToCamera:ofVec2f(maskLeft,1)]*ofVec2f(cw,ch);
+                    
+                    int nPoints = 4;
+                    CvPoint _cp[4] = {
+                        {maskPoints[0].x,maskPoints[0].y}, 
+                        {p1.x,p1.y},
+                        {p2.x,p2.y},
+                        {maskPoints[3].x,maskPoints[3].y}};		
+                    
+                    CvPoint* cp = _cp; 
+                    cvFillPoly(mask.getCvImage(), &cp, &nPoints, 1, cvScalar(0));
+                }
+                if(maskRight){
+                    ofPoint p1 = [calibrator surfaceToCamera:ofVec2f(1-maskRight,0)]*ofVec2f(cw,ch);
+                    ofPoint p2 = [calibrator surfaceToCamera:ofVec2f(1-maskRight,1)]*ofVec2f(cw,ch);
+                    
+                    int nPoints = 4;
+                    CvPoint _cp[4] = {
+                        {p1.x,p1.y},
+                        {maskPoints[1].x,maskPoints[1].y}, 
+                        {maskPoints[2].x,maskPoints[2].y},
+                        {p2.x,p2.y}};		
+                    
+                    CvPoint* cp = _cp; 
+                    cvFillPoly(mask.getCvImage(), &cp, &nPoints, 1, cvScalar(0));
+                }
+                if(maskTop){
+                    ofPoint p1 = [calibrator surfaceToCamera:ofVec2f(0,maskTop)]*ofVec2f(cw,ch);
+                    ofPoint p2 = [calibrator surfaceToCamera:ofVec2f(1,maskTop)]*ofVec2f(cw,ch);
+                    
+                    int nPoints = 4;
+                    CvPoint _cp[4] = {
+                        {maskPoints[0].x,maskPoints[0].y}, 
+                        {maskPoints[1].x,maskPoints[1].y},
+                        {p2.x,p2.y},
+                        {p1.x,p1.y}
+                        };		
+                    
+                    CvPoint* cp = _cp; 
+                    cvFillPoly(mask.getCvImage(), &cp, &nPoints, 1, cvScalar(0));
+                }
+                if(maskBottom){
+                    ofPoint p1 = [calibrator surfaceToCamera:ofVec2f(0,1-maskBottom)]*ofVec2f(cw,ch);
+                    ofPoint p2 = [calibrator surfaceToCamera:ofVec2f(1,1-maskBottom)]*ofVec2f(cw,ch);
+                    
+                    int nPoints = 4;
+                    CvPoint _cp[4] = {
+                        {p1.x,p1.y},
+                        {p2.x,p2.y},
+                        {maskPoints[2].x,maskPoints[2].y},
+                        {maskPoints[3].x,maskPoints[3].y}};		
+                    
+                    CvPoint* cp = _cp; 
+                    cvFillPoly(mask.getCvImage(), &cp, &nPoints, 1, cvScalar(0));
+                }
+            }
             /*
              Livingroom specific
              */
             
-           KeystoneSurface * triangle = [GetPlugin(Keystoner) getSurface:@"Triangle" viewNumber:0 projectorNumber:0];
+            KeystoneSurface * triangle = [GetPlugin(Keystoner) getSurface:@"Triangle" viewNumber:0 projectorNumber:0];
             if(triangle != nil){
                 ofPoint corners[3];    
                 
@@ -245,18 +307,18 @@
                 
                 CvPoint* cp = _cp; 
                 cvFillPoly(mask.getCvImage(), &cp, &nPoints, 1, cvScalar(0));
-
+                
             }
             
             /*END*/
-             
+            
             
             mask.flagImageChanged();
             
             
             
             *grayDiff *= mask;
-                        
+            
             grayDiff->threshold([[properties valueForKey:@"threshold"] intValue]);
             
         }
@@ -646,16 +708,16 @@
             }
             for(int i=0;i<4;i++){
                 /*for(int j=0;j<4;j++){
-                    float d = ofDistSquared(corners[j].x, corners[j].y, realCorners[i].x, realCorners[i].y);
-                    if(dist[i] == -1 || dist[i] > d){
-                        dist[i] = d;*/
-                        points[i] = corners[i];
-                       /* 
-                        cout<<points[i].x<<"  "<<points[i].y<<endl;
-                    }
-                }*/
+                 float d = ofDistSquared(corners[j].x, corners[j].y, realCorners[i].x, realCorners[i].y);
+                 if(dist[i] == -1 || dist[i] > d){
+                 dist[i] = d;*/
+                points[i] = corners[i];
+                /* 
+                 cout<<points[i].x<<"  "<<points[i].y<<endl;
+                 }
+                 }*/
             }
-
+            
         }
     } else {
         for(int i=0;i<4;i++){

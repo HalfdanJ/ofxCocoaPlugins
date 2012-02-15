@@ -34,11 +34,38 @@
         
         [self addProperty:[BoolProperty boolPropertyWithDefaultvalue:NO] named:[NSString stringWithFormat:@"grab%i", i]];
         
+        [[self addPropF:[NSString stringWithFormat:@"threshold%i", i]] bind:@"value" toObject:newInstance withKeyPath:@"properties.threshold" options:nil];
+        [[self addPropF:[NSString stringWithFormat:@"maskLeft%i", i]]  setContext:newInstance];
+        [[self addPropF:[NSString stringWithFormat:@"maskTop%i", i]]  setContext:newInstance];
+        [[self addPropF:[NSString stringWithFormat:@"maskRight%i", i]]  setContext:newInstance];
+        [[self addPropF:[NSString stringWithFormat:@"maskBottom%i", i]]  setContext:newInstance];
+        
+        [Prop( ([NSString stringWithFormat:@"threshold%i", i]) ) setMaxValue:100];
     }
+    
+    [self addPropB:@"distorted"];
     
 }
 
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context{
+    
+    if([object isKindOfClass:[PluginProperty class]] && [object context] != nil){
+        NumberProperty * prop = (NumberProperty*) object;
+        if([[prop name] rangeOfString:@"maskLeft"].length > 0){
+            [[prop context] setMaskLeft:[prop floatValue]];
+        }
+        if([[prop name] rangeOfString:@"maskRight"].length > 0){
+            [[prop context] setMaskRight:[prop floatValue]];
+        }
+        if([[prop name] rangeOfString:@"maskBottom"].length > 0){
+            [[prop context] setMaskBottom:[prop floatValue]];
+        }
+        if([[prop name] rangeOfString:@"maskTop"].length > 0){
+            [[prop context] setMaskTop:[prop floatValue]];
+        }
+        
+    }
+    
     int i=1;
     for(BlobTrackerInstance2d * instance in instances){
         BoolProperty * p = Prop(([NSString stringWithFormat:@"grab%i", i]));
@@ -161,7 +188,7 @@
 -(void) update:(NSDictionary *)drawingInformation{
     int i=1;
     for(BlobTrackerInstance2d * instance in instances){
-
+       // [instance setDistorted:PropB(@"distorted")];
         [instance update:drawingInformation];
         i++;
     }

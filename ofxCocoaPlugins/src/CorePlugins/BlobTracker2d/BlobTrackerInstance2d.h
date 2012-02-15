@@ -20,6 +20,7 @@ class ofxQtVideoSaver;
     IBOutlet NSButton * drawDebugButton;
 	IBOutlet NSSlider * persistentSlider;
 
+    float maskLeft, maskRight, maskTop, maskBottom;
     
     NSMutableDictionary * properties;
     
@@ -74,6 +75,7 @@ class ofxQtVideoSaver;
     
     CameraCalibrationObject * calibrator;
     long long frameNum;
+ //   BOOL distorted;
 }
 @property (assign) IBOutlet NSView *view;
 @property (readonly) NSString * name;
@@ -87,6 +89,11 @@ class ofxQtVideoSaver;
 
 @property (readwrite) int trackerNumber;
 @property (readwrite, retain) CameraCalibrationObject * calibrator;
+@property (readwrite) float maskLeft;
+@property (readwrite) float maskRight;
+@property (readwrite) float maskBottom;
+@property (readwrite) float maskTop;
+//@property (readwrite) BOOL distorted;
 
 - (IBAction)setMovieFile:(id)sender;
 - (IBAction)toggleRecord:(id)sender;
