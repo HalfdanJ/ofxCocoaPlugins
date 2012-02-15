@@ -67,6 +67,11 @@ ola::DmxBuffer buffer;
 -(void)setup{
 }
 
+-(void)applicationWillTerminate:(NSNotification *)note{
+    buffer.SetRangeToValue(0, 0, 512);
+    simpleClient.SendDmx(0, buffer);
+}
+
 //
 //----------------
 //
