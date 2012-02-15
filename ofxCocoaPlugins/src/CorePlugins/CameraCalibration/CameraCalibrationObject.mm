@@ -4,7 +4,7 @@
 #import "Keystoner.h"
 
 @implementation CameraCalibrationObject
-@synthesize camera, surface, active, coordWarper, isCalibrated, lensStatus, cameraCalibrator;
+@synthesize camera, surface, active, coordWarper, isCalibrated, lensStatus, cameraCalibrator, distorted;
 
 
 -(id) initWithCamera:(Camera*)_camera surface:(KeystoneSurface*)_surface{
@@ -181,7 +181,7 @@
     if(originalImage == nil){
         return nil;
     }
-    if([self isCalibrated]){
+    if([self isCalibrated] && !distorted){
 		if (!hasUndistortedImage) {
             if(undistortedImage == nil){
                 undistortedImage = new ofxCvGrayscaleImage();
@@ -197,7 +197,8 @@
                                         cameraCalibrator->camIntrinsics[0], 
                                         cameraCalibrator->camIntrinsics[4],
                                         cameraCalibrator->camIntrinsics[2], 
-                                        cameraCalibrator->camIntrinsics[5] );   
+                                        cameraCalibrator->camIntrinsics[5] );  
+            
 			hasUndistortedImage = YES;
 		}
         return undistortedImage;

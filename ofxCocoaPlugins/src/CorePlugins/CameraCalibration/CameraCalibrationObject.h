@@ -33,12 +33,15 @@ enum calibrationStates {
     
     NSString * lensStatus;
     
+    BOOL distorted;
+    
 }
 
 @property (readonly) Camera * camera;
 @property (readonly) KeystoneSurface * surface;
 @property (readwrite) BOOL active;
 @property (readonly) coordWarping * coordWarper;
+@property (readwrite) BOOL distorted;
 
 @property (readwrite) BOOL isCalibrated;
 @property (retain, readwrite) NSString * lensStatus;

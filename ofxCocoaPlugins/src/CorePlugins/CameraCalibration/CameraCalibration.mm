@@ -44,6 +44,8 @@
     [surfacesArrayController bind:@"contentDictionary" toObject:self withKeyPath:@"self.calibrationObjects" options:nil];
     
     [self bind:@"selectedCalibrationObject" toObject:camerasArrayController withKeyPath:@"selection.self" options:nil];
+    
+    [self addPropB:@"distorted"];
 }
 
 
@@ -75,7 +77,9 @@
         
         for(CameraCalibrationObject * obj in ourArr){
             if([[[obj camera] cameraInstance] camInited]){
+                [obj setDistorted:PropB(@"distorted")];
                 [obj newFrame];
+
             }
         }
     }
@@ -300,7 +304,7 @@
 
 #pragma mark Saving 
 -(void)customPropertiesLoaded{		
-    NSLog(@"Set Custom Properties: %@ %u",customProperties,[[customProperties objectForKey:@"instances"] count]);
+   // NSLog(@"Set Custom Properties: %@ %u",customProperties,[[customProperties objectForKey:@"instances"] count]);
     int u=0;
     for(NSString * surfaceKey in calibrationObjects){
         NSArray * ourArr = [calibrationObjects objectForKey:surfaceKey];
@@ -410,7 +414,7 @@
         NSString * key = [[[surfacesArrayController selectedObjects]lastObject] key];
         [camerasArrayController setContent:[calibrationObjects objectForKey:key]];
         
-        NSLog(@"Sel %@",[calibrationObjects objectForKey:key]);
+       // NSLog(@"Sel %@",[calibrationObjects objectForKey:key]);
         //        [self willChangeValueForKey:@"selectedCalibrationObject"];
         /*        NSLog(@" %@ %@", [[camerasArrayController selection] valueForKey:@"self"], [[surfacesArrayController selection] valueForKey:@"self"]);
          int camIndex = [camerasArrayController selectionIndex];
