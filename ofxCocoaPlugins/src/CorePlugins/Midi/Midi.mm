@@ -31,6 +31,8 @@
 		[endpoint addReceiver:self];
 		
 		sendEndpoint = (PYMIDIVirtualDestination*) new PYMIDIRealEndpoint;
+       // [sendEndpoint addSender:self];
+
 		//	[sendEndpoint retain];
 		
 		NSString *appName = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleExecutable"];
@@ -385,6 +387,9 @@ BOOL isRealtimeByte (Byte b)	{ return b >= 0xF8; }
 		if ([userDefaults stringForKey:@"midi.interface"] != nil) {
 			if([[endpointIterator displayName] isEqualToString:[userDefaults stringForKey:@"midi.interface"]]){
 				sendEndpoint = endpointIterator;
+                
+                [sendEndpoint addSender:self];
+
 			}
 		}
 	}
@@ -418,6 +423,8 @@ BOOL isRealtimeByte (Byte b)	{ return b >= 0xF8; }
 		if ([userDefaults stringForKey:@"midi.interface"] != nil) {
 			if([[endpointIterator displayName] isEqualToString:[endpoint displayName]]){
 				sendEndpoint = endpointIterator;
+                [sendEndpoint addSender:self];
+
 			}
 		}
 	}
@@ -442,9 +449,9 @@ BOOL isRealtimeByte (Byte b)	{ return b >= 0xF8; }
 							   packet, 0, 3, mdata);
 //	cout<<"Prepare midi send"<<packet<<"  "<<midiValue<<"   "<<midiNote<<"   "<<_midiChannel<<endl;
 	if (endpoint) {
-		[sendEndpoint addSender:self];
+	//	[sendEndpoint addSender:self];
 		[sendEndpoint processMIDIPacketList:&packetlist sender:self];
-		[sendEndpoint removeSender:self];
+	//	[sendEndpoint removeSender:self];
 //		cout<<"Midi send"<<packet<<"  "<<midiValue<<"   "<<midiNote<<"   "<<_midiChannel<<endl;
 	}
 	
@@ -459,9 +466,9 @@ BOOL isRealtimeByte (Byte b)	{ return b >= 0xF8; }
 							   packet, 0, 3, mdata);
     //	cout<<"Prepare midi send"<<packet<<"  "<<midiValue<<"   "<<midiNote<<"   "<<_midiChannel<<endl;
 	if (endpoint) {
-		[sendEndpoint addSender:self];
+		//[sendEndpoint addSender:self];
 		[sendEndpoint processMIDIPacketList:&packetlist sender:self];
-		[sendEndpoint removeSender:self];
+	//	[sendEndpoint removeSender:self];
         //		cout<<"Midi send"<<packet<<"  "<<midiValue<<"   "<<midiNote<<"   "<<_midiChannel<<endl;
 	}
 	
@@ -474,9 +481,9 @@ BOOL isRealtimeByte (Byte b)	{ return b >= 0xF8; }
 	MIDIPacketListAdd(&packetlist, sizeof(packetlist),
 							   packet, 0, 3, mdata);
 	if (endpoint) {
-		[sendEndpoint addSender:self];
+	//	[sendEndpoint addSender:self];
 		[sendEndpoint processMIDIPacketList:&packetlist sender:self];
-		[sendEndpoint removeSender:self];
+//[sendEndpoint removeSender:self];
 	}
 }
 
@@ -492,9 +499,9 @@ BOOL isRealtimeByte (Byte b)	{ return b >= 0xF8; }
 							   packet, 0, 7, mdata);
 	
 	if (endpoint) {
-		[sendEndpoint addSender:self];
+	//	[sendEndpoint addSender:self];
 		[sendEndpoint processMIDIPacketList:&packetlist sender:self];
-		[sendEndpoint removeSender:self];
+	//	[sendEndpoint removeSender:self];
 	}
 }
 
@@ -517,9 +524,9 @@ BOOL isRealtimeByte (Byte b)	{ return b >= 0xF8; }
 							   packet, 0, 7, mdata);
 	
 	if (endpoint) {
-		[sendEndpoint addSender:self];
+	//	[sendEndpoint addSender:self];
 		[sendEndpoint processMIDIPacketList:&packetlist sender:self];
-		[sendEndpoint removeSender:self];
+	//	[sendEndpoint removeSender:self];
 	}
 }
 
