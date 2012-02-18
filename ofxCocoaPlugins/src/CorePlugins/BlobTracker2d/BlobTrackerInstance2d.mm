@@ -21,7 +21,7 @@
 
 
 @implementation BlobTrackerInstance2d
-@synthesize view, name, properties, cameraInstance, trackerNumber, grayDiff, grayBg, learnBackgroundButton, active, calibrator, maskLeft, maskRight, maskBottom, maskTop;
+@synthesize view, name, properties, cameraInstance, trackerNumber, grayDiff, grayBg, learnBackgroundButton, active, calibrator, maskLeft, maskRight, maskBottom, maskTop,activeButton;
 
 - (id)init
 {
@@ -618,20 +618,13 @@
     }
     if(doDraw){
         ofPoint points[4];
-        [self getSurfaceMaskCorners:points clamped:YES];
+        [self getSurfaceMaskCorners:points clamped:NO];
         
         glPushMatrix();{
             glTranslated(rect.origin.x, rect.origin.y, 0);
             glScaled(rect.size.width/640.0, rect.size.height/480.0,1);
             ofEnableAlphaBlending();
-            ofSetColor(180,0,0,50);
-            glBegin(GL_QUAD_STRIP);{
-                glVertex2f(0, 0);       glVertex2f(points[0].x, points[0].y);
-                glVertex2f(640, 0);     glVertex2f(points[1].x, points[1].y);
-                glVertex2f(640, 480);   glVertex2f(points[2].x, points[2].y);
-                glVertex2f(0, 480);     glVertex2f(points[3].x, points[3].y);
-                glVertex2f(0, 0);       glVertex2f(points[0].x, points[0].y);
-            }glEnd();  
+
             
             ofSetColor(255,0,0,120);
             glLineWidth(2);
@@ -643,6 +636,44 @@
                 glVertex2f(points[0].x, points[0].y);
             }glEnd();
             glLineWidth(1);
+            
+
+            if(maskLeft){                
+                ofPoint p1 = [calibrator surfaceToCamera:ofVec2f(maskLeft,0)]*ofVec2f(cw,ch);
+                ofPoint p2 = [calibrator surfaceToCamera:ofVec2f(maskLeft,1)]*ofVec2f(cw,ch);
+                
+                glBegin(GL_LINE_STRIP);
+                glVertex2f(p1.x,p1.y);
+                glVertex2f(p2.x,p2.y);
+                glEnd();
+            }
+            if(maskRight){
+                ofPoint p1 = [calibrator surfaceToCamera:ofVec2f(1-maskRight,0)]*ofVec2f(cw,ch);
+                ofPoint p2 = [calibrator surfaceToCamera:ofVec2f(1-maskRight,1)]*ofVec2f(cw,ch);
+                
+                glBegin(GL_LINE_STRIP);
+                glVertex2f(p1.x,p1.y);
+                glVertex2f(p2.x,p2.y);
+                glEnd();
+            }
+            if(maskTop){
+                ofPoint p1 = [calibrator surfaceToCamera:ofVec2f(0,maskTop)]*ofVec2f(cw,ch);
+                ofPoint p2 = [calibrator surfaceToCamera:ofVec2f(1,maskTop)]*ofVec2f(cw,ch);
+                
+                glBegin(GL_LINE_STRIP);
+                glVertex2f(p1.x,p1.y);
+                glVertex2f(p2.x,p2.y);
+                glEnd();
+            }
+            if(maskBottom){
+                ofPoint p1 = [calibrator surfaceToCamera:ofVec2f(0,1-maskBottom)]*ofVec2f(cw,ch);
+                ofPoint p2 = [calibrator surfaceToCamera:ofVec2f(1,1-maskBottom)]*ofVec2f(cw,ch);
+                
+                glBegin(GL_LINE_STRIP);
+                glVertex2f(p1.x,p1.y);
+                glVertex2f(p2.x,p2.y);
+                glEnd();
+            }
         }glPopMatrix();
         ofSetColor(255,255,255);
     }

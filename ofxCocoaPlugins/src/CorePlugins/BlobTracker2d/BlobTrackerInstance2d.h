@@ -85,6 +85,8 @@ class ofxQtVideoSaver;
 @property (readonly)  ofxCvGrayscaleImage *	grayDiff;
 @property (readonly)  ofxCvGrayscaleImage *	grayBg;
 @property (assign) 	IBOutlet NSButton * learnBackgroundButton;
+@property (assign) 	IBOutlet NSButton * activeButton;
+
 @property (readwrite) BOOL active;
 
 @property (readwrite) int trackerNumber;
