@@ -16,6 +16,9 @@ struct MTCTime {
     int fps;
 };
 
+extern PluginManagerController * globalController;
+
+
 @interface Midi : ofPlugin <NSTableViewDataSource> {
 	
 	pthread_mutex_t mutex;

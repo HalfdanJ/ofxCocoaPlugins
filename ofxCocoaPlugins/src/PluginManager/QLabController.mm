@@ -67,7 +67,7 @@
 }
 
 -(void) updateName{
-	NSMutableString * str = [NSMutableString stringWithFormat:@"[%@: %@] ", [property pluginName], [property name]];
+	NSMutableString * str = [NSMutableString stringWithFormat:@"[%@: %@ (%@,%@)] ", [property pluginName], [property name], [property midiChannel], [property midiNumber]];
 	if([self fade]){
 		[self setName:[NSString stringWithFormat:@"%@ %i to %i (fading)", str, [self startvalue], [self endvalue]]];
 	} else {
@@ -113,21 +113,67 @@
 		//NSLog(@"CUe");
 		NSString *beginsTest = [cue qName];
 		for(PluginProperty * proptery in objects){		
-			NSString *searchString = [NSString stringWithFormat:@"[%@: %@]", [proptery pluginName], [proptery name]];		
-			int length = [beginsTest length];
+			NSString *searchString = [NSString stringWithFormat:@"[%@: %@ (", [proptery pluginName], [proptery name]];		
 			NSRange prefixRange = [beginsTest rangeOfString:searchString options:(0)];
 			
 			if(prefixRange.length > 0){
-				NSLog(@"Cue %@ prefix length: %u  searchstring length: %i",[cue qName], prefixRange.length, length);
-				
-				[self setMidiChannel:[[proptery midiChannel] intValue] number:[[proptery midiNumber] intValue] forCue:cue];
+                
+                NSString *searchString2 = [NSString stringWithFormat:@"(%@,%@)", [proptery midiChannel], [proptery midiNumber]];		
+                
+                NSRange prefixRange2 = [beginsTest rangeOfString:searchString2 options:(0)];
+                
+                if(prefixRange2.length != [searchString2 length]){
+                    
+                    NSLog(@"Cue %@ update",[cue qName]);
+                    
+                    [self setMidiChannel:[[proptery midiChannel] intValue] number:[[proptery midiNumber] intValue] forCue:cue];
+                    
+                    NSRange range = [beginsTest rangeOfString:@")] " options:0];
+                    NSRange replaceRange;
+                    replaceRange.location = 0;
+                    replaceRange.length = range.location;
+                    
+                    NSString * newStr = [NSString stringWithFormat:@"[%@: %@ (%@,%@", [proptery pluginName], [proptery name], [proptery midiChannel], [proptery midiNumber]];
+                    
+                    NSMutableString * str = [NSMutableString stringWithString:beginsTest];
+                    
+                    [str replaceCharactersInRange:replaceRange withString:newStr];
+                    
+                    
+                    [cue setQName:str];
+                    
+                }
 				//[cue set
 				
 			}
+            
+            { //For old quelists
+                NSString *searchString = [NSString stringWithFormat:@"[%@: %@]", [proptery pluginName], [proptery name]];		
+                NSRange prefixRange = [beginsTest rangeOfString:searchString options:(0)];
+                
+                if(prefixRange.length > 0){
+                    NSLog(@"Cue %@ update",[cue qName]);
+                    
+                    [self setMidiChannel:[[proptery midiChannel] intValue] number:[[proptery midiNumber] intValue] forCue:cue];
+                    
+
+                    
+                    NSString * newStr = [NSString stringWithFormat:@"[%@: %@ (%@,%@)]", [proptery pluginName], [proptery name], [proptery midiChannel], [proptery midiNumber]];
+                    
+                    NSMutableString * str = [NSMutableString stringWithString:beginsTest];
+                    
+                    [str replaceCharactersInRange:prefixRange withString:newStr];
+                    
+                    
+                    [cue setQName:str];
+                    //[cue set
+                    
+                }
+            }
 			//	[cue setQName:@"asdasd¡¡"];
 		}
 	}
-	
+	NSLog(@"DONE UPDATING");
 }
 
 -(void) startQlabTransaction:(PluginProperty *)proptery fadingAllowed:(BOOL)_fadeAllowed verbose:(BOOL)_verbose{    
@@ -135,7 +181,7 @@
 	fadeAllowed = _fadeAllowed;
     
     
-        
+    
 	
 	thisCue = nil;
 	prevCue = nil;
@@ -149,7 +195,7 @@
 	[self setLinkedProperty:proptery];
     
     if(!verbose){
-
+        
         [self setShownThisCueDict:[self newCue]];
         if([linkedProperty midiNumber] && [linkedProperty midiChannel])
 			[self go:self];
@@ -162,7 +208,7 @@
 	
 	
 	//Search string
-	NSString *searchString = [NSString stringWithFormat:@"[%@: %@]", [proptery pluginName], [proptery name]];		
+	NSString *searchString = [NSString stringWithFormat:@"[%@: %@ (", [proptery pluginName], [proptery name]];		
 	
 	
 	NSMutableArray * propertyCues = [NSMutableArray array];	
@@ -172,31 +218,31 @@
 	NSMutableArray * selectedCues = [NSMutableArray arrayWithArray:[workspace selected]];
 	NSMutableArray * selectedPropertyCues = [NSMutableArray array];
 	
-        for(int i=0;i<[selectedCues count];i++){
-            QLabCue * cue = [selectedCues objectAtIndex:i];
-            NSString *beginsTest = [cue qName];
-            NSRange prefixRange = [beginsTest rangeOfString:searchString options:(0)];
-            
-            if(prefixRange.length > 0){
-                [selectedPropertyCues addObject:cue];
-                break;
-            }		
-            
-            for(QLabCue * subCue in [[selectedCues objectAtIndex:i] cues]){
-                if(![selectedCues containsObject:subCue])
-                    [selectedCues addObject:subCue];
-            }
+    for(int i=0;i<[selectedCues count];i++){
+        QLabCue * cue = [selectedCues objectAtIndex:i];
+        NSString *beginsTest = [cue qName];
+        NSRange prefixRange = [beginsTest rangeOfString:searchString options:(0)];
+        
+        if(prefixRange.length > 0){
+            [selectedPropertyCues addObject:cue];
+            break;
+        }		
+        
+        for(QLabCue * subCue in [[selectedCues objectAtIndex:i] cues]){
+            if(![selectedCues containsObject:subCue])
+                [selectedCues addObject:subCue];
         }
+    }
 	
 	//Er der en eller flere af dem der er denne property?
 	/*for(QLabCue * cue in selectedCues){
-		NSString *beginsTest = [cue qName];
-		NSRange prefixRange = [beginsTest rangeOfString:searchString options:(0)];
-		
-		if(prefixRange.length > 0){
-			[selectedPropertyCues addObject:cue];
-		}		
-	}*/
+     NSString *beginsTest = [cue qName];
+     NSRange prefixRange = [beginsTest rangeOfString:searchString options:(0)];
+     
+     if(prefixRange.length > 0){
+     [selectedPropertyCues addObject:cue];
+     }		
+     }*/
 	
 	//Hvis der bare er en property cue, så er det selectedPropertyCue
 	if([selectedPropertyCues count] == 1){
@@ -217,23 +263,27 @@
 	
 	//Nu går vi igennem alle cues, og populater propertyCues, og ser om vi kan udfylde this, next og prev
 	BOOL indexFound = NO;
+        
 	for(QLabCue * cue in [workspace cues]){
 		NSString * cueName = [[cue qName] copy];
-		NSLog(@"%@:",cueName);
+
+		//NSLog(@"%@:",cueName);
 		
 		NSString *beginsTest = cueName;
 		NSRange prefixRange = [beginsTest rangeOfString:searchString options:(0)];		
-		NSLog(@"Search length: %u for cue %@", prefixRange.length, cueName);
-		
+		//NSLog(@"Search length: %u for cue %@", prefixRange.length, cueName);
+        NSString * cueUid = [[cue uniqueID] copy];
+
 		if(prefixRange.length > 0){
+
 			//Det er en property cue
-			[propertyCues addObject:[NSDictionary dictionaryWithObjectsAndKeys:[cue qName],@"name",nil]];
+			[propertyCues addObject:[NSDictionary dictionaryWithObjectsAndKeys:cueName,@"name",nil]];
 			
 			
-			if(!makeNewCue && [[((QLabCue*)[selectedPropertyCues objectAtIndex:0]) uniqueID] isEqualToString:[cue uniqueID]]){
+			if(!makeNewCue && [[((QLabCue*)[selectedPropertyCues objectAtIndex:0]) uniqueID] isEqualToString:cueUid]){
 				indexFound = YES;
 			}	
-			if([[((QLabCue*)[selectedPropertyCues lastObject]) uniqueID] isEqualToString:[cue uniqueID]]){
+			if([[((QLabCue*)[selectedPropertyCues lastObject]) uniqueID] isEqualToString:cueUid]){
 				thisCue = cue;
 				if(prevCue == cue){
 					prevCue = nil;
@@ -253,7 +303,7 @@
 		} else {
 			//Det er ikke nogen property cue
 			if(makeNewCue){
-				if([[((QLabCue*)[selectedCues lastObject]) uniqueID] isEqualToString:[cue uniqueID]]){
+				if([[((QLabCue*)[selectedCues lastObject]) uniqueID] isEqualToString:cueUid]){
 					indexFound = YES;
 				}
 			}

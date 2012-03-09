@@ -6,6 +6,7 @@
 #define COLOR_PROPERTY 3
 #define BOOL_PROPERTY 4
 
+//extern PluginManagerController * globalController;
 
 @interface PluginProperty : NSObject  <NSCoding, NSCopying> {
 	id value;
@@ -26,7 +27,7 @@
 @property (retain) NSString * name;
 @property (retain) NSString * pluginName;
 
-@property (retain) id value;
+@property (retain, atomic) id value;
 @property (retain) id defaultValue;
 @property (readwrite) int controlType;
 @property (readwrite) BOOL forcedMidiNumber;

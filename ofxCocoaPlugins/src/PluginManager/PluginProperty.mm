@@ -29,6 +29,32 @@ static NSString *MidiControllerContext = @"org.ofx.midi.controller";
 	[super dealloc];
 }
 
+-(void)setValue:(id)_value{
+    @synchronized(self){
+        value = _value;
+    }
+}
+
+-(id)value{
+    @synchronized(self){
+        return value;
+    }
+}
+
+
+-(void)setMidiLabel:(NSString *)_midiLabel{
+    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+        @synchronized(self){
+            midiLabel = _midiLabel;
+        }
+    }];
+}
+-(NSString *)midiLabel{
+    @synchronized(self){//     [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+        return midiLabel;
+    }
+}
+
 
 -(const char *) objCType{
 	return [value objCType];
@@ -65,14 +91,16 @@ static NSString *MidiControllerContext = @"org.ofx.midi.controller";
 }
 -(void) midiEvent:(int) _value{
     [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+        // [[globalController openglLock] lock]; //Had some trouble with mutations during enumerations
         [self setMidiLabel:[NSString stringWithFormat:@"^ %i",_value]];
+        // [[globalController openglLock] unlock]; //Had some trouble with mutations during enumerations
     }];
 };
 
 -(void) bindMidi{
 	if(midiChannel != nil && midiNumber != nil){		
 		binded = YES;
-
+        
 		[[[GetPlugin(Midi) midiData] objectAtIndex:[midiChannel intValue]] addObserver:self forKeyPath:[NSString stringWithFormat:@"cc%i",[midiNumber intValue]] options:0 context:MidiControllerContext];
         
         [self setMidiLabel:[NSString stringWithFormat:@"%i", [[self midiValue] intValue]]];
@@ -105,9 +133,9 @@ static NSString *MidiControllerContext = @"org.ofx.midi.controller";
 			if([[(NSDictionary*)[object midiData]objectForKey:@"number"] intValue] == [midiNumber intValue]){			
 				if([[(NSDictionary*)[object midiData]objectForKey:@"channel"] intValue] == [midiChannel intValue]){
                     //[[globalController openglLock] lock]; //Had some trouble with mutations during enumerations
-
+                    
 					[self midiEvent:[[(NSDictionary*)[object midiData] objectForKey:@"value"] intValue]];
-                 //   [[globalController openglLock] unlock]; 
+                    //   [[globalController openglLock] unlock]; 
 				}	
 			}
 		}
@@ -144,7 +172,7 @@ static NSString *MidiControllerContext = @"org.ofx.midi.controller";
 			[self unbindMidi];
 		}
 	}
-
+    
 	
 	
 	if(midiNumber != nil)
@@ -158,10 +186,10 @@ static NSString *MidiControllerContext = @"org.ofx.midi.controller";
 }
 
 /*-(void) setManualMidiNumber:(NSNumber*)number{
-	forcedMidiNumber = YES;
-	[self setMidiNumber:number];
-	
-}*/
+ forcedMidiNumber = YES;
+ [self setMidiNumber:number];
+ 
+ }*/
 
 -(void) reset{
 	[self setValue:defaultValue];

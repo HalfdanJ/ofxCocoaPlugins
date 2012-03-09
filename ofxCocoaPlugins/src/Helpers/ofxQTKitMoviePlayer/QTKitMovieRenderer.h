@@ -67,6 +67,11 @@
 	BOOL frameUpdated;
 	BOOL useTexture;
 	BOOL usePixels;
+    
+    NSString * path;
+    
+    BOOL firstFrame;
+    CVOpenGLTextureRef firstFrameRef;
 	
 }
 
@@ -76,6 +81,7 @@
 @property(nonatomic, readonly) NSTimeInterval duration; //duration in seconds
 @property(nonatomic, readonly) NSInteger frameCount;  //total frames
 @property(nonatomic, readonly) BOOL isFinished;  //returns true if the movie is not looping and over
+@property(nonatomic, readonly) NSString * path;
 
 @property(nonatomic, readwrite) float rate;
 @property(nonatomic, readwrite) float volume;

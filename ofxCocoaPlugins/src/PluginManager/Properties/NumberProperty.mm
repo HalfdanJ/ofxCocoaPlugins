@@ -48,7 +48,8 @@
 }
 
 -(void) update{
-        
+    @synchronized(self){
+
         if(valueSetFromMidi && midiSmoothing > 0 && midiGoal != [self floatValue]){
             if(lastMidiTime != nil && -[lastMidiTime timeIntervalSinceNow] < 6){
                 if(fabs(midiGoal-[self floatValue]) < ([self maxValue]-[self minValue])*0.001){
@@ -66,11 +67,14 @@
             lastMidiTime = thisMidiTime;
             
         } 
+    }
 }
 
 
 -(void) setFloatValue:(float)v{
+    @synchronized(self){
 	[self setValue:[NSNumber numberWithFloat:v]];
+    }
 }
 
 -(void) setIntValue:(int)v{
@@ -86,30 +90,29 @@
 }
 
 -(float)floatValue{
-	return [value floatValue];
+	return [[super value] floatValue];
 }
 
 -(double)doubleValue{
-	return [value doubleValue];	
+	return [[super value] doubleValue];	
 }
 
 -(int) intValue{
-	return [value intValue];
+	return [[super value] intValue];
 }
 
 -(BOOL) boolValue{
-	return [value boolValue];
+	return [[super value] boolValue];
 }
 
 -(void) setValue:(NSNumber*)n{
-	value = n;
-	valueSetFromMidi = NO;
+    [super setValue:n];
+    valueSetFromMidi = NO;
     if(binded){
-        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-            
-            [self setMidiLabel:[NSString stringWithFormat:@"%i", [[self midiValue] intValue]]];
-        }];
+        [super setMidiLabel:[NSString stringWithFormat:@"%i", [[self midiValue] intValue]]];
+        //    }];
     }
+    
 }
 
 -(NSCell *) controlCell{
@@ -156,23 +159,27 @@
 		valueSetFromMidi = YES;
 		thisMidiTime = [NSDate date];
 	} else {
+
+        //[[NSOperationQueue mainQueue] addOperationWithBlock:^{
+
 		[self setFloatValue:endV];
+       // }];
 	}
     [super midiEvent:_value];
     
 }
 
 -(NSNumber*)midiValue{
+    @synchronized(self){
 	float v = [self floatValue];
 	v -= [self minValue] ;
 	v /= ( [self maxValue]  -  [self minValue] );
 	v *= 127.0;
 	v = ceil(v);
 	return [NSNumber numberWithInt:v];
-	
-	
-	
+	}
 }
+
 -(void) sendQlab{	
 	[[globalController qlabController] startQlabTransaction:self fadingAllowed:YES verbose:YES];
 }
