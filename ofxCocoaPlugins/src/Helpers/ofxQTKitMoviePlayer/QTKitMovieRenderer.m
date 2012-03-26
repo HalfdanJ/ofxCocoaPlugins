@@ -182,7 +182,7 @@ typedef struct OpenGLTextureCoordinates OpenGLTextureCoordinates;
     return YES;
 }
 
-- (void) dealloc
+- (void) finalize
 {
     
 	if(_latestTextureFrame != NULL){
@@ -196,7 +196,8 @@ typedef struct OpenGLTextureCoordinates OpenGLTextureCoordinates;
 	}
 	
 	if(_movie != NULL){
-		[_movie release];
+        [_movie stop];
+		[_movie finalize];
 		_movie = NULL;
 	}
 	
@@ -211,7 +212,7 @@ typedef struct OpenGLTextureCoordinates OpenGLTextureCoordinates;
 	}
 	
     
-	[super dealloc];
+	[super finalize];
 }
 
 - (void) draw:(NSRect)drawRect
@@ -265,6 +266,9 @@ typedef struct OpenGLTextureCoordinates OpenGLTextureCoordinates;
     
     //  NSLog(@"%f  %ld", [self position], [self frame]);
     if (_visualContext == NULL || !QTVisualContextIsNewImageAvailable(_visualContext, outputTime)){
+        if(_visualContext != NULL){
+      //      CVOpenGLTextureRelease(_latestTextureFrame);
+        }
 		return NO;
 	}
 	
