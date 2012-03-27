@@ -4,6 +4,7 @@ OF_PATH = $(OFX_PATH)ofxCocoaPlugins/libs/openFrameworks
 
 //THIS HAS ALL THE HEADER AND LIBS FOR OF CORE
 HEADER_OF = "$(OFX_PATH)build/Debug/openframeworksHeaders"
+//HEADER_OF = "$(TARGET_TEMP_DIR)/openframeworksHeaders"
 //HEADER_OF = "$(OF_PATH)/libs/openFrameworks/"
 HEADER_FREETYPE = "$(OF_PATH)/libs/freetype/include"
 HEADER_FREETYPE2 = "$(OF_PATH)/libs/freetype/include/freetype2"
