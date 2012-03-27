@@ -12,7 +12,7 @@
 		3D24851A14BC671900AC6F95 /* CameraCalibration.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D24851714BC671900AC6F95 /* CameraCalibration.xib */; };
 		3D24851D14BC6DBA00AC6F95 /* CameraCalibrationObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D24851B14BC6DBA00AC6F95 /* CameraCalibrationObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3D24851E14BC6DBA00AC6F95 /* CameraCalibrationObject.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3D24851C14BC6DBA00AC6F95 /* CameraCalibrationObject.mm */; };
-		3D2FC2291462EC7C0028BC01 /* README in Resources */ = {isa = PBXBuildFile; fileRef = 3D2FC2281462EC7C0028BC01 /* README */; };
+		3D2FC2291462EC7C0028BC01 /* README.markdown in Resources */ = {isa = PBXBuildFile; fileRef = 3D2FC2281462EC7C0028BC01 /* README.markdown */; };
 		3D3B7920149224AF00743828 /* ofEvents.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A35AC14543B7800CC89E5 /* ofEvents.h */; };
 		3D3B7921149224B300743828 /* ofEventUtils.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A35AD14543B7800CC89E5 /* ofEventUtils.h */; };
 		3D3B7922149224C700743828 /* ofMain.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A358B14543B7800CC89E5 /* ofMain.h */; };
@@ -81,7 +81,7 @@
 		3D3B79611492250200743828 /* ofQtUtils.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A360D14543B7800CC89E5 /* ofQtUtils.h */; };
 		3D70F2EA14DB02AE0036A80C /* libola.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D70F2E014DAFC700036A80C /* libola.1.dylib */; };
 		3D70F2EB14DB02AE0036A80C /* libolacommon.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D70F2E214DAFC7D0036A80C /* libolacommon.0.dylib */; };
-		3D70F2ED14DB031F0036A80C /* libprotobuf.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D70F2EC14DB031F0036A80C /* libprotobuf.dylib */; };
+		3D70F2ED14DB031F0036A80C /* libprotobuf.7.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D70F2EC14DB031F0036A80C /* libprotobuf.7.dylib */; };
 		3D9951B314B5EDEC007F1E96 /* BlobClasses2d.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D9951A914B5EDEC007F1E96 /* BlobClasses2d.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3D9951B414B5EDEC007F1E96 /* BlobClasses2d.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3D9951AA14B5EDEC007F1E96 /* BlobClasses2d.mm */; };
 		3D9951B514B5EDEC007F1E96 /* BlobTracker2d.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D9951AB14B5EDEC007F1E96 /* BlobTracker2d.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -577,10 +577,10 @@
 		3D24851714BC671900AC6F95 /* CameraCalibration.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CameraCalibration.xib; sourceTree = "<group>"; };
 		3D24851B14BC6DBA00AC6F95 /* CameraCalibrationObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraCalibrationObject.h; sourceTree = "<group>"; };
 		3D24851C14BC6DBA00AC6F95 /* CameraCalibrationObject.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CameraCalibrationObject.mm; sourceTree = "<group>"; };
-		3D2FC2281462EC7C0028BC01 /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
-		3D70F2E014DAFC700036A80C /* libola.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libola.1.dylib; path = /opt/local/lib/libola.1.dylib; sourceTree = "<absolute>"; };
-		3D70F2E214DAFC7D0036A80C /* libolacommon.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libolacommon.0.dylib; path = /opt/local/lib/libolacommon.0.dylib; sourceTree = "<absolute>"; };
-		3D70F2EC14DB031F0036A80C /* libprotobuf.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libprotobuf.dylib; path = /Users/livingroom/Development/Code/Livingroom/ofxCocoaPlugins/../../../../../../opt/local/lib/libprotobuf.dylib; sourceTree = "<absolute>"; };
+		3D2FC2281462EC7C0028BC01 /* README.markdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.markdown; sourceTree = "<group>"; };
+		3D70F2E014DAFC700036A80C /* libola.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libola.1.dylib; path = /usr/local/lib/libola.1.dylib; sourceTree = "<absolute>"; };
+		3D70F2E214DAFC7D0036A80C /* libolacommon.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libolacommon.0.dylib; path = /usr/local/lib/libolacommon.0.dylib; sourceTree = "<absolute>"; };
+		3D70F2EC14DB031F0036A80C /* libprotobuf.7.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libprotobuf.7.dylib; path = /usr/local/lib/libprotobuf.7.dylib; sourceTree = "<absolute>"; };
 		3D9951A914B5EDEC007F1E96 /* BlobClasses2d.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlobClasses2d.h; sourceTree = "<group>"; };
 		3D9951AA14B5EDEC007F1E96 /* BlobClasses2d.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = BlobClasses2d.mm; sourceTree = "<group>"; };
 		3D9951AB14B5EDEC007F1E96 /* BlobTracker2d.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlobTracker2d.h; sourceTree = "<group>"; };
@@ -969,7 +969,6 @@
 		DDE4CA2F1451E23700EECFF4 /* PYMIDIVirtualSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PYMIDIVirtualSource.h; sourceTree = "<group>"; };
 		DDE4CA301451E23700EECFF4 /* PYMIDIVirtualSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PYMIDIVirtualSource.m; sourceTree = "<group>"; };
 		DDE4CAA21451E32700EECFF4 /* CoreMIDI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMIDI.framework; path = /System/Library/Frameworks/CoreMIDI.framework; sourceTree = "<absolute>"; };
-		DDE4D5CE1451F1F100EECFF4 /* libfmodex.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libfmodex.dylib; path = ofxCocoaPlugins/libs/openframeworks/libs/fmodex/lib/osx/libfmodex.dylib; sourceTree = "<group>"; };
 		DDE4D5D61451F3AF00EECFF4 /* openFrameworksDebug.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = openFrameworksDebug.a; path = ofxCocoaPlugins/libs/openframeworks/libs/openFrameworksCompiled/lib/osx/openFrameworksDebug.a; sourceTree = "<group>"; };
 		DDE4D5D81451F3B400EECFF4 /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ofxCocoaPlugins/libs/openframeworks/libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = "<group>"; };
 		DDF6500214504B20007B0C0A /* Project.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Project.xcconfig; sourceTree = "<group>"; };
@@ -984,7 +983,7 @@
 			files = (
 				3D70F2EA14DB02AE0036A80C /* libola.1.dylib in Frameworks */,
 				3D70F2EB14DB02AE0036A80C /* libolacommon.0.dylib in Frameworks */,
-				3D70F2ED14DB031F0036A80C /* libprotobuf.dylib in Frameworks */,
+				3D70F2ED14DB031F0036A80C /* libprotobuf.7.dylib in Frameworks */,
 				DDE4C8831451A91200EECFF4 /* CoreVideo.framework in Frameworks */,
 				DDE4C8841451A91200EECFF4 /* AppKit.framework in Frameworks */,
 				DDE4C8851451A91200EECFF4 /* Cocoa.framework in Frameworks */,
@@ -1717,14 +1716,10 @@
 		DDA7FFCC144F1C3800F81C9E = {
 			isa = PBXGroup;
 			children = (
-				3D70F2EC14DB031F0036A80C /* libprotobuf.dylib */,
-				3D70F2E214DAFC7D0036A80C /* libolacommon.0.dylib */,
-				3D70F2E014DAFC700036A80C /* libola.1.dylib */,
 				3D9A8C5E14CD5DBD00531AAF /* Resources */,
-				3D9B4D7C14BC4D7300225E4A /* libfmodex.dylib */,
 				DD0A358A14543B7800CC89E5 /* openFrameworksHeaders */,
 				DDF6500214504B20007B0C0A /* Project.xcconfig */,
-				3D2FC2281462EC7C0028BC01 /* README */,
+				3D2FC2281462EC7C0028BC01 /* README.markdown */,
 				DD0A3689145443D900CC89E5 /* ConfigInclude.xcconfig */,
 				DDF6500414504B62007B0C0A /* CoreOF.xcconfig */,
 				DDE4D5D31451F37F00EECFF4 /* libs */,
@@ -2072,7 +2067,10 @@
 		DDE4D5D31451F37F00EECFF4 /* libs */ = {
 			isa = PBXGroup;
 			children = (
-				DDE4D5CE1451F1F100EECFF4 /* libfmodex.dylib */,
+				3D70F2EC14DB031F0036A80C /* libprotobuf.7.dylib */,
+				3D70F2E214DAFC7D0036A80C /* libolacommon.0.dylib */,
+				3D70F2E014DAFC700036A80C /* libola.1.dylib */,
+				3D9B4D7C14BC4D7300225E4A /* libfmodex.dylib */,
 				3DAFD3CB14B46A51004D0D50 /* PvAPI */,
 				DDE4D5D51451F38D00EECFF4 /* openframeworks */,
 			);
@@ -2479,7 +2477,7 @@
 				DD0A33BA1452F29C00CC89E5 /* VideoPlayer.xib in Resources */,
 				DD0A368A145443DA00CC89E5 /* ConfigInclude.xcconfig in Resources */,
 				DDC266B11454BC020016BA7B /* GeneralPreferences.xib in Resources */,
-				3D2FC2291462EC7C0028BC01 /* README in Resources */,
+				3D2FC2291462EC7C0028BC01 /* README.markdown in Resources */,
 				3D9AD7F714B45F3700DB3187 /* Cameras.xib in Resources */,
 				3D9951B714B5EDEC007F1E96 /* BlobTracker2d.xib in Resources */,
 				3D9951BA14B5EDEC007F1E96 /* BlobTrackerInstance2d.xib in Resources */,
@@ -2799,6 +2797,7 @@
 					/opt/local/lib,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx10.6;
 				WRAPPER_EXTENSION = framework;
 			};
 			name = Debug;
@@ -2905,6 +2904,7 @@
 					/opt/local/lib,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx10.6;
 				WRAPPER_EXTENSION = framework;
 			};
 			name = Release;
