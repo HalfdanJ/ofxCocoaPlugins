@@ -375,9 +375,14 @@ extern ofAppBaseWindow * window;
 	
 	
 	NSAutoreleasePool * perFramePool = [[NSAutoreleasePool alloc] init];
+
 	//Call update on all plugins
-	[self callUpdate:drawingInformation];
-	
+    
+    
+    if([[drawingInformation valueForKey:@"outputViewNumber"] intValue] == 0){
+        [self callUpdate:drawingInformation];
+	}
+
 	//Prepare opengl
 	glClearColor(0,0,0,0);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);     // Clear Screen data of the texture to write on
