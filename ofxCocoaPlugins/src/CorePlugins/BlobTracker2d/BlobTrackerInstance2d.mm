@@ -43,6 +43,7 @@
         [properties setObject:[NSNumber numberWithFloat:5.0] forKey:@"persistentDistance"];
         [properties setObject:[NSNumber numberWithFloat:1] forKey:@"blur"];
         [properties setObject:[NSNumber numberWithFloat:100] forKey:@"threshold"];
+        [properties setObject:[NSNumber numberWithInt:SUBTRACTION_DIFF] forKey:@"subtractionMode"];
         
     }
     
@@ -197,9 +198,23 @@
             }  
             
             //Difference
-            //grayDiff->absDiff(*grayBg, *grayImageBlured);
-            *grayDiff = *grayImageBlured;
-            *grayDiff -= *grayBg;
+            switch ([[self.properties objectForKey:@"subtractionMode"] intValue]) {
+                case SUBTRACTION_DIFF:
+                    grayDiff->absDiff(*grayBg, *grayImageBlured);
+                    break;
+                case SUBTRACTION_LIGHTER:
+                    *grayDiff = *grayImageBlured;
+                    *grayDiff -= *grayBg;
+                    break;
+                case SUBTRACTION_DARKER:
+                    *grayDiff = *grayBg;
+                    *grayDiff -= *grayImageBlured;
+                    break;
+                    
+                default:
+                    grayDiff->absDiff(*grayBg, *grayImageBlured);
+                    break;
+            }
             
             ofPoint maskPoints[4];
             [self getSurfaceMaskCorners:maskPoints clamped:NO];

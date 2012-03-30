@@ -9,6 +9,12 @@
 class ofxQtVideoSaver;
 @class QTKitMovieRenderer;
 
+enum SubtractionModes {
+    SUBTRACTION_DIFF,
+    SUBTRACTION_LIGHTER,
+    SUBTRACTION_DARKER
+    };
+
 @interface BlobTrackerInstance2d : NSObject {    
     NSView *view;
     NSString * name;
