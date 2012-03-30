@@ -6,4 +6,6 @@
 #import <ofxCocoaPlugins/BlobTracker2d.h>
 #import <ofxCocoaPlugins/CameraCalibration.h>
 #import <ofxCocoaPlugins/OpenDMX.h>
-//#include "Kinect.h"
+#import <ofxCocoaPlugins/Tracker.h>
+#import <ofxCocoaPlugins/OSCControl.h>
+

@@ -171,6 +171,11 @@
 		3DCAC6A414C47B680022F715 /* ofCvCameraCalibration.h in Headers */ = {isa = PBXBuildFile; fileRef = 3DCAC6A314C47B680022F715 /* ofCvCameraCalibration.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7FB6BAA41499F75000FE24C9 /* KeystonePerspective.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FB6BAA21499F75000FE24C9 /* KeystonePerspective.h */; };
 		7FB6BAA51499F75000FE24C9 /* KeystonePerspective.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7FB6BAA31499F75000FE24C9 /* KeystonePerspective.mm */; };
+		847E9E7715248C6D00710E6E /* OSCControl.h in Headers */ = {isa = PBXBuildFile; fileRef = 847E9E7115248C6D00710E6E /* OSCControl.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		847E9E7815248C6D00710E6E /* OSCControl.mm in Sources */ = {isa = PBXBuildFile; fileRef = 847E9E7215248C6D00710E6E /* OSCControl.mm */; };
+		847E9E7915248C6D00710E6E /* Tracker.h in Headers */ = {isa = PBXBuildFile; fileRef = 847E9E7415248C6D00710E6E /* Tracker.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		847E9E7A15248C6D00710E6E /* Tracker.mm in Sources */ = {isa = PBXBuildFile; fileRef = 847E9E7515248C6D00710E6E /* Tracker.mm */; };
+		847E9E7B15248C6D00710E6E /* Tracker.xib in Resources */ = {isa = PBXBuildFile; fileRef = 847E9E7615248C6D00710E6E /* Tracker.xib */; };
 		DD0A33A01452F29C00CC89E5 /* CorePluginsIncludes.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A334A1452F29C00CC89E5 /* CorePluginsIncludes.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DD0A33A11452F29C00CC89E5 /* coordWarp.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A334C1452F29C00CC89E5 /* coordWarp.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DD0A33A21452F29C00CC89E5 /* coordWarp.mm in Sources */ = {isa = PBXBuildFile; fileRef = DD0A334D1452F29C00CC89E5 /* coordWarp.mm */; };
@@ -663,6 +668,11 @@
 		3DCAC6A314C47B680022F715 /* ofCvCameraCalibration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = ofCvCameraCalibration.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		7FB6BAA21499F75000FE24C9 /* KeystonePerspective.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeystonePerspective.h; sourceTree = "<group>"; };
 		7FB6BAA31499F75000FE24C9 /* KeystonePerspective.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = KeystonePerspective.mm; sourceTree = "<group>"; };
+		847E9E7115248C6D00710E6E /* OSCControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSCControl.h; sourceTree = "<group>"; };
+		847E9E7215248C6D00710E6E /* OSCControl.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = OSCControl.mm; sourceTree = "<group>"; };
+		847E9E7415248C6D00710E6E /* Tracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tracker.h; sourceTree = "<group>"; };
+		847E9E7515248C6D00710E6E /* Tracker.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Tracker.mm; sourceTree = "<group>"; };
+		847E9E7615248C6D00710E6E /* Tracker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Tracker.xib; sourceTree = "<group>"; };
 		DD0A334A1452F29C00CC89E5 /* CorePluginsIncludes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CorePluginsIncludes.h; sourceTree = "<group>"; };
 		DD0A334C1452F29C00CC89E5 /* coordWarp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = coordWarp.h; sourceTree = "<group>"; };
 		DD0A334D1452F29C00CC89E5 /* coordWarp.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = coordWarp.mm; sourceTree = "<group>"; };
@@ -1236,6 +1246,25 @@
 			name = "Camera Controllers";
 			sourceTree = "<group>";
 		};
+		847E9E7015248C6D00710E6E /* OSCControl */ = {
+			isa = PBXGroup;
+			children = (
+				847E9E7115248C6D00710E6E /* OSCControl.h */,
+				847E9E7215248C6D00710E6E /* OSCControl.mm */,
+			);
+			path = OSCControl;
+			sourceTree = "<group>";
+		};
+		847E9E7315248C6D00710E6E /* Tracker */ = {
+			isa = PBXGroup;
+			children = (
+				847E9E7415248C6D00710E6E /* Tracker.h */,
+				847E9E7515248C6D00710E6E /* Tracker.mm */,
+				847E9E7615248C6D00710E6E /* Tracker.xib */,
+			);
+			path = Tracker;
+			sourceTree = "<group>";
+		};
 		DD0A334B1452F29C00CC89E5 /* Keystoner */ = {
 			isa = PBXGroup;
 			children = (
@@ -1716,15 +1745,15 @@
 		DDA7FFCC144F1C3800F81C9E = {
 			isa = PBXGroup;
 			children = (
-				3D9A8C5E14CD5DBD00531AAF /* Resources */,
-				DD0A358A14543B7800CC89E5 /* openFrameworksHeaders */,
-				DDF6500214504B20007B0C0A /* Project.xcconfig */,
 				3D2FC2281462EC7C0028BC01 /* README.markdown */,
+				DDF6500214504B20007B0C0A /* Project.xcconfig */,
 				DD0A3689145443D900CC89E5 /* ConfigInclude.xcconfig */,
 				DDF6500414504B62007B0C0A /* CoreOF.xcconfig */,
-				DDE4D5D31451F37F00EECFF4 /* libs */,
-				DDA7FFE1144F1C3800F81C9E /* ofxCocoaPlugins */,
+				DDE4C9B71451E23700EECFF4 /* CorePlugins */,
+				DDA7FFE1144F1C3800F81C9E /* src */,
 				DDF6500614504D6C007B0C0A /* addons */,
+				3D9A8C5E14CD5DBD00531AAF /* Resources */,
+				DDE4D5D31451F37F00EECFF4 /* libs */,
 				DDA7FFDA144F1C3800F81C9E /* Frameworks */,
 				DDA7FFD9144F1C3800F81C9E /* Products */,
 			);
@@ -1771,12 +1800,11 @@
 			name = "Other Frameworks";
 			sourceTree = "<group>";
 		};
-		DDA7FFE1144F1C3800F81C9E /* ofxCocoaPlugins */ = {
+		DDA7FFE1144F1C3800F81C9E /* src */ = {
 			isa = PBXGroup;
 			children = (
 				DDA7FFE8144F1C3800F81C9E /* ofxCocoaPlugins.h */,
 				DDA7FFE9144F1C3800F81C9E /* ofxCocoaPlugins.mm */,
-				DDE4C9B71451E23700EECFF4 /* CorePlugins */,
 				DDE4C8B71451AEFD00EECFF4 /* Application */,
 				DDE4C9941451E04400EECFF4 /* Helpers */,
 				DDE4C8D01451AF1500EECFF4 /* OpenGL */,
@@ -1784,6 +1812,7 @@
 				DDE4C8F91451DBD900EECFF4 /* Views */,
 				DDA7FFE2144F1C3800F81C9E /* Supporting Files */,
 			);
+			name = src;
 			path = ofxCocoaPlugins;
 			sourceTree = "<group>";
 		};
@@ -2017,10 +2046,12 @@
 				DD0A334B1452F29C00CC89E5 /* Keystoner */,
 				DD0A33641452F29C00CC89E5 /* VideoPlayer */,
 				3D9A5E8114DAF3430002B855 /* OpenDMX */,
+				847E9E7015248C6D00710E6E /* OSCControl */,
+				847E9E7315248C6D00710E6E /* Tracker */,
 				DDE4CA151451E23700EECFF4 /* Midi */,
 			);
 			name = CorePlugins;
-			path = src/CorePlugins;
+			path = ofxCocoaPlugins/src/CorePlugins;
 			sourceTree = "<group>";
 		};
 		DDE4CA151451E23700EECFF4 /* Midi */ = {
@@ -2067,6 +2098,7 @@
 		DDE4D5D31451F37F00EECFF4 /* libs */ = {
 			isa = PBXGroup;
 			children = (
+				DD0A358A14543B7800CC89E5 /* openFrameworksHeaders */,
 				3D70F2EC14DB031F0036A80C /* libprotobuf.7.dylib */,
 				3D70F2E214DAFC7D0036A80C /* libolacommon.0.dylib */,
 				3D70F2E014DAFC700036A80C /* libola.1.dylib */,
@@ -2129,6 +2161,8 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				847E9E7715248C6D00710E6E /* OSCControl.h in Headers */,
+				847E9E7915248C6D00710E6E /* Tracker.h in Headers */,
 				3D9A5E8514DAF3530002B855 /* OpenDMX.h in Headers */,
 				3DCAC6A414C47B680022F715 /* ofCvCameraCalibration.h in Headers */,
 				3D24851814BC671900AC6F95 /* CameraCalibration.h in Headers */,
@@ -2490,6 +2524,7 @@
 				3D9A8C6614CD5DBD00531AAF /* Trebuchet MS.ttf in Resources */,
 				3D9A8C6714CD5DBD00531AAF /* index.html in Resources */,
 				3D9A5E8714DAF3530002B855 /* OpenDMX.xib in Resources */,
+				847E9E7B15248C6D00710E6E /* Tracker.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2596,6 +2631,8 @@
 				3D9D181814BD95A600DD2093 /* KinectInstance.mm in Sources */,
 				3DCAC6A214C47B5B0022F715 /* ofCvCameraCalibration.cpp in Sources */,
 				3D9A5E8614DAF3530002B855 /* OpenDMX.mm in Sources */,
+				847E9E7815248C6D00710E6E /* OSCControl.mm in Sources */,
+				847E9E7A15248C6D00710E6E /* Tracker.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
