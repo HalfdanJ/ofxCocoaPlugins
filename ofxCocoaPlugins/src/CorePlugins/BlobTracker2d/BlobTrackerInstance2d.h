@@ -5,6 +5,7 @@
 #import <ofxCocoaPlugins/CameraCalibration.h>
 
 #import "ofxOpenCv.h"
+#import "ofxCvOpticalFlowLK.h"
 
 class ofxQtVideoSaver;
 @class QTKitMovieRenderer;
@@ -18,55 +19,56 @@ enum SubtractionModes {
 @interface BlobTrackerInstance2d : NSObject {    
     NSView *view;
     NSString * name;
-    
-    IBOutlet NSSlider * blurSlider;
-	IBOutlet NSSlider * thresholdSlider;
-	IBOutlet NSButton * activeButton;
-    NSButton * learnBackgroundButton;
-    IBOutlet NSButton * drawDebugButton;
-	IBOutlet NSSlider * persistentSlider;
-
-    float maskLeft, maskRight, maskTop, maskBottom;
-    
     NSMutableDictionary * properties;
     
-    id cameraInstance;
-    int trackerNumber;
+    NSButton * learnBackgroundButton;
+    IBOutlet NSButton * drawDebugButton;
 
     NSMutableArray * persistentBlobs;
 	NSMutableArray * blobs;
-
-    int cw, ch;
-
-    ofxCvGrayscaleImage *	grayImage;
-    ofxCvGrayscaleImage *	grayImageBlured;	
-	ofxCvGrayscaleImage *	grayBg;
-    ofxCvGrayscaleImage *	grayDiff;
+    long unsigned int pidCounter;
     
-    ofxCvGrayscaleImage * threadGrayDiff;
-	ofxCvGrayscaleImage * threadGrayImage;
+    float maskLeft, maskRight, maskTop, maskBottom;
+    
+    id cameraInstance;
+    int trackerNumber;
+    int cw, ch;
+    long long frameNum;
+    
+    ofxCvGrayscaleImage *	grayImage; //Incomming image
+    ofxCvGrayscaleImage *	grayImageLastFrame; //Image from last frame
+    ofxCvGrayscaleImage *	grayImageBlured; //Blurred input image
+	ofxCvGrayscaleImage *	grayBg; //Background image for background subtraction
+    ofxCvGrayscaleImage *	grayDiff; //Background subtracted image
+    
+    ofxCvGrayscaleImage * threadGrayDiff; //Thread backgroundsubtracted image
+	ofxCvGrayscaleImage * threadGrayImage; //Thread input image
 	
+    //Contour finder (Blob tracker)
     BOOL threadUpdateContour;
 	ofxCvContourFinder 	* contourFinder;
-	
     
+    //Optical flow
+    BOOL threadUpdateOpticalFlow;
+    ofxCvOpticalFlowLK * opticalFlow;
+
+    //Forces loading from disk
     BOOL loadBackgroundNow;
 
+    //Background thread & mutex
     NSThread * thread;
 	pthread_mutex_t mutex;
 
-    long unsigned int pidCounter;
-	
-    ofxQtVideoSaver		*saver;
-	BOOL recording;
+    //Calibrator for masking
+	CameraCalibrationObject * calibrator;
+    
     
     BOOL live;
-    BOOL active;
     
-	//videoplayerWrapper * videoPlayer;
+    ofxQtVideoSaver		*saver;
+	BOOL recording;
     QTKitMovieRenderer * videoPlayer;
-    
-	NSMutableArray * movies;
+    NSMutableArray * movies;
 	BOOL loadMoviePlease;
 	NSString * loadMovieString;
 	float millisSinceLastMovieEvent;
@@ -78,55 +80,48 @@ enum SubtractionModes {
     IBOutlet NSButton *recordButton;
     
     ofPoint recordingSurfaceCorners[4];
-    
-    CameraCalibrationObject * calibrator;
-    long long frameNum;
- //   BOOL distorted;
 }
-@property (assign) IBOutlet NSView *view;
-@property (readonly) NSString * name;
-@property (retain) NSMutableDictionary * properties;
-@property (assign) id cameraInstance;
 
-@property (readonly)  ofxCvGrayscaleImage *	grayDiff;
-@property (readonly)  ofxCvGrayscaleImage *	grayBg;
-@property (assign) 	IBOutlet NSButton * learnBackgroundButton;
-@property (assign) 	IBOutlet NSButton * activeButton;
+@property (assign)      IBOutlet NSView *view;
+@property (readonly)    NSString * name;
+@property (retain)      NSMutableDictionary * properties;
+@property (assign)      id cameraInstance;
 
-@property (readwrite) BOOL active;
+@property (readonly)    ofxCvGrayscaleImage *	grayDiff;
+@property (readonly)    ofxCvGrayscaleImage *	grayBg;
+@property (assign)      IBOutlet NSButton * learnBackgroundButton;
 
-@property (readwrite) int trackerNumber;
+@property (readwrite)   int trackerNumber;
 @property (readwrite, retain) CameraCalibrationObject * calibrator;
-@property (readwrite) float maskLeft;
-@property (readwrite) float maskRight;
-@property (readwrite) float maskBottom;
-@property (readwrite) float maskTop;
-//@property (readwrite) BOOL distorted;
+@property (readwrite)   float maskLeft;
+@property (readwrite)   float maskRight;
+@property (readwrite)   float maskBottom;
+@property (readwrite)   float maskTop;
 
 - (IBAction)setMovieFile:(id)sender;
 - (IBAction)toggleRecord:(id)sender;
 
+-(void) setup;
+-(void) update:(NSDictionary *)drawingInformation;
+
+-(void) startBackgroundThread:(id)param;
+
 -(void) drawInput:(NSRect)rect;
 -(void) drawBackground:(NSRect)rect;
 -(void) drawDifference:(NSRect)rect;
-
 -(void) drawBlobs:(NSRect)rect warped:(BOOL)warp;
 -(void) drawSurfaceMask:(NSRect)rect;
 
 -(void) getSurfaceMaskCorners:(ofPoint*)point clamped:(BOOL)clamp;
--(BOOL) isKinect;
--(BOOL) drawDebug;
-
-
--(void) performBlobTracking:(id)param;
--(void) saveBackground;
--(void) loadBackground;
-
--(void) setup;
--(void) update:(NSDictionary *)drawingInformation;
-
 -(PersistentBlob2d*) getPBlob:(int)num;
 -(int) numPBlobs;
 
+-(BOOL) isKinect;
+
+-(BOOL) drawDebug;
+
+-(void) saveBackground;
+-(void) loadBackground;
 -(void) updateMovieList;
+
 @end

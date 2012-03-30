@@ -13,6 +13,7 @@
 #import "Keystoner.h"
 #import "KeystoneSurface.h"
 #import "ofxOpenCv.h"
+#import "ofxCvOpticalFlowLK.h"
 #import "CameraInstance.h"
 
 #ifdef USE_KINECT_2D_TRACKER
@@ -21,7 +22,7 @@
 
 
 @implementation BlobTrackerInstance2d
-@synthesize view, name, properties, cameraInstance, trackerNumber, grayDiff, grayBg, learnBackgroundButton, active, calibrator, maskLeft, maskRight, maskBottom, maskTop,activeButton;
+@synthesize view, name, properties, cameraInstance, trackerNumber, grayDiff, grayBg, learnBackgroundButton, active, calibrator, maskLeft, maskRight, maskBottom, maskTop;
 
 - (id)init
 {
@@ -29,7 +30,7 @@
     if (self) {
 		
 		thread = [[NSThread alloc] initWithTarget:self
-										 selector:@selector(performBlobTracking:)
+										 selector:@selector(startBackgroundThread:)
 										   object:nil];
         pthread_mutex_init(&mutex, NULL);
         threadUpdateContour = NO;
@@ -44,6 +45,11 @@
         [properties setObject:[NSNumber numberWithFloat:1] forKey:@"blur"];
         [properties setObject:[NSNumber numberWithFloat:100] forKey:@"threshold"];
         [properties setObject:[NSNumber numberWithInt:SUBTRACTION_DIFF] forKey:@"subtractionMode"];
+        
+        [properties setObject:[NSNumber numberWithBool:YES] forKey:@"bgSubtractionEnabled"];
+        [properties setObject:[NSNumber numberWithBool:NO] forKey:@"opticalFlowEnabled"];
+        [properties setObject:[NSNumber numberWithBool:NO] forKey:@"contourFinderEnabled"];
+
         
     }
     
@@ -61,10 +67,13 @@
     
     grayImageBlured->allocate(cw,ch);
 	grayImage->allocate(cw,ch);
+    grayImageLastFrame->allocate(cw,ch);
 	grayDiff->allocate(cw,ch);	
     
     threadGrayDiff->allocate(cw,ch);
 	threadGrayImage->allocate(cw,ch);
+    
+    opticalFlow->allocate(cw, ch);
     
     if(pixels != nil){
         delete pixels;
@@ -90,6 +99,7 @@
     live = YES;
     
     grayImage = new ofxCvGrayscaleImage;
+    grayImageLastFrame = new ofxCvGrayscaleImage;
 	grayImageBlured = new ofxCvGrayscaleImage;		
 	//grayBgMask = new ofxCvGrayscaleImage();		
 	grayBg = new ofxCvGrayscaleImage;
@@ -100,6 +110,7 @@
     
     contourFinder = new ofxCvContourFinder();
     
+    opticalFlow = new ofxCvOpticalFlowLK();
     
     
     [thread start];
@@ -130,10 +141,13 @@
 
 
 -(void) update:(NSDictionary *)drawingInformation{
-    BOOL update = YES;
+    BOOL opticalFlowEnabled = [[self.properties valueForKey:@"opticalFlowEnabled"] boolValue];
+    BOOL contourFinderEnabled = [[self.properties valueForKey:@"contourFinderEnabled"] boolValue];
+    BOOL  bgSubtractionEnabled = [[self.properties valueForKey:@"bgSubtractionEnabled"] boolValue]; 
+    
+    BOOL update = opticalFlowEnabled || contourFinderEnabled || bgSubtractionEnabled;
     
     if(live){       
-        
 #ifdef USE_KINECT_2D_TRACKER
         if([self isKinect]){
             KinectInstance * kinect = cameraInstance;
@@ -153,6 +167,9 @@
             frameNum = [cam frameNum];
             
         }
+        
+        
+        
         if(update){
             
 #ifdef USE_KINECT_2D_TRACKER
@@ -295,37 +312,54 @@
                     cvFillPoly(mask.getCvImage(), &cp, &nPoints, 1, cvScalar(0));
                 }
             }
-            /*
-             Livingroom specific
-             */
+//            /*
+//             Livingroom specific
+//             */
+//            
+//            KeystoneSurface * triangle = [GetPlugin(Keystoner) getSurface:@"Triangle" viewNumber:0 projectorNumber:0];
+//            if(triangle != nil){
+//                ofPoint corners[3];    
+//                
+//                corners[0] = [triangle convertToProjection:ofVec2f(0,1)];
+//                corners[1] = [triangle convertToProjection:ofVec2f(1,0)];                
+//                corners[2] = [triangle convertToProjection:ofVec2f(1,1)];
+//                
+//                for(int i=0;i<3;i++){
+//                    corners[i] = [[calibrator surface] convertFromProjection:corners[i]];
+//                    corners[i] = [calibrator surfaceToCamera:corners[i]];
+//                    corners[i] *= ofVec2f(cw,ch);
+//                }
+//                
+//                
+//                int nPoints = 3;
+//                CvPoint _cp[3] = {
+//                    {corners[0].x,corners[0].y}, 
+//                    {corners[1].x,corners[1].y},
+//                    {corners[2].x,corners[2].y}};		
+//                
+//                CvPoint* cp = _cp; 
+//                cvFillPoly(mask.getCvImage(), &cp, &nPoints, 1, cvScalar(0));
+//                
+//            }
+//            
+//            /*END*/
             
-            KeystoneSurface * triangle = [GetPlugin(Keystoner) getSurface:@"Triangle" viewNumber:0 projectorNumber:0];
-            if(triangle != nil){
-                ofPoint corners[3];    
-                
-                corners[0] = [triangle convertToProjection:ofVec2f(0,1)];
-                corners[1] = [triangle convertToProjection:ofVec2f(1,0)];                
-                corners[2] = [triangle convertToProjection:ofVec2f(1,1)];
-                
-                for(int i=0;i<3;i++){
-                    corners[i] = [[calibrator surface] convertFromProjection:corners[i]];
-                    corners[i] = [calibrator surfaceToCamera:corners[i]];
-                    corners[i] *= ofVec2f(cw,ch);
-                }
-                
-                
-                int nPoints = 3;
-                CvPoint _cp[3] = {
-                    {corners[0].x,corners[0].y}, 
-                    {corners[1].x,corners[1].y},
-                    {corners[2].x,corners[2].y}};		
-                
-                CvPoint* cp = _cp; 
-                cvFillPoly(mask.getCvImage(), &cp, &nPoints, 1, cvScalar(0));
-                
-            }
             
-            /*END*/
+            //Optical flow
+           /* cv::Size winSize(5,5);  
+            vector<cv::KeyPoint> keyPoints;  
+            vector<cv::KeyPoint> nextPoints;  
+            cv::FAST(grayImageLastFrame->getCvImage(), keyPoints,20,true);  
+         //   cv::FAST(grayImage->getCvImage(), nextPoints,20,true);  
+            // convert vector of keypoints to vector of points  
+            //vector<cv::Point2f> points_keyPoints, points_nextPoints;//these are in the .h now.  
+            cv::KeyPoint::convert(keyPoints, points_keyPoints);  
+           // cv::KeyPoint::convert(nextPoints, points_nextPoints);  
+            cv::TermCriteria termcrit(CV_TERMCRIT_ITER|CV_TERMCRIT_EPS,20,0.03);  
+            vector<uchar> status;  
+            vector<float> err;  
+            
+            cv::calcOpticalFlowPyrLK(grayImageLastFrame->getCvImage(),grayImage->getCvImage(),points_keyPoints,points_nextPoints, status, err, winSize, 3, termcrit, 0.5, 1);*/
             
             
             mask.flagImageChanged();
@@ -335,7 +369,9 @@
             *grayDiff *= mask;
             
             grayDiff->threshold([[properties valueForKey:@"threshold"] intValue]);
-            
+
+            *grayImageLastFrame = *grayImage;  
+
         }
         
         
@@ -384,7 +420,7 @@
     }
     
     
-    if(update && [activeButton state]){
+    if(update && contourFinderEnabled){
         pthread_mutex_lock(&mutex);
         *threadGrayImage = *grayImage;
         *threadGrayDiff = *grayDiff;
@@ -557,6 +593,18 @@
      [kinect getIRGenerator]->draw(rect.origin.x, rect.origin.y, rect.size.width, rect.size.height);
      }*/
     grayImage->draw(rect.origin.x, rect.origin.y, rect.size.width, rect.size.height);
+    
+    opticalFlow->draw( rect.size.width, rect.size.height);
+    
+  /*  int pointCount = points_nextPoints.size();  
+    for( int i=0; i < points_nextPoints.size(); i++ ) {  
+        ofNoFill();  
+        ofSetHexColor(0xFF0000);  
+        
+       // ofCircle(rect.origin.x+rect.size.width*points_nextPoints[i].x/cw,rect.origin.y+rect.size.height*points_nextPoints[i].y/ch,2);  
+        ofLine(rect.origin.x+rect.size.width*points_keyPoints[i].x/cw,rect.origin.y+rect.size.height*points_keyPoints[i].y/ch,
+               rect.origin.x+rect.size.width*points_nextPoints[i].x/cw,rect.origin.y+rect.size.height*points_nextPoints[i].y/ch);
+    } */
 }
 
 -(void) drawBackground:(NSRect)rect{
@@ -808,7 +856,7 @@
 }
 
 
--(void) performBlobTracking:(id)param{
+-(void) startBackgroundThread:(id)param{
 	while(1){
 		
 		pthread_mutex_lock(&mutex);			
@@ -816,23 +864,7 @@
 		if(threadUpdateContour){
 			contourFinder->findContours(*threadGrayDiff, 20, (cw*ch)/3, 10, false, true);	
 			threadUpdateContour = false;			
-			
-			/*	int l = -1;
-			 if(contourFinder->nBlobs > 0){
-			 for(int i=0;i<contourFinder->blobs[0]->
-			 
-			 }
-			 */
-            
-            
 		}
-		
-		/*if(threadUpdateOpticalFlow){
-         opticalFlow->calc(*threadFlowLastImage, *threadFlowImage, 11);
-         threadUpdateOpticalFlow = false;			
-         }
-         */
-        
         
 		pthread_mutex_unlock(&mutex);
 		

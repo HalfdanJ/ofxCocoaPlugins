@@ -69,7 +69,7 @@
             [[[prop context] properties] setValue:[prop value] forKey:@"threshold"];
         }       
         else if([[prop name] rangeOfString:@"active"].length > 0){
-            [[[prop context] activeButton] setState:[prop boolValue]];
+            [[[prop context] properties] setValue:[prop value] forKey:@"contourFinderEnabled"];
         }
     }
     
