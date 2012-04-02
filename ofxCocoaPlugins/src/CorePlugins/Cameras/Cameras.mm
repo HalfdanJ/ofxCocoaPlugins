@@ -1,9 +1,11 @@
 
 
 #import "Cameras.h"
+#include "NormalCamerasController.h"
 #include "NormalCameraInstance.h"
 #include "IIDCCameraInstance.h"
 #include "AVTCamerasController.h"
+
 
 @implementation Cameras
 @synthesize numberCameras, cameras, cameraInstances;
@@ -16,10 +18,11 @@
 		//Dictionary over types of cameras including instances 
 		cameraInstances = [[NSMutableDictionary dictionary] retain];
 		
-		/*
+		
         //Normal cameras
-		[cameraInstances setObject:[NormalCameraInstance deviceList] forKey:@"Normal Cameras"];
-		*/
+        NSDictionary * normal = [NSDictionary dictionaryWithObjectsAndKeys:[[NormalCamerasController alloc] init], @"controller", nil];
+		[cameraInstances setObject:normal forKey:@"Normal Cameras"];
+		
         
         //AVT cameras
         NSDictionary * avt = [NSDictionary dictionaryWithObjectsAndKeys:[[AVTCamerasController alloc] init], @"controller", nil];

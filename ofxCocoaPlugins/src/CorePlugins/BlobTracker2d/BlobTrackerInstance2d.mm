@@ -22,7 +22,7 @@
 
 
 @implementation BlobTrackerInstance2d
-@synthesize view, name, properties, cameraInstance, trackerNumber, grayDiff, grayBg, learnBackgroundButton, active, calibrator, maskLeft, maskRight, maskBottom, maskTop;
+@synthesize view, name, properties, cameraInstance, trackerNumber, grayDiff, grayBg, learnBackgroundButton, calibrator, maskLeft, maskRight, maskBottom, maskTop;
 
 - (id)init
 {

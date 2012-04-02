@@ -1,20 +1,14 @@
-//
-//  NormalCameraInstance.mm
-//  loadnloop
-//
-//  Created by Jonas Jongejan on 21/05/10.
-//  Copyright 2010 HalfdanJ. All rights reserved.
-//
-
-#import "NormalCameraInstance.h"
+#import "NormalCamerasController.h"
 
 
-@implementation NormalCameraInstance
-@synthesize guid;
 
-+(NSMutableArray*) deviceList{
+
+@implementation NormalCamerasController
+
+
+-(NSMutableArray*) deviceList{
 	NSMutableArray * ret = [NSMutableArray array];
-
+    
 	
 	OSErr err = noErr;
 	
@@ -22,7 +16,7 @@
 	Component				sgCompID;
 	SGChannel 			gVideoChannel;
 	SeqGrabComponent	gSeqGrabber;
-
+    
 	// this crashes when we get to
 	// SGNewChannel
 	// we get -9405 as error code for the channel
@@ -52,7 +46,7 @@
 	err = SGSetGWorld(gSeqGrabber, 0, 0);
 	
 	err = SGNewChannel(gSeqGrabber, VideoMediaType, &(gVideoChannel));
-
+    
 	
 	
 	
@@ -102,13 +96,13 @@
 				printf( "device[%i] %s - %s\n",  deviceCount, p2cstr(pascalName), p2cstr(pascalNameInput) );
 				
 				[ret addObject:[NSMutableDictionary dictionaryWithObjectsAndKeys:
-									[NSString stringWithFormat:@"%i", deviceCount], @"guid", 
-									[NSString stringWithFormat:@"%s", p2cstr(pascalNameInput) ], @"desc", 
-									[NSString stringWithFormat:@"device %i: %s - %s", deviceCount, p2cstr(pascalName), p2cstr(pascalNameInput) ], @"name",
-									[NSNumber numberWithInt:0], @"referenceCount",
-									@"normal", @"type",
-									
-									nil]];
+                                [NSString stringWithFormat:@"%i", deviceCount], @"guid", 
+                                [NSString stringWithFormat:@"%s", p2cstr(pascalNameInput) ], @"desc", 
+                                [NSString stringWithFormat:@"device %i: %s - %s", deviceCount, p2cstr(pascalName), p2cstr(pascalNameInput) ], @"name",
+                                [NSNumber numberWithInt:0], @"referenceCount",
+                                @"normal", @"type",
+                                
+                                nil]];
 				
 				
 				//we count this way as we need to be able to distinguish multiple inputs as devices
@@ -130,37 +124,41 @@
 }
 
 
--(id)initWithGuid:(NSString*)_guid named:(NSString*)_name{
-	if([self init]){
-		[self setGuid:_guid];
+- (id)init {
+    self = [super init];
+    if (self) {
+        [self setInstances:[NSMutableArray array]];
+        
+        NSArray * devices = [self deviceList];
+        
+        NSLog(@"devices %@",devices);
+        for(NSDictionary * cam in devices){
+            
+            //Look for cameras with same uid
+            BOOL camFound = NO;
+            for(NormalCameraInstance * instance in [self instances]){
+                if([[instance guid] isEqualToString:[cam valueForKey:@"guid"]]){
+                    //Found existing instance, just update status
+                    [instance setCamIsConnected:YES];
+                    camFound = YES;
+                    break;
+                }
+            }
+            if(!camFound){
+                //Camera not already in array, so we create one
+                NormalCameraInstance * instance = [[NormalCameraInstance alloc] initWithGuid:[cam valueForKey:@"guid"] named:[cam valueForKey:@"desc"]];
+                [instance setCamIsConnected:YES];
+                
+                [self willChangeValueForKey:@"instances"];
+                [[self instances] addObject:instance];
+                [self didChangeValueForKey:@"instances"];
+            }
 
-		[self setStatus:@"Initializing"];
-
-		grabber = new ofVideoGrabber();
-		grabber->setDeviceID([[self guid] intValue]);
-		
-		if(grabber->initGrabber(800, 600, true)){
-			[self setStatus:@"OK"];	
-		} else {
-			[self setStatus:@"ERROR"];	
-		}
-		tex = &grabber->getTextureReference();
-
-		
-		[self setName:_name];
-	}
-	return self;
-}
-
--(NSView *) makeViewInRect:(NSRect)rect{
-	NSView * view = [[NSView alloc]initWithFrame:rect];
-	return view;
-}
-
--(void) update{
-	grabber->update();
-	tex = &grabber->getTextureReference();
-
+            
+        }
+               
+    }
+    return self;
 }
 
 @end
