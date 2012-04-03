@@ -3,6 +3,7 @@
 @interface NormalCameraInstance : CameraInstance {
 	NSString * guid;
 	ofVideoGrabber * grabber;
+    ofxCvColorImage * colorCVImage;
 }
 
 @property (retain) NSString * guid;

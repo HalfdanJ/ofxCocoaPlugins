@@ -37,16 +37,43 @@
         
         if(grabber->initGrabber(800, 600, true)){
             [self setCamInited:YES];
+            width = 800;
+            height = 600;
+            
         } else {
             [self setCamIsConnected:NO];
         }
         tex = &grabber->getTextureReference();
     }
     if(grabber != nil){
-	grabber->update();
-	tex = &grabber->getTextureReference();
+        grabber->update();
+        tex = &grabber->getTextureReference();
+        pixels = grabber->getPixels();
+        if(grabber->isFrameNew()){
+            frameNum++;
+        }
     }
+}
+            
+-(ofxCvGrayscaleImage *)cvImage{
+    if(cvFrameNum != frameNum){
+        cvFrameNum = frameNum;
+        
+        if(cvImage == nil || cvImage->width != width || cvImage->height != height){
+            cvImage = new ofxCvGrayscaleImage();
+            cvImage->allocate(width, height);
+            
+            colorCVImage = new ofxCvColorImage();
+            colorCVImage->allocate(width,height);
 
+        }
+        
+        colorCVImage->setFromPixels(pixels, width, height);
+        *cvImage = *colorCVImage;
+        
+      //  cvImage->set(100);
+    }
+    return cvImage;
 }
 
 @end

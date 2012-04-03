@@ -36,14 +36,16 @@ enum SubtractionModes {
     long long frameNum;
     
     ofxCvGrayscaleImage *	grayImage; //Incomming image
-    ofxCvGrayscaleImage *	grayImageLastFrame; //Image from last frame
     ofxCvGrayscaleImage *	grayImageBlured; //Blurred input image
 	ofxCvGrayscaleImage *	grayBg; //Background image for background subtraction
     ofxCvGrayscaleImage *	grayDiff; //Background subtracted image
     
+    ofxCvGrayscaleImage * mask; //Temp image for masking
+    
     ofxCvGrayscaleImage * threadGrayDiff; //Thread backgroundsubtracted image
 	ofxCvGrayscaleImage * threadGrayImage; //Thread input image
-	
+    ofxCvGrayscaleImage * threadGrayImageLastFrame; //Image from last frame
+
     //Contour finder (Blob tracker)
     BOOL threadUpdateContour;
 	ofxCvContourFinder 	* contourFinder;
