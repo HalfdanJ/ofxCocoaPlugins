@@ -117,7 +117,7 @@
     int h = ofGetHeight();
     
     ofSetColor(100,100,100);
-    [self trackerImageWithResolution:400].draw(0,0,w,h);
+    [self trackerImageWithSize:CGSizeMake(400, 400)].draw(0,0,w,h);
     
     
     for(int i=0; i<n;i++){
@@ -373,9 +373,9 @@
 
 
 
--(ofxCvGrayscaleImage)trackerImageWithResolution:(int)res{
+-(ofxCvGrayscaleImage)trackerImageWithSize:(CGSize)res{
     ofxCvGrayscaleImage ret;
-    ret.allocate(res,res);
+    ret.allocate(res.width,res.height);
     ret.set(0);
     
     CameraCalibrationObject * calib = [[GetPlugin(BlobTracker2d) getInstance:0] calibrator];
@@ -386,7 +386,7 @@
 
     for(int i=0;i<4;i++){
         src[i] = [calib camHandle:i]*ofVec2f([[GetPlugin(BlobTracker2d) getInstance:0] grayDiff]->width, [[GetPlugin(BlobTracker2d) getInstance:0] grayDiff]->height);   
-        dst[i] = [calib projHandle:i] * ofVec2f(res,res);   
+        dst[i] = [calib projHandle:i] * ofVec2f(res.width,res.height);   
     }
     
     ret.warpIntoMe(*[[GetPlugin(BlobTracker2d) getInstance:0] grayDiff], src, dst);
@@ -397,7 +397,7 @@
         int nPoints = trackerBlobVector[i].size();
         CvPoint _cp[nPoints];
         for(int u=0;u<nPoints;u++){
-            _cp[u] = cvPoint(trackerBlobVector[i][u].x*res, trackerBlobVector[i][u].y*res);
+            _cp[u] = cvPoint(trackerBlobVector[i][u].x*res.width, trackerBlobVector[i][u].y*res.height);
         }
         
         CvPoint* cp = _cp;    

@@ -1,5 +1,6 @@
 #import <Foundation/Foundation.h>
 #import <ofxCocoaPlugins/CorePluginsIncludes.h>
+#import <ofxCocoaPlugins/CustomGraphics.h>
 
 @class ofPlugin;
 

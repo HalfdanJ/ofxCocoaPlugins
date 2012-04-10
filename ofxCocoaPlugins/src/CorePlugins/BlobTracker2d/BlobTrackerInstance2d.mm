@@ -22,7 +22,8 @@
 
 
 @implementation BlobTrackerInstance2d
-@synthesize view, name, properties, cameraInstance, trackerNumber, grayDiff, grayBg, learnBackgroundButton, calibrator, maskLeft, maskRight, maskBottom, maskTop;
+@synthesize view, name, properties, cameraInstance, trackerNumber, grayDiff, grayBg, learnBackgroundButton, calibrator, maskLeft, maskRight, maskBottom, maskTop, opticalFlowW, opticalFlowH, opticalFlowFieldCalibrated;
+@synthesize opticalFlowSize = _opticalFlowSize;
 
 - (id)init
 {
@@ -151,7 +152,7 @@
 }
 
 //------------------------------------------------------
-#pragma mark OpenCV Computations
+#pragma mark - OpenCV Computations
 //------------------------------------------------------
 
 
@@ -488,6 +489,24 @@
 
 -(void) performOpticalFlowComputation {
     pthread_mutex_lock(&mutex);
+    
+    if(self.calibrator){
+        if(!opticalFlowH){
+            opticalFlowH = 50;
+        }
+        if(opticalFlowW != opticalFlowH * self.calibrator.surfaceAspect){
+            opticalFlowW = opticalFlowH * self.calibrator.surfaceAspect;
+            
+            if(opticalFlowFieldCalibrated){
+                delete opticalFlowFieldCalibrated;
+                delete threadOpticalFlowFieldCalibrated;
+            }
+            opticalFlowFieldCalibrated = (ofVec2f*) malloc(opticalFlowH * opticalFlowW * sizeof(ofVec2f));
+            threadOpticalFlowFieldCalibrated = (ofVec2f*) malloc(opticalFlowH * opticalFlowW * sizeof(ofVec2f));
+        }
+        
+    }
+    
     *threadGrayImage = *grayImage;
     threadUpdateOpticalFlow = YES;
     pthread_mutex_unlock(&mutex);
@@ -516,13 +535,29 @@
      vector<float> err;  
      
      cv::calcOpticalFlowPyrLK(grayImageLastFrame->getCvImage(),grayImage->getCvImage(),points_keyPoints,points_nextPoints, status, err, winSize, 3, termcrit, 0.5, 1);*/
-    
-    opticalFlow->calc(*threadGrayImageLastFrame, *threadGrayImage, 15);
-    *threadGrayImageLastFrame = *threadGrayImage;  
-    pthread_mutex_unlock(&mutex);
+    if(opticalFlowW){
+        int size = self.opticalFlowSize;
+        if(size % 2 == 0){
+            size++;
+        }
+        opticalFlow->calc(*threadGrayImageLastFrame, *threadGrayImage, size);
 
+        float scaleX = 1.0/opticalFlowW;
+        float scaleY = 1.0/opticalFlowH;
+        for(int y=0;y<opticalFlowH;y++){
+            for(int x=0;x<opticalFlowW;x++){
+                ofVec2f p = [self.calibrator surfaceToCamera:ofVec2f( scaleY*x, scaleY*y )];
+                threadOpticalFlowFieldCalibrated[x+y*opticalFlowW] = opticalFlow->flowAtPoint(p.x*cw, p.y*ch);
+            }
+        }
+        memcpy(opticalFlowFieldCalibrated, threadOpticalFlowFieldCalibrated,opticalFlowH * opticalFlowW * sizeof(ofVec2f) );
+    }
+    pthread_mutex_unlock(&mutex);
+    *threadGrayImageLastFrame = *threadGrayImage;  
 }
 
+//------------------------------------------------------
+#pragma mark 
 //------------------------------------------------------
 
 
@@ -579,6 +614,8 @@
                         //New size
                         [self setWidth:[cam width] height:[cam height]];
                     }
+                    
+                   
                     grayImage = [calibrator getUndistortedImage];
                     //                    
                 }
@@ -763,7 +800,7 @@
         
         glPushMatrix();{
             glTranslated(rect.origin.x, rect.origin.y, 0);
-            glScaled(rect.size.width/640.0, rect.size.height/480.0,1);
+            glScaled(rect.size.width/cw, rect.size.height/ch,1);
             ofEnableAlphaBlending();
 
             

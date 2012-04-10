@@ -16,6 +16,6 @@
 -(ofVec2f) trackerFeet:(int)n;
 -(vector<ofVec2f>) trackerFeetVector;
 
--(ofxCvGrayscaleImage) trackerImageWithResolution:(int)res;
+-(ofxCvGrayscaleImage) trackerImageWithSize:(CGSize)res;
 
 @end

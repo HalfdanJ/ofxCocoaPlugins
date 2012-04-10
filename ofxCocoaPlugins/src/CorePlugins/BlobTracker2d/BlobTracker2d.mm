@@ -41,8 +41,11 @@
         [[self addPropF:[NSString stringWithFormat:@"maskBottom%i", i]]  setContext:newInstance];
         
         [[self addPropF:[NSString stringWithFormat:@"active%i", i]]  setContext:newInstance];
+        [[self addPropF:[NSString stringWithFormat:@"opticalFlowSize%i", i]]  setContext:newInstance];
 
         [Prop( ([NSString stringWithFormat:@"threshold%i", i]) ) setMaxValue:100];
+        [Prop( ([NSString stringWithFormat:@"opticalFlowSize%i", i]) ) setMinValue:1.0 maxValue:15.0];
+        [Prop( ([NSString stringWithFormat:@"opticalFlowSize%i", i]) ) setDefaultValue:[NSNumber numberWithInt:10]];
     }
     
     [self addPropB:@"distorted"];
@@ -64,6 +67,9 @@
         }
         else if([[prop name] rangeOfString:@"maskTop"].length > 0){
             [[prop context] setMaskTop:[prop floatValue]];
+        }
+        else if([[prop name] rangeOfString:@"opticalFlowSize"].length > 0){
+            [[prop context] setOpticalFlowSize:[prop floatValue]];
         }
         else if([[prop name] rangeOfString:@"threshold"].length > 0){
             [[[prop context] properties] setValue:[prop value] forKey:@"threshold"];

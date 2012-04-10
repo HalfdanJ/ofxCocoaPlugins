@@ -53,7 +53,11 @@ enum SubtractionModes {
     //Optical flow
     BOOL threadUpdateOpticalFlow;
     ofxCvOpticalFlowLK * opticalFlow;
-
+    int opticalFlowW, opticalFlowH;
+    ofVec2f * opticalFlowFieldCalibrated;
+    ofVec2f * threadOpticalFlowFieldCalibrated;
+    int _opticalFlowSize;
+    
     //Forces loading from disk
     BOOL loadBackgroundNow;
 
@@ -99,6 +103,11 @@ enum SubtractionModes {
 @property (readwrite)   float maskRight;
 @property (readwrite)   float maskBottom;
 @property (readwrite)   float maskTop;
+
+@property (readonly)    ofVec2f * opticalFlowFieldCalibrated;
+@property (readonly)    int opticalFlowW;
+@property (readonly)    int opticalFlowH;
+@property (readwrite)   int opticalFlowSize;
 
 - (IBAction)setMovieFile:(id)sender;
 - (IBAction)toggleRecord:(id)sender;
