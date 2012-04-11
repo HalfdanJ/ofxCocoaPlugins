@@ -117,14 +117,15 @@
     int h = ofGetHeight();
     
     ofSetColor(100,100,100);
-    [self trackerImageWithSize:CGSizeMake(400, 400)].draw(0,0,w,h);
+    [self trackerImageWithSize:CGSizeMake(400, 200)].draw(0,0,w,h);
     
-    
+    CameraCalibrationObject * calib = [[GetPlugin(BlobTracker2d) getInstance:0] calibrator];
+    float aspect = [[[calib surface] aspect] floatValue];
     for(int i=0; i<n;i++){
         ofVec2f centroid = [self trackerCentroid:i];
         
         ofSetColor(255,255,255);
-        ofCircle(centroid.x*w, centroid.y*h, 5);
+        ofCircle(centroid.x*w/aspect, centroid.y*h, 5);
         
         
         switch (i) {
@@ -155,7 +156,7 @@
         
         vector< ofVec2f > blob = [self trackerBlob:i];
         for(int u=0;u<blob.size();u++){
-            ofCircle(blob[u].x*w, blob[u].y*h, 2);
+            ofCircle(blob[u].x * w / aspect, blob[u].y*h, 2);
             //   ofRect(blob[u].x*w, blob[u].y*h, 6,6);
             
         }
@@ -165,10 +166,16 @@
 }
 
 -(void)controlMousePressed:(float)x y:(float)y button:(int)button{
-    controlMouse = ofVec2f(x/[[self controlGlView] frame].size.width,y/[[self controlGlView] frame].size.height);    
+    CameraCalibrationObject * calib = [[GetPlugin(BlobTracker2d) getInstance:0] calibrator];
+    float aspect = [[[calib surface] aspect] floatValue];
+
+    controlMouse = ofVec2f(aspect*x/[[self controlGlView] frame].size.width,y/[[self controlGlView] frame].size.height);    
 }
 -(void)controlMouseDragged:(float)x y:(float)y button:(int)button{
-    controlMouse = ofVec2f(x/[[self controlGlView] frame].size.width,y/[[self controlGlView] frame].size.height);
+    CameraCalibrationObject * calib = [[GetPlugin(BlobTracker2d) getInstance:0] calibrator];
+    float aspect = [[[calib surface] aspect] floatValue];
+
+    controlMouse = ofVec2f(aspect*x/[[self controlGlView] frame].size.width,y/[[self controlGlView] frame].size.height);
 }
 -(void)controlMouseReleased:(float)x y:(float)y{
     controlMouse = ofVec2f(-1,-1);
@@ -386,7 +393,7 @@
 
     for(int i=0;i<4;i++){
         src[i] = [calib camHandle:i]*ofVec2f([[GetPlugin(BlobTracker2d) getInstance:0] grayDiff]->width, [[GetPlugin(BlobTracker2d) getInstance:0] grayDiff]->height);   
-        dst[i] = [calib projHandle:i] * ofVec2f(res.width,res.height);   
+        dst[i] = [calib projHandle:i]/ofVec2f([[[calib surface] aspect] floatValue],1) * ofVec2f(res.width,res.height);   
     }
     
     ret.warpIntoMe(*[[GetPlugin(BlobTracker2d) getInstance:0] grayDiff], src, dst);
@@ -397,7 +404,7 @@
         int nPoints = trackerBlobVector[i].size();
         CvPoint _cp[nPoints];
         for(int u=0;u<nPoints;u++){
-            _cp[u] = cvPoint(trackerBlobVector[i][u].x*res.width, trackerBlobVector[i][u].y*res.height);
+            _cp[u] = cvPoint(trackerBlobVector[i][u].x*res.width/[[[calib surface] aspect] floatValue], trackerBlobVector[i][u].y*res.height);
         }
         
         CvPoint* cp = _cp;    

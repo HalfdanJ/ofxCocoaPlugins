@@ -99,7 +99,8 @@
     
     if([self changingSurface]){
         glPushMatrix();
-        [GetPlugin(Keystoner) applySurface:surface];
+//        [GetPlugin(Keystoner) applySurface:surface];
+        ApplySurface([surface name]){
         
         //Draw handles
         {
@@ -121,13 +122,16 @@
         }
         
         
-        [GetPlugin(Keystoner) popSurface];
+//        [GetPlugin(Keystoner) popSurface];
+        } PopSurface();
         glPopMatrix();
     } else if([self drawDebug]){
         
         if([camInstance camInited]){
             glPushMatrix();
-            [GetPlugin(Keystoner) applySurface:surface];
+         //   [GetPlugin(Keystoner) applySurface:surface];
+            ApplySurface([surface name]){
+
             ofFill();
             
             {
@@ -149,6 +153,11 @@
                 ofSetColor(255,255,255);
                 TextureGrid texGrid;
                 texGrid.drawTextureGrid(&[selectedCalib getUndistortedImage]->getTextureReference(),  poly, corners, 10);
+                
+//                ofTexture tex = [selectedCalib getUndistortedImage]->getTextureReference();
+//                if(tex.isAllocated()){
+//                tex.draw(0, 0,1,1);
+//                }
                 glPopMatrix();
             }
             
@@ -185,8 +194,8 @@
                 glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
             }
             
-            
-            [GetPlugin(Keystoner) popSurface];
+            } PopSurface();
+//            [GetPlugin(Keystoner) popSurface];
             glPopMatrix();
         }
     }

@@ -102,19 +102,19 @@
     ofVec2f src[4];
     ofVec2f dst[4];    
     
-    src[0].x = [self projHandle:0].x;
+    src[0].x = [self projHandle:0].x;/// [[surface aspect] floatValue];;
     src[0].y = [self projHandle:0].y;
-    src[1].x = [self projHandle:1].x;
+    src[1].x = [self projHandle:1].x;/// [[surface aspect] floatValue];;
     src[1].y = [self projHandle:1].y;
-    src[2].x = [self projHandle:2].x;
+    src[2].x = [self projHandle:2].x;/// [[surface aspect] floatValue];;
     src[2].y = [self projHandle:2].y;
-    src[3].x = [self projHandle:3].x;
+    src[3].x = [self projHandle:3].x;/// [[surface aspect] floatValue];;
     src[3].y = [self projHandle:3].y;    
     
     
     for(int i=0;i<4;i++){
         ofVec2f p = [self camHandle:i];
-        dst[i].x = p.x ;
+        dst[i].x = p.x ;//* [[surface aspect] floatValue];
         dst[i].y = p.y ;
     }
     
