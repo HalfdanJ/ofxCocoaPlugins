@@ -40,9 +40,10 @@
         [[self addPropF:[NSString stringWithFormat:@"maskRight%i", i]]  setContext:newInstance];
         [[self addPropF:[NSString stringWithFormat:@"maskBottom%i", i]]  setContext:newInstance];
         
-        [[self addPropF:[NSString stringWithFormat:@"active%i", i]]  setContext:newInstance];
+        [[self addPropF:[NSString stringWithFormat:@"contourFinderEnabled%i", i]]  setContext:newInstance];
+                [[self addPropF:[NSString stringWithFormat:@"opticalFlowEnabled%i", i]]  setContext:newInstance];
         [[self addPropF:[NSString stringWithFormat:@"opticalFlowSize%i", i]]  setContext:newInstance];
-
+        
         [Prop( ([NSString stringWithFormat:@"threshold%i", i]) ) setMaxValue:100];
         [Prop( ([NSString stringWithFormat:@"opticalFlowSize%i", i]) ) setMinValue:1.0 maxValue:15.0];
         [Prop( ([NSString stringWithFormat:@"opticalFlowSize%i", i]) ) setDefaultValue:[NSNumber numberWithInt:10]];
@@ -74,8 +75,11 @@
         else if([[prop name] rangeOfString:@"threshold"].length > 0){
             [[[prop context] properties] setValue:[prop value] forKey:@"threshold"];
         }       
-        else if([[prop name] rangeOfString:@"active"].length > 0){
+        else if([[prop name] rangeOfString:@"contourFinderEnabled"].length > 0){
             [[[prop context] properties] setValue:[prop value] forKey:@"contourFinderEnabled"];
+        }
+        else if([[prop name] rangeOfString:@"opticalFlowEnabled"].length > 0){
+            [[[prop context] properties] setValue:[prop value] forKey:@"opticalFlowEnabled"];
         }
     }
     
@@ -173,6 +177,7 @@
 
 -(void)controlDraw:(NSDictionary *)drawingInformation{
     ofSetColor(0,0,0);
+//    ofBackground(0, 0, 255);
     int blockWidth = 800/3;
     int blockHeight = blockWidth * 3.0/4.0;;
 
@@ -191,6 +196,8 @@
             [instance drawDifference:NSMakeRect(blockWidth*2,0,blockWidth, blockHeight)];
 
             [instance drawBlobs:NSMakeRect(blockWidth*2,0,blockWidth, blockHeight) warped:NO];
+            
+            [instance drawBuffer:NSMakeRect(0,blockHeight, blockWidth*3, controlHeight-blockHeight)];
             
             glTranslated(0, controlHeight, 0);
         }        

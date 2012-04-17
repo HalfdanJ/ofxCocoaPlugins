@@ -51,7 +51,9 @@
         [properties setObject:[NSNumber numberWithBool:NO] forKey:@"opticalFlowEnabled"];
         [properties setObject:[NSNumber numberWithBool:NO] forKey:@"contourFinderEnabled"];
 
-        
+        bufferRecording = NO;
+        bufferPlaybackRelativeIndex = 0;
+        bufferPlaybackSpeed = 1;
     }
     
     return self;
@@ -81,6 +83,10 @@
     threadGrayImageLastFrame->allocate(cw,ch);
 
     opticalFlow->allocate(cw, ch);
+    
+    for(int i=0;i<bufferSize;i++){
+        grayImageBuffer[i]->allocate(cw, ch);
+    }
     
     if(pixels != nil){
         delete pixels;
@@ -313,10 +319,8 @@
     }
     
     [self performMaskingComputation:grayDiff];
-    
-    grayDiff->threshold([[properties valueForKey:@"threshold"] intValue]);
+    grayDiff->threshold(PropI(@"threshold"));
 
-    
 }
 
 
@@ -325,7 +329,6 @@
 
 -(void) performBlobTrackingBackgroundComputation {
     pthread_mutex_lock(&mutex);
-
     contourFinder->findContours(*threadGrayDiff, 20, (cw*ch)/3, 10, false, true);	
     pthread_mutex_unlock(&mutex);
 
@@ -488,8 +491,7 @@
 
 
 -(void) performOpticalFlowComputation {
-    pthread_mutex_lock(&mutex);
-    
+    pthread_mutex_lock(&mutex);    
     if(self.calibrator){
         if(!opticalFlowH){
             opticalFlowH = 50;
@@ -508,6 +510,7 @@
     }
     
     *threadGrayImage = *grayImage;
+
     threadUpdateOpticalFlow = YES;
     pthread_mutex_unlock(&mutex);
 
@@ -519,30 +522,14 @@
 
 -(void) performOpticalFlowBackgroundComputation {
     pthread_mutex_lock(&mutex);
-
-    //Optical flow
-    /* cv::Size winSize(5,5);  
-     vector<cv::KeyPoint> keyPoints;  
-     vector<cv::KeyPoint> nextPoints;  
-     cv::FAST(grayImageLastFrame->getCvImage(), keyPoints,20,true);  
-     //   cv::FAST(grayImage->getCvImage(), nextPoints,20,true);  
-     // convert vector of keypoints to vector of points  
-     //vector<cv::Point2f> points_keyPoints, points_nextPoints;//these are in the .h now.  
-     cv::KeyPoint::convert(keyPoints, points_keyPoints);  
-     // cv::KeyPoint::convert(nextPoints, points_nextPoints);  
-     cv::TermCriteria termcrit(CV_TERMCRIT_ITER|CV_TERMCRIT_EPS,20,0.03);  
-     vector<uchar> status;  
-     vector<float> err;  
-     
-     cv::calcOpticalFlowPyrLK(grayImageLastFrame->getCvImage(),grayImage->getCvImage(),points_keyPoints,points_nextPoints, status, err, winSize, 3, termcrit, 0.5, 1);*/
     if(opticalFlowW){
         int size = self.opticalFlowSize;
         if(size % 2 == 0){
             size++;
         }
+    //    threadGrayImage->setROI(ofRectangle(50, 50, 100, 100));
         opticalFlow->calc(*threadGrayImageLastFrame, *threadGrayImage, size);
 
-        float scaleX = 1.0/opticalFlowW;
         float scaleY = 1.0/opticalFlowH;
         for(int y=0;y<opticalFlowH;y++){
             for(int x=0;x<opticalFlowW;x++){
@@ -617,7 +604,39 @@
                     
                    
                     grayImage = [calibrator getUndistortedImage];
-                    //                    
+                    
+                    
+                    
+                    //--- Buffer --- 
+                    if(bufferSize > 0){
+                        if(bufferRecording){
+                            //Update ringIndex
+                            bufferRingIndex++;
+                            if(bufferRingIndex >= bufferSize)
+                                bufferRingIndex = 0;
+                            
+                            //Store grayImage in buffer at ringIndex
+                            *grayImageBuffer[bufferRingIndex] = *grayImage;
+                        }
+                        
+                        bufferPlaybackRelativeIndex += bufferPlaybackSpeed-1;
+                        if(bufferPlaybackRelativeIndex > 0)
+                            bufferPlaybackRelativeIndex = 0;
+                        
+                        //Read playback position
+                        if(bufferPlaybackRelativeIndex != 0){
+                            //Find playback index from relateive index
+                            int playbackIndex = bufferRingIndex + bufferPlaybackRelativeIndex;
+                            while(playbackIndex < 0)
+                                playbackIndex += bufferSize;
+                            while(playbackIndex >= bufferSize)
+                                playbackIndex -= bufferSize;
+                                                        
+                            //Overwrite grayImage with image from buffer
+                            *grayImage = *grayImageBuffer[playbackIndex];
+                        }
+
+                    }
                 }
             }
         }
@@ -672,16 +691,15 @@
         [self performBackgroundSubtractionComputation];
     }
     
+
     if(update && contourFinderEnabled){
-     
         [self performBlobTrackingComputation];
     }
-    
     if(update && opticalFlowEnabled){
         [self performOpticalFlowComputation];
     }
     
-    
+
 }
 
 -(void)setCameraInstance:(id)_cameraInstance{
@@ -935,6 +953,51 @@
     }
 }
 
+-(void) drawBuffer:(NSRect)rect{
+    if(bufferSize){
+        int width = rect.size.width;
+        float wScale = (float)width/bufferSize;
+        
+        glPushMatrix();{
+            glTranslated(rect.origin.x, rect.origin.y, 0);
+            
+            //BG
+            ofSetColor(0, 0, 0);
+            ofRect(0, 0, rect.size.width, rect.size.height);
+            
+            //Main line
+            if(bufferRecording)
+                ofSetColor(255, 100, 100);
+            else
+                ofSetColor(100, 100, 100);
+            ofLine(0, 10, rect.size.width, 10);
+            
+            //Ring pos
+            ofSetColor(255, 50, 50);
+            ofSetLineWidth(4);
+            ofLine(bufferRingIndex*wScale, 0, bufferRingIndex*wScale, 20);
+            
+            //Playback line
+            ofSetLineWidth(1);
+            ofSetColor(200, 200, 200);
+            int playbackIndex = bufferRingIndex + bufferPlaybackRelativeIndex;
+            while(playbackIndex < 0)
+                playbackIndex += bufferSize;
+            ofLine(playbackIndex*wScale, 0, playbackIndex*wScale, 20);
+            
+            //Preview
+            float previewHeight = rect.size.height-30;
+            float previewWidth = previewHeight * 4.0/3.0;
+            int numPreviews = ceil(width / previewWidth);
+            int previewJump = (bufferSize / numPreviews);
+            for(int i=0;i<numPreviews;i++){
+                grayImageBuffer[i*previewJump]->draw(previewWidth*i, 30,previewWidth, previewHeight );
+            }
+            
+        } glPopMatrix();
+    }
+}
+
 -(BOOL) isKinect{
 #ifdef USE_KINECT_2D_TRACKER
     if([cameraInstance isKindOfClass:[KinectInstance class]])
@@ -943,6 +1006,31 @@
     return NO;
 }
 
+
+-(void)enableBufferWithSize:(int)size{
+    if(bufferSize < size){
+        if(grayImageBuffer){
+            delete grayImageBuffer;
+        }
+        grayImageBuffer = (ofxCvGrayscaleImage**)malloc(sizeof(ofxCvGrayscaleImage)*size);
+        for(int i=0;i<size;i++){
+            grayImageBuffer[i] = new ofxCvGrayscaleImage;
+            grayImageBuffer[i]->allocate(cw, ch);
+        }
+    }
+    bufferSize = size;
+}
+
+-(void)setBufferPlaybackRate:(float)rate{
+    bufferPlaybackSpeed = rate;
+}
+
+-(void)setBufferPlaybackPosition:(float)pos{
+    bufferPlaybackRelativeIndex = pos * bufferSize - bufferSize;
+}
+-(void)setBufferRecording:(BOOL)_record{
+    bufferRecording = _record;
+}
 
 -(void) saveBackground{
 	//	ofLog(OF_LOG_NOTICE, "<<<<<<<< gemmer billede " + ofToString(cameraId));

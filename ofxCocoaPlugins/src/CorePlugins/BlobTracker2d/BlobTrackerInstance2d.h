@@ -68,6 +68,13 @@ enum SubtractionModes {
     //Calibrator for masking
 	CameraCalibrationObject * calibrator;
     
+    //History buffer for scrubble (has to be enabled)
+    ofxCvGrayscaleImage ** grayImageBuffer;
+    int bufferSize;
+    int bufferRingIndex;
+    int bufferPlaybackRelativeIndex;
+    float bufferPlaybackSpeed;
+    BOOL bufferRecording;
     
     BOOL live;
     
@@ -122,6 +129,7 @@ enum SubtractionModes {
 -(void) drawDifference:(NSRect)rect;
 -(void) drawBlobs:(NSRect)rect warped:(BOOL)warp;
 -(void) drawSurfaceMask:(NSRect)rect;
+-(void) drawBuffer:(NSRect)rect;
 
 -(void) getSurfaceMaskCorners:(ofPoint*)point clamped:(BOOL)clamp;
 -(PersistentBlob2d*) getPBlob:(int)num;
@@ -134,5 +142,11 @@ enum SubtractionModes {
 -(void) saveBackground;
 -(void) loadBackground;
 -(void) updateMovieList;
+
+//Buffer
+-(void) enableBufferWithSize:(int)size;
+-(void) setBufferPlaybackRate:(float)rate;
+-(void) setBufferPlaybackPosition:(float)pos;
+-(void) setBufferRecording:(BOOL)record;
 
 @end
