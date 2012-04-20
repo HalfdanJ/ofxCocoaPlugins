@@ -279,6 +279,40 @@
     return v;
 }
 
+-(TrackerSource) trackerSource:(int)n{
+    // OSC Control blobs
+    {
+        vector<ofVec2f> blobs = [GetPlugin(OSCControl) getTrackerCoordinates];
+        if(blobs.size() > n){
+            return OSCControlSource;
+        }
+        n -= blobs.size();
+    }
+    
+    // Control mouse 
+    {
+        if(controlMouse.x != -1){
+            if(n == 0){
+                return MouseSource;
+            }
+            n --;            
+        }
+        
+    }
+    
+    // Camera tracker
+    {
+        int num = [[GetPlugin(BlobTracker2d) getInstance:0] numPBlobs];
+        if(num > n){
+            return CameraSource;
+        }
+        n -= num;
+    }
+    
+    return UnknownSource;
+
+}
+
 -(ofVec2f) trackerCentroid:(int)n{
     // OSC Control blobs
     {
@@ -401,14 +435,16 @@
     vector< vector<ofVec2f> > trackerBlobVector = [self trackerBlobVector];
     
     for(int i=0;i<trackerBlobVector.size();i++){
-        int nPoints = trackerBlobVector[i].size();
-        CvPoint _cp[nPoints];
-        for(int u=0;u<nPoints;u++){
-            _cp[u] = cvPoint(trackerBlobVector[i][u].x*res.width/[[[calib surface] aspect] floatValue], trackerBlobVector[i][u].y*res.height);
+        if([self trackerSource:i] != CameraSource){
+            int nPoints = trackerBlobVector[i].size();
+            CvPoint _cp[nPoints];
+            for(int u=0;u<nPoints;u++){
+                _cp[u] = cvPoint(trackerBlobVector[i][u].x*res.width/[[[calib surface] aspect] floatValue], trackerBlobVector[i][u].y*res.height);
+            }
+            
+            CvPoint* cp = _cp;    
+            cvFillPoly(ret.getCvImage(), &cp, &nPoints, 1, cvScalar(255));
         }
-        
-        CvPoint* cp = _cp;    
-        cvFillPoly(ret.getCvImage(), &cp, &nPoints, 1, cvScalar(255));
     }
     
     ret.flagImageChanged();

@@ -2,9 +2,19 @@
 #import <ofxCocoaPlugins/Plugin.h>
 #import "ofxCvMain.h"
 
+enum TrackerSource {
+    UnknownSource,
+    OSCControlSource,
+    MouseSource,
+    CameraSource
+};
+typedef enum TrackerSource TrackerSource;
+
 @interface Tracker : ofPlugin {
     ofVec2f controlMouse;
 }
+
+-(TrackerSource) trackerSource:(int)n;
 
 -(int) numberTrackers;
 -(ofVec2f) trackerCentroid:(int)n;

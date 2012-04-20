@@ -538,6 +538,7 @@
             }
         }
         memcpy(opticalFlowFieldCalibrated, threadOpticalFlowFieldCalibrated,opticalFlowH * opticalFlowW * sizeof(ofVec2f) );
+       // _opticalFlowHasData = YES;
     }
     pthread_mutex_unlock(&mutex);
     *threadGrayImageLastFrame = *threadGrayImage;  
@@ -697,6 +698,12 @@
     }
     if(update && opticalFlowEnabled){
         [self performOpticalFlowComputation];
+    } else if(!opticalFlowEnabled && opticalFlowFieldCalibrated){
+        pthread_mutex_lock(&mutex);
+        for(int i=0;i<opticalFlowH * opticalFlowW;i++){
+            opticalFlowFieldCalibrated[i] = ofVec2f();
+        }
+        pthread_mutex_unlock(&mutex);
     }
     
 

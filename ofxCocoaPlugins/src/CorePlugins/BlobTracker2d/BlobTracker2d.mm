@@ -41,7 +41,8 @@
         [[self addPropF:[NSString stringWithFormat:@"maskBottom%i", i]]  setContext:newInstance];
         
         [[self addPropF:[NSString stringWithFormat:@"contourFinderEnabled%i", i]]  setContext:newInstance];
-                [[self addPropF:[NSString stringWithFormat:@"opticalFlowEnabled%i", i]]  setContext:newInstance];
+        [[self addPropF:[NSString stringWithFormat:@"opticalFlowEnabled%i", i]]  setContext:newInstance];
+        [[self addPropF:[NSString stringWithFormat:@"bgSubtractionEnabled%i", i]]  setContext:newInstance];
         [[self addPropF:[NSString stringWithFormat:@"opticalFlowSize%i", i]]  setContext:newInstance];
         
         [Prop( ([NSString stringWithFormat:@"threshold%i", i]) ) setMaxValue:100];
@@ -74,7 +75,10 @@
         }
         else if([[prop name] rangeOfString:@"threshold"].length > 0){
             [[[prop context] properties] setValue:[prop value] forKey:@"threshold"];
-        }       
+        }
+        else if([[prop name] rangeOfString:@"bgSubtractionEnabled"].length > 0){
+            [[[prop context] properties] setValue:[prop value] forKey:@"bgSubtractionEnabled"];
+        }        
         else if([[prop name] rangeOfString:@"contourFinderEnabled"].length > 0){
             [[[prop context] properties] setValue:[prop value] forKey:@"contourFinderEnabled"];
         }

@@ -33,7 +33,7 @@
     {    
         ofxOscMessage m;
         m.setAddress( "/control/pushDestination" );    
-        m.addStringArg( "recoil.local:9090" );
+        m.addStringArg( "HalfdanJ-iPad.local:9090" );
         sender->sendMessage( m );
     }
 }

@@ -57,6 +57,7 @@ enum SubtractionModes {
     ofVec2f * opticalFlowFieldCalibrated;
     ofVec2f * threadOpticalFlowFieldCalibrated;
     int _opticalFlowSize;
+    //BOOL _opticalFlowHasData;
     
     //Forces loading from disk
     BOOL loadBackgroundNow;
