@@ -46,6 +46,9 @@
 	
 	glPushMatrix();
 	
+    if(viewNumber >= [outputViews count])
+        return;
+    
 	[[outputViews objectAtIndex:viewNumber] applySurface:surfaceName projectorNumber:projectorNumber];
 	
 	appliedSurface = [self getSurface:surfaceName viewNumber:viewNumber projectorNumber:projectorNumber];
@@ -167,6 +170,7 @@
     if(PropB(@"testImage")){
         int viewNo = ViewNumber;
         ofFill();
+        
         NSArray * projectors = [[[outputViewController arrangedObjects] objectAtIndex:viewNo] projectors];
 
         int count = [projectors count];
@@ -294,14 +298,15 @@
 					 */
 					int surfi=0;
 					for(KeystoneSurface * surface in [newProj surfaces]){
-						NSMutableDictionary * infoDict  = [surfArray objectAtIndex:surfi];
-						[surface setAspect:[infoDict objectForKey:@"aspect"]];
-                        [surface setHandleOffsetWithoutRecalculation:[[infoDict objectForKey:@"handleOffset"] floatValue]];
-						[surface setCornerPositions:[infoDict objectForKey:@"cornerPositions"]];
-						[surface setVisible:[[infoDict objectForKey:@"visible"] boolValue]];
-						[surface setSoftedgePart:[[infoDict objectForKey:@"softedgePart"] intValue]];
-						[surface setSoftedgeTotalParts:[[infoDict objectForKey:@"softedgeTotalParts"] intValue]];
-						
+                        if([surfArray count] > surfi){
+                            NSMutableDictionary * infoDict  = [surfArray objectAtIndex:surfi];
+                            [surface setAspect:[infoDict objectForKey:@"aspect"]];
+                            [surface setHandleOffsetWithoutRecalculation:[[infoDict objectForKey:@"handleOffset"] floatValue]];
+                            [surface setCornerPositions:[infoDict objectForKey:@"cornerPositions"]];
+                            [surface setVisible:[[infoDict objectForKey:@"visible"] boolValue]];
+                            [surface setSoftedgePart:[[infoDict objectForKey:@"softedgePart"] intValue]];
+                            [surface setSoftedgeTotalParts:[[infoDict objectForKey:@"softedgeTotalParts"] intValue]];
+						}
 						/*if(surfi == 0 && proji == 0 && viewi == 0){
 						 NSAssert(surface != [[surfaceArrayController selectedObjects] lastObject], @"surface not selected");
 						 NSLog(@"surface selected");	
