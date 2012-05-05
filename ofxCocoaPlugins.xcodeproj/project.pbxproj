@@ -90,8 +90,6 @@
 		3D9951B814B5EDEC007F1E96 /* BlobTrackerInstance2d.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D9951AE14B5EDEC007F1E96 /* BlobTrackerInstance2d.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3D9951B914B5EDEC007F1E96 /* BlobTrackerInstance2d.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3D9951AF14B5EDEC007F1E96 /* BlobTrackerInstance2d.mm */; };
 		3D9951BA14B5EDEC007F1E96 /* BlobTrackerInstance2d.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D9951B014B5EDEC007F1E96 /* BlobTrackerInstance2d.xib */; };
-		3D9951BB14B5EDEC007F1E96 /* ofxQtVideoSaver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9951B114B5EDEC007F1E96 /* ofxQtVideoSaver.cpp */; };
-		3D9951BC14B5EDEC007F1E96 /* ofxQtVideoSaver.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D9951B214B5EDEC007F1E96 /* ofxQtVideoSaver.h */; };
 		3D9951BE14B60648007F1E96 /* ofxCvColorImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DD0A348A1452F2CD00CC89E5 /* ofxCvColorImage.cpp */; };
 		3D9951BF14B6064B007F1E96 /* ofxCvContourFinder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DD0A348D1452F2CD00CC89E5 /* ofxCvContourFinder.cpp */; };
 		3D9951C014B60651007F1E96 /* ofxCvFloatImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DD0A348F1452F2CD00CC89E5 /* ofxCvFloatImage.cpp */; };
@@ -169,6 +167,12 @@
 		3DCAC6A414C47B680022F715 /* ofCvCameraCalibration.h in Headers */ = {isa = PBXBuildFile; fileRef = 3DCAC6A314C47B680022F715 /* ofCvCameraCalibration.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7FB6BAA41499F75000FE24C9 /* KeystonePerspective.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FB6BAA21499F75000FE24C9 /* KeystonePerspective.h */; };
 		7FB6BAA51499F75000FE24C9 /* KeystonePerspective.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7FB6BAA31499F75000FE24C9 /* KeystonePerspective.mm */; };
+		844462311555504900F66DCC /* QTKitMovieRenderer.h in Headers */ = {isa = PBXBuildFile; fileRef = 844462301555504900F66DCC /* QTKitMovieRenderer.h */; };
+		844462341555505600F66DCC /* ofQTKitVideoGrabber.h in Headers */ = {isa = PBXBuildFile; fileRef = 844462321555505600F66DCC /* ofQTKitVideoGrabber.h */; };
+		844462351555505600F66DCC /* ofQTKitVideoPlayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 844462331555505600F66DCC /* ofQTKitVideoPlayer.h */; };
+		844462361555506000F66DCC /* QTKitMovieRenderer.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 844462301555504900F66DCC /* QTKitMovieRenderer.h */; };
+		844462371555506400F66DCC /* ofQTKitVideoGrabber.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 844462321555505600F66DCC /* ofQTKitVideoGrabber.h */; };
+		844462381555506A00F66DCC /* ofQTKitVideoPlayer.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 844462331555505600F66DCC /* ofQTKitVideoPlayer.h */; };
 		847E9E7715248C6D00710E6E /* OSCControl.h in Headers */ = {isa = PBXBuildFile; fileRef = 847E9E7115248C6D00710E6E /* OSCControl.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		847E9E7815248C6D00710E6E /* OSCControl.mm in Sources */ = {isa = PBXBuildFile; fileRef = 847E9E7215248C6D00710E6E /* OSCControl.mm */; };
 		847E9E7915248C6D00710E6E /* Tracker.h in Headers */ = {isa = PBXBuildFile; fileRef = 847E9E7415248C6D00710E6E /* Tracker.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -442,8 +446,6 @@
 		DDE4C9931451E02000EECFF4 /* SaveManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = DDE4C9891451E02000EECFF4 /* SaveManager.mm */; };
 		DDE4C9A21451E04500EECFF4 /* CustomGraphics.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C9951451E04500EECFF4 /* CustomGraphics.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DDE4C9A31451E04500EECFF4 /* Filter.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C9961451E04500EECFF4 /* Filter.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DDE4C9A41451E04500EECFF4 /* QTKitMovieRenderer.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C9981451E04500EECFF4 /* QTKitMovieRenderer.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DDE4C9A51451E04500EECFF4 /* QTKitMovieRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE4C9991451E04500EECFF4 /* QTKitMovieRenderer.m */; };
 		DDE4C9AC1451E04500EECFF4 /* TextureGrid.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C9A11451E04500EECFF4 /* TextureGrid.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DDE4C9AF1451E05100EECFF4 /* PluginOpenGLControlView.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C9AD1451E05100EECFF4 /* PluginOpenGLControlView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DDE4C9B01451E05100EECFF4 /* PluginOpenGLControlView.mm in Sources */ = {isa = PBXBuildFile; fileRef = DDE4C9AE1451E05100EECFF4 /* PluginOpenGLControlView.mm */; };
@@ -500,6 +502,8 @@
 			dstPath = openframeworksHeaders;
 			dstSubfolderSpec = 16;
 			files = (
+				844462371555506400F66DCC /* ofQTKitVideoGrabber.h in CopyFiles */,
+				844462381555506A00F66DCC /* ofQTKitVideoPlayer.h in CopyFiles */,
 				3D3B79371492250200743828 /* ofPath.h in CopyFiles */,
 				3D3B79381492250200743828 /* ofPolyline.h in CopyFiles */,
 				3D3B79391492250200743828 /* ofRendererCollection.h in CopyFiles */,
@@ -566,6 +570,7 @@
 				3D3B7923149224C900743828 /* of3dUtils.h in CopyFiles */,
 				3D3B7924149224CA00743828 /* ofCamera.h in CopyFiles */,
 				3D3B7922149224C700743828 /* ofMain.h in CopyFiles */,
+				844462361555506000F66DCC /* QTKitMovieRenderer.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -600,8 +605,6 @@
 		3D9951AE14B5EDEC007F1E96 /* BlobTrackerInstance2d.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlobTrackerInstance2d.h; sourceTree = "<group>"; };
 		3D9951AF14B5EDEC007F1E96 /* BlobTrackerInstance2d.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = BlobTrackerInstance2d.mm; sourceTree = "<group>"; };
 		3D9951B014B5EDEC007F1E96 /* BlobTrackerInstance2d.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BlobTrackerInstance2d.xib; sourceTree = "<group>"; };
-		3D9951B114B5EDEC007F1E96 /* ofxQtVideoSaver.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxQtVideoSaver.cpp; sourceTree = "<group>"; };
-		3D9951B214B5EDEC007F1E96 /* ofxQtVideoSaver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxQtVideoSaver.h; sourceTree = "<group>"; };
 		3D9A5E8214DAF3530002B855 /* OpenDMX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenDMX.h; sourceTree = "<group>"; };
 		3D9A5E8314DAF3530002B855 /* OpenDMX.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = OpenDMX.mm; sourceTree = "<group>"; };
 		3D9A5E8414DAF3530002B855 /* OpenDMX.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OpenDMX.xib; sourceTree = "<group>"; };
@@ -672,6 +675,9 @@
 		3DCAC6A314C47B680022F715 /* ofCvCameraCalibration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = ofCvCameraCalibration.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		7FB6BAA21499F75000FE24C9 /* KeystonePerspective.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeystonePerspective.h; sourceTree = "<group>"; };
 		7FB6BAA31499F75000FE24C9 /* KeystonePerspective.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = KeystonePerspective.mm; sourceTree = "<group>"; };
+		844462301555504900F66DCC /* QTKitMovieRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QTKitMovieRenderer.h; sourceTree = "<group>"; };
+		844462321555505600F66DCC /* ofQTKitVideoGrabber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofQTKitVideoGrabber.h; sourceTree = "<group>"; };
+		844462331555505600F66DCC /* ofQTKitVideoPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofQTKitVideoPlayer.h; sourceTree = "<group>"; };
 		847E9E7115248C6D00710E6E /* OSCControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSCControl.h; sourceTree = "<group>"; };
 		847E9E7215248C6D00710E6E /* OSCControl.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = OSCControl.mm; sourceTree = "<group>"; };
 		847E9E7415248C6D00710E6E /* Tracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tracker.h; sourceTree = "<group>"; };
@@ -956,8 +962,6 @@
 		DDE4C9891451E02000EECFF4 /* SaveManager.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SaveManager.mm; sourceTree = "<group>"; };
 		DDE4C9951451E04500EECFF4 /* CustomGraphics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = CustomGraphics.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		DDE4C9961451E04500EECFF4 /* Filter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Filter.h; sourceTree = "<group>"; };
-		DDE4C9981451E04500EECFF4 /* QTKitMovieRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QTKitMovieRenderer.h; sourceTree = "<group>"; };
-		DDE4C9991451E04500EECFF4 /* QTKitMovieRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QTKitMovieRenderer.m; sourceTree = "<group>"; };
 		DDE4C9A11451E04500EECFF4 /* TextureGrid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextureGrid.h; sourceTree = "<group>"; };
 		DDE4C9AD1451E05100EECFF4 /* PluginOpenGLControlView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PluginOpenGLControlView.h; sourceTree = "<group>"; };
 		DDE4C9AE1451E05100EECFF4 /* PluginOpenGLControlView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PluginOpenGLControlView.mm; sourceTree = "<group>"; };
@@ -1062,8 +1066,6 @@
 				3D9951B014B5EDEC007F1E96 /* BlobTrackerInstance2d.xib */,
 				3D9951A914B5EDEC007F1E96 /* BlobClasses2d.h */,
 				3D9951AA14B5EDEC007F1E96 /* BlobClasses2d.mm */,
-				3D9951B114B5EDEC007F1E96 /* ofxQtVideoSaver.cpp */,
-				3D9951B214B5EDEC007F1E96 /* ofxQtVideoSaver.h */,
 			);
 			path = BlobTracker2d;
 			sourceTree = "<group>";
@@ -1772,6 +1774,9 @@
 				DD0A360914543B7800CC89E5 /* ofQuickTimeGrabber.h */,
 				DD0A360B14543B7800CC89E5 /* ofQuickTimePlayer.h */,
 				DD0A360D14543B7800CC89E5 /* ofQtUtils.h */,
+				844462301555504900F66DCC /* QTKitMovieRenderer.h */,
+				844462321555505600F66DCC /* ofQTKitVideoGrabber.h */,
+				844462331555505600F66DCC /* ofQTKitVideoPlayer.h */,
 			);
 			path = video;
 			sourceTree = "<group>";
@@ -2052,20 +2057,10 @@
 			children = (
 				DDE4C9951451E04500EECFF4 /* CustomGraphics.h */,
 				DDE4C9961451E04500EECFF4 /* Filter.h */,
-				DDE4C9971451E04500EECFF4 /* ofxQTKitMoviePlayer */,
 				DDE4C9A11451E04500EECFF4 /* TextureGrid.h */,
 			);
 			name = Helpers;
 			path = src/Helpers;
-			sourceTree = "<group>";
-		};
-		DDE4C9971451E04500EECFF4 /* ofxQTKitMoviePlayer */ = {
-			isa = PBXGroup;
-			children = (
-				DDE4C9981451E04500EECFF4 /* QTKitMovieRenderer.h */,
-				DDE4C9991451E04500EECFF4 /* QTKitMovieRenderer.m */,
-			);
-			path = ofxQTKitMoviePlayer;
 			sourceTree = "<group>";
 		};
 		DDE4C9B71451E23700EECFF4 /* CorePlugins */ = {
@@ -2247,7 +2242,6 @@
 				DDE4C9901451E02000EECFF4 /* OutputViewManager.h in Headers */,
 				DDE4C9921451E02000EECFF4 /* SaveManager.h in Headers */,
 				DDE4C9A31451E04500EECFF4 /* Filter.h in Headers */,
-				DDE4C9A41451E04500EECFF4 /* QTKitMovieRenderer.h in Headers */,
 				DDE4C9AC1451E04500EECFF4 /* TextureGrid.h in Headers */,
 				DDE4C9AF1451E05100EECFF4 /* PluginOpenGLControlView.h in Headers */,
 				DD0A33A11452F29C00CC89E5 /* coordWarp.h in Headers */,
@@ -2462,12 +2456,14 @@
 				3DAFD3D114B46A61004D0D50 /* PvRegIo.h in Headers */,
 				3DAFD3D514B46FC5004D0D50 /* CamerasController.h in Headers */,
 				3DAFD3DA14B470F9004D0D50 /* AVTCamerasController.h in Headers */,
-				3D9951BC14B5EDEC007F1E96 /* ofxQtVideoSaver.h in Headers */,
 				3D9D181414BD95A600DD2093 /* Kinect.h in Headers */,
 				3D9D181714BD95A600DD2093 /* KinectInstance.h in Headers */,
 				84BE4C301526029400FE8731 /* ofxCvOpticalFlowLK.h in Headers */,
 				DDAB78DC1529C7FB001FB5DB /* NormalCamerasController.h in Headers */,
 				DDAB78E01529C80C001FB5DB /* NormalCameraInstance.h in Headers */,
+				844462311555504900F66DCC /* QTKitMovieRenderer.h in Headers */,
+				844462341555505600F66DCC /* ofQTKitVideoGrabber.h in Headers */,
+				844462351555505600F66DCC /* ofQTKitVideoPlayer.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2621,7 +2617,6 @@
 				DDE4C98F1451E02000EECFF4 /* OutputPanelController.mm in Sources */,
 				DDE4C9911451E02000EECFF4 /* OutputViewManager.mm in Sources */,
 				DDE4C9931451E02000EECFF4 /* SaveManager.mm in Sources */,
-				DDE4C9A51451E04500EECFF4 /* QTKitMovieRenderer.m in Sources */,
 				DDE4C9B01451E05100EECFF4 /* PluginOpenGLControlView.mm in Sources */,
 				DDE4CA861451E23800EECFF4 /* Midi.mm in Sources */,
 				DDE4CA8A1451E23800EECFF4 /* PYMIDIEndpoint.m in Sources */,
@@ -2662,7 +2657,6 @@
 				3D9951B414B5EDEC007F1E96 /* BlobClasses2d.mm in Sources */,
 				3D9951B614B5EDEC007F1E96 /* BlobTracker2d.mm in Sources */,
 				3D9951B914B5EDEC007F1E96 /* BlobTrackerInstance2d.mm in Sources */,
-				3D9951BB14B5EDEC007F1E96 /* ofxQtVideoSaver.cpp in Sources */,
 				3D24851914BC671900AC6F95 /* CameraCalibration.mm in Sources */,
 				3D24851E14BC6DBA00AC6F95 /* CameraCalibrationObject.mm in Sources */,
 				3D9D181514BD95A600DD2093 /* Kinect.mm in Sources */,
@@ -2875,7 +2869,7 @@
 					/opt/local/lib,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx10.6;
+				SDKROOT = macosx10.7;
 				WRAPPER_EXTENSION = framework;
 			};
 			name = Debug;
@@ -2982,7 +2976,7 @@
 					/opt/local/lib,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx10.6;
+				SDKROOT = macosx10.7;
 				WRAPPER_EXTENSION = framework;
 			};
 			name = Release;

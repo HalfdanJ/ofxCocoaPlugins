@@ -1,6 +1,6 @@
 [submodule "ofxCocoaPlugins/libs/openframeworks"]
 	path = ofxCocoaPlugins/libs/openframeworks
-	url = https://github.com/openframeworks/openFrameworks.git
+	url = https://github.com/HalfdanJ/openFrameworks.git
 [submodule "ofxCocoaPlugins/libs/Addons/ofxCvOpticalFlowLK"]
 	path = ofxCocoaPlugins/libs/Addons/ofxCvOpticalFlowLK
 	url = https://github.com/Flightphase/ofxCvOpticalFlowLK.git

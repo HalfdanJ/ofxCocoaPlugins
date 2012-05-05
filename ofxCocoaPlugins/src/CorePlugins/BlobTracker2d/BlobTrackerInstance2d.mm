@@ -9,7 +9,6 @@
 #import "BlobTrackerInstance2d.h"
 
 #import "QTKitMovieRenderer.h"
-#import "ofxQtVideoSaver.h"
 #import "Keystoner.h"
 #import "KeystoneSurface.h"
 #import "ofxOpenCv.h"
@@ -146,8 +145,8 @@
 	millisSinceLastMovieEvent = 0;
     
     
-    saver = new ofxQtVideoSaver();
-	saver->setCodecQualityLevel(OF_QT_SAVER_CODEC_QUALITY_NORMAL);
+//    saver = new ofxQtVideoSaver();
+//	saver->setCodecQualityLevel(OF_QT_SAVER_CODEC_QUALITY_NORMAL);
 	recording = NO;
     
     pixels = nil;
@@ -649,15 +648,15 @@
                 rgbTmpPixels[i+1] = grayDiff->getPixels()[i/3];
                 rgbTmpPixels[i+2] = grayDiff->getPixels()[i/3];
             }
-            saver->addFrame(rgbTmpPixels, 1.0f / ofGetFrameRate()); 	
+/*            saver->addFrame(rgbTmpPixels, 1.0f / ofGetFrameRate()); 	
             if(!recording){
                 NSString * file = [[NSString stringWithFormat:@"~/Movies/Recordings%i/tracker_recording_%i.mov",trackerNumber,numFiles] stringByExpandingTildeInPath];
                 saver->setup(640,480,[file cString]);	
-            }
+            }*/
             recording = YES;
         } else if(recording){
             recording = NO;
-            saver->finishMovie();	
+//            saver->finishMovie();	
             
             NSString * path = [[NSString stringWithFormat:@"~/Movies/Recordings%i/",trackerNumber] stringByExpandingTildeInPath];
             NSString * metaName = [NSString stringWithFormat:@"tracker_recording_%i",numFiles];
@@ -676,11 +675,11 @@
         const CVTimeStamp * time;
         [[drawingInformation objectForKey:@"outputTime"] getValue:&time];	
         
-        BOOL isFrameNew = [videoPlayer update:time];
+        BOOL isFrameNew = [videoPlayer update];
         //          BOOL isFrameNew = NO;
         //		if(videoPlayer->videoPlayer.isFrameNew()){			
         if(isFrameNew){			
-            [videoPlayer pixels:pixels format:GL_LUMINANCE];
+            [videoPlayer pixels:pixels];
             grayDiff->setFromPixels(pixels, 640, 480);
 		} else {
             update = NO;

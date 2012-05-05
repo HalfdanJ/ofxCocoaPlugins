@@ -7,7 +7,7 @@
 #import "ofxOpenCv.h"
 #import "ofxCvOpticalFlowLK.h"
 
-class ofxQtVideoSaver;
+//class ofxQtVideoSaver;
 @class QTKitMovieRenderer;
 
 enum SubtractionModes {
@@ -79,7 +79,7 @@ enum SubtractionModes {
     
     BOOL live;
     
-    ofxQtVideoSaver		*saver;
+  //  ofxQtVideoSaver		*saver;
 	BOOL recording;
     QTKitMovieRenderer * videoPlayer;
     NSMutableArray * movies;
