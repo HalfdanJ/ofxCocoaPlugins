@@ -173,6 +173,8 @@
 		844462361555506000F66DCC /* QTKitMovieRenderer.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 844462301555504900F66DCC /* QTKitMovieRenderer.h */; };
 		844462371555506400F66DCC /* ofQTKitVideoGrabber.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 844462321555505600F66DCC /* ofQTKitVideoGrabber.h */; };
 		844462381555506A00F66DCC /* ofQTKitVideoPlayer.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 844462331555505600F66DCC /* ofQTKitVideoPlayer.h */; };
+		8444623B1555664C00F66DCC /* ColorProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = 844462391555664C00F66DCC /* ColorProperty.h */; };
+		8444623C1555664C00F66DCC /* ColorProperty.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8444623A1555664C00F66DCC /* ColorProperty.mm */; };
 		847E9E7715248C6D00710E6E /* OSCControl.h in Headers */ = {isa = PBXBuildFile; fileRef = 847E9E7115248C6D00710E6E /* OSCControl.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		847E9E7815248C6D00710E6E /* OSCControl.mm in Sources */ = {isa = PBXBuildFile; fileRef = 847E9E7215248C6D00710E6E /* OSCControl.mm */; };
 		847E9E7915248C6D00710E6E /* Tracker.h in Headers */ = {isa = PBXBuildFile; fileRef = 847E9E7415248C6D00710E6E /* Tracker.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -678,6 +680,8 @@
 		844462301555504900F66DCC /* QTKitMovieRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QTKitMovieRenderer.h; sourceTree = "<group>"; };
 		844462321555505600F66DCC /* ofQTKitVideoGrabber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofQTKitVideoGrabber.h; sourceTree = "<group>"; };
 		844462331555505600F66DCC /* ofQTKitVideoPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofQTKitVideoPlayer.h; sourceTree = "<group>"; };
+		844462391555664C00F66DCC /* ColorProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorProperty.h; sourceTree = "<group>"; };
+		8444623A1555664C00F66DCC /* ColorProperty.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ColorProperty.mm; sourceTree = "<group>"; };
 		847E9E7115248C6D00710E6E /* OSCControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSCControl.h; sourceTree = "<group>"; };
 		847E9E7215248C6D00710E6E /* OSCControl.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = OSCControl.mm; sourceTree = "<group>"; };
 		847E9E7415248C6D00710E6E /* Tracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tracker.h; sourceTree = "<group>"; };
@@ -1952,6 +1956,8 @@
 				DDE4C91B1451DBF700EECFF4 /* BoolProperty.mm */,
 				DDE4C91C1451DBF700EECFF4 /* NumberProperty.h */,
 				DDE4C91D1451DBF700EECFF4 /* NumberProperty.mm */,
+				844462391555664C00F66DCC /* ColorProperty.h */,
+				8444623A1555664C00F66DCC /* ColorProperty.mm */,
 			);
 			path = Properties;
 			sourceTree = "<group>";
@@ -2464,6 +2470,7 @@
 				844462311555504900F66DCC /* QTKitMovieRenderer.h in Headers */,
 				844462341555505600F66DCC /* ofQTKitVideoGrabber.h in Headers */,
 				844462351555505600F66DCC /* ofQTKitVideoPlayer.h in Headers */,
+				8444623B1555664C00F66DCC /* ColorProperty.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2668,6 +2675,7 @@
 				84BE4C2F1526029400FE8731 /* ofxCvOpticalFlowLK.cpp in Sources */,
 				DDAB78DD1529C7FB001FB5DB /* NormalCamerasController.mm in Sources */,
 				DDAB78E11529C80C001FB5DB /* NormalCameraInstance.mm in Sources */,
+				8444623C1555664C00F66DCC /* ColorProperty.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

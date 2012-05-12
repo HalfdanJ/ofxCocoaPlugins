@@ -13,10 +13,13 @@ PluginManagerController * globalController;
 extern ofAppBaseWindow * window;
 
 @implementation PluginManagerController 
+@synthesize PluginPropertiesDictionaryController;
 @synthesize preferencesButton;
+@synthesize searchView;
 
-@synthesize saveManager, statsAreaView, sharedOpenglContext, openglLock, fps, plugins, viewManager, qlabController, lastViewDrawn;
+@synthesize saveManager, statsAreaView, sharedOpenglContext, openglLock, fps, plugins, viewManager, qlabController, lastViewDrawn, propertiesFilterPredicate;
 @synthesize quitWithoutAsking;
+@synthesize filterString;
 
 #pragma mark Startup
 
@@ -473,6 +476,9 @@ extern ofAppBaseWindow * window;
 		[self changePlugin:self];
 	}
 }
+- (IBAction)searchAction:(id)sender {
+    [self.searchView becomeFirstResponder];
+}
 
 
 //
@@ -480,10 +486,37 @@ extern ofAppBaseWindow * window;
 //
 
 
+-(void)setFilterString:(NSString *)_filterString{
+    filterString = _filterString;
+    
+    if([filterString length] == 0){
+        self.propertiesFilterPredicate = nil;
+
+        if(propertiesShown){
+            [self pressToggleParametersButton:nil];
+        }
+    } else {
+        self.propertiesFilterPredicate = [NSPredicate predicateWithFormat:@"key contains[cd] %@",filterString];
+        
+        if(!propertiesShown){
+            [self pressToggleParametersButton:nil];
+        } else {
+            [[pluginSplitView animator] setPosition:20+[[[self PluginPropertiesDictionaryController] arrangedObjects] count]*30+15 ofDividerAtIndex:0]; 
+
+        }
+        
+    }
+    
+    
+    
+}
+
 -(IBAction)changePlugin:(id)sender{
     if([[self preferencesButton] state]){
         [[self preferencesButton] setState:NO];
     }
+    
+    self.filterString = @"";
     
 	[openglLock lock];
 	if([[self selectedPlugin] view] != nil){		
@@ -509,7 +542,7 @@ extern ofAppBaseWindow * window;
 		//BWSplitView 
 	} else {
         if(propertiesShown){
-			[[pluginSplitView animator] setPosition:20+[[[self selectedPlugin] properties] count]*20 ofDividerAtIndex:0];
+			[[pluginSplitView animator] setPosition:20+[[self.PluginPropertiesDictionaryController arrangedObjects] count]*30+15 ofDividerAtIndex:0];
         } else {
             [[pluginSplitView animator] setPosition:0 ofDividerAtIndex:0];
         }
@@ -521,7 +554,9 @@ extern ofAppBaseWindow * window;
 
 - (IBAction)togglePreferences:(id)sender {
     [pluginsTreeController setSelectionIndexPaths:[NSArray array]];
-    [sender setState:1];
+    
+    if([sender respondsToSelector:@selector(setState:)])
+        [sender setState:1];
     
     [[generalPreferences view] setFrame:[pluginControllerView bounds]];
     [pluginControllerView replaceSubview:[[pluginControllerView subviews] objectAtIndex:0] with:[generalPreferences view]];    
@@ -610,7 +645,7 @@ extern ofAppBaseWindow * window;
 
     } else {
         propertiesShown = YES;
-        [[pluginSplitView animator] setPosition:20+[[[self selectedPlugin] properties] count]*20 ofDividerAtIndex:0]; 
+        [[pluginSplitView animator] setPosition:20+[[[self PluginPropertiesDictionaryController] arrangedObjects] count]*30+15 ofDividerAtIndex:0]; 
     }  
 }
 /*
@@ -692,15 +727,36 @@ extern ofAppBaseWindow * window;
 //Tableview delegates
 
 
--(NSCell *) tableView:(NSTableView *)tableView dataCellForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row{
-	if([[tableColumn identifier] isEqualToString:@"control"]){
-		PluginProperty * p = (PluginProperty *)[[[pluginPropertiesController arrangedObjects] objectAtIndex:row] value];
-		NSCell * cell = [p controlCell];
-		return cell;
-		
-	} else {
-		return [tableColumn dataCellForRow:row];
-	}
+- (NSView *)tableView:(NSTableView *)tableView
+   viewForTableColumn:(NSTableColumn *)tableColumn
+                  row:(NSInteger)row {
+
+    NSTextField *result;
+    
+    PluginProperty * property = (PluginProperty*)[[[self.PluginPropertiesDictionaryController arrangedObjects] objectAtIndex:row] value];
+    
+    if([[tableColumn identifier] isEqualToString:@"Name"]){
+        result = [tableView makeViewWithIdentifier:@"NameView" owner:self];
+    }
+    if([[tableColumn identifier] isEqualToString:@"Value"]){
+        if([property isKindOfClass:[NumberProperty class]]){
+        result = [tableView makeViewWithIdentifier:@"NumberPropertyView" owner:self];
+        } else {
+            result = [tableView makeViewWithIdentifier:@"BoolPropertyView" owner:self];            
+        }
+    }
+    if([[tableColumn identifier] isEqualToString:@"Midi"]){
+        result = [tableView makeViewWithIdentifier:@"MidiView" owner:self];
+    }
+    // Retrieve to get the @"MyView" from the pool
+    // If no version is available in the pool, load the Interface Builder version
+    
+    // or as a new cell, so set the stringValue of the cell to the
+    // nameArray value at row
+  //  result.stringValue = [self.nameArray objectAtIndex:row];
+    
+    // return the result.
+    return result;
 }
 
 

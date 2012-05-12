@@ -14,7 +14,7 @@
 @class SaveManager;
 @class GeneralPreferences;
 
-@interface PluginManagerController : NSObject <NSWindowDelegate>{
+@interface PluginManagerController : NSObject <NSWindowDelegate, NSTableViewDelegate>{
 	IBOutlet MainWindow * mainWindow;
 	IBOutlet NSView * pluginControllerView;
 	IBOutlet NSView * pluginPropertiesView;
@@ -39,6 +39,7 @@
 	IBOutlet OutputViewManager * viewManager;
 	IBOutlet QLabController * qlabController;
     NSButton *preferencesButton;
+    NSSearchField *searchView;
 	
 	//Properties variables
 	NSSliderCell * sliderCell;
@@ -76,8 +77,14 @@
     BOOL propertiesShown;
 
     GeneralPreferences * generalPreferences;
+    NSDictionaryController *PluginPropertiesDictionaryController;
+    NSPredicate * propertiesFilterPredicate;
+    NSString * filterString;
 }	
 
+@property (assign) IBOutlet NSDictionaryController *PluginPropertiesDictionaryController;
+@property (assign)  NSPredicate * propertiesFilterPredicate;
+@property (assign) NSString * filterString;
 @property (retain) SaveManager * saveManager;
 @property (retain) NSView * statsAreaView;
 @property (assign, readwrite) NSOpenGLContext * sharedOpenglContext;
@@ -89,6 +96,7 @@
 @property (readwrite) char lastViewDrawn;
 @property (readonly) QLabController * qlabController;
 @property (assign) IBOutlet NSButton *preferencesButton;
+@property (assign) IBOutlet NSSearchField *searchView;
 
 // @property (retain ) NSMutableArray *currentProperties;
 
