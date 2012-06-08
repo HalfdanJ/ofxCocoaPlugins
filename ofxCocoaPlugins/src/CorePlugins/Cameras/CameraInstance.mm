@@ -22,8 +22,8 @@
 
         referenceCount = 0;
 		
-		width = 640;
-		height = 480;
+		width = -1;
+		height = -1;
 		myframes = 0;
 		
 		tex = new ofTexture();

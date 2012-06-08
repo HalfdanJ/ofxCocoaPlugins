@@ -32,18 +32,26 @@ typedef struct
     int lastProcessedFramecount;
     
     NSString * modelName;
-        NSString * ip;
+    NSString * ip;
+    NSString * sensorSize;
     
     int exposure;
     int gain;
+    
+    int roiWidth, roiHeight, roiLeft, roiTop;
 }
 
 @property (readwrite) unsigned long uid;
 
 @property (readwrite,retain) NSString * modelName;
 @property (readwrite,retain) NSString * ip;
+@property (readwrite,retain) NSString * sensorSize;
 @property (readwrite) int exposure;
 @property (readwrite) int gain;
+@property (readwrite) int roiWidth;
+@property (readwrite) int roiHeight;
+@property (readwrite) int roiLeft;
+@property (readwrite) int roiTop;
 
 -(BOOL) openCamera;
 -(void) closeCamera;

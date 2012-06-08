@@ -2,7 +2,7 @@
 
 @implementation AVTCameraInstance
 @synthesize uid;
-@synthesize modelName, ip, exposure, gain;
+@synthesize modelName, ip, exposure, gain, sensorSize, roiWidth, roiHeight, roiLeft, roiTop;
 
 void FrameDoneCB(tPvFrame* pFrame)
 { 
@@ -291,6 +291,13 @@ void FrameDoneCB(tPvFrame* pFrame)
 		return false;
 	}	
     
+    char lValue[128];
+    if(PvAttrStringGet(GCamera.Handle,"DeviceModelName",lValue,128,NULL) == ePvErrSuccess)
+    {
+        [self setModelName:[NSString stringWithCString:lValue encoding:NSUTF8StringEncoding]];
+    }
+  //  NSLog(@"Camera name %@",self.modelName);
+    
     //Binning
     if((PvAttrUint32Set(GCamera.Handle,"BinningX",2) != ePvErrSuccess))
 	{		
@@ -302,7 +309,28 @@ void FrameDoneCB(tPvFrame* pFrame)
 		printf("CameraStart: failed to set binning y\n");
 		return false;
 	}	
-
+    
+    
+   /* if([self.modelName isEqualToString:@"Manta_G-201B"]){
+        if((PvAttrUint32Set(GCamera.Handle,"Width",642) != ePvErrSuccess))
+        {		
+            printf("CameraStart: failed to set ROI y\n");
+            return false;
+        }	
+        
+        if((PvAttrUint32Set(GCamera.Handle,"Height",481) != ePvErrSuccess))
+        {		
+            printf("CameraStart: failed to set ROI y\n");
+            return false;
+        }	
+        
+        if((PvAttrUint32Set(GCamera.Handle,"RegionX",100) != ePvErrSuccess))
+        {		
+            printf("CameraStart: failed to set ROI y\n");
+            return false;
+        }
+    }
+    */
     PvAttrEnumSet(GCamera.Handle, "ExposureMode", "Manual");
     PvAttrEnumSet(GCamera.Handle, "GainMode", "Manual");
 
@@ -377,16 +405,33 @@ void FrameDoneCB(tPvFrame* pFrame)
 	[textField setAlignment:NSLeftTextAlignment];
     [textField bind:@"value" toObject:self withKeyPath:@"ip" options:nil];
 	[view addSubview:textField];
+    
+    y -= 16;
+    
+    textField = [[NSTextField alloc] initWithFrame:NSMakeRect(x1, y, 84, 17)];
+	[textField setStringValue:@"Sensor:"];
+	[textField setEditable:NO];	[textField setBordered:NO];	[textField setBackgroundColor:[NSColor colorWithCalibratedHue:0 saturation:0 brightness:0 alpha:0]];	
+	[textField setAlignment:NSRightTextAlignment];
+	[view addSubview:textField];
+    
+    textField = [[NSTextField alloc] initWithFrame:NSMakeRect(x2, y, 84, 17)];
+	[textField setStringValue:@""];
+    
+	[textField setEditable:NO];	[textField setBordered:NO];	[textField setBackgroundColor:[NSColor colorWithCalibratedHue:0 saturation:0 brightness:0 alpha:0]];	
+	[textField setAlignment:NSLeftTextAlignment];
+    [textField bind:@"value" toObject:self withKeyPath:@"sensorSize" options:nil];
+	[view addSubview:textField];
+
 
     y -= 20;
     
     for(int i=0;i<2;i++){
-		NSTextField * textField = [[NSTextField alloc] initWithFrame:NSMakeRect(17, y-25*i, 84, 17)];
+		NSTextField * textField = [[NSTextField alloc] initWithFrame:NSMakeRect(17, y, 84, 17)];
 		[textField setEditable:NO];	[textField setBordered:NO];	[textField setBackgroundColor:[NSColor colorWithCalibratedHue:0 saturation:0 brightness:0 alpha:0]];	
 		[textField setAlignment:NSRightTextAlignment];
 		[view addSubview:textField];
 		
-		NSSlider * slider = [[NSSlider alloc] initWithFrame:NSMakeRect(103, y-5-25*i, 180, 26)];
+		NSSlider * slider = [[NSSlider alloc] initWithFrame:NSMakeRect(103, y-5, 180, 26)];
 		[view addSubview:slider];
 		
 		switch (i) {
@@ -407,8 +452,49 @@ void FrameDoneCB(tPvFrame* pFrame)
 			default:
 				break;
 		}
+        
+        y -= 25;
 	}
 	
+    
+    y -= 20;
+    
+    for(int i=0;i<4;i++){
+		NSTextField * textField = [[NSTextField alloc] initWithFrame:NSMakeRect(17, y, 84, 17)];
+		[textField setEditable:NO];	[textField setBordered:NO];	[textField setBackgroundColor:[NSColor colorWithCalibratedHue:0 saturation:0 brightness:0 alpha:0]];	
+		[textField setAlignment:NSRightTextAlignment];
+		[view addSubview:textField];
+		
+        NSTextField * textFieldVal = [[NSTextField alloc] initWithFrame:NSMakeRect(103, y-0, 60, 20)];
+		[view addSubview:textFieldVal];
+		
+		switch (i) {
+			case 0:
+				[textField setStringValue:@"ROI Width:"];
+				[textFieldVal bind:@"value" toObject:self withKeyPath:@"roiWidth" options:nil];
+				break;
+			case 1:
+				[textField setStringValue:@"ROI Height:"];
+				[textFieldVal bind:@"value" toObject:self withKeyPath:@"roiHeight" options:nil];
+				
+				break;
+            case 2:
+				[textField setStringValue:@"ROI Left:"];
+				[textFieldVal bind:@"value" toObject:self withKeyPath:@"roiLeft" options:nil];
+				
+				break;
+            case 3:
+				[textField setStringValue:@"ROI Top:"];
+				[textFieldVal bind:@"value" toObject:self withKeyPath:@"roiTop" options:nil];
+				
+				break;
+
+			default:
+				break;
+		}
+        
+        y -= 25;
+	}
 
     
     
@@ -433,17 +519,34 @@ void FrameDoneCB(tPvFrame* pFrame)
     
     tPvUint32 uintValue;    
     if(PvAttrUint32Get(GCamera.Handle,"ExposureValue",&uintValue) == ePvErrSuccess){
-        [self willChangeValueForKey:@"exposure"];
-        exposure = uintValue;
-        [self didChangeValueForKey:@"exposure"];
-
+        self.exposure = uintValue;
     }
 
     if(PvAttrUint32Get(GCamera.Handle,"GainValue",&uintValue) == ePvErrSuccess){
-        [self willChangeValueForKey:@"gain"];
-        gain = uintValue;
-        [self didChangeValueForKey:@"gain"];
+        self.gain = uintValue;
     }
+    if(PvAttrUint32Get(GCamera.Handle,"RegionY",&uintValue) == ePvErrSuccess){
+        self.roiTop = uintValue;
+    }
+    if(PvAttrUint32Get(GCamera.Handle,"RegionX",&uintValue) == ePvErrSuccess){
+        self.roiLeft = uintValue;
+    }
+    if(PvAttrUint32Get(GCamera.Handle,"Width",&uintValue) == ePvErrSuccess){
+        self.roiWidth = uintValue;
+    }
+    if(PvAttrUint32Get(GCamera.Handle,"Height",&uintValue) == ePvErrSuccess){
+        self.roiHeight = uintValue;
+    }
+
+    
+    tPvUint32 uintheight; 
+    if(PvAttrUint32Get(GCamera.Handle,"SensorHeight",&uintheight) == ePvErrSuccess){
+    }
+    tPvUint32 uintwidth; 
+    if(PvAttrUint32Get(GCamera.Handle,"SensorWidth",&uintwidth) == ePvErrSuccess){
+    }
+    
+    self.sensorSize = [NSString stringWithFormat:@"%i x %i",uintwidth,uintheight];
 }
 
 -(void)setGain:(int)_gain{
@@ -454,6 +557,23 @@ void FrameDoneCB(tPvFrame* pFrame)
 -(void)setExposure:(int)_exp{
     exposure = _exp;
     PvAttrUint32Set(GCamera.Handle, "ExposureValue", exposure);
+}
+
+-(void)setRoiTop:(int)_roiTop{
+    roiTop = _roiTop;
+    PvAttrUint32Set(GCamera.Handle, "RegionY", roiTop);
+}
+-(void)setRoiLeft:(int)_roiLeft{
+    roiLeft = _roiLeft;
+    PvAttrUint32Set(GCamera.Handle, "RegionX", roiLeft);
+}
+-(void)setRoiWidth:(int)_roiWidth{
+    roiWidth = _roiWidth;
+    PvAttrUint32Set(GCamera.Handle, "Width", roiWidth);
+}
+-(void)setRoiHeight:(int)_roiHeight{
+    roiHeight = _roiHeight;
+    PvAttrUint32Set(GCamera.Handle, "Height", roiHeight);
 }
 
 @end
