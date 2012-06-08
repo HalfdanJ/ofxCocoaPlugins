@@ -183,7 +183,7 @@
 			ofNoFill();
 			ofSetLineWidth(1);
 			
-			ofSetColor(64, 128, 220,255*a);
+			ofSetColor(64, 128, 255,255*a);
 			ofRect(0, 0, 1*[aspect floatValue], 1);
             
             if(handleOffset != 1.0){
@@ -199,7 +199,7 @@
             }
 			
 			if(softedgeTotalParts > 1){
-				ofSetColor(64, 128, 220,255*a);
+				ofSetColor(255, 50, 0,255*a);
 				for(int i=0;i<softedgeTotalParts-1;i++){
 					float x = (1+i)*[aspect floatValue] * 1.0/softedgeTotalParts;
 					ofLine(x, 0, x, 1);

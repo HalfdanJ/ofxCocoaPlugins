@@ -150,6 +150,17 @@
     
 }
 
+-(void) popSurfaceWithoutSoftedge{
+	if(appliedSurface != nil){		
+		
+		glPopMatrix();	
+		glViewport(0, 0, ofGetWidth(), ofGetHeight());
+		
+		appliedSurface = nil;
+	} 
+    
+}
+
 -(void)applyPerspective{
     [[perspectives objectForKey:[appliedSurface name]] apply];
 }
@@ -208,7 +219,7 @@
                     ofRect(0,0,[[((KeystoneSurface*)[[projector surfaces]objectAtIndex:[surfaceArrayController selectionIndex]]) aspect] floatValue],1);
                 }
                 
-                [self popSurface];
+                [self popSurfaceWithoutSoftedge];
             }
             
             
