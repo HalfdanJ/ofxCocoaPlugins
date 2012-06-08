@@ -567,6 +567,9 @@
 #endif
         {
             CameraInstance * cam = [cameraInstance cameraInstance];
+            if(!cam){
+                update = NO;
+            }
             if(![cam camInited]){
                 update = NO;
             }
