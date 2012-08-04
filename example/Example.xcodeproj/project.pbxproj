@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3D2FC1EA1462A78A0028BC01 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D2FC1E91462A78A0028BC01 /* QuartzCore.framework */; };
 		DD0A3585145437B500CC89E5 /* ExamplePlugin.mm in Sources */ = {isa = PBXBuildFile; fileRef = DD0A3583145437B500CC89E5 /* ExamplePlugin.mm */; };
 		DD0A3586145437B500CC89E5 /* ExamplePlugin.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD0A3584145437B500CC89E5 /* ExamplePlugin.xib */; };
 		DD0A3688145441AB00CC89E5 /* Project.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = DD0A3687145441AB00CC89E5 /* Project.xcconfig */; };
@@ -26,7 +25,6 @@
 		DDF64E4F145046F9007B0C0A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDF64E48145046F9007B0C0A /* SystemConfiguration.framework */; };
 		DDF64E50145046F9007B0C0A /* CoreMIDI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDF64E49145046F9007B0C0A /* CoreMIDI.framework */; };
 		DDF64E52145046F9007B0C0A /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDF64E4B145046F9007B0C0A /* IOKit.framework */; };
-		DDF64E53145046F9007B0C0A /* ScriptingBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDF64E4C145046F9007B0C0A /* ScriptingBridge.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,7 +52,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		3D2FC1E91462A78A0028BC01 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = SDKs/MacOSX10.6.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
 		DD0A3582145437B500CC89E5 /* ExamplePlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExamplePlugin.h; sourceTree = "<group>"; };
 		DD0A3583145437B500CC89E5 /* ExamplePlugin.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ExamplePlugin.mm; sourceTree = "<group>"; };
 		DD0A3584145437B500CC89E5 /* ExamplePlugin.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExamplePlugin.xib; sourceTree = "<group>"; };
@@ -80,7 +77,6 @@
 		DDF64E48145046F9007B0C0A /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = ../../../../../System/Library/Frameworks/SystemConfiguration.framework; sourceTree = "<group>"; };
 		DDF64E49145046F9007B0C0A /* CoreMIDI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMIDI.framework; path = ../../../../../System/Library/Frameworks/CoreMIDI.framework; sourceTree = "<group>"; };
 		DDF64E4B145046F9007B0C0A /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = ../../../../../System/Library/Frameworks/IOKit.framework; sourceTree = "<group>"; };
-		DDF64E4C145046F9007B0C0A /* ScriptingBridge.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScriptingBridge.framework; path = SDKs/MacOSX10.6.sdk/System/Library/Frameworks/ScriptingBridge.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,9 +93,7 @@
 				DDF64E4F145046F9007B0C0A /* SystemConfiguration.framework in Frameworks */,
 				DDF64E50145046F9007B0C0A /* CoreMIDI.framework in Frameworks */,
 				DDF64E52145046F9007B0C0A /* IOKit.framework in Frameworks */,
-				DDF64E53145046F9007B0C0A /* ScriptingBridge.framework in Frameworks */,
 				DD2D7A28145468030074AD61 /* OpenGL.framework in Frameworks */,
-				3D2FC1EA1462A78A0028BC01 /* QuartzCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -141,8 +135,6 @@
 				DDF64E48145046F9007B0C0A /* SystemConfiguration.framework */,
 				DDF64E49145046F9007B0C0A /* CoreMIDI.framework */,
 				DDF64E4B145046F9007B0C0A /* IOKit.framework */,
-				3D2FC1E91462A78A0028BC01 /* QuartzCore.framework */,
-				DDF64E4C145046F9007B0C0A /* ScriptingBridge.framework */,
 				DDF64E44145046EC007B0C0A /* AppKit.framework */,
 				DDF64E42145046CB007B0C0A /* QTKit.framework */,
 				DDA70005144F1CEE00F81C9E /* Cocoa.framework */,
