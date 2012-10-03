@@ -130,18 +130,33 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
    // GLint swapInt = 1;
    // [[self openGLContext] setValues:&swapInt forParameter:NSOpenGLCPSwapInterval]; 
    // 
+    CGDirectDisplayID displayID = (CGDirectDisplayID)[[[[[self window] screen] deviceDescription] objectForKey:@"NSScreenNumber"] intValue];
+	
+ /*   if  ((displayID != 0) && (viewDisplayID != displayID) && [[self window] screen] == [window screen]) {
+        if (NULL != displayLink) {
+			NSLog(@"New DisplayID %i on outputview %i",displayID,viewNumber);
+            CVDisplayLinkSetCurrentCGDisplay(displayLink, displayID);
+        }
+        viewDisplayID = displayID;
+    }
+    */
+    
+    NSLog(@"Init with display %i",displayID);
     
     // create display link for the main display
 	if (NULL == displayLink) {		
-		CVDisplayLinkCreateWithCGDisplay(kCGDirectMainDisplay, &displayLink);
+		CVDisplayLinkCreateWithCGDisplay(displayID, &displayLink);
 		if (NULL != displayLink) {
 			// set the current display of a display link.
-			CVDisplayLinkSetCurrentCGDisplay(displayLink, kCGDirectMainDisplay);
+			//CVDisplayLinkSetCurrentCGDisplay(displayLink, kCGDirectMainDisplay);
+            CVDisplayLinkSetCurrentCGDisplay(displayLink, displayID);
 			
 			// set the renderer output callback function
 			CVDisplayLinkSetOutputCallback(displayLink, &MyDisplayLinkCallback, self);
 			// activates a display link.
 			CVDisplayLinkStart(displayLink);
+            
+            viewDisplayID = displayID;
 		} else {
 			NSLog(@"ERROR could not create displayLink");
 		}
@@ -319,7 +334,7 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
     if  ((displayID != 0) && (viewDisplayID != displayID) && [[self window] screen] == [window screen]) {		
         if (NULL != displayLink) {
 			NSLog(@"New DisplayID %i on outputview %i",displayID,viewNumber);
-            CVDisplayLinkSetCurrentCGDisplay(displayLink, displayID); 
+            CVDisplayLinkSetCurrentCGDisplay(displayLink, displayID);
         }
         viewDisplayID = displayID;
     }	
