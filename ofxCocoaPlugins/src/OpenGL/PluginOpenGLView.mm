@@ -131,17 +131,20 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
    // [[self openGLContext] setValues:&swapInt forParameter:NSOpenGLCPSwapInterval]; 
    // 
     
+     CGDirectDisplayID dispid = (CGDirectDisplayID)[[[[self.window screen] deviceDescription] objectForKey:@"NSScreenNumber"] intValue];
     // create display link for the main display
 	if (NULL == displayLink) {		
-		CVDisplayLinkCreateWithCGDisplay(kCGDirectMainDisplay, &displayLink);
+		CVDisplayLinkCreateWithCGDisplay(dispid, &displayLink);
 		if (NULL != displayLink) {
 			// set the current display of a display link.
-			CVDisplayLinkSetCurrentCGDisplay(displayLink, kCGDirectMainDisplay);
+			CVDisplayLinkSetCurrentCGDisplay(displayLink, dispid);
 			
 			// set the renderer output callback function
 			CVDisplayLinkSetOutputCallback(displayLink, &MyDisplayLinkCallback, self);
 			// activates a display link.
 			CVDisplayLinkStart(displayLink);
+            
+            viewDisplayID = dispid;
 		} else {
 			NSLog(@"ERROR could not create displayLink");
 		}
@@ -311,21 +314,34 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 
 
 - (void) updateDisplayIDWithWindow:(NSWindow*)window
-{		
-    //[[controller openglLock] lock]; 
-
+{
+    [[controller openglLock] lock];
+    
     CGDirectDisplayID displayID = (CGDirectDisplayID)[[[[window screen] deviceDescription] objectForKey:@"NSScreenNumber"] intValue];
 	
-    if  ((displayID != 0) && (viewDisplayID != displayID) && [[self window] screen] == [window screen]) {		
-        if (NULL != displayLink) {
+    if  ((displayID != 0) && (viewDisplayID != displayID) && [[self window] screen] == [window screen]) {
+        if (displayLink) {
 			NSLog(@"New DisplayID %i on outputview %i",displayID,viewNumber);
-            CVDisplayLinkSetCurrentCGDisplay(displayLink, displayID); 
-        }
+            CVDisplayLinkSetCurrentCGDisplay(displayLink, displayID);
+        }/* else {
+          CVDisplayLinkCreateWithCGDisplay(dispid, &displayLink);
+          if (NULL != displayLink) {
+          // set the current display of a display link.
+          CVDisplayLinkSetCurrentCGDisplay(displayLink, dispid);
+          
+          // set the renderer output callback function
+          CVDisplayLinkSetOutputCallback(displayLink, &MyDisplayLinkCallback, self);
+          // activates a display link.
+          CVDisplayLinkStart(displayLink);
+          
+          viewDisplayID = dispid;
+          
+          }*/
         viewDisplayID = displayID;
-    }	
+    }
     
-   // [[controller openglLock] unlock]; 
-
+    [[controller openglLock] unlock];
+    
 }
 
 

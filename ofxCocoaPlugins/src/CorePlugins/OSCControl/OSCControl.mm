@@ -33,7 +33,7 @@
     {    
         ofxOscMessage m;
         m.setAddress( "/control/pushDestination" );    
-        m.addStringArg( "HalfdanJ-iPad.local:9090" );
+        m.addStringArg( "HalfdanJ.local:9090" );
         sender->sendMessage( m );
     }
 }
@@ -195,7 +195,7 @@
     sender = new ofxOscSender();
     receiver = new ofxOscReceiver();
     
-    sender->setup("Ecotelemedia-iPad-Mobile-6.local", 8080);
+    sender->setup("HalfdanJ-iPad.local", 8080);
     // sender->setup("10.0.1.3", 8080);
     receiver->setup(9090);
     
