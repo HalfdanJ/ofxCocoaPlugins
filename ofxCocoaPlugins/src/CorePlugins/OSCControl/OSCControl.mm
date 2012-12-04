@@ -200,39 +200,43 @@
     receiver->setup(9090);
     
     
+    }
+
+
+-(void) generateInterface{
     [self createInterface];
     
     
     /*  [self addWidget:[NSDictionary dictionaryWithObjectsAndKeys:
      @"test2", @"name",
      @"Slider",@"type",
-     @"[.0,.4,.75,.3]",@"bounds", 
+     @"[.0,.4,.75,.3]",@"bounds",
      nil]];
      */
     float x = 0.76;
     float w = 0.24;
     float h = 0.09;
     
-   /*[self addButton:@"Tracker debug" labelSize:16 bounds:NSMakeRect(x, 0.0, w, h) bindedTo:[[GetPlugin(Tracker) properties] objectForKey:@"drawDebug"]];
-    [self addButton:@"Keystone debug" labelSize:16 bounds:NSMakeRect(x, 0.1, w, h) bindedTo:[[GetPlugin(Keystoner) properties] objectForKey:@"Enabled"]];
-    
-    // [self addFader:@"Pub" bounds:NSMakeRect(x, 0.2, w/3.0, h) bindedTo:[[GetPlugin(Mask) properties] objectForKey:@"publys"]];
-
-    [self addButton:@"Left blind" labelSize:16 bounds:NSMakeRect(x, 0.4, w*0.5, h) bindedTo:[[GetPlugin(Mask) properties] objectForKey:@"leftBlind"]];
-    [self addButton:@"Right blind" labelSize:16 bounds:NSMakeRect(x+w*0.5, 0.4, w*0.5, h) bindedTo:[[GetPlugin(Mask) properties] objectForKey:@"rightBlind"]];
-
-    [self addButton:@"Triangle white" labelSize:16 bounds:NSMakeRect(x, 0.5, w*0.5, h) bindedTo:[[GetPlugin(Mask) properties] objectForKey:@"triangleWhiteRight"]];
-    [self addButton:@"Triangle black" labelSize:16 bounds:NSMakeRect(x+w*0.5, 0.5, w*0.5, h) bindedTo:[[GetPlugin(Mask) properties] objectForKey:@"triangleBlack"]];
-
-    [self addButton:@"GO" labelSize:18 bounds:NSMakeRect(x, 0.65, w, h) bindedTo:[[GetPlugin(Midi) properties] objectForKey:@"qlabGo"]];
-
-    */
+    /*[self addButton:@"Tracker debug" labelSize:16 bounds:NSMakeRect(x, 0.0, w, h) bindedTo:[[GetPlugin(Tracker) properties] objectForKey:@"drawDebug"]];
+     [self addButton:@"Keystone debug" labelSize:16 bounds:NSMakeRect(x, 0.1, w, h) bindedTo:[[GetPlugin(Keystoner) properties] objectForKey:@"Enabled"]];
+     
+     // [self addFader:@"Pub" bounds:NSMakeRect(x, 0.2, w/3.0, h) bindedTo:[[GetPlugin(Mask) properties] objectForKey:@"publys"]];
+     
+     [self addButton:@"Left blind" labelSize:16 bounds:NSMakeRect(x, 0.4, w*0.5, h) bindedTo:[[GetPlugin(Mask) properties] objectForKey:@"leftBlind"]];
+     [self addButton:@"Right blind" labelSize:16 bounds:NSMakeRect(x+w*0.5, 0.4, w*0.5, h) bindedTo:[[GetPlugin(Mask) properties] objectForKey:@"rightBlind"]];
+     
+     [self addButton:@"Triangle white" labelSize:16 bounds:NSMakeRect(x, 0.5, w*0.5, h) bindedTo:[[GetPlugin(Mask) properties] objectForKey:@"triangleWhiteRight"]];
+     [self addButton:@"Triangle black" labelSize:16 bounds:NSMakeRect(x+w*0.5, 0.5, w*0.5, h) bindedTo:[[GetPlugin(Mask) properties] objectForKey:@"triangleBlack"]];
+     
+     [self addButton:@"GO" labelSize:18 bounds:NSMakeRect(x, 0.65, w, h) bindedTo:[[GetPlugin(Midi) properties] objectForKey:@"qlabGo"]];
+     
+     */
     [self addMultiXY:@"trackerxy" bounds:NSMakeRect(0.0, 0.0, 0.75, 1.0) isMomentary:true maxTouches:3];
     [self setColor:@"trackerxy" background:@"#000" foreground:@"#aaa" stroke:@"#ddd"];
     
     //    [self addButton:@"but1" label:@"Tracker debug" labelSize:10 bounds:NSMakeRect(0.8, 0.0, 0.2, 0.1) mode:@"toggle"];
-}
 
+}
 //
 //----------------
 //
@@ -241,7 +245,8 @@
 -(void)update:(NSDictionary *)drawingInformation{
     if(PropB(@"generate")){
         SetPropB(@"generate", NO);
-        [self setup];
+        //[self setup];
+        [self generateInterface];
         
         for(int i=0;i<10;i++){
                 trackerData[i].active = false;
