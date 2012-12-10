@@ -3,7 +3,40 @@
 #import <ofxCocoaPlugins/Keystoner.h>
 #import <ofxCocoaPlugins/Midi.h>
 
+NSString * SplitcapitalString(NSString *str)
+{
+    NSCharacterSet *cs = [NSCharacterSet uppercaseLetterCharacterSet];
+    NSMutableString *result = [NSMutableString string];;
+    if ([str length] == 0)
+        return result;
+    
+    NSRange wordMatch, endMatch;
+    wordMatch.location = 0;
+    endMatch = [str rangeOfCharacterFromSet:cs
+                                    options:0
+                                      range:NSMakeRange(1, [str length] - 1)];
+    while (endMatch.location != NSNotFound) {
+        wordMatch.length = endMatch.location - wordMatch.location;
+        [result appendFormat:@"%@ ", [str substringWithRange:wordMatch]];
+//        [result addObject:[str substringWithRange:wordMatch]];
+        wordMatch.location = endMatch.location;
+        endMatch = [str rangeOfCharacterFromSet:cs
+                                        options:0
+                                          range:NSMakeRange(wordMatch.location + 1,
+                                                            [str length] - wordMatch.location - 1)];
+    }
+    
+    // add last word
+    wordMatch.length = [str length] - wordMatch.location;
+    //[result addObject:[str substringWithRange:wordMatch]];
+    [result appendFormat:@"%@", [str substringWithRange:wordMatch]];
+
+    return result;
+}
+
 @implementation OSCControl
+
+
 
 - (id)init{
     self = [super init];
@@ -14,6 +47,26 @@
     }
     
     return self;
+}
+
+
+-(void)setup{
+    
+    if(sender != nil){
+        
+        delete sender;
+        delete receiver;
+    }
+    
+    sender = new ofxOscSender();
+    receiver = new ofxOscReceiver();
+    
+    sender->setup("HalfdanJ-iPad.local", 8080);
+    // sender->setup("10.0.1.3", 8080);
+    receiver->setup(9090);
+    
+    [self generateInterface:NO];
+    
 }
 
 //
@@ -27,7 +80,7 @@
         ofxOscMessage m;
         m.setAddress( "/control/createBlankInterface" );    
         m.addStringArg( "ofxCocoaPlugins" );
-        m.addStringArg( "landscape" );
+        m.addStringArg( "portrait" );
         sender->sendMessage( m );
     }
     {    
@@ -93,7 +146,8 @@
 
 //  visualToggle: The button always outputs max but toggles on and off visually (useful in some MIDI circumstances)
 
-- (void) addButton:(NSString*)name label:(NSString*)label labelSize:(int)labelSize bounds:(NSRect)bounds mode:(NSString*)mode{
+- (void) addButton:(NSString*)name label:(NSString*)label labelSize:(int)labelSize bounds:(NSRect)bounds mode:(NSString*)mode sendIt:(BOOL)sendIt{
+    if(sendIt)
     [self addWidget:[NSDictionary dictionaryWithObjectsAndKeys:
                      name, @"name",
                      @"Button",@"type",
@@ -108,8 +162,26 @@
                      nil]];
 }
 
-- (void) addButton:(NSString*)label labelSize:(int)labelSize bounds:(NSRect)bounds bindedTo:(PluginProperty*)property{
+
+-(void) addLabel:(NSString*)label labelSize:(int)labelSize bound:(NSRect) bounds align:(NSString*)align sendIt:(BOOL)sendIt{
+        if(sendIt)
+    [self addWidget:[NSDictionary dictionaryWithObjectsAndKeys:
+                     [label stringByReplacingOccurrencesOfString:@" " withString:@""], @"name",
+                     label, @"value",
+                     @"Label",@"type",
+                     [NSNumber numberWithFloat:bounds.origin.x], @"x",
+                     [NSNumber numberWithFloat:bounds.origin.y], @"y",
+                     [NSNumber numberWithFloat:bounds.size.width], @"width",
+                     [NSNumber numberWithFloat:bounds.size.height], @"height",
+                     [NSString stringWithFormat:@"%i",labelSize], @"labelSize",
+                     @"#ccc", @"color",
+                     align, @"align",
+                     nil]];
+}
+
+- (void) addButton:(NSString*)label labelSize:(int)labelSize bounds:(NSRect)bounds bindedTo:(PluginProperty*)property sendIt:(BOOL)sendIt{
     NSAssert(property, @"No property");
+        if(sendIt)
     [self addWidget:[NSDictionary dictionaryWithObjectsAndKeys:
                      [NSString stringWithFormat:@"%@_%@",[property pluginName], [property name]], @"name",
                      @"Button",@"type",
@@ -124,28 +196,57 @@
                      nil]];
     [property addObserver:self forKeyPath:@"value" options:nil context:@"property"];
     
+    if(sendIt)
     [self setColor:[NSString stringWithFormat:@"%@_%@",[property pluginName], [property name]] background:@"rgb(0,0,0)" foreground:@"rgb(80,100,80)" stroke:@"rgb(255,255,255)"];
 }
 
-- (void) addFader:(NSString*)label bounds:(NSRect)bounds bindedTo:(PluginProperty*)property{
+- (void) addFader:(NSString*)label bounds:(NSRect)bounds bindedTo:(NumberProperty*)property sendIt:(BOOL)sendIt{
     NSAssert(property, @"No property");
+        if(sendIt)
     [self addWidget:[NSDictionary dictionaryWithObjectsAndKeys:
                      [NSString stringWithFormat:@"%@_%@",[property pluginName], [property name]], @"name",
                      @"Slider",@"type",
                      [NSString stringWithFormat:@"/%@/%@",[property pluginName], [property name]], @"address",
-                     @"true", @"isVertical",
                      [NSNumber numberWithFloat:bounds.origin.x], @"x",
                      [NSNumber numberWithFloat:bounds.origin.y], @"y",
                      [NSNumber numberWithFloat:bounds.size.width], @"width",
                      [NSNumber numberWithFloat:bounds.size.height], @"height",
-                //     label, @"label",
+                     [NSNumber numberWithFloat:property.minValue], @"min",
+                     [NSNumber numberWithFloat:property.maxValue], @"max",
+                     //     label, @"label",
                      nil]];
     [property addObserver:self forKeyPath:@"value" options:nil context:@"property"];
     
+    if(sendIt)
+    [self setColor:[NSString stringWithFormat:@"%@_%@",[property pluginName], [property name]] background:@"rgb(0,0,0)" foreground:@"rgb(80,100,80)" stroke:@"rgb(255,255,255)"];
+    
+    [self sendProperty:property];
+}
+
+- (void) addKnob:(NSString*)label bounds:(NSRect)bounds bindedTo:(NumberProperty*)property sendIt:(BOOL)sendIt{
+    NSAssert(property, @"No property");
+    if(sendIt)
+    [self addWidget:[NSDictionary dictionaryWithObjectsAndKeys:
+                     [NSString stringWithFormat:@"%@_%@",[property pluginName], [property name]], @"name",
+                     @"Knob",@"type",
+                     [NSString stringWithFormat:@"/%@/%@",[property pluginName], [property name]], @"address",
+                     [NSNumber numberWithFloat:bounds.origin.x], @"x",
+                     [NSNumber numberWithFloat:bounds.origin.y], @"y",
+                     [NSNumber numberWithFloat:bounds.size.width], @"radius",
+                     [NSNumber numberWithFloat:bounds.size.width], @"width",
+                     [NSNumber numberWithFloat:bounds.size.height], @"height",
+                     [NSNumber numberWithFloat:property.minValue], @"min",
+                     [NSNumber numberWithFloat:property.maxValue], @"max",
+                     //     label, @"label",
+                     nil]];
+    [property addObserver:self forKeyPath:@"value" options:nil context:@"property"];
+    
+    if(sendIt)
     [self setColor:[NSString stringWithFormat:@"%@_%@",[property pluginName], [property name]] background:@"rgb(0,0,0)" foreground:@"rgb(80,100,80)" stroke:@"rgb(255,255,255)"];
 }
 
-- (void) addMultiXY:(NSString*)name bounds:(NSRect)bounds isMomentary:(BOOL)isMomentary maxTouches:(int)maxTouches{
+- (void) addMultiXY:(NSString*)name bounds:(NSRect)bounds isMomentary:(BOOL)isMomentary maxTouches:(int)maxTouches sendIt:(BOOL)sendIt{
+    if(sendIt)
     [self addWidget:[NSDictionary dictionaryWithObjectsAndKeys:
                      name, @"name",
                      @"MultiTouchXY",@"type",
@@ -156,7 +257,7 @@
                      nil]];
 }
 
-- (void) setColor:(NSString*)widget background:(NSString*)background foreground:(NSString*)foreground stroke:(NSString*)stroke {
+- (void) setColor:(NSString*)widget background:(NSString*)background foreground:(NSString*)foreground stroke:(NSString*)stroke  {
     
     ofxOscMessage m;
     m.setAddress( "/control/setColors" );    
@@ -168,71 +269,64 @@
     
 }
 
+-(void) sendProperty:(NumberProperty*)object{
+    ofxOscMessage msg;
+    msg.setAddress([[NSString stringWithFormat:@"/%@/%@",[object pluginName], [object name]] cStringUsingEncoding:NSUTF8StringEncoding]);
+    //     msg.setAddress("/menuButton");
+    msg.addFloatArg([object floatValue]);
+    
+    sender->sendMessage(msg);
+
+}
+
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context{
     if([(NSString*) context isEqualToString:@"property"]){
         if(sender != nil){
-            
-            ofxOscMessage msg;
-            msg.setAddress([[NSString stringWithFormat:@"/%@/%@",[object pluginName], [object name]] cStringUsingEncoding:NSUTF8StringEncoding]);
-       //     msg.setAddress("/menuButton");
-            msg.addFloatArg([object floatValue]);
-            
-            sender->sendMessage(msg);
+            [self sendProperty:object];
         }
     }
 }
 
 
 
--(void)setup{
+
+-(void) generateInterface:(BOOL)sendIt{
+    if(sendIt)
+        [self createInterface];
     
-    if(sender != nil){
-        
-        delete sender;
-        delete receiver;
+    
+    for(NSDictionary * dict in [globalController plugins]){
+        for(ofPlugin * plugin in [dict valueForKey:@"children"]){
+
+            [plugin.properties enumerateKeysAndObjectsUsingBlock:^(id key, PluginProperty* obj, BOOL *stop) {
+                float d = 0.1/8.0;
+                for(int i=0;i<8;i++){
+                    if([obj.midiChannel intValue] == 1 && [obj.midiNumber intValue] == i){
+//                        NSLog(@"Bind %@",obj);
+                        [self addFader:obj.name bounds:NSMakeRect(0, i*1.0/8.0+d, 0.125, 1.0/8.0-2*d) bindedTo:obj sendIt:sendIt];
+                        [self addLabel:SplitcapitalString(obj.name) labelSize:12.0 bound:NSMakeRect(0.005, i*1.0/8.0+0.02, 0.123, 0.018) align:@"center" sendIt:sendIt];
+                        
+                        
+                    }
+                }
+                
+                for(int i=16;i<24;i++){
+                    if([obj.midiChannel intValue] == 1 && [obj.midiNumber intValue] == i){
+                        //                        NSLog(@"Bind %@",obj);
+                        [self addFader:obj.name bounds:NSMakeRect(0.125, (i-16)*1.0/8.0+d, 0.125, 1.0/8.0-2*d) bindedTo:obj sendIt:sendIt];
+                     //   [self addKnob:obj.name bounds:NSMakeRect(0, (i-16)*1.0/7.0+0.07, 0.08, 0.1) bindedTo:obj];
+                        [self addLabel:SplitcapitalString(obj.name) labelSize:1.0 bound:NSMakeRect(0.129, (i-16)*1.0/8.0+0.02, 0.123, 0.018) align:@"center" sendIt:sendIt];
+                        
+                        
+                    }
+                }
+            }];
+        }
     }
     
-    sender = new ofxOscSender();
-    receiver = new ofxOscReceiver();
-    
-    sender->setup("HalfdanJ-iPad.local", 8080);
-    // sender->setup("10.0.1.3", 8080);
-    receiver->setup(9090);
-    
-    
-    }
-
-
--(void) generateInterface{
-    [self createInterface];
-    
-    
-    /*  [self addWidget:[NSDictionary dictionaryWithObjectsAndKeys:
-     @"test2", @"name",
-     @"Slider",@"type",
-     @"[.0,.4,.75,.3]",@"bounds",
-     nil]];
-     */
-    float x = 0.76;
-    float w = 0.24;
-    float h = 0.09;
-    
-    /*[self addButton:@"Tracker debug" labelSize:16 bounds:NSMakeRect(x, 0.0, w, h) bindedTo:[[GetPlugin(Tracker) properties] objectForKey:@"drawDebug"]];
-     [self addButton:@"Keystone debug" labelSize:16 bounds:NSMakeRect(x, 0.1, w, h) bindedTo:[[GetPlugin(Keystoner) properties] objectForKey:@"Enabled"]];
-     
-     // [self addFader:@"Pub" bounds:NSMakeRect(x, 0.2, w/3.0, h) bindedTo:[[GetPlugin(Mask) properties] objectForKey:@"publys"]];
-     
-     [self addButton:@"Left blind" labelSize:16 bounds:NSMakeRect(x, 0.4, w*0.5, h) bindedTo:[[GetPlugin(Mask) properties] objectForKey:@"leftBlind"]];
-     [self addButton:@"Right blind" labelSize:16 bounds:NSMakeRect(x+w*0.5, 0.4, w*0.5, h) bindedTo:[[GetPlugin(Mask) properties] objectForKey:@"rightBlind"]];
-     
-     [self addButton:@"Triangle white" labelSize:16 bounds:NSMakeRect(x, 0.5, w*0.5, h) bindedTo:[[GetPlugin(Mask) properties] objectForKey:@"triangleWhiteRight"]];
-     [self addButton:@"Triangle black" labelSize:16 bounds:NSMakeRect(x+w*0.5, 0.5, w*0.5, h) bindedTo:[[GetPlugin(Mask) properties] objectForKey:@"triangleBlack"]];
-     
-     [self addButton:@"GO" labelSize:18 bounds:NSMakeRect(x, 0.65, w, h) bindedTo:[[GetPlugin(Midi) properties] objectForKey:@"qlabGo"]];
-     
-     */
-    [self addMultiXY:@"trackerxy" bounds:NSMakeRect(0.0, 0.0, 0.75, 1.0) isMomentary:true maxTouches:3];
-    [self setColor:@"trackerxy" background:@"#000" foreground:@"#aaa" stroke:@"#ddd"];
+    [self addMultiXY:@"trackerxy" bounds:NSMakeRect(0.25, 0.0, 0.75, .75) isMomentary:true maxTouches:3 sendIt:sendIt];
+    if(sendIt)
+        [self setColor:@"trackerxy" background:@"#000" foreground:@"#aaa" stroke:@"#ddd" ];
     
     //    [self addButton:@"but1" label:@"Tracker debug" labelSize:10 bounds:NSMakeRect(0.8, 0.0, 0.2, 0.1) mode:@"toggle"];
 
@@ -246,7 +340,7 @@
     if(PropB(@"generate")){
         SetPropB(@"generate", NO);
         //[self setup];
-        [self generateInterface];
+        [self generateInterface:YES];
         
         for(int i=0;i<10;i++){
                 trackerData[i].active = false;
