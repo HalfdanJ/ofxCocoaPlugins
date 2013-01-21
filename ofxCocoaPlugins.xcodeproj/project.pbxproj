@@ -79,9 +79,6 @@
 		3D3B795F1492250200743828 /* ofQuickTimeGrabber.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A360914543B7800CC89E5 /* ofQuickTimeGrabber.h */; };
 		3D3B79601492250200743828 /* ofQuickTimePlayer.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A360B14543B7800CC89E5 /* ofQuickTimePlayer.h */; };
 		3D3B79611492250200743828 /* ofQtUtils.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A360D14543B7800CC89E5 /* ofQtUtils.h */; };
-		3D70F2EA14DB02AE0036A80C /* libola.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D70F2E014DAFC700036A80C /* libola.1.dylib */; };
-		3D70F2EB14DB02AE0036A80C /* libolacommon.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D70F2E214DAFC7D0036A80C /* libolacommon.0.dylib */; };
-		3D70F2ED14DB031F0036A80C /* libprotobuf.7.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D70F2EC14DB031F0036A80C /* libprotobuf.7.dylib */; };
 		3D9951B314B5EDEC007F1E96 /* BlobClasses2d.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D9951A914B5EDEC007F1E96 /* BlobClasses2d.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3D9951B414B5EDEC007F1E96 /* BlobClasses2d.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3D9951AA14B5EDEC007F1E96 /* BlobClasses2d.mm */; };
 		3D9951B514B5EDEC007F1E96 /* BlobTracker2d.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D9951AB14B5EDEC007F1E96 /* BlobTracker2d.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -97,9 +94,6 @@
 		3D9951C214B60665007F1E96 /* ofxCvHaarFinder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DD0A34931452F2CD00CC89E5 /* ofxCvHaarFinder.cpp */; };
 		3D9951C314B60674007F1E96 /* ofxCvImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DD0A34951452F2CD00CC89E5 /* ofxCvImage.cpp */; };
 		3D9951C414B60678007F1E96 /* ofxCvShortImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DD0A34981452F2CD00CC89E5 /* ofxCvShortImage.cpp */; };
-		3D9A5E8514DAF3530002B855 /* OpenDMX.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D9A5E8214DAF3530002B855 /* OpenDMX.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3D9A5E8614DAF3530002B855 /* OpenDMX.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3D9A5E8314DAF3530002B855 /* OpenDMX.mm */; };
-		3D9A5E8714DAF3530002B855 /* OpenDMX.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D9A5E8414DAF3530002B855 /* OpenDMX.xib */; };
 		3D9A8C6414CD5DBD00531AAF /* icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 3D9A8C5F14CD5DBD00531AAF /* icon.icns */; };
 		3D9A8C6514CD5DBD00531AAF /* SendToQlab.scpt in Resources */ = {isa = PBXBuildFile; fileRef = 3D9A8C6014CD5DBD00531AAF /* SendToQlab.scpt */; };
 		3D9A8C6614CD5DBD00531AAF /* Trebuchet MS.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3D9A8C6114CD5DBD00531AAF /* Trebuchet MS.ttf */; };
@@ -354,14 +348,482 @@
 		DD0A368514543B7900CC89E5 /* ofQtUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A360D14543B7800CC89E5 /* ofQtUtils.h */; settings = {ATTRIBUTES = (); }; };
 		DD0A368614543B8800CC89E5 /* ofMain.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A358B14543B7800CC89E5 /* ofMain.h */; settings = {ATTRIBUTES = (); }; };
 		DD0A368A145443DA00CC89E5 /* ConfigInclude.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = DD0A3689145443D900CC89E5 /* ConfigInclude.xcconfig */; };
-		DD6B80E115CDD6D8002DC3E0 /* QTKitMovieRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6B80DF15CDD6D8002DC3E0 /* QTKitMovieRenderer.m */; };
-		DD6B80E215CDD6D8002DC3E0 /* QTKitMovieRenderer.h in Headers */ = {isa = PBXBuildFile; fileRef = DD6B80E015CDD6D8002DC3E0 /* QTKitMovieRenderer.h */; };
+		DD45AA92161C3AD800DB1BD9 /* QTKitMovieRenderer.h in Headers */ = {isa = PBXBuildFile; fileRef = DD45AA90161C3AD800DB1BD9 /* QTKitMovieRenderer.h */; };
+		DD45AA93161C3AD800DB1BD9 /* QTKitMovieRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = DD45AA91161C3AD800DB1BD9 /* QTKitMovieRenderer.m */; };
 		DDA7FFE6144F1C3800F81C9E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DDA7FFE4144F1C3800F81C9E /* InfoPlist.strings */; };
 		DDA7FFEA144F1C3800F81C9E /* ofxCocoaPlugins.mm in Sources */ = {isa = PBXBuildFile; fileRef = DDA7FFE9144F1C3800F81C9E /* ofxCocoaPlugins.mm */; };
 		DDAB78DC1529C7FB001FB5DB /* NormalCamerasController.h in Headers */ = {isa = PBXBuildFile; fileRef = DDAB78DA1529C7FB001FB5DB /* NormalCamerasController.h */; };
 		DDAB78DD1529C7FB001FB5DB /* NormalCamerasController.mm in Sources */ = {isa = PBXBuildFile; fileRef = DDAB78DB1529C7FB001FB5DB /* NormalCamerasController.mm */; };
 		DDAB78E01529C80C001FB5DB /* NormalCameraInstance.h in Headers */ = {isa = PBXBuildFile; fileRef = DDAB78DE1529C80C001FB5DB /* NormalCameraInstance.h */; };
 		DDAB78E11529C80C001FB5DB /* NormalCameraInstance.mm in Sources */ = {isa = PBXBuildFile; fileRef = DDAB78DF1529C80C001FB5DB /* NormalCameraInstance.mm */; };
+		DDAF9101161C3D5400790729 /* ofxCvColorImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DD0A348A1452F2CD00CC89E5 /* ofxCvColorImage.cpp */; };
+		DDAF9102161C3D5400790729 /* ofxCvContourFinder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DD0A348D1452F2CD00CC89E5 /* ofxCvContourFinder.cpp */; };
+		DDAF9103161C3D5400790729 /* ofxCvFloatImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DD0A348F1452F2CD00CC89E5 /* ofxCvFloatImage.cpp */; };
+		DDAF9104161C3D5400790729 /* ofxCvGrayscaleImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DD0A34911452F2CD00CC89E5 /* ofxCvGrayscaleImage.cpp */; };
+		DDAF9105161C3D5400790729 /* ofxCvHaarFinder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DD0A34931452F2CD00CC89E5 /* ofxCvHaarFinder.cpp */; };
+		DDAF9106161C3D5400790729 /* ofxCvImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DD0A34951452F2CD00CC89E5 /* ofxCvImage.cpp */; };
+		DDAF9107161C3D5400790729 /* ofxCvShortImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DD0A34981452F2CD00CC89E5 /* ofxCvShortImage.cpp */; };
+		DDAF9108161C3D5400790729 /* ofxCocoaPlugins.mm in Sources */ = {isa = PBXBuildFile; fileRef = DDA7FFE9144F1C3800F81C9E /* ofxCocoaPlugins.mm */; };
+		DDAF9109161C3D5400790729 /* BeamSync.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE4C8D21451AF1500EECFF4 /* BeamSync.m */; };
+		DDAF910A161C3D5400790729 /* PluginOpenGLView.mm in Sources */ = {isa = PBXBuildFile; fileRef = DDE4C8D61451AF1500EECFF4 /* PluginOpenGLView.mm */; };
+		DDAF910B161C3D5400790729 /* LoadProgressIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE4C8FB1451DBD900EECFF4 /* LoadProgressIndicator.m */; };
+		DDAF910C161C3D5400790729 /* OutputViewStats.mm in Sources */ = {isa = PBXBuildFile; fileRef = DDE4C8FD1451DBD900EECFF4 /* OutputViewStats.mm */; };
+		DDAF910D161C3D5400790729 /* PluginEnabledCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE4C9011451DBD900EECFF4 /* PluginEnabledCell.m */; };
+		DDAF910E161C3D5400790729 /* PluginListMeterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE4C9031451DBD900EECFF4 /* PluginListMeterCell.m */; };
+		DDAF910F161C3D5400790729 /* PropertiesValueCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE4C9051451DBD900EECFF4 /* PropertiesValueCell.m */; };
+		DDAF9110161C3D5400790729 /* Plugin.mm in Sources */ = {isa = PBXBuildFile; fileRef = DDE4C9141451DBF700EECFF4 /* Plugin.mm */; };
+		DDAF9111161C3D5400790729 /* PluginManagerController.mm in Sources */ = {isa = PBXBuildFile; fileRef = DDE4C9161451DBF700EECFF4 /* PluginManagerController.mm */; };
+		DDAF9112161C3D5400790729 /* PluginProperty.mm in Sources */ = {isa = PBXBuildFile; fileRef = DDE4C9181451DBF700EECFF4 /* PluginProperty.mm */; };
+		DDAF9113161C3D5400790729 /* BoolProperty.mm in Sources */ = {isa = PBXBuildFile; fileRef = DDE4C91B1451DBF700EECFF4 /* BoolProperty.mm */; };
+		DDAF9114161C3D5400790729 /* NumberProperty.mm in Sources */ = {isa = PBXBuildFile; fileRef = DDE4C91D1451DBF700EECFF4 /* NumberProperty.mm */; };
+		DDAF9115161C3D5400790729 /* QLabController.mm in Sources */ = {isa = PBXBuildFile; fileRef = DDE4C9201451DBF700EECFF4 /* QLabController.mm */; };
+		DDAF9116161C3D5400790729 /* ofxOscBundle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DDE4C9571451DC1500EECFF4 /* ofxOscBundle.cpp */; };
+		DDAF9117161C3D5400790729 /* ofxOscMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DDE4C9591451DC1500EECFF4 /* ofxOscMessage.cpp */; };
+		DDAF9118161C3D5400790729 /* ofxOscReceiver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DDE4C95B1451DC1500EECFF4 /* ofxOscReceiver.cpp */; };
+		DDAF9119161C3D5400790729 /* ofxOscSender.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DDE4C95D1451DC1500EECFF4 /* ofxOscSender.cpp */; };
+		DDAF911A161C3D5400790729 /* MainWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE4C9811451E02000EECFF4 /* MainWindow.m */; };
+		DDAF911B161C3D5400790729 /* ofAppCocoaWindow.mm in Sources */ = {isa = PBXBuildFile; fileRef = DDE4C9831451E02000EECFF4 /* ofAppCocoaWindow.mm */; };
+		DDAF911C161C3D5400790729 /* OutputPanelController.mm in Sources */ = {isa = PBXBuildFile; fileRef = DDE4C9851451E02000EECFF4 /* OutputPanelController.mm */; };
+		DDAF911D161C3D5400790729 /* OutputViewManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = DDE4C9871451E02000EECFF4 /* OutputViewManager.mm */; };
+		DDAF911E161C3D5400790729 /* SaveManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = DDE4C9891451E02000EECFF4 /* SaveManager.mm */; };
+		DDAF911F161C3D5400790729 /* PluginOpenGLControlView.mm in Sources */ = {isa = PBXBuildFile; fileRef = DDE4C9AE1451E05100EECFF4 /* PluginOpenGLControlView.mm */; };
+		DDAF9120161C3D5400790729 /* Midi.mm in Sources */ = {isa = PBXBuildFile; fileRef = DDE4CA171451E23700EECFF4 /* Midi.mm */; };
+		DDAF9121161C3D5400790729 /* PYMIDIEndpoint.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE4CA1C1451E23700EECFF4 /* PYMIDIEndpoint.m */; };
+		DDAF9122161C3D5400790729 /* PYMIDIEndpointDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE4CA1E1451E23700EECFF4 /* PYMIDIEndpointDescriptor.m */; };
+		DDAF9123161C3D5400790729 /* PYMIDIEndpointSet.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE4CA201451E23700EECFF4 /* PYMIDIEndpointSet.m */; };
+		DDAF9124161C3D5400790729 /* PYMIDIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE4CA221451E23700EECFF4 /* PYMIDIManager.m */; };
+		DDAF9125161C3D5400790729 /* PYMIDIRealDestination.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE4CA241451E23700EECFF4 /* PYMIDIRealDestination.m */; };
+		DDAF9126161C3D5400790729 /* PYMIDIRealEndpoint.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE4CA261451E23700EECFF4 /* PYMIDIRealEndpoint.m */; };
+		DDAF9127161C3D5400790729 /* PYMIDIRealSource.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE4CA281451E23700EECFF4 /* PYMIDIRealSource.m */; };
+		DDAF9128161C3D5400790729 /* PYMIDIUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE4CA2A1451E23700EECFF4 /* PYMIDIUtils.m */; };
+		DDAF9129161C3D5400790729 /* PYMIDIVirtualDestination.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE4CA2C1451E23700EECFF4 /* PYMIDIVirtualDestination.m */; };
+		DDAF912A161C3D5400790729 /* PYMIDIVirtualEndpoint.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE4CA2E1451E23700EECFF4 /* PYMIDIVirtualEndpoint.m */; };
+		DDAF912B161C3D5400790729 /* PYMIDIVirtualSource.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE4CA301451E23700EECFF4 /* PYMIDIVirtualSource.m */; };
+		DDAF912C161C3D5400790729 /* coordWarp.mm in Sources */ = {isa = PBXBuildFile; fileRef = DD0A334D1452F29C00CC89E5 /* coordWarp.mm */; };
+		DDAF912D161C3D5400790729 /* KeystoneProjector.mm in Sources */ = {isa = PBXBuildFile; fileRef = DD0A334F1452F29C00CC89E5 /* KeystoneProjector.mm */; };
+		DDAF912E161C3D5400790729 /* Keystoner.mm in Sources */ = {isa = PBXBuildFile; fileRef = DD0A33511452F29C00CC89E5 /* Keystoner.mm */; };
+		DDAF912F161C3D5400790729 /* KeystonerOutputview.mm in Sources */ = {isa = PBXBuildFile; fileRef = DD0A33541452F29C00CC89E5 /* KeystonerOutputview.mm */; };
+		DDAF9130161C3D5400790729 /* KeystoneSurface.mm in Sources */ = {isa = PBXBuildFile; fileRef = DD0A33561452F29C00CC89E5 /* KeystoneSurface.mm */; };
+		DDAF9131161C3D5400790729 /* TrackingLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = DD0A33581452F29C00CC89E5 /* TrackingLayer.mm */; };
+		DDAF9132161C3D5400790729 /* TrackingView.mm in Sources */ = {isa = PBXBuildFile; fileRef = DD0A335A1452F29C00CC89E5 /* TrackingView.mm */; };
+		DDAF9133161C3D5400790729 /* Warp.mm in Sources */ = {isa = PBXBuildFile; fileRef = DD0A335C1452F29C00CC89E5 /* Warp.mm */; };
+		DDAF9134161C3D5400790729 /* VideoPlayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = DD0A33661452F29C00CC89E5 /* VideoPlayer.mm */; };
+		DDAF9135161C3D5400790729 /* GeneralPreferences.mm in Sources */ = {isa = PBXBuildFile; fileRef = DDC266AD1454BC020016BA7B /* GeneralPreferences.mm */; };
+		DDAF9136161C3D5400790729 /* KeystonePerspective.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7FB6BAA31499F75000FE24C9 /* KeystonePerspective.mm */; };
+		DDAF9137161C3D5400790729 /* Camera.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3D9AD7C014B45F3700DB3187 /* Camera.mm */; };
+		DDAF9138161C3D5400790729 /* CameraInstance.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3D9AD7C214B45F3700DB3187 /* CameraInstance.mm */; };
+		DDAF9139161C3D5400790729 /* Cameras.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3D9AD7C414B45F3700DB3187 /* Cameras.mm */; };
+		DDAF913A161C3D5400790729 /* IIDCCameraInstance.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3D9AD7C714B45F3700DB3187 /* IIDCCameraInstance.mm */; };
+		DDAF913B161C3D5400790729 /* Libdc1394Grabber.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9AD7CA14B45F3700DB3187 /* Libdc1394Grabber.cpp */; };
+		DDAF913C161C3D5400790729 /* Libdc1394GrabberFeatureHelper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9AD7CC14B45F3700DB3187 /* Libdc1394GrabberFeatureHelper.cpp */; };
+		DDAF913D161C3D5400790729 /* Libdc1394GrabberFramerateHelper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9AD7CE14B45F3700DB3187 /* Libdc1394GrabberFramerateHelper.cpp */; };
+		DDAF913E161C3D5400790729 /* Libdc1394GrabberUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9AD7D014B45F3700DB3187 /* Libdc1394GrabberUtils.cpp */; };
+		DDAF913F161C3D5400790729 /* Libdc1394GrabberVideoFormatHelper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9AD7D214B45F3700DB3187 /* Libdc1394GrabberVideoFormatHelper.cpp */; };
+		DDAF9140161C3D5400790729 /* ofxVideoGrabberFeature.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9AD7D614B45F3700DB3187 /* ofxVideoGrabberFeature.cpp */; };
+		DDAF9141161C3D5400790729 /* AVTCameraInstance.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3DAFD3C414B4685D004D0D50 /* AVTCameraInstance.mm */; };
+		DDAF9142161C3D5400790729 /* CamerasController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3DAFD3D414B46FC5004D0D50 /* CamerasController.mm */; };
+		DDAF9143161C3D5400790729 /* AVTCamerasController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3DAFD3D914B470F9004D0D50 /* AVTCamerasController.mm */; };
+		DDAF9144161C3D5400790729 /* BlobClasses2d.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3D9951AA14B5EDEC007F1E96 /* BlobClasses2d.mm */; };
+		DDAF9145161C3D5400790729 /* BlobTracker2d.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3D9951AC14B5EDEC007F1E96 /* BlobTracker2d.mm */; };
+		DDAF9146161C3D5400790729 /* BlobTrackerInstance2d.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3D9951AF14B5EDEC007F1E96 /* BlobTrackerInstance2d.mm */; };
+		DDAF9147161C3D5400790729 /* CameraCalibration.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3D24851614BC671900AC6F95 /* CameraCalibration.mm */; };
+		DDAF9148161C3D5400790729 /* CameraCalibrationObject.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3D24851C14BC6DBA00AC6F95 /* CameraCalibrationObject.mm */; };
+		DDAF9149161C3D5400790729 /* Kinect.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3D9D180F14BD95A600DD2093 /* Kinect.mm */; };
+		DDAF914A161C3D5400790729 /* KinectInstance.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3D9D181214BD95A600DD2093 /* KinectInstance.mm */; };
+		DDAF914B161C3D5400790729 /* ofCvCameraCalibration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3DCAC6A114C47B5B0022F715 /* ofCvCameraCalibration.cpp */; };
+		DDAF914D161C3D5400790729 /* OSCControl.mm in Sources */ = {isa = PBXBuildFile; fileRef = 847E9E7215248C6D00710E6E /* OSCControl.mm */; };
+		DDAF914E161C3D5400790729 /* Tracker.mm in Sources */ = {isa = PBXBuildFile; fileRef = 847E9E7515248C6D00710E6E /* Tracker.mm */; };
+		DDAF914F161C3D5400790729 /* ofxCvOpticalFlowLK.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84BE4C2B1526029400FE8731 /* ofxCvOpticalFlowLK.cpp */; };
+		DDAF9150161C3D5400790729 /* NormalCamerasController.mm in Sources */ = {isa = PBXBuildFile; fileRef = DDAB78DB1529C7FB001FB5DB /* NormalCamerasController.mm */; };
+		DDAF9151161C3D5400790729 /* NormalCameraInstance.mm in Sources */ = {isa = PBXBuildFile; fileRef = DDAB78DF1529C80C001FB5DB /* NormalCameraInstance.mm */; };
+		DDAF9152161C3D5400790729 /* ColorProperty.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8444623A1555664C00F66DCC /* ColorProperty.mm */; };
+		DDAF9153161C3D5400790729 /* QTKitMovieRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = DD45AA91161C3AD800DB1BD9 /* QTKitMovieRenderer.m */; };
+		DDAF9155161C3D5400790729 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DDA7FFE4144F1C3800F81C9E /* InfoPlist.strings */; };
+		DDAF9156161C3D5400790729 /* Project.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = DDF6500214504B20007B0C0A /* Project.xcconfig */; };
+		DDAF9157161C3D5400790729 /* CoreOF.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = DDF6500414504B62007B0C0A /* CoreOF.xcconfig */; };
+		DDAF9158161C3D5400790729 /* Application.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDE4C8B81451AEFD00EECFF4 /* Application.xib */; };
+		DDAF9159161C3D5400790729 /* OutputPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDE4C8BD1451AEFD00EECFF4 /* OutputPanel.xib */; };
+		DDAF915A161C3D5400790729 /* Midi.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDE4CA181451E23700EECFF4 /* Midi.xib */; };
+		DDAF915B161C3D5400790729 /* Keystoner.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD0A33521452F29C00CC89E5 /* Keystoner.xib */; };
+		DDAF915C161C3D5400790729 /* VideoPlayer.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD0A33671452F29C00CC89E5 /* VideoPlayer.xib */; };
+		DDAF915D161C3D5400790729 /* ConfigInclude.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = DD0A3689145443D900CC89E5 /* ConfigInclude.xcconfig */; };
+		DDAF915E161C3D5400790729 /* GeneralPreferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDC266AE1454BC020016BA7B /* GeneralPreferences.xib */; };
+		DDAF915F161C3D5400790729 /* README.markdown in Resources */ = {isa = PBXBuildFile; fileRef = 3D2FC2281462EC7C0028BC01 /* README.markdown */; };
+		DDAF9160161C3D5400790729 /* Cameras.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D9AD7C514B45F3700DB3187 /* Cameras.xib */; };
+		DDAF9161161C3D5400790729 /* BlobTracker2d.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D9951AD14B5EDEC007F1E96 /* BlobTracker2d.xib */; };
+		DDAF9162161C3D5400790729 /* BlobTrackerInstance2d.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D9951B014B5EDEC007F1E96 /* BlobTrackerInstance2d.xib */; };
+		DDAF9163161C3D5400790729 /* CameraCalibration.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D24851714BC671900AC6F95 /* CameraCalibration.xib */; };
+		DDAF9164161C3D5400790729 /* handle.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D9D180A14BD952000DD2093 /* handle.png */; };
+		DDAF9165161C3D5400790729 /* handle.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D9D180D14BD95A600DD2093 /* handle.png */; };
+		DDAF9166161C3D5400790729 /* Kinect.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D9D181014BD95A600DD2093 /* Kinect.xib */; };
+		DDAF9167161C3D5400790729 /* icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 3D9A8C5F14CD5DBD00531AAF /* icon.icns */; };
+		DDAF9168161C3D5400790729 /* SendToQlab.scpt in Resources */ = {isa = PBXBuildFile; fileRef = 3D9A8C6014CD5DBD00531AAF /* SendToQlab.scpt */; };
+		DDAF9169161C3D5400790729 /* Trebuchet MS.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3D9A8C6114CD5DBD00531AAF /* Trebuchet MS.ttf */; };
+		DDAF916A161C3D5400790729 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = 3D9A8C6314CD5DBD00531AAF /* index.html */; };
+		DDAF916C161C3D5400790729 /* Tracker.xib in Resources */ = {isa = PBXBuildFile; fileRef = 847E9E7615248C6D00710E6E /* Tracker.xib */; };
+		DDAF916D161C3D5400790729 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 84BE4C281526029400FE8731 /* .gitignore */; };
+		DDAF916E161C3D5400790729 /* README in Resources */ = {isa = PBXBuildFile; fileRef = 84BE4C291526029400FE8731 /* README */; };
+		DDAF9173161C3D5400790729 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDE4C8761451A91200EECFF4 /* CoreVideo.framework */; };
+		DDAF9174161C3D5400790729 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDE4C8771451A91200EECFF4 /* AppKit.framework */; };
+		DDAF9175161C3D5400790729 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDE4C8781451A91200EECFF4 /* Cocoa.framework */; };
+		DDAF9176161C3D5400790729 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDE4C8791451A91200EECFF4 /* IOKit.framework */; };
+		DDAF9177161C3D5400790729 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDE4C87A1451A91200EECFF4 /* AGL.framework */; };
+		DDAF9178161C3D5400790729 /* ApplicationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDE4C87B1451A91200EECFF4 /* ApplicationServices.framework */; };
+		DDAF9179161C3D5400790729 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDE4C87C1451A91200EECFF4 /* AudioToolbox.framework */; };
+		DDAF917A161C3D5400790729 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDE4C87D1451A91200EECFF4 /* Carbon.framework */; };
+		DDAF917B161C3D5400790729 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDE4C87E1451A91200EECFF4 /* CoreAudio.framework */; };
+		DDAF917C161C3D5400790729 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDE4C87F1451A91200EECFF4 /* CoreFoundation.framework */; };
+		DDAF917D161C3D5400790729 /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDE4C8801451A91200EECFF4 /* CoreServices.framework */; };
+		DDAF917E161C3D5400790729 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDE4C8811451A91200EECFF4 /* OpenGL.framework */; };
+		DDAF917F161C3D5400790729 /* QuickTime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDE4C8821451A91200EECFF4 /* QuickTime.framework */; };
+		DDAF9180161C3D5400790729 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDE4C8E91451C97300EECFF4 /* GLUT.framework */; };
+		DDAF9181161C3D5400790729 /* osc.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DDE4C94E1451DC1500EECFF4 /* osc.a */; };
+		DDAF9182161C3D5400790729 /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDE4C9B11451E12E00EECFF4 /* QTKit.framework */; };
+		DDAF9183161C3D5400790729 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDE4C9B31451E14100EECFF4 /* QuartzCore.framework */; };
+		DDAF9184161C3D5400790729 /* ScriptingBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDE4C9B51451E15F00EECFF4 /* ScriptingBridge.framework */; };
+		DDAF9185161C3D5400790729 /* CoreMIDI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDE4CAA21451E32700EECFF4 /* CoreMIDI.framework */; };
+		DDAF9186161C3D5400790729 /* opencv.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD0A34551452F2CC00CC89E5 /* opencv.a */; };
+		DDAF9187161C3D5400790729 /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DDE4D5D61451F3AF00EECFF4 /* openFrameworksDebug.a */; };
+		DDAF9188161C3D5400790729 /* libdc1394.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D9AD7F014B45F3700DB3187 /* libdc1394.a */; };
+		DDAF9189161C3D5400790729 /* libImagelib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAFD3C714B46A2E004D0D50 /* libImagelib.a */; };
+		DDAF918A161C3D5400790729 /* libPvAPI.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAFD3C814B46A2E004D0D50 /* libPvAPI.a */; };
+		DDAF918C161C3D5400790729 /* OSCControl.h in Headers */ = {isa = PBXBuildFile; fileRef = 847E9E7115248C6D00710E6E /* OSCControl.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DDAF918D161C3D5400790729 /* Tracker.h in Headers */ = {isa = PBXBuildFile; fileRef = 847E9E7415248C6D00710E6E /* Tracker.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DDAF918F161C3D5400790729 /* ofCvCameraCalibration.h in Headers */ = {isa = PBXBuildFile; fileRef = 3DCAC6A314C47B680022F715 /* ofCvCameraCalibration.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DDAF9190161C3D5400790729 /* CameraCalibration.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D24851514BC671900AC6F95 /* CameraCalibration.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DDAF9191161C3D5400790729 /* CameraCalibrationObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D24851B14BC6DBA00AC6F95 /* CameraCalibrationObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DDAF9192161C3D5400790729 /* BlobTracker2d.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D9951AB14B5EDEC007F1E96 /* BlobTracker2d.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DDAF9193161C3D5400790729 /* BlobClasses2d.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D9951A914B5EDEC007F1E96 /* BlobClasses2d.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DDAF9194161C3D5400790729 /* BlobTrackerInstance2d.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D9951AE14B5EDEC007F1E96 /* BlobTrackerInstance2d.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DDAF9195161C3D5400790729 /* Camera.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D9AD7BF14B45F3700DB3187 /* Camera.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DDAF9196161C3D5400790729 /* Cameras.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D9AD7C314B45F3700DB3187 /* Cameras.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DDAF9197161C3D5400790729 /* CustomGraphics.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C9951451E04500EECFF4 /* CustomGraphics.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DDAF9198161C3D5400790729 /* Midi.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4CA161451E23700EECFF4 /* Midi.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DDAF9199161C3D5400790729 /* Keystoner.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33501452F29C00CC89E5 /* Keystoner.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DDAF919A161C3D5400790729 /* KeystoneProjector.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A334E1452F29C00CC89E5 /* KeystoneProjector.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DDAF919B161C3D5400790729 /* KeystonerOutputview.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33531452F29C00CC89E5 /* KeystonerOutputview.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DDAF919C161C3D5400790729 /* KeystoneSurface.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33551452F29C00CC89E5 /* KeystoneSurface.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DDAF919D161C3D5400790729 /* CorePluginsIncludes.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A334A1452F29C00CC89E5 /* CorePluginsIncludes.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DDAF919E161C3D5400790729 /* NumberProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C91C1451DBF700EECFF4 /* NumberProperty.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DDAF919F161C3D5400790729 /* BoolProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C91A1451DBF700EECFF4 /* BoolProperty.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DDAF91A0161C3D5400790729 /* PluginProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C9171451DBF700EECFF4 /* PluginProperty.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DDAF91A1161C3D5400790729 /* Plugin.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C9131451DBF700EECFF4 /* Plugin.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DDAF91A2161C3D5400790729 /* ofxCocoaPlugins.h in Headers */ = {isa = PBXBuildFile; fileRef = DDA7FFE8144F1C3800F81C9E /* ofxCocoaPlugins.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DDAF91A3161C3D5400790729 /* PluginManagerController.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C9151451DBF700EECFF4 /* PluginManagerController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DDAF91A4161C3D5400790729 /* PYMIDI.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4CA1A1451E23700EECFF4 /* PYMIDI.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DDAF91A5161C3D5400790729 /* PYMIDIEndpoint.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4CA1B1451E23700EECFF4 /* PYMIDIEndpoint.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DDAF91A6161C3D5400790729 /* PYMIDIEndpointDescriptor.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4CA1D1451E23700EECFF4 /* PYMIDIEndpointDescriptor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DDAF91A7161C3D5400790729 /* PYMIDIEndpointSet.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4CA1F1451E23700EECFF4 /* PYMIDIEndpointSet.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DDAF91A8161C3D5400790729 /* PYMIDIManager.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4CA211451E23700EECFF4 /* PYMIDIManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DDAF91A9161C3D5400790729 /* PYMIDIRealDestination.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4CA231451E23700EECFF4 /* PYMIDIRealDestination.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DDAF91AA161C3D5400790729 /* PYMIDIRealEndpoint.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4CA251451E23700EECFF4 /* PYMIDIRealEndpoint.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DDAF91AB161C3D5400790729 /* PYMIDIRealSource.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4CA271451E23700EECFF4 /* PYMIDIRealSource.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DDAF91AC161C3D5400790729 /* PYMIDIUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4CA291451E23700EECFF4 /* PYMIDIUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DDAF91AD161C3D5400790729 /* PYMIDIVirtualDestination.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4CA2B1451E23700EECFF4 /* PYMIDIVirtualDestination.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DDAF91AE161C3D5400790729 /* PYMIDIVirtualEndpoint.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4CA2D1451E23700EECFF4 /* PYMIDIVirtualEndpoint.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DDAF91AF161C3D5400790729 /* PYMIDIVirtualSource.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4CA2F1451E23700EECFF4 /* PYMIDIVirtualSource.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DDAF91B0161C3D5400790729 /* BeamSync.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C8D11451AF1500EECFF4 /* BeamSync.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DDAF91B1161C3D5400790729 /* PluginOpenGLView.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C8D51451AF1500EECFF4 /* PluginOpenGLView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DDAF91B2161C3D5400790729 /* LoadProgressIndicator.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C8FA1451DBD900EECFF4 /* LoadProgressIndicator.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DDAF91B3161C3D5400790729 /* OutputViewStats.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C8FC1451DBD900EECFF4 /* OutputViewStats.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DDAF91B4161C3D5400790729 /* PluginEnabledCell.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C9001451DBD900EECFF4 /* PluginEnabledCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DDAF91B5161C3D5400790729 /* PluginListMeterCell.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C9021451DBD900EECFF4 /* PluginListMeterCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DDAF91B6161C3D5400790729 /* PropertiesValueCell.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C9041451DBD900EECFF4 /* PropertiesValueCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DDAF91B7161C3D5400790729 /* Qlab.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C91E1451DBF700EECFF4 /* Qlab.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DDAF91B8161C3D5400790729 /* QLabController.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C91F1451DBF700EECFF4 /* QLabController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DDAF91B9161C3D5400790729 /* MainWindow.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C9801451E02000EECFF4 /* MainWindow.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DDAF91BA161C3D5400790729 /* ofAppCocoaWindow.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C9821451E02000EECFF4 /* ofAppCocoaWindow.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DDAF91BB161C3D5400790729 /* OutputPanelController.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C9841451E02000EECFF4 /* OutputPanelController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DDAF91BC161C3D5400790729 /* OutputViewManager.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C9861451E02000EECFF4 /* OutputViewManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DDAF91BD161C3D5400790729 /* SaveManager.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C9881451E02000EECFF4 /* SaveManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DDAF91BE161C3D5400790729 /* Filter.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C9961451E04500EECFF4 /* Filter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DDAF91BF161C3D5400790729 /* TextureGrid.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C9A11451E04500EECFF4 /* TextureGrid.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DDAF91C0161C3D5400790729 /* PluginOpenGLControlView.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C9AD1451E05100EECFF4 /* PluginOpenGLControlView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DDAF91C1161C3D5400790729 /* coordWarp.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A334C1452F29C00CC89E5 /* coordWarp.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DDAF91C2161C3D5400790729 /* TrackingLayer.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33571452F29C00CC89E5 /* TrackingLayer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DDAF91C3161C3D5400790729 /* TrackingView.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33591452F29C00CC89E5 /* TrackingView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DDAF91C4161C3D5400790729 /* Warp.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A335B1452F29C00CC89E5 /* Warp.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DDAF91C5161C3D5400790729 /* VideoPlayer.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33651452F29C00CC89E5 /* VideoPlayer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DDAF91C6161C3D5400790729 /* GeneralPreferences.h in Headers */ = {isa = PBXBuildFile; fileRef = DDC266AC1454BC020016BA7B /* GeneralPreferences.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DDAF91C7161C3D5400790729 /* IIDCCameraInstance.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D9AD7C614B45F3700DB3187 /* IIDCCameraInstance.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF91C8161C3D5400790729 /* ofxCvBlob.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A34891452F2CD00CC89E5 /* ofxCvBlob.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF91C9161C3D5400790729 /* ofxCvColorImage.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A348B1452F2CD00CC89E5 /* ofxCvColorImage.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF91CA161C3D5400790729 /* ofxCvConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A348C1452F2CD00CC89E5 /* ofxCvConstants.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF91CB161C3D5400790729 /* ofxCvContourFinder.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A348E1452F2CD00CC89E5 /* ofxCvContourFinder.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF91CC161C3D5400790729 /* ofxCvFloatImage.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A34901452F2CD00CC89E5 /* ofxCvFloatImage.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF91CD161C3D5400790729 /* ofxCvGrayscaleImage.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A34921452F2CD00CC89E5 /* ofxCvGrayscaleImage.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF91CE161C3D5400790729 /* ofxCvHaarFinder.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A34941452F2CD00CC89E5 /* ofxCvHaarFinder.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF91CF161C3D5400790729 /* ofxCvImage.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A34961452F2CD00CC89E5 /* ofxCvImage.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF91D0161C3D5400790729 /* ofxCvMain.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A34971452F2CD00CC89E5 /* ofxCvMain.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF91D1161C3D5400790729 /* ofxCvShortImage.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A34991452F2CD00CC89E5 /* ofxCvShortImage.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF91D2161C3D5400790729 /* ofxOpenCv.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A349A1452F2CD00CC89E5 /* ofxOpenCv.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF91D3161C3D5400790729 /* ofMain.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A358B14543B7800CC89E5 /* ofMain.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF91D4161C3D5400790729 /* of3dUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A359814543B7800CC89E5 /* of3dUtils.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF91D5161C3D5400790729 /* ofCamera.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A359A14543B7800CC89E5 /* ofCamera.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF91D6161C3D5400790729 /* ofEasyCam.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A359C14543B7800CC89E5 /* ofEasyCam.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF91D7161C3D5400790729 /* ofMesh.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A359E14543B7800CC89E5 /* ofMesh.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF91D8161C3D5400790729 /* ofNode.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35A014543B7800CC89E5 /* ofNode.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF91D9161C3D5400790729 /* ofAppBaseWindow.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35A114543B7800CC89E5 /* ofAppBaseWindow.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF91DA161C3D5400790729 /* ofxThread.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF6500914504DCA007B0C0A /* ofxThread.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF91DB161C3D5400790729 /* IpEndpointName.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C9341451DC1500EECFF4 /* IpEndpointName.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF91DC161C3D5400790729 /* NetworkingUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C9351451DC1500EECFF4 /* NetworkingUtils.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF91DD161C3D5400790729 /* PacketListener.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C9361451DC1500EECFF4 /* PacketListener.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF91DE161C3D5400790729 /* TimerListener.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C9371451DC1500EECFF4 /* TimerListener.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF91DF161C3D5400790729 /* UdpSocket.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C9381451DC1500EECFF4 /* UdpSocket.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF91E0161C3D5400790729 /* MessageMappingOscPacketListener.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C93A1451DC1500EECFF4 /* MessageMappingOscPacketListener.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF91E1161C3D5400790729 /* OscException.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C93B1451DC1500EECFF4 /* OscException.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF91E2161C3D5400790729 /* OscHostEndianness.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C93C1451DC1500EECFF4 /* OscHostEndianness.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF91E3161C3D5400790729 /* OscOutboundPacketStream.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C93D1451DC1500EECFF4 /* OscOutboundPacketStream.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF91E4161C3D5400790729 /* OscPacketListener.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C93E1451DC1500EECFF4 /* OscPacketListener.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF91E5161C3D5400790729 /* OscPrintReceivedElements.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C93F1451DC1500EECFF4 /* OscPrintReceivedElements.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF91E6161C3D5400790729 /* OscReceivedElements.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C9401451DC1500EECFF4 /* OscReceivedElements.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF91E7161C3D5400790729 /* OscTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C9411451DC1500EECFF4 /* OscTypes.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF91E8161C3D5400790729 /* ofxOsc.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C9551451DC1500EECFF4 /* ofxOsc.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF91E9161C3D5400790729 /* ofxOscArg.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C9561451DC1500EECFF4 /* ofxOscArg.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF91EA161C3D5400790729 /* ofxOscBundle.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C9581451DC1500EECFF4 /* ofxOscBundle.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF91EB161C3D5400790729 /* ofxOscMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C95A1451DC1500EECFF4 /* ofxOscMessage.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF91EC161C3D5400790729 /* ofxOscReceiver.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C95C1451DC1500EECFF4 /* ofxOscReceiver.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF91ED161C3D5400790729 /* ofxOscSender.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE4C95E1451DC1500EECFF4 /* ofxOscSender.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF91EE161C3D5400790729 /* ofAppGlutWindow.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35A314543B7800CC89E5 /* ofAppGlutWindow.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF91EF161C3D5400790729 /* ofAppRunner.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35A514543B7800CC89E5 /* ofAppRunner.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF91F0161C3D5400790729 /* ofBaseApp.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35A614543B7800CC89E5 /* ofBaseApp.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF91F1161C3D5400790729 /* ofArduino.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35A814543B7800CC89E5 /* ofArduino.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF91F2161C3D5400790729 /* ofSerial.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35AA14543B7800CC89E5 /* ofSerial.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF91F3161C3D5400790729 /* ofEvents.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35AC14543B7800CC89E5 /* ofEvents.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF91F4161C3D5400790729 /* ofEventUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35AD14543B7800CC89E5 /* ofEventUtils.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF91F5161C3D5400790729 /* ofFbo.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35AF14543B7800CC89E5 /* ofFbo.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF91F6161C3D5400790729 /* ofGLRenderer.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35B114543B7800CC89E5 /* ofGLRenderer.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF91F7161C3D5400790729 /* ofGLUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35B214543B7800CC89E5 /* ofGLUtils.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF91F8161C3D5400790729 /* ofLight.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35B414543B7800CC89E5 /* ofLight.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF91F9161C3D5400790729 /* ofMaterial.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35B614543B7800CC89E5 /* ofMaterial.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF91FA161C3D5400790729 /* ofShader.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35B814543B7800CC89E5 /* ofShader.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF91FB161C3D5400790729 /* ofTexture.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35BA14543B7800CC89E5 /* ofTexture.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF91FC161C3D5400790729 /* ofVbo.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35BC14543B7800CC89E5 /* ofVbo.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF91FD161C3D5400790729 /* ofVboMesh.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35BE14543B7800CC89E5 /* ofVboMesh.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF91FE161C3D5400790729 /* ofPath.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35C014543B7800CC89E5 /* ofPath.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF91FF161C3D5400790729 /* ofPolyline.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35C214543B7800CC89E5 /* ofPolyline.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF9200161C3D5400790729 /* ofRendererCollection.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35C314543B7800CC89E5 /* ofRendererCollection.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF9201161C3D5400790729 /* ofCairoRenderer.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35C514543B7800CC89E5 /* ofCairoRenderer.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF9202161C3D5400790729 /* ofBitmapFont.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35C714543B7800CC89E5 /* ofBitmapFont.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF9203161C3D5400790729 /* ofGraphics.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35C914543B7800CC89E5 /* ofGraphics.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF9204161C3D5400790729 /* ofImage.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35CB14543B7800CC89E5 /* ofImage.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF9205161C3D5400790729 /* ofPixels.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35CD14543B7800CC89E5 /* ofPixels.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF9206161C3D5400790729 /* ofTessellator.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35CF14543B7800CC89E5 /* ofTessellator.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF9207161C3D5500790729 /* ofTrueTypeFont.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35D114543B7800CC89E5 /* ofTrueTypeFont.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF9208161C3D5500790729 /* ofBaseSoundPlayer.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35D314543B7800CC89E5 /* ofBaseSoundPlayer.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF9209161C3D5500790729 /* ofFmodSoundPlayer.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35D514543B7800CC89E5 /* ofFmodSoundPlayer.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF920A161C3D5500790729 /* ofSoundPlayer.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35D714543B7800CC89E5 /* ofSoundPlayer.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF920B161C3D5500790729 /* ofRtAudioSoundStream.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35D914543B7800CC89E5 /* ofRtAudioSoundStream.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF920C161C3D5500790729 /* ofBaseSoundStream.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35DA14543B7800CC89E5 /* ofBaseSoundStream.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF920D161C3D5500790729 /* ofSoundStream.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35DC14543B7800CC89E5 /* ofSoundStream.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF920E161C3D5500790729 /* ofMath.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35DE14543B7800CC89E5 /* ofMath.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF920F161C3D5500790729 /* ofMatrix3x3.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35E014543B7800CC89E5 /* ofMatrix3x3.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF9210161C3D5500790729 /* ofMatrix4x4.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35E214543B7800CC89E5 /* ofMatrix4x4.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF9211161C3D5500790729 /* ofQuaternion.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35E414543B7800CC89E5 /* ofQuaternion.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF9212161C3D5500790729 /* ofVec2f.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35E614543B7800CC89E5 /* ofVec2f.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF9213161C3D5500790729 /* ofVec3f.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35E714543B7800CC89E5 /* ofVec3f.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF9214161C3D5500790729 /* ofVec4f.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35E914543B7800CC89E5 /* ofVec4f.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF9215161C3D5500790729 /* ofVectorMath.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35EA14543B7800CC89E5 /* ofVectorMath.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF9216161C3D5500790729 /* ofBaseTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35EC14543B7800CC89E5 /* ofBaseTypes.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF9217161C3D5500790729 /* ofColor.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35EE14543B7800CC89E5 /* ofColor.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF9218161C3D5500790729 /* ofPoint.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35F014543B7800CC89E5 /* ofPoint.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF9219161C3D5500790729 /* ofRectangle.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35F214543B7800CC89E5 /* ofRectangle.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF921A161C3D5500790729 /* ofTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35F314543B7800CC89E5 /* ofTypes.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF921B161C3D5500790729 /* ofConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35F414543B7800CC89E5 /* ofConstants.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF921C161C3D5500790729 /* ofFileUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35F614543B7800CC89E5 /* ofFileUtils.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF921D161C3D5500790729 /* cv.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33C11452F2CC00CC89E5 /* cv.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF921E161C3D5500790729 /* cv.hpp in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33C21452F2CC00CC89E5 /* cv.hpp */; settings = {ATTRIBUTES = (); }; };
+		DDAF921F161C3D5500790729 /* cvaux.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33C31452F2CC00CC89E5 /* cvaux.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF9220161C3D5500790729 /* cvaux.hpp in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33C41452F2CC00CC89E5 /* cvaux.hpp */; settings = {ATTRIBUTES = (); }; };
+		DDAF9221161C3D5500790729 /* cvwimage.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33C51452F2CC00CC89E5 /* cvwimage.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF9222161C3D5500790729 /* cxcore.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33C61452F2CC00CC89E5 /* cxcore.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF9223161C3D5500790729 /* cxcore.hpp in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33C71452F2CC00CC89E5 /* cxcore.hpp */; settings = {ATTRIBUTES = (); }; };
+		DDAF9224161C3D5500790729 /* cxeigen.hpp in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33C81452F2CC00CC89E5 /* cxeigen.hpp */; settings = {ATTRIBUTES = (); }; };
+		DDAF9225161C3D5500790729 /* cxmisc.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33C91452F2CC00CC89E5 /* cxmisc.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF9226161C3D5500790729 /* highgui.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33CA1452F2CC00CC89E5 /* highgui.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF9227161C3D5500790729 /* ml.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33CB1452F2CC00CC89E5 /* ml.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF9228161C3D5500790729 /* calib3d.hpp in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33CE1452F2CC00CC89E5 /* calib3d.hpp */; settings = {ATTRIBUTES = (); }; };
+		DDAF9229161C3D5500790729 /* contrib.hpp in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33D01452F2CC00CC89E5 /* contrib.hpp */; settings = {ATTRIBUTES = (); }; };
+		DDAF922A161C3D5500790729 /* core.hpp in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33D21452F2CC00CC89E5 /* core.hpp */; settings = {ATTRIBUTES = (); }; };
+		DDAF922B161C3D5500790729 /* core_c.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33D31452F2CC00CC89E5 /* core_c.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF922C161C3D5500790729 /* eigen.hpp in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33D41452F2CC00CC89E5 /* eigen.hpp */; settings = {ATTRIBUTES = (); }; };
+		DDAF922D161C3D5500790729 /* internal.hpp in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33D51452F2CC00CC89E5 /* internal.hpp */; settings = {ATTRIBUTES = (); }; };
+		DDAF922E161C3D5500790729 /* mat.hpp in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33D61452F2CC00CC89E5 /* mat.hpp */; settings = {ATTRIBUTES = (); }; };
+		DDAF922F161C3D5500790729 /* operations.hpp in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33D71452F2CC00CC89E5 /* operations.hpp */; settings = {ATTRIBUTES = (); }; };
+		DDAF9230161C3D5500790729 /* types_c.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33D81452F2CC00CC89E5 /* types_c.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF9231161C3D5500790729 /* version.hpp in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33D91452F2CC00CC89E5 /* version.hpp */; settings = {ATTRIBUTES = (); }; };
+		DDAF9232161C3D5500790729 /* wimage.hpp in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33DA1452F2CC00CC89E5 /* wimage.hpp */; settings = {ATTRIBUTES = (); }; };
+		DDAF9233161C3D5500790729 /* features2d.hpp in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33DC1452F2CC00CC89E5 /* features2d.hpp */; settings = {ATTRIBUTES = (); }; };
+		DDAF9234161C3D5500790729 /* all_indices.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33DE1452F2CC00CC89E5 /* all_indices.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF9235161C3D5500790729 /* allocator.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33DF1452F2CC00CC89E5 /* allocator.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF9236161C3D5500790729 /* autotuned_index.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33E01452F2CC00CC89E5 /* autotuned_index.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF9237161C3D5500790729 /* composite_index.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33E11452F2CC00CC89E5 /* composite_index.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF9238161C3D5500790729 /* dist.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33E21452F2CC00CC89E5 /* dist.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF9239161C3D5500790729 /* flann.hpp in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33E31452F2CC00CC89E5 /* flann.hpp */; settings = {ATTRIBUTES = (); }; };
+		DDAF923A161C3D5500790729 /* flann_base.hpp in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33E41452F2CC00CC89E5 /* flann_base.hpp */; settings = {ATTRIBUTES = (); }; };
+		DDAF923B161C3D5500790729 /* general.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33E51452F2CC00CC89E5 /* general.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF923C161C3D5500790729 /* ground_truth.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33E61452F2CC00CC89E5 /* ground_truth.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF923D161C3D5500790729 /* hdf5.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33E71452F2CC00CC89E5 /* hdf5.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF923E161C3D5500790729 /* heap.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33E81452F2CC00CC89E5 /* heap.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF923F161C3D5500790729 /* index_testing.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33E91452F2CC00CC89E5 /* index_testing.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF9240161C3D5500790729 /* kdtree_index.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33EA1452F2CC00CC89E5 /* kdtree_index.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF9241161C3D5500790729 /* kmeans_index.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33EB1452F2CC00CC89E5 /* kmeans_index.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF9242161C3D5500790729 /* linear_index.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33EC1452F2CC00CC89E5 /* linear_index.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF9243161C3D5500790729 /* logger.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33ED1452F2CC00CC89E5 /* logger.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF9244161C3D5500790729 /* matrix.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33EE1452F2CC00CC89E5 /* matrix.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF9245161C3D5500790729 /* nn_index.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33EF1452F2CC00CC89E5 /* nn_index.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF9246161C3D5500790729 /* object_factory.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33F01452F2CC00CC89E5 /* object_factory.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF9247161C3D5500790729 /* random.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33F11452F2CC00CC89E5 /* random.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF9248161C3D5500790729 /* result_set.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33F21452F2CC00CC89E5 /* result_set.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF9249161C3D5500790729 /* sampling.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33F31452F2CC00CC89E5 /* sampling.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF924A161C3D5500790729 /* saving.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33F41452F2CC00CC89E5 /* saving.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF924B161C3D5500790729 /* simplex_downhill.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33F51452F2CC00CC89E5 /* simplex_downhill.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF924C161C3D5500790729 /* timer.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33F61452F2CC00CC89E5 /* timer.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF924D161C3D5500790729 /* devmem2d.hpp in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33F81452F2CC00CC89E5 /* devmem2d.hpp */; settings = {ATTRIBUTES = (); }; };
+		DDAF924E161C3D5500790729 /* gpu.hpp in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33F91452F2CC00CC89E5 /* gpu.hpp */; settings = {ATTRIBUTES = (); }; };
+		DDAF924F161C3D5500790729 /* matrix_operations.hpp in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33FA1452F2CC00CC89E5 /* matrix_operations.hpp */; settings = {ATTRIBUTES = (); }; };
+		DDAF9250161C3D5500790729 /* stream_accessor.hpp in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33FB1452F2CC00CC89E5 /* stream_accessor.hpp */; settings = {ATTRIBUTES = (); }; };
+		DDAF9251161C3D5500790729 /* highgui.hpp in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33FD1452F2CC00CC89E5 /* highgui.hpp */; settings = {ATTRIBUTES = (); }; };
+		DDAF9252161C3D5500790729 /* highgui_c.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A33FE1452F2CC00CC89E5 /* highgui_c.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF9253161C3D5500790729 /* imgproc.hpp in Headers */ = {isa = PBXBuildFile; fileRef = DD0A34001452F2CC00CC89E5 /* imgproc.hpp */; settings = {ATTRIBUTES = (); }; };
+		DDAF9254161C3D5500790729 /* imgproc_c.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A34011452F2CC00CC89E5 /* imgproc_c.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF9255161C3D5500790729 /* types_c.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A34021452F2CC00CC89E5 /* types_c.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF9256161C3D5500790729 /* blobtrack.hpp in Headers */ = {isa = PBXBuildFile; fileRef = DD0A34041452F2CC00CC89E5 /* blobtrack.hpp */; settings = {ATTRIBUTES = (); }; };
+		DDAF9257161C3D5500790729 /* compat.hpp in Headers */ = {isa = PBXBuildFile; fileRef = DD0A34051452F2CC00CC89E5 /* compat.hpp */; settings = {ATTRIBUTES = (); }; };
+		DDAF9258161C3D5500790729 /* legacy.hpp in Headers */ = {isa = PBXBuildFile; fileRef = DD0A34061452F2CC00CC89E5 /* legacy.hpp */; settings = {ATTRIBUTES = (); }; };
+		DDAF9259161C3D5500790729 /* streams.hpp in Headers */ = {isa = PBXBuildFile; fileRef = DD0A34071452F2CC00CC89E5 /* streams.hpp */; settings = {ATTRIBUTES = (); }; };
+		DDAF925A161C3D5500790729 /* ml.hpp in Headers */ = {isa = PBXBuildFile; fileRef = DD0A34091452F2CC00CC89E5 /* ml.hpp */; settings = {ATTRIBUTES = (); }; };
+		DDAF925B161C3D5500790729 /* objdetect.hpp in Headers */ = {isa = PBXBuildFile; fileRef = DD0A340B1452F2CC00CC89E5 /* objdetect.hpp */; settings = {ATTRIBUTES = (); }; };
+		DDAF925C161C3D5500790729 /* opencv.hpp in Headers */ = {isa = PBXBuildFile; fileRef = DD0A340C1452F2CC00CC89E5 /* opencv.hpp */; settings = {ATTRIBUTES = (); }; };
+		DDAF925D161C3D5500790729 /* background_segm.hpp in Headers */ = {isa = PBXBuildFile; fileRef = DD0A340E1452F2CC00CC89E5 /* background_segm.hpp */; settings = {ATTRIBUTES = (); }; };
+		DDAF925E161C3D5500790729 /* tracking.hpp in Headers */ = {isa = PBXBuildFile; fileRef = DD0A340F1452F2CC00CC89E5 /* tracking.hpp */; settings = {ATTRIBUTES = (); }; };
+		DDAF925F161C3D5500790729 /* ofxMatrix3x3.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35601452F32700CC89E5 /* ofxMatrix3x3.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF9260161C3D5500790729 /* ofxMatrix4x4.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35611452F32700CC89E5 /* ofxMatrix4x4.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF9261161C3D5500790729 /* ofxPoint2f.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35621452F32700CC89E5 /* ofxPoint2f.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF9262161C3D5500790729 /* ofxPoint3f.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35631452F32700CC89E5 /* ofxPoint3f.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF9263161C3D5500790729 /* ofxPoint4f.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35641452F32700CC89E5 /* ofxPoint4f.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF9264161C3D5500790729 /* ofxQuaternion.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35651452F32700CC89E5 /* ofxQuaternion.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF9265161C3D5500790729 /* ofxVec2f.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35661452F32700CC89E5 /* ofxVec2f.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF9266161C3D5500790729 /* ofxVec3f.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35671452F32700CC89E5 /* ofxVec3f.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF9267161C3D5500790729 /* ofxVec4f.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35681452F32700CC89E5 /* ofxVec4f.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF9268161C3D5500790729 /* ofxVectorMath.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35691452F32700CC89E5 /* ofxVectorMath.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF9269161C3D5500790729 /* ofQtUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A360D14543B7800CC89E5 /* ofQtUtils.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF926A161C3D5500790729 /* ofLog.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35F814543B7800CC89E5 /* ofLog.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF926B161C3D5500790729 /* ofNoise.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35F914543B7800CC89E5 /* ofNoise.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF926C161C3D5500790729 /* ofSystemUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35FB14543B7800CC89E5 /* ofSystemUtils.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF926D161C3D5500790729 /* ofThread.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35FD14543B7800CC89E5 /* ofThread.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF926E161C3D5500790729 /* ofURLFileLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A35FF14543B7800CC89E5 /* ofURLFileLoader.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF926F161C3D5500790729 /* ofUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A360114543B7800CC89E5 /* ofUtils.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF9270161C3D5500790729 /* ofVideoGrabber.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A360314543B7800CC89E5 /* ofVideoGrabber.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF9271161C3D5500790729 /* ofVideoPlayer.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A360514543B7800CC89E5 /* ofVideoPlayer.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF9272161C3D5500790729 /* ofQuickTimeGrabber.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A360914543B7800CC89E5 /* ofQuickTimeGrabber.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF9273161C3D5500790729 /* ofQuickTimePlayer.h in Headers */ = {isa = PBXBuildFile; fileRef = DD0A360B14543B7800CC89E5 /* ofQuickTimePlayer.h */; settings = {ATTRIBUTES = (); }; };
+		DDAF9274161C3D5500790729 /* KeystonePerspective.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FB6BAA21499F75000FE24C9 /* KeystonePerspective.h */; };
+		DDAF9275161C3D5500790729 /* CameraInstance.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D9AD7C114B45F3700DB3187 /* CameraInstance.h */; };
+		DDAF9276161C3D5500790729 /* Libdc1394Grabber.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D9AD7CB14B45F3700DB3187 /* Libdc1394Grabber.h */; };
+		DDAF9277161C3D5500790729 /* Libdc1394GrabberFeatureHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D9AD7CD14B45F3700DB3187 /* Libdc1394GrabberFeatureHelper.h */; };
+		DDAF9278161C3D5500790729 /* Libdc1394GrabberFramerateHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D9AD7CF14B45F3700DB3187 /* Libdc1394GrabberFramerateHelper.h */; };
+		DDAF9279161C3D5500790729 /* Libdc1394GrabberUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D9AD7D114B45F3700DB3187 /* Libdc1394GrabberUtils.h */; };
+		DDAF927A161C3D5500790729 /* Libdc1394GrabberVideoFormatHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D9AD7D314B45F3700DB3187 /* Libdc1394GrabberVideoFormatHelper.h */; };
+		DDAF927B161C3D5500790729 /* ofxVideoGrabberFeature.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D9AD7D714B45F3700DB3187 /* ofxVideoGrabberFeature.h */; };
+		DDAF927C161C3D5500790729 /* ofxVideoGrabberSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D9AD7D814B45F3700DB3187 /* ofxVideoGrabberSDK.h */; };
+		DDAF927D161C3D5500790729 /* camera.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D9AD7DC14B45F3700DB3187 /* camera.h */; };
+		DDAF927E161C3D5500790729 /* capture.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D9AD7DD14B45F3700DB3187 /* capture.h */; };
+		DDAF927F161C3D5500790729 /* control.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D9AD7DE14B45F3700DB3187 /* control.h */; };
+		DDAF9280161C3D5500790729 /* conversions.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D9AD7DF14B45F3700DB3187 /* conversions.h */; };
+		DDAF9281161C3D5500790729 /* dc1394.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D9AD7E014B45F3700DB3187 /* dc1394.h */; };
+		DDAF9282161C3D5500790729 /* format7.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D9AD7E114B45F3700DB3187 /* format7.h */; };
+		DDAF9283161C3D5500790729 /* iso.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D9AD7E214B45F3700DB3187 /* iso.h */; };
+		DDAF9284161C3D5500790729 /* log.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D9AD7E314B45F3700DB3187 /* log.h */; };
+		DDAF9285161C3D5500790729 /* capture.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D9AD7E514B45F3700DB3187 /* capture.h */; };
+		DDAF9286161C3D5500790729 /* register.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D9AD7E614B45F3700DB3187 /* register.h */; };
+		DDAF9287161C3D5500790729 /* types.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D9AD7E714B45F3700DB3187 /* types.h */; };
+		DDAF9288161C3D5500790729 /* utils.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D9AD7E814B45F3700DB3187 /* utils.h */; };
+		DDAF9289161C3D5500790729 /* avt.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D9AD7EA14B45F3700DB3187 /* avt.h */; };
+		DDAF928A161C3D5500790729 /* basler.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D9AD7EB14B45F3700DB3187 /* basler.h */; };
+		DDAF928B161C3D5500790729 /* basler_sff.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D9AD7EC14B45F3700DB3187 /* basler_sff.h */; };
+		DDAF928C161C3D5500790729 /* pixelink.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D9AD7ED14B45F3700DB3187 /* pixelink.h */; };
+		DDAF928D161C3D5500790729 /* video.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D9AD7EE14B45F3700DB3187 /* video.h */; };
+		DDAF928E161C3D5500790729 /* AVTCameraInstance.h in Headers */ = {isa = PBXBuildFile; fileRef = 3DAFD3C314B4685D004D0D50 /* AVTCameraInstance.h */; };
+		DDAF928F161C3D5500790729 /* ImageLib.h in Headers */ = {isa = PBXBuildFile; fileRef = 3DAFD3CC14B46A61004D0D50 /* ImageLib.h */; };
+		DDAF9290161C3D5500790729 /* PvApi.h in Headers */ = {isa = PBXBuildFile; fileRef = 3DAFD3CD14B46A61004D0D50 /* PvApi.h */; };
+		DDAF9291161C3D5500790729 /* PvRegIo.h in Headers */ = {isa = PBXBuildFile; fileRef = 3DAFD3CE14B46A61004D0D50 /* PvRegIo.h */; };
+		DDAF9292161C3D5500790729 /* CamerasController.h in Headers */ = {isa = PBXBuildFile; fileRef = 3DAFD3D314B46FC5004D0D50 /* CamerasController.h */; };
+		DDAF9293161C3D5500790729 /* AVTCamerasController.h in Headers */ = {isa = PBXBuildFile; fileRef = 3DAFD3D814B470F9004D0D50 /* AVTCamerasController.h */; };
+		DDAF9294161C3D5500790729 /* Kinect.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D9D180E14BD95A600DD2093 /* Kinect.h */; };
+		DDAF9295161C3D5500790729 /* KinectInstance.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D9D181114BD95A600DD2093 /* KinectInstance.h */; };
+		DDAF9296161C3D5500790729 /* ofxCvOpticalFlowLK.h in Headers */ = {isa = PBXBuildFile; fileRef = 84BE4C2C1526029400FE8731 /* ofxCvOpticalFlowLK.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DDAF9297161C3D5500790729 /* NormalCamerasController.h in Headers */ = {isa = PBXBuildFile; fileRef = DDAB78DA1529C7FB001FB5DB /* NormalCamerasController.h */; };
+		DDAF9298161C3D5500790729 /* NormalCameraInstance.h in Headers */ = {isa = PBXBuildFile; fileRef = DDAB78DE1529C80C001FB5DB /* NormalCameraInstance.h */; };
+		DDAF9299161C3D5500790729 /* ColorProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = 844462391555664C00F66DCC /* ColorProperty.h */; };
+		DDAF929A161C3D5500790729 /* QTKitMovieRenderer.h in Headers */ = {isa = PBXBuildFile; fileRef = DD45AA90161C3AD800DB1BD9 /* QTKitMovieRenderer.h */; };
+		DDAF929C161C3D5500790729 /* ofPath.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A35C014543B7800CC89E5 /* ofPath.h */; };
+		DDAF929D161C3D5500790729 /* ofPolyline.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A35C214543B7800CC89E5 /* ofPolyline.h */; };
+		DDAF929E161C3D5500790729 /* ofRendererCollection.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A35C314543B7800CC89E5 /* ofRendererCollection.h */; };
+		DDAF929F161C3D5500790729 /* ofCairoRenderer.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A35C514543B7800CC89E5 /* ofCairoRenderer.h */; };
+		DDAF92A0161C3D5500790729 /* ofBitmapFont.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A35C714543B7800CC89E5 /* ofBitmapFont.h */; };
+		DDAF92A1161C3D5500790729 /* ofGraphics.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A35C914543B7800CC89E5 /* ofGraphics.h */; };
+		DDAF92A2161C3D5500790729 /* ofImage.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A35CB14543B7800CC89E5 /* ofImage.h */; };
+		DDAF92A3161C3D5500790729 /* ofPixels.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A35CD14543B7800CC89E5 /* ofPixels.h */; };
+		DDAF92A4161C3D5500790729 /* ofTessellator.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A35CF14543B7800CC89E5 /* ofTessellator.h */; };
+		DDAF92A5161C3D5500790729 /* ofTrueTypeFont.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A35D114543B7800CC89E5 /* ofTrueTypeFont.h */; };
+		DDAF92A6161C3D5500790729 /* ofBaseSoundPlayer.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A35D314543B7800CC89E5 /* ofBaseSoundPlayer.h */; };
+		DDAF92A7161C3D5500790729 /* ofFmodSoundPlayer.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A35D514543B7800CC89E5 /* ofFmodSoundPlayer.h */; };
+		DDAF92A8161C3D5500790729 /* ofSoundPlayer.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A35D714543B7800CC89E5 /* ofSoundPlayer.h */; };
+		DDAF92A9161C3D5500790729 /* ofRtAudioSoundStream.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A35D914543B7800CC89E5 /* ofRtAudioSoundStream.h */; };
+		DDAF92AA161C3D5500790729 /* ofBaseSoundStream.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A35DA14543B7800CC89E5 /* ofBaseSoundStream.h */; };
+		DDAF92AB161C3D5500790729 /* ofSoundStream.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A35DC14543B7800CC89E5 /* ofSoundStream.h */; };
+		DDAF92AC161C3D5500790729 /* ofMath.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A35DE14543B7800CC89E5 /* ofMath.h */; };
+		DDAF92AD161C3D5500790729 /* ofMatrix3x3.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A35E014543B7800CC89E5 /* ofMatrix3x3.h */; };
+		DDAF92AE161C3D5500790729 /* ofMatrix4x4.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A35E214543B7800CC89E5 /* ofMatrix4x4.h */; };
+		DDAF92AF161C3D5500790729 /* ofQuaternion.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A35E414543B7800CC89E5 /* ofQuaternion.h */; };
+		DDAF92B0161C3D5500790729 /* ofVec2f.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A35E614543B7800CC89E5 /* ofVec2f.h */; };
+		DDAF92B1161C3D5500790729 /* ofVec3f.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A35E714543B7800CC89E5 /* ofVec3f.h */; };
+		DDAF92B2161C3D5500790729 /* ofVec4f.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A35E914543B7800CC89E5 /* ofVec4f.h */; };
+		DDAF92B3161C3D5500790729 /* ofVectorMath.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A35EA14543B7800CC89E5 /* ofVectorMath.h */; };
+		DDAF92B4161C3D5500790729 /* ofBaseTypes.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A35EC14543B7800CC89E5 /* ofBaseTypes.h */; };
+		DDAF92B5161C3D5500790729 /* ofColor.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A35EE14543B7800CC89E5 /* ofColor.h */; };
+		DDAF92B6161C3D5500790729 /* ofPoint.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A35F014543B7800CC89E5 /* ofPoint.h */; };
+		DDAF92B7161C3D5500790729 /* ofRectangle.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A35F214543B7800CC89E5 /* ofRectangle.h */; };
+		DDAF92B8161C3D5500790729 /* ofTypes.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A35F314543B7800CC89E5 /* ofTypes.h */; };
+		DDAF92B9161C3D5500790729 /* ofConstants.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A35F414543B7800CC89E5 /* ofConstants.h */; };
+		DDAF92BA161C3D5500790729 /* ofFileUtils.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A35F614543B7800CC89E5 /* ofFileUtils.h */; };
+		DDAF92BB161C3D5500790729 /* ofLog.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A35F814543B7800CC89E5 /* ofLog.h */; };
+		DDAF92BC161C3D5500790729 /* ofNoise.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A35F914543B7800CC89E5 /* ofNoise.h */; };
+		DDAF92BD161C3D5500790729 /* ofSystemUtils.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A35FB14543B7800CC89E5 /* ofSystemUtils.h */; };
+		DDAF92BE161C3D5500790729 /* ofThread.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A35FD14543B7800CC89E5 /* ofThread.h */; };
+		DDAF92BF161C3D5500790729 /* ofURLFileLoader.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A35FF14543B7800CC89E5 /* ofURLFileLoader.h */; };
+		DDAF92C0161C3D5500790729 /* ofUtils.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A360114543B7800CC89E5 /* ofUtils.h */; };
+		DDAF92C1161C3D5500790729 /* ofVideoGrabber.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A360314543B7800CC89E5 /* ofVideoGrabber.h */; };
+		DDAF92C2161C3D5500790729 /* ofVideoPlayer.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A360514543B7800CC89E5 /* ofVideoPlayer.h */; };
+		DDAF92C3161C3D5500790729 /* ofQtUtils.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A360714543B7800CC89E5 /* ofQtUtils.h */; };
+		DDAF92C4161C3D5500790729 /* ofQuickTimeGrabber.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A360914543B7800CC89E5 /* ofQuickTimeGrabber.h */; };
+		DDAF92C5161C3D5500790729 /* ofQuickTimePlayer.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A360B14543B7800CC89E5 /* ofQuickTimePlayer.h */; };
+		DDAF92C6161C3D5500790729 /* ofQtUtils.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A360D14543B7800CC89E5 /* ofQtUtils.h */; };
+		DDAF92C7161C3D5500790729 /* ofAppRunner.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A35A514543B7800CC89E5 /* ofAppRunner.h */; };
+		DDAF92C8161C3D5500790729 /* ofGLUtils.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A35B214543B7800CC89E5 /* ofGLUtils.h */; };
+		DDAF92C9161C3D5500790729 /* ofFbo.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A35AF14543B7800CC89E5 /* ofFbo.h */; };
+		DDAF92CA161C3D5500790729 /* ofGLRenderer.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A35B114543B7800CC89E5 /* ofGLRenderer.h */; };
+		DDAF92CB161C3D5500790729 /* ofVboMesh.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A35BE14543B7800CC89E5 /* ofVboMesh.h */; };
+		DDAF92CC161C3D5500790729 /* ofVbo.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A35BC14543B7800CC89E5 /* ofVbo.h */; };
+		DDAF92CD161C3D5500790729 /* ofShader.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A35B814543B7800CC89E5 /* ofShader.h */; };
+		DDAF92CE161C3D5500790729 /* ofTexture.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A35BA14543B7800CC89E5 /* ofTexture.h */; };
+		DDAF92CF161C3D5500790729 /* ofAppGlutWindow.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A35A314543B7800CC89E5 /* ofAppGlutWindow.h */; };
+		DDAF92D0161C3D5500790729 /* ofMaterial.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A35B614543B7800CC89E5 /* ofMaterial.h */; };
+		DDAF92D1161C3D5500790729 /* ofLight.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A35B414543B7800CC89E5 /* ofLight.h */; };
+		DDAF92D2161C3D5500790729 /* ofEasyCam.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A359C14543B7800CC89E5 /* ofEasyCam.h */; };
+		DDAF92D3161C3D5500790729 /* ofEventUtils.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A35AD14543B7800CC89E5 /* ofEventUtils.h */; };
+		DDAF92D4161C3D5500790729 /* ofArduino.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A35A814543B7800CC89E5 /* ofArduino.h */; };
+		DDAF92D5161C3D5500790729 /* ofSerial.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A35AA14543B7800CC89E5 /* ofSerial.h */; };
+		DDAF92D6161C3D5500790729 /* ofAppBaseWindow.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A35A114543B7800CC89E5 /* ofAppBaseWindow.h */; };
+		DDAF92D7161C3D5500790729 /* ofBaseApp.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A35A614543B7800CC89E5 /* ofBaseApp.h */; };
+		DDAF92D8161C3D5500790729 /* ofNode.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A35A014543B7800CC89E5 /* ofNode.h */; };
+		DDAF92D9161C3D5500790729 /* ofMesh.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A359E14543B7800CC89E5 /* ofMesh.h */; };
+		DDAF92DA161C3D5500790729 /* ofEvents.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A35AC14543B7800CC89E5 /* ofEvents.h */; };
+		DDAF92DB161C3D5500790729 /* of3dUtils.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A359814543B7800CC89E5 /* of3dUtils.h */; };
+		DDAF92DC161C3D5500790729 /* ofCamera.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A359A14543B7800CC89E5 /* ofCamera.h */; };
+		DDAF92DD161C3D5500790729 /* ofMain.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD0A358B14543B7800CC89E5 /* ofMain.h */; };
+		DDAF92DF161C3D5500790729 /* libfmodex.dylib in Copy Files */ = {isa = PBXBuildFile; fileRef = 3D9B4D7C14BC4D7300225E4A /* libfmodex.dylib */; };
 		DDC266AF1454BC020016BA7B /* GeneralPreferences.h in Headers */ = {isa = PBXBuildFile; fileRef = DDC266AC1454BC020016BA7B /* GeneralPreferences.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DDC266B01454BC020016BA7B /* GeneralPreferences.mm in Sources */ = {isa = PBXBuildFile; fileRef = DDC266AD1454BC020016BA7B /* GeneralPreferences.mm */; };
 		DDC266B11454BC020016BA7B /* GeneralPreferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDC266AE1454BC020016BA7B /* GeneralPreferences.xib */; };
@@ -569,6 +1031,92 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		DDAF929B161C3D5500790729 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = openframeworksHeaders;
+			dstSubfolderSpec = 16;
+			files = (
+				DDAF929C161C3D5500790729 /* ofPath.h in CopyFiles */,
+				DDAF929D161C3D5500790729 /* ofPolyline.h in CopyFiles */,
+				DDAF929E161C3D5500790729 /* ofRendererCollection.h in CopyFiles */,
+				DDAF929F161C3D5500790729 /* ofCairoRenderer.h in CopyFiles */,
+				DDAF92A0161C3D5500790729 /* ofBitmapFont.h in CopyFiles */,
+				DDAF92A1161C3D5500790729 /* ofGraphics.h in CopyFiles */,
+				DDAF92A2161C3D5500790729 /* ofImage.h in CopyFiles */,
+				DDAF92A3161C3D5500790729 /* ofPixels.h in CopyFiles */,
+				DDAF92A4161C3D5500790729 /* ofTessellator.h in CopyFiles */,
+				DDAF92A5161C3D5500790729 /* ofTrueTypeFont.h in CopyFiles */,
+				DDAF92A6161C3D5500790729 /* ofBaseSoundPlayer.h in CopyFiles */,
+				DDAF92A7161C3D5500790729 /* ofFmodSoundPlayer.h in CopyFiles */,
+				DDAF92A8161C3D5500790729 /* ofSoundPlayer.h in CopyFiles */,
+				DDAF92A9161C3D5500790729 /* ofRtAudioSoundStream.h in CopyFiles */,
+				DDAF92AA161C3D5500790729 /* ofBaseSoundStream.h in CopyFiles */,
+				DDAF92AB161C3D5500790729 /* ofSoundStream.h in CopyFiles */,
+				DDAF92AC161C3D5500790729 /* ofMath.h in CopyFiles */,
+				DDAF92AD161C3D5500790729 /* ofMatrix3x3.h in CopyFiles */,
+				DDAF92AE161C3D5500790729 /* ofMatrix4x4.h in CopyFiles */,
+				DDAF92AF161C3D5500790729 /* ofQuaternion.h in CopyFiles */,
+				DDAF92B0161C3D5500790729 /* ofVec2f.h in CopyFiles */,
+				DDAF92B1161C3D5500790729 /* ofVec3f.h in CopyFiles */,
+				DDAF92B2161C3D5500790729 /* ofVec4f.h in CopyFiles */,
+				DDAF92B3161C3D5500790729 /* ofVectorMath.h in CopyFiles */,
+				DDAF92B4161C3D5500790729 /* ofBaseTypes.h in CopyFiles */,
+				DDAF92B5161C3D5500790729 /* ofColor.h in CopyFiles */,
+				DDAF92B6161C3D5500790729 /* ofPoint.h in CopyFiles */,
+				DDAF92B7161C3D5500790729 /* ofRectangle.h in CopyFiles */,
+				DDAF92B8161C3D5500790729 /* ofTypes.h in CopyFiles */,
+				DDAF92B9161C3D5500790729 /* ofConstants.h in CopyFiles */,
+				DDAF92BA161C3D5500790729 /* ofFileUtils.h in CopyFiles */,
+				DDAF92BB161C3D5500790729 /* ofLog.h in CopyFiles */,
+				DDAF92BC161C3D5500790729 /* ofNoise.h in CopyFiles */,
+				DDAF92BD161C3D5500790729 /* ofSystemUtils.h in CopyFiles */,
+				DDAF92BE161C3D5500790729 /* ofThread.h in CopyFiles */,
+				DDAF92BF161C3D5500790729 /* ofURLFileLoader.h in CopyFiles */,
+				DDAF92C0161C3D5500790729 /* ofUtils.h in CopyFiles */,
+				DDAF92C1161C3D5500790729 /* ofVideoGrabber.h in CopyFiles */,
+				DDAF92C2161C3D5500790729 /* ofVideoPlayer.h in CopyFiles */,
+				DDAF92C3161C3D5500790729 /* ofQtUtils.h in CopyFiles */,
+				DDAF92C4161C3D5500790729 /* ofQuickTimeGrabber.h in CopyFiles */,
+				DDAF92C5161C3D5500790729 /* ofQuickTimePlayer.h in CopyFiles */,
+				DDAF92C6161C3D5500790729 /* ofQtUtils.h in CopyFiles */,
+				DDAF92C7161C3D5500790729 /* ofAppRunner.h in CopyFiles */,
+				DDAF92C8161C3D5500790729 /* ofGLUtils.h in CopyFiles */,
+				DDAF92C9161C3D5500790729 /* ofFbo.h in CopyFiles */,
+				DDAF92CA161C3D5500790729 /* ofGLRenderer.h in CopyFiles */,
+				DDAF92CB161C3D5500790729 /* ofVboMesh.h in CopyFiles */,
+				DDAF92CC161C3D5500790729 /* ofVbo.h in CopyFiles */,
+				DDAF92CD161C3D5500790729 /* ofShader.h in CopyFiles */,
+				DDAF92CE161C3D5500790729 /* ofTexture.h in CopyFiles */,
+				DDAF92CF161C3D5500790729 /* ofAppGlutWindow.h in CopyFiles */,
+				DDAF92D0161C3D5500790729 /* ofMaterial.h in CopyFiles */,
+				DDAF92D1161C3D5500790729 /* ofLight.h in CopyFiles */,
+				DDAF92D2161C3D5500790729 /* ofEasyCam.h in CopyFiles */,
+				DDAF92D3161C3D5500790729 /* ofEventUtils.h in CopyFiles */,
+				DDAF92D4161C3D5500790729 /* ofArduino.h in CopyFiles */,
+				DDAF92D5161C3D5500790729 /* ofSerial.h in CopyFiles */,
+				DDAF92D6161C3D5500790729 /* ofAppBaseWindow.h in CopyFiles */,
+				DDAF92D7161C3D5500790729 /* ofBaseApp.h in CopyFiles */,
+				DDAF92D8161C3D5500790729 /* ofNode.h in CopyFiles */,
+				DDAF92D9161C3D5500790729 /* ofMesh.h in CopyFiles */,
+				DDAF92DA161C3D5500790729 /* ofEvents.h in CopyFiles */,
+				DDAF92DB161C3D5500790729 /* of3dUtils.h in CopyFiles */,
+				DDAF92DC161C3D5500790729 /* ofCamera.h in CopyFiles */,
+				DDAF92DD161C3D5500790729 /* ofMain.h in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DDAF92DE161C3D5500790729 /* Copy Files */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 7;
+			files = (
+				DDAF92DF161C3D5500790729 /* libfmodex.dylib in Copy Files */,
+			);
+			name = "Copy Files";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		DDE4CABA1451EA6100EECFF4 /* Copy Files */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -589,9 +1137,6 @@
 		3D24851B14BC6DBA00AC6F95 /* CameraCalibrationObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraCalibrationObject.h; sourceTree = "<group>"; };
 		3D24851C14BC6DBA00AC6F95 /* CameraCalibrationObject.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CameraCalibrationObject.mm; sourceTree = "<group>"; };
 		3D2FC2281462EC7C0028BC01 /* README.markdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.markdown; sourceTree = "<group>"; };
-		3D70F2E014DAFC700036A80C /* libola.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libola.1.dylib; path = /usr/local/lib/libola.1.dylib; sourceTree = "<absolute>"; };
-		3D70F2E214DAFC7D0036A80C /* libolacommon.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libolacommon.0.dylib; path = /usr/local/lib/libolacommon.0.dylib; sourceTree = "<absolute>"; };
-		3D70F2EC14DB031F0036A80C /* libprotobuf.7.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libprotobuf.7.dylib; path = /usr/local/lib/libprotobuf.7.dylib; sourceTree = "<absolute>"; };
 		3D9951A914B5EDEC007F1E96 /* BlobClasses2d.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlobClasses2d.h; sourceTree = "<group>"; };
 		3D9951AA14B5EDEC007F1E96 /* BlobClasses2d.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = BlobClasses2d.mm; sourceTree = "<group>"; };
 		3D9951AB14B5EDEC007F1E96 /* BlobTracker2d.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlobTracker2d.h; sourceTree = "<group>"; };
@@ -600,9 +1145,6 @@
 		3D9951AE14B5EDEC007F1E96 /* BlobTrackerInstance2d.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlobTrackerInstance2d.h; sourceTree = "<group>"; };
 		3D9951AF14B5EDEC007F1E96 /* BlobTrackerInstance2d.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = BlobTrackerInstance2d.mm; sourceTree = "<group>"; };
 		3D9951B014B5EDEC007F1E96 /* BlobTrackerInstance2d.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BlobTrackerInstance2d.xib; sourceTree = "<group>"; };
-		3D9A5E8214DAF3530002B855 /* OpenDMX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenDMX.h; sourceTree = "<group>"; };
-		3D9A5E8314DAF3530002B855 /* OpenDMX.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = OpenDMX.mm; sourceTree = "<group>"; };
-		3D9A5E8414DAF3530002B855 /* OpenDMX.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OpenDMX.xib; sourceTree = "<group>"; };
 		3D9A8C5F14CD5DBD00531AAF /* icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = icon.icns; sourceTree = "<group>"; };
 		3D9A8C6014CD5DBD00531AAF /* SendToQlab.scpt */ = {isa = PBXFileReference; lastKnownFileType = file; path = SendToQlab.scpt; sourceTree = "<group>"; };
 		3D9A8C6114CD5DBD00531AAF /* Trebuchet MS.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Trebuchet MS.ttf"; sourceTree = "<group>"; };
@@ -864,8 +1406,8 @@
 		DD0A360B14543B7800CC89E5 /* ofQuickTimePlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofQuickTimePlayer.h; sourceTree = "<group>"; };
 		DD0A360D14543B7800CC89E5 /* ofQtUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofQtUtils.h; sourceTree = "<group>"; };
 		DD0A3689145443D900CC89E5 /* ConfigInclude.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = ConfigInclude.xcconfig; path = ofxCocoaPlugins/ConfigInclude.xcconfig; sourceTree = "<group>"; };
-		DD6B80DF15CDD6D8002DC3E0 /* QTKitMovieRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QTKitMovieRenderer.m; sourceTree = "<group>"; };
-		DD6B80E015CDD6D8002DC3E0 /* QTKitMovieRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QTKitMovieRenderer.h; sourceTree = "<group>"; };
+		DD45AA90161C3AD800DB1BD9 /* QTKitMovieRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QTKitMovieRenderer.h; sourceTree = "<group>"; };
+		DD45AA91161C3AD800DB1BD9 /* QTKitMovieRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QTKitMovieRenderer.m; sourceTree = "<group>"; };
 		DDA7FFD8144F1C3800F81C9E /* ofxCocoaPlugins.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ofxCocoaPlugins.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DDA7FFE3144F1C3800F81C9E /* ofxCocoaPlugins-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ofxCocoaPlugins-Info.plist"; sourceTree = "<group>"; };
 		DDA7FFE5144F1C3800F81C9E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -876,6 +1418,8 @@
 		DDAB78DB1529C7FB001FB5DB /* NormalCamerasController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = NormalCamerasController.mm; sourceTree = "<group>"; };
 		DDAB78DE1529C80C001FB5DB /* NormalCameraInstance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NormalCameraInstance.h; sourceTree = "<group>"; };
 		DDAB78DF1529C80C001FB5DB /* NormalCameraInstance.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = NormalCameraInstance.mm; sourceTree = "<group>"; };
+		DDAF92E4161C3D5500790729 /* ofxCocoaPlugins copy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = "ofxCocoaPlugins copy.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DDAF92E5161C3D5500790729 /* ofxCocoaPlugins copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "ofxCocoaPlugins copy-Info.plist"; path = "/Users/jonas/Development/Forestillinger/ViljensTriumf/ofxCocoaPlugins/ofxCocoaPlugins copy-Info.plist"; sourceTree = "<absolute>"; };
 		DDC266AC1454BC020016BA7B /* GeneralPreferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeneralPreferences.h; sourceTree = "<group>"; };
 		DDC266AD1454BC020016BA7B /* GeneralPreferences.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GeneralPreferences.mm; sourceTree = "<group>"; };
 		DDC266AE1454BC020016BA7B /* GeneralPreferences.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GeneralPreferences.xib; sourceTree = "<group>"; };
@@ -1003,9 +1547,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3D70F2EA14DB02AE0036A80C /* libola.1.dylib in Frameworks */,
-				3D70F2EB14DB02AE0036A80C /* libolacommon.0.dylib in Frameworks */,
-				3D70F2ED14DB031F0036A80C /* libprotobuf.7.dylib in Frameworks */,
 				DDE4C8831451A91200EECFF4 /* CoreVideo.framework in Frameworks */,
 				DDE4C8841451A91200EECFF4 /* AppKit.framework in Frameworks */,
 				DDE4C8851451A91200EECFF4 /* Cocoa.framework in Frameworks */,
@@ -1030,6 +1571,37 @@
 				3D9AD81A14B45F3700DB3187 /* libdc1394.a in Frameworks */,
 				3DAFD3C914B46A2F004D0D50 /* libImagelib.a in Frameworks */,
 				3DAFD3CA14B46A2F004D0D50 /* libPvAPI.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DDAF916F161C3D5400790729 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DDAF9173161C3D5400790729 /* CoreVideo.framework in Frameworks */,
+				DDAF9174161C3D5400790729 /* AppKit.framework in Frameworks */,
+				DDAF9175161C3D5400790729 /* Cocoa.framework in Frameworks */,
+				DDAF9176161C3D5400790729 /* IOKit.framework in Frameworks */,
+				DDAF9177161C3D5400790729 /* AGL.framework in Frameworks */,
+				DDAF9178161C3D5400790729 /* ApplicationServices.framework in Frameworks */,
+				DDAF9179161C3D5400790729 /* AudioToolbox.framework in Frameworks */,
+				DDAF917A161C3D5400790729 /* Carbon.framework in Frameworks */,
+				DDAF917B161C3D5400790729 /* CoreAudio.framework in Frameworks */,
+				DDAF917C161C3D5400790729 /* CoreFoundation.framework in Frameworks */,
+				DDAF917D161C3D5400790729 /* CoreServices.framework in Frameworks */,
+				DDAF917E161C3D5400790729 /* OpenGL.framework in Frameworks */,
+				DDAF917F161C3D5400790729 /* QuickTime.framework in Frameworks */,
+				DDAF9180161C3D5400790729 /* GLUT.framework in Frameworks */,
+				DDAF9181161C3D5400790729 /* osc.a in Frameworks */,
+				DDAF9182161C3D5400790729 /* QTKit.framework in Frameworks */,
+				DDAF9183161C3D5400790729 /* QuartzCore.framework in Frameworks */,
+				DDAF9184161C3D5400790729 /* ScriptingBridge.framework in Frameworks */,
+				DDAF9185161C3D5400790729 /* CoreMIDI.framework in Frameworks */,
+				DDAF9186161C3D5400790729 /* opencv.a in Frameworks */,
+				DDAF9187161C3D5400790729 /* openFrameworksDebug.a in Frameworks */,
+				DDAF9188161C3D5400790729 /* libdc1394.a in Frameworks */,
+				DDAF9189161C3D5400790729 /* libImagelib.a in Frameworks */,
+				DDAF918A161C3D5400790729 /* libPvAPI.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1064,16 +1636,6 @@
 				3D9951AA14B5EDEC007F1E96 /* BlobClasses2d.mm */,
 			);
 			path = BlobTracker2d;
-			sourceTree = "<group>";
-		};
-		3D9A5E8114DAF3430002B855 /* OpenDMX */ = {
-			isa = PBXGroup;
-			children = (
-				3D9A5E8214DAF3530002B855 /* OpenDMX.h */,
-				3D9A5E8314DAF3530002B855 /* OpenDMX.mm */,
-				3D9A5E8414DAF3530002B855 /* OpenDMX.xib */,
-			);
-			path = OpenDMX;
 			sourceTree = "<group>";
 		};
 		3D9A8C5E14CD5DBD00531AAF /* Resources */ = {
@@ -1788,6 +2350,7 @@
 				DDE4D5D31451F37F00EECFF4 /* libs */,
 				DDA7FFDA144F1C3800F81C9E /* Frameworks */,
 				DDA7FFD9144F1C3800F81C9E /* Products */,
+				DDAF92E5161C3D5500790729 /* ofxCocoaPlugins copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1795,6 +2358,7 @@
 			isa = PBXGroup;
 			children = (
 				DDA7FFD8144F1C3800F81C9E /* ofxCocoaPlugins.framework */,
+				DDAF92E4161C3D5500790729 /* ofxCocoaPlugins copy.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -2052,9 +2616,9 @@
 			children = (
 				DDE4C9951451E04500EECFF4 /* CustomGraphics.h */,
 				DDE4C9961451E04500EECFF4 /* Filter.h */,
+				DD45AA90161C3AD800DB1BD9 /* QTKitMovieRenderer.h */,
+				DD45AA91161C3AD800DB1BD9 /* QTKitMovieRenderer.m */,
 				DDE4C9A11451E04500EECFF4 /* TextureGrid.h */,
-				DD6B80DF15CDD6D8002DC3E0 /* QTKitMovieRenderer.m */,
-				DD6B80E015CDD6D8002DC3E0 /* QTKitMovieRenderer.h */,
 			);
 			name = Helpers;
 			path = src/Helpers;
@@ -2071,7 +2635,6 @@
 				DDC266A91454BBE90016BA7B /* GeneralPreferences */,
 				DD0A334B1452F29C00CC89E5 /* Keystoner */,
 				DD0A33641452F29C00CC89E5 /* VideoPlayer */,
-				3D9A5E8114DAF3430002B855 /* OpenDMX */,
 				847E9E7015248C6D00710E6E /* OSCControl */,
 				847E9E7315248C6D00710E6E /* Tracker */,
 				DDE4CA151451E23700EECFF4 /* Midi */,
@@ -2125,9 +2688,6 @@
 			isa = PBXGroup;
 			children = (
 				DD0A358A14543B7800CC89E5 /* openFrameworksHeaders */,
-				3D70F2EC14DB031F0036A80C /* libprotobuf.7.dylib */,
-				3D70F2E214DAFC7D0036A80C /* libolacommon.0.dylib */,
-				3D70F2E014DAFC700036A80C /* libola.1.dylib */,
 				3D9B4D7C14BC4D7300225E4A /* libfmodex.dylib */,
 				3DAFD3CB14B46A51004D0D50 /* PvAPI */,
 				DDE4D5D51451F38D00EECFF4 /* openframeworks */,
@@ -2190,7 +2750,6 @@
 			files = (
 				847E9E7715248C6D00710E6E /* OSCControl.h in Headers */,
 				847E9E7915248C6D00710E6E /* Tracker.h in Headers */,
-				3D9A5E8514DAF3530002B855 /* OpenDMX.h in Headers */,
 				3DCAC6A414C47B680022F715 /* ofCvCameraCalibration.h in Headers */,
 				3D24851814BC671900AC6F95 /* CameraCalibration.h in Headers */,
 				3D24851D14BC6DBA00AC6F95 /* CameraCalibrationObject.h in Headers */,
@@ -2459,7 +3018,285 @@
 				DDAB78DC1529C7FB001FB5DB /* NormalCamerasController.h in Headers */,
 				DDAB78E01529C80C001FB5DB /* NormalCameraInstance.h in Headers */,
 				8444623B1555664C00F66DCC /* ColorProperty.h in Headers */,
-				DD6B80E215CDD6D8002DC3E0 /* QTKitMovieRenderer.h in Headers */,
+				DD45AA92161C3AD800DB1BD9 /* QTKitMovieRenderer.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DDAF918B161C3D5400790729 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DDAF918C161C3D5400790729 /* OSCControl.h in Headers */,
+				DDAF918D161C3D5400790729 /* Tracker.h in Headers */,
+				DDAF918F161C3D5400790729 /* ofCvCameraCalibration.h in Headers */,
+				DDAF9190161C3D5400790729 /* CameraCalibration.h in Headers */,
+				DDAF9191161C3D5400790729 /* CameraCalibrationObject.h in Headers */,
+				DDAF9192161C3D5400790729 /* BlobTracker2d.h in Headers */,
+				DDAF9193161C3D5400790729 /* BlobClasses2d.h in Headers */,
+				DDAF9194161C3D5400790729 /* BlobTrackerInstance2d.h in Headers */,
+				DDAF9195161C3D5400790729 /* Camera.h in Headers */,
+				DDAF9196161C3D5400790729 /* Cameras.h in Headers */,
+				DDAF9197161C3D5400790729 /* CustomGraphics.h in Headers */,
+				DDAF9198161C3D5400790729 /* Midi.h in Headers */,
+				DDAF9199161C3D5400790729 /* Keystoner.h in Headers */,
+				DDAF919A161C3D5400790729 /* KeystoneProjector.h in Headers */,
+				DDAF919B161C3D5400790729 /* KeystonerOutputview.h in Headers */,
+				DDAF919C161C3D5400790729 /* KeystoneSurface.h in Headers */,
+				DDAF919D161C3D5400790729 /* CorePluginsIncludes.h in Headers */,
+				DDAF919E161C3D5400790729 /* NumberProperty.h in Headers */,
+				DDAF919F161C3D5400790729 /* BoolProperty.h in Headers */,
+				DDAF91A0161C3D5400790729 /* PluginProperty.h in Headers */,
+				DDAF91A1161C3D5400790729 /* Plugin.h in Headers */,
+				DDAF91A2161C3D5400790729 /* ofxCocoaPlugins.h in Headers */,
+				DDAF91A3161C3D5400790729 /* PluginManagerController.h in Headers */,
+				DDAF91A4161C3D5400790729 /* PYMIDI.h in Headers */,
+				DDAF91A5161C3D5400790729 /* PYMIDIEndpoint.h in Headers */,
+				DDAF91A6161C3D5400790729 /* PYMIDIEndpointDescriptor.h in Headers */,
+				DDAF91A7161C3D5400790729 /* PYMIDIEndpointSet.h in Headers */,
+				DDAF91A8161C3D5400790729 /* PYMIDIManager.h in Headers */,
+				DDAF91A9161C3D5400790729 /* PYMIDIRealDestination.h in Headers */,
+				DDAF91AA161C3D5400790729 /* PYMIDIRealEndpoint.h in Headers */,
+				DDAF91AB161C3D5400790729 /* PYMIDIRealSource.h in Headers */,
+				DDAF91AC161C3D5400790729 /* PYMIDIUtils.h in Headers */,
+				DDAF91AD161C3D5400790729 /* PYMIDIVirtualDestination.h in Headers */,
+				DDAF91AE161C3D5400790729 /* PYMIDIVirtualEndpoint.h in Headers */,
+				DDAF91AF161C3D5400790729 /* PYMIDIVirtualSource.h in Headers */,
+				DDAF91B0161C3D5400790729 /* BeamSync.h in Headers */,
+				DDAF91B1161C3D5400790729 /* PluginOpenGLView.h in Headers */,
+				DDAF91B2161C3D5400790729 /* LoadProgressIndicator.h in Headers */,
+				DDAF91B3161C3D5400790729 /* OutputViewStats.h in Headers */,
+				DDAF91B4161C3D5400790729 /* PluginEnabledCell.h in Headers */,
+				DDAF91B5161C3D5400790729 /* PluginListMeterCell.h in Headers */,
+				DDAF91B6161C3D5400790729 /* PropertiesValueCell.h in Headers */,
+				DDAF91B7161C3D5400790729 /* Qlab.h in Headers */,
+				DDAF91B8161C3D5400790729 /* QLabController.h in Headers */,
+				DDAF91B9161C3D5400790729 /* MainWindow.h in Headers */,
+				DDAF91BA161C3D5400790729 /* ofAppCocoaWindow.h in Headers */,
+				DDAF91BB161C3D5400790729 /* OutputPanelController.h in Headers */,
+				DDAF91BC161C3D5400790729 /* OutputViewManager.h in Headers */,
+				DDAF91BD161C3D5400790729 /* SaveManager.h in Headers */,
+				DDAF91BE161C3D5400790729 /* Filter.h in Headers */,
+				DDAF91BF161C3D5400790729 /* TextureGrid.h in Headers */,
+				DDAF91C0161C3D5400790729 /* PluginOpenGLControlView.h in Headers */,
+				DDAF91C1161C3D5400790729 /* coordWarp.h in Headers */,
+				DDAF91C2161C3D5400790729 /* TrackingLayer.h in Headers */,
+				DDAF91C3161C3D5400790729 /* TrackingView.h in Headers */,
+				DDAF91C4161C3D5400790729 /* Warp.h in Headers */,
+				DDAF91C5161C3D5400790729 /* VideoPlayer.h in Headers */,
+				DDAF91C6161C3D5400790729 /* GeneralPreferences.h in Headers */,
+				DDAF91C7161C3D5400790729 /* IIDCCameraInstance.h in Headers */,
+				DDAF91C8161C3D5400790729 /* ofxCvBlob.h in Headers */,
+				DDAF91C9161C3D5400790729 /* ofxCvColorImage.h in Headers */,
+				DDAF91CA161C3D5400790729 /* ofxCvConstants.h in Headers */,
+				DDAF91CB161C3D5400790729 /* ofxCvContourFinder.h in Headers */,
+				DDAF91CC161C3D5400790729 /* ofxCvFloatImage.h in Headers */,
+				DDAF91CD161C3D5400790729 /* ofxCvGrayscaleImage.h in Headers */,
+				DDAF91CE161C3D5400790729 /* ofxCvHaarFinder.h in Headers */,
+				DDAF91CF161C3D5400790729 /* ofxCvImage.h in Headers */,
+				DDAF91D0161C3D5400790729 /* ofxCvMain.h in Headers */,
+				DDAF91D1161C3D5400790729 /* ofxCvShortImage.h in Headers */,
+				DDAF91D2161C3D5400790729 /* ofxOpenCv.h in Headers */,
+				DDAF91D3161C3D5400790729 /* ofMain.h in Headers */,
+				DDAF91D4161C3D5400790729 /* of3dUtils.h in Headers */,
+				DDAF91D5161C3D5400790729 /* ofCamera.h in Headers */,
+				DDAF91D6161C3D5400790729 /* ofEasyCam.h in Headers */,
+				DDAF91D7161C3D5400790729 /* ofMesh.h in Headers */,
+				DDAF91D8161C3D5400790729 /* ofNode.h in Headers */,
+				DDAF91D9161C3D5400790729 /* ofAppBaseWindow.h in Headers */,
+				DDAF91DA161C3D5400790729 /* ofxThread.h in Headers */,
+				DDAF91DB161C3D5400790729 /* IpEndpointName.h in Headers */,
+				DDAF91DC161C3D5400790729 /* NetworkingUtils.h in Headers */,
+				DDAF91DD161C3D5400790729 /* PacketListener.h in Headers */,
+				DDAF91DE161C3D5400790729 /* TimerListener.h in Headers */,
+				DDAF91DF161C3D5400790729 /* UdpSocket.h in Headers */,
+				DDAF91E0161C3D5400790729 /* MessageMappingOscPacketListener.h in Headers */,
+				DDAF91E1161C3D5400790729 /* OscException.h in Headers */,
+				DDAF91E2161C3D5400790729 /* OscHostEndianness.h in Headers */,
+				DDAF91E3161C3D5400790729 /* OscOutboundPacketStream.h in Headers */,
+				DDAF91E4161C3D5400790729 /* OscPacketListener.h in Headers */,
+				DDAF91E5161C3D5400790729 /* OscPrintReceivedElements.h in Headers */,
+				DDAF91E6161C3D5400790729 /* OscReceivedElements.h in Headers */,
+				DDAF91E7161C3D5400790729 /* OscTypes.h in Headers */,
+				DDAF91E8161C3D5400790729 /* ofxOsc.h in Headers */,
+				DDAF91E9161C3D5400790729 /* ofxOscArg.h in Headers */,
+				DDAF91EA161C3D5400790729 /* ofxOscBundle.h in Headers */,
+				DDAF91EB161C3D5400790729 /* ofxOscMessage.h in Headers */,
+				DDAF91EC161C3D5400790729 /* ofxOscReceiver.h in Headers */,
+				DDAF91ED161C3D5400790729 /* ofxOscSender.h in Headers */,
+				DDAF91EE161C3D5400790729 /* ofAppGlutWindow.h in Headers */,
+				DDAF91EF161C3D5400790729 /* ofAppRunner.h in Headers */,
+				DDAF91F0161C3D5400790729 /* ofBaseApp.h in Headers */,
+				DDAF91F1161C3D5400790729 /* ofArduino.h in Headers */,
+				DDAF91F2161C3D5400790729 /* ofSerial.h in Headers */,
+				DDAF91F3161C3D5400790729 /* ofEvents.h in Headers */,
+				DDAF91F4161C3D5400790729 /* ofEventUtils.h in Headers */,
+				DDAF91F5161C3D5400790729 /* ofFbo.h in Headers */,
+				DDAF91F6161C3D5400790729 /* ofGLRenderer.h in Headers */,
+				DDAF91F7161C3D5400790729 /* ofGLUtils.h in Headers */,
+				DDAF91F8161C3D5400790729 /* ofLight.h in Headers */,
+				DDAF91F9161C3D5400790729 /* ofMaterial.h in Headers */,
+				DDAF91FA161C3D5400790729 /* ofShader.h in Headers */,
+				DDAF91FB161C3D5400790729 /* ofTexture.h in Headers */,
+				DDAF91FC161C3D5400790729 /* ofVbo.h in Headers */,
+				DDAF91FD161C3D5400790729 /* ofVboMesh.h in Headers */,
+				DDAF91FE161C3D5400790729 /* ofPath.h in Headers */,
+				DDAF91FF161C3D5400790729 /* ofPolyline.h in Headers */,
+				DDAF9200161C3D5400790729 /* ofRendererCollection.h in Headers */,
+				DDAF9201161C3D5400790729 /* ofCairoRenderer.h in Headers */,
+				DDAF9202161C3D5400790729 /* ofBitmapFont.h in Headers */,
+				DDAF9203161C3D5400790729 /* ofGraphics.h in Headers */,
+				DDAF9204161C3D5400790729 /* ofImage.h in Headers */,
+				DDAF9205161C3D5400790729 /* ofPixels.h in Headers */,
+				DDAF9206161C3D5400790729 /* ofTessellator.h in Headers */,
+				DDAF9207161C3D5500790729 /* ofTrueTypeFont.h in Headers */,
+				DDAF9208161C3D5500790729 /* ofBaseSoundPlayer.h in Headers */,
+				DDAF9209161C3D5500790729 /* ofFmodSoundPlayer.h in Headers */,
+				DDAF920A161C3D5500790729 /* ofSoundPlayer.h in Headers */,
+				DDAF920B161C3D5500790729 /* ofRtAudioSoundStream.h in Headers */,
+				DDAF920C161C3D5500790729 /* ofBaseSoundStream.h in Headers */,
+				DDAF920D161C3D5500790729 /* ofSoundStream.h in Headers */,
+				DDAF920E161C3D5500790729 /* ofMath.h in Headers */,
+				DDAF920F161C3D5500790729 /* ofMatrix3x3.h in Headers */,
+				DDAF9210161C3D5500790729 /* ofMatrix4x4.h in Headers */,
+				DDAF9211161C3D5500790729 /* ofQuaternion.h in Headers */,
+				DDAF9212161C3D5500790729 /* ofVec2f.h in Headers */,
+				DDAF9213161C3D5500790729 /* ofVec3f.h in Headers */,
+				DDAF9214161C3D5500790729 /* ofVec4f.h in Headers */,
+				DDAF9215161C3D5500790729 /* ofVectorMath.h in Headers */,
+				DDAF9216161C3D5500790729 /* ofBaseTypes.h in Headers */,
+				DDAF9217161C3D5500790729 /* ofColor.h in Headers */,
+				DDAF9218161C3D5500790729 /* ofPoint.h in Headers */,
+				DDAF9219161C3D5500790729 /* ofRectangle.h in Headers */,
+				DDAF921A161C3D5500790729 /* ofTypes.h in Headers */,
+				DDAF921B161C3D5500790729 /* ofConstants.h in Headers */,
+				DDAF921C161C3D5500790729 /* ofFileUtils.h in Headers */,
+				DDAF921D161C3D5500790729 /* cv.h in Headers */,
+				DDAF921E161C3D5500790729 /* cv.hpp in Headers */,
+				DDAF921F161C3D5500790729 /* cvaux.h in Headers */,
+				DDAF9220161C3D5500790729 /* cvaux.hpp in Headers */,
+				DDAF9221161C3D5500790729 /* cvwimage.h in Headers */,
+				DDAF9222161C3D5500790729 /* cxcore.h in Headers */,
+				DDAF9223161C3D5500790729 /* cxcore.hpp in Headers */,
+				DDAF9224161C3D5500790729 /* cxeigen.hpp in Headers */,
+				DDAF9225161C3D5500790729 /* cxmisc.h in Headers */,
+				DDAF9226161C3D5500790729 /* highgui.h in Headers */,
+				DDAF9227161C3D5500790729 /* ml.h in Headers */,
+				DDAF9228161C3D5500790729 /* calib3d.hpp in Headers */,
+				DDAF9229161C3D5500790729 /* contrib.hpp in Headers */,
+				DDAF922A161C3D5500790729 /* core.hpp in Headers */,
+				DDAF922B161C3D5500790729 /* core_c.h in Headers */,
+				DDAF922C161C3D5500790729 /* eigen.hpp in Headers */,
+				DDAF922D161C3D5500790729 /* internal.hpp in Headers */,
+				DDAF922E161C3D5500790729 /* mat.hpp in Headers */,
+				DDAF922F161C3D5500790729 /* operations.hpp in Headers */,
+				DDAF9230161C3D5500790729 /* types_c.h in Headers */,
+				DDAF9231161C3D5500790729 /* version.hpp in Headers */,
+				DDAF9232161C3D5500790729 /* wimage.hpp in Headers */,
+				DDAF9233161C3D5500790729 /* features2d.hpp in Headers */,
+				DDAF9234161C3D5500790729 /* all_indices.h in Headers */,
+				DDAF9235161C3D5500790729 /* allocator.h in Headers */,
+				DDAF9236161C3D5500790729 /* autotuned_index.h in Headers */,
+				DDAF9237161C3D5500790729 /* composite_index.h in Headers */,
+				DDAF9238161C3D5500790729 /* dist.h in Headers */,
+				DDAF9239161C3D5500790729 /* flann.hpp in Headers */,
+				DDAF923A161C3D5500790729 /* flann_base.hpp in Headers */,
+				DDAF923B161C3D5500790729 /* general.h in Headers */,
+				DDAF923C161C3D5500790729 /* ground_truth.h in Headers */,
+				DDAF923D161C3D5500790729 /* hdf5.h in Headers */,
+				DDAF923E161C3D5500790729 /* heap.h in Headers */,
+				DDAF923F161C3D5500790729 /* index_testing.h in Headers */,
+				DDAF9240161C3D5500790729 /* kdtree_index.h in Headers */,
+				DDAF9241161C3D5500790729 /* kmeans_index.h in Headers */,
+				DDAF9242161C3D5500790729 /* linear_index.h in Headers */,
+				DDAF9243161C3D5500790729 /* logger.h in Headers */,
+				DDAF9244161C3D5500790729 /* matrix.h in Headers */,
+				DDAF9245161C3D5500790729 /* nn_index.h in Headers */,
+				DDAF9246161C3D5500790729 /* object_factory.h in Headers */,
+				DDAF9247161C3D5500790729 /* random.h in Headers */,
+				DDAF9248161C3D5500790729 /* result_set.h in Headers */,
+				DDAF9249161C3D5500790729 /* sampling.h in Headers */,
+				DDAF924A161C3D5500790729 /* saving.h in Headers */,
+				DDAF924B161C3D5500790729 /* simplex_downhill.h in Headers */,
+				DDAF924C161C3D5500790729 /* timer.h in Headers */,
+				DDAF924D161C3D5500790729 /* devmem2d.hpp in Headers */,
+				DDAF924E161C3D5500790729 /* gpu.hpp in Headers */,
+				DDAF924F161C3D5500790729 /* matrix_operations.hpp in Headers */,
+				DDAF9250161C3D5500790729 /* stream_accessor.hpp in Headers */,
+				DDAF9251161C3D5500790729 /* highgui.hpp in Headers */,
+				DDAF9252161C3D5500790729 /* highgui_c.h in Headers */,
+				DDAF9253161C3D5500790729 /* imgproc.hpp in Headers */,
+				DDAF9254161C3D5500790729 /* imgproc_c.h in Headers */,
+				DDAF9255161C3D5500790729 /* types_c.h in Headers */,
+				DDAF9256161C3D5500790729 /* blobtrack.hpp in Headers */,
+				DDAF9257161C3D5500790729 /* compat.hpp in Headers */,
+				DDAF9258161C3D5500790729 /* legacy.hpp in Headers */,
+				DDAF9259161C3D5500790729 /* streams.hpp in Headers */,
+				DDAF925A161C3D5500790729 /* ml.hpp in Headers */,
+				DDAF925B161C3D5500790729 /* objdetect.hpp in Headers */,
+				DDAF925C161C3D5500790729 /* opencv.hpp in Headers */,
+				DDAF925D161C3D5500790729 /* background_segm.hpp in Headers */,
+				DDAF925E161C3D5500790729 /* tracking.hpp in Headers */,
+				DDAF925F161C3D5500790729 /* ofxMatrix3x3.h in Headers */,
+				DDAF9260161C3D5500790729 /* ofxMatrix4x4.h in Headers */,
+				DDAF9261161C3D5500790729 /* ofxPoint2f.h in Headers */,
+				DDAF9262161C3D5500790729 /* ofxPoint3f.h in Headers */,
+				DDAF9263161C3D5500790729 /* ofxPoint4f.h in Headers */,
+				DDAF9264161C3D5500790729 /* ofxQuaternion.h in Headers */,
+				DDAF9265161C3D5500790729 /* ofxVec2f.h in Headers */,
+				DDAF9266161C3D5500790729 /* ofxVec3f.h in Headers */,
+				DDAF9267161C3D5500790729 /* ofxVec4f.h in Headers */,
+				DDAF9268161C3D5500790729 /* ofxVectorMath.h in Headers */,
+				DDAF9269161C3D5500790729 /* ofQtUtils.h in Headers */,
+				DDAF9269161C3D5500790729 /* ofQtUtils.h in Headers */,
+				DDAF926A161C3D5500790729 /* ofLog.h in Headers */,
+				DDAF926B161C3D5500790729 /* ofNoise.h in Headers */,
+				DDAF926C161C3D5500790729 /* ofSystemUtils.h in Headers */,
+				DDAF926D161C3D5500790729 /* ofThread.h in Headers */,
+				DDAF926E161C3D5500790729 /* ofURLFileLoader.h in Headers */,
+				DDAF926F161C3D5500790729 /* ofUtils.h in Headers */,
+				DDAF9270161C3D5500790729 /* ofVideoGrabber.h in Headers */,
+				DDAF9271161C3D5500790729 /* ofVideoPlayer.h in Headers */,
+				DDAF9272161C3D5500790729 /* ofQuickTimeGrabber.h in Headers */,
+				DDAF9273161C3D5500790729 /* ofQuickTimePlayer.h in Headers */,
+				DDAF9274161C3D5500790729 /* KeystonePerspective.h in Headers */,
+				DDAF9275161C3D5500790729 /* CameraInstance.h in Headers */,
+				DDAF9276161C3D5500790729 /* Libdc1394Grabber.h in Headers */,
+				DDAF9277161C3D5500790729 /* Libdc1394GrabberFeatureHelper.h in Headers */,
+				DDAF9278161C3D5500790729 /* Libdc1394GrabberFramerateHelper.h in Headers */,
+				DDAF9279161C3D5500790729 /* Libdc1394GrabberUtils.h in Headers */,
+				DDAF927A161C3D5500790729 /* Libdc1394GrabberVideoFormatHelper.h in Headers */,
+				DDAF927B161C3D5500790729 /* ofxVideoGrabberFeature.h in Headers */,
+				DDAF927C161C3D5500790729 /* ofxVideoGrabberSDK.h in Headers */,
+				DDAF927D161C3D5500790729 /* camera.h in Headers */,
+				DDAF927E161C3D5500790729 /* capture.h in Headers */,
+				DDAF927F161C3D5500790729 /* control.h in Headers */,
+				DDAF9280161C3D5500790729 /* conversions.h in Headers */,
+				DDAF9281161C3D5500790729 /* dc1394.h in Headers */,
+				DDAF9282161C3D5500790729 /* format7.h in Headers */,
+				DDAF9283161C3D5500790729 /* iso.h in Headers */,
+				DDAF9284161C3D5500790729 /* log.h in Headers */,
+				DDAF9285161C3D5500790729 /* capture.h in Headers */,
+				DDAF9286161C3D5500790729 /* register.h in Headers */,
+				DDAF9287161C3D5500790729 /* types.h in Headers */,
+				DDAF9288161C3D5500790729 /* utils.h in Headers */,
+				DDAF9289161C3D5500790729 /* avt.h in Headers */,
+				DDAF928A161C3D5500790729 /* basler.h in Headers */,
+				DDAF928B161C3D5500790729 /* basler_sff.h in Headers */,
+				DDAF928C161C3D5500790729 /* pixelink.h in Headers */,
+				DDAF928D161C3D5500790729 /* video.h in Headers */,
+				DDAF928E161C3D5500790729 /* AVTCameraInstance.h in Headers */,
+				DDAF928F161C3D5500790729 /* ImageLib.h in Headers */,
+				DDAF9290161C3D5500790729 /* PvApi.h in Headers */,
+				DDAF9291161C3D5500790729 /* PvRegIo.h in Headers */,
+				DDAF9292161C3D5500790729 /* CamerasController.h in Headers */,
+				DDAF9293161C3D5500790729 /* AVTCamerasController.h in Headers */,
+				DDAF9294161C3D5500790729 /* Kinect.h in Headers */,
+				DDAF9295161C3D5500790729 /* KinectInstance.h in Headers */,
+				DDAF9296161C3D5500790729 /* ofxCvOpticalFlowLK.h in Headers */,
+				DDAF9297161C3D5500790729 /* NormalCamerasController.h in Headers */,
+				DDAF9298161C3D5500790729 /* NormalCameraInstance.h in Headers */,
+				DDAF9299161C3D5500790729 /* ColorProperty.h in Headers */,
+				DDAF929A161C3D5500790729 /* QTKitMovieRenderer.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2487,6 +3324,27 @@
 			productReference = DDA7FFD8144F1C3800F81C9E /* ofxCocoaPlugins.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		DDAF90FF161C3D5400790729 /* ofxCocoaPlugins copy */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DDAF92E1161C3D5500790729 /* Build configuration list for PBXNativeTarget "ofxCocoaPlugins copy" */;
+			buildPhases = (
+				DDAF9100161C3D5400790729 /* Sources */,
+				DDAF9154161C3D5400790729 /* Resources */,
+				DDAF916F161C3D5400790729 /* Frameworks */,
+				DDAF918B161C3D5400790729 /* Headers */,
+				DDAF929B161C3D5500790729 /* CopyFiles */,
+				DDAF92DE161C3D5500790729 /* Copy Files */,
+				DDAF92E0161C3D5500790729 /* Run Script (fmodex library) */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "ofxCocoaPlugins copy";
+			productName = ofxCocoaPlugins;
+			productReference = DDAF92E4161C3D5500790729 /* ofxCocoaPlugins copy.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -2511,6 +3369,7 @@
 			projectRoot = "";
 			targets = (
 				DDA7FFD7144F1C3800F81C9E /* ofxCocoaPlugins */,
+				DDAF90FF161C3D5400790729 /* ofxCocoaPlugins copy */,
 			);
 		};
 /* End PBXProject section */
@@ -2552,16 +3411,61 @@
 				3D9A8C6514CD5DBD00531AAF /* SendToQlab.scpt in Resources */,
 				3D9A8C6614CD5DBD00531AAF /* Trebuchet MS.ttf in Resources */,
 				3D9A8C6714CD5DBD00531AAF /* index.html in Resources */,
-				3D9A5E8714DAF3530002B855 /* OpenDMX.xib in Resources */,
 				847E9E7B15248C6D00710E6E /* Tracker.xib in Resources */,
 				84BE4C2D1526029400FE8731 /* .gitignore in Resources */,
 				84BE4C2E1526029400FE8731 /* README in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		DDAF9154161C3D5400790729 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DDAF9155161C3D5400790729 /* InfoPlist.strings in Resources */,
+				DDAF9156161C3D5400790729 /* Project.xcconfig in Resources */,
+				DDAF9157161C3D5400790729 /* CoreOF.xcconfig in Resources */,
+				DDAF9158161C3D5400790729 /* Application.xib in Resources */,
+				DDAF9159161C3D5400790729 /* OutputPanel.xib in Resources */,
+				DDAF915A161C3D5400790729 /* Midi.xib in Resources */,
+				DDAF915B161C3D5400790729 /* Keystoner.xib in Resources */,
+				DDAF915C161C3D5400790729 /* VideoPlayer.xib in Resources */,
+				DDAF915D161C3D5400790729 /* ConfigInclude.xcconfig in Resources */,
+				DDAF915E161C3D5400790729 /* GeneralPreferences.xib in Resources */,
+				DDAF915F161C3D5400790729 /* README.markdown in Resources */,
+				DDAF9160161C3D5400790729 /* Cameras.xib in Resources */,
+				DDAF9161161C3D5400790729 /* BlobTracker2d.xib in Resources */,
+				DDAF9162161C3D5400790729 /* BlobTrackerInstance2d.xib in Resources */,
+				DDAF9163161C3D5400790729 /* CameraCalibration.xib in Resources */,
+				DDAF9164161C3D5400790729 /* handle.png in Resources */,
+				DDAF9165161C3D5400790729 /* handle.png in Resources */,
+				DDAF9166161C3D5400790729 /* Kinect.xib in Resources */,
+				DDAF9167161C3D5400790729 /* icon.icns in Resources */,
+				DDAF9168161C3D5400790729 /* SendToQlab.scpt in Resources */,
+				DDAF9169161C3D5400790729 /* Trebuchet MS.ttf in Resources */,
+				DDAF916A161C3D5400790729 /* index.html in Resources */,
+				DDAF916C161C3D5400790729 /* Tracker.xib in Resources */,
+				DDAF916D161C3D5400790729 /* .gitignore in Resources */,
+				DDAF916E161C3D5400790729 /* README in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		DDAF92E0161C3D5500790729 /* Run Script (fmodex library) */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script (fmodex library)";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "install_name_tool -change ./libfmodex.dylib @executable_path/../Frameworks/ofxCocoaPlugins.framework/Resources/libfmodex.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.framework/ofxCocoaPlugins\" ;";
+		};
 		DDE4D5CD1451EE8700EECFF4 /* Run Script (fmodex library) */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -2658,14 +3562,102 @@
 				3D9D181514BD95A600DD2093 /* Kinect.mm in Sources */,
 				3D9D181814BD95A600DD2093 /* KinectInstance.mm in Sources */,
 				3DCAC6A214C47B5B0022F715 /* ofCvCameraCalibration.cpp in Sources */,
-				3D9A5E8614DAF3530002B855 /* OpenDMX.mm in Sources */,
 				847E9E7815248C6D00710E6E /* OSCControl.mm in Sources */,
 				847E9E7A15248C6D00710E6E /* Tracker.mm in Sources */,
 				84BE4C2F1526029400FE8731 /* ofxCvOpticalFlowLK.cpp in Sources */,
 				DDAB78DD1529C7FB001FB5DB /* NormalCamerasController.mm in Sources */,
 				DDAB78E11529C80C001FB5DB /* NormalCameraInstance.mm in Sources */,
 				8444623C1555664C00F66DCC /* ColorProperty.mm in Sources */,
-				DD6B80E115CDD6D8002DC3E0 /* QTKitMovieRenderer.m in Sources */,
+				DD45AA93161C3AD800DB1BD9 /* QTKitMovieRenderer.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DDAF9100161C3D5400790729 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DDAF9101161C3D5400790729 /* ofxCvColorImage.cpp in Sources */,
+				DDAF9102161C3D5400790729 /* ofxCvContourFinder.cpp in Sources */,
+				DDAF9103161C3D5400790729 /* ofxCvFloatImage.cpp in Sources */,
+				DDAF9104161C3D5400790729 /* ofxCvGrayscaleImage.cpp in Sources */,
+				DDAF9105161C3D5400790729 /* ofxCvHaarFinder.cpp in Sources */,
+				DDAF9106161C3D5400790729 /* ofxCvImage.cpp in Sources */,
+				DDAF9107161C3D5400790729 /* ofxCvShortImage.cpp in Sources */,
+				DDAF9108161C3D5400790729 /* ofxCocoaPlugins.mm in Sources */,
+				DDAF9109161C3D5400790729 /* BeamSync.m in Sources */,
+				DDAF910A161C3D5400790729 /* PluginOpenGLView.mm in Sources */,
+				DDAF910B161C3D5400790729 /* LoadProgressIndicator.m in Sources */,
+				DDAF910C161C3D5400790729 /* OutputViewStats.mm in Sources */,
+				DDAF910D161C3D5400790729 /* PluginEnabledCell.m in Sources */,
+				DDAF910E161C3D5400790729 /* PluginListMeterCell.m in Sources */,
+				DDAF910F161C3D5400790729 /* PropertiesValueCell.m in Sources */,
+				DDAF9110161C3D5400790729 /* Plugin.mm in Sources */,
+				DDAF9111161C3D5400790729 /* PluginManagerController.mm in Sources */,
+				DDAF9112161C3D5400790729 /* PluginProperty.mm in Sources */,
+				DDAF9113161C3D5400790729 /* BoolProperty.mm in Sources */,
+				DDAF9114161C3D5400790729 /* NumberProperty.mm in Sources */,
+				DDAF9115161C3D5400790729 /* QLabController.mm in Sources */,
+				DDAF9116161C3D5400790729 /* ofxOscBundle.cpp in Sources */,
+				DDAF9117161C3D5400790729 /* ofxOscMessage.cpp in Sources */,
+				DDAF9118161C3D5400790729 /* ofxOscReceiver.cpp in Sources */,
+				DDAF9119161C3D5400790729 /* ofxOscSender.cpp in Sources */,
+				DDAF911A161C3D5400790729 /* MainWindow.m in Sources */,
+				DDAF911B161C3D5400790729 /* ofAppCocoaWindow.mm in Sources */,
+				DDAF911C161C3D5400790729 /* OutputPanelController.mm in Sources */,
+				DDAF911D161C3D5400790729 /* OutputViewManager.mm in Sources */,
+				DDAF911E161C3D5400790729 /* SaveManager.mm in Sources */,
+				DDAF911F161C3D5400790729 /* PluginOpenGLControlView.mm in Sources */,
+				DDAF9120161C3D5400790729 /* Midi.mm in Sources */,
+				DDAF9121161C3D5400790729 /* PYMIDIEndpoint.m in Sources */,
+				DDAF9122161C3D5400790729 /* PYMIDIEndpointDescriptor.m in Sources */,
+				DDAF9123161C3D5400790729 /* PYMIDIEndpointSet.m in Sources */,
+				DDAF9124161C3D5400790729 /* PYMIDIManager.m in Sources */,
+				DDAF9125161C3D5400790729 /* PYMIDIRealDestination.m in Sources */,
+				DDAF9126161C3D5400790729 /* PYMIDIRealEndpoint.m in Sources */,
+				DDAF9127161C3D5400790729 /* PYMIDIRealSource.m in Sources */,
+				DDAF9128161C3D5400790729 /* PYMIDIUtils.m in Sources */,
+				DDAF9129161C3D5400790729 /* PYMIDIVirtualDestination.m in Sources */,
+				DDAF912A161C3D5400790729 /* PYMIDIVirtualEndpoint.m in Sources */,
+				DDAF912B161C3D5400790729 /* PYMIDIVirtualSource.m in Sources */,
+				DDAF912C161C3D5400790729 /* coordWarp.mm in Sources */,
+				DDAF912D161C3D5400790729 /* KeystoneProjector.mm in Sources */,
+				DDAF912E161C3D5400790729 /* Keystoner.mm in Sources */,
+				DDAF912F161C3D5400790729 /* KeystonerOutputview.mm in Sources */,
+				DDAF9130161C3D5400790729 /* KeystoneSurface.mm in Sources */,
+				DDAF9131161C3D5400790729 /* TrackingLayer.mm in Sources */,
+				DDAF9132161C3D5400790729 /* TrackingView.mm in Sources */,
+				DDAF9133161C3D5400790729 /* Warp.mm in Sources */,
+				DDAF9134161C3D5400790729 /* VideoPlayer.mm in Sources */,
+				DDAF9135161C3D5400790729 /* GeneralPreferences.mm in Sources */,
+				DDAF9136161C3D5400790729 /* KeystonePerspective.mm in Sources */,
+				DDAF9137161C3D5400790729 /* Camera.mm in Sources */,
+				DDAF9138161C3D5400790729 /* CameraInstance.mm in Sources */,
+				DDAF9139161C3D5400790729 /* Cameras.mm in Sources */,
+				DDAF913A161C3D5400790729 /* IIDCCameraInstance.mm in Sources */,
+				DDAF913B161C3D5400790729 /* Libdc1394Grabber.cpp in Sources */,
+				DDAF913C161C3D5400790729 /* Libdc1394GrabberFeatureHelper.cpp in Sources */,
+				DDAF913D161C3D5400790729 /* Libdc1394GrabberFramerateHelper.cpp in Sources */,
+				DDAF913E161C3D5400790729 /* Libdc1394GrabberUtils.cpp in Sources */,
+				DDAF913F161C3D5400790729 /* Libdc1394GrabberVideoFormatHelper.cpp in Sources */,
+				DDAF9140161C3D5400790729 /* ofxVideoGrabberFeature.cpp in Sources */,
+				DDAF9141161C3D5400790729 /* AVTCameraInstance.mm in Sources */,
+				DDAF9142161C3D5400790729 /* CamerasController.mm in Sources */,
+				DDAF9143161C3D5400790729 /* AVTCamerasController.mm in Sources */,
+				DDAF9144161C3D5400790729 /* BlobClasses2d.mm in Sources */,
+				DDAF9145161C3D5400790729 /* BlobTracker2d.mm in Sources */,
+				DDAF9146161C3D5400790729 /* BlobTrackerInstance2d.mm in Sources */,
+				DDAF9147161C3D5400790729 /* CameraCalibration.mm in Sources */,
+				DDAF9148161C3D5400790729 /* CameraCalibrationObject.mm in Sources */,
+				DDAF9149161C3D5400790729 /* Kinect.mm in Sources */,
+				DDAF914A161C3D5400790729 /* KinectInstance.mm in Sources */,
+				DDAF914B161C3D5400790729 /* ofCvCameraCalibration.cpp in Sources */,
+				DDAF914D161C3D5400790729 /* OSCControl.mm in Sources */,
+				DDAF914E161C3D5400790729 /* Tracker.mm in Sources */,
+				DDAF914F161C3D5400790729 /* ofxCvOpticalFlowLK.cpp in Sources */,
+				DDAF9150161C3D5400790729 /* NormalCamerasController.mm in Sources */,
+				DDAF9151161C3D5400790729 /* NormalCameraInstance.mm in Sources */,
+				DDAF9152161C3D5400790729 /* ColorProperty.mm in Sources */,
+				DDAF9153161C3D5400790729 /* QTKitMovieRenderer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2723,6 +3715,7 @@
 					"$(LIB_OPENCV)",
 				);
 				SDKROOT = macosx10.6;
+				USER_HEADER_SEARCH_PATHS = "$(HEADER_OPENCV)";
 			};
 			name = Debug;
 		};
@@ -2762,6 +3755,7 @@
 					"$(LIB_OPENCV)",
 				);
 				SDKROOT = macosx10.6;
+				USER_HEADER_SEARCH_PATHS = "$(HEADER_OPENCV)";
 			};
 			name = Release;
 		};
@@ -2864,7 +3858,7 @@
 					"\"$(SRCROOT)/ofxCocoaPlugins/libs/PvAPI/lib-pc/x86/4.2\"",
 					"\"$(SRCROOT)/ofxCocoaPlugins/src/CorePlugins/OpenDMX/ola\"",
 					"\"$(SRCROOT)/ofxCocoaPlugins/src/CorePlugins/OpenDMX\"",
-					/usr/local/lib,
+					/opt/local/lib,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx10.7;
@@ -2971,9 +3965,217 @@
 					"\"$(SRCROOT)/ofxCocoaPlugins/libs/PvAPI/lib-pc/x86/4.2\"",
 					"\"$(SRCROOT)/ofxCocoaPlugins/src/CorePlugins/OpenDMX/ola\"",
 					"\"$(SRCROOT)/ofxCocoaPlugins/src/CorePlugins/OpenDMX\"",
-					/usr/local/lib,
+					/opt/local/lib,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx10.7;
+				WRAPPER_EXTENSION = framework;
+			};
+			name = Release;
+		};
+		DDAF92E2161C3D5500790729 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(DEVELOPER_DIR)/Development/Library/of_007/libs/glut/lib/osx\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/libs/glut/lib/osx\"",
+				);
+				FRAMEWORK_VERSION = A;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Carbon.framework/Headers/Carbon.h";
+				INFOPLIST_FILE = "ofxCocoaPlugins copy-Info.plist";
+				INSTALL_PATH = "@executable_path/../Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/ofxCocoaPlugins/src/CorePlugins/Cameras/ofxVideoGrabber/osx/lib\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/libs/openFrameworksCompiled/lib/osx\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/addons/ofxOsc/libs/oscpack/lib/android/arm7\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/addons/ofxOsc/libs/oscpack/lib/android\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/addons/ofxOsc/libs/oscpack/lib/iphone\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/addons/ofxOsc/libs/oscpack/lib/linux\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/addons/ofxOsc/libs/oscpack/lib/linux64\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/addons/ofxOsc/libs/oscpack/lib/osx\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/addons/ofxOsc/libs/oscpack/lib/vs2010\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/addons/ofxOsc/libs/oscpack/lib/win_cb\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/libs/fmodex/lib/osx\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/libs/assimp/lib/osx\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/libs/cairo/lib/osx\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/libs/cairo/lib/vs2010\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/libs/cairo/lib/win_cb\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/libs/fmodex/lib/vs2010\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/libs/fmodex/lib/win_cb\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/libs/FreeImage/lib/android/armeabi\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/libs/FreeImage/lib/android/armeabi-v7a\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/libs/FreeImage/lib/iphone\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/libs/FreeImage/lib/osx\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/libs/FreeImage/lib/vs2010\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/libs/FreeImage/lib/win_cb\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/libs/freetype/lib/android/armeabi\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/libs/freetype/lib/android/armeabi-v7a\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/libs/freetype/lib/iphone\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/libs/freetype/lib/linux\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/libs/freetype/lib/linux64\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/libs/freetype/lib/osx\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/libs/freetype/lib/vs2010\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/libs/freetype/lib/win_cb\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/libs/glew/lib/osx\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/libs/glew/lib/vs2010\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/libs/glew/lib/win_cb\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/libs/glu/lib/android/armeabi\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/libs/glu/lib/android/armeabi-v7a\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/libs/glu/lib/iphone\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/libs/glu/lib/vs2010\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/libs/glu/lib/win_cb\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/libs/glut/lib/vs2010\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/libs/glut/lib/win_cb\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/libs/kiss/lib/linux\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/libs/kiss/lib/linux64\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/libs/poco/lib/android/armeabi\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/libs/poco/lib/android/armeabi-v7a\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/libs/poco/lib/iphone\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/libs/poco/lib/linux\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/libs/poco/lib/linux64\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/libs/poco/lib/osx\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/libs/poco/lib/vs2010\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/libs/poco/lib/win_cb\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/libs/portaudio/lib/linux\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/libs/portaudio/lib/linux64\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/libs/quicktime/lib/vs2010\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/libs/quicktime/lib/win_cb\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/libs/rtAudio/lib/linux\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/libs/rtAudio/lib/linux64\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/libs/rtAudio/lib/osx\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/libs/rtAudio/lib/vs2010\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/libs/rtAudio/lib/win_cb\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/libs/tess2/lib/android/armeabi\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/libs/tess2/lib/android/armeabi-v7a\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/libs/tess2/lib/iphone\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/libs/tess2/lib/linux\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/libs/tess2/lib/linux64\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/libs/tess2/lib/osx\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/libs/tess2/lib/vs2010\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/libs/tess2/lib/win_cb\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/libs/videoInput/lib/vs2010\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/libs/videoInput/lib/win_cb\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/addons/ofxOpenCv/libs/opencv/lib/android/armeabi\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/addons/ofxOpenCv/libs/opencv/lib/android/armeabi-v7a\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/addons/ofxOpenCv/libs/opencv/lib/iphone\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/addons/ofxOpenCv/libs/opencv/lib/linux\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/addons/ofxOpenCv/libs/opencv/lib/linux64\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/addons/ofxOpenCv/libs/opencv/lib/osx\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/addons/ofxOpenCv/libs/opencv/lib/vs2010\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/addons/ofxOpenCv/libs/opencv/lib/win_cb\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/PvAPI/lib-pc/x86/4.2\"",
+				);
+				PRODUCT_NAME = "ofxCocoaPlugins copy";
+				SDKROOT = macosx10.7;
+				WRAPPER_EXTENSION = framework;
+			};
+			name = Debug;
+		};
+		DDAF92E3161C3D5500790729 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(DEVELOPER_DIR)/Development/Library/of_007/libs/glut/lib/osx\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/libs/glut/lib/osx\"",
+				);
+				FRAMEWORK_VERSION = A;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Carbon.framework/Headers/Carbon.h";
+				INFOPLIST_FILE = "ofxCocoaPlugins copy-Info.plist";
+				INSTALL_PATH = "@executable_path/../Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/ofxCocoaPlugins/src/CorePlugins/Cameras/ofxVideoGrabber/osx/lib\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/libs/openFrameworksCompiled/lib/osx\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/addons/ofxOsc/libs/oscpack/lib/android/arm7\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/addons/ofxOsc/libs/oscpack/lib/android\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/addons/ofxOsc/libs/oscpack/lib/iphone\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/addons/ofxOsc/libs/oscpack/lib/linux\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/addons/ofxOsc/libs/oscpack/lib/linux64\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/addons/ofxOsc/libs/oscpack/lib/osx\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/addons/ofxOsc/libs/oscpack/lib/vs2010\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/addons/ofxOsc/libs/oscpack/lib/win_cb\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/libs/fmodex/lib/osx\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/libs/assimp/lib/osx\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/libs/cairo/lib/osx\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/libs/cairo/lib/vs2010\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/libs/cairo/lib/win_cb\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/libs/fmodex/lib/vs2010\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/libs/fmodex/lib/win_cb\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/libs/FreeImage/lib/android/armeabi\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/libs/FreeImage/lib/android/armeabi-v7a\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/libs/FreeImage/lib/iphone\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/libs/FreeImage/lib/osx\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/libs/FreeImage/lib/vs2010\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/libs/FreeImage/lib/win_cb\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/libs/freetype/lib/android/armeabi\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/libs/freetype/lib/android/armeabi-v7a\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/libs/freetype/lib/iphone\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/libs/freetype/lib/linux\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/libs/freetype/lib/linux64\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/libs/freetype/lib/osx\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/libs/freetype/lib/vs2010\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/libs/freetype/lib/win_cb\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/libs/glew/lib/osx\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/libs/glew/lib/vs2010\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/libs/glew/lib/win_cb\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/libs/glu/lib/android/armeabi\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/libs/glu/lib/android/armeabi-v7a\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/libs/glu/lib/iphone\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/libs/glu/lib/vs2010\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/libs/glu/lib/win_cb\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/libs/glut/lib/vs2010\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/libs/glut/lib/win_cb\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/libs/kiss/lib/linux\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/libs/kiss/lib/linux64\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/libs/poco/lib/android/armeabi\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/libs/poco/lib/android/armeabi-v7a\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/libs/poco/lib/iphone\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/libs/poco/lib/linux\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/libs/poco/lib/linux64\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/libs/poco/lib/osx\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/libs/poco/lib/vs2010\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/libs/poco/lib/win_cb\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/libs/portaudio/lib/linux\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/libs/portaudio/lib/linux64\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/libs/quicktime/lib/vs2010\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/libs/quicktime/lib/win_cb\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/libs/rtAudio/lib/linux\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/libs/rtAudio/lib/linux64\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/libs/rtAudio/lib/osx\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/libs/rtAudio/lib/vs2010\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/libs/rtAudio/lib/win_cb\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/libs/tess2/lib/android/armeabi\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/libs/tess2/lib/android/armeabi-v7a\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/libs/tess2/lib/iphone\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/libs/tess2/lib/linux\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/libs/tess2/lib/linux64\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/libs/tess2/lib/osx\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/libs/tess2/lib/vs2010\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/libs/tess2/lib/win_cb\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/libs/videoInput/lib/vs2010\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/libs/videoInput/lib/win_cb\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/addons/ofxOpenCv/libs/opencv/lib/android/armeabi\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/addons/ofxOpenCv/libs/opencv/lib/android/armeabi-v7a\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/addons/ofxOpenCv/libs/opencv/lib/iphone\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/addons/ofxOpenCv/libs/opencv/lib/linux\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/addons/ofxOpenCv/libs/opencv/lib/linux64\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/addons/ofxOpenCv/libs/opencv/lib/osx\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/addons/ofxOpenCv/libs/opencv/lib/vs2010\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/openframeworks/addons/ofxOpenCv/libs/opencv/lib/win_cb\"",
+					"\"$(SRCROOT)/ofxCocoaPlugins/libs/PvAPI/lib-pc/x86/4.2\"",
+				);
+				PRODUCT_NAME = "ofxCocoaPlugins copy";
 				SDKROOT = macosx10.7;
 				WRAPPER_EXTENSION = framework;
 			};
@@ -2996,6 +4198,15 @@
 			buildConfigurations = (
 				DDA7FFEE144F1C3800F81C9E /* Debug */,
 				DDA7FFEF144F1C3800F81C9E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DDAF92E1161C3D5500790729 /* Build configuration list for PBXNativeTarget "ofxCocoaPlugins copy" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DDAF92E2161C3D5500790729 /* Debug */,
+				DDAF92E3161C3D5500790729 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
